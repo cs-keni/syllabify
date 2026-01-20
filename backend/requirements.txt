@@ -1,0 +1,7 @@
+# Production dependencies
+# Add your runtime dependencies here as your project develops
+# Examples:
+# fastapi>=0.104.0
+# uvicorn[standard]>=0.24.0
+# python-dotenv>=1.0.0
+# not adding yet cuz i'll let whoever's starting the backend figure out what they need

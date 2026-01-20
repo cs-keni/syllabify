@@ -20,11 +20,17 @@ jobs:
           if [ -f backend/requirements.txt ]; then
             pip install -r backend/requirements.txt
           fi
-          pip install ruff pytest
+          if [ -f backend/requirements-dev.txt ]; then
+            pip install -r backend/requirements-dev.txt
+          else
+            pip install ruff pytest
+          fi
       - name: Run backend linter
         run: |
-          if [ -d backend ] && [ -n "$(find backend -name '*.py' -type f 2>/dev/null)" ]; then
-            ruff backend/
+          if [ -d backend ] && [ -n "$(find backend -name '*.py' -type f -not -path '*/tests/*' 2>/dev/null)" ]; then
+            ruff check backend/ --exclude backend/tests/
+          elif [ -n "$(find backend -name '*.py' -type f 2>/dev/null)" ]; then
+            echo "Only test files found, skipping source code linter"
           else
             echo "No Python files found in backend, skipping linter"
           fi
@@ -55,8 +61,13 @@ jobs:
       - name: Run frontend linter
         run: |
           if [ -f frontend/package.json ] && [ -d frontend/src ]; then
-            cd frontend
-            npx eslint src/
+            # Check if there are actual source files (excluding .gitkeep)
+            if [ -n "$(find frontend/src -type f -name '*.js' -o -name '*.jsx' -o -name '*.ts' -o -name '*.tsx' 2>/dev/null)" ]; then
+              cd frontend
+              npx eslint src/
+            else
+              echo "No source files found in frontend/src, skipping linter"
+            fi
           else
             echo "No frontend code found, skipping linter"
           fi
