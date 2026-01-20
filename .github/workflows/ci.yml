@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [ dev, main ]
+  pull_request:
+    branches: [ dev, main ]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install backend dependencies
+        run: |
+          if [ -f backend/requirements.txt ]; then
+            pip install -r backend/requirements.txt
+          fi
+          pip install ruff pytest
+      - name: Run backend linter
+        run: |
+          if [ -d backend ] && [ -n "$(find backend -name '*.py' -type f 2>/dev/null)" ]; then
+            ruff backend/
+          else
+            echo "No Python files found in backend, skipping linter"
+          fi
+      - name: Run backend tests
+        run: |
+          if [ -d backend ] && [ -n "$(find backend -name 'test_*.py' -o -name '*_test.py' -type f 2>/dev/null)" ]; then
+            pytest backend/
+          else
+            echo "No test files found in backend, skipping tests"
+          fi
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install frontend dependencies
+        run: |
+          if [ -f frontend/package.json ]; then
+            cd frontend
+            npm install
+          else
+            echo "No package.json found in frontend, skipping frontend setup"
+          fi
+      - name: Run frontend linter
+        run: |
+          if [ -f frontend/package.json ] && [ -d frontend/src ]; then
+            cd frontend
+            npx eslint src/
+          else
+            echo "No frontend code found, skipping linter"
+          fi
