@@ -4,5 +4,12 @@
  *       token (e.g. localStorage). Used by App, Login, Dashboard, protected routes.
  */
 export default function useAuth() {
-  return { user: null, token: null, login: () => {}, logout: () => {}, signup: () => {}, isLoading: false };
+  return {
+    user: null,
+    token: null,
+    login: () => {},
+    logout: () => {},
+    signup: () => {},
+    isLoading: false,
+  };
 }
