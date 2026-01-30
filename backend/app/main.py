@@ -1,0 +1,35 @@
+# Flask entry point.
+# TODO: Create Flask app, load config (core.config), register blueprints for api.auth,
+#       api.syllabus, api.schedule, api.export. Run with FLASK_APP=app.main.
+#
+# DISCLAIMER: Project structure may change. Functions may be added, removed, or
+# modified. This describes the general idea as of the current state.
+
+import os
+from flask import Flask
+from flask_cors import CORS
+import mysql.connector
+
+from app.api.auth import bp as auth_bp
+
+app = Flask(__name__)
+CORS(app, origins=os.getenv("FRONTEND_URL", "http://localhost:3000").split(","))
+
+def get_db_connection():
+    """Creates and returns a MySQL connection using DB_* environment variables."""
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST", "mysql"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
+    )
+
+app.register_blueprint(auth_bp)
+
+@app.route("/")
+def index():
+    """Simple health check / root endpoint. Returns a sample string."""
+    return "sample index text"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)

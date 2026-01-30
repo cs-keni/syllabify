@@ -70,7 +70,7 @@ You can push directly to `dev` without a pull request:
 git push origin dev
 ```
 
-The CI/CD pipeline will automatically run tests and linting. Make sure your code passes these checks before moving to the next step.
+The CI/CD pipeline will run tests and linting. Run backend checks via Docker (`docker compose run --rm backend pytest`, `ruff check app/`) before pushing; see `CI-CD-AND-TESTING.md`.
 
 ---
 
@@ -205,7 +205,7 @@ git push origin main --force  # Only do this if absolutely necessary
 
 1. **Always work on `dev`**, never commit directly to `main`
 2. **Pull before you push** to avoid merge conflicts
-3. **Test locally** when possible before pushing
+3. **Run backend tests/lint via Docker** before pushing (`docker compose run --rm backend pytest`, `ruff check app/`); see `CI-CD-AND-TESTING.md`
 4. **Write clear commit messages**
 5. **Keep PRs focused** - one feature or bug fix per PR when possible
 6. **Respond to review comments** promptly
@@ -220,6 +220,7 @@ git push origin main --force  # Only do this if absolutely necessary
 git checkout dev
 git pull origin dev
 # ... make changes ...
+# Backend checks (Docker): docker compose run --rm backend pytest && docker compose run --rm backend ruff check app/
 git add .
 git commit -m "Your message"
 git push origin dev

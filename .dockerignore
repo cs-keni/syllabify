@@ -1,0 +1,46 @@
+# Excluded from Docker build context. See docker/README, backend Dockerfile.
+
+# Git
+.git
+.gitignore
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+.pytest_cache
+.mypy_cache
+venv
+.venv
+env
+.env
+*.egg-info
+htmlcov
+.coverage
+
+# Node
+node_modules
+frontend/node_modules
+frontend/dist
+frontend/build
+
+# IDE and OS
+.idea
+.vscode
+.DS_Store
+*.log
+
+# Docs and misc (keep image placeholders if needed)
+docs/presentations/*.pdf
+*.md
+!backend/README.md
+!frontend/README.md
+!README.md
+
+# Tests (optional: exclude from production image to keep it smaller)
+# backend/tests

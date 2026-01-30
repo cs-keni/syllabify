@@ -1,3 +1,6 @@
+# GitHub Actions CI pipeline. Runs on push/PR to dev, main.
+# Backend: ruff, pytest. Frontend: Prettier, ESLint. Both required to merge.
+
 name: CI
 
 on:
@@ -58,13 +61,26 @@ jobs:
           else
             echo "No package.json found in frontend, skipping frontend setup"
           fi
+      - name: Check frontend formatting
+        run: |
+          if [ -f frontend/package.json ] && [ -d frontend/src ]; then
+            # Check if there are actual source files (excluding .gitkeep)
+            if [ -n "$(find frontend/src -type f -name '*.js' -o -name '*.jsx' -o -name '*.ts' -o -name '*.tsx' 2>/dev/null)" ]; then
+              cd frontend
+              npm run format:check
+            else
+              echo "No source files found in frontend/src, skipping format check"
+            fi
+          else
+            echo "No frontend code found, skipping format check"
+          fi
       - name: Run frontend linter
         run: |
           if [ -f frontend/package.json ] && [ -d frontend/src ]; then
             # Check if there are actual source files (excluding .gitkeep)
             if [ -n "$(find frontend/src -type f -name '*.js' -o -name '*.jsx' -o -name '*.ts' -o -name '*.tsx' 2>/dev/null)" ]; then
               cd frontend
-              npx eslint src/
+              npm run lint
             else
               echo "No source files found in frontend/src, skipping linter"
             fi

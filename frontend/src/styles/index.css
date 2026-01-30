@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply bg-surface text-ink min-h-screen;
+  }
+}
+
+/* Theme-ready: future dark mode can override these */
+:root {
+  --color-surface: #fafafa;
+  --color-ink: #374151;
+  --color-accent: #0d9488;
+}
