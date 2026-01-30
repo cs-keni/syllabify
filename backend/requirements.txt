@@ -1,7 +1,17 @@
-# Production dependencies
-# Add your runtime dependencies here as your project develops
-# Examples:
-# fastapi>=0.104.0
-# uvicorn[standard]>=0.24.0
-# python-dotenv>=1.0.0
-# not adding yet cuz i'll let whoever's starting the backend figure out what they need
+# Backend dependencies (Docker). Install via backend image / requirements-dev for tests/lint.
+
+flask>=3.0.0
+python-dotenv>=1.0.0
+
+# Database (MySQL, 3NF)
+sqlalchemy>=2.0.0
+pymysql>=1.1.0
+
+# Auth (JWT)
+pyjwt>=2.8.0
+
+# PDF / text (syllabus parsing)
+pypdf>=3.0.0
+
+# CORS
+flask-cors>=4.0.0

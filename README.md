@@ -56,8 +56,9 @@ This project is developed incrementally using Scrum, with early delivery of a mi
 ### Backend
 
 - Python
-- FastAPI or Flask
+- Flask
 - RESTful APIs
+- SQLAlchemy (ORM)
 
 ### Database
 
@@ -74,13 +75,15 @@ This project is developed incrementally using Scrum, with early delivery of a mi
 ## Installation
 
 <!-- Installation instructions will be added as the project is developed -->
-<!-- This section will include: -->
-<!-- - Prerequisites (Node.js, Python, MySQL versions) -->
-<!-- - Frontend setup steps -->
-<!-- - Backend setup steps -->
+
+We standardize on **Docker** (no venv). Docker isolates OS, Python, Node, MySQL, and system libs.
+
+**Backend + MySQL:** From project root: `docker compose up -d`. See `docker/README.md` and `backend/README.md`.
+
+<!-- - Prerequisites (Docker, Node for frontend) -->
+<!-- - Frontend setup / Docker -->
 <!-- - Database configuration -->
 <!-- - Environment variable setup -->
-<!-- - Running the development servers -->
 
 ---
 
@@ -105,6 +108,119 @@ This project is developed as part of **CS 422 / CS 522 – Software Methodologie
 - Leon Wong  
 - Saint George Aufranc  
 - Kenny Nguyen  
+
+---
+
+## Project Structure
+
+```text
+syllabify/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                 # GitHub Actions CI pipeline
+│
+├── backend/
+│   ├── app/
+│   │   ├── main.py                # Flask entry point
+│   │   ├── api/                   # Route definitions
+│   │   │   ├── __init__.py
+│   │   │   ├── auth.py             # Auth routes (login, signup)
+│   │   │   ├── syllabus.py         # Upload + parse syllabus
+│   │   │   ├── schedule.py         # Generate schedules
+│   │   │   └── export.py           # Calendar export endpoints
+│   │   │
+│   │   ├── core/                  # Core app logic
+│   │   │   ├── config.py           # App config, env vars
+│   │   │   ├── security.py         # JWT, OAuth helpers
+│   │   │   └── dependencies.py     # Flask dependencies
+│   │   │
+│   │   ├── services/              # Business logic
+│   │   │   ├── parsing_service.py  # Syllabus parsing logic
+│   │   │   ├── scheduling_service.py # Heuristics + engine
+│   │   │   └── calendar_service.py # Google Calendar / ICS
+│   │   │
+│   │   ├── models/                # ORM models (3NF)
+│   │   │   ├── user.py
+│   │   │   ├── course.py
+│   │   │   ├── assignment.py
+│   │   │   └── schedule.py
+│   │   │
+│   │   ├── schemas/               # Request/response schemas
+│   │   │   ├── user.py
+│   │   │   ├── course.py
+│   │   │   ├── assignment.py
+│   │   │   └── schedule.py
+│   │   │
+│   │   ├── db/
+│   │   │   ├── session.py          # DB connection
+│   │   │   ├── base.py             # SQLAlchemy base
+│   │   │   └── init_db.py          # DB initialization
+│   │   │
+│   │   └── utils/
+│   │       ├── pdf_utils.py        # PDF/text extraction helpers
+│   │       └── date_utils.py       # Date parsing helpers
+│   │
+│   ├── tests/
+│   │   ├── test_parsing.py
+│   │   ├── test_scheduling.py
+│   │   └── test_api.py
+│   │
+│   ├── requirements.txt            # Backend deps (Flask, MySQL, etc.); Docker install
+│   ├── requirements-dev.txt        # Dev deps (ruff, pytest); Docker install
+│   ├── Dockerfile                  # Backend image for Docker Compose
+│   ├── pyproject.toml              # Ruff / pytest config
+│   └── README.md
+│
+├── docker/
+│   └── README.md                   # Docker usage (compose, run tests/lint in container)
+│
+├── frontend/
+│   ├── public/
+│   │   └── index.html
+│   │
+│   ├── src/
+│   │   ├── api/                    # API client calls
+│   │   │   └── client.js
+│   │   │
+│   │   ├── components/             # Reusable UI components
+│   │   │   ├── SyllabusUpload.jsx
+│   │   │   ├── SchedulePreview.jsx
+│   │   │   └── CourseCard.jsx
+│   │   │
+│   │   ├── pages/                  # Page-level components
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Upload.jsx
+│   │   │   └── Login.jsx
+│   │   │
+│   │   ├── hooks/                  # Custom React hooks
+│   │   │   └── useAuth.js
+│   │   │
+│   │   ├── styles/
+│   │   │   └── index.css
+│   │   │
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   ├── .eslintrc.cjs
+│   ├── .prettierrc
+│   └── README.md
+│
+├── docs/
+│   ├── SRS.md
+│   ├── SDS.md
+│   ├── architecture/
+│   │   └── system_architecture.png
+│   └── presentations/
+│       └── proposal_slides.pdf
+│
+├── docker-compose.yml              # Backend + MySQL services
+├── .dockerignore                   # Excluded from Docker build context
+├── .env.example                    # Environment variable template
+├── .gitignore
+├── LICENSE
+└── README.md                       # Main project README
+```
 
 ---
 

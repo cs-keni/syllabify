@@ -1,0 +1,41 @@
+# Docker Compose: backend + MySQL. Standardized on Docker for all dev and run.
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE: ${DB_NAME:-syllabify}
+      MYSQL_USER: ${DB_USER:-syllabify}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-syllabify}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      FLASK_DEBUG: "1"
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-syllabify}
+      DB_USER: ${DB_USER:-syllabify}
+      DB_PASSWORD: ${DB_PASSWORD:-syllabify}
+      SECRET_KEY: ${SECRET_KEY:-dev-secret-key}
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
