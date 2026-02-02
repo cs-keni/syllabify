@@ -64,8 +64,9 @@ def ensure_dev_user(cursor):
 
 def token_for_user(user_id, username):
     """Creates a JWT token containing user_id and username. Used for auth headers."""
+    # JWT spec expects "sub" to be a string; PyJWT raises InvalidSubjectError for int
     return jwt.encode(
-        {"sub": user_id, "username": username},
+        {"sub": str(user_id), "username": username},
         SECRET_KEY,
         algorithm="HS256",
     )
@@ -130,7 +131,10 @@ def security_setup():
             bool(auth and auth.startswith("Bearer ")),
         )
         return jsonify({"error": "unauthorized"}), 401
-    user_id = payload.get("sub")
+    try:
+        user_id = int(payload.get("sub"))
+    except (TypeError, ValueError):
+        return jsonify({"error": "unauthorized"}), 401
     data = request.get_json() or {}
     questions = data.get("questions")
     if not questions or not isinstance(questions, list) or len(questions) < 1:
@@ -162,7 +166,10 @@ def me():
     payload = decode_token(auth)
     if not payload:
         return jsonify({"error": "unauthorized"}), 401
-    user_id = payload.get("sub")
+    try:
+        user_id = int(payload.get("sub"))
+    except (TypeError, ValueError):
+        return jsonify({"error": "unauthorized"}), 401
     username = payload.get("username", "")
     conn = get_db()
     try:
