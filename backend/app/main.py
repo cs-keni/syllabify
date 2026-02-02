@@ -26,11 +26,18 @@ CORS(
 
 def get_db_connection():
     """Creates and returns a MySQL connection using DB_* environment variables."""
+    port = os.getenv("DB_PORT", "3306")
+    try:
+        port = int(port)
+    except (TypeError, ValueError):
+        port = 3306
     return mysql.connector.connect(
         host=os.getenv("DB_HOST", "mysql"),
+        port=port,
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
         database=os.getenv("DB_NAME"),
+        connection_timeout=15,
     )
 
 app.register_blueprint(auth_bp)
