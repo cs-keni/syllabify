@@ -38,6 +38,7 @@ export async function securitySetup(token, questions) {
     method: 'POST',
     headers: headers(true, token),
     body: JSON.stringify({ questions }),
+    credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Security setup failed');
@@ -54,6 +55,7 @@ export async function me(token) {
   if (!t) return null;
   const res = await fetch(`${BASE}/api/auth/me`, {
     headers: headers(true, t),
+    credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) return null;

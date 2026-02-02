@@ -98,7 +98,9 @@ def login():
         user_id, _, security_setup_done = ensure_dev_user(cur)
         conn.commit()
         token = token_for_user(user_id, DEV_USERNAME)
-        return jsonify({"token": token, "username": DEV_USERNAME, "security_setup_done": security_setup_done})
+        # Ensure token is str for JSON (PyJWT can vary by version)
+        token_str = token if isinstance(token, str) else token.decode("utf-8")
+        return jsonify({"token": token_str, "username": DEV_USERNAME, "security_setup_done": security_setup_done})
     finally:
         conn.close()
 
@@ -109,6 +111,12 @@ def security_setup():
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
     if not payload:
+        # Log only whether header was sent (do not log the token)
+        import logging
+        logging.getLogger(__name__).info(
+            "security-setup 401: Authorization header present=%s",
+            bool(auth and auth.startswith("Bearer ")),
+        )
         return jsonify({"error": "unauthorized"}), 401
     user_id = payload.get("sub")
     data = request.get_json() or {}
