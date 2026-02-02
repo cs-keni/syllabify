@@ -13,7 +13,16 @@ import mysql.connector
 from app.api.auth import bp as auth_bp
 
 app = Flask(__name__)
-CORS(app, origins=os.getenv("FRONTEND_URL", "http://localhost:3000").split(","))
+# CORS: set FRONTEND_URL on Render to your Vercel URL (e.g. https://syllabify-iota.vercel.app)
+_frontend_origins = os.getenv("FRONTEND_URL", "http://localhost:3000").strip()
+_frontend_origins = [o.strip() for o in _frontend_origins.split(",") if o.strip()]
+CORS(
+    app,
+    origins=_frontend_origins,
+    supports_credentials=True,
+    allow_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "OPTIONS", "PUT", "DELETE", "PATCH"],
+)
 
 def get_db_connection():
     """Creates and returns a MySQL connection using DB_* environment variables."""
