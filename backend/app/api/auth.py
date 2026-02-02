@@ -73,12 +73,24 @@ def token_for_user(user_id, username):
 
 def decode_token(auth_header):
     """Extracts and decodes JWT from 'Authorization: Bearer <token>'. Returns payload dict or None if invalid."""
+    import logging
+    log = logging.getLogger(__name__)
     if not auth_header or not auth_header.startswith("Bearer "):
         return None
+    token = auth_header[7:].strip()
+    if not token:
+        return None
     try:
-        payload = jwt.decode(auth_header[7:], SECRET_KEY, algorithms=["HS256"])
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         return payload
-    except jwt.InvalidTokenError:
+    except jwt.ExpiredSignatureError:
+        log.warning("JWT decode failed: token expired")
+        return None
+    except jwt.InvalidSignatureError:
+        log.warning("JWT decode failed: invalid signature (SECRET_KEY mismatch?)")
+        return None
+    except jwt.InvalidTokenError as e:
+        log.warning("JWT decode failed: %s", type(e).__name__)
         return None
 
 
