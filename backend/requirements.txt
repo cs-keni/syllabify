@@ -3,8 +3,9 @@
 flask>=3.0.0
 python-dotenv>=1.0.0
 
-# Database (MySQL, 3NF)
+# Database (MySQL, 3NF). Code uses mysql.connector (this package); pymysql is optional.
 sqlalchemy>=2.0.0
+mysql-connector-python>=8.0.0
 pymysql>=1.1.0
 
 # Auth (JWT, password hashing)
