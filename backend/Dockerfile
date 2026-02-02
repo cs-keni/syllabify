@@ -18,5 +18,5 @@ WORKDIR /app/backend
 ENV FLASK_APP=app.main
 ENV PORT=5000
 EXPOSE 5000
-# Render sets PORT at runtime; use shell so ${PORT} is expanded
-CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} app.main:app"]
+# Render sets PORT at runtime; use shell so ${PORT} is expanded. --timeout 120 for slow DB/cold start.
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} --timeout 120 app.main:app"]

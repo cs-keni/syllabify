@@ -17,4 +17,5 @@ WORKDIR /app/backend
 ENV FLASK_APP=app.main
 ENV PORT=5000
 EXPOSE 5000
-CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} app.main:app"]
+# Longer timeout: Render free tier + Railway MySQL can be slow on first request (cold start, DB connect)
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} --timeout 120 app.main:app"]
