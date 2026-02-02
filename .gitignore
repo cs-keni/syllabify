@@ -153,3 +153,5 @@ out/
 .cache/
 .parcel-cache/
 .vite/
+
+docs/DEPLOYMENT.md

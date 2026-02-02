@@ -1,6 +1,5 @@
-# Backend (Flask) image. Standardized on Docker; no venv.
-# requirements.txt + requirements-dev.txt (pytest, ruff) for run + tests/lint in container.
-# Production: gunicorn with PORT from env (e.g. Render). Local: docker-compose overrides CMD if needed.
+# Root Dockerfile for Render (Render looks for Dockerfile at repo root).
+# Same as backend/Dockerfile; build context is repo root so COPY backend/... works.
 
 FROM python:3.11-slim
 
@@ -18,5 +17,4 @@ WORKDIR /app/backend
 ENV FLASK_APP=app.main
 ENV PORT=5000
 EXPOSE 5000
-# Render sets PORT at runtime; use shell so ${PORT} is expanded
 CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} app.main:app"]

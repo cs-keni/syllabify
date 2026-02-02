@@ -16,3 +16,6 @@ pypdf>=3.0.0
 
 # CORS
 flask-cors>=4.0.0
+
+# Production WSGI (Render, etc.)
+gunicorn>=21.0.0

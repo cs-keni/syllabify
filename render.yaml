@@ -1,0 +1,13 @@
+# Render Blueprint (optional). Use "New > Blueprint" in Render and point at this file,
+# or create the Web Service manually — see docs/DEPLOYMENT.md.
+#
+# Required: Create MySQL on Railway first, run docker/init.sql, then in Render Dashboard
+# set: DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, SECRET_KEY, FRONTEND_URL.
+# PORT is set automatically by Render.
+
+services:
+  - type: web
+    name: syllabify-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
