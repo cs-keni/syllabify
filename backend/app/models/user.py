@@ -13,9 +13,7 @@ class User(Base):
     __tablename__ = "Users"
 
     id: Mapped[int] = mapped_column(
-        Integer,
-        primary_key = True,
-        autoincrement = True
+        primary_key = True
     )
 
     username: Mapped[str] = mapped_column(

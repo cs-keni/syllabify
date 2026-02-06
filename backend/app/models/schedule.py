@@ -13,9 +13,7 @@ class Schedule(Base):
     __tablename__ = "Schedules"
 
     id: Mapped[int] = mapped_column(
-        Integer,
-        primary_key = True,
-        autoincrement = True
+        primary_key = True
     )
 
     sched_name: Mapped[str] = mapped_column(
@@ -35,6 +33,12 @@ class Schedule(Base):
 
     assignments = relationship(
         "Assignment",
+        back_populates = "schedule",
+        cascade = "all, delete-orphan"
+    )
+
+    courses = relationship(
+        "Course",
         back_populates = "schedule",
         cascade = "all, delete-orphan"
     )

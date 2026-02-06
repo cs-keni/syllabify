@@ -5,7 +5,8 @@
 # DISCLAIMER: Project structure may change. Fields/relationships may be added or
 # modified. This describes the general idea.
 
-from sqlalchemy import Integer, String, ForeignKey
+from datetime import datetime
+from sqlalchemy import Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from ..db.base import Base
 
@@ -13,9 +14,7 @@ class Assignment(Base):
     __tablename__ = "Assignments"
 
     id: Mapped[int] = mapped_column(
-        Integer,
-        primary_key = True,
-        autoincrement = True
+        primary_key = True
     )
 
     assignment_name: Mapped[str] = mapped_column(
@@ -33,12 +32,22 @@ class Assignment(Base):
         nullable = True
     )
 
+    start_date: Mapped[datetime] = mapped_column(
+        DateTime(timezone = True),
+        nullable = False
+    )
+
+    due_date: Mapped[datetime] = mapped_column(
+        DateTime(timezone = True),
+        nullable = False
+    )
+
     schedule_id: Mapped[int] = mapped_column(
         ForeignKey("Schedules.id"),
         nullable = False
     )
-    owner = relationship(
+
+    schedule = relationship(
         "Schedule",
         back_populates = "assignments"
         )
-    
