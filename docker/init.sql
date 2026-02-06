@@ -37,6 +37,18 @@ CREATE TABLE IF NOT EXISTS Assignments (
         ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS StudyTimes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    notes VARCHAR(2048),
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    schedule_id INT NOT NULL,
+    CONSTRAINT fk_study_times_schedule
+        FOREIGN KEY (schedule_id)
+        REFERENCES Schedules(id)
+        ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS Courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     course_name VARCHAR(255) NOT NULL,

@@ -42,3 +42,9 @@ class Schedule(Base):
         back_populates = "schedule",
         cascade = "all, delete-orphan"
     )
+
+    study_times = relationship(
+        "StudyTime",
+        back_populates = "schedule",
+        cascade = "all, delete-orphan"
+    )
