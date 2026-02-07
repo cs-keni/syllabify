@@ -27,3 +27,9 @@ class User(Base):
         back_populates = "owner",
         cascade = "all, delete-orphan"
     )
+
+    user_security_answers = relationship(
+        "UserSecurityAnswer",
+        back_populates = "user",
+        cascade = "all, delete-orphan"
+    )
