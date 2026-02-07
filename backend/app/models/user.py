@@ -13,9 +13,7 @@ class User(Base):
     __tablename__ = "Users"
 
     id: Mapped[int] = mapped_column(
-        Integer,
-        primary_key = True,
-        autoincrement = True
+        primary_key = True
     )
 
     username: Mapped[str] = mapped_column(
@@ -27,5 +25,11 @@ class User(Base):
     schedules = relationship(
         "Schedule",
         back_populates = "owner",
+        cascade = "all, delete-orphan"
+    )
+
+    user_security_answers = relationship(
+        "UserSecurityAnswer",
+        back_populates = "user",
         cascade = "all, delete-orphan"
     )

@@ -10,21 +10,11 @@ from sqlalchemy import Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from ..db.base import Base
 
-class Assignment(Base):
-    __tablename__ = "Assignments"
+class StudyTime(Base):
+    __tablename__ = "StudyTimes"
 
     id: Mapped[int] = mapped_column(
         primary_key = True
-    )
-
-    assignment_name: Mapped[str] = mapped_column(
-        String(255),
-        nullable = False
-    )
-
-    work_load: Mapped[int] = mapped_column(
-        Integer,
-        nullable = False
     )
 
     notes: Mapped[str | None] = mapped_column(
@@ -32,12 +22,12 @@ class Assignment(Base):
         nullable = True
     )
 
-    start_date: Mapped[datetime] = mapped_column(
+    start_time: Mapped[datetime] = mapped_column(
         DateTime(timezone = True),
         nullable = False
     )
 
-    due_date: Mapped[datetime] = mapped_column(
+    end_time: Mapped[datetime] = mapped_column(
         DateTime(timezone = True),
         nullable = False
     )
@@ -49,5 +39,5 @@ class Assignment(Base):
 
     schedule = relationship(
         "Schedule",
-        back_populates = "assignments"
+        back_populates = "study_times"
         )
