@@ -6,7 +6,7 @@ import { Outlet, NavLink, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const navItems = [
-  { to: '/', label: 'Dashboard' },
+  { to: '/app', label: 'Dashboard' },
   { to: '/upload', label: 'Upload syllabus' },
   { to: '/schedule', label: 'Schedule' },
   { to: '/preferences', label: 'Preferences' },
