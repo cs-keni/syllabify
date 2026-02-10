@@ -6,9 +6,10 @@
 # modified. This describes the general idea as of the current state.
 
 import os
-import jwt
+
 import bcrypt
-from flask import Blueprint, request, jsonify
+import jwt
+from flask import Blueprint, jsonify, request
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
@@ -48,14 +49,17 @@ def check_password(password, password_hash):
 
 
 def ensure_dev_user(cursor):
-    """Ensures the dev user exists in the DB. Creates it if missing. Returns (user_id, password_hash, security_setup_done)."""
-    cursor.execute("SELECT id, password_hash, security_setup_done FROM Users WHERE username = %s", (DEV_USERNAME,))
+    """Ensures the dev user exists in the DB. Creates it if missing. Returns
+    (user_id, password_hash, security_setup_done)."""
+    cursor.execute("SELECT id, password_hash, security_setup_done FROM Users " \
+    "WHERE username = %s", (DEV_USERNAME,))
     row = cursor.fetchone()
     if row:
         return row[0], row[1], bool(row[2])
     hashed = hash_password(DEV_PASSWORD)
     cursor.execute(
-        "INSERT INTO Users (username, password_hash, security_setup_done) VALUES (%s, %s, FALSE)",
+        "INSERT INTO Users (username, password_hash, security_setup_done) VALUES "
+        "(%s, %s, FALSE)",
         (DEV_USERNAME, hashed),
     )
     uid = cursor.lastrowid
@@ -73,7 +77,8 @@ def token_for_user(user_id, username):
 
 
 def decode_token(auth_header):
-    """Extracts and decodes JWT from 'Authorization: Bearer <token>'. Returns payload dict or None if invalid."""
+    """Extracts and decodes JWT from 'Authorization: Bearer <token>'. Returns payload
+    dict or None if invalid."""
     import logging
     log = logging.getLogger(__name__)
     if not auth_header or not auth_header.startswith("Bearer "):
@@ -97,7 +102,8 @@ def decode_token(auth_header):
 
 @bp.route("/login", methods=["POST"])
 def login():
-    """Accepts username/password, validates against dev user, returns JWT and security_setup_done."""
+    """Accepts username/password, validates against dev user, returns JWT and
+    security_setup_done."""
     data = request.get_json() or {}
     username = (data.get("username") or "").strip()
     password = data.get("password") or ""
@@ -113,14 +119,16 @@ def login():
         token = token_for_user(user_id, DEV_USERNAME)
         # Ensure token is str for JSON (PyJWT can vary by version)
         token_str = token if isinstance(token, str) else token.decode("utf-8")
-        return jsonify({"token": token_str, "username": DEV_USERNAME, "security_setup_done": security_setup_done})
+        return jsonify({"token": token_str, "username": DEV_USERNAME,
+                        "security_setup_done": security_setup_done})
     finally:
         conn.close()
 
 
 @bp.route("/security-setup", methods=["POST"])
 def security_setup():
-    """Saves security questions/answers for the current user and marks security_setup_done. Requires JWT."""
+    """Saves security questions/answers for the current user and marks
+    security_setup_done. Requires JWT."""
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
     if not payload:
@@ -149,10 +157,12 @@ def security_setup():
             if q and a:
                 ah = hash_password(a)
                 cur.execute(
-                    "INSERT INTO UserSecurityAnswers (user_id, question_text, answer_hash) VALUES (%s, %s, %s)",
+                    "INSERT INTO UserSecurityAnswers (user_id, question_text, " \
+                    "answer_hash) VALUES (%s, %s, %s)",
                     (user_id, q[:500], ah),
                 )
-        cur.execute("UPDATE Users SET security_setup_done = TRUE WHERE id = %s", (user_id,))
+        cur.execute("UPDATE Users SET security_setup_done = TRUE WHERE id = %s",
+                    (user_id,))
         conn.commit()
         return jsonify({"ok": True})
     finally:
@@ -161,7 +171,8 @@ def security_setup():
 
 @bp.route("/me", methods=["GET"])
 def me():
-    """Returns current user info (username, security_setup_done) from JWT. Requires valid token."""
+    """Returns current user info (username, security_setup_done) from JWT. Requires
+    valid token."""
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
     if not payload:
@@ -177,6 +188,7 @@ def me():
         cur.execute("SELECT security_setup_done FROM Users WHERE id = %s", (user_id,))
         row = cur.fetchone()
         security_setup_done = bool(row[0]) if row else False
-        return jsonify({"username": username, "security_setup_done": security_setup_done})
+        return jsonify({"username": username, "security_setup_done":
+                        security_setup_done})
     finally:
         conn.close()

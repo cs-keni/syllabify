@@ -12,6 +12,7 @@ import Schedule from './pages/Schedule';
 import Preferences from './pages/Preferences';
 import Login from './pages/Login';
 import SecuritySetup from './pages/SecuritySetup';
+import Home from './pages/Homepage';
 import './styles/index.css';
 
 /** Shown while auth is loading. */
@@ -29,14 +30,15 @@ function AppRoutes() {
   if (isLoading) return <Loading />;
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/security-setup" element={<SecuritySetup />} />
-      <Route path="/" element={<Layout />}>
+      <Route path="/app" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="upload" element={<Upload />} />
         <Route path="schedule" element={<Schedule />} />
         <Route path="preferences" element={<Preferences />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/app" replace />} />
       </Route>
     </Routes>
   );

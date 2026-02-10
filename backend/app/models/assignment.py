@@ -5,9 +5,11 @@
 # DISCLAIMER: Project structure may change. Fields/relationships may be added or
 # modified. This describes the general idea.
 
-from sqlalchemy import Integer, String, ForeignKey
+from sqlalchemy import ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from ..db.base import Base
+
 
 class Assignment(Base):
     __tablename__ = "Assignments"
@@ -41,4 +43,3 @@ class Assignment(Base):
         "Schedule",
         back_populates = "assignments"
         )
-    

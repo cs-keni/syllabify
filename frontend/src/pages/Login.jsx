@@ -10,7 +10,7 @@ import { useAuth } from '../contexts/AuthContext';
 export default function Login() {
   const { user, securitySetupDone, login } = useAuth();
   const navigate = useNavigate();
-  if (user && securitySetupDone) return <Navigate to="/" replace />;
+  if (user && securitySetupDone) return <Navigate to="/app" replace />;
   if (user && !securitySetupDone)
     return <Navigate to="/security-setup" replace />;
   const [username, setUsername] = useState('');
@@ -26,7 +26,7 @@ export default function Login() {
     try {
       const result = await login(username.trim(), password);
       if (result.security_setup_done) {
-        navigate('/', { replace: true });
+        navigate('/app', { replace: true });
       } else {
         navigate('/security-setup', { replace: true });
       }
