@@ -6,9 +6,10 @@
 # modified. This describes the general idea as of the current state.
 
 import os
+
+import mysql.connector
 from flask import Flask
 from flask_cors import CORS
-import mysql.connector
 
 from app.api.auth import bp as auth_bp
 

@@ -6,9 +6,10 @@
 # modified. This describes the general idea as of the current state.
 
 import os
-import jwt
+
 import bcrypt
-from flask import Blueprint, request, jsonify
+import jwt
+from flask import Blueprint, jsonify, request
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
@@ -118,7 +119,7 @@ def login():
         token = token_for_user(user_id, DEV_USERNAME)
         # Ensure token is str for JSON (PyJWT can vary by version)
         token_str = token if isinstance(token, str) else token.decode("utf-8")
-        return jsonify({"token": token_str, "username": DEV_USERNAME, 
+        return jsonify({"token": token_str, "username": DEV_USERNAME,
                         "security_setup_done": security_setup_done})
     finally:
         conn.close()
@@ -160,7 +161,7 @@ def security_setup():
                     "answer_hash) VALUES (%s, %s, %s)",
                     (user_id, q[:500], ah),
                 )
-        cur.execute("UPDATE Users SET security_setup_done = TRUE WHERE id = %s", 
+        cur.execute("UPDATE Users SET security_setup_done = TRUE WHERE id = %s",
                     (user_id,))
         conn.commit()
         return jsonify({"ok": True})
@@ -187,7 +188,7 @@ def me():
         cur.execute("SELECT security_setup_done FROM Users WHERE id = %s", (user_id,))
         row = cur.fetchone()
         security_setup_done = bool(row[0]) if row else False
-        return jsonify({"username": username, "security_setup_done": 
+        return jsonify({"username": username, "security_setup_done":
                         security_setup_done})
     finally:
         conn.close()
