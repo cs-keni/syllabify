@@ -54,9 +54,12 @@ export default function Home() {
 
         <section className="mt-10 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">Structured intake</h2>
+            <h2 className="text-base font-semibold text-white">
+              Structured intake
+            </h2>
             <p className="mt-2 text-sm text-blue-200">
-              Upload a syllabus and see the extracted assignments, exams, and milestones.
+              Upload a syllabus and see the extracted assignments, exams, and
+              milestones.
             </p>
           </div>
           <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
@@ -66,7 +69,9 @@ export default function Home() {
             </p>
           </div>
           <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">Ready to export</h2>
+            <h2 className="text-base font-semibold text-white">
+              Ready to export
+            </h2>
             <p className="mt-2 text-sm text-blue-200">
               Send your plan to Google Calendar or download an ICS file.
             </p>
