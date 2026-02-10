@@ -12,7 +12,7 @@ import Schedule from './pages/Schedule';
 import Preferences from './pages/Preferences';
 import Login from './pages/Login';
 import SecuritySetup from './pages/SecuritySetup';
-import Home from './pages/Home';
+import Home from './pages/Homepage';
 import './styles/index.css';
 
 /** Shown while auth is loading. */
