@@ -1,13 +1,21 @@
 import { Link } from 'react-router-dom';
+import logo from '../assets/syllabify-logo.jpg';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 shadow-lg">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex items-center justify-between">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
+          <div className="relative flex items-center justify-between">
             <div className="text-lg font-semibold tracking-tight text-white">
               Syllabify
+            </div>
+            <div className="absolute left-1/2 translate-y-1.5 -translate-x-1/2">
+              <img
+                src={logo}
+                alt="Syllabify"
+                className="h-[256px] w-[256px] object-contain"
+              />
             </div>
             <div className="flex items-center gap-2">
               <Link
