@@ -36,8 +36,8 @@ export default function Home() {
             Turn syllabi into a balanced study plan.
           </h1>
           <p className="mt-4 max-w-2xl text-base sm:text-lg text-blue-200">
-            Syllabify helps you translate course expectations into a weekly schedule
-            you can trust.
+            Syllabify helps you translate course expectations into a weekly
+            schedule you can trust.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <div className="rounded-full bg-blue-900/60 px-4 py-2 text-sm text-blue-100">
