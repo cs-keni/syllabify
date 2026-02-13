@@ -79,7 +79,7 @@ export default function ParsedDataReview({
               <tr
                 key={a.id}
                 className="border-b border-border-subtle animate-fade-in-up"
-                style={{ animationDelay: `${i * 40}ms` }}
+                style={{ animationDelay: `${i * 80}ms` }}
               >
                 <td className="px-3 py-2">
                   <EditableCell

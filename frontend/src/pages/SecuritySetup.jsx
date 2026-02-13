@@ -70,7 +70,7 @@ export default function SecuritySetup() {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-4 animate-fade-in-up [animation-delay:100ms]"
+        className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-4 animate-fade-in-up [animation-delay:200ms]"
       >
         {error && (
           <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-button px-3 py-2">

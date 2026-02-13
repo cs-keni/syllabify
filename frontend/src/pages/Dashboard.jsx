@@ -100,7 +100,7 @@ export default function Dashboard() {
         </p>
       </div>
 
-      <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in [animation-delay:100ms]">
+      <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in [animation-delay:200ms]">
         <div className="flex items-center gap-2 mb-3">
           <h2 className="text-sm font-medium text-ink">This week</h2>
           <span className="text-xs text-ink-subtle bg-surface-muted rounded-button px-2 py-0.5">
@@ -114,7 +114,7 @@ export default function Dashboard() {
                 className="w-full rounded-t min-h-[4px] bg-accent-muted max-h-24 origin-bottom animate-bar-grow"
                 style={{
                   height: `${[4, 6, 2, 5, 3, 0, 0][i]}rem`,
-                  animationDelay: `${i * 60}ms`,
+                  animationDelay: `${i * 120}ms`,
                 }}
               />
               <span className="text-xs text-ink-subtle">{day}</span>
@@ -127,7 +127,7 @@ export default function Dashboard() {
       </section>
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:200ms]">
+        <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:400ms]">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-medium text-ink">Upcoming</h2>
@@ -147,7 +147,7 @@ export default function Dashboard() {
               <li
                 key={a.id}
                 className="flex items-center justify-between rounded-button border border-border-subtle bg-surface px-3 py-2 text-sm animate-fade-in-up"
-                style={{ animationDelay: `${240 + i * 40}ms` }}
+                style={{ animationDelay: `${480 + i * 80}ms` }}
               >
                 <span className="font-medium text-ink">{a.title}</span>
                 <span className="text-ink-muted">
@@ -158,7 +158,7 @@ export default function Dashboard() {
           </ul>
         </section>
 
-        <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:350ms]">
+        <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:700ms]">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-medium text-ink">Courses</h2>
@@ -179,7 +179,7 @@ export default function Dashboard() {
                 <div
                   key={c.id}
                   className="animate-fade-in-up"
-                  style={{ animationDelay: `${390 + i * 50}ms` }}
+                  style={{ animationDelay: `${780 + i * 100}ms` }}
                 >
                   <CourseCard course={c} />
                 </div>

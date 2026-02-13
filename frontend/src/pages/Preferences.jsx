@@ -14,7 +14,7 @@ export default function Preferences() {
         </p>
       </div>
 
-      <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-8 max-w-xl animate-fade-in-up [animation-delay:100ms]">
+      <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-8 max-w-xl animate-fade-in-up [animation-delay:200ms]">
         <section>
           <h2 className="text-sm font-medium text-ink mb-3">Work hours</h2>
           <div className="flex items-center gap-4">

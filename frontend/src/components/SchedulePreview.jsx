@@ -78,7 +78,7 @@ export default function SchedulePreview({ weekStart }) {
   const hourHeight = 48;
 
   return (
-    <div className="rounded-card bg-surface-elevated border border-border overflow-hidden shadow-card animate-fade-in [animation-delay:100ms]">
+    <div className="rounded-card bg-surface-elevated border border-border overflow-hidden shadow-card animate-fade-in [animation-delay:200ms]">
       <div className="grid grid-cols-8 border-b border-border bg-surface-muted">
         <div className="p-2 text-xs font-medium text-ink-muted" />
         {LABELS.map(d => (
@@ -124,7 +124,7 @@ export default function SchedulePreview({ weekStart }) {
               width: `${100 / 8 - 4}%`,
               top: (b.start - 6) * hourHeight,
               height: (b.end - b.start) * hourHeight - 2,
-              animationDelay: `${i * 30}ms`,
+              animationDelay: `${i * 60}ms`,
             }}
           >
             {b.conflict ? 'Conflict' : b.title}

@@ -85,7 +85,7 @@ export default function Login() {
 
           <form
             onSubmit={handleSubmit}
-            className="mt-8 rounded-3xl border border-border bg-surface-elevated p-6 sm:p-8 shadow-card space-y-4 animate-fade-in-up [animation-delay:100ms]"
+            className="mt-8 rounded-3xl border border-border bg-surface-elevated p-6 sm:p-8 shadow-card space-y-4 animate-fade-in-up [animation-delay:200ms]"
           >
             {error && (
               <p className="text-sm text-red-700 bg-red-50 dark:text-red-300 dark:bg-red-900/30 border border-red-200 dark:border-red-800/60 rounded-button px-3 py-2 animate-slide-down">

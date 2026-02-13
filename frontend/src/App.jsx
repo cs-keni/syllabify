@@ -3,7 +3,6 @@
  * DISCLAIMER: Project structure may change. Components/routes may be added or
  * modified. This describes the general idea as of the current state.
  */
-import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -15,32 +14,22 @@ import Preferences from './pages/Preferences';
 import Login from './pages/Login';
 import SecuritySetup from './pages/SecuritySetup';
 import Home from './pages/Homepage';
-import SplashScreen from './components/SplashScreen';
 import './styles/index.css';
 
-/** Renders all routes. Splash on first load, fades to content when auth ready. */
+/** Shown while auth is loading. */
+function Loading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-surface">
+      <p className="text-ink-muted animate-fade-in">Loading…</p>
+    </div>
+  );
+}
+
+/** Renders all routes. Waits for auth to load before showing content. */
 function AppRoutes() {
   const { isLoading } = useAuth();
-  const [splashState, setSplashState] = useState('visible'); // 'visible' | 'exiting' | 'hidden'
-
-  useEffect(() => {
-    if (!isLoading && splashState === 'visible') {
-      setSplashState('exiting');
-    }
-  }, [isLoading, splashState]);
-
-  const handleSplashTransitionEnd = () => setSplashState('hidden');
-  const showSplash = splashState === 'visible' || splashState === 'exiting';
-
+  if (isLoading) return <Loading />;
   return (
-    <>
-      {showSplash && (
-        <SplashScreen
-          exiting={splashState === 'exiting'}
-          onTransitionEnd={handleSplashTransitionEnd}
-        />
-      )}
-      {!isLoading && (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
@@ -57,8 +46,6 @@ function AppRoutes() {
         <Route path="*" element={<Navigate to="/app" replace />} />
       </Route>
     </Routes>
-      )}
-    </>
   );
 }
 

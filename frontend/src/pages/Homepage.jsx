@@ -22,13 +22,13 @@ export default function Home() {
               <ThemeToggle />
               <Link
                 to="/login"
-                className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200 animate-fade-in [animation-delay:50ms]"
+                className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200 animate-fade-in [animation-delay:100ms]"
               >
                 Log in
               </Link>
               <button
                 type="button"
-                className="rounded-button border border-border bg-surface px-4 py-2 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200 animate-fade-in [animation-delay:100ms]"
+                className="rounded-button border border-border bg-surface px-4 py-2 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200 animate-fade-in [animation-delay:400ms]"
               >
                 Sign up
               </button>
@@ -42,21 +42,21 @@ export default function Home() {
           <p className="text-sm uppercase tracking-[0.2em] text-accent animate-fade-in-up">
             Academic planning, made simple
           </p>
-          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-serif font-semibold text-ink animate-fade-in-up [animation-delay:50ms]">
+          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-serif font-semibold text-ink animate-fade-in-up [animation-delay:100ms]">
             Turn syllabi into a balanced study plan.
           </h1>
-          <p className="mt-4 max-w-2xl text-base sm:text-lg text-ink-muted animate-fade-in-up [animation-delay:100ms]">
+          <p className="mt-4 max-w-2xl text-base sm:text-lg text-ink-muted animate-fade-in-up [animation-delay:400ms]">
             Syllabify helps you translate course expectations into a weekly
             schedule you can trust.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:150ms]">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:300ms]">
               PDF and text syllabi
             </div>
-            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:200ms]">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:400ms]">
               Manual review and edits
             </div>
-            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:250ms]">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:500ms]">
               Calendar-ready schedule
             </div>
           </div>
@@ -72,13 +72,13 @@ export default function Home() {
               milestones.
             </p>
           </div>
-          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card animate-fade-in-up transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-dropdown [animation-delay:80ms]">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card animate-fade-in-up transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-dropdown [animation-delay:160ms]">
             <h2 className="text-base font-semibold text-ink">Planning</h2>
             <p className="mt-2 text-sm text-ink-muted">
               Review and adjust the data before a schedule is generated.
             </p>
           </div>
-          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card animate-fade-in-up transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-dropdown [animation-delay:160ms]">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card animate-fade-in-up transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-dropdown [animation-delay:320ms]">
             <h2 className="text-base font-semibold text-ink">
               Ready to export
             </h2>
