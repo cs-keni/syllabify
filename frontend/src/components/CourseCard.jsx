@@ -10,7 +10,7 @@ export default function CourseCard({ course }) {
   return (
     <Link
       to="/app/schedule"
-      className="block rounded-card border border-border bg-surface p-4 shadow-card no-underline text-ink hover:border-accent/40 hover:shadow-dropdown transition-all"
+      className="block rounded-card border border-border bg-surface p-4 shadow-card no-underline text-ink hover:border-accent/40 hover:shadow-dropdown hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-200 ease-out"
     >
       <div className="flex items-start justify-between">
         <div>

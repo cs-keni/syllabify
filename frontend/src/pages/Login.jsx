@@ -53,7 +53,7 @@ export default function Login() {
               <img
                 src={logo}
                 alt="Syllabify"
-                className="h-[256px] w-[256px] object-contain"
+                className="h-[256px] w-[256px] object-contain animate-scale-in"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -71,7 +71,7 @@ export default function Login() {
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 pt-10">
         <div className="mx-auto max-w-md">
-          <div className="text-center">
+          <div className="text-center animate-fade-in">
             <p className="text-sm uppercase tracking-[0.2em] text-accent">
               Welcome back
             </p>
@@ -85,10 +85,10 @@ export default function Login() {
 
           <form
             onSubmit={handleSubmit}
-            className="mt-8 rounded-3xl border border-border bg-surface-elevated p-6 sm:p-8 shadow-card space-y-4"
+            className="mt-8 rounded-3xl border border-border bg-surface-elevated p-6 sm:p-8 shadow-card space-y-4 animate-fade-in-up [animation-delay:100ms]"
           >
             {error && (
-              <p className="text-sm text-red-700 bg-red-50 dark:text-red-300 dark:bg-red-900/30 border border-red-200 dark:border-red-800/60 rounded-button px-3 py-2">
+              <p className="text-sm text-red-700 bg-red-50 dark:text-red-300 dark:bg-red-900/30 border border-red-200 dark:border-red-800/60 rounded-button px-3 py-2 animate-slide-down">
                 {error}
               </p>
             )}
@@ -131,7 +131,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-button bg-accent py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+              className="w-full rounded-button bg-accent py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-60 transition-colors duration-200"
             >
               {submitting ? 'Logging in...' : 'Log in'}
             </button>

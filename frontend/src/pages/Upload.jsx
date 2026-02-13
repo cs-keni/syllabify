@@ -28,7 +28,7 @@ export default function Upload() {
 
   return (
     <div className="space-y-8">
-      <div>
+      <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">Upload syllabus</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Upload a PDF or paste text, then review and confirm the extracted
@@ -43,7 +43,7 @@ export default function Upload() {
             <button
               type="button"
               onClick={() => setStep(i)}
-              className={`rounded-button px-3 py-1.5 text-sm font-medium transition-colors ${
+              className={`rounded-button px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                 i === step
                   ? 'bg-accent text-white'
                   : i < step
@@ -66,6 +66,7 @@ export default function Upload() {
 
       {/* Step content */}
       <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card min-h-[320px]">
+        <div key={currentStepId} className="animate-fade-in">
         {currentStepId === 'upload' && (
           <SyllabusUpload
             onComplete={courseName => {
@@ -93,12 +94,13 @@ export default function Upload() {
             <button
               type="button"
               onClick={() => setStep(0)}
-              className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+              className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
             >
               Upload another
             </button>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

@@ -47,6 +47,50 @@ export default {
         card: '0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06)',
         dropdown: '0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06)',
       },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        slideDown: {
+          '0%': { opacity: '0', transform: 'translateY(-8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.6' },
+        },
+        barGrow: {
+          '0%': { transform: 'scaleY(0)' },
+          '100%': { transform: 'scaleY(1)' },
+        },
+      },
+      transitionDuration: {
+        150: '150ms',
+        200: '200ms',
+        250: '250ms',
+        300: '300ms',
+        350: '350ms',
+        400: '400ms',
+      },
+      animationDelay: {
+        50: '50ms',
+        80: '80ms',
+        100: '100ms',
+        120: '120ms',
+        150: '150ms',
+        200: '200ms',
+        250: '250ms',
+        300: '300ms',
+      },
     },
   },
   plugins: [],

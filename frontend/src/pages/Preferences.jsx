@@ -6,7 +6,7 @@
 export default function Preferences() {
   return (
     <div className="space-y-8">
-      <div>
+      <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">Preferences</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Set work hours, preferred days, and workload limits. More options
@@ -14,7 +14,7 @@ export default function Preferences() {
         </p>
       </div>
 
-      <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-8 max-w-xl">
+      <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-8 max-w-xl animate-fade-in-up [animation-delay:100ms]">
         <section>
           <h2 className="text-sm font-medium text-ink mb-3">Work hours</h2>
           <div className="flex items-center gap-4">

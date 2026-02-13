@@ -20,7 +20,7 @@ import './styles/index.css';
 function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface">
-      <p className="text-ink-muted">Loading…</p>
+      <p className="text-ink-muted animate-fade-in">Loading…</p>
     </div>
   );
 }

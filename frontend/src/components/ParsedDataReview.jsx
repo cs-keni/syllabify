@@ -75,8 +75,12 @@ export default function ParsedDataReview({
             </tr>
           </thead>
           <tbody>
-            {assignments.map(a => (
-              <tr key={a.id} className="border-b border-border-subtle">
+            {assignments.map((a, i) => (
+              <tr
+                key={a.id}
+                className="border-b border-border-subtle animate-fade-in-up"
+                style={{ animationDelay: `${i * 40}ms` }}
+              >
                 <td className="px-3 py-2">
                   <EditableCell
                     value={a.name}
@@ -108,7 +112,7 @@ export default function ParsedDataReview({
         <button
           type="button"
           onClick={onConfirm}
-          className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+          className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
         >
           Confirm and continue
         </button>

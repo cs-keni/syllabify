@@ -26,7 +26,7 @@ export default function Layout() {
           <div className="flex h-14 items-center justify-between">
             <NavLink
               to="/"
-              className="text-lg font-semibold text-ink no-underline hover:text-accent"
+              className="text-lg font-semibold text-ink no-underline hover:text-accent transition-colors duration-200"
             >
               Syllabify
             </NavLink>
@@ -37,7 +37,7 @@ export default function Layout() {
                   key={to}
                   to={to}
                   className={({ isActive }) =>
-                    `rounded-button px-3 py-2 text-sm font-medium no-underline ${
+                    `rounded-button px-3 py-2 text-sm font-medium no-underline transition-colors duration-200 ${
                       isActive
                         ? 'bg-accent-muted text-accent'
                         : 'text-ink-muted hover:bg-surface-muted hover:text-ink'
@@ -50,11 +50,11 @@ export default function Layout() {
               <span className="ml-2 text-sm text-ink-muted px-2">
                 {user.username}
               </span>
-              <button
-                type="button"
-                onClick={logout}
-                className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover"
-              >
+            <button
+              type="button"
+              onClick={logout}
+              className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+            >
                 Log out
               </button>
             </div>
