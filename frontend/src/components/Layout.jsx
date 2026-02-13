@@ -7,10 +7,10 @@ import { useAuth } from '../contexts/AuthContext';
 import ThemeToggle from './ThemeToggle';
 
 const navItems = [
-  { to: '/app', label: 'Dashboard' },
-  { to: '/app/upload', label: 'Upload syllabus' },
-  { to: '/app/schedule', label: 'Schedule' },
-  { to: '/app/preferences', label: 'Preferences' },
+  { to: '/app', label: 'Dashboard', end: true },
+  { to: '/app/upload', label: 'Upload syllabus', end: true },
+  { to: '/app/schedule', label: 'Schedule', end: true },
+  { to: '/app/preferences', label: 'Preferences', end: true },
 ];
 
 /** Main layout with header nav and Outlet for child routes. */
@@ -32,10 +32,11 @@ export default function Layout() {
             </NavLink>
             <div className="flex items-center gap-1">
               <ThemeToggle />
-              {navItems.map(({ to, label }) => (
+              {navItems.map(({ to, label, end }) => (
                 <NavLink
                   key={to}
                   to={to}
+                  end={end}
                   className={({ isActive }) =>
                     `rounded-button px-3 py-2 text-sm font-medium no-underline transition-colors duration-200 ${
                       isActive
