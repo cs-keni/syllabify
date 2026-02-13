@@ -72,6 +72,28 @@ export default {
           '0%': { transform: 'scaleY(0)' },
           '100%': { transform: 'scaleY(1)' },
         },
+        fadeOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        dashOffset: {
+          '0%': { strokeDashoffset: '188' },
+          '100%': { strokeDashoffset: '47' },
+        },
+      },
+      animation: {
+        'fade-in': 'fadeIn 300ms ease-out forwards',
+        'fade-in-up': 'fadeInUp 400ms ease-out forwards',
+        'scale-in': 'scaleIn 250ms ease-out forwards',
+        'slide-down': 'slideDown 200ms ease-out forwards',
+        'pulse-soft': 'pulseSoft 1.5s ease-in-out infinite',
+        'bar-grow': 'barGrow 400ms ease-out forwards',
+        'fade-out': 'fadeOut 400ms ease-out forwards',
+        'spin-slow': 'spin 1.2s linear infinite',
       },
       transitionDuration: {
         150: '150ms',
