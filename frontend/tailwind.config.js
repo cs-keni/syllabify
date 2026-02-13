@@ -1,28 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        /* Theme-ready: use CSS vars later for dark mode / custom themes */
+        /* Theme-ready: CSS vars switch with .dark class */
         surface: {
-          DEFAULT: '#fafafa',
-          elevated: '#ffffff',
-          muted: '#f5f5f5',
+          DEFAULT: 'var(--color-surface)',
+          elevated: 'var(--color-surface-elevated)',
+          muted: 'var(--color-surface-muted)',
         },
         ink: {
-          DEFAULT: '#374151',
-          muted: '#6b7280',
-          subtle: '#9ca3af',
+          DEFAULT: 'var(--color-ink)',
+          muted: 'var(--color-ink-muted)',
+          subtle: 'var(--color-ink-subtle)',
         },
         accent: {
-          DEFAULT: '#0d9488',
-          hover: '#0f766e',
-          muted: '#ccfbf1',
+          DEFAULT: 'var(--color-accent)',
+          hover: 'var(--color-accent-hover)',
+          muted: 'var(--color-accent-muted)',
         },
         border: {
-          DEFAULT: '#e5e7eb',
-          subtle: '#f3f4f6',
+          DEFAULT: 'var(--color-border)',
+          subtle: 'var(--color-border-subtle)',
         },
         /* Muted course blocks (weekly view) */
         course: {

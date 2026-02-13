@@ -4,6 +4,7 @@
  */
 import { Outlet, NavLink, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { to: '/app', label: 'Dashboard' },
@@ -30,6 +31,7 @@ export default function Layout() {
               Syllabify
             </NavLink>
             <div className="flex items-center gap-1">
+              <ThemeToggle />
               {navItems.map(({ to, label }) => (
                 <NavLink
                   key={to}

@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/syllabify-logo.jpg';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 shadow-lg">
+    <div className="min-h-screen bg-surface text-ink">
+      <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
           <div className="relative flex items-center justify-between">
-            <div className="text-lg font-semibold tracking-tight text-white">
+            <div className="text-lg font-semibold tracking-tight text-ink">
               Syllabify
             </div>
             <div className="absolute left-1/2 translate-y-1.5 -translate-x-1/2">
@@ -18,15 +19,16 @@ export default function Home() {
               />
             </div>
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <Link
                 to="/login"
-                className="rounded-button bg-white px-4 py-2 text-sm font-medium text-blue-900 no-underline hover:bg-blue-50"
+                className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white no-underline hover:bg-accent-hover"
               >
                 Log in
               </Link>
               <button
                 type="button"
-                className="rounded-button bg-white px-4 py-2 text-sm font-medium text-blue-900 no-underline hover:bg-blue-50"
+                className="rounded-button border border-border bg-surface px-4 py-2 text-sm font-medium text-ink no-underline hover:bg-surface-muted"
               >
                 Sign up
               </button>
@@ -36,51 +38,51 @@ export default function Home() {
       </header>
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 pt-10">
-        <section className="rounded-3xl border border-blue-900/40 bg-blue-950/40 p-8 sm:p-12 shadow-xl shadow-blue-900/30">
-          <p className="text-sm uppercase tracking-[0.2em] text-blue-300">
+        <section className="rounded-3xl border border-border bg-surface-elevated p-8 sm:p-12 shadow-card">
+          <p className="text-sm uppercase tracking-[0.2em] text-accent">
             Academic planning, made simple
           </p>
-          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-serif font-semibold text-white">
+          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-serif font-semibold text-ink">
             Turn syllabi into a balanced study plan.
           </h1>
-          <p className="mt-4 max-w-2xl text-base sm:text-lg text-blue-200">
+          <p className="mt-4 max-w-2xl text-base sm:text-lg text-ink-muted">
             Syllabify helps you translate course expectations into a weekly
             schedule you can trust.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <div className="rounded-full bg-blue-900/60 px-4 py-2 text-sm text-blue-100">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent">
               PDF and text syllabi
             </div>
-            <div className="rounded-full bg-blue-900/60 px-4 py-2 text-sm text-blue-100">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent">
               Manual review and edits
             </div>
-            <div className="rounded-full bg-blue-900/60 px-4 py-2 text-sm text-blue-100">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent">
               Calendar-ready schedule
             </div>
           </div>
         </section>
 
         <section className="mt-10 grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card">
+            <h2 className="text-base font-semibold text-ink">
               Structured intake
             </h2>
-            <p className="mt-2 text-sm text-blue-200">
+            <p className="mt-2 text-sm text-ink-muted">
               Upload a syllabus and see the extracted assignments, exams, and
               milestones.
             </p>
           </div>
-          <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">Planning</h2>
-            <p className="mt-2 text-sm text-blue-200">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card">
+            <h2 className="text-base font-semibold text-ink">Planning</h2>
+            <p className="mt-2 text-sm text-ink-muted">
               Review and adjust the data before a schedule is generated.
             </p>
           </div>
-          <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card">
+            <h2 className="text-base font-semibold text-ink">
               Ready to export
             </h2>
-            <p className="mt-2 text-sm text-blue-200">
+            <p className="mt-2 text-sm text-ink-muted">
               Send your plan to Google Calendar or download an ICS file.
             </p>
           </div>
