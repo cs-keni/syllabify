@@ -74,12 +74,13 @@ export default {
         },
       },
       animation: {
-        'fade-in': 'fadeIn 600ms ease-out forwards',
-        'fade-in-up': 'fadeInUp 800ms ease-out forwards',
-        'scale-in': 'scaleIn 500ms ease-out forwards',
-        'slide-down': 'slideDown 400ms ease-out forwards',
+        /* both = backwards (start hidden) + forwards (end visible) */
+        'fade-in': 'fadeIn 600ms ease-out both',
+        'fade-in-up': 'fadeInUp 800ms ease-out both',
+        'scale-in': 'scaleIn 500ms ease-out both',
+        'slide-down': 'slideDown 400ms ease-out both',
         'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
-        'bar-grow': 'barGrow 800ms ease-out forwards',
+        'bar-grow': 'barGrow 800ms ease-out both',
       },
       transitionDuration: {
         150: '300ms',
