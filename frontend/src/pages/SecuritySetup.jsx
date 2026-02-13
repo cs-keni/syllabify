@@ -19,7 +19,7 @@ export default function SecuritySetup() {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   if (!user) return <Navigate to="/login" replace />;
-  if (securitySetupDone) return <Navigate to="/" replace />;
+  if (securitySetupDone) return <Navigate to="/app" replace />;
 
   /** Updates a single question or answer at index i. */
   const update = (i, field, value) => {
@@ -53,7 +53,7 @@ export default function SecuritySetup() {
     setSubmitting(true);
     try {
       await completeSecuritySetup(filled);
-      navigate('/', { replace: true });
+      navigate('/app', { replace: true });
     } catch (err) {
       setError(err.message || 'Something went wrong.');
       setSubmitting(false);

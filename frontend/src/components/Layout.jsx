@@ -8,9 +8,9 @@ import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { to: '/app', label: 'Dashboard' },
-  { to: '/upload', label: 'Upload syllabus' },
-  { to: '/schedule', label: 'Schedule' },
-  { to: '/preferences', label: 'Preferences' },
+  { to: '/app/upload', label: 'Upload syllabus' },
+  { to: '/app/schedule', label: 'Schedule' },
+  { to: '/app/preferences', label: 'Preferences' },
 ];
 
 /** Main layout with header nav and Outlet for child routes. */

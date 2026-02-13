@@ -9,7 +9,7 @@ export default function CourseCard({ course }) {
   const { name, term, assignmentCount } = course;
   return (
     <Link
-      to="/schedule"
+      to="/app/schedule"
       className="block rounded-card border border-border bg-surface p-4 shadow-card no-underline text-ink hover:border-accent/40 hover:shadow-dropdown transition-all"
     >
       <div className="flex items-start justify-between">

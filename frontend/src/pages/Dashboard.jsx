@@ -123,7 +123,7 @@ export default function Dashboard() {
               </span>
             </div>
             <Link
-              to="/schedule"
+              to="/app/schedule"
               className="text-sm font-medium text-accent no-underline hover:text-accent-hover"
             >
               View schedule
@@ -153,7 +153,7 @@ export default function Dashboard() {
               </span>
             </div>
             <Link
-              to="/upload"
+              to="/app/upload"
               className="text-sm font-medium text-accent no-underline hover:text-accent-hover"
             >
               Add syllabus
