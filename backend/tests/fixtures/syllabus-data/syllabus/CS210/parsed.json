@@ -9,7 +9,8 @@
       {"id": "inst-0", "name": "Michal Young", "email": null}
     ],
     "meeting_times": [
-      {"id": "mt-1", "day_of_week": "TU", "start_time": "10:00", "end_time": "11:20", "timezone": "America/Los_Angeles", "location": "Pacific 123", "type": "lecture"}
+      {"id": "mt-1", "day_of_week": "TU", "start_time": "10:00", "end_time": "11:20", "timezone": "America/Los_Angeles", "location": "Pacific 123", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "TH", "start_time": "10:00", "end_time": "11:20", "timezone": "America/Los_Angeles", "location": "Pacific 123", "type": "lecture"}
     ],
     "location": "Pacific 123"
   },

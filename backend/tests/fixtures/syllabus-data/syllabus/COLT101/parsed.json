@@ -6,26 +6,131 @@
     "term": "Fall 2023",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {"id": "inst-0", "name": "Prof. Leah Middlebrook", "email": "middlebr@uoregon.edu"}
+      {
+        "id": "inst-0",
+        "name": "Prof. Leah Middlebrook",
+        "email": "middlebr@uoregon.edu"
+      }
     ],
     "meeting_times": [
-      {"id": "mt-1", "day_of_week": "TU", "start_time": null, "end_time": null, "timezone": "America/Los_Angeles", "location": "101 LLCS", "type": "lecture"},
-      {"id": "mt-2", "day_of_week": "TH", "start_time": null, "end_time": null, "timezone": "America/Los_Angeles", "location": "101 LLCS", "type": "lecture"}
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": null,
+        "end_time": null,
+        "timezone": "America/Los_Angeles",
+        "location": "101 LLCS",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": null,
+        "end_time": null,
+        "timezone": "America/Los_Angeles",
+        "location": "101 LLCS",
+        "type": "lecture"
+      }
     ],
     "location": "101 LLCS"
   },
   "assessment_categories": [
-    {"id": "quizzes", "name": "Weekly quizzes", "weight_percent": null, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
-    {"id": "slide", "name": "Aesthesis slide", "weight_percent": null, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
-    {"id": "close_reading", "name": "Close-reading assignment", "weight_percent": null, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+    {
+      "id": "quizzes",
+      "name": "Weekly quizzes",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "slide",
+      "name": "Aesthesis slide",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "close_reading",
+      "name": "Close-reading assignment",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
   ],
   "assessments": [
-    {"id": "quizzes_1", "title": "Weekly quizzes", "category_id": "quizzes", "type": "quiz", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": "MO", "until": null, "count": null}, "policies": {"late_policy": "Contact instructor for makeup", "late_pass_allowed": null}, "confidence": 0.9, "source_excerpt": "6-8 weekly quizzes, due Mondays 11:59 p.m."},
-    {"id": "slide_1", "title": "Aesthesis slide", "category_id": "slide", "type": "assignment", "due_datetime": "2023-10-16T23:59:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Aesthesis slide due October 16, 11:59 p.m."},
-    {"id": "close_reading_1", "title": "Close-reading assignment", "category_id": "close_reading", "type": "assignment", "due_datetime": "2023-11-06T23:59:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Close-reading assignment due November 6, 11:59 p.m."}
+    {
+      "id": "quizzes_1",
+      "title": "Weekly quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "MO"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Contact instructor for makeup",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "6-8 weekly quizzes, due Mondays 11:59 p.m."
+    },
+    {
+      "id": "slide_1",
+      "title": "Aesthesis slide",
+      "category_id": "slide",
+      "type": "assignment",
+      "due_datetime": "2023-10-16T23:59:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Aesthesis slide due October 16, 11:59 p.m."
+    },
+    {
+      "id": "close_reading_1",
+      "title": "Close-reading assignment",
+      "category_id": "close_reading",
+      "type": "assignment",
+      "due_datetime": "2023-11-06T23:59:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Close-reading assignment due November 6, 11:59 p.m."
+    }
   ],
-  "grading_structure": {"type": "contract", "buckets": []},
-  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
   "schedule": [],
-  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
 }

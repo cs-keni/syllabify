@@ -6,29 +6,161 @@
     "term": "Fall 2023",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {"id": "inst-0", "name": "Ryan Takahashi", "email": "rtakahas@uoregon.edu"}
+      {
+        "id": "inst-0",
+        "name": "Ryan Takahashi",
+        "email": "rtakahas@uoregon.edu"
+      }
     ],
     "meeting_times": [
-      {"id": "mt-1", "day_of_week": "MO", "start_time": "16:00", "end_time": "16:50", "timezone": "America/Los_Angeles", "location": null, "type": "lecture"},
-      {"id": "mt-2", "day_of_week": "TU", "start_time": "16:00", "end_time": "16:50", "timezone": "America/Los_Angeles", "location": null, "type": "lecture"},
-      {"id": "mt-3", "day_of_week": "WE", "start_time": "16:00", "end_time": "16:50", "timezone": "America/Los_Angeles", "location": null, "type": "lecture"},
-      {"id": "mt-4", "day_of_week": "TH", "start_time": "16:00", "end_time": "16:50", "timezone": "America/Los_Angeles", "location": null, "type": "lecture"}
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "16:00",
+        "end_time": "16:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TU",
+        "start_time": "16:00",
+        "end_time": "16:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "WE",
+        "start_time": "16:00",
+        "end_time": "16:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "TH",
+        "start_time": "16:00",
+        "end_time": "16:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      }
     ],
     "location": null
   },
   "assessment_categories": [
-    {"id": "homework", "name": "Homework", "weight_percent": 20, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
-    {"id": "midterms", "name": "Midterm Exams", "weight_percent": 50, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
-    {"id": "final", "name": "Final Exam", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterms",
+      "name": "Midterm Exams",
+      "weight_percent": 50,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
   ],
   "assessments": [
-    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": "TU", "until": null, "count": null}, "policies": {}, "confidence": 0.95, "source_excerpt": "Homework 20%, due Tuesdays"},
-    {"id": "midterm_1", "title": "Midterm 1", "category_id": "midterms", "type": "midterm", "due_datetime": "2023-10-17", "all_day": true, "timezone": null, "weight_percent": 25, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm 1: October 17"},
-    {"id": "midterm_2", "title": "Midterm 2", "category_id": "midterms", "type": "midterm", "due_datetime": "2023-11-09", "all_day": true, "timezone": null, "weight_percent": 25, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm 2: November 9"},
-    {"id": "final_1", "title": "Final Exam", "category_id": "final", "type": "final", "due_datetime": "2023-12-05T14:45:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final: December 5, 2:45-4:45"}
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "TU"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Homework 20%, due Tuesdays"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm 1",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": "2023-10-17",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm 1: October 17"
+    },
+    {
+      "id": "midterm_2",
+      "title": "Midterm 2",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": "2023-11-09",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm 2: November 9"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2023-12-05T14:45:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final: December 5, 2:45-4:45"
+    }
   ],
-  "grading_structure": {"type": "flat", "buckets": []},
-  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
   "schedule": [],
-  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
 }

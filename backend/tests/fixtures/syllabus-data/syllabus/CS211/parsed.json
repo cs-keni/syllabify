@@ -6,25 +6,129 @@
     "term": null,
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {"id": "inst-0", "name": "Michal Young", "email": null}
+      {
+        "id": "inst-0",
+        "name": "Michal Young",
+        "email": null
+      }
     ],
     "meeting_times": [
-      {"id": "mt-1", "day_of_week": "TU", "start_time": "10:00", "end_time": "11:30", "timezone": "America/Los_Angeles", "location": "182 Lillis", "type": "lecture"}
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Los_Angeles",
+        "location": "182 Lillis",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Los_Angeles",
+        "location": "182 Lillis",
+        "type": "lecture"
+      }
     ],
     "location": "182 Lillis"
   },
   "assessment_categories": [
-    {"id": "projects", "name": "Projects", "weight_percent": 15, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
-    {"id": "exams", "name": "Exams", "weight_percent": 65, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
-    {"id": "code_demo", "name": "Code demo", "weight_percent": 10, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+    {
+      "id": "projects",
+      "name": "Projects",
+      "weight_percent": 15,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 65,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "code_demo",
+      "name": "Code demo",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
   ],
   "assessments": [
-    {"id": "projects_1", "title": "Projects", "category_id": "projects", "type": "project", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 15, "points": 100, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": null, "until": null, "count": null}, "policies": {"late_policy": "10% per day; one project late without penalty", "late_pass_allowed": true}, "confidence": 0.95, "source_excerpt": "Projects 15%.    This includes ordinary weekly projects, 100 points each"},
-    {"id": "exams_1", "title": "Exams (mini-exams + final)", "category_id": "exams", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 65, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Exams 65%. There will be a mini-exam approximately every 2 weeks"},
-    {"id": "code_demo_1", "title": "Code demo", "category_id": "code_demo", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Code demo 10%"}
+    {
+      "id": "projects_1",
+      "title": "Projects",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": 100,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "10% per day; one project late without penalty",
+        "late_pass_allowed": true
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Projects 15%.    This includes ordinary weekly projects, 100 points each"
+    },
+    {
+      "id": "exams_1",
+      "title": "Exams (mini-exams + final)",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 65,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Exams 65%. There will be a mini-exam approximately every 2 weeks"
+    },
+    {
+      "id": "code_demo_1",
+      "title": "Code demo",
+      "category_id": "code_demo",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Code demo 10%"
+    }
   ],
-  "grading_structure": {"type": "flat", "buckets": []},
-  "late_pass_policy": {"total_allowed": 1, "extension_days": null},
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 1,
+    "extension_days": null
+  },
   "schedule": [],
-  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
 }

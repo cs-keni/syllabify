@@ -6,24 +6,129 @@
     "term": "Fall 2023",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {"id": "inst-0", "name": "Tom Tasker", "email": "ttasker@uoregon.edu"}
+      {
+        "id": "inst-0",
+        "name": "Tom Tasker",
+        "email": "ttasker@uoregon.edu"
+      }
     ],
     "meeting_times": [],
     "location": null
   },
   "assessment_categories": [
-    {"id": "discussion", "name": "Discussion boards", "weight_percent": null, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
-    {"id": "projects", "name": "Writing Projects", "weight_percent": null, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+    {
+      "id": "discussion",
+      "name": "Discussion boards",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "projects",
+      "name": "Writing Projects",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
   ],
   "assessments": [
-    {"id": "discussion_1", "title": "Weekly discussion boards", "category_id": "discussion", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": null, "until": null, "count": null}, "policies": {}, "confidence": 0.9, "source_excerpt": "Weekly discussion boards"},
-    {"id": "origin_story", "title": "Origin Story", "category_id": "projects", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Origin Story"},
-    {"id": "instructions", "title": "Instructions", "category_id": "projects", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Instructions - how-to guide"},
-    {"id": "lit_review", "title": "Literature review and research proposal", "category_id": "projects", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Literature review and research proposal"},
-    {"id": "procedure", "title": "Procedure Description", "category_id": "projects", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Procedure Description"}
+    {
+      "id": "discussion_1",
+      "title": "Weekly discussion boards",
+      "category_id": "discussion",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Weekly discussion boards"
+    },
+    {
+      "id": "origin_story",
+      "title": "Origin Story",
+      "category_id": "projects",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Origin Story"
+    },
+    {
+      "id": "instructions",
+      "title": "Instructions",
+      "category_id": "projects",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Instructions - how-to guide"
+    },
+    {
+      "id": "lit_review",
+      "title": "Literature review and research proposal",
+      "category_id": "projects",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Literature review and research proposal"
+    },
+    {
+      "id": "procedure",
+      "title": "Procedure Description",
+      "category_id": "projects",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Procedure Description"
+    }
   ],
-  "grading_structure": {"type": "labor", "buckets": []},
-  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
   "schedule": [],
-  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
 }
