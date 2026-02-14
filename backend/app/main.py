@@ -12,6 +12,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from app.api.auth import bp as auth_bp
+from app.api.syllabus import bp as syllabus_bp
 
 app = Flask(__name__)
 # CORS: set FRONTEND_URL on Render to your Vercel URL (e.g. https://syllabify-iota.vercel.app)
@@ -42,6 +43,7 @@ def get_db_connection():
     )
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(syllabus_bp)
 
 @app.route("/")
 def index():

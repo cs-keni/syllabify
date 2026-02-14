@@ -1,31 +1,50 @@
 /**
- * Upload PDF or paste syllabus text. Simulates parse (real API TODO). Calls onComplete with course name.
- * DISCLAIMER: Project structure may change. Functions may be added or modified.
+ * Upload PDF/DOCX/TXT or paste syllabus text. Calls parse API and onComplete with parsed data.
  */
 import { useState } from 'react';
+import { parseSyllabus } from '../api/client';
 
-/** Renders upload/paste form. onComplete(courseName) called when parse succeeds. */
-export default function SyllabusUpload({ onComplete }) {
+/** Renders upload/paste form. onComplete(courseName, assignments) called when parse succeeds. */
+export default function SyllabusUpload({ onComplete, token }) {
   const [mode, setMode] = useState('file');
   const [file, setFile] = useState(null);
   const [paste, setPaste] = useState('');
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(null);
 
-  /** Handles form submit. Simulates API parse, then calls onComplete. */
-  const handleSubmit = e => {
+  /** Handles form submit. Calls real parse API. */
+  const handleSubmit = async e => {
     e.preventDefault();
+    setError(null);
     setUploading(true);
-    // Simulate parse; in real app call API
-    setTimeout(() => {
+    try {
+      const payload = mode === 'file' ? { file } : { text: paste.trim() };
+      const data = await parseSyllabus(token, payload);
+      const courseName = data.course_name || 'Course';
+      const raw = data.assignments || [];
+      const assignments = raw.map((a, i) => ({
+        id: `temp-${i}`,
+        name: a.name || '',
+        due: a.due_date || '',
+        hours: a.hours ?? 3,
+      }));
+      onComplete(courseName, assignments);
+    } catch (err) {
+      setError(err.message || 'Parse failed');
+    } finally {
       setUploading(false);
-      onComplete('CS 422');
-    }, 800);
+    }
   };
 
   const canSubmit = mode === 'file' ? file : paste.trim().length > 0;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {error && (
+        <div className="rounded-input bg-red-500/10 border border-red-500/30 px-3 py-2 text-sm text-red-600">
+          {error}
+        </div>
+      )}
       <div className="flex gap-2 border-b border-border pb-2">
         <button
           type="button"
@@ -36,7 +55,7 @@ export default function SyllabusUpload({ onComplete }) {
               : 'text-ink-muted hover:text-ink'
           }`}
         >
-          Upload PDF
+          Upload file
         </button>
         <button
           type="button"
@@ -56,12 +75,12 @@ export default function SyllabusUpload({ onComplete }) {
         <label className="block rounded-input border-2 border-dashed border-border bg-surface-muted p-8 text-center cursor-pointer hover:border-accent/40 hover:scale-[1.01] transition-all duration-200">
           <input
             type="file"
-            accept=".pdf"
+            accept=".pdf,.docx,.txt"
             className="hidden"
             onChange={e => setFile(e.target.files?.[0] || null)}
           />
           <span className="text-sm text-ink-muted">
-            {file ? file.name : 'Drop a PDF or click to browse'}
+            {file ? file.name : 'Drop PDF, DOCX, or TXT — or click to browse'}
           </span>
         </label>
         </div>

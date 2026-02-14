@@ -1,8 +1,8 @@
 /**
  * Upload page: multi-step flow (upload → review → confirm). Uses SyllabusUpload and ParsedDataReview.
- * DISCLAIMER: Project structure may change. Components/steps may be added or modified.
  */
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import SyllabusUpload from '../components/SyllabusUpload';
 import ParsedDataReview from '../components/ParsedDataReview';
 
@@ -12,16 +12,11 @@ const STEPS = [
   { id: 'confirm', label: 'Confirm' },
 ];
 
-const MOCK_ASSIGNMENTS = [
-  { id: '1', name: 'Assignment 1', due: '2025-02-01', hours: 4 },
-  { id: '2', name: 'Assignment 2', due: '2025-02-08', hours: 5 },
-  { id: '3', name: 'Midterm', due: '2025-02-15', hours: 2 },
-];
-
 /** Step-based upload flow. Manages step state, parsed course name, and assignments. */
 export default function Upload() {
+  const { token } = useAuth();
   const [step, setStep] = useState(0);
-  const [assignments, setAssignments] = useState(MOCK_ASSIGNMENTS);
+  const [assignments, setAssignments] = useState([]);
   const [parsedCourseName, setParsedCourseName] = useState('');
 
   const currentStepId = STEPS[step].id;
@@ -69,8 +64,10 @@ export default function Upload() {
         <div key={currentStepId} className="animate-fade-in">
         {currentStepId === 'upload' && (
           <SyllabusUpload
-            onComplete={courseName => {
+            token={token}
+            onComplete={(courseName, parsedAssignments) => {
               setParsedCourseName(courseName);
+              setAssignments(parsedAssignments || []);
               setStep(1);
             }}
           />

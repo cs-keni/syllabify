@@ -45,6 +45,48 @@ export async function securitySetup(token, questions) {
   return data;
 }
 
+/**
+ * POST /api/syllabus/parse with JWT.
+ * Provide file (File) or text (string); mode optional (default "rule").
+ * Returns { course_name, assignments: [{ name, due_date, hours }], confidence?, raw_text? }.
+ * Throws on error.
+ */
+export async function parseSyllabus(token, { file, text, mode = 'rule' }) {
+  const t =
+    token ||
+    (typeof localStorage !== 'undefined'
+      ? localStorage.getItem('syllabify_token')
+      : null);
+  if (!t) throw new Error('Login required');
+
+  const url = new URL(`${BASE}/api/syllabus/parse`);
+  if (mode) url.searchParams.set('mode', mode);
+
+  let body;
+  let reqHeaders = { Authorization: `Bearer ${t}` };
+
+  if (file) {
+    const form = new FormData();
+    form.append('file', file);
+    body = form;
+  } else if (text != null && text !== '') {
+    reqHeaders['Content-Type'] = 'application/json';
+    body = JSON.stringify({ text: String(text) });
+  } else {
+    throw new Error('provide file or text');
+  }
+
+  const res = await fetch(url.toString(), {
+    method: 'POST',
+    headers: reqHeaders,
+    body,
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Parse failed');
+  return data;
+}
+
 /** GET /api/auth/me with JWT. Returns { username, security_setup_done } or null if invalid. */
 export async function me(token) {
   const t =
