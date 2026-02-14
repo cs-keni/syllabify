@@ -28,7 +28,7 @@ export default function TermSelector({ onTermChange }) {
       setTerms(termsList);
 
       // Find and set active term
-      const active = termsList.find((t) => t.is_active);
+      const active = termsList.find(t => t.is_active);
       if (active) {
         setCurrentTermId(active.id);
         if (onTermChange) {
@@ -48,14 +48,14 @@ export default function TermSelector({ onTermChange }) {
     }
   };
 
-  const handleChange = async (termId) => {
+  const handleChange = async termId => {
     const numericTermId = Number(termId);
     try {
       await api.activateTerm(numericTermId);
       setCurrentTermId(numericTermId);
 
       // Find term name for toast message
-      const selectedTerm = terms.find((t) => t.id === numericTermId);
+      const selectedTerm = terms.find(t => t.id === numericTermId);
       toast.success(`Switched to ${selectedTerm?.term_name || 'term'}`);
 
       if (onTermChange) {
@@ -109,10 +109,10 @@ export default function TermSelector({ onTermChange }) {
       <label className="text-sm font-medium text-ink">Term:</label>
       <select
         value={currentTermId || ''}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={e => handleChange(e.target.value)}
         className="rounded-input border border-border bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
       >
-        {terms.map((term) => (
+        {terms.map(term => (
           <option key={term.id} value={term.id}>
             {term.term_name}
           </option>

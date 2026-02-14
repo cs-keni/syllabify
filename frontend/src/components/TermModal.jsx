@@ -17,7 +17,7 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
   const [saving, setSaving] = useState(false);
 
   const handleChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData(prev => ({ ...prev, [field]: value }));
     setError(''); // Clear error when user types
   };
 
@@ -41,7 +41,7 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
     return true;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -69,7 +69,7 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
   };
 
   // Close modal when clicking outside
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
       onClose();
     }
@@ -103,7 +103,7 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
               id="term_name"
               type="text"
               value={formData.term_name}
-              onChange={(e) => handleChange('term_name', e.target.value)}
+              onChange={e => handleChange('term_name', e.target.value)}
               placeholder="e.g., Winter 2025"
               className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
             />
@@ -121,7 +121,7 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
               id="start_date"
               type="date"
               value={formData.start_date}
-              onChange={(e) => handleChange('start_date', e.target.value)}
+              onChange={e => handleChange('start_date', e.target.value)}
               className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
             />
           </div>
@@ -138,7 +138,7 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
               id="end_date"
               type="date"
               value={formData.end_date}
-              onChange={(e) => handleChange('end_date', e.target.value)}
+              onChange={e => handleChange('end_date', e.target.value)}
               className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
             />
           </div>

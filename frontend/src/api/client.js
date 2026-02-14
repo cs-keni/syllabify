@@ -134,4 +134,14 @@ export async function activateTerm(termId) {
   return data;
 }
 
-export default { login, securitySetup, me, getTerms, createTerm, getTerm, updateTerm, deleteTerm, activateTerm };
+export default {
+  login,
+  securitySetup,
+  me,
+  getTerms,
+  createTerm,
+  getTerm,
+  updateTerm,
+  deleteTerm,
+  activateTerm,
+};

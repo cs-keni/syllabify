@@ -65,7 +65,7 @@ export default function Dashboard() {
   };
 
   /** Handle term change from TermSelector. In future, fetch courses for this term. */
-  const handleTermChange = (termId) => {
+  const handleTermChange = termId => {
     setCurrentTermId(termId);
     // TODO: Fetch courses and assignments for this term when backend is ready
   };
@@ -87,8 +87,8 @@ export default function Dashboard() {
           >
             <p className="text-sm text-ink mb-3">
               These are placeholder values to show an example of what the page
-              might look like. They will be replaced with real data once we have a
-              working backend.
+              might look like. They will be replaced with real data once we have
+              a working backend.
             </p>
             <button
               type="button"

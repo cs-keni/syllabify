@@ -200,7 +200,8 @@ def update_term(term_id):
 
         # Fetch and return updated term
         cur.execute(
-            "SELECT id, term_name, start_date, end_date, is_active FROM Terms WHERE id = %s",
+            "SELECT id, term_name, start_date, end_date, is_active "
+            "FROM Terms WHERE id = %s",
             (term_id,),
         )
         term = cur.fetchone()

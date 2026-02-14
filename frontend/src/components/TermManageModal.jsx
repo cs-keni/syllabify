@@ -12,12 +12,16 @@ export default function TermManageModal({ terms, onClose, onUpdated }) {
   const [editingTerm, setEditingTerm] = useState(null);
   const [deleting, setDeleting] = useState(null);
 
-  const handleEdit = (term) => {
+  const handleEdit = term => {
     setEditingTerm(term);
   };
 
-  const handleDelete = async (termId) => {
-    if (!window.confirm('Are you sure you want to delete this term? This action cannot be undone.')) {
+  const handleDelete = async termId => {
+    if (
+      !window.confirm(
+        'Are you sure you want to delete this term? This action cannot be undone.'
+      )
+    ) {
       return;
     }
 
@@ -39,7 +43,7 @@ export default function TermManageModal({ terms, onClose, onUpdated }) {
   };
 
   // Close modal when clicking outside
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = e => {
     if (e.target === e.currentTarget && !editingTerm) {
       onClose();
     }
@@ -94,7 +98,7 @@ export default function TermManageModal({ terms, onClose, onUpdated }) {
             </div>
           ) : (
             <div className="space-y-3">
-              {terms.map((term) => (
+              {terms.map(term => (
                 <div
                   key={term.id}
                   className="flex items-center justify-between p-4 rounded-button border border-border bg-surface hover:border-border-hover transition-colors"
@@ -109,7 +113,8 @@ export default function TermManageModal({ terms, onClose, onUpdated }) {
                       )}
                     </div>
                     <p className="text-sm text-ink-muted mt-1">
-                      {new Date(term.start_date).toLocaleDateString()} - {new Date(term.end_date).toLocaleDateString()}
+                      {new Date(term.start_date).toLocaleDateString()} -{' '}
+                      {new Date(term.end_date).toLocaleDateString()}
                     </p>
                   </div>
 

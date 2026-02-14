@@ -67,39 +67,39 @@ export default function Upload() {
       {/* Step content */}
       <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card min-h-[320px]">
         <div key={currentStepId} className="animate-fade-in">
-        {currentStepId === 'upload' && (
-          <SyllabusUpload
-            onComplete={courseName => {
-              setParsedCourseName(courseName);
-              setStep(1);
-            }}
-          />
-        )}
-        {currentStepId === 'review' && (
-          <ParsedDataReview
-            courseName={parsedCourseName || 'Course'}
-            assignments={assignments}
-            onAssignmentsChange={setAssignments}
-            onConfirm={() => setStep(2)}
-          />
-        )}
-        {currentStepId === 'confirm' && (
-          <div className="space-y-4">
-            <h2 className="text-lg font-medium text-ink">All set</h2>
-            <p className="text-sm text-ink-muted">
-              You’ve confirmed {assignments.length} assignment
-              {assignments.length !== 1 ? 's' : ''}. You can generate a schedule
-              from the Schedule page or add another syllabus.
-            </p>
-            <button
-              type="button"
-              onClick={() => setStep(0)}
-              className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
-            >
-              Upload another
-            </button>
-          </div>
-        )}
+          {currentStepId === 'upload' && (
+            <SyllabusUpload
+              onComplete={courseName => {
+                setParsedCourseName(courseName);
+                setStep(1);
+              }}
+            />
+          )}
+          {currentStepId === 'review' && (
+            <ParsedDataReview
+              courseName={parsedCourseName || 'Course'}
+              assignments={assignments}
+              onAssignmentsChange={setAssignments}
+              onConfirm={() => setStep(2)}
+            />
+          )}
+          {currentStepId === 'confirm' && (
+            <div className="space-y-4">
+              <h2 className="text-lg font-medium text-ink">All set</h2>
+              <p className="text-sm text-ink-muted">
+                You’ve confirmed {assignments.length} assignment
+                {assignments.length !== 1 ? 's' : ''}. You can generate a
+                schedule from the Schedule page or add another syllabus.
+              </p>
+              <button
+                type="button"
+                onClick={() => setStep(0)}
+                className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+              >
+                Upload another
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
