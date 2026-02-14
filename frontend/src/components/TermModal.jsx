@@ -4,6 +4,7 @@
  * Includes form validation and API integration.
  */
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import * as api from '../api/client';
 
 export default function TermModal({ onClose, onSaved, editTerm = null }) {
@@ -74,9 +75,10 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
     }
   };
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 bg-black/30 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/30 flex items-center justify-center"
+      style={{ zIndex: 99999 }}
       onClick={handleBackdropClick}
     >
       <div className="bg-surface-elevated rounded-card shadow-dropdown border border-border w-full max-w-md mx-4 overflow-hidden">
@@ -168,6 +170,7 @@ export default function TermModal({ onClose, onSaved, editTerm = null }) {
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

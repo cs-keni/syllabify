@@ -4,6 +4,7 @@
  * Allows users to manage their academic terms from one place.
  */
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import * as api from '../api/client';
 import TermModal from './TermModal';
 
@@ -54,9 +55,10 @@ export default function TermManageModal({ terms, onClose, onUpdated }) {
     );
   }
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 bg-black/30 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/30 flex items-center justify-center"
+      style={{ zIndex: 99999 }}
       onClick={handleBackdropClick}
     >
       <div className="bg-surface-elevated rounded-card shadow-dropdown border border-border w-full max-w-2xl mx-4 overflow-hidden max-h-[80vh] flex flex-col">
@@ -142,6 +144,7 @@ export default function TermManageModal({ terms, onClose, onUpdated }) {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
