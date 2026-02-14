@@ -1,0 +1,243 @@
+CS 211, Introduction to Computer Science 2
+CS 211 is the second course in the three-term “Introduction to Computer Science“ series at University of Oregon.
+
+Objectives
+CS 211 builds on the computational problem solving and Python programming skills developed in CS 210 and introduces object-oriented programming techniques.
+
+After successfully completing CS 211, you should be able to:
+
+Use classes and objects in an object-oriented programming language, including polymorphism and inheritance. You will develop both an operational understanding (e.g., what happens when we invoke a method on an object) and in terms of idiomatic problem solving tactics in object-oriented programming. You will read and write program source code in an object-oriented style, including:
+Effectively using polymorphism and dynamic dispatch to simplify program logic.
+Using dynamic dispatch to create listener/notifier connections between program modules.
+Using abstract classes and methods to organize related concrete subclasses and methods, with inheritance and overriding.
+Constructing recursive data structures in an object-oriented fashion, with recursive algorithms factored into base and inductive cases by subclass.
+Decompose a moderately complex problem specification into parts that can be solved piece-by-piece, testing your solution at each stage in development.
+Write software source code that clearly communicates intent to human readers as well as correctly expressing intended instructions for the computer.
+Reason about asymptotic performance characteristics (that is, relation of time and space requirements to problem size) well enough to devise programs with acceptable performance on moderate to large problems. (More sophisticated reasoning about asymptotic performance is developed in CS 212, CS 313, and CS 315.)
+In addition, we will investigate the relation between programming in a high level language like Python and execution of binary machine code on hardware.  While computer architecture is not a core learning objective of CS 211, we have found a basic, simplified introduction at this level helps prepare CS majors for the material they will encounter in CS 314, Machine Organization.  Non-majors could find it useful background for a variety of applications, such as lab instrumentation in the natural sciences, remote sensing in geographic information systems, or interfacing sensors and actuators in home automation projects.  
+
+After completing our unit on computer representation and operation, you should:
+
+Understand binary representation and operations such as shifting, bitwise and, and bitwise or sufficiently to write programs that pack fields into an integer and unpack them.
+Understand fundamental concepts of computer architecture, including the fetch/decode/execute cycle of a central processing unit, registers and main memory, the program counter register, and the relation between higher level languages, assembly language, and machine code. You will not be expected to devise complex assembly language programs, but you will be able to read and understand basic sequences of assembly language instructions including loops.
+Prerequisites
+The pre-requisite for CS 211 is CS 210 or equivalent. A familiarity with the Python programming language is assumed.
+
+You should be making progress also through related mathematics courses.  For CS majors that will typically be calculus followed by discrete mathematics. For Data Science majors that will typically be calculus followed by linear algebra. 
+
+Lecture
+Tuesday and Thursday from 10:00am to 11:30am in 182 Lillis.  Attendance is expected, but I have given up on taking attendance (except that you must be physically present for exams).   
+
+Please stay home if you are or might be ill with a contagious disease.   Lectures will be transmitted also over ZoomLinks to an external site., and recordings of lectures will appear under "Panopto recordings".  
+
+Scheduled Labs
+Each student is assigned to a 1 hour lab.  Attendance at your own scheduled lab is mandatory.  Your scheduled lab will be led by one of our graduate teaching assistants. 
+
+Help Hours
+We will also have help hours throughout the week.   This is an ideal opportunity to discuss the project with the instructional staff and with classmates, but they are not limited to projects.   If there is some concept you are struggling with, or even an idea you would like to discuss, you are welcome to bring it to help hours.  The instructor, graduate teaching assistants, and undergraduate learning assistants will each host help hours on a regular schedule, which you can find in the calendar below.  Some are in Price Science Commons, some online.  Zoom links are included in the calendar entries.
+
+Encore
+A Class Encore is offered in conjunction with CS 211.This is a strutured study group organized by the Tutoring and Learning Center. Learn more at https://classencore.uoregon.edu/
+
+Staff
+Instructor:  Michal Young, 243 Deschutes Hall
+Graduate teaching assistants:  Ruimin Zhang, Sam Schwartz, Hammad Ather
+Undergraduate learning assistants: Nathan Koga, Nhi Dinh, Noah Weis, Michal Klopotowski, Amanda Hoelting, Liam Bouffard
+
+Class Encore Leaders:  Avery Meyers, Jacob Kolster
+Teams
+We will use Microsoft Teams for asynchronous discussion.
+
+Materials
+Development Environment
+We will use Python version 3.10. 
+
+We will use a modern, professional level interactive development environment (not IDLE) in CS 211.  In past we have used PyCharm, which is still a very good IDE, but starting this term we will make a change to VS Code.  
+
+Reading
+You can expect to read the equivalent of 10-20 pages each week, primarily from our online textLinks to an external site. and project documentation.
+
+In addition, HOWTO documents and other documentation packaged with projects provide useful explanation of how the concepts are applied in each project.
+
+You are responsible for reading background materials before projects are introduced in lecture.
+
+Workload
+Most students perceive that CS 211 is much more challenging than CS 210, and the workload is much heavier. Nobody is entirely typical, but a hypothetical typical student can expect to spend about 12 hours a week on CS 211. Some successful students spend considerably more.
+
+There will be a programming project every week, and project difficulty will increase through the term. It is essential to start each project early to give yourself time to work through problems you encounter. Even if you were able to do CS 210 projects in the last day or two, that is very unlikely to work in CS 211.
+
+Be prepared to work hard. Start projects early, so that you can seek help when you get stuck. Come to open lab as well as scheduled lab. Ask (and answer!) questions on Slack. A walk or a nap or a good night's sleep can do wonders to help you get unstuck.
+
+While some students will take more time and some will take less, each week you might expect to spend:
+
+Activity
+
+Hours/Week
+
+Total
+
+Notes
+
+Lecture
+
+3.0
+
+30
+
+2 × 90 minutes
+
+Scheduled lab
+
+1.0
+
+10
+
+Reading
+
+1.5
+
+15
+
+Does not include project HOWTO
+
+Projects
+
+6.0
+
+60
+
+Includes mini-project (some weeks) and main project. Includes reading project HOWTO, attending open lab as needed, asking and answering questions on Piazza
+
+Mini-exam
+
+0.5
+
+5
+
+Three mini-exams held during lecture time are accounted for above.  I am counting half an hour per week, on average, to review and prepare notes to bring with you to exams. 
+
+Code demo
+
+1.0
+
+Includes 30 minutes prep, 30 minutes code demo
+
+Total
+
+12
+
+121
+
+This is a rough estimate!
+
+Attendance Policy
+Attendance in lab is mandatory.  Attendance in lecture is expected but attendance is not taken.  
+
+Remote attendance zoom linkLinks to an external site.
+
+Late Policy & Make-ups
+Late projects are assessed a penalty of 10% per day.  In accordance with UO "reason neutral" policies regarding late work, each student may choose to turn in one project late without penalty.  A form for designating which late project you wish to exempt from the penalty will be provided near the end of the term.   
+
+Make-up exams are not feasible.  I try to mark and return grades and distribute an exam key as quickly as possible after 
+
+Grading
+Approximate grade weighting:
+
+Projects 15%.    This includes ordinary weekly projects, 100 points each, and small 15 point "mini-projects" in some weeks. 
+Final exam 
+Exams 65%. There will be a mini-exam approximately every 2 weeks. These will be timed exams that require you to solve programming problems (i.e., you will write and submit working Python code).  Two of the exams, including the final exam, will be paper-and-pencil exams in the classroom.  Others will be online in Canvas. 
+Code demo 10%. 
+You must pass both the project component and the exams to pass the class. To earn an A, you need an A on both projects and exams and satisfactory scores in all elements.
+
+Term Grades
+A
+
+Excellent performance in all parts of the class. Very well prepared to continue in computer science coursework.
+
+B
+
+Solid performance. You have shown a generally good grasp of the material, and should be able to apply it in more advanced classes.
+
+C
+
+Acceptable performance, but you will need to do better to be successful as a CS or DSCI major.
+
+D
+
+Your demonstrated grasp of concepts and approaches and/or your programming skills, are not yet sufficient to make use of what you learned.
+
+F
+
+Little or no demonstrated grasp of concepts and approaches introduced in this class, and/or failure to carry out much of the required work.
+
+One project score is dropped from the average. The dropped project is whichever had the greatest negative effect on your overall score. One of the first four mini-exams (but not the final mini-exam) is dropped from your exam average.
+
+Grade Scale
+A student may generally count on a weighted average score of 94% or better earning an A or A- and a weighted average score of 84% or better earning a B or B-. Actual thresholds are based on the proficiency rubric above, and are sometimes somewhat lower, for example if exams were particularly difficult.
+
+One project score is dropped from the average.  One of the first four mini-exams (but not the final exam) is dropped from your exam average.
+
+Project Grading Rubric
+The following points are based on a 100 point project.
+
+20 Made an effort. Turned in something that is substantially more than the starter code. This is an all-or-nothing criterion.
+20 Running code. It may fail all the test cases, but it is syntactically valid Python code that can execute the provided test cases without crashing. This is an all-or-nothing criterion.
+40 Functionally correct.
+40 Full marks: Correctly executes all the provided test cases and additional "hidden" test cases.
+30 Imperfect but close; may fail a couple of test cases.
+20 Substantial missing or incorrect features cause multiple test cases to fail.
+0-10 May pass a few test cases for parts of the project, but the project functionality is substantially incomplete or incorrect.
+10 Follows CS 211 coding standards, which include PEP 8 compliance.  Violations of PEP 8 can be automatically checked by PyCharm.
+10 Fluency. In judgment of grader, this code is readable, clear, concise, and adequately documented ... the kind of code we'd be happy to work on. This may include judgements that go beyond minimal satisfaction of the coding standards and include qualities such as brevity, good choice of variable names, etc.
+Barriers and Accommodations
+My goal is a fully inclusive class, accessible to everyone. If you encounter or anticipate barriers to full participation and fair evaluation due to a disability, please communicate your needs confidentially to the instructor so that we can find a suitable accommodation. If you encounter or observe other impediments to full participation, for yourself or others, please share your concerns with the instructor.
+
+The Accessible Education Center in 306 Oregon Hall, Hall at 541-346-1155 or uoaec@uoregon.edu is an important resource if you need, or think you may need, accommodations, including but not limited to accommodations for examinations. It is important to consult with AEC and make arrangements as early in the term as possible.
+
+It is particularly important that you inform the instructor in the first week of the quarter if you require accommodation. Delayed notification of such a requirement may make it impossible to provide the accommodation.
+
+Academic Honesty
+Academic honesty is expected and cases of suspected dishonesty will be handled according to university policy. In particular this means that all cases of suspected academic dishonesty, without exception, will be reported to the Office of Student Conduct and Community Standards. In accordance with CS Department policies, the sanction for plagiarism will be failing the course. The Office of Student Conduct and Community Standards may impose additional sanctions, especially in case of repeat violations.
+
+What is allowed
+All work turned in must be the student's own, from the current term. Copying any other work, including work or sample solutions from prior terms, will not be tolerated. If any part of a project is based on samples obtained outside class resources (e.g., sample code from Stack Overflow), the source must be cited.
+
+Two specific kinds of collaboration are permitted.
+
+Zoom chats (or Slack, or Discord, etc.)  or face-to-face meetings with up to two study partners is permitted for discussing approaches and for helping each other test and debug code. You may share screen to display small portions of code, but you may not transmit source code in a chat window, email, or any other medium that supports cut-and-paste.
+Help hours with a learning assistant, teaching assistant, or professor present will be considered to be equivalent to Klamath Hall labs. In that context it is ok to share screens, and in fact I encourage you to "look over the shoulder" of hour classmates who are sharing their screens to solve problems in lab hours.
+Collaboration must be credited in comments in your code. Collaboration that is not explicitly credited is plagiarism.You are also responsible for protecting your work. That is, you must take reasonable precautions to prevent your work from being copied.
+
+Language
+Communicating effectively in an international environment is part of becoming a educated person.
+
+University of Oregon is an international university, and the language of CS 211 is International English.
+
+When a German speaker, a Danish speaker, a Chinese speaker, and a Czech speaker sit around a table negotiating an important agreement, International English is the language they use to communicate. If an American joins that table, he or she communicates in International English, not American English.
+
+Whether your first language is American English, another version of English, or another language, we will do our best to communicate clearly with you. If you do not understand us the first time, please ask us to repeat; we will do the same if we don't understand you the first time. You should likewise do your best to communicate in International English with instructors and other students, and make an effort to understand and be understood in a community of people with many different language backgrounds.
+
+While we are not overly formal, you should communicate in a professional manner. Texting abbreviations are not appropriate.
+
+Schedule
+The first half of the term introduces object oriented programming in Python, while also building on algorithmic problem-solving techniques.  In the second half of the term, our projects that use object-oriented programming will also introduce basic computer architecture and the "technology stack" that allows us to write computer programs in higher level languages like Python.  We will build a simulated CPU, an assembler that translates a textual notation for instructions (assembly language) into the binary executable code for that CPU, and a compiler that translates a programming language into assembly language. 
+
+Each project is due Monday evening at 8pm, except that when Monday is a holiday with no classes, the project will be due Tuesday at 8pm instead. 
+
+A more detailed schedule (subject to minor changes) can be found in the week-by-seek modules in Canvas. 
+
+Mini-projects may be due Fridays. There is no new project in Week 10 (dead week).
+
+The mini-exams require solving a small number of relatively short programming problems. These problems are closely related to lecture topics and projects. You may use your customary development tools (PyCharm) to code and test your answers before uploading to Canvas. Starter code will be provided for download at the beginning of the exam. You must complete the exam alone, without help from anyone else.
+
+Two mini-exams and the final exam will be paper-and-pencil exams in class.  Any printed materials, but no electronics, are permitted during the paper-and-pencil exams. 
+
+Academic Disruption due to Campus Emergency
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change.
+
+Information about changes in this course will be communicated as soon as possible by email and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and/or access alternative assignments. Students are also encouraged to continue the readings and other assignments as outlined in this syllabus or subsequent versions of the syllabus.
+
+Prohibited Discrimination and Harassment Reporting
+I am a designated reporter.
+
+For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing any form of prohibited discrimination or harassment, including sex or gender-based violence, may seek information and resources at safe.uoregon.edu, respect.uoregon.edu, or investigations.uoregon.edu or contact the non-confidential Title IX office/Office of Civil Rights Compliance (541-346-3123), or Dean of Students offices (541-346-3216), or call the 24-7 hotline 541-346-SAFE for help. I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.

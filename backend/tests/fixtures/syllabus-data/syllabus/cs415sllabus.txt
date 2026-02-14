@@ -1,0 +1,47 @@
+CS 415 (Fall 2025; 11603) Operating Systems
+Overview
+Operating systems are undergoing a renaissance of interest within computer science.  With the rise of open-source operating systems such as Linux and the BSD distributions, the commodification of operating system functionality through cloud computing, and the new approaches to device management from smartphone and tablet-based operating systems such as Android and Apple iOS, an understanding of operating system fundamentals is perhaps more important than ever.  Knowledge of the theory and practice of operating system design is also a fundamental prerequisite for understanding critical systems issues such as networking and security.
+
+This course is an introduction to the theory and practice behind modern computer operating systems.  Topics will include what an operating system does (and does not) do, system calls and interfaces, processes, concurrent programming, resource scheduling and management (e.g., CPU, memory, devices), virtual memory, deadlocks, distributed systems and networks, and security.  We will approach the subject from both a theoretical perspective (what are the abstractions and algorithms?) as well as a practical one (what are the mechanisms and how are they built?).  A  detailed list of lecture by lecture contents, assignments, and due dates (subject to change as the term evolves) will be available on the course schedule.
+
+Information
+Lecture:
+CRN #11603: Tuesday/Thursday, 16:00-17:20, September 30 - December 4
+Location: 125 McKenzie Hall (MCK)
+Zoom: https://uoregon.zoom.us/j/98573693091Links to an external site.
+Midterm: Tuesday, November 4, 2025, 16:00 - 17:20 (Lecture room)
+Final: Thursday, December 11, 2025, 12:30 - 14:30 (Lecture room)
+
+Discussion / Lab:
+
+CRN #11604: Thursday, 10:00-10:50, B026 Klamath (Instructor: Yuhang)
+CRN #11605: Thursday, 11:00-11:50, B026 Klamath (Instructor: Yuhang)
+CRN #11606: Thursday, 14:00-14:50, B026 Klamath (Instructor: Nate)
+Instructor:
+Prof. Jieyang Chen, jieyang@uoregon.edu
+Office: 337 Deschutes
+OH zoom link: https://uoregon.zoom.us/j/91063001136
+Office hours: Monday 13:00-15:00
+
+Teaching Assistants:
+
+Yuhang Liang, yuhangl@uoregon.edu
+Location: PSC B004A
+Office hours: Wednesday 13:00-15:00 
+
+Nate Balmain,  balmain@uoregon.edu
+Location: 224 Deschutes
+Office hours: Wednesday 12:00-13:00 (12:00-1:00 PM),  Thursday 12:30-13:30 (12:30 PM - 1:30 PM), 
+OH zoom link: https://uoregon.zoom.us/j/2112644147?pwd=YkV4YW1uc3BCcGFSRlNkelJUbElhdz09Links to an external site. 
+
+Acquired Skills
+
+Learning Objectives
+
+Course Materials
+
+Course Schedule
+
+UO Course Policies
+
+UO COVID Policies
