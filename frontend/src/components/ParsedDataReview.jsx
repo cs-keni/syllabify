@@ -39,12 +39,14 @@ function EditableCell({ value, onChange, type = 'text' }) {
   );
 }
 
-/** Table of assignments with editable cells. onAssignmentsChange updates list; onConfirm proceeds. */
+/** Table of assignments with editable cells. onAssignmentsChange updates list; onConfirm saves and proceeds. */
 export default function ParsedDataReview({
   courseName,
   assignments,
   onAssignmentsChange,
   onConfirm,
+  saving = false,
+  saveError = null,
 }) {
   /** Updates one assignment field and notifies parent via onAssignmentsChange. */
   const updateAssignment = (id, field, value) => {
@@ -56,6 +58,11 @@ export default function ParsedDataReview({
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-medium text-ink">{courseName}</h2>
+      {saveError && (
+        <div className="rounded-input bg-red-500/10 border border-red-500/30 px-3 py-2 text-sm text-red-600">
+          {saveError}
+        </div>
+      )}
       <p className="text-sm text-ink-muted">
         Edit any cell by clicking. Confirm when everything looks correct.
       </p>
@@ -112,9 +119,10 @@ export default function ParsedDataReview({
         <button
           type="button"
           onClick={onConfirm}
-          className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+          disabled={saving}
+          className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
         >
-          Confirm and continue
+          {saving ? 'Saving…' : 'Confirm and save'}
         </button>
       </div>
     </div>

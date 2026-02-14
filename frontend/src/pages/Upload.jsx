@@ -1,10 +1,12 @@
 /**
  * Upload page: multi-step flow (upload → review → confirm). Uses SyllabusUpload and ParsedDataReview.
+ * Saves to DB only when user confirms (persists review edits).
  */
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import SyllabusUpload from '../components/SyllabusUpload';
 import ParsedDataReview from '../components/ParsedDataReview';
+import { saveCourse } from '../api/client';
 
 const STEPS = [
   { id: 'upload', label: 'Upload' },
@@ -18,6 +20,8 @@ export default function Upload() {
   const [step, setStep] = useState(0);
   const [assignments, setAssignments] = useState([]);
   const [parsedCourseName, setParsedCourseName] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState(null);
 
   const currentStepId = STEPS[step].id;
 
@@ -77,7 +81,23 @@ export default function Upload() {
             courseName={parsedCourseName || 'Course'}
             assignments={assignments}
             onAssignmentsChange={setAssignments}
-            onConfirm={() => setStep(2)}
+            onConfirm={async () => {
+              setSaveError(null);
+              setSaving(true);
+              try {
+                await saveCourse(token, {
+                  course_name: parsedCourseName || 'Course',
+                  assignments,
+                });
+                setStep(2);
+              } catch (err) {
+                setSaveError(err.message || 'Failed to save');
+              } finally {
+                setSaving(false);
+              }
+            }}
+            saving={saving}
+            saveError={saveError}
           />
         )}
         {currentStepId === 'confirm' && (

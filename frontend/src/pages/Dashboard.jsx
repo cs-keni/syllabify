@@ -1,27 +1,13 @@
 /**
- * Dashboard: weekly overview, upcoming assignments, course cards. Uses placeholder data.
- * DISCLAIMER: Project structure may change. Functions may be added or modified.
+ * Dashboard: weekly overview, upcoming assignments, course cards.
  */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { getCourses, deleteCourse } from '../api/client';
 import CourseCard from '../components/CourseCard';
 
 const PLACEHOLDER_MODAL_KEY = 'syllabify_placeholder_modal_dismissed';
-
-const MOCK_COURSES = [
-  {
-    id: '1',
-    name: 'CS 422 (Placeholder)',
-    term: 'Winter 2025',
-    assignmentCount: 8,
-  },
-  {
-    id: '2',
-    name: 'CS 422 (Placeholder)',
-    term: 'Winter 2025',
-    assignmentCount: 8,
-  },
-];
 
 const MOCK_UPCOMING = [
   {
@@ -49,7 +35,28 @@ const MOCK_UPCOMING = [
 
 /** Main dashboard. Shows placeholder weekly chart, upcoming list, and courses. */
 export default function Dashboard() {
+  const { token } = useAuth();
   const [showPlaceholderModal, setShowPlaceholderModal] = useState(false);
+  const [courses, setCourses] = useState([]);
+  const [coursesError, setCoursesError] = useState(null);
+
+  useEffect(() => {
+    if (token) {
+      getCourses(token)
+        .then(data => setCourses(data.courses || []))
+        .catch(() => setCoursesError('Could not load courses'));
+    }
+  }, [token]);
+
+  const handleDeleteCourse = async (id) => {
+    if (!token) return;
+    try {
+      await deleteCourse(token, id);
+      setCourses(prev => prev.filter(c => c.id !== id));
+    } catch (err) {
+      setCoursesError(err.message || 'Could not delete');
+    }
+  };
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem(PLACEHOLDER_MODAL_KEY);
@@ -162,9 +169,6 @@ export default function Dashboard() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-medium text-ink">Courses</h2>
-              <span className="text-xs text-ink-subtle bg-surface-muted rounded-button px-2 py-0.5">
-                Placeholder
-              </span>
             </div>
             <Link
               to="/app/upload"
@@ -173,15 +177,26 @@ export default function Dashboard() {
               Add syllabus
             </Link>
           </div>
+          {coursesError && (
+            <p className="text-sm text-red-600 mb-2">{coursesError}</p>
+          )}
           <div className="space-y-3">
-            {MOCK_COURSES.length ? (
-              MOCK_COURSES.map((c, i) => (
+            {courses.length ? (
+              courses.map((c, i) => (
                 <div
                   key={c.id}
                   className="animate-fade-in-up"
-                  style={{ animationDelay: `${780 + i * 100}ms` }}
+                  style={{ animationDelay: `${780 + i * 50}ms` }}
                 >
-                  <CourseCard course={c} />
+                  <CourseCard
+                    course={{
+                      id: c.id,
+                      name: c.name,
+                      term: '',
+                      assignmentCount: c.assignment_count ?? 0,
+                    }}
+                    onDelete={() => handleDeleteCourse(c.id)}
+                  />
                 </div>
               ))
             ) : (
