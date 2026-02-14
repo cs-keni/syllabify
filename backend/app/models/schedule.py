@@ -14,29 +14,14 @@ from ..db.base import Base
 class Schedule(Base):
     __tablename__ = "Schedules"
 
-    id: Mapped[int] = mapped_column(
-        Integer,
-        primary_key = True,
-        autoincrement = True
-    )
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
-    sched_name: Mapped[str] = mapped_column(
-        String(255),
-        nullable = False
-    )
+    sched_name: Mapped[str] = mapped_column(String(255), nullable=False)
 
-    owner_id: Mapped[int] = mapped_column(
-        ForeignKey("Users.id"),
-        nullable = False
-    )
+    owner_id: Mapped[int] = mapped_column(ForeignKey("Users.id"), nullable=False)
 
-    owner = relationship(
-        "User",
-        back_populates = "schedules"
-    )
+    owner = relationship("User", back_populates="schedules")
 
     assignments = relationship(
-        "Assignment",
-        back_populates = "schedule",
-        cascade = "all, delete-orphan"
+        "Assignment", back_populates="schedule", cascade="all, delete-orphan"
     )

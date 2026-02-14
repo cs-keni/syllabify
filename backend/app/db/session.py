@@ -16,18 +16,11 @@ MYSQL_DATABASE = os.getenv("DB_NAME")
 MYSQL_USER = os.getenv("DB_USER")
 MYSQL_PASSWORD = os.getenv("DB_PASSWORD")
 
-DATABASE_URL = (f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
-                f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}")
-
-engine = create_engine(
-    DATABASE_URL,
-    pool_pre_ping = True,
-    echo = False,
-    future = True
+DATABASE_URL = (
+    f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
+    f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
 )
 
-SessionLocal = sessionmaker(
-    bind = engine,
-    autoflush = False,
-    autocommit = False
-)
+engine = create_engine(DATABASE_URL, pool_pre_ping=True, echo=False, future=True)
+
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)

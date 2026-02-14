@@ -36,7 +36,12 @@ export default function Layout() {
   const linkRefs = useRef([]);
   const prevIndexRef = useRef(null);
 
-  const [indicator, setIndicator] = useState({ left: 0, top: 0, width: 0, height: 0 });
+  const [indicator, setIndicator] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
   const [transition, setTransition] = useState('none');
   const [mounted, setMounted] = useState(false);
 
@@ -60,7 +65,9 @@ export default function Layout() {
     // Distance-based: longer = more duration, stronger bounce
     const duration = 150 + distance * 50;
     const easing = getEasing(distance);
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isReduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
     const transitionValue = isReduced
       ? 'none'
       : `left ${duration}ms ${easing}, width ${duration}ms ${easing}, top ${duration}ms ${easing}, height ${duration}ms ${easing}`;
@@ -131,7 +138,9 @@ export default function Layout() {
                 {navItems.map(({ to, label, end }, i) => (
                   <NavLink
                     key={to}
-                    ref={el => { linkRefs.current[i] = el; }}
+                    ref={el => {
+                      linkRefs.current[i] = el;
+                    }}
                     to={to}
                     end={end}
                     className={({ isActive }) =>
@@ -149,11 +158,11 @@ export default function Layout() {
               <span className="ml-2 text-sm text-ink-muted px-2">
                 {user.username}
               </span>
-            <button
-              type="button"
-              onClick={logout}
-              className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
-            >
+              <button
+                type="button"
+                onClick={logout}
+                className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+              >
                 Log out
               </button>
             </div>

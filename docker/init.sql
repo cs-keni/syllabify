@@ -28,3 +28,23 @@ CREATE TABLE IF NOT EXISTS Assignments (
     schedule_id INT NOT NULL,
     FOREIGN KEY(schedule_id) REFERENCES Schedules(id)
 );
+    assignment_name VARCHAR(255) NOT NULL,
+    work_load INT NOT NULL,
+    notes VARCHAR(2048),
+    schedule_id INT NOT NULL,
+    FOREIGN KEY(schedule_id) REFERENCES Schedules(id)
+);
+
+-- Terms table for semester/quarter management
+CREATE TABLE IF NOT EXISTS Terms (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    term_name VARCHAR(100) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    INDEX idx_user_active (user_id, is_active),
+    INDEX idx_user_dates (user_id, start_date, end_date)
+);
