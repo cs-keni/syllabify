@@ -4,6 +4,7 @@
  * modified. This describes the general idea as of the current state.
  */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
@@ -56,6 +57,24 @@ export default function App() {
       <ThemeProvider>
         <AuthProvider>
           <AppRoutes />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: 'var(--color-surface-elevated)',
+                color: 'var(--color-ink)',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-card)',
+              },
+              success: {
+                iconTheme: {
+                  primary: 'var(--color-accent)',
+                  secondary: 'var(--color-surface)',
+                },
+              },
+            }}
+          />
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

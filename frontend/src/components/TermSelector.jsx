@@ -4,6 +4,7 @@
  * Used in Dashboard and other pages to filter data by academic term.
  */
 import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import * as api from '../api/client';
 import TermModal from './TermModal';
 import TermManageModal from './TermManageModal';
@@ -52,11 +53,17 @@ export default function TermSelector({ onTermChange }) {
     try {
       await api.activateTerm(numericTermId);
       setCurrentTermId(numericTermId);
+
+      // Find term name for toast message
+      const selectedTerm = terms.find((t) => t.id === numericTermId);
+      toast.success(`Switched to ${selectedTerm?.term_name || 'term'}`);
+
       if (onTermChange) {
         onTermChange(numericTermId);
       }
     } catch (error) {
       console.error('Failed to activate term:', error);
+      toast.error('Failed to switch term. Please try again.');
     }
   };
 
