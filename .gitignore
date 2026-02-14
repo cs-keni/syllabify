@@ -154,4 +154,10 @@ out/
 .parcel-cache/
 .vite/
 
-docs/DEPLOYMENT.md
+# Personal / resume notes (do not push)
+kennyresume.md
+
+# Local planning / teammate notes (do not push)
+docs/EXPLAIN.md
+docs/ANIMATIONS.md
+docs/PHASES.md

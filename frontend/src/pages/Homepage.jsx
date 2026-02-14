@@ -1,24 +1,34 @@
 import { Link } from 'react-router-dom';
+import logo from '../assets/syllabify-logo.jpg';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 shadow-lg">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex items-center justify-between">
-            <div className="text-lg font-semibold tracking-tight text-white">
+    <div className="min-h-screen bg-surface text-ink">
+      <header className="border-b border-border bg-surface-elevated shadow-card">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
+          <div className="relative flex items-center justify-between">
+            <div className="text-lg font-semibold tracking-tight text-ink animate-fade-in">
               Syllabify
             </div>
+            <div className="absolute left-1/2 translate-y-1.5 -translate-x-1/2">
+              <img
+                src={logo}
+                alt="Syllabify"
+                className="h-[256px] w-[256px] object-contain animate-scale-in"
+              />
+            </div>
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <Link
                 to="/login"
-                className="rounded-button bg-white px-4 py-2 text-sm font-medium text-blue-900 no-underline hover:bg-blue-50"
+                className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200 animate-fade-in [animation-delay:100ms]"
               >
                 Log in
               </Link>
               <button
                 type="button"
-                className="rounded-button bg-white px-4 py-2 text-sm font-medium text-blue-900 no-underline hover:bg-blue-50"
+                className="rounded-button border border-border bg-surface px-4 py-2 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200 animate-fade-in [animation-delay:400ms]"
               >
                 Sign up
               </button>
@@ -28,51 +38,51 @@ export default function Home() {
       </header>
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 pt-10">
-        <section className="rounded-3xl border border-blue-900/40 bg-blue-950/40 p-8 sm:p-12 shadow-xl shadow-blue-900/30">
-          <p className="text-sm uppercase tracking-[0.2em] text-blue-300">
+        <section className="rounded-3xl border border-border bg-surface-elevated p-8 sm:p-12 shadow-card">
+          <p className="text-sm uppercase tracking-[0.2em] text-accent animate-fade-in-up">
             Academic planning, made simple
           </p>
-          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-serif font-semibold text-white">
+          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-serif font-semibold text-ink animate-fade-in-up [animation-delay:100ms]">
             Turn syllabi into a balanced study plan.
           </h1>
-          <p className="mt-4 max-w-2xl text-base sm:text-lg text-blue-200">
+          <p className="mt-4 max-w-2xl text-base sm:text-lg text-ink-muted animate-fade-in-up [animation-delay:400ms]">
             Syllabify helps you translate course expectations into a weekly
             schedule you can trust.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <div className="rounded-full bg-blue-900/60 px-4 py-2 text-sm text-blue-100">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:300ms]">
               PDF and text syllabi
             </div>
-            <div className="rounded-full bg-blue-900/60 px-4 py-2 text-sm text-blue-100">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:400ms]">
               Manual review and edits
             </div>
-            <div className="rounded-full bg-blue-900/60 px-4 py-2 text-sm text-blue-100">
+            <div className="rounded-full bg-accent-muted px-4 py-2 text-sm text-accent animate-fade-in-up [animation-delay:500ms]">
               Calendar-ready schedule
             </div>
           </div>
         </section>
 
         <section className="mt-10 grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card animate-fade-in-up transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-dropdown">
+            <h2 className="text-base font-semibold text-ink">
               Structured intake
             </h2>
-            <p className="mt-2 text-sm text-blue-200">
+            <p className="mt-2 text-sm text-ink-muted">
               Upload a syllabus and see the extracted assignments, exams, and
               milestones.
             </p>
           </div>
-          <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">Planning</h2>
-            <p className="mt-2 text-sm text-blue-200">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card animate-fade-in-up transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-dropdown [animation-delay:160ms]">
+            <h2 className="text-base font-semibold text-ink">Planning</h2>
+            <p className="mt-2 text-sm text-ink-muted">
               Review and adjust the data before a schedule is generated.
             </p>
           </div>
-          <div className="rounded-2xl border border-blue-900/40 bg-blue-950/40 p-5 shadow-lg shadow-blue-900/20">
-            <h2 className="text-base font-semibold text-white">
+          <div className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-card animate-fade-in-up transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-dropdown [animation-delay:320ms]">
+            <h2 className="text-base font-semibold text-ink">
               Ready to export
             </h2>
-            <p className="mt-2 text-sm text-blue-200">
+            <p className="mt-2 text-sm text-ink-muted">
               Send your plan to Google Calendar or download an ICS file.
             </p>
           </div>

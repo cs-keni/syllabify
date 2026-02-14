@@ -11,9 +11,42 @@
   }
 }
 
-/* Theme-ready: future dark mode can override these */
+/* Theme-ready: light and dark mode via .dark class on html */
 :root {
   --color-surface: #fafafa;
+  --color-surface-elevated: #ffffff;
+  --color-surface-muted: #f5f5f5;
   --color-ink: #374151;
+  --color-ink-muted: #6b7280;
+  --color-ink-subtle: #9ca3af;
   --color-accent: #0d9488;
+  --color-accent-hover: #0f766e;
+  --color-accent-muted: #ccfbf1;
+  --color-border: #e5e7eb;
+  --color-border-subtle: #f3f4f6;
+}
+
+.dark {
+  --color-surface: #111827;
+  --color-surface-elevated: #1f2937;
+  --color-surface-muted: #374151;
+  --color-ink: #f9fafb;
+  --color-ink-muted: #d1d5db;
+  --color-ink-subtle: #9ca3af;
+  --color-accent: #14b8a6;
+  --color-accent-hover: #2dd4bf;
+  --color-accent-muted: #134e4a;
+  --color-border: #374151;
+  --color-border-subtle: #1f2937;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

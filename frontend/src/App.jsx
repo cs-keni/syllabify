@@ -5,6 +5,7 @@
  */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Upload from './pages/Upload';
@@ -19,7 +20,7 @@ import './styles/index.css';
 function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface">
-      <p className="text-ink-muted">Loading…</p>
+      <p className="text-ink-muted animate-fade-in">Loading…</p>
     </div>
   );
 }
@@ -33,6 +34,10 @@ function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/security-setup" element={<SecuritySetup />} />
+      {/* Redirect legacy paths (old nav used /upload, /schedule, /preferences) */}
+      <Route path="/upload" element={<Navigate to="/app/upload" replace />} />
+      <Route path="/schedule" element={<Navigate to="/app/schedule" replace />} />
+      <Route path="/preferences" element={<Navigate to="/app/preferences" replace />} />
       <Route path="/app" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="upload" element={<Upload />} />
@@ -44,13 +49,15 @@ function AppRoutes() {
   );
 }
 
-/** Root component: wraps app in Router and AuthProvider. */
+/** Root component: wraps app in Router, ThemeProvider, and AuthProvider. */
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

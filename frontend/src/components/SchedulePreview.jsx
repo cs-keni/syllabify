@@ -78,7 +78,7 @@ export default function SchedulePreview({ weekStart }) {
   const hourHeight = 48;
 
   return (
-    <div className="rounded-card bg-surface-elevated border border-border overflow-hidden shadow-card">
+    <div className="rounded-card bg-surface-elevated border border-border overflow-hidden shadow-card animate-fade-in [animation-delay:200ms]">
       <div className="grid grid-cols-8 border-b border-border bg-surface-muted">
         <div className="p-2 text-xs font-medium text-ink-muted" />
         {LABELS.map(d => (
@@ -114,9 +114,9 @@ export default function SchedulePreview({ weekStart }) {
         {MOCK_BLOCKS.map((b, i) => (
           <div
             key={i}
-            className={`absolute rounded flex items-center justify-center overflow-hidden text-[10px] ${
+            className={`absolute rounded flex items-center justify-center overflow-hidden text-[10px] origin-top-left animate-scale-in ${
               b.conflict
-                ? 'bg-conflict border border-red-200 text-red-800'
+                ? 'bg-conflict border-2 border-red-300 text-red-800'
                 : COLOR_CLASSES[b.color] || 'bg-course-1 text-ink'
             }`}
             style={{
@@ -124,6 +124,7 @@ export default function SchedulePreview({ weekStart }) {
               width: `${100 / 8 - 4}%`,
               top: (b.start - 6) * hourHeight,
               height: (b.end - b.start) * hourHeight - 2,
+              animationDelay: `${i * 60}ms`,
             }}
           >
             {b.conflict ? 'Conflict' : b.title}
