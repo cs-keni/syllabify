@@ -6,6 +6,7 @@
 # removed, or modified. This describes the general idea as of the current state.
 
 import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 

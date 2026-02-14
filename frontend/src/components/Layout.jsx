@@ -1,20 +1,100 @@
 /**
  * App shell: nav bar + main content. Requires auth; redirects to Login or SecuritySetup.
- * DISCLAIMER: Project structure may change. Components may be added or modified.
+ * Nav uses a sliding indicator that moves between tabs with distance-based bounce animation.
  */
-import { Outlet, NavLink, Navigate } from 'react-router-dom';
+import { useRef, useLayoutEffect, useState } from 'react';
+import { Outlet, NavLink, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
-  { to: '/', label: 'Dashboard' },
-  { to: '/upload', label: 'Upload syllabus' },
-  { to: '/schedule', label: 'Schedule' },
-  { to: '/preferences', label: 'Preferences' },
+  { to: '/app', label: 'Dashboard', end: true },
+  { to: '/app/upload', label: 'Upload syllabus', end: true },
+  { to: '/app/schedule', label: 'Schedule', end: true },
+  { to: '/app/preferences', label: 'Preferences', end: true },
 ];
+
+function getActiveIndex(pathname) {
+  if (pathname === '/app' || pathname === '/app/') return 0;
+  if (pathname.startsWith('/app/upload')) return 1;
+  if (pathname.startsWith('/app/schedule')) return 2;
+  if (pathname.startsWith('/app/preferences')) return 3;
+  return 0;
+}
+
+/** Cubic-bezier with overshoot: bouncy settle. More distance = stronger bounce. */
+function getEasing(distance) {
+  const overshoot = Math.min(1.4 + distance * 0.12, 1.85);
+  return `cubic-bezier(0.34, ${overshoot}, 0.64, 1)`;
+}
 
 /** Main layout with header nav and Outlet for child routes. */
 export default function Layout() {
   const { user, securitySetupDone, logout } = useAuth();
+  const location = useLocation();
+  const navContainerRef = useRef(null);
+  const linkRefs = useRef([]);
+  const prevIndexRef = useRef(null);
+
+  const [indicator, setIndicator] = useState({ left: 0, top: 0, width: 0, height: 0 });
+  const [transition, setTransition] = useState('none');
+  const [mounted, setMounted] = useState(false);
+
+  const pathname = location.pathname;
+  const activeIndex = getActiveIndex(pathname);
+
+  useLayoutEffect(() => {
+    const container = navContainerRef.current;
+    const link = linkRefs.current[activeIndex];
+    if (!container || !link) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+
+    setMounted(true);
+
+    const prevIndex = prevIndexRef.current;
+    const distance = prevIndex !== null ? Math.abs(activeIndex - prevIndex) : 0;
+    prevIndexRef.current = activeIndex;
+
+    // Distance-based: longer = more duration, stronger bounce
+    const duration = 150 + distance * 50;
+    const easing = getEasing(distance);
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const transitionValue = isReduced
+      ? 'none'
+      : `left ${duration}ms ${easing}, width ${duration}ms ${easing}, top ${duration}ms ${easing}, height ${duration}ms ${easing}`;
+
+    setTransition(transitionValue);
+    setIndicator({
+      left: linkRect.left - containerRect.left,
+      top: linkRect.top - containerRect.top,
+      width: linkRect.width,
+      height: linkRect.height,
+    });
+  }, [pathname, activeIndex]);
+
+  useLayoutEffect(() => {
+    const container = navContainerRef.current;
+    if (!container) return;
+
+    const ro = new ResizeObserver(() => {
+      const link = linkRefs.current[activeIndex];
+      if (!link) return;
+      const containerRect = container.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      setIndicator({
+        left: linkRect.left - containerRect.left,
+        top: linkRect.top - containerRect.top,
+        width: linkRect.width,
+        height: linkRect.height,
+      });
+    });
+
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [pathname, activeIndex]);
+
   if (!user) return <Navigate to="/login" replace />;
   if (!securitySetupDone) return <Navigate to="/security-setup" replace />;
 
@@ -25,34 +105,55 @@ export default function Layout() {
           <div className="flex h-14 items-center justify-between">
             <NavLink
               to="/"
-              className="text-lg font-semibold text-ink no-underline hover:text-accent"
+              className="text-lg font-semibold text-ink no-underline hover:text-accent transition-colors duration-200"
             >
               Syllabify
             </NavLink>
             <div className="flex items-center gap-1">
-              {navItems.map(({ to, label }) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  className={({ isActive }) =>
-                    `rounded-button px-3 py-2 text-sm font-medium no-underline ${
-                      isActive
-                        ? 'bg-accent-muted text-accent'
-                        : 'text-ink-muted hover:bg-surface-muted hover:text-ink'
-                    }`
-                  }
-                >
-                  {label}
-                </NavLink>
-              ))}
+              <ThemeToggle />
+              <div
+                ref={navContainerRef}
+                className="relative flex items-center gap-1"
+              >
+                {mounted && (
+                  <div
+                    className="absolute rounded-button bg-accent-muted -z-[1]"
+                    style={{
+                      left: indicator.left,
+                      top: indicator.top,
+                      width: indicator.width,
+                      height: indicator.height,
+                      transition,
+                    }}
+                    aria-hidden
+                  />
+                )}
+                {navItems.map(({ to, label, end }, i) => (
+                  <NavLink
+                    key={to}
+                    ref={el => { linkRefs.current[i] = el; }}
+                    to={to}
+                    end={end}
+                    className={({ isActive }) =>
+                      `rounded-button px-3 py-2 text-sm font-medium no-underline transition-colors duration-200 ${
+                        isActive
+                          ? 'text-accent'
+                          : 'text-ink-muted hover:bg-surface-muted hover:text-ink'
+                      }`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                ))}
+              </div>
               <span className="ml-2 text-sm text-ink-muted px-2">
                 {user.username}
               </span>
-              <button
-                type="button"
-                onClick={logout}
-                className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover"
-              >
+            <button
+              type="button"
+              onClick={logout}
+              className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+            >
                 Log out
               </button>
             </div>

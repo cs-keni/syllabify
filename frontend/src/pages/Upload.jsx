@@ -1,10 +1,12 @@
 /**
  * Upload page: multi-step flow (upload → review → confirm). Uses SyllabusUpload and ParsedDataReview.
- * DISCLAIMER: Project structure may change. Components/steps may be added or modified.
+ * Saves to DB only when user confirms (persists review edits).
  */
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import SyllabusUpload from '../components/SyllabusUpload';
 import ParsedDataReview from '../components/ParsedDataReview';
+import { saveCourse } from '../api/client';
 
 const STEPS = [
   { id: 'upload', label: 'Upload' },
@@ -12,23 +14,20 @@ const STEPS = [
   { id: 'confirm', label: 'Confirm' },
 ];
 
-const MOCK_ASSIGNMENTS = [
-  { id: '1', name: 'Assignment 1', due: '2025-02-01', hours: 4 },
-  { id: '2', name: 'Assignment 2', due: '2025-02-08', hours: 5 },
-  { id: '3', name: 'Midterm', due: '2025-02-15', hours: 2 },
-];
-
 /** Step-based upload flow. Manages step state, parsed course name, and assignments. */
 export default function Upload() {
+  const { token } = useAuth();
   const [step, setStep] = useState(0);
-  const [assignments, setAssignments] = useState(MOCK_ASSIGNMENTS);
+  const [assignments, setAssignments] = useState([]);
   const [parsedCourseName, setParsedCourseName] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState(null);
 
   const currentStepId = STEPS[step].id;
 
   return (
     <div className="space-y-8">
-      <div>
+      <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">Upload syllabus</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Upload a PDF or paste text, then review and confirm the extracted
@@ -43,7 +42,7 @@ export default function Upload() {
             <button
               type="button"
               onClick={() => setStep(i)}
-              className={`rounded-button px-3 py-1.5 text-sm font-medium transition-colors ${
+              className={`rounded-button px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                 i === step
                   ? 'bg-accent text-white'
                   : i < step
@@ -66,10 +65,13 @@ export default function Upload() {
 
       {/* Step content */}
       <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card min-h-[320px]">
+        <div key={currentStepId} className="animate-fade-in">
         {currentStepId === 'upload' && (
           <SyllabusUpload
-            onComplete={courseName => {
+            token={token}
+            onComplete={(courseName, parsedAssignments) => {
               setParsedCourseName(courseName);
+              setAssignments(parsedAssignments || []);
               setStep(1);
             }}
           />
@@ -79,7 +81,23 @@ export default function Upload() {
             courseName={parsedCourseName || 'Course'}
             assignments={assignments}
             onAssignmentsChange={setAssignments}
-            onConfirm={() => setStep(2)}
+            onConfirm={async () => {
+              setSaveError(null);
+              setSaving(true);
+              try {
+                await saveCourse(token, {
+                  course_name: parsedCourseName || 'Course',
+                  assignments,
+                });
+                setStep(2);
+              } catch (err) {
+                setSaveError(err.message || 'Failed to save');
+              } finally {
+                setSaving(false);
+              }
+            }}
+            saving={saving}
+            saveError={saveError}
           />
         )}
         {currentStepId === 'confirm' && (
@@ -93,12 +111,13 @@ export default function Upload() {
             <button
               type="button"
               onClick={() => setStep(0)}
-              className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+              className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
             >
               Upload another
             </button>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

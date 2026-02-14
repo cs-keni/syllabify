@@ -1,0 +1,30 @@
+{
+  "course": {
+    "id": "cs433",
+    "course_code": "CS 433",
+    "course_title": "Computer & Network Security",
+    "term": "Winter 2026",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Prof. Jun Li", "email": "lijun@uoregon.edu"}
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {"id": "participation", "name": "Class participation", "weight_percent": 10, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "homework", "name": "Homework", "weight_percent": 15, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm", "name": "Midterm", "weight_percent": 35, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "project", "name": "Class Project", "weight_percent": 40, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "participation_1", "title": "Class participation", "category_id": "participation", "type": "participation", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Class participation 10%"},
+    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 15, "points": null, "recurrence": null, "policies": {"late_policy": "1 late token (up to 1 week); else 15% per day", "late_pass_allowed": true}, "confidence": 0.9, "source_excerpt": "Homework 15%"},
+    {"id": "midterm_1", "title": "Midterm", "category_id": "midterm", "type": "midterm", "due_datetime": "2026-02-19", "all_day": true, "timezone": null, "weight_percent": 35, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm: February 19, 2026, in class"},
+    {"id": "project_1", "title": "Class Project", "category_id": "project", "type": "project", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 40, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Class Project 40%"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": 1, "extension_days": 7},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

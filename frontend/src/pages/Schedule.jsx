@@ -16,7 +16,7 @@ export default function Schedule() {
 
   return (
     <div className="space-y-8">
-      <div>
+      <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">Schedule</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Weekly view of your study blocks. Conflicts are highlighted subtly.

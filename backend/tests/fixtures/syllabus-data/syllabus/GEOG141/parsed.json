@@ -1,0 +1,29 @@
+{
+  "course": {
+    "id": "geog141",
+    "course_code": "GEOG 141",
+    "course_title": "Natural Environment",
+    "term": "Spring 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Dr. Chantel Saban", "email": "csaban@uoregon.edu"}
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {"id": "discussions_assignments", "name": "Discussions and Assignments", "weight_percent": 20, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "exams", "name": "Exams", "weight_percent": 40, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "labs_quizzes", "name": "Labs and Quizzes", "weight_percent": 40, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "discussions_assignments_1", "title": "Discussions and Assignments", "category_id": "discussions_assignments", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": null, "policies": {"late_policy": "20% per day deduction", "late_pass_allowed": false}, "confidence": 0.95, "source_excerpt": "Discussions and assignments 20%"},
+    {"id": "midterm_1", "title": "Midterm", "category_id": "exams", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm 20%"},
+    {"id": "final_1", "title": "Final", "category_id": "exams", "type": "final", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final 20%"},
+    {"id": "labs_quizzes_1", "title": "Labs and Quizzes", "category_id": "labs_quizzes", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 40, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": null, "until": null, "count": null}, "policies": {}, "confidence": 0.9, "source_excerpt": "Labs and quizzes 40%"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

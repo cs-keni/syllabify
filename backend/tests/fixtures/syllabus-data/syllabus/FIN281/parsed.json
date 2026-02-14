@@ -1,0 +1,20 @@
+{
+  "course": {
+    "id": "fin281",
+    "course_code": "FIN 281",
+    "course_title": "Personal Finance",
+    "term": "Spring 2024",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Deb Bauer", "email": "djbauer@uoregon.edu"}
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [],
+  "assessments": [],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

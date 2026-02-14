@@ -1,0 +1,31 @@
+{
+  "course": {
+    "id": "cs315",
+    "course_code": "CS 315",
+    "course_title": "Intermediate Algorithms",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Thanh H. Nguyen", "email": null}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "TU", "start_time": "14:00", "end_time": "15:20", "timezone": "America/Los_Angeles", "location": "145 STB", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "TH", "start_time": "14:00", "end_time": "15:20", "timezone": "America/Los_Angeles", "location": "145 STB", "type": "lecture"}
+    ],
+    "location": "145 STB"
+  },
+  "assessment_categories": [
+    {"id": "homework", "name": "Homework", "weight_percent": 55, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm", "name": "Midterm", "weight_percent": 15, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final exam", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 55, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Homework: 55%"},
+    {"id": "midterm_1", "title": "Midterm", "category_id": "midterm", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 15, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm: 15%"},
+    {"id": "final_1", "title": "Final exam", "category_id": "final", "type": "final", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final exam: 30%"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

@@ -5,6 +5,7 @@
  */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Upload from './pages/Upload';
@@ -12,13 +13,14 @@ import Schedule from './pages/Schedule';
 import Preferences from './pages/Preferences';
 import Login from './pages/Login';
 import SecuritySetup from './pages/SecuritySetup';
+import Home from './pages/Homepage';
 import './styles/index.css';
 
 /** Shown while auth is loading. */
 function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface">
-      <p className="text-ink-muted">Loading…</p>
+      <p className="text-ink-muted animate-fade-in">Loading…</p>
     </div>
   );
 }
@@ -29,26 +31,33 @@ function AppRoutes() {
   if (isLoading) return <Loading />;
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/security-setup" element={<SecuritySetup />} />
-      <Route path="/" element={<Layout />}>
+      {/* Redirect legacy paths (old nav used /upload, /schedule, /preferences) */}
+      <Route path="/upload" element={<Navigate to="/app/upload" replace />} />
+      <Route path="/schedule" element={<Navigate to="/app/schedule" replace />} />
+      <Route path="/preferences" element={<Navigate to="/app/preferences" replace />} />
+      <Route path="/app" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="upload" element={<Upload />} />
         <Route path="schedule" element={<Schedule />} />
         <Route path="preferences" element={<Preferences />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/app" replace />} />
       </Route>
     </Routes>
   );
 }
 
-/** Root component: wraps app in Router and AuthProvider. */
+/** Root component: wraps app in Router, ThemeProvider, and AuthProvider. */
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

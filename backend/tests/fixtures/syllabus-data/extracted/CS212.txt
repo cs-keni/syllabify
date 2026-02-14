@@ -1,0 +1,287 @@
+CS 212 (Spring 2024; 31311) Computer Science III
+Lecture Info and Slides
+Date	Topic	Slides
+Week 1 / Tuesday / April 2	Syllabus	
+CS212_01_course_overview.pptxDownload CS212_01_course_overview.pptx
+CS212_01_course_overview.pdfDownload CS212_01_course_overview.pdf
+
+Week 1 / Thursday / April 4	Unix / permissions	
+CS212_02_unix_permissions.pptxDownload CS212_02_unix_permissions.pptx
+CS212_02_unix_permissions.pdfDownload CS212_02_unix_permissions.pdf
+
+Week 1 Lab	Virtual box	
+(no slides)
+
+Week 2 / Tuesday / April 9	Hello World in C	
+CS212_03_hello_world_in_c.pptxDownload CS212_03_hello_world_in_c.pptx
+CS212_03_hello_world_in_c.pdfDownload CS212_03_hello_world_in_c.pdf
+
+Week 2 / Thursday / April 11	Memory, Pt 1	
+CS212_04_memory_pt1.pptxDownload CS212_04_memory_pt1.pptx
+CS212_04_memory_pt1.pdfDownload CS212_04_memory_pt1.pdf
+
+Week 2 Lab	Unix	
+CS212Labs_Week2_Basic_Shell_Commands.htmlDownload CS212Labs_Week2_Basic_Shell_Commands.html
+CS212Labs_Week2_Basic_Shell_Commands.pdfDownload CS212Labs_Week2_Basic_Shell_Commands.pdf
+
+Week 3 / Tuesday / April 16 	Memory, Pt 2	
+CS212_05_memory_pt2.pptxDownload CS212_05_memory_pt2.pptx
+CS212_05_memory_pt2.pdfDownload CS212_05_memory_pt2.pdf
+
+Week 3 / Thursday / April 18	Strings	
+CS212_06_strings.pptxDownload CS212_06_strings.pptx
+CS212_06_strings.pdfDownload CS212_06_strings.pdf
+
+Week 4 / Tuesday / April 23	Enums, structs, and unions	
+CS212_07_structs.pptxDownload CS212_07_structs.pptx
+CS212_07_structs.pdfDownload CS212_07_structs.pdf
+
+Week 4 / Thursday / April 25	File I/O	
+CS212_08_file_io.pptxDownload CS212_08_file_io.pptx
+CS212_08_file_io.pdfDownload CS212_08_file_io.pdf
+
+Week 5 / Tuesday / April 30	Why pointers?	
+CS212_09_why_pointers.pptxDownload CS212_09_why_pointers.pptx
+CS212_09_why_pointers.pdfDownload CS212_09_why_pointers.pdf
+
+Week 5 / Thursday / May 2	Midterm prep	
+CS212_10_midterm_prep.pptxDownload CS212_10_midterm_prep.pptx
+CS212_10_midterm_prep.pdfDownload CS212_10_midterm_prep.pdf
+
+Week 6 / Tuesday / May 7	Midterm	
+None
+
+Week 6 / Thursday / May 9	Function pointers / complexity	
+CS212_11_function_pointers_and_complexity.pptxDownload CS212_11_function_pointers_and_complexity.pptx
+CS212_11_function_pointers_and_complexity.pdfDownload CS212_11_function_pointers_and_complexity.pdf
+
+Week 7 / Tues / May 14	Generic programming / ADTs	
+CS212_12_more_complexity_adts.pptxDownload CS212_12_more_complexity_adts.pptx
+CS212_12_more_complexity_adts.pdfDownload CS212_12_more_complexity_adts.pdf
+
+Week 7 / Thurs / May 16	Generic programming / ADTs	
+re-use
+CS212_12_more_complexity_adts.pptxDownload CS212_12_more_complexity_adts.pptx
+CS212_12_more_complexity_adts.pdfDownload CS212_12_more_complexity_adts.pdf
+
+Week 8 / Tues / May 21	Linked lists and hashing	
+CS212_13_linkedlist_hashtable.pptxDownload CS212_13_linkedlist_hashtable.pptx
+CS212_13_linkedlist_hashtable.pdfDownload CS212_13_linkedlist_hashtable.pdf
+
+Week 8 / Thurs / May 23	More hashing, n log n sort	
+coming soon
+
+Week 9 / Tues / May 28	Stacks and queues	
+CS212_15_stacks_queues.pptxDownload CS212_15_stacks_queues.pptx
+CS212_15_stacks_queues.pdfDownload CS212_15_stacks_queues.pdf
+
+Week 9 / Thurs / May 30	Deques, even more on memory	
+CS212_16_misc_c.pptxDownload CS212_16_misc_c.pptx
+CS212_16_misc_c.pdfDownload CS212_16_misc_c.pdf
+
+Week 10 / Tues / June 4	Multi-file development	
+CS212_17_multifile.pptxDownload CS212_17_multifile.pptx
+CS212_17_multifile.pdfDownload CS212_17_multifile.pdf
+
+Week 10 / Thurs / June 6	Finals review	
+CS212_18_last_lecture.pptxDownload CS212_18_last_lecture.pptx
+CS212_18_last_lecture.pdfDownload CS212_18_last_lecture.pdf
+
+Introduction to Course and Instructors
+Instructor Information
+
+Name	Role	Email	Office
+Hank Childs	Instructor	hank@uoregon.edu	301 Deschutes
+Manish Mathai	TA	mmathai@uoregon.edu	N/A
+Meghanto Majumder	TA	meghanto@uoregon.edu	N/A
+LAs: Etienne Casal-Jouaux, Nhi Dinh, Eric Edwards, Alexandr Iapara, Morgan Jones, Michal Kloptotowski, Jordan Reedy
+
+Office Hour Schedule
+
+The basic formula will be LAs during the day in PSC and TAs/Hank in the evenings via Zoom.
+
+Mon: Alex 845-1145, Etienne 11-12, Eric 1130-2, Jordan 130-315, Nhi 2-4, (Zoom) Manish 6-7
+Tues: Etienne 1130-2, Alex 1145-145, Nhi 2-4, (Zoom) Hank 445-545
+Weds: Etienne, 11-12, Eric 1130-2, Morgan 12-5,  Jordan 130-4, (Zoom) Meghanto 6-7
+Thurs: Etienne 1130-2, Alex 1145-145, Michal 12-4, Nhi 3-5, (Zoom) Manish/Meghanto 6-7
+Fri: Etienne 11-2, Nhi 11-1, Jordan 11-130, Michal 12-4, Alex 12-3, Nhi 2-4
+Course Description
+
+Basic concepts and practices of computer science. Topics include algorithmic problem solving, levels of abstraction, object-oriented design and programming, software organization, analysis of algorithm and data structures. This is a sequence course, following onto CS 210 and CS 211.
+
+This is a projects-driven class. The projects will help prepare you for the rest of the major, and also for professional employment. I ask you put a lot of time into this course, and I believe the payoff will be significant for each of you.
+
+The projects in this class will be hard work. It is difficult to quote exactly how much time, since there is variation in background and programming skill. I expect those who have less developed programming skills will find this class to be a considerable effort, but also that they will have significant improvement by the end of the course.
+
+There will be 3 flavors of projects, and each project will contain multiple sub-parts. In total, we will have about 2 projects per week.
+
+Project 1: Learning Unix
+Project 2: Learning C
+Project 3: Data Structures
+Course Objectives
+
+The high-level objectives of the course are to develop proficiency in working in Linux, programming in the C language, and constructing and using basic data structures. The complete set of learning objectives can be found here.
+
+Course Modality
+This is an in-person course, and I expect you to attend every lecture and lab in person.  That said, you may attend lecture remotely via Zoom.  I will also drop your two lowest quizzes and drop one lab attendance point.
+
+In lecture, role will not be taken.  Instead, there will be a Canvas quiz every lecture (give or take) and these quizzes count towards your exam grade.  Missing these quizzes at a high rate will significantly affect your grade.  You must take the quiz during the short interval it is available.  If you are not there during that time, it is a zero.
+
+In lab, roll call will be taken.  9 points of your Exam Grade is based on attending labs.  You may only be up to ten minutes late to receive attendance points for the lab.  You may also miss only ten minutes of lab to receive credit.  So if you come, note your presence for roll call, and then leave, then you will still not get credit.
+
+Finally, there are exceptions to this policy for religious reasons, university-sponsored events, and accessible education.  For more information, see the UO-wide policy here.
+
+Technical Requirements
+We will use Canvas as our hub for this course, including assignments, lectures (both slides and Zoom recordings), discussion, and announcements.  
+
+Every student will need to be able to run the VirtualBox program, which requires owning a computer.  Also, there will be a quiz each lecture on Canvas.  In previous terms, all students have taken the quiz on their laptops of smartphones.  That said, as an alternative, I will put the quiz on the projector and you can fill out a piece of paper during class and submit quiz answers that way.
+
+Course Policies
+Communicating with the Instructor Team
+How the instructor team will communicate with you:
+
+-- The TAs and I will also frequently communicate with the class via Canvas announcements. 
+-- For communication with individual students, we will use your uoregon.edu email addresses, and we expect that you check that email with some regularity (at least once per day).
+-- Grade feedback will come through comments on Canvas.
+
+What about when you want to communicate with the CS212 team?   First, we ask that you never use our personal email addresses.  Instead, we have email lists set up.
+
+Type of Issue
+
+Who to Contact
+
+"my laptop died" / "I have an appointment that conflicts with class" / "I have to go home for a family issue" / "I am sick"
+
+No one.  These fall under the course policy for two dropped quizzes and one dropped lab.
+
+"I want to apply a late pass"
+
+No one.  This changes over the term.  Everything is marked late initially, and credit is restored at the end of the term.
+
+“I need help with homework”
+
+cs212team@cs.uoregon.edu.   Note that much of the time, this will result in a "you need to come to Office Hours" response.
+
+"There is a problem with the prompt"
+
+cs212team@cs.uoregon.edu
+
+Grade disputes
+
+cs212leaders@cs.uoregon.edu
+
+AEC accommodation for quizzes / tests
+
+hank@uoregon.edu
+
+Personal matters that you feel should be discussed with instructor.  (This includes being unhappy with the support provided elsewhere.)
+
+hank@uoregon.edu
+
+We have a 24-hour policy for response time.  If you have sent an email and it has not been responded to within 24 hours, then feel free to resend and just reference this policy.  That said, the 24-hour policy does not cover weekends.  For example, we endeavor to respond to an email that arrived at 3pm on a Friday by no later than 2:59pm the next Monday.
+
+Community Expectations
+We should all treat each other with kindness, respect, understanding, and empathy.  This goes in all directions: the instructor team treating students well, students treat instructors well, and students treating each other well.  I (Hank) am cheering hard for you all to succeed in this course, and hope we can all row together in one direction.  Please keep in mind that I make mistakes and show me empathy.  That said, you have my commitment to do my best to fix mistakes and help you in this journey.
+
+Course Materials
+We will use the textbook written by Joe Sventek, which is available for download here: sventek_book.pdf Download sventek_book.pdf.  Please note that this is only for personal use and you may not post it to the internet for any reason.  See this form for more explanation: textbook_212.pdfDownload textbook_212.pdf
+
+Absences
+As discussed in the Course Modality section, there will be a daily quiz, and you need to take the quiz during the short interval it is offered.  As a result, missing many classes (or labs) will affect your grade.  Explicitly, if you miss a quiz, it is a zero. You need to be there while a quiz is administered (a zero if you arrive late / left early).  There will be two dropped quizzes and one dropped lab.
+
+If you miss the Final exam period, you may take the Final afterwards for half-credit. Exceptions for full credit will be granted in appropriate situations. These situations include medical emergencies, etc, and do not include oversleeping, forgetting the day of the final, etc.   If you are ill for the midterm, then your Final will count extra. 
+
+Please note that UO policy only allows me to permit "excused" absences for religious reasons or due to UO business.  If you anticipate many such absences this term, you should contact me during Week 1 and we should decide if this class is right for you.  Outside of that, my hands are tied:
+
+Except for the legitimate and verifiable reasons for absences referenced in 1 (religious) and 2 (UO business), instructors shall not ask for reasons for absences and shall not distinguish between “excused” and “unexcused” absences since there is no equitable way to confirm the veracity of student-provided reasons or documentation outside the university context. 
+
+Course Deadlines
+This class will have approximately 18 projects, and it is critical that you keep track of these projects and submit them in a timely way.  Late projects are worth half credit.  That said, you have 3 "late passes." Late passes allow you to turn in your project (specifically a sub-project, e.g., project 1A) two days after the due date for full credit. You may also use two late passes on one assignment and get a four day extension. For example, you submit a project that was due on a Wednesday on Friday (i.e., two days later) and get full credit if you use one late pass.  If you run out of late passes, then you may continue to earn half credit on any project up until we take the Final. Once we get to 48 hours before the Final, I will no longer accept homeworks.  Note the Final is Tuesday June 11th @ 8am, so I will no longer accept homeworks Sunday June 9th @ 8am. 
+
+Note that projects will initially be marked as late and scored half credit. At the end of the term, you will tell me which projects you want to apply your late passes to, and the scores for those projects will be increased. There is no need to indicate your desire to use a late pass as you submit; I find it often changes as the term goes on.
+
+If you submit a project and I grade it, then you may not submit revised versions and ask it to be re-graded. Therefore you should only submit your project when you are confident.
+
+Grading
+The breakdowns for projects may change +/- 5% as the term goes on. The breakdowns for the tests are firm and will not change.
+
+Projects ("Project Grade"):
+Project 1: 10%
+Project 2: 50%
+Project 3: 40%
+Tests and participation ("Exam Grade"):
+Midterm: 25%
+Final: 45%
+Lab Attendance: 10%  (9% + 1 free point from dropped lab)
+Quizzes: 20% (18% + 2 free points from two dropped quizzes)
+Your grade will be calculated as follows:
+
+You will receive a letter grade for your projects
+You will receive a letter grade for your tests and participation
+These two grades will be combined to make one final grade
+The two grades will be combined as follows (exam grades are rows, project grades are columns):
+
+
+Grading rubric:
+
+A: Excellent performance. Very well prepared to continue on in the major. Solid grasp of the concepts and approaches introduced in CS 212.
+B: Solid performance. You have shown a generally good grasp of the concepts and approaches introduced in CS 212.
+C: Sufficient performance to move on, but your grasp of the concepts and approaches will require improvement if you choose to continue in the major.
+D: Your grasp of concepts and approaches, and/or programming skills, are not yet sufficient to continue in the major.
+F: Little or no demonstrated grasp of concepts and approaches introduced in CIS 22, and/or failure to carry out much of the required work.
+Generative AI
+It is your choice if you want to utilize Generative AI (e.g., ChatGPT) when you pursue the projects. Therefore, it is your choice if you want to utilize Generative AI.  That said, Generative AI will not be allowed during the exams, which are closed book, closed notes. In other words, if you are utilizing Generative AI, it is your responsibility to make sure that you understand the material fully and can produce similarly quality results without it.
+
+Academic Misconduct
+Sharing code with another student is cheating
+Sharing code for old assignments with another student is cheating
+Using previous solutions on the internet is cheating
+This, in particular, includes finding code on github
+Hiring someone to do your code for you is cheating
+Communicating information during exams (including quizzes) is cheating
+There may be other types of cheating that aren’t listed here. If you think you are in a gray area, then ask!!
+What is allowed?:
+
+discussing your code with others (highly encouraged)
+if you are the helper, you may look at the helpee’s code
+BUT: If you are the helpee, you may not look at the helper’s code
+If Prof. Childs believes a student has been involved with cheating, he will refer the case immediately to the Dean of Students.  If the Dean of Students concurs that cheating has occurred, then that student will receive an F in the course immediately.  Please note that providing help is cheating and a student providing help will also get an F.
+
+University Policies
+Accessible Education
+
+The University of Oregon is working to create more inclusive learning environments, including for students who identify as having a disability. At UO, 10% of students use the Accessible Education Center (AEC) and nationally an estimated 20% of undergraduates identify as having a disability. If there are aspects of the instruction or design of this course that result in disability-related barriers to your participation, please contact me—your success matters. 
+
+You are also encouraged to contact the Accessible Education Center in 164 Oregon Hall at 541-346-1155 or uoaec@uoregon.edu. The AEC offers a wide range of support services including note-taking, testing services, sign language interpretation and adaptive technology.  
+
+Accommodations for Religious Observations
+
+The University of Oregon respects the right of all students to observe their religious holidays, and will make reasonable accommodations, upon request, for these observances. If you need to be absent from a class period this term because of a religious obligation or observance, please fill out the Student Religious Accommodation Request fillable PDF form and send it to me within the first weeks of the course so we can make arrangements in advance. 
+
+Your Wellbeing
+
+Life at college can be very complicated. Students often feel overwhelmed or stressed, experience anxiety or depression, struggle with relationships, or just need help navigating challenges in their life. If you're facing such challenges, you don't need to handle them on your own--there's help and support on campus. 
+
+With respect to this course, I encourage you to reach out to me if you ever need a friendly ear.  I truly do care.  I also have college-age children, so I understand how this experience can be.
+
+Respect for Diversity
+
+You can expect to be treated with respect in this course. Both students and your instructors enter with many identities, backgrounds, and beliefs. Students of all racial identities, ethnicities, genders, gender identities, gender expressions, national origins, religious affiliations, sexual orientations, citizenship statuses, ability and other visible and non-visible differences belong in and contribute to this class and this discipline. All students are expected to contribute to a respectful, welcoming, and inclusive environment for every other member of the class.  
+
+Class rosters are provided to instructors with students’ legal names. Please let me know if the name or pronouns I have for you are not accurate. It is important to me to address you properly. 
+
+Mandatory Reporter Status
+
+I am a designated report. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex or gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of Students Office at 5411-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123. Additional resources are available at UO’s How to Get Support webpage.
+
+I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.
+
+Academic Disruption due to Campus Emergency
+
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by email, and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and/or access alternative assignments. Students are also expected to continue coursework as outlined in this syllabus or other instructions on Canvas.
+
+In the event that the instructor of this course has to quarantine, this course may be taught online during that time.
+
+Inclement Weather
+
+It is generally expected that class will meet unless the University is officially closed for inclement weather. If it becomes necessary to cancel class while the University remains open, this will be announced on Canvas and by email. Updates on inclement weather and closure are also communicated as described on the Inclement Weather webpage.

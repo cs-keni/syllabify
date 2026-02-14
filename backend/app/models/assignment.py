@@ -8,7 +8,9 @@
 from datetime import datetime
 from sqlalchemy import Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from ..db.base import Base
+
 
 class Assignment(Base):
     __tablename__ = "Assignments"
@@ -50,4 +52,4 @@ class Assignment(Base):
     schedule = relationship(
         "Schedule",
         back_populates = "assignments"
-        )
+    )

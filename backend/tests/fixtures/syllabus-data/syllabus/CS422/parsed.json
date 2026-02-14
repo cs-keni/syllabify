@@ -1,0 +1,35 @@
+{
+  "course": {
+    "id": "cs422",
+    "course_code": "CS 422",
+    "course_title": "Software Methodologies I",
+    "term": "Fall 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Juan Flores", "email": "jflore10@uoregon.edu"}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "MO", "start_time": "12:00", "end_time": "13:30", "timezone": "America/Los_Angeles", "location": "B040 PSC", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "WE", "start_time": "12:00", "end_time": "13:30", "timezone": "America/Los_Angeles", "location": "B040 PSC", "type": "lecture"}
+    ],
+    "location": "B040 PSC"
+  },
+  "assessment_categories": [
+    {"id": "exam_1", "name": "Exam 1", "weight_percent": 20, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "exam_2", "name": "Exam 2", "weight_percent": 20, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "project", "name": "Project", "weight_percent": 50, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "video", "name": "Video", "weight_percent": 5, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "participation", "name": "Participation", "weight_percent": 5, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "exam_1", "title": "Exam 1", "category_id": "exam_1", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Exam 1 20%"},
+    {"id": "exam_2", "title": "Exam 2", "category_id": "exam_2", "type": "final", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Exam 2 20%"},
+    {"id": "project_1", "title": "Group Project", "category_id": "project", "type": "project", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 50, "points": null, "recurrence": null, "policies": {"late_policy": "10% penalty; not accepted after 48 hours", "late_pass_allowed": false}, "confidence": 0.95, "source_excerpt": "Project 50%"},
+    {"id": "video_1", "title": "Video", "category_id": "video", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 5, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Video 5%"},
+    {"id": "participation_1", "title": "Participation", "category_id": "participation", "type": "participation", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 5, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Participation 5%"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

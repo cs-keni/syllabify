@@ -19,7 +19,7 @@ export default function SecuritySetup() {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   if (!user) return <Navigate to="/login" replace />;
-  if (securitySetupDone) return <Navigate to="/" replace />;
+  if (securitySetupDone) return <Navigate to="/app" replace />;
 
   /** Updates a single question or answer at index i. */
   const update = (i, field, value) => {
@@ -53,7 +53,7 @@ export default function SecuritySetup() {
     setSubmitting(true);
     try {
       await completeSecuritySetup(filled);
-      navigate('/', { replace: true });
+      navigate('/app', { replace: true });
     } catch (err) {
       setError(err.message || 'Something went wrong.');
       setSubmitting(false);
@@ -62,7 +62,7 @@ export default function SecuritySetup() {
 
   return (
     <div className="mx-auto max-w-lg space-y-8">
-      <div className="text-center">
+      <div className="text-center animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">Security setup</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Set up security questions (one-time). Answers are stored securely.
@@ -70,7 +70,7 @@ export default function SecuritySetup() {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-4"
+        className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-4 animate-fade-in-up [animation-delay:200ms]"
       >
         {error && (
           <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-button px-3 py-2">
@@ -119,7 +119,7 @@ export default function SecuritySetup() {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-button bg-accent py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50 transition-colors"
+          className="w-full rounded-button bg-accent py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50 transition-colors duration-200"
         >
           {submitting ? 'Saving…' : 'Save and continue'}
         </button>
