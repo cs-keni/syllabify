@@ -1,0 +1,44 @@
+{
+  "course": {
+    "id": "math343",
+    "course_code": "MATH 252",
+    "course_title": "MATH343",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Professor David Levin",
+        "email": "dlevin@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": "MTWF\t1"
+  },
+  "assessment_categories": [
+    {
+      "id": "general",
+      "name": "General",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

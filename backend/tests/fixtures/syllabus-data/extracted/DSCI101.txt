@@ -1,0 +1,387 @@
+DSCI 101 Foundations of Data Science I
+
+University of Oregon, Data Science Program
+
+What is this course about?
+
+Welcome to DSCI 101! This course utilizes a quantitative approach to explore fundamental concepts in data science.
+
+Students will develop key skills in programming and statistical inference as they interact with real-world data sets across a variety of domains. Ethical ramifications of data collection, data-driven decision-making, and privacy will be explored. This course is designed to be accessible to students without prior experience in programming or statistics. 
+
+What will you learn?
+
+Upon successful completion of this course, each student should be able to:
+
+Discover, organize, analyze, and visualize data using the Python programming language.
+
+Develop and test null and alternative hypotheses to answer domain-specific  (biology, business, economics, political science, journalism, etc.) questions.
+
+Apply concepts of statistical inference, including sampling and simulation, to create and test models.
+
+Course Logistics
+
+Prerequisites: None - This course is explicitly designed for students of any major who have not previously taken statistics or computer science courses. No math skills beyond basic arithmetic.
+
+Major Requirement: Data Science majors must take this course graded; all others can take it graded or Pass/No pass.
+
+Lectures: Tuesdays and Thursdays from 4:00-5:20 pm in Straub 145. Lectures will introduce new course content, guide students through in-class demos, review content periodically throughout the term, and provide time for students to work on Projects. Students are expected to read the assigned reading prior to lecture. During lectures, students will test their knowledge and provide input on the course through PollEverywhere questions (usually 2-10 per lecture). 
+
+Slides will be posted on Canvas before the lecture. The professor will also be available at the end of lecture to answer short questions from students.
+
+Lab: In-person for 2 hours on Fridays starting in Week 1. Lab sections will be led by Graduate Employees (GEs), with assistance from undergraduate Learning Assistants (LAs). Labs are a great opportunity for hands-on practice with programming, collaborating with your peers, learning about solutions for commonly-missed problems, and completing the lab assignments with guided help from the teaching team. The locations/times are shown in the following table:
+
+Teaching Team and Office Hours 
+
+Contact: Have questions about a homework problem or assignment? You can use email, Canvas messages, or the Canvas Discussion board. Questions related to grading, accessible accommodations, or other course-related issues should be directed to the instructor. For questions or concerns about lab, please contact your GE. 
+
+If you have a question about a programming problem, especially if you think the answer will benefit others in the class, we encourage you to post your question to the Discussion board on Canvas. However, you can also send a private message or email to any of the teaching team with programming questions.
+
+The instructor generally reads and responds to emails and Canvas messages between 9am-5pm from Monday-Friday. Messages sent outside of these hours will receive a reply on the next business day.
+
+Office hours: The instructor, GEs and LAs all have office hours (see schedule below). Office hours are for getting help on course assignments, questions about course content, review of grades on prior assignments, or general questions about data science/ programming. All office hours are via Zoom unless a physical room location is included on the schedule. Office hours start the second week of class and continue through Week 10. There are no office hours during Finals Week.
+
+For both in-person and Zoom office hours, you must plan to arrive no later than 10 minutes before the end of the scheduled time. Office hours that are currently empty of students in the last 10 minutes may end early.
+
+If you have problems at office hours (i.e. broken Zoom link, no one in the room at the scheduled time), please contact the instructor!
+
+Teaching Team Office Hours:
+
+Smith – Tuesdays 11am - 1pm in PAC203a
+
+Nafisul – Mondays and Tuesdays 8am – 10am, Wednesdays 8am – 9am on Zoom.
+
+Christian – Tuesdays 2pm – 4pm, Thursdays 10am – 12pm, location on Zoom
+
+Harini – Mondays 11am – 2pm, on Zoom
+
+Layla – Mondays 4:30pm – 6:30pm on Zoom
+
+One-on-one appointments: The instructor is also available by appointment, especially if you cannot normally attend office hours due to a scheduling conflict. Please send the instructor an email if you’d like to schedule a 30–60-minute meeting either in person or over Zoom.
+
+Course Materials
+
+Textbook:   Computational and Inferential Thinking: The Foundations of Data Science., a free online textbook that includes Jupyter notebooks and public data sets for its examples.
+
+Jupyter Hub: This is the main space where you will access and complete all lab assignments, homework assignments, and in-class demos for this course. You can find detailed instructions for accessing the JuptyerHub here. Log in to Talapas at https://ondemand.talapas.uoregon.edu with your DuckID (i.e., the string before @uoregon.edu in your email address) and password. Navigate to the DSCI101 & DSCI102 JupyterHub under the Interactive Apps tab. Talapas is used by other classes and researchers at UO, so please be mindful of its computational resources and remember to save and shut down your Jupyter Notebook when you are finished with your session.
+
+PollEverywhere: This is the service we will use for in-class questions (https://www.polleverywhere.com/). You are encouraged to register for a free account using your first and last name as it appears on Canvas, which will ensure that your participation is always properly recorded and accredited to you. Answers can be submitted via a smartphone or a laptop that you bring to class.
+
+Computer: You will need access to a computer in order to complete assignments for this class. Ideally, having a portable computer (laptop or tablet with a keyboard) is preferred and will allow you to work on demos during lecture and assignments during labs. However, some students have had difficulties working with Jupyter Hub on their personal laptops, which may be more likely if you have an older computer. If you experience technical difficulties, you may:
+
+1. Reach out to the instructor and/or GEs, who may have helpful suggestions for you.
+
+2. Log into your Jupyter Hub and complete assignments using a computer at one of the UO libraries (https://library.uoregon.edu/accessibility). Just don’t forget to log out when you are done!
+
+3. Laptops are also available to rent from the UO libraries for up to 4 hours at a time, which may be useful for lab sessions (https://library.uoregon.edu/access-services/borrowing/laptop-checkout-uo-students-staff-and-faculty).
+
+Course Outline
+
+*Note that assignment due dates are subject to change in rare circumstances, please check Canvas for the most accurate due dates for assignments.
+
+All readings are from the class textbook Computational and Inferential Thinking: The Foundations of Data Science, unless otherwise indicated.
+
+Additional Course Information
+
+Time Expectations
+
+You should expect to spend an average of 12 hours per week on this course, including 5 hours of in-class time during lecture and lab and up to 8 hours outside of class time for studying and completing assignments. The amount of time will fluctuate from week to week. If you are spending more time than this, you should contact the instructor to discuss the situation.
+
+Attendance, Absences, Late Work, and Make-up Policy 
+
+I recognize that students have many additional responsibilities outside of this class, which may result in missed attendance or assignments. However, attendance is important because we will develop our skills through in-class activities that require your active engagement. Excessive absences make it difficult to learn well and succeed in the course.
+
+The UO operates on a “reason-neutral” policy, which means that instructors cannot ask students why they were absent. So, if you need to miss a class, do not worry about emailing me and justifying your absence. This course is designed to accommodate a reasonable number of student absences (discussed in detail below).
+
+We also acknowledge that our UO community will still be navigating COVID-19, and some students will need to isolate and rest if they become ill. Please take absences only when necessary, so when they are necessary, your prior attendance will have positioned you for success. Students with COVID are encouraged to seek guidance and resources at UO’s COVID-19 Safety Resources webpage.
+
+Lecture Attendance: Attendance at lectures is not required, but strongly encouraged. Data from prior terms of this course show a strong correlation between students who attend lectures and higher final grades. Attendance will be documented by monitoring student participation in PollEverywhere activities during lectures, and the level of participation will be taken into account when calculating final grades. It is each students responsibility to ensure that they are registered for PollEverywhere and their name matches what is listed on Canvas.
+
+Lab Attendance: Friday labs are an excellent opportunity to work on the weekly lab assignments and practice programming with GEs and LAs. Lab attendance is required and worth 5% of your final grade (see Grades below). Students may be allowed to leave lab early, but they must show their GE that they have completed and submitted the assignment. 
+
+Late Assignments: A majority of assignments for this course (labs, homework, projects) are structured so that you have plenty of time to complete them, even if you are absent for one or more days. It is each student’s responsibility to plan their time appropriately for completing assignments in this course. Late work will be allowed up to 48 hours after the deadline with a late penalty of -2% per hour late from final score (calculated automatically by Canvas).
+
+In rare circumstances, late work may be accepted without penalty. Please reach out to the instructor if serious circumstances prevent you from completing assignments before the deadline.
+
+*When communicating with the instructor, please keep in mind the instructor’s normal email hours (see “Teaching Team and Office Hours” section). Emails sent after hours on the day the assignment is due will not be read until the next day and are unlikely to be awarded an extension.
+
+Classroom Community Expectations
+
+All members of the class (students, LAs, GEs, and the instructor) can expect to: 
+
+Participate and Contribute: All students are expected to participate by attending class, sharing ideas, and contributing to the learning environment. This includes preparing before class, arriving on time, following instructions, asking questions, and engaging respectfully and thoughtfully with others.
+
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. Everyone in the classroom is encouraged to share their pronouns and name or preferred nickname.
+
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback. Students should also respect each other’s learning process by minimizing distractions during lecture and lab time (talking, loud eating/drinking, packing up early, etc.). Don’t hesitate to contact me to ask for assistance or offer suggestions that might help us learn better.   
+
+Collaboration: Working together with others is an excellent way to learn and share insights when coding that is widely used in the “real world” in both business and research. However, directly sharing code via copying and pasting or having others complete your work for you does not contribute to learning. Some dos and don’ts of collaboration in this course include:
+
+Do: Collaborate and exchange ideas and approaches. Share your general strategies for solving a problem or remind your peers how to use certain functions. This is great practice! (secret phrase: “practice makes perfect”)
+
+Don't: Copy and paste code. Both those who copy and those who provide the copy will face consequences (see Academic Misconduct below). Do not post solutions on Canvas or elsewhere.
+
+Generative AI Systems
+
+Generative artificial intelligence (GenAI) systems, such as ChatGPT, are digital tools that generate content based on prompts provided by users. Like any tool students might use to engage in the work of a course—from library books to research databases to internet search engines—GenAI systems present opportunities for students to learn important skills, including creativity, critical thinking, ethical decision-making, and discerning use of resources, among others. GenAI is also a rapidly-developing technology, with services offered by many different companies, and it has been documented in many instances that the information generated by these services is not always true. While this may improve over time, anyone who uses these services is encouraged to verify any information generated by GenAI with real, credible sources.
+
+GenAI can help to supplement your learning, but it is not a replacement for time spent practicing and learning the material. As a 101 class, our course aims to teach you the fundamental principles of Python programming and statistics. Learning a new subject (or two) is difficult and you may be tempted to take the “easy way out” by over-using GenAI to complete your assignments for you. However, taking these shortcuts now will only harm you later on, whether in this class (e.g. quizzes and the final exam) or in future classes or even your career. I encourage you to spend this time building a true foundation of knowledge that will last for a lifetime, rather than faking your way through it and harming your future.
+
+In this class, there will be times when it is appropriate to use these tools, and times when it is not appropriate. Students are permitted to use these programs to:
+
+Ask clarification questions about the fundamentals of programming or statistics (e.g. “What is a confidence interval and how is it calculated?”)
+
+Ask about how a certain function works, or how many functions are available to do “X” task.
+
+Try to work through the logic of something you don’t understand (e.g. “Why is the Monty Hall problem so confusing?”)
+
+Provide a portion of your code that you’ve written and ask for suggestions on how to make it more efficient. You should make sure you understand if the proposed changes actually work and, if they do, why they do.
+
+Inappropriate uses of GenAI systems include:
+
+Give the model a problem description (whether copy-pasted directly from an assignment or paraphrased) and ask it to generate code for you.
+
+Using GenAI to generate answers for any written work in this class.
+
+In many cases, talking to your instructor, GEs, LAs, classmates, or even just using Google is likely to yield better results. Inappropriate use of GenAI systems will count as academic misconduct and will be dealt with according to University policy (see “University Policies” section of this syllabus).
+
+Assignments and Grading
+
+All Jupyter Notebook assignments (aside from quizzes and the final exam) are available through the course Jupyter Hub. Students have access to all assignments from the start of the term, but suggested start dates for Homework assignments and Projects are listed in the course schedule. Assignments should be completed on the Jupyter Hub, then saved and downloaded to your local computer. Notebooks should then be compressed (zipped) before submitting to Canvas.
+
+Homework: Assigned weekly on Mondays and will usually be due Thursday at 11:59pm the week after the homework is assigned. Homework assignments help you apply the material discussed in class and let you evaluate your current level of understanding of course topics. Grader checks will let you know if you are on the right track, but not if you have exactly the right answer. Students should attend office hours and/or compare your work with your peers to verify if you have the correct answer before submitting.
+
+Lab assignments: Covered weekly in lab and due the next Tuesday at 11:59pm. Lab assignments allow you to practice new Python concepts with help from teaching staff and auto-graders to help you get to the correct answer. Students should be able to complete most, if not all, of the assignment in lab. Passing all of the grader checks in the lab assignment does not guarantee 100%.
+
+Quizzes: There are three 30-minute, 15-question, multiple-choice quizzes in lab during weeks 3, 5 and 8. These must be taken in-person in your assigned lab section at the end of lab.
+
+Accessible Education Center: Due to the back-to-back nature of the lab sections, please request to take quizzes at the AEC if requesting extra time.
+
+Projects: Two course projects will be completed during the term. These are significantly longer than homework assignments (2-3x as long) and build on Python and statistics skills learned over several weeks of the course. Students are encouraged to begin working on projects early and to attend office hours and labs for help if necessary. Grader checks will let you know if you are on the right track, but not if you have exactly the right answer. Students should attend office hours and/or compare your work with your peers to verify if you have the correct answer before submitting.
+
+Final: The final quiz will be held in person during finals week for 2 hours. The quiz will be cumulative, use multiple-choice questions, and should take approximately 1 hour to complete. Students should plan on attending the in-person final quiz, since a make-up final quiz is offered only under rare circumstances. Please see the university policy on final exams and reach out to the instructor as soon as possible if you have a serious schedule conflict.
+
+Grading and Feedback: For most assignments in this course, grading is completed by the instructor using auto-grading features that are incorporated into assignments. This allows for rapid turnaround of grades for such a large class. Feedback is available through zipped files uploaded as a comment to each assignment. Students are encouraged to review the questions they missed by looking at the attached marksheet and rubric for each assignment. A few of the commonly missed questions on the most recently graded homework or project will be covered in labs by the GEs. For greater detail on individual missed questions not covered in labs, students should attend office hours with the instructor or GEs. 
+
+This course does not use any curving methods for either individual assignments or final grades, but the total points possible for an assignment may be lowered if no students achieved 100%.
+
+Regrading: If you believe the auto-grader made a mistake in grading your assignment, you must reach out to the instructor within 1 week of when grades are released for an assignment. Sending an email is preferred and please include a screenshot of your code and a brief explanation of why you believe you should not have been marked off. Regrading requests due to incorrect submissions (i.e. submitting the wrong assignment on Canvas) must also be raised within 1 week of when grades are released and are subject to a 20% late penalty.
+
+Grades: The final course grade will be determined using these weighted components:
+
+Lab Attendance 5%
+
+Lab Assignments 24%  (8 x 3%)
+
+Homework 35%  (7 x 5% each)
+
+Projects 14% (2 x 7%) 
+
+Quizzes 15% (3 x 5%)
+
+Final Exam 7% 
+
+Extra credit – up to 3%
+
+Course introduction quiz 0.5%
+
+Survey participation – up to 1% per survey
+
+Lecture participation via PollEverywhere 0.5%
+
+PollEverywhere participation (proportion of lectures attended and PE questions answered) and EC is calculated at the end of term. The method for awarding extra credit will also be determined at end of term.
+
+Your final letter grade in the course will be determined using the following scale. 
+
+*DSCI majors must take this course graded, and all others may choose to take it graded or P/NP. For graduate students taking the course P/NP, a passing grade must be at least 80%. 
+
+Syllabus Changes
+
+The syllabus is subject to change throughout the term. Any changes will be announced in class and on Canvas. Please check Canvas for the most up-to-date version of the syllabus and assignments.
+
+University Policies
+
+Access and Accommodations
+
+The University of Oregon and I are dedicated to fostering inclusive learning environments for all students and welcomes students with disabilities into all of the University's educational programs. The Accessible Education Center (AEC) assists students with disabilities in reducing campus-wide and classroom-related barriers. If you have or think you have a disability (https://aec.uoregon.edu/content/what-disability) and experience academic barriers, please contact the AEC to discuss appropriate accommodations or support. Visit 360 Oregon Hall or aec.uoregon.edu for more information. You can contact AEC at 541-346-1155 or via email at uoaec@uoregon.edu.
+
+Accommodations for Religious Observances 
+
+The University of Oregon respects the right of all students to observe their religious holidays, and will make reasonable accommodations, upon request, for these observances. If you need to be absent from a class period this term because of a religious obligation or observance, please fill out the Student Religious Accommodation Request fillable PDF form and send it to me within the first weeks of the course so we can make arrangements in advance.  
+
+Your Wellbeing
+
+Life at college can be very complicated. Students often feel overwhelmed or stressed, experience anxiety or depression, struggle with relationships, or just need help navigating challenges in their life. If you're facing such challenges, you don't need to handle them on your own--there's help and support on campus.  
+
+As your instructor if I believe you may need additional support, I will express my concerns, the reasons for them, and refer you to resources that might be helpful. It is not my intention to know the details of what might be bothering you, but simply to let you know I care and that help is available. Getting help is a courageous thing to do—for yourself and those you care about. 
+
+University Health Services helps students cope with difficult emotions and life stressors. If you need general resources on coping with stress or want to talk with another student who has been in the same place as you, visit the Duck Nest (located in the EMU on the ground floor) and get help from one of the specially trained Peer Wellness Advocates.  
+
+University Counseling Services (UCS) has a team of dedicated staff members to support you with your concerns, many of whom can provide identity-based support. All clinical services are free and confidential. Find out more at counseling.uoregon.edu or by calling 541-346-3227 (anytime UCS is closed, the After-Hours Support and Crisis Line is available by calling this same number). 
+
+Basic Needs
+
+Being able to meet your basic needs is foundational to your success as a student at the University of Oregon. If you are having difficulty affording food, don’t have a stable, safe place to live, or are struggling to meet another need, visit the UO Basic Needs Resource page for information on how to get support. They have information food, housing, healthcare, childcare, transportation, technology, finances (including emergency funds), and legal support.
+
+If your need is urgent, please contact the Care and Advocacy Program by calling 541-346-3216, filling out the Community Care and Support form, or by scheduling an appointment with an advocate.
+
+Respect for Diversity
+
+You can expect to be treated with respect in this course. Both students and your instructor(s) enter with many identities, backgrounds, and beliefs. Students of all racial identities, ethnicities, genders, gender identities, gender expressions, national origins, religious affiliations, sexual orientations, citizenship statuses, ability and other visible and non-visible differences belong in and contribute to this class and this discipline. All students are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class.  
+
+Class rosters are provided to instructors with students’ legal names. Please let me know if the name or pronouns I have for you are not accurate. It is important to me to address you properly. 
+
+Please let me know if aspects of the instruction, course design, or class activities undermine these principles in any way. You may also notify the Data Science Program at datascience@uoregon.edu.  For additional assistance and resources, you may also consider contacting the Division of Equity and Inclusion through their website or by phone (at 541-346-3175), or the Center for Multicultural Academic Excellence through their website or by phone (at 541-346-3479).
+
+Academic Integrity
+
+The University Student Conduct Code defines academic misconduct, which includes using unauthorized help on assignments and examinations, the use of sources without acknowledgment, and recording class without “the express written permission of the instructor(s).” Academic misconduct is prohibited at UO. All homework, labs, projects and quizzes turned in for the course must be your own work. Copying from other class members or other sources is not acceptable.
+
+You are also responsible for protecting your work. That is, you must take reasonable precautions to prevent your work from being copied. This means that if you store your assignment solutions on a shared server, the file permissions must be set to keep others from accessing your files. 
+
+If there is any question about whether an act constitutes academic misconduct, clarify the question with the instructor before committing or attempting to commit the act. If plagiarism or cheating is suspected, you will be contacted by one of us. We will assess the situation and determine the appropriate consequence, which can range from an F on an assignment to an F in the course. The situation will also be reported to the Office of Student Conduct and Community Standards. 
+
+Student Experience Surveys
+
+The midway and end-of-term Student Experience Surveys will be available beginning in week 4 and week 9, respectively. These are important opportunities to provide feedback about your learning experiences in both the lecture and lab sections. The key parts of the survey are the open-ended questions where you share concrete, actionable feedback and about the teaching practices that stand out to you. Extra credit will be added to each student’s final grade if 50%-80% of students complete each survey, according to the following table:
+
+Reporting Obligations
+
+I am a Designated Reporter under the University’s Prohibited Discrimination and Retaliation Policy. As a Designated Reporter, I will direct students who disclose prohibited discrimination and harassment, including sexual harassment or violence, to resources that can help. I am also obligated to report the information shared with me to the University’s Title IX Coordinator/Office of Investigations and Civil Rights Compliance. Recognizing that students may be fearful about what will happen when a report is submitted to the University, an OICRC team member will reach out to you to share information, options, and support resources. You may request supportive measures from OICRC without sharing additional information about your experience, including a No Contact Directive and academic supportive measures. 
+
+Students who have experienced sexual assault, relationship violence, sex or gender-based bullying, stalking, and/or sexual harassment may seek confidential resources and help at safe.uoregon.edu. Students may call the SAFE 24-hour hotline at 541-346-SAFE [7244].
+
+In addition, students experiencing any form of prohibited discrimination or harassment may find information and resources at investigations.uoregon.edu or contact the non-confidential Title IX Coordinator/OICRC at 541-346-3123 or the Dean of Students Office at 541-346-3216 for help. Specific details about confidentiality of information and reporting obligations of employees can be found at investigations.uoregon.edu/employee-responsibilities.
+
+Clery Crimes: On an annual basis, the university is required to compile and publish campus crime statistics. If you disclose a crime that occurred on university owned or controlled property, information about that crime will be shared with the Clery Coordinator in a de-identified manner, meaning that your name and contact information will not be shared with the Clery Coordinator.
+
+Mandatory Reporting of Child Abuse: Under Oregon law, UO employees, including faculty, staff, and graduate employees, are mandatory reporters of child abuse. If you disclose information about child abuse to a UO employee, whether you are reporting your own experience or child abuse or neglect that someone else experienced, I am required to report that information to law enforcement or the Department of Human Services.  Please refer to the following link for detailed information about mandatory reporting: Mandatory Reporting of Child Abuse and Neglect.
+
+Pregnancy Modifications: Pregnant and parenting students are eligible for academic and work modifications related to pregnancy, childbirth, loss of pregnancy, termination of pregnancy, lactation, and related medical conditions. To request pregnancy-related modifications, students should complete the Request for Pregnancy Modifications form on the OICRC website. OICRC coordinates academic and other modifications for pregnant and parenting students to ensure students can continue to access their education and university programs and activities.
+
+Academic Disruption due to Campus Emergency
+
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by email, and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and/or access alternative assignments. Students are also expected to continue coursework as outlined in this syllabus or other instructions on Canvas.
+
+Inclement Weather
+
+It is generally expected that class will meet unless the University is officially closed for inclement weather. If it becomes necessary to cancel class while the University remains open, this will be announced on Canvas and by email. Updates on inclement weather and closure are also communicated as described on the Inclement Weather webpage.
+
+CRN | Time | Location | GE | LA(s)
+
+21901 | 9:00-10:50 | 262 LIL | Nafisul | Layla
+
+21902 | 11:00-12:50 | 232 LIL | Nafisul | Layla
+
+21903 | 1:00-2:50 | 255 LIL | Christian | Harini
+
+21904 | 3:00-4:50 | 203 CON | Christian | Harini
+
+Name | Role | Email | Zoom link
+
+Dr. Caitlin Smith (they/them) | Instructor | csmith29@uoregon.edu | NA
+
+Nafisul Huq (he/him) | GE | nhuq@uoregon.edu | https://uoregon.zoom.us/j/99617227632?pwd=TVpoVVNhbW1zc2tnQ05TNFNOR1d0dz09
+
+Christian Sardar | GE | csardar@uoregon.edu | https://uoregon.zoom.us/my/csardar
+
+Layla Martinez | LA | lmarti20@uoregon.edu | https://uoregon.zoom.us/j/94430590256
+
+Harini Sachidhanad | LA | harinis@uoregon.edu | https://uoregon.zoom.us/j/99155772195
+
+Week | Date | Lecture | Readings | Assignment(s) due @ 11:59 pm
+
+1 | 7-Jan-25 | Lecture 1: Introduction to Computing, Python | 1
+
+1 | 9-Jan-25 | Lecture 2: Cause and Effect vs. Association | 2, 3
+
+1 | 10-Jan-25 | Lab 1: Expressions
+
+2 | 14-Jan-25 | Lecture 3: Data Types, Conversions, Arrays | 4, 5 | Lab 1
+
+2 | 16-Jan-25 | Lecture 4: Building Tables | 6, 6.1-6.4 | HW 1
+
+2 | 17-Jan-25 | Lab 2: Data Types and Arrays
+
+3 | 21-Jan-25 | Lecture 5: Charts, Histograms, Functions | 7, 8, 8.1 | Lab 2
+
+3 | 23-Jan-25 | TBA* | HW 2
+
+3 | 24-Jan-25 | Lab 3: Tables, Quiz 1 | Quiz 1 in lab
+
+4 | 28-Jan-25 | Lecture 7: Group, Join | 8.2-8.5 | Lab 3
+
+4 | 30-Jan-25 | Lecture 8: Conditionals, iterations | 9, 9.1-9.3 | HW 3
+
+4 | 31-Jan-25 | Lab 4: Functions and Visualizations
+
+5 | 4-Feb-25 | Lecture 9: Chance, probability, sampling | 9.4, 9.5 | Lab 4
+
+5 | 6-Feb-25 | Lecture 10: Models, distributions | 10, 10.2-10.4 | HW 4
+
+5 | 7-Feb-25 | Lab 5: Simulations | Quiz 2 in lab
+
+6 | 11-Feb-25 | Lecture 11: Hypothesis testing | 11, 11.1, 11.2 | Lab 5
+
+6 | 13-Feb-25 | Lecture 12: Decisions, quantifying uncertainty | 11.3-11.4 | HW 5
+
+6 | 14-Feb-25 | Lab – Finish Project 1 | Project 1
+
+7 | 18-Feb-25 | TBA*
+
+7 | 20-Feb-25 | Lecture 13: A/B testing, Causality | 12.1-12.2 | HW 6
+
+7 | 21-Feb-25 | Lab 6: Therapeutic touch
+
+8 | 25-Feb-25 | Lecture 14: Permutation Test | 12.3 | Lab 6
+
+8 | 27-Feb-25 | Lecture 15: Bootstrap | 13.1, 13.2 | HW 7
+
+8 | 28-Feb-25 | Lab 7: Crime and Penalty | Quiz 3 in lab
+
+9 | 4-Mar-25 | Lecture 16: Confidence Intervals | 13.3, 13.4 | Lab 7
+
+9 | 6-Mar-25 | TBA*
+
+9 | 7-Mar-25 | Lab 8: Confidence Intervals
+
+10 | 11-Mar-25 | Lecture 17: Center and Spread | 14. 14.1, 14.2 | Lab 8
+
+10 | 13-Mar-25 | Lecture 18: Ethics
+
+10 | 14-Mar-25 | Lab -- Work on Project 2 | Project 2
+
+Finals | 18-Mar-25 | Final exam at 12:30 pm
+
+TBA* = Flex days are built in for illness,  bad weather, or if some topics require additional time than anticipated. Check Canvas announcements for lecture updates
+
+Letter Grade | Range | Pass/No Pass*
+
+A+ | 100% to 97% | Pass
+
+A | < 97% to 94% | Pass
+
+A- | < 94% to 90% | Pass
+
+B+ | < 90% to 87% | Pass
+
+B | < 87% to 84% | Pass
+
+B- | < 84% to 80% | Pass
+
+C+ | < 80% to 77% | Pass
+
+C | < 77% to 74% | Pass
+
+C- | < 74% to 70% | Pass
+
+D+ | < 70% to 67% | No pass
+
+D | < 67% to 64% | No pass
+
+D- | < 64% to 60% | No pass
+
+F | < 60% to 0% | No pass
+
+Response Rate | 50% | 60% | 70% | 80%
+
+Extra Credit (%) | 0.25 | 0.50 | 0.75 | 1.00

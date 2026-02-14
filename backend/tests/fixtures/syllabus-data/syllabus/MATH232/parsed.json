@@ -1,0 +1,138 @@
+{
+  "course": {
+    "id": "math232",
+    "course_code": "Math 232",
+    "course_title": "Instructor: Ryan Takahashi Office Hours: M 2:00-3:30, R 2:45-3:45, or by ap- Class Meetings: MTWR 4:",
+    "term": "Fall 2023",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Ryan Takahashi",
+        "email": "rtakahas@uoregon.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": null,
+        "email": "uoaec@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm_exams",
+      "name": "Midterm Exams",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final_exam",
+      "name": "Final Exam",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Homework 20%"
+    },
+    {
+      "id": "midterm_exams_1",
+      "title": "Midterm Exams",
+      "category_id": "midterm_exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Midterm Exams 25%"
+    },
+    {
+      "id": "final_exam_1",
+      "title": "Final Exam",
+      "category_id": "final_exam",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Final Exam 30%"
+    }
+  ],
+  "grading_structure": {
+    "type": "bucketed",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

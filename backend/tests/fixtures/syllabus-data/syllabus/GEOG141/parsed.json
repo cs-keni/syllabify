@@ -1,0 +1,84 @@
+{
+  "course": {
+    "id": "geog141",
+    "course_code": "GEOG 141",
+    "course_title": "Jump to Today",
+    "term": "Spring 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Dr. Chantel Saban",
+        "email": "csaban@uoregon.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": null,
+        "email": "tbrundid@uoregon.edu"
+      },
+      {
+        "id": "inst-2",
+        "name": null,
+        "email": "kianaw@uoregon.edu"
+      },
+      {
+        "id": "inst-3",
+        "name": null,
+        "email": "dsailors@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "the_combined_lab_and_quiz_are_",
+      "name": "The combined lab and quiz are worth",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "the_combined_lab_and_quiz_are__1",
+      "title": "The combined lab and quiz are worth",
+      "category_id": "the_combined_lab_and_quiz_are_",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "The combined lab and quiz are worth 50%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

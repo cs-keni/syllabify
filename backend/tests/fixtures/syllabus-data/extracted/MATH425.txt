@@ -1,0 +1,338 @@
+University of Oregon Fall 2024
+MATH 425/525: Statistical Methods
+Instructor: Liliana Pazdan-Siudeja Office: 333E Tykeson Hall
+Email: lpazdans@uoregon.edu Office Hours: Tu, W, F 11:00-11:45am
+(or by appointment)
+Prerequisites: Satisfactory score on the Math Placement Exam
+Text and Required Materials:
+(1) Text: Introduction to the Practice of Statistics, 9th (or newer) edition, by
+Moore/McCabe/Craig. We will (likely) cover chapters 1-10.
+(2) Access to Excel (you can check university’s website to get a free access)
+https:/service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=32786
+(3) A Scientific, non-graphing Calculator
+Course Description: Critical elements of descriptive and inferential statistics; mea-
+sures of center and spread, graphical representation of data, confidence intervals,
+hypothesis testing, basic probability distributions. Focus on both theoretical and
+practical aspects of statistics.
+Learning Objectives: A successful student should be able to succeed at an exam
+which focuses on the major objectives and contains a lesser focus on supporting ob-
+jectives (in particular, drawing upon these for applied exercises).
+Major Objectives − By the end of the course a successful student will be able to
+• perform basis descriptive statistical analysis of a categorical and quantitative
+variable
+• use Normal random variable in various calculations
+• recognize different types of random variables and be able to make calculations
+for them
+• create different types of random samples
+• construct confidence intervals for different parameters
+• test hypotheses for different parameters
+Excel: This class has a computer lab component; on Wednesdays we will have our
+laboratories (in 445 MCK). We will use Excel as the software. Excel may not be the
+software of choice for every scientist, but it is ubiquitous in the world of business, and
+it has an easier learning curve than some other packages (R, SAS, MiniTab). Please
+make sure that you will have access to it. You can check university’s website to get a
+freeaccesshttps:/service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=32786
+FileswithproblemsthatwewillanalyzeinourlabswillbealwaysavailableonCanvas
+before the class time. I expect students to come prepared for our lab meetings and
+review lab-relevant materials beforehand to fully benefit from our time in a lab.
+1
+
+2
+Assessment and Grades:
+Homework in Excel 22%
+WebWork 12%
+Two Midterms 22 % each
+Final Exam 22%
+Grades are assigned according to the scale
+A 90–100%
+B 80–89%
+C 70–79%
+D 60–69%
+F < 60%
+Plus and minus grades are awarded to the top and bottom 2 percentage points in
+each grade bracket (so 98–100 is A+ and 90–92 is A-).
+I reserve the right to apply a course adjustment to grades at the end of the term.
+Being active in class, might be taken into the account during establishing grades for
+“boundary cases”.
+The standards for each level of work:
+Please access the following link for details.
+https://math.uoregon.edu/wp-content/uploads/2014/12/MathGradingStandards-1tli4lj.pdf
+Homework in Excel Your homework assignments will be using Excel to complete.
+They will be submitted as a single Excel file (.xls or .xlsx) with each problem on its
+own (labeled) sheet/tab. Homework is to be submitted through the corresponding
+assignment on Canvas. When submitting your Excel file the name must be: last
+name.first name.xls (or xlsx). Any other format files uploaded will not be graded,
+and anything entered in the comment will also be ignored. It will be graded for your
+last attempt that was submitted till deadline, meaning anytime you complete some
+part of the assignment, you may upload an entirely revision. Excel should be the
+only software used for the problems, even when the text indicates otherwise. You
+solutions should be self-contained (i.e. with a clear reference to cells in Excel and
+using Excel functions). Homework uploaded up to one day after its original deadline
+will be graded without penalty. The lowest Excel score will be dropped.
+Homework on WebWork:
+A part of your homework will be given and collected via WebWork. WebWork is
+a free, web browser-based program that maintains and grades a pool of homework
+problems that have been selected by your instructor. You will usually have a week for
+completing WW assignment, with two extra days of reduced scoring (each problem
+done during that time will be worth 75% of its original value). This applies to all but
+the “Orientation” set.
+The due time of the WeBWorK homework will be posted on the WeBWorK webpage
+and will not be posted on Canvas.
+The lowest WebWork score will be dropped.
+
+3
+Login Into WebWork:
+Use https://uowebwork.uoregon.edu/webwork2/ to access WebWork assignments
+for this class. Among many sections you need to access YOURS, for Math 425.You
+will need to sign in using your regular UofO email credentials: your DuckID as your
+username and your UO email password for password. Once you have logged in, you
+can change your password, if you wish.
+WebWork Orientation:
+The first assignment you should complete in WebWork is called “Orientation”. It
+does not involve (much) math, but instead is intended to familiarize you with the
+interface of WebWork: how to look at problems, how to preview and enter answers,
+and so on. This assignment counts as your first homework assignment. Do it by the
+end of Friday night on Week 1 for credit. These are easy points!
+Exams:
+(1) Midterms: Tuesday of Week 5 and Friday of Week 8
+(2) Final Exam: Wednesday, December 11, 2024, 10:15 a.m, location TBA (Week
+11)
+The final exam will not be administered early. Note, you are expected to make the
+given exam times. There are no makeup exams. To accommodate for that, the lowest
+exam score (from all three exams) is dropped. This means if you miss an exam due
+to illness then than will be your dropped exam. This policy is in place because “life
+happens”.
+If you miss more than one exam, please note that I will not be able to drop ad-
+ditional exams for any reason. All students must be treated equally regardless of
+circumstances.
+Calculator Policy:
+Scientific and graphing calculators are good tools for learning, and some of the
+homework problems use them. You are welcome to use calculators on homework.
+But no calculators will be allowed on any of the exams in this course (unless stated
+otherwise). Students are expected to be able to perform basic arithmetic operations
+with fractions and decimals by hand.
+Communication: Our class will communicate through our Canvas site. Announce-
+ments and emails are archived there and automatically forwarded to your UO email,
+and can even reach you by text. Check and adjust your settings under Account →
+Notifications. If you contact me with a question, I will try to respond within one
+business day. I typically provide feedback on assignments graded by me within one
+week.
+Student Conduct: I plan to treat every student with respect and, as such, expect
+my students to show respect for me and for the class as a whole. Violations of the
+student conduct code result in the incident being included on your student conduct
+record and can result in a failing grade on any course work related to the violation
+or a failing grade in the course. The University of Oregon requires all instances of
+cheating be reported, no matter how small. Cheating includes, but is not limited to:
+
+4
+• Copying the work of another person (student or otherwise) and submitting it
+as your own
+• Using any materials except those explicitly approved during a test-taking sit-
+uation
+• Resubmitting graded work that was altered after being returned
+• Cooperating on written work for the course without being explicitly allowed
+to do so.
+For a list of other descriptions of cheating, see the Student Conduct Code,
+dos.uoregon.edu/conduct.
+Staying Safe in Classes:
+As the University of Oregon continues in-person instruction, instructors and students
+play a key role in keeping our community healthy and safe.
+Prevention:
+The best way to prevent illness is to avoid being exposed to the virus. There are
+some general precautions the CDC recommends to prevent the spread of respiratory
+diseases.
+• Stay up to date on your COVID-19 vaccines.
+• Wear a face covering that covers both your mouth and nose when indoors
+around others.
+• Wash your hands often with soap and water for at least 20 seconds.
+• Avoid touching your eyes, nose, and mouth.
+• Stay home if you are sick. Do not go to work or class.
+• Cover your cough or sneeze with a tissue, then throw the tissue in the trash.
+• Clean and disinfect frequently touched objects and surfaces.
+Support:
+The following resources are available to you as a student.
+• University Health Services or call (541) 346-2770
+• University Counseling Center or call (541) 346-3277 or (541) 346-3227 (after
+hrs.)
+• Academic Advising or call (541) 346-3211
+• Dean of Students or call (541)-346-3216
+Academic Conduct: The code of student conduct and community standards is at
+dos.uoregon.edu/conduct. In this course, it is appropriate to help each other on
+homework as long as the work you are submitting is your own and you understand it.
+It is not appropriate to help each other on exams, to look at other students exams,
+or to bring unauthorized material to exams. The University Student Conduct Code
+defines academic misconduct, which includes unauthorized help on assignments and
+examinations and the use of sources without acknowledgment. Academic misconduct
+is prohibited at UO. I will report misconduct to the Office of Student Conduct and
+Community Standard consequences can include failure of the course.
+Diversity and Inclusion. The University of Oregon community values diversity
+and seeks to foster equity and inclusion in a welcoming, safe, and respectful commu-
+nity. In this course, we will uphold these principles by encouraging the exploration,
+
+5
+engagement, and expression of distinct perspectives and diverse identities. We will
+value each class members experiences and contributions and communicate disagree-
+ments respectfully. Please notify me if you feel aspects of the course undermine these
+principles in any way.
+Learning Environment: The University of Oregon strives for inclusive learn-
+ing environments. Please notify me if the instruction or design of this course re-
+sults in disability-related barriers to your participation. You are also encouraged
+to contact the Accessible Education Center in 164 Oregon Hall at 541-346-1155 or
+uoaec@uoregon.edu.
+Title IX:
+I am a designated reporter. For information about my reporting obligations as an
+employee, please see Employee Reporting Obligations on the Office of Investigations
+andCivilRightsCompliance(OICRC)website. Studentsexperiencingsex-orgender-
+based discrimination, harassment or violence should call the 24-7 hotline 541-346-
+SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of
+prohibited discrimination or harassment may contact the Dean of Students Office at
+541-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123
+to request information and resources. Students are not required to participate in an
+investigation to receive support, including requesting academic supportive measures.
+Additional resources are available at investigations.uoregon.edu/how-get-support.
+I am also a mandatory reporter of child abuse. Please find more information at
+Mandatory Reporting of Child Abuse and Neglect.
+Basic Needs
+Any student who has difficulty affording groceries or accessing sufficient food to eat
+everyday, orwholacksasafeandstableplacetoliveandbelievesthismayaffecttheir
+performance in the course is urged to contact the Dean of Students Office (346-3216,
+164 Oregon Hall) for support.
+This UO webpage includes resources for food, housing, healthcare, childcare, trans-
+portation, technology, finances, and legal support:
+https://blogs.uoregon.edu/basicneeds/food/
+
+6
+Accessibility:
+For those of you who are currently registered with Accessible Education Center for
+a documented disability, please present your paperwork to me during the first week
+of the term so that we can design a plan for you. Those of you with a disability
+(or who might) but are not registered with AEC should contact them as soon as
+possible. It is much more likely that measures can be taken to provide adequate
+special accommodation if the organization is done through AEC. I have attempted
+to provide documents that are accessible. Please let me know if you need additional
+accommodations.
+Student Conduct:
+I plan to treat every student with respect and, as such, expect my students to show
+respect for me and for the class as a whole. Violations of the student conduct code
+result in the incident being included on your student conduct record and can result
+in a failing grade on any course work related to the violation or a failing grade in the
+course. The University of Oregon requires all instances of cheating be reported, no
+matter how small.
+Cheating includes, but is not limited to:
+-Looking at another student’s exam during a test
+-Copying the work of another person (student or otherwise) and submitting it as your
+own
+-Using any materials except those explicitly approved during a test-taking situation
+-Resubmitting graded work that was altered after being returned
+For a list of other descriptions of cheating, see the Student Conduct Code.
+Suggestions for Successful Study:
+Don’t get behind in your homework, reading, etc.
+Participate in class, ask questions, and make use of my office hours.
+Make friends with your classmates-you can find out for instance what material was
+covered when you missed the class or discuss homework problems with them.
+Read ahead in the book. Even reading the first few pages of each lesson will help the
+material sink in quicker during lecture and allow you to ask meaningful questions.
+Keep all your old homework assignments, midterms, and quizzes - most probably, you
+will find them useful when you are studying for future tests.
+Important Dates.
+Please, see http://registrar.uoregon.edu/calendars.html for details.
+Saturday of Week 1 - Last day to drop without a W
+Sunday of Week 1 - Last day to add/register for a class.
+Sunday of 7th week - Last day to withdraw (drop with a W or change to P/NP.)
+November 11 - Veteran’s Day (no classes)
+Thursday-Friday of 9th week - Thanksgiving break (no classes)
+Community Standards:
+The University of Oregon community is dedicated to the advancement of knowledge
+and the development of integrity. In order to thrive and excel, this community must
+preserve the freedom of thought and expression of all its members. The University of
+
+7
+Oregon has a long and illustrious history in the area of academic freedom and freedom
+of speech. A culture of respect that honors the rights, safety, dignity and worth of
+every individual is essential to preserve such freedom. We affirm our respect for the
+rights and well-being of all members.
+Expected Classroom Behavior:
+Students are expected to behave respectfully toward each other and toward the in-
+structor during class time. This includes refraining from using cell phones during
+lectures, unless allowed for instructional purposes by your instructor.
+Attendance:
+Attendance is not required but it is strongly encouraged, as it gives you a chance to
+ask questions and clarify any potential confusion.
+Academic Disruption. In the event of a campus emergency that disrupts aca-
+demic activities, course requirements, deadlines, and grading percentages are subject
+to change. Information about changes in this course will be communicated as soon
+as possible by email, and on Canvas. If we are not able to meet face-to-face, students
+should immediately log onto Canvas and read any announcements and/or access al-
+ternative assignments. Students are also expected to continue coursework as outlined
+in this syllabus or other instructions on Canvas.
+Staying Safe in Classes. As the University of Oregon continues in-person instruc-
+tion, instructors and students play a key role in keeping our community healthy and
+safe.
+Prevention: To prevent or reduce the spread of COVID-19 in classrooms and on
+campus, all students and employees must:
+• Comply with vaccination policy
+• Wash hands frequently
+• Complete daily self-checks
+• Stay home/do not come to campus if feeling symptomatic
+• Individuals with no symptoms or mild symptoms can get tested at McArthur
+CourtthroughUO’sMonitoringandAssessmentProgram. Masksarerequired
+at COVID-19 testing sites including in line outside.
+• VisittheExposureScenariopage(https://coronavirus.uoregon.edu/covid-exposure)
+page for information on reporting cases.
+Support: The following resources are available to you as a student.
+• University Health Services or call (541) 346-2770
+• University Counseling Center or call (541) 346-3277 or (541) 346-3227 (after
+hrs.)
+• Academic Advising or call (541) 346-3211
+• Dean of Students or call (541)-346-3216
+
+8
+Accommodation for Religious Observances
+The university makes reasonable accommodations, upon request, for students who
+are unable to attend a class for religious obligations or observance reasons, in accor-
+dancewiththeuniversitydiscriminationpolicywhichsays“Anystudentwho, because
+ofreligiousbeliefs,isunabletoattendclassesonaparticulardayshallbeexcusedfrom
+attendance requirements and from any examination or other assignment on that day.
+The student shall make up the examination or other assignment missed because of the
+absence.”Torequestaccommodationsforthiscourseforreligiousobservance, visitthe
+Office of the Registrar’s website (https://registrar.uoregon.edu/calendars/religious-
+observances) and complete and submit to the instructor the “Student Religious Ac-
+commodation Request” form prior to the end of the second week of the term.
+Basic Needs
+Any student who has difficulty affording groceries or accessing sufficient food to eat
+everyday, orwholacksasafeandstableplacetoliveandbelievesthismayaffecttheir
+performance in the course is urged to contact the Dean of Students Office (346-3216,
+164 Oregon Hall) for support.
+This UO webpage includes resources for food, housing, healthcare, childcare, trans-
+portation, technology, finances, and legal support:
+https://blogs.uoregon.edu/basicneeds/food/
+Diversity and Inclusion. TheUniversityofOregoncommunityvaluesdiversityand
+seekstofosterequityandinclusioninawelcoming, safe, andrespectfulcommunity. In
+this course, we’ll uphold these principles by encouraging the exploration, engagement,
+and expression of distinct perspectives and diverse identities. We will value each class
+member’sexperiencesandcontributionsandcommunicatedisagreementsrespectfully.
+Please notify me if you feel aspects of the course undermine these principles in any
+way.
+Inclement Weather
+It is generally expected that class will meet unless the University is officially closed
+for inclement weather. If it becomes necessary to cancel class while the Univer-
+sity remains open, this will be announced on Canvas and by email. Updates on
+inclement weather and closure are also communicated in other ways described here:
+https://hr.uoregon.edu/about-hr/campus-notifications/inclement-weather/inclement-
+weather-immediate-updates.
+Other information.
+• In case of inclement weather, please check Canvas for further instructions. In
+general, the university does not close for snow, etc. If it is not safe for you to
+come to campus, please be sure to email me right away.
+• As the university community adjusts to teaching and learning in the context
+of the COVID-19 pandemic, course requirements, deadlines, and grading per-
+centages are subject to change, i.e. the syllabus might be changed/updated.
+• I will try to answer emails received by 5pm the same day but please note that
+same-day response is not guaranteed if an email was received after that time
+OR during a weekend. If I do not respond to your email withing two days,
+
+9
+please resend it or approach me to let me know that you are awaiting my
+response. Thank you for your cooperation!
+• If you registered within the first week of classes, please let me know, so you
+can be added to WebWork and will be able complete assignments.

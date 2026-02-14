@@ -1,0 +1,69 @@
+{
+  "course": {
+    "id": "cs333",
+    "course_code": "CS 333",
+    "course_title": "Department of Computer Science, University of",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": null,
+        "email": "yingjiul@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "exercises",
+      "name": "Exercises",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exercises_1",
+      "title": "Exercises",
+      "category_id": "exercises",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Exercises 30%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

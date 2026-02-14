@@ -1,0 +1,148 @@
+{
+  "course": {
+    "id": "cs330",
+    "course_code": "CS 330",
+    "course_title": "Course Title: C/C++ and Unix",
+    "term": "Spring 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Contact Information",
+        "email": "jeec@uoregon.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": null,
+        "email": "kaive@uoregon.edu"
+      },
+      {
+        "id": "inst-2",
+        "name": null,
+        "email": "sshinaul@uoregon.edu"
+      },
+      {
+        "id": "inst-3",
+        "name": null,
+        "email": "makanib@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": "Deschutes 328\n\n\n\nGraduate Teaching"
+  },
+  "assessment_categories": [
+    {
+      "id": "programming_assignments",
+      "name": "programming assignments",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quiz",
+      "name": "Quiz",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "midterm",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "programming_assignments_1",
+      "title": "programming assignments",
+      "category_id": "programming_assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "programming assignments\n\n\n\n10%"
+    },
+    {
+      "id": "quiz_1",
+      "title": "Quiz",
+      "category_id": "quiz",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Quiz\n\n\n\n20%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "midterm",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "midterm\n\n\n\n20%"
+    }
+  ],
+  "grading_structure": {
+    "type": "bucketed",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

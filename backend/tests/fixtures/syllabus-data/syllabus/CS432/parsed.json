@@ -1,0 +1,130 @@
+{
+  "course": {
+    "id": "cs432",
+    "course_code": "CS 432",
+    "course_title": "Department of Computer Science",
+    "term": "Fall 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": null,
+        "email": "lijun@cs.uoregon.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": null,
+        "email": "balmain@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "class_participation",
+      "name": "Class participation",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "paper_review",
+      "name": "Paper Review",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "class_participation_1",
+      "title": "Class participation",
+      "category_id": "class_participation",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Class participation 5%"
+    },
+    {
+      "id": "class_participation_1",
+      "title": "Class participation",
+      "category_id": "class_participation",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Class participation 5%"
+    },
+    {
+      "id": "paper_review_1",
+      "title": "Paper Review",
+      "category_id": "paper_review",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Paper Review 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "bucketed",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

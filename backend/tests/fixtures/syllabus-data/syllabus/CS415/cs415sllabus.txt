@@ -1,0 +1,227 @@
+Course Schedule
+ 
+
+      CS 415      
+      Operating Systems      
+      Course Logistics (Fall 2025)      
+
+The LECTURE will be on Tuesday/Thursday, 16:00-17:20, 125 McKenzie Hall (MCK). The lecture slides will be posted before the class meeting, and the lectures will be live on ZoomLinks to an external site.. Lecture recordings will also be posted.
+
+The LAB will be on Thursday, B026 Klamath.
+
+The following abbreviations are used in the table below:
+
+OSC - Operating Systems Concepts text book
+TCPL - The C Programming Language book (A "to not be printed" copy is here Download here.)
+PIC - Programming in C
+LMP - Linux Man Pages
+DOC - Additional Documents
+All lecture slides, assignments, lab, and project materials will be available on Canvas.
+
+Week	Date	Topic	Readings	Assignments
+1	
+Sept. 30
+
+lecture-0-welcome.pdfDownload lecture-0-welcome.pdf
+lecture-1-introduction.pdfDownload lecture-1-introduction.pdf	
+OSC: Chapter 1
+TPCL: Chapter 1-3
+PIC: Program CompilationLinks to an external site., C BasicsLinks to an external site., ConditionalsLinks to an external site., Looping and IterationLinks to an external site., Arrays and StringsLinks to an external site., FunctionsLinks to an external site.
+Tutorial: Heaps and ADTs in C
+
+Lab 0
+Oct.
+2	lecture-2-structure.pdfDownload lecture-2-structure.pdf	
+OSC: Chapter 2
+LMP: read(2) Links to an external site., write(2) Links to an external site.
+PIC: Pointers Links to an external site., I/O Links to an external site., String Handling Links to an external site., File Access Links to an external site., Standard Libraries Links to an external site., Writing Larger ProgramsLinks to an external site.
+
+Tools: Oracle VirtualBox Links to an external site., UTMLinks to an external site., Git Links to an external site., Subversion Links to an external site., Valgrind Links to an external site., GDBLinks to an external site.
+
+Oct.
+2	LAB		
+Lab 1
+
+Project 1 (out: Oct. 3)
+
+2	Oct.
+7	
+lecture-3-system-calls.pdfDownload lecture-3-system-calls.pdf
+
+Code in lectures:
+stdout_buffer.cDownload stdout_buffer.c
+unbuffered_file_write_timed.cDownload unbuffered_file_write_timed.c
+buffered_file_write_timed.cDownload buffered_file_write_timed.c
+
+OSC: Chapter 2
+LMP: HomepageLinks to an external site.
+
+ 
+Oct.
+9	lecture-4-processes-1.pdfDownload lecture-4-processes-1.pdf	OSC: Chapter 3.1	 
+Oct.
+9	LAB	 	Lab 2
+3	Oct.
+14	
+lecture-4-processes-2-v2.pdfDownload lecture-4-processes-2-v2.pdf
+Code in lectures:
+process.zipDownload process.zip
+
+OSC: Chapter 3.2-3.3
+PIC: Process ControlLinks to an external site.
+LMP: fork(2) Links to an external site., execve(2) Links to an external site., execl(3) Links to an external site., wait(2) Links to an external site., exit(2) Links to an external site.
+
+ 
+Oct.
+16	lecture-5-ipc-v2.pdfDownload lecture-5-ipc-v2.pdf	
+OSC: Chapter 3.4-3.7
+DOC: POXIS Shared Memory API Download POXIS Shared Memory API, POXIS Message Queue APIDownload POXIS Message Queue API
+
+ 
+Oct.
+16	LAB	 	
+Lab 3
+
+ 
+
+4	Oct.
+21	
+Continue with IPC
+
+Code in lectures:
+ipc.zipDownload ipc.zip
+
+Oct.
+23	
+lecture-6-threads-v2.pdfDownload lecture-6-threads-v2.pdf
+
+OSC: Chapter 4
+PIC: Threads Links to an external site., IPC: Interrupts and SignalsLinks to an external site.
+
+Oct.
+23	LAB	 	
+Lab 4
+
+Project 1 (due: Oct. 24)
+
+Project 2 (out: Oct. 24)
+
+5	Oct.
+28	
+Continue with threads
+Code from lectures:
+thread.zipDownload thread.zip
+
+OSC: Chapter 5
+
+ 
+Oct.
+30	
+lecture-7-scheduling-v2.pdfDownload lecture-7-scheduling-v2.pdf
+
+Midterm Review:
+Midterm Exam Study Guide.docxDownload Midterm Exam Study Guide.docx
+Midterm Sample Coding Questions.docxDownload Midterm Sample Coding Questions.docx
+
+Manual of Functions (will be provided as part of exam): Manual.pdfDownload Manual.pdf
+
+Oct.
+30	LAB	 	Lab 5
+6	Nov.
+4	MIDTERM	MIDTERM	MIDTERM
+Nov.
+6	lecture-8-synchronization-v2.pdfDownload lecture-8-synchronization-v2.pdf	
+OSC: Chapter 6
+
+Papers:
+
+E.W. Dijkstra, " Solution of a Problem in Concurrent Programming Control," CACM, Vol. 8, Issue 9, September 1965.
+
+E.W. Dijkstra, " Cooperating Sequential Processes," The Origin of Concurrent Programming, pp. 65-138, Springer-Verlag, 2002.
+
+L. Lamport, " A New Solution of Dijkstra's Concurrent Programming Problem," CACM, Vol. 17, No. 8, August 1974.
+
+ 
+Nov.
+6	LAB	 	
+Lab 6
+
+ 
+
+7	Nov.
+11	NO CLASS	NO CLASS	 NO CLASS
+Nov.
+13	
+Continue with Synchronization:
+lecture-8-synchronization-v2.pdfDownload lecture-8-synchronization-v2.pdf
+
+Code from lectures:
+synchronization.zipDownload synchronization.zip
+
+OSC: Chapter 7
+PIC: Thread Programming: SynchronizationLinks to an external site., Thread Programming ExamplesLinks to an external site.
+LMP: POSIX Mutex LockLinks to an external site. POSIX, SemaphoreLinks to an external site., POSIX Condition VariableLinks to an external site.
+
+ 
+Nov.
+13	LAB	 	
+Lab 7
+
+Project 2 (due: Nov. 19)
+
+Project 3 (out: Nov. 14)
+
+8	Nov.
+18	
+Continue with Synchronization
+
+(Zoom Attend Only)
+
+OSC: Chapter 7	
+Nov.
+20	
+lecture-9-deadlocks.pdfDownload lecture-9-deadlocks.pdf
+
+(Zoom Attend Only)
+
+OSC: Chapter 8	 
+ Nov.
+20	LAB	 	Lab 8
+9	Nov.
+25	lecture-10-memory-v2.pdfDownload lecture-10-memory-v2.pdf	OSC: Chapter 9	
+Nov.
+27	
+NO CLASS
+
+Lecture slides provided as reference:
+
+lecture-11-advanced memory.pdfDownload lecture-11-advanced memory.pdf
+
+ 
+
+OSC: Chapter 10	
+NO CLASS
+
+Nov.
+27	LAB	 	Lab 9
+10	Dec.
+2	
+lecture-12-filesystem.pdfDownload lecture-12-filesystem.pdf
+Code: filesystem.zipDownload filesystem.zip
+
+OSC: Chapter 12 (optional), 13	 
+Dec.
+4	
+lecture-13-filesystem-implementation.pdfDownload lecture-13-filesystem-implementation.pdf
+Final Exam Study Guide.docxDownload Final Exam Study Guide.docx
+Manual for final.pdfDownload Manual for final.pdf
+
+OSC: Chapter 14	
+Dec.
+4	LAB	 	
+Lab 10
+
+Project 3 (due: Dec. 9)
+
+11	Dec. 11
+12:30-14:30	FINAL	FINAL	FINAL

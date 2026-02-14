@@ -1,0 +1,157 @@
+Course SyllabusAlternative formats
+Jump to Today
+Instructor: Dev Sinha
+
+Office Hours,  M 12-1 and W 9-10, Fenton 307.   Friday 12-1 on zoom at
+
+https://uoregon.zoom.us/j/5579048779Links to an external site..    or by appointment at other times.
+
+Email dps@uoregon.edu
+
+Class Meetings: M,Tu,W,F 1-1:50, 103 Peterson
+
+
+Primary text: Mathematical Reasoning: Writing and Proof, Version 2.1
+
+by Ted Sundstrom
+– Pdf on Canvas or online at: https://scholarworks.gvsu.edu/books/9/ .
+
+ 
+
+Goals, Outline and Tentative Schedule
+
+In this class you will learn how to think like a mathematician. We will learn and practice proof techniques used in mathematics and also get intensive practice in reading mathematics, expository writing in mathematics, and constructing and writing mathematical proofs. Mathematical content includes elementary set theory, number theory, and analysis.
+
+The basic outline of the course looks like this (referring to the primary text)
+
+Week	Topics	Textbook Sections
+1	Logical statements and direct proofs	1.1-1.2
+2	Direct proofs and proof by contradiction	3.1, 3.2, 3.3
+3	Proof by cases, division algorithm	3.4, 3.5
+4	Induction and recursion	4.1, 4.2, 4.3
+5	Operations and relationships on sets, Exam	5.1, 5.2
+6	Set operations, products and functions	5.3, 5.4, 6.1
+7	Functions, injections&surjections, composition	6.2, 6.3, 6.4
+8	Equivalence relations, modular arithmetic, Exam	7.2, 7.4
+9	Sequences	TBA
+10	Limits & Review	TBA
+
+
+
+Outcomes
+
+Upon completion of the course, students will be able to:
+(1) Recall important facts about mathematical content and
+mathematical/logical reasoning and employ basic techniques of problem solving effectively (2) Come to terms with a problem to prove by experimentation and conjecture.
+(3) Construct well-formulated conjectures from empirical evidence.
+(4) Construct and write mathematical proofs using standard methods of mathematical pro including direct proofs, mathematical induction, case analysis, and counterexamples.
+(5) Read, summarize, and evaluate written mathematical proofs.
+(6) Communicate mathematical reasoning through clear writing, effective reading compreh and persuasive oral communication.
+(7) Become familiar with mathematical concepts outside of calculus and high school math
+
+(8) Employ technology effectively both in exploring ideas and in communicating one’s results
+
+(9) Develop habits and attitudes attendant with effective problem-solving: good time management,  positive approaches to work, acceptance of one’s mistakes and others’ feedback, graciousness in providing feedback to others, and a willingness to seek appropriate avenues of help when needed.
+
+ 
+
+Expected Norms:
+
+Each class member is expected to:
+• Listen to seek understanding.
+• Value the contribution of each class member.
+
+• Critique ideas with respect.
+
+ 
+
+Primary Class Structure - Guided Practice Assignments and Worksheets:
+
+Before each class meeting (except quiz or exam review or exam days), with plenty of lead time, you will be given an assignment called Guided Practice for that meeting.  It will consist of a list of Learning Objectives, print and video resources for you to read and view, and a short list of activities and questions to respond to prior to class.  You will also be provided with a worksheet in advance of class.  
+
+You are to do the reading/ watching, look at the guided practice problems and evaluate whether you could do them.  You will then start on the worksheet, giving yourself 30 minutes to start the problems.  Before class, you will then enter on Canvas (text entry or file upload):
+
+Reflections on reading and guided practice.  This could be as simple as "I understand the reading and videos, and I think I can do all the guided practice problems."  But if that's not the case you should say where your understanding is short and ask questions, such as "I don't understand the point of a universal set - when does it matter?" or "I looked at the progress check and most of it seemed fine but I didn't see how to do the next to last part."
+Progress report and questions about the worksheet so far.  After 30 minutes, where are you on the worksheet?  What questions do you have so far?  Are you "stuck" on something?
+I will look at these before class, and your brief responses to these will count for four points (two each) towards your worksheet grade for the day.  
+
+The class will start with discussion, addressing questions which have come up so far from these brief responses you turned in on Canvas and maybe going over or filling in some things from the reading and videos.  This will last 5-10 minutes.  You will then turn your attention again to the worksheets, though in some cases I might seek out students who had questions on Canvas that I think are better answered one-on-one rather during whole-class discussion.  Some worksheet problems will be designated as individual problems with no collaboration allowed; other times you’ll be given a choice of whether or not to collaborate with others, or you may be assigned to a group.  For the group problems your write-ups should be "clean", starting from a blank piece of paper after your group has had a chance to do their own scratch work, discuss, understand the solution, and come to an agreement about the steps of a clean write-up.  This should not be what is written as discussion is happening.  
+
+The worksheets will be submitted at the end of the class.  If you cannot make class, you can turn them in at any time up until the following exam.  So for example, worksheets from the first four weeks must be made up before the exam in week 5.  But note that you will probably have to work twice as hard for the same grade because of the missed opportunity to collaborate and get my help.  If solutions have been posted, you should do grading/reflection as discussed for quizzes: give yourself an hour to do the worksheet, then look at solutions and both give yourself a grade and discuss your errors, showing that you understand by either discussing related problems (you could make up) or the basic issues at hand.
+
+Weekly Homework:
+
+You will complete approximately eight to ten problems for homework every week,
+due at the beginning of class every Wednesday. For each assignment, I will randomly select
+some problems to grade for correctness, and the remainder will be graded for completion.
+Expect around a third to a half of the problems to be graded for correctness.
+For the completion points, it must be clear that you made legitimate attempt to solve the problem using the techniques we have discussed. For the correctness points, it is not enough for you to have all the right ideas written; the ideas must also be written in a concise matter. When you get HW back, you will have one week to redo any problems graded for correctness, for up to full credit.
+This gives you the chance to get feedback on work and really try to master it before you take the exam.
+
+Weekly Quizzes
+
+We will have one in class quiz on Wednesday of each week (other than on exam weeks)
+over the material from the previous week. The first twenty minutes of the class will be a chance to ask last questions about things which might still be confusing you.  The quiz will take twenty minutes.  The last ten minutes will go over an answer key, so you can grade the quiz yourself.  You will turn in your grading on Friday, and your accuracy will also be part of your grade for the quiz.  Here's a document Download documentwhich says more about this grading part.  Quizzes can be made up if you have to be absent (no excuse needed).  You must email me and I will send you an alternate version, which you will take on your honor.
+
+Exams
+
+There will be two midterm exams and one final exam. The first midterm will be Friday of week 5; the second Friday of week 8.  The final exam will be at 2:45 on Tuesday June 11th in 252 Straub Hall (so not our usual classroom, as Peterson Hall is used by AEC during Finals Week).
+
+ 
+
+Grading
+
+Class work - 20%.
+Quizzes - 20 %.
+Homework - 20 %.
+Exams - 40 % .
+
+The scale for semester grades will be no harsher than the following:
+
+A-, A, A+: 90-100%
+B-, B, B+: 80-89%
+C-, C, C+: 70-79%
+
+D: 60-69% F: 0-59%
+
+ 
+
+Conduct and support
+
+In order to avoid distracting the class, please ensure that your cell phone is on silent, vibrate, or turned off during class. Texting during class is not acceptable.
+
+The code of student conduct and community standards is at conduct.uoregon.edu. In this course, it is appropriate to help each other on homework
+as long as the work you are submitting is your own and you understand it.
+It is not appropriate to help each other on exams, to look at other students’ exams, or to bring unauthorized material to exams.
+
+We encourage you to stay out of class if you are sick and we will let you make up work.  The University has a "reason blind" absence policy, so let me know any time you think it would be detrimental for you to come to class - for yourself and/or others - and I will work with you to help you keep up.
+
+The University of Oregon strives for inclusive learning environments. Please notify me if the instruction or design of this course results in disability-related barriers to your participation.
+You are also encouraged to contact the Accessible Education Center in 360 Oregon Hall at 541-346-1155 or uoaec@uoregon.edu.
+
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by email, and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and/or access alternative assignments. Students are also expected to continue coursework as outlined in this syllabus or other instructions on Canvas.
+In the event that the instructor of this course has to quarantine, this course may be taught online.
+
+ As your instructor if I believe you may need additional support, I will express my concerns, the reasons for them, and refer you to resources that might be helpful. It is not my intention to know the details of what might be bothering you, but simply to let you know I care and that help is available. Getting help is a courageous thing to do, for yourself and those you care about. University Health Services help students cope with difficult emotions and life stressors.
+If you need general resources on coping with stress or want to talk with another student
+who has been in the same place as you, visit the Duck Nest (located in the EMU on
+the ground floor) and get help from one of the specially trained Peer Wellness Advocates.
+Find out more at health.uoregon.edu/ducknest. University Counseling Services (UCS) has a team of dedicated staff members to support you with your concerns,
+many of whom can provide identity-based support. All clinical services are free and confidential. Find out more at counseling.uoregon.edu or by calling 541-346-3227 (anytime UCS is closed, the After-Hours Support and Crisis Line is available by calling this same number).
+
+The university makes reasonable accommodations, upon request, for students who are unable to attend a class for religious obligations or observance reasons, in accordance with the university discrimination policy which says “Any student who, because of religious beliefs, is unable to attend classes on a particular day shall be excused from attendance requirements and from any examination or other assignment on that day. The student shall make up the examination or other assignment missed because of the absence. To request accommodations for this course for religious observance, visit the Office
+of the Registrar’s website (https://registrar.uoregon.edu/calendars/religious-observances)
+and complete and submit to the instructor the “Student Religious Accommodation Request”
+form prior to the end of the second week of the term.
+
+Any student who has difficulty affording groceries or accessing sufficient food to eat every day, or who lacks a safe and stable place to live and believes this may affect their performance in the course is urged to contact the Dean of Students Office (346-3216, 164 Oregon Hall) for support. This UO webpage includes resources for food, housing, healthcare, childcare, transportation, technology, finances, and legal support: https://blogs.uoregon.edu/basicneeds/food/
+
+For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing any form of prohibited discrimination or harassment,
+including sex or gender-based violence, may seek information and resources at safe.uoregon.edu, respect.uoregon.edu, or investigations.uoregon.edu or contact the non-confidential Title IX office/Office of Civil Rights Compliance (541-346-3123),
+or Dean of Students offices (541-346-3216), or call the 24-7 hotline 541-346-SAFE for help.
+
+
+It is generally expected that class will meet unless the University is officially closed
+for inclement weather. If it becomes necessary to cancel class while the
+University remains open, this will be announced on Canvas and by email.
+Updates on inclement weather and closure are also communicated in other ways described here: hr.uoregon.edu/about-hr/campus-notifications/inclement-weather

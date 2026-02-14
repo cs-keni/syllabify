@@ -1,0 +1,74 @@
+{
+  "course": {
+    "id": "cs425",
+    "course_code": "Room 305",
+    "course_title": "CS425",
+    "term": "spring 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Zena M. Ariola",
+        "email": "ariola@uoregon.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": null,
+        "email": "williamq@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": "305"
+  },
+  "assessment_categories": [
+    {
+      "id": "final",
+      "name": "Final",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "final_1",
+      "title": "Final",
+      "category_id": "final",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Final               40%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

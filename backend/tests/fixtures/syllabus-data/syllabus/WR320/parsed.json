@@ -1,0 +1,165 @@
+{
+  "course": {
+    "id": "wr320",
+    "course_code": "WR 320",
+    "course_title": "Fall 2023, 4 Credits Instructor: Tom Tasker, PhD",
+    "term": "Fall 2023",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": null,
+        "email": "ttasker@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": "Office Hours"
+  },
+  "assessment_categories": [
+    {
+      "id": "weekly_discussion_boards",
+      "name": "Weekly discussion boards",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "writing_projects",
+      "name": "Writing projects",
+      "weight_percent": 70,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "good_writing_habits",
+      "name": "Good writing habits",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "presentation_and_portfolio",
+      "name": "Presentation and portfolio",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "weekly_discussion_boards_1",
+      "title": "Weekly discussion boards",
+      "category_id": "weekly_discussion_boards",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Weekly discussion boards 10%"
+    },
+    {
+      "id": "writing_projects_1",
+      "title": "Writing projects",
+      "category_id": "writing_projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 70,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Writing projects 70%"
+    },
+    {
+      "id": "good_writing_habits_1",
+      "title": "Good writing habits",
+      "category_id": "good_writing_habits",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Good writing habits 10%"
+    },
+    {
+      "id": "presentation_and_portfolio_1",
+      "title": "Presentation and portfolio",
+      "category_id": "presentation_and_portfolio",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Presentation and portfolio 10%"
+    }
+  ],
+  "grading_structure": {
+    "type": "bucketed",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

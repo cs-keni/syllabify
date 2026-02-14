@@ -1,0 +1,198 @@
+Course SyllabusAlternative formats
+Instructor Information:
+
+Prof. Daniel Lowd
+Office: Deschutes 262
+Email: lowd@uoregon.edu
+
+Jonny Nelson (GE-T)
+Email: jonathn@uoregon.edu  
+
+Prof. Lowd’s Office Hours:
+Tuesday 10-11am (Zoom: see link in "Zoom Meetings")
+Wednesday 10-11am (Deschutes 262 or Zoom)
+Friday 10-11am (Deschutes 262 or Zoom)
+
+Jonny Nelson’s Office Hours:
+Monday: 4-5 pm (Room 100)
+Thursday: 3-4 pm
+Friday: 2-3 pm
+
+For additional appointments, please email lowd@uoregon.edu.
+
+Course Description
+
+How does Duckweb keep track of your transcript?
+How does Google search through 130 trillion web pages in less than a second?
+How much wood could a woodchuck sort if a woodchuck could sort wood? 
+
+Complex software and algorithms need to manage large amounts of information. A key concept in computer science is data structures, which help us organize and locate the information we need when the user or the algorithm needs it. In this class you’ll learn about data structures for searching and sorting, how much time and space they require, and how to implement them.
+
+Main topics: This course develops basic concepts and applications of data structures in computer science. The primary topics are familiarity with asymptotic complexity notations, loop invariants, recurrence equations, analysis of basic linear data structures along with their applications to computational problems, rooted ordered trees and their usage and analysis for basic operations of data structures: searches, additions, deletions, and basic sorting algorithms along with their analysis using the newly introduced data structures. 
+
+Prerequisites: Math 231-232, CS 210-212.
+
+Course Objectives 
+
+What will you know how to do after completing this course? And why should you care?
+
+Upon completion of this course, students will be able to:
+
+Use asymptotic complexity (big-O, big-Omega, big-Theta, little-o, little-omega) to compare the asymptotic growth of functions. 
+This is important for understanding why your program is so slow and communicating with other software engineers.
+Analyze the complexity of algorithms and data structures, including loops and recursive algorithms. 
+This is important for identifying slow programs and designing faster ones.
+Prove the correctness of loops and data structures using invariants.
+This will help you in both designing and debugging algorithms.
+Implement linear and tree data structures in Python and adapt them by adding new functionality. 
+This is important for understanding widely used tools, such as Python dictionaries, their limitations, and how to go beyond the built-in libraries.
+Describe several methods for sorting data (including alternatives, like hashing), tradeoffs among them, and fundamental limits of sorting. 
+This is important for knowing what can and can be done with large amounts of data, knowing when you can speed things up and when it’s hopeless.
+Choose appropriate data structures for different data organization problems. 
+This will help you write cleaner code in less time that runs faster.
+Course Modality
+
+This is an in-person course. We will meet for lecture MWF 12-12:50pm in McKenzie 125, with labs held in Klamath 026 on Tuesday or Thursday. If you need to miss a lecture (e.g., for illness), you may view the lecture recordings, which will be posted shortly after class. These recordings are also recommended as a study tool. 
+
+Technical Requirements
+
+Canvas is the main place to go for course information.
+
+To access our course Canvas site, log into canvas.uoregon.edu using your DuckID. If you have questions about using Canvas, visit the Canvas support page. Canvas and Technology Support also is available by phone (541-346-4357) or by live chat on the Live Help webpage.
+
+Gradescope (gradescope.com) will be used for submitting assignments and providing feedback. You will receive an email invite. Please follow the instructions in the email and create an account if you do not have one already.
+
+Piazza is a course forum website that you can use to ask questions about the assignments and content and receive answers, both from instructors and your classmates. Use of Piazza is optional, but recommended. You can access it here: https://piazza.com/uoregon/fall2024/cs313Links to an external site.
+
+Course Policies
+
+Course Materials 
+
+Our textbook for this course is Introduction to Algorithms, 4th Edition, by Cormen, Leiserson, Rivest, & Stein (CLRS). (MIT Press, 2022).
+
+There’s also a textbook web page, including solutions to selected problems:
+https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/Links to an external site.
+
+You can access the textbook for free from the UO library (yes, really!):
+
+https://alliance-uoregon.primo.exlibrisgroup.com/permalink/01ALLIANCE_UO/1ej399r/alma99900862198401852Links to an external site.
+
+ 
+
+Absences 
+
+This is an in-person course, including both lectures and labs. I try to make lecture interactive, so that students engage with the material rather than passively listening. By attending, you will come away with a better understanding of the material, and a better idea of what concepts you don’t fully understand yet and might need to review. If you must miss lecture, you can review slides and video recordings on Canvas, but attendance in person is best whenever possible. Lab will help you get started on programming assignments, get personal feedback and assistance on programming assignments, and review and practice theoretical concepts from lecture. Attendance in lab is strongly encouraged. However, there is no grade penalty for missing lectures or labs.
+
+Please do not come to class sick. In particular, we know our UO community will still be navigating COVID-19, and some students will need to isolate and rest if they get COVID. Please take absences only when necessary, so when they are necessary, your prior attendance will have positioned you for success. Students with COVID are encouraged to seek guidance and resources at UO’s COVID-19 Safety Resources webpage.
+
+
+Course Deadlines
+
+Please submit your written and programming assignments on Gradescope.
+All assignments are due by 11:55 pm of the stated due date.
+
+Late policy: If you need an extension, you must ask for one. 
+Please ask in advance by sending an email to both Prof. Lowd and Jonny Nelson. The earlier you ask the better. You do not have to tell us the reason why you need an extension, just that you need one.
+
+Grading Policies
+
+There will be 7 written assignments and 4 programming assignments in Python. There are also a few participation assignments, which are only worth a few points.
+There will be 1-2 quizzes per week. These are worth a total of 10% of your grade. You may retake the quizzes and receive the average score.
+There will be one midterm on Wednesday, November 6, in class, worth 20% of your grade. [UPDATED]
+The final will be held on Tuesday, December 10, 10:15am-12:15pm worth 20% of your grade.
+ 
+
+The weighting of the work done is:
+
+Assignments
+
+50%
+
+Quizzes
+
+10%
+
+Midterm
+
+20%
+
+Final Exam
+
+20%
+
+ 
+
+The overall score percentages are translated to letter grades using the following cutoffs:
+
+>= 93.0%: A
+90.0-92.9%: A-
+87.0-89.9%: B+
+83.0-86.9%: B
+80.0-82.9%: B-
+77.0-79.9%: C+
+73.0-76.9%: C
+70.0-72.9%: C-
+67.0-69.9%: D+
+63.0-66.9%: D
+60.0-62.9%: D-
+< 60.0%: F
+
+ 
+
+The instructor reserves the right to “curve” all grades upward, by adding points to everyone’s score. Grades will never be curved down.
+
+Classroom Community Expectations
+
+All members of the class (both students and instructor) can expect to:
+Participate and Contribute:  All students are expected to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others. 
+
+Lecture Participation: Lecture is meant to be challenging and engaging, and not simply passively absorbing information. For students, this includes listening, taking notes in whatever way is most effective for you, engaging with questions from the instructor, and asking questions when you are curious or confused. During lecture, students are expected to raise their hand and wait to be called on before speaking. In order to create a classroom environment where every student is engaged in learning, the instructor will prioritize calling on students who have spoken less over those who have spoken more. The instructor may also call on students sequentially (e.g., starting from the leftmost student in the second row and proceeding to the right) so that classroom interaction isn’t dominated by the most confident students.
+
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect.
+
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don’t hesitate to contact me to ask for assistance or offer suggestions that might help us learn better.
+
+ 
+
+University Policies
+
+Academic Integrity
+
+All assignments turned in for the course must be your own work. Copying from other class members or other sources is not acceptable. If you collaborate with someone else on any assignment, you must indicate the collaboration on the work you turn in. Collaboration that is not explicitly credited is plagiarism.
+Academic honesty is expected and cases of suspected dishonesty will be handled according to university policy. In particular, copying someone else's work (including material found on the web) will not be tolerated. If solutions to assignments are obtained (or partially obtained) using outside sources, the source must be cited. This includes using generative AI tools as study aids – all such use must be cited.
+You are also responsible for protecting your work. That is, you must take reasonable precautions to prevent your work from being copied. This means that if you store your assignment solutions on a shared server, the file permissions must be set to keep others from accessing your files. If you are working on assignments in the lab, you must remove any of your files on the lab machine before you leave.
+The penalty for academic misconduct is a grade of F. This includes, but is not limited to, copying someone else's work, allowing someone else to copy your work, communicating with other students during tests, and using additional resources beyond what is permitted for the assignment.
+If you are unsure if something is allowed or not, make a note explaining what you did. For example, if you use a website and it provides hints that help you on the homework, list the website on your homework. If a Python tutorial helps you figure out how to write some simple functions, mention the tutorial in a comment. If you talk to another student about generally strategies for solving an assignment, mention the student. If you're clear about your actions in advance, I will assume that you were trying to honestly follow the rules. In this case, if your actions go beyond what allowed, you may lose a few points for the assignment, but it will not be considered academic misconduct.
+Generative AI
+
+In my opinion, generative artificial intelligence (GenAI) tools such as ChatGPT, Claude, Gemini, and Llama are amazing. I’ve been studying machine learning for 20 years, and I was still surprised by the rapid developments in large language models (LLMs). If you haven’t worked with these models, you may be surprised by their capabilities and their failures.
+
+ 
+
+I encourage you to treat GenAI as you would any other study aid, from web pages, to YouTube videos, to working with a classmate. In particular:
+
+Your answers to all homework, quiz, and test questions must be your own, not copied or paraphrased from GenAI (or any other source).
+If you use these tools, you must describe how you used them in your writeup. A few sentences will probably suffice.
+Warnings:
+
+GenAI has all kinds of problematic bias built in. It’s built using text from the internet, and can repeat or even magnify stereotypes from its sources.
+GenAI is often wrong. These models are designed to create text that looks like a good response. Sometimes a response that looks good is good, but it’s easy to be misled. Humans often trust AI when they shouldn’t. It’s better to look to GenAI for ideas and suggestions than answers.
+Don’t submit sensitive information. Most GenAI services are run by corporations that may or may not respect your privacy or safeguard your data.
+Don’t let GenAI replace or constrain your thinking. AI can be a tool that helps you solve bigger, harder problems in less time. It can also create a lot of generic garbage.
+ 
+
+Accessible Education
+
+My goal is a fully inclusive class, accessible to everyone. If you encounter or anticipate barriers to full participation and fair evaluation due to a disability, please communicate your needs to the instructor so that we can find a suitable accommodation. If you encounter or observe other impediments to full participation, for yourself or others, please share your concerns with the instructor.
+
+You are also encouraged to contact the Accessible Education Center in 164 Oregon Hall at 541-346-1155 or uoaec@uoregon.edu. The AEC offers a wide range of support services including note-taking, testing services, sign language interpretation and adaptive technology.  
+
+If possible, please inform the instructor in the first week of the quarter if you require accommodation.
+
+ 
+
+Mandatory Reporter Status
+
+I am a designated reporter. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex or gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of Students Office at 5411-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123 to request information and resources. Students are not required to participate in an investigation to receive support, including requesting academic supportive measures. Additional resources are available at investigations.uoregon.edu/how-get-support.
+
+I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.

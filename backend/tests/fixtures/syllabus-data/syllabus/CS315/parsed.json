@@ -1,0 +1,44 @@
+{
+  "course": {
+    "id": "cs315",
+    "course_code": "CS 315",
+    "course_title": "Intermediate Algorithms",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Prof. Thanh H. Nguyen",
+        "email": null
+      }
+    ],
+    "meeting_times": [],
+    "location": "145 STB\n\nClass Time"
+  },
+  "assessment_categories": [
+    {
+      "id": "general",
+      "name": "General",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

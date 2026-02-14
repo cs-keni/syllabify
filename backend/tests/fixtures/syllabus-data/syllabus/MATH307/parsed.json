@@ -1,0 +1,165 @@
+{
+  "course": {
+    "id": "math307",
+    "course_code": "MATH307",
+    "course_title": "MATH307",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Dev Sinha",
+        "email": "dps@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "grading_class_work_-",
+      "name": "Grading\n\n\n\nClass work -",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes_-",
+      "name": "Quizzes -",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework_-",
+      "name": "Homework -",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams_-",
+      "name": "Exams -",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "grading_class_work_-_1",
+      "title": "Grading\n\n\n\nClass work -",
+      "category_id": "grading_class_work_-",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Grading\n\n\n\nClass work - 20%"
+    },
+    {
+      "id": "quizzes_-_1",
+      "title": "Quizzes -",
+      "category_id": "quizzes_-",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Quizzes - 20 %"
+    },
+    {
+      "id": "homework_-_1",
+      "title": "Homework -",
+      "category_id": "homework_-",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Homework - 20 %"
+    },
+    {
+      "id": "exams_-_1",
+      "title": "Exams -",
+      "category_id": "exams_-",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Exams - 40 %"
+    }
+  ],
+  "grading_structure": {
+    "type": "bucketed",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

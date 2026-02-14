@@ -1,0 +1,69 @@
+{
+  "course": {
+    "id": "pers271",
+    "course_code": "PERS 271",
+    "course_title": "Jump to Today",
+    "term": "Spring 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Daniel Howe",
+        "email": "dhowe@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "attendance_students_must_atten",
+      "name": "Attendance\n\n\n\nStudents must attend at least",
+      "weight_percent": 80,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "attendance_students_must_atten_1",
+      "title": "Attendance\n\n\n\nStudents must attend at least",
+      "category_id": "attendance_students_must_atten",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 80,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Attendance\n\n\n\nStudents must attend at least 80%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

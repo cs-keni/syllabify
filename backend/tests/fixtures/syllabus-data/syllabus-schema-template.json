@@ -1,0 +1,93 @@
+{
+  "course": {
+    "id": null,
+    "course_code": null,
+    "course_title": null,
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": null,
+        "name": null,
+        "email": null
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": null,
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "11:15",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      }
+    ],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": null,
+      "name": null,
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": null,
+      "title": null,
+      "category_id": null,
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0,
+      "source_excerpt": null
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": [
+      {
+        "id": null,
+        "name": null,
+        "weight_percent": null
+      }
+    ]
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [
+    {
+      "id": null,
+      "week": null,
+      "date": null,
+      "type": "lecture",
+      "topic": null
+    }
+  ],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": null,
+    "schema_version": "1.0"
+  }
+}

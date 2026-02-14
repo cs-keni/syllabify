@@ -1,0 +1,165 @@
+{
+  "course": {
+    "id": "cs211",
+    "course_code": "CS 211",
+    "course_title": "CS 211 is the second course in the three-term “Introduction to Computer Science“ series at Universit",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": null,
+        "email": null
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "late_projects_are_assessed_a_p",
+      "name": "Late projects are assessed a penalty of",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final_exam_exams",
+      "name": "Final exam \n\nExams",
+      "weight_percent": 65,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "code_demo",
+      "name": "Code demo",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "late_projects_are_assessed_a_p_1",
+      "title": "Late projects are assessed a penalty of",
+      "category_id": "late_projects_are_assessed_a_p",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Late projects are assessed a penalty of 10%"
+    },
+    {
+      "id": "projects_1",
+      "title": "Projects",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Projects 15%"
+    },
+    {
+      "id": "final_exam_exams_1",
+      "title": "Final exam \n\nExams",
+      "category_id": "final_exam_exams",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 65,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Final exam \n\nExams 65%"
+    },
+    {
+      "id": "code_demo_1",
+      "title": "Code demo",
+      "category_id": "code_demo",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Code demo 10%"
+    }
+  ],
+  "grading_structure": {
+    "type": "bucketed",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

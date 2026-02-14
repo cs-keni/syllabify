@@ -1,0 +1,176 @@
+Syllabus for Fall 2025 CS 432/532:
+Introduction to Computer Networks
+Jun Li
+Department of Computer Science
+University of Oregon
+lijun@cs.uoregon.edu
+November 4, 2025
+1 Course Information
+• Prerequisites: CS 330. CS 415 recommended.
+• Instructor: Prof. Jun Li (lijun@cs.uoregon.edu)
+• Teaching GE: Nate Balmain (balmain@uoregon.edu)
+2 Course Description
+This course introduces the fundamental principles, design, and implementation of computer networks. We
+will focus on the design philosophies of networking, individual functionalities and their relationship, and
+key implementation technologies. Using a top-down approach focusing on the Internet, this course covers
+topics including application protocols, transport protocols, congestion control, Internet protocol, routing
+algorithms and protocols, and link layer protocols.
+3 Expected Learning Outcomes
+Upon successful completion of the course, students will be able to:
+• Understand the fundamental principles, concepts, design, and implementation of computer networks,
+as exemplified by the Internet.
+• Become familiar with popular applications and protocols at different layers of the Internet.
+• Design and program networking applications to meet basic needs and requirements.
+4 Acquired Skills
+Upon successful completion of the course, students will have acquired the following skills:
+• be able to describe and reason the design principles, methods, and protocols of computer networking
+at different layers of the Internet.
+• be able to solve computer networking problems related to network performance, applications (e.g.,
+web, email), reliability, congestion control, routing, etc.
+• be able to design and program networking applications with moderate complexity.
+1
+
+5 Course Materials
+• Textbook: Computer Networking: A Top-Down Approach, by James F. Kurose and Keith W. Ross.
+9/E. Published by Pearson (July 10, 2025) © 2026.
+eTextbook ISBN-13: 9780135415603 Link: https://www.pearson.com/en-us/subject-catalog/p/
+computer-networking-a-top-down-approach/P200000013385/9780135415603
+Paperback ISBN-13: 9780135429334
+• Alternative Textbook 1: Computer Networking: A Top-Down Approach, by James F. Kurose and
+Keith W. Ross. 8/E. Pearson, ISBN-10: 0136681557; ISBN-13: 978-0136681557. https://media.
+pearsoncmg.com/ph/esm/ecs_kurose_compnetwork_8/cw/
+• Alternative Textbook 2: Computer Networking: A Top-Down Approach, by James F. Kurose and
+Keith W. Ross. Seventh Edition. Pearson, ISBN-10: 0133594149; ISBN-13: 978-0133594140.
+• Slides: Class slides will be provided on Canvas.
+6 Scheduling
+• Class time: T R 8:30-9:50; no class on 11/27 (Thanksgiving)
+• Class location: Lillis Hall (LIL) 112
+• Office hours (Jun): Tuesdays 10-11 AM; Deschutes 362
+• Teaching GE office hours: Wednesday 12-1 PM and Thursdays 12:30-1:30 PM; Deschutes 224
+• Three tests after finishing chapters 2, 3, 5, respectively.
+– Test 1: October 23
+– Test 2: November 6
+– Test 3: November 25
+• Final: December 8, Monday, 8:00 AM – 10:00 AM, 112 LIL
+7 Lectures (tentative)
+8 Grading Policy
+• CS 432:
+Class participation 5% Homework 15% Program 20% Tests 30% Final 30%
+• CS 532:
+Class participation 5% Homework 10% Program 20% Tests 30% Final 30%
+Paper Review 5%
+• Grading rubric:
+A+ = 96.67-100% A = 93.34-96.66% A- = 90.0-93.33%
+B+ = 86.67-89.99% B = 83.34-86.66% B- = 80.0-83.33%
+C+ = 76.67-79.99% C = 73.34-76.66% C- = 70.0-73.33%
+D+ = 66.67-69.99% D = 63.34-66.66% D- = 60.0-63.33%
+F = 0-59.99%
+A Excellent. Solid grasp of concepts, approaches, and/or programming skills introduced or used in
+this course. Very well prepared to apply this knowledge to future studies or employment.
+B Very good. Generally good grasp of concepts, approaches, and/or programming skills introduced
+or used in this course. Prepared to apply this knowledge to future studies or employment.
+2
+
+Week# Chapters (8/E) Coverage What’s Due
+1 1.1 syllabus; intro: Internet; Internet edge & core
+1 1.2–1.3 intro: performance; security
+2 1.4–1.5 intro: protocol layers; history
+2 2.1–2.2 application layer: intro; Web
+3 2.2–2.3 application layer: Web (cont’d); Email; DNS
+3 2.4–2.5 application layer: P2P; CDN; socket programming
+4 3.1–3.3 transport layer: intro; multiplexing; UDP HW 1; PR 1 (532)
+4 3.4–3.5 transport layer: reliability; TCP Test 1;
+5 3.6–3.7 transport layer: congestion control
+5 4.1–4.2 network layer: overview; What’s inside a router HW 2; PR 2 (532)
+Prog. 1 (10/31)
+6 4.3–4.4 network layer: Internet protocol; SDN Test 2
+6 5.1–5.2 network layer: routing algorithms HW 3
+7 5.3–5.4 network layer: OSPF; BGP
+7 5.5–5.7 network layer: SDN; ICMP; SNMP
+8 6.1–6.2 link layer: intro; link error handling HW 4; PR 3 (532)
+8 6.3–6.4 link layer: multiple access; LAN Test 3
+9 6.5–6.7 link layer: MPLS; data center networking Prog. 2
+9 THANKSGIVING HOLIDAY
+10 wireless: intro; CDMA; WiFi HW 5
+10 wireless: Cellular, mobility
+11 FINAL EXAM (12/8, 8:00 AM)
+C Pass. Basic grasp of concepts, approaches, and/or programming skills introduced or used in this
+course. Minimally prepared to apply this knowledge to future studies or employment.
+D No Pass (Earns UO credit). Demonstrated grasp of concepts, approaches, and/or programming
+skills introduced or used in this course is not yet sufficient to apply this knowledge to future
+studies or employment.
+F No Pass (No credit). Little or no demonstrated grasp of concepts, approaches, and/or program-
+ming skills introduced or used in this course, and/or failure to carry out much of the required
+work.
+A+ Distinction. A+ grades will be given only in cases where the student has excelled in all course
+topics and overall performance is distinctly better than that required for an A grade.
+9 Student Workload
+The workload of this course is expected to be as follows.
+• Class participation.
+– Students should actively participate in the class including raising questions and being involved in
+discussions. A pop quiz may be given at the beginning or toward the end of the class.
+• Course review and homework. Studentsshouldcarefullyreviewtheclassmaterialsaftertheclass.
+There will be 5 homework throughout the term.
+• Programming assignment. The class will have a moderate amount of programming assignment.
+The student will be allowed to use a language they are familiar with to write their programs, but they
+must compile and run in the specified testing environment.
+• Paper Reviews (CS 532 only). Students in 532 will need to read 3-5 papers on networking and
+write a review about each of them. A template will be given for your review.
+• Tests and Exams. There will be three tests throughout the term and one final exam.
+3
+
+10 Course Policies
+Outside Classroom Communication
+We will use Canvas to post course materials, post and collect assignments, and support discussions. We
+encourageeveryonetogetintouchwiththeprofessorandteachingGEofthisclasswhenyouhavequestions.
+Do not postpone your questions until the last couple weeks of the term. You should fully exploit the office
+hours!
+Your email subject should begin with CS 432: or CS 532: to help email filtering.
+GenAI Use
+StudentsmayNOTuseGenAItoolstoproducehomeworkassignments,paperreviews,orprogramsinwhole
+or in part.
+Students may use GenAI tools to help debug their programs, revise their paper reviews. In this case,
+students can also provide their work prior to AI to receive extra credits.
+Students may use GenAI as a private tutor to help them review course materials.
+Barriers and Accommodations
+Our goal is a fully inclusive class, accessible to everyone. If you encounter or anticipate barriers to full
+participation and fair evaluation for any reason, please communicate your needs to the instructor so that we
+can find a suitable accommodation. If you encounter or observe other impediments to full participation, for
+yourself or others, please share your concerns with the instructor. You are also encouraged to contact the
+Accessible Education Center in 360 Oregon Hall at 541-346-1155 or uoaec@uoregon.edu. It is particularly
+important that you inform the instructor in the first week of the quarter if you require accommodation.
+Academic Honesty
+The University Student Conduct Code (available at conduct.uoregon.edu) defines academic misconduct.
+Students are prohibited from committing or attempting to commit any act that constitutes academic mis-
+conduct. Students should properly acknowledge and document all sources of information (e.g., quotations,
+paraphrases, ideas) and use only the sources and resources authorized by the instructor. If there is any
+question about whether an act constitutes academic misconduct, it is the student’s obligation to clarify the
+question with the instructor before committing to attempting to commit the act.
+All work turned in for the course must be your own work. Copying from other class members or other
+sources (except for provided materials) is not acceptable. If you collaborate with someone else on an as-
+signment, you must indicate such on the work you turn in. Collaboration that is not explicitly credited is
+plagiarism.
+Academic honesty is expected and cases of suspected dishonesty will be handled according to university
+policy. Inparticular,copyingsomeoneelse’swork(includingmaterialfoundontheweb)willnotbetolerated.
+If solutions to assignments are obtained from outside sources, the source must be cited.
+You are also responsible for protecting your work. That is, you must take reasonable precautions to
+prevent your work from being copied. This means that if you store your assignment solutions on a shared
+server, the file permissions must be set to keep others from accessing your files. If you are working on
+assignments on a shared machine, you must remove any of your files from the machine before you leave.
+Turning in someone else’s code is collusion, and is a particularly heinous form of plagiarism; if collusion
+is detected, all individuals involved (i.e., the copyee and all copyers) will be given a grade of F in the course.
+Academic Disruption due to Campus Emergency
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and
+grading percentages are subject to change. Information about changes in this course will be communicated
+as soon as possible by email and on Canvas. If we are not able to meet face-to-face, students should
+immediately log onto Canvas and read any announcements and/or access alternative assignments. Students
+arealsoencouragedtocontinuethereadingsandotherassignmentsasoutlinedinthissyllabusorsubsequent
+versions of the syllabus.
+4
+
+Prohibited Discrimination and Harassment Reporting
+Studentsexperiencinganyformofprohibiteddiscriminationorharassment,includingsexorgender-basedvio-
+lence,mayseekinformationandresourcesatsafe.uoregon.edu,respect.uoregon.edu,orinvestigations.
+uoregon.edu, or contact the non-confidential Title IX office/Office of Civil Rights Compliance (541-346-
+3123), or Dean of Students offices (541-346-3216), or call the 24-7 hotline 541-346-SAFE for help.
+5

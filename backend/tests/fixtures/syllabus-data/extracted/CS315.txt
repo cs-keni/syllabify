@@ -1,0 +1,90 @@
+
+	
+    CS 315    
+    Intermediate Algorithms    
+
+Course Description
+Welcome! This course focuses on graph algorithms, algorithm design patterns, and complexity classes. The first part of the course is on graph representation, graph search, topological sort, minimum spanning trees, and the shortest paths. The second part covers recursion, dynamic programming, divide-and-conquer, and greedy algorithms, including Huffman coding and network flows. The third part talks about time complexity, reductions, and NP-completeness. The course involves designing, implementing, and analyzing algorithms.
+
+Class Location: 145 STB
+Class Time: Tuesdays and Thursdays, 2pm to 3:20pm
+Discussions: Fridays from 10:00am to 10:50am (Discussion 1) and 11:00am to 11:50am (Discussion 2) and 12:00pm to 12:50 pm (Discussion 3) in 230 LA.
+
+Instructor: Prof. Thanh H. Nguyen
+Email: thanhhng AT cs.uoregon.edu
+Office: Room 303, Deschutes Hall
+Office hours: Wednesdays, 1:30 pm to 3:30 pm. Please contact me (via email) if you would like to schedule a meeting.
+
+GE-Teaching 1: Grace Mclewe
+Email: gmcle AT uoregon.edu
+Office: Deschutes 207
+Office hours: Mondays, 2 pm to 4 pm
+
+GE-Teaching 2: Kai Iverson
+Email: kaive AT uoregon.edu
+Office: Deschutes 227
+Office hours: Tuesdays, 12 pm to 1 pm
+
+Textbooks and Readings
+We will be using the following books:
+(Required) CLRS: Cormen, Leiserson, Rivest, and Stein, Introduction to Algorithms, 4th Edition, MIT Press/McGraw-Hill, 2009. Ebook access (requiring DuckID credentials): 4th edition
+(Required) DPV: Dasgupta, Papadimitriou, and Vazirani, Algorithms, McGraw-Hill, 2008.
+(Further Reading) Robert Sedgewick and Kevin Wayne, Algorithms, 4th edition, Addison-Wesley Professional, 2011.
+(Further Reading) Jon Kleinberg and Eva Tardos, Algorithm Design, Addison-Wesley, 2005.
+A printable version of lecture slides will generally be available online within a day or two after the lecture. I do not make them available before class. Often the slides will not include all the information we discuss in class, so the printed slides are not a substitute for attending and participating.
+
+Learning Objectives
+The course considers several algorithmic techniques. The amortized complexity criterion is applied to tree-based data structures and algorithm suites. The course covers different problem models and complexity classes, e.g., dynamic programming, satisfiability, and NP-completeness. Upon completion of the course, students will be able to
+explain, analyze, and implement basic graph algorithms, including those determining traversals, minimum-weight spanning trees, and shortest paths.
+explain, analyze, and implement fundamental algorithmic techniques, including dynamic programming, divide-and-conquer, and greedy algorithms.
+understand the basic complexity classes and the role of satisfiability in defining these classes.
+
+Draft Schedule (Subject to change)
+Week	Description	Readings
+1 (Jan. 07 - Jan. 09)	Introduction; Graphs I	CLRS: Ch. 20.1-20.3 and DPV: Ch. 3.1-3.3; 4.1-4.2
+2 (Jan. 14 - Jan. 16)	Graphs II; Minimum Spanning Trees	CLRS: Ch. 20.4-20.5; 21 and DPV: Ch. 3.4; 5.1
+3 (Jan. 21 - Jan. 23)	Shortest Paths I, Shortest Paths II	CLRS: Ch. 22 and DPV: Ch. 4.3-4.7
+4 (Jan. 28 - Jan. 30)	Dynamic Programming I; II	CLRS: Ch. 14.1-14.3; 23.1-23.2 and DPV: Ch. 6.5-6.6
+5 (Feb. 04 - Feb. 06)	Dynamic Programming III; IV	CLRS: Ch. 14.4; and DPV: Ch. 6.2; 6.4; 6.7
+6 (Feb. 11 - Feb. 13)	Midterm Review; Midterm	
+7 (Feb. 18 - Feb. 20)	Divide and Conquer I; II	CLRS: Ch. 2.3; 4.1-4.2; 4.5; 9 and DPV: Ch. 2.1-2.5
+8 (Feb. 25 - Feb. 27)	Greedy I; II	CLRS: Ch. 15.1-15.3 and DPV: Ch. 5.1-5.2
+9 (Mar. 04 - Mar. 06)	Network Flows; String Matching	CLRS: Ch. 24; 32
+10 (Mar. 11 - Mar. 13)	Intractability; Exam Review	CLRS: Ch. 34 and DPV: Ch. 8
+Finals Week	Final exam: TBA
+Canvas: We make extensive use of Canvas for discussions, announcements, and distribution of handouts (including lecture slides). I strongly encourage you to start or join open discussions. If something is confusing you or bugging you, there is a good chance it is bugging or confusing others as well. We will also use canvas for programming/written assignment submissions. [Link]
+Homework and Exams
+Due date	Homework	Description
+Homework 1	
+Homework 2	
+Homework 3	
+Homework 4	
+Homework 5	
+Homework 6	
+Homework 7	
+The mid-term exam takes 80 minutes and the final exam takes 120 minutes. The exams are closed-book; no notes or reference materials are allowed. Exams will be paper-based, in person, and conducted in the classroom.
+Grading Policy
+Homework: 55%
+Midterm: 15%
+Final exam: 30%
+Other Resources:
+CS226 from Princeton. Includes slides, codes, and programming assignments.
+Classroom Behaviors
+All members of the class (both students and instructor) can expect to:
+Participate and Contribute: All students are expected to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others. While all students should participate, participation is not just talking, and a range of participation activities support learning. Participation might look like speaking aloud in the full class and in small groups as well as submitting questions prior to class or engaging with Discussion posts. We will establish more specific participation guidelines and criteria for contributions in our first weeks of the term.
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. We may establish more specific guidelines and protocols to ensure inclusion and equity for all members of our learning community.
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don't hesitate to contact me to ask for assistance or offer suggestions that might help us learn better.
+Absences
+This is a face-to-face course. Attendance is important because we will develop our knowledge through in-class activities that require your active engagement. We'll have discussions, small-group activities, and do other work during class that will be richer for your presence, and that you won't be able to benefit from if you are not there. Excessive absences make it impossible to learn well and succeed in the course. We know our UO community will still be navigating COVID-19, and some students will need to isolate and rest if they get COVID. Please take absences only when necessary, so when they are necessary, your prior attendance will have positioned you for success. Students with COVID are encouraged to seek guidance and resources at UO's COVID-19 Safety Resources webpage
+Barriers and Accommodations
+My goal is a fully inclusive class, accessible to everyone. If you encounter or anticipate barriers to full participation and fair evaluation due to a disability, please communicate your needs to the instructor so that we can find a suitable accommodation. If you encounter or observe other impediments to full participation, for yourself or others, please share your concerns with the instructor. You are also encouraged to contact the Accessible Education Center in 164 Oregon Hall at 541-346-1155 or uoaec@uoregon.edu. The AEC offers a wide range of support services including note-taking, testing services, sign language interpretation and adaptive technology
+Accommodations for Religious Observances
+The University of Oregon respects the right of all students to observe their religious holidays, and will make reasonable accommodations, upon request, for these observances. If you need to be absent from a class period this term because of a religious obligation or observance, please fill out the Student Religious Accommodation Request fillable PDF form and send it to me within the first weeks of the course so we can make arrangements in advance.
+Academic Honesty
+Academic honesty is expected and cases of suspected dishonesty will be handled according to university policy. In particular, copying someone else's work (including material found on the web) will not be tolerated. If solutions to assignments are obtained from outside sources, the source must be cited.
+Mandatory Reporter Status
+I am a [designated reporter/assisting employee]. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex or gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of Students Office at 5411-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123. Additional resources are available at UO's How to Get Support webpage. I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.
+Academic Disruption due to Campus Emergency
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible on Canvas. If we not able to meet face-to-face, students should immediately log onto Canvas and read any announcements. Students are encouraged to continue the readings and other assignments outlined in this syllabus or subsequent versions.
+Acknowledgement
+I would like to thank Ramakrishnan Durairajan for inspiring the design of this webpage.

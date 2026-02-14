@@ -1,0 +1,44 @@
+{
+  "course": {
+    "id": "colt101",
+    "course_code": "COLT 101",
+    "course_title": "F 2023 – crn 11303 Literature as Aesthesis",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": null,
+        "email": "middlebr@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": "Zachary Nickels"
+  },
+  "assessment_categories": [
+    {
+      "id": "general",
+      "name": "General",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

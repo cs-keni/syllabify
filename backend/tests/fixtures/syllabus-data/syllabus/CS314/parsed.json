@@ -1,0 +1,69 @@
+{
+  "course": {
+    "id": "cs314",
+    "course_code": "CS 314",
+    "course_title": "Jump to Today",
+    "term": "Winter 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Course Description",
+        "email": null
+      },
+      {
+        "id": "inst-1",
+        "name": "Information and",
+        "email": "eric@cs.uoregon.edu"
+      },
+      {
+        "id": "inst-2",
+        "name": null,
+        "email": "ateske@uoregon.edu"
+      },
+      {
+        "id": "inst-3",
+        "name": null,
+        "email": "nabka@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-0",
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Los_Angeles",
+        "location": "2-2",
+        "type": "lecture"
+      }
+    ],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "general",
+      "name": "General",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

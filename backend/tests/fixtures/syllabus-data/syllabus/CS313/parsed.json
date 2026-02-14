@@ -1,0 +1,170 @@
+{
+  "course": {
+    "id": "cs313",
+    "course_code": "Room 100",
+    "course_title": "CS313",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": null,
+        "email": "lowd@uoregon.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": null,
+        "email": "jonathn@uoregon.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": "100"
+  },
+  "assessment_categories": [
+    {
+      "id": "assignments",
+      "name": "Assignments",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "Midterm",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final_exam",
+      "name": "Final Exam",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "assignments_1",
+      "title": "Assignments",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Assignments\n\n\n\n50%"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Quizzes\n\n\n\n10%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Midterm\n\n\n\n20%"
+    },
+    {
+      "id": "final_exam_1",
+      "title": "Final Exam",
+      "category_id": "final_exam",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.85,
+      "source_excerpt": "Final Exam\n\n\n\n20%"
+    }
+  ],
+  "grading_structure": {
+    "type": "bucketed",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}
