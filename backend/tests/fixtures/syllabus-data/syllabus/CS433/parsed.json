@@ -2,169 +2,29 @@
   "course": {
     "id": "cs433",
     "course_code": "CS 433",
-    "course_title": "Winter 2026 Course Description",
+    "course_title": "Computer & Network Security",
     "term": "Winter 2026",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {
-        "id": "inst-0",
-        "name": null,
-        "email": "lijun@uoregon.edu"
-      },
-      {
-        "id": "inst-1",
-        "name": null,
-        "email": "kaive@uoregon.edu"
-      }
+      {"id": "inst-0", "name": "Prof. Jun Li", "email": "lijun@uoregon.edu"}
     ],
     "meeting_times": [],
     "location": null
   },
   "assessment_categories": [
-    {
-      "id": "class_participation",
-      "name": "Class participation",
-      "weight_percent": 10,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    },
-    {
-      "id": "project_proposal",
-      "name": "Project proposal",
-      "weight_percent": 15,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    },
-    {
-      "id": "project_presentation",
-      "name": "Project presentation",
-      "weight_percent": 10,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    },
-    {
-      "id": "each",
-      "name": "each",
-      "weight_percent": 10,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    }
+    {"id": "participation", "name": "Class participation", "weight_percent": 10, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "homework", "name": "Homework", "weight_percent": 15, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm", "name": "Midterm", "weight_percent": 35, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "project", "name": "Class Project", "weight_percent": 40, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
   ],
   "assessments": [
-    {
-      "id": "class_participation_1",
-      "title": "Class participation",
-      "category_id": "class_participation",
-      "type": "assignment",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
-      "weight_percent": 10,
-      "points": null,
-      "recurrence": {
-        "frequency": null,
-        "interval": null,
-        "by_day": null,
-        "until": null,
-        "count": null
-      },
-      "policies": {
-        "late_policy": null,
-        "late_pass_allowed": null
-      },
-      "confidence": 0.85,
-      "source_excerpt": "Class participation 10%"
-    },
-    {
-      "id": "project_proposal_1",
-      "title": "Project proposal",
-      "category_id": "project_proposal",
-      "type": "project",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
-      "weight_percent": 15,
-      "points": null,
-      "recurrence": {
-        "frequency": null,
-        "interval": null,
-        "by_day": null,
-        "until": null,
-        "count": null
-      },
-      "policies": {
-        "late_policy": null,
-        "late_pass_allowed": null
-      },
-      "confidence": 0.85,
-      "source_excerpt": "Project proposal 15%"
-    },
-    {
-      "id": "project_presentation_1",
-      "title": "Project presentation",
-      "category_id": "project_presentation",
-      "type": "project",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
-      "weight_percent": 10,
-      "points": null,
-      "recurrence": {
-        "frequency": null,
-        "interval": null,
-        "by_day": null,
-        "until": null,
-        "count": null
-      },
-      "policies": {
-        "late_policy": null,
-        "late_pass_allowed": null
-      },
-      "confidence": 0.85,
-      "source_excerpt": "Project presentation 10%"
-    },
-    {
-      "id": "each_1",
-      "title": "each",
-      "category_id": "each",
-      "type": "assignment",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
-      "weight_percent": 10,
-      "points": null,
-      "recurrence": {
-        "frequency": null,
-        "interval": null,
-        "by_day": null,
-        "until": null,
-        "count": null
-      },
-      "policies": {
-        "late_policy": null,
-        "late_pass_allowed": null
-      },
-      "confidence": 0.85,
-      "source_excerpt": "each 10%"
-    }
+    {"id": "participation_1", "title": "Class participation", "category_id": "participation", "type": "participation", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Class participation 10%"},
+    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 15, "points": null, "recurrence": null, "policies": {"late_policy": "1 late token (up to 1 week); else 15% per day", "late_pass_allowed": true}, "confidence": 0.9, "source_excerpt": "Homework 15%"},
+    {"id": "midterm_1", "title": "Midterm", "category_id": "midterm", "type": "midterm", "due_datetime": "2026-02-19", "all_day": true, "timezone": null, "weight_percent": 35, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm: February 19, 2026, in class"},
+    {"id": "project_1", "title": "Class Project", "category_id": "project", "type": "project", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 40, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Class Project 40%"}
   ],
-  "grading_structure": {
-    "type": "bucketed",
-    "buckets": []
-  },
-  "late_pass_policy": {
-    "total_allowed": null,
-    "extension_days": null
-  },
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": 1, "extension_days": 7},
   "schedule": [],
-  "metadata": {
-    "created_at": null,
-    "updated_at": null,
-    "source_type": "pdf",
-    "schema_version": "1.0"
-  }
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
 }

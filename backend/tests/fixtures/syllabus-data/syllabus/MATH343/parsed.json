@@ -1,44 +1,33 @@
 {
   "course": {
     "id": "math343",
-    "course_code": "MATH 252",
-    "course_title": "MATH343",
+    "course_code": "MATH 343",
+    "course_title": "Introduction to Statistics",
     "term": null,
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {
-        "id": "inst-0",
-        "name": "Professor David Levin",
-        "email": "dlevin@uoregon.edu"
-      }
+      {"id": "inst-0", "name": "Professor David Levin", "email": "dlevin@uoregon.edu"}
     ],
-    "meeting_times": [],
-    "location": "MTWF\t1"
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "MO", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "Esslinger 107", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "TU", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "Esslinger 107", "type": "lecture"},
+      {"id": "mt-3", "day_of_week": "WE", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "Esslinger 107", "type": "lecture"},
+      {"id": "mt-4", "day_of_week": "FR", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "Esslinger 107", "type": "lecture"}
+    ],
+    "location": "Esslinger 107"
   },
   "assessment_categories": [
-    {
-      "id": "general",
-      "name": "General",
-      "weight_percent": null,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    }
+    {"id": "homework", "name": "Homework", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm", "name": "Midterm Exam", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final exam", "weight_percent": 40, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
   ],
-  "assessments": [],
-  "grading_structure": {
-    "type": "flat",
-    "buckets": []
-  },
-  "late_pass_policy": {
-    "total_allowed": null,
-    "extension_days": null
-  },
+  "assessments": [
+    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": "WE", "until": null, "count": null}, "policies": {"late_policy": "No late accepted unless arranged 48h before", "late_pass_allowed": false}, "confidence": 0.95, "source_excerpt": "Homework 30%, due Wednesdays 11:59PM"},
+    {"id": "midterm_1", "title": "Midterm Exam", "category_id": "midterm", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm: Wednesday of Week 5"},
+    {"id": "final_1", "title": "Final exam", "category_id": "final", "type": "final", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 40, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final: Wednesday March 20, 14:45"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
   "schedule": [],
-  "metadata": {
-    "created_at": null,
-    "updated_at": null,
-    "source_type": "txt",
-    "schema_version": "1.0"
-  }
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
 }

@@ -2,100 +2,37 @@
   "course": {
     "id": "astr121",
     "course_code": "ASTR 121",
-    "course_title": "ASTR 121 - The Solar System Essential Information",
-    "term": null,
+    "course_title": "The Solar System",
+    "term": "Winter 2024",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {
-        "id": "inst-0",
-        "name": "Contact Info",
-        "email": "ayocom@uoregon.edu"
-      }
+      {"id": "inst-0", "name": "Dr. Andrea Goering", "email": "ayocom@uoregon.edu"}
     ],
-    "meeting_times": [],
-    "location": "MWF 3"
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "MO", "start_time": "15:00", "end_time": "15:50", "timezone": "America/Los_Angeles", "location": "Willamette 100", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "WE", "start_time": "15:00", "end_time": "15:50", "timezone": "America/Los_Angeles", "location": "Willamette 100", "type": "lecture"},
+      {"id": "mt-3", "day_of_week": "FR", "start_time": "15:00", "end_time": "15:50", "timezone": "America/Los_Angeles", "location": "Willamette 100", "type": "lecture"}
+    ],
+    "location": "Willamette 100"
   },
   "assessment_categories": [
-    {
-      "id": "in-class_activities",
-      "name": "In-Class Activities",
-      "weight_percent": 20,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    },
-    {
-      "id": "pre-final_exam_grade_above",
-      "name": "pre-final exam grade above",
-      "weight_percent": 60,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    }
+    {"id": "in_class", "name": "In-Class Activities", "weight_percent": 20, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "homework", "name": "Homework", "weight_percent": 30, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
+    {"id": "think_explain", "name": "Think & Explain Questions", "weight_percent": 10, "drop_lowest": 3, "subcategories": [], "grading_bucket": null},
+    {"id": "quizzes", "name": "Quizzes", "weight_percent": 25, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "project", "name": "Project", "weight_percent": 5, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final Exam", "weight_percent": 20, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
   ],
   "assessments": [
-    {
-      "id": "in-class_activities_1",
-      "title": "In-Class Activities",
-      "category_id": "in-class_activities",
-      "type": "assignment",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
-      "weight_percent": 20,
-      "points": null,
-      "recurrence": {
-        "frequency": null,
-        "interval": null,
-        "by_day": null,
-        "until": null,
-        "count": null
-      },
-      "policies": {
-        "late_policy": null,
-        "late_pass_allowed": null
-      },
-      "confidence": 0.85,
-      "source_excerpt": "In-Class Activities 20%"
-    },
-    {
-      "id": "pre-final_exam_grade_above_1",
-      "title": "pre-final exam grade above",
-      "category_id": "pre-final_exam_grade_above",
-      "type": "final",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
-      "weight_percent": 60,
-      "points": null,
-      "recurrence": {
-        "frequency": null,
-        "interval": null,
-        "by_day": null,
-        "until": null,
-        "count": null
-      },
-      "policies": {
-        "late_policy": null,
-        "late_pass_allowed": null
-      },
-      "confidence": 0.85,
-      "source_excerpt": "pre-final exam grade above 60%"
-    }
+    {"id": "in_class_1", "title": "In-Class Activities", "category_id": "in_class", "type": "participation", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "In-Class Activities 20%"},
+    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": "MO", "until": null, "count": null}, "policies": {"late_policy": "Grace period through Tuesday noon", "late_pass_allowed": null}, "confidence": 0.95, "source_excerpt": "Homework 30%"},
+    {"id": "think_explain_1", "title": "Think & Explain Questions", "category_id": "think_explain", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Think & Explain 10%"},
+    {"id": "quizzes_1", "title": "Quizzes", "category_id": "quizzes", "type": "quiz", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 25, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Quizzes 25%"},
+    {"id": "project_1", "title": "Project", "category_id": "project", "type": "project", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 5, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Project 5%"},
+    {"id": "final_1", "title": "Final Exam", "category_id": "final", "type": "final", "due_datetime": "2024-03-19T14:45:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 20, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final Exam Tuesday, March 19, 2:45 pm - 4:45 pm"}
   ],
-  "grading_structure": {
-    "type": "bucketed",
-    "buckets": []
-  },
-  "late_pass_policy": {
-    "total_allowed": null,
-    "extension_days": null
-  },
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
   "schedule": [],
-  "metadata": {
-    "created_at": null,
-    "updated_at": null,
-    "source_type": "pdf",
-    "schema_version": "1.0"
-  }
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
 }

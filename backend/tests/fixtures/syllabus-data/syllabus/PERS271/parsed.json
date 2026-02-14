@@ -2,68 +2,22 @@
   "course": {
     "id": "pers271",
     "course_code": "PERS 271",
-    "course_title": "Jump to Today",
+    "course_title": "Tennis I",
     "term": "Spring 2025",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {
-        "id": "inst-0",
-        "name": "Daniel Howe",
-        "email": "dhowe@uoregon.edu"
-      }
+      {"id": "inst-0", "name": "Daniel Howe", "email": "dhowe@uoregon.edu"}
     ],
-    "meeting_times": [],
-    "location": null
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "TU", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "Student Tennis Center", "type": "activity"},
+      {"id": "mt-2", "day_of_week": "TH", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "Student Tennis Center", "type": "activity"}
+    ],
+    "location": "Student Tennis Center"
   },
-  "assessment_categories": [
-    {
-      "id": "attendance_students_must_atten",
-      "name": "Attendance\n\n\n\nStudents must attend at least",
-      "weight_percent": 80,
-      "drop_lowest": null,
-      "subcategories": [],
-      "grading_bucket": null
-    }
-  ],
-  "assessments": [
-    {
-      "id": "attendance_students_must_atten_1",
-      "title": "Attendance\n\n\n\nStudents must attend at least",
-      "category_id": "attendance_students_must_atten",
-      "type": "assignment",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
-      "weight_percent": 80,
-      "points": null,
-      "recurrence": {
-        "frequency": null,
-        "interval": null,
-        "by_day": null,
-        "until": null,
-        "count": null
-      },
-      "policies": {
-        "late_policy": null,
-        "late_pass_allowed": null
-      },
-      "confidence": 0.85,
-      "source_excerpt": "Attendance\n\n\n\nStudents must attend at least 80%"
-    }
-  ],
-  "grading_structure": {
-    "type": "flat",
-    "buckets": []
-  },
-  "late_pass_policy": {
-    "total_allowed": null,
-    "extension_days": null
-  },
+  "assessment_categories": [],
+  "assessments": [],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
   "schedule": [],
-  "metadata": {
-    "created_at": null,
-    "updated_at": null,
-    "source_type": "txt",
-    "schema_version": "1.0"
-  }
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
 }
