@@ -268,9 +268,7 @@ def activate_term(term_id):
             return jsonify({"error": "Term not found"}), 404
 
         # Unset all user's terms
-        cur.execute(
-            "UPDATE Terms SET is_active = FALSE WHERE user_id = %s", (user_id,)
-        )
+        cur.execute("UPDATE Terms SET is_active = FALSE WHERE user_id = %s", (user_id,))
 
         # Set this term as active
         cur.execute("UPDATE Terms SET is_active = TRUE WHERE id = %s", (term_id,))

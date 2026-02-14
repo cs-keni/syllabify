@@ -14,32 +14,13 @@ from ..db.base import Base
 class Assignment(Base):
     __tablename__ = "Assignments"
 
-    id: Mapped[int] = mapped_column(
-        Integer,
-        primary_key = True,
-        autoincrement = True
-    )
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
-    assignment_name: Mapped[str] = mapped_column(
-        String(255),
-        nullable = False
-    )
+    assignment_name: Mapped[str] = mapped_column(String(255), nullable=False)
 
-    work_load: Mapped[int] = mapped_column(
-        Integer,
-        nullable = False
-    )
+    work_load: Mapped[int] = mapped_column(Integer, nullable=False)
 
-    notes: Mapped[str | None] = mapped_column(
-        String(2048),
-        nullable = True
-    )
+    notes: Mapped[str | None] = mapped_column(String(2048), nullable=True)
 
-    schedule_id: Mapped[int] = mapped_column(
-        ForeignKey("Schedules.id"),
-        nullable = False
-    )
-    owner = relationship(
-        "Schedule",
-        back_populates = "assignments"
-        )
+    schedule_id: Mapped[int] = mapped_column(ForeignKey("Schedules.id"), nullable=False)
+    owner = relationship("Schedule", back_populates="assignments")

@@ -24,9 +24,7 @@ class Term(Base):
     start_date: Mapped[Date] = mapped_column(Date, nullable=False)
     end_date: Mapped[Date] = mapped_column(Date, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
-    created_at: Mapped[datetime] = mapped_column(
-        TIMESTAMP, default=datetime.utcnow
-    )
+    created_at: Mapped[datetime] = mapped_column(TIMESTAMP, default=datetime.utcnow)
 
     # Relationships
     owner = relationship("User", back_populates="terms")

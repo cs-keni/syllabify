@@ -26,6 +26,7 @@ CORS(
     methods=["GET", "POST", "OPTIONS", "PUT", "DELETE", "PATCH"],
 )
 
+
 def get_db_connection():
     """Creates and returns a MySQL connection using DB_* environment variables."""
     port = os.getenv("DB_PORT", "3306")
@@ -42,13 +43,17 @@ def get_db_connection():
         connection_timeout=15,
     )
 
+
 app.register_blueprint(auth_bp)
 
 app.register_blueprint(terms_bp)
+
+
 @app.route("/")
 def index():
     """Simple health check / root endpoint. Returns a sample string."""
     return "sample index text"
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

@@ -2,6 +2,7 @@
 Utility functions for working with terms.
 Provides mapping between term names and term IDs for syllabus JSON ingestion.
 """
+
 from typing import Optional
 
 from app.main import get_db_connection
