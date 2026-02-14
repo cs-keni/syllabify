@@ -62,4 +62,76 @@ export async function me(token) {
   return data;
 }
 
-export default { login, securitySetup, me };
+/** GET /api/terms. Returns { terms: [...] }. Throws on error. */
+export async function getTerms() {
+  const res = await fetch(`${BASE}/api/terms`, {
+    headers: headers(true),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch terms');
+  return data;
+}
+
+/** POST /api/terms. Creates new term. Returns { term: {...} }. Throws on error. */
+export async function createTerm(termData) {
+  const res = await fetch(`${BASE}/api/terms`, {
+    method: 'POST',
+    headers: headers(true),
+    body: JSON.stringify(termData),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to create term');
+  return data;
+}
+
+/** GET /api/terms/:id. Returns { term: {...} }. Throws on error. */
+export async function getTerm(termId) {
+  const res = await fetch(`${BASE}/api/terms/${termId}`, {
+    headers: headers(true),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch term');
+  return data;
+}
+
+/** PUT /api/terms/:id. Updates term. Returns { term: {...} }. Throws on error. */
+export async function updateTerm(termId, termData) {
+  const res = await fetch(`${BASE}/api/terms/${termId}`, {
+    method: 'PUT',
+    headers: headers(true),
+    body: JSON.stringify(termData),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update term');
+  return data;
+}
+
+/** DELETE /api/terms/:id. Deletes term. Returns { message: "..." }. Throws on error. */
+export async function deleteTerm(termId) {
+  const res = await fetch(`${BASE}/api/terms/${termId}`, {
+    method: 'DELETE',
+    headers: headers(true),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to delete term');
+  return data;
+}
+
+/** POST /api/terms/:id/activate. Sets term as active. Returns { term: {...} }. Throws on error. */
+export async function activateTerm(termId) {
+  const res = await fetch(`${BASE}/api/terms/${termId}/activate`, {
+    method: 'POST',
+    headers: headers(true),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to activate term');
+  return data;
+}
+
+export default { login, securitySetup, me, getTerms, createTerm, getTerm, updateTerm, deleteTerm, activateTerm };

@@ -5,6 +5,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CourseCard from '../components/CourseCard';
+import TermSelector from '../components/TermSelector';
 
 const PLACEHOLDER_MODAL_KEY = 'syllabify_placeholder_modal_dismissed';
 
@@ -50,6 +51,7 @@ const MOCK_UPCOMING = [
 /** Main dashboard. Shows placeholder weekly chart, upcoming list, and courses. */
 export default function Dashboard() {
   const [showPlaceholderModal, setShowPlaceholderModal] = useState(false);
+  const [currentTermId, setCurrentTermId] = useState(null);
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem(PLACEHOLDER_MODAL_KEY);
@@ -60,6 +62,12 @@ export default function Dashboard() {
   const closePlaceholderModal = () => {
     sessionStorage.setItem(PLACEHOLDER_MODAL_KEY, '1');
     setShowPlaceholderModal(false);
+  };
+
+  /** Handle term change from TermSelector. In future, fetch courses for this term. */
+  const handleTermChange = (termId) => {
+    setCurrentTermId(termId);
+    // TODO: Fetch courses and assignments for this term when backend is ready
   };
 
   return (
@@ -100,6 +108,11 @@ export default function Dashboard() {
         </p>
       </div>
 
+      {/* TermSelector - Integrated from Phase 1 */}
+      <div className="rounded-card bg-surface-elevated border border-border p-4 shadow-card animate-fade-in [animation-delay:100ms]">
+        <TermSelector onTermChange={handleTermChange} />
+      </div>
+
       <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in [animation-delay:200ms]">
         <div className="flex items-center gap-2 mb-3">
           <h2 className="text-sm font-medium text-ink">This week</h2>
@@ -121,8 +134,8 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-ink-muted">
-          Balanced: ~20 hours across 5 days. (Placeholder)
+        <p className="mt-3 text-xs text-ink-subtle">
+          Hours of work scheduled this week.
         </p>
       </section>
 
