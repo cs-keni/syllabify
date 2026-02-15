@@ -33,11 +33,13 @@ class Schedule(Base):
         back_populates = "schedules"
     )
 
-    assignments = relationship(
-        "Assignment",
-        back_populates = "schedule",
-        cascade = "all, delete-orphan"
-    )
+##    schedules now go through schedule-->course-->assignment
+##    leaving commented schedule-->assignment logic in case it is needed later
+#    assignments = relationship(
+#        "Assignment",
+#        back_populates = "schedule",
+#        cascade = "all, delete-orphan"
+#    )
 
     courses = relationship(
         "Course",

@@ -30,20 +30,21 @@ CREATE TABLE IF NOT EXISTS Schedules (
         ON DELETE CASCADE
 );
 
+--Assignments belong to courses instead of schedules now
+--schedule_id logic is commented in case it is needed in the future
 CREATE TABLE IF NOT EXISTS Assignments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     assignment_name VARCHAR(255) NOT NULL,
     work_load INT NOT NULL,
-    due_date DATE,
     notes VARCHAR(2048),
     start_date DATETIME NOT NULL,
     due_date DATETIME NOT NULL,
-    schedule_id INT NOT NULL,
+--    schedule_id INT NOT NULL,
     course_id INT NOT NULL,
-    CONSTRAINT fk_assignments_schedule
-        FOREIGN KEY (schedule_id)
-        REFERENCES Schedules(id)
-        ON DELETE CASCADE,
+--    CONSTRAINT fk_assignments_schedule
+--        FOREIGN KEY (schedule_id)
+--        REFERENCES Schedules(id)
+--        ON DELETE CASCADE,
     CONSTRAINT fk_assignments_course
         FOREIGN KEY (course_id)
         REFERENCES Courses(id)

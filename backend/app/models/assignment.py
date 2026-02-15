@@ -44,12 +44,24 @@ class Assignment(Base):
         nullable = False
     )
 
-    schedule_id: Mapped[int] = mapped_column(
-        ForeignKey("Schedules.id"),
+# #    assignments are now associated with a course instead of a schedule
+# #    commenting schedule_id logic here in case it is needed in the future
+#    schedule_id: Mapped[int] = mapped_column(
+#        ForeignKey("Schedules.id"),
+#        nullable = False
+#    )
+
+    course_id: Mapped[int] = mapped_column(
+        ForeignKey("Courses.id"),
         nullable = False
     )
 
-    schedule = relationship(
-        "Schedule",
+#    schedule = relationship(
+#        "Schedule",
+#        back_populates = "assignments"
+#    )
+
+    course = relationship(
+        "Course",
         back_populates = "assignments"
     )
