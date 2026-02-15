@@ -24,6 +24,7 @@ class Assignment(Base):
         nullable = False
     )
 
+#    Quantized as: work_load * 15 = number of minutes to complete the assignment
     work_load: Mapped[int] = mapped_column(
         Integer,
         nullable = False
