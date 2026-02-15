@@ -1,0 +1,246 @@
+GEOG 321: Climatology
+Winter 2024, 2:00–3:20p, M & W; Lawrence 166 (CRN 22241)
+Instructor: John Christian, jchr@uoregon.edu, OH: Th 2–3p, or by appointment. Condon Hall, 173.
+GE: James Maze, jmaze@uoregon.edu, OH: T 1–2p, or by appointment. Condon Hall, 165.
+Overview: The climate system is a set of environmental systems including the atmosphere, ocean, and
+biosphere, that are coupled to one another and vary over time and space, and climatology is the study of
+that system. This course covers the basics of energy and moisture in the climate system, atmospheric
+circulation processes and patterns, and the spatial and temporal variations of climate, including those
+produced by human action. The course will also trace the development of our understanding of the
+physical basis of climatology, the development of conceptual and numerical models of climate, and how
+complex systems like the Earth’s climate system are studied.
+Learning objectives: The goal of this course is to provide an intermediate-level understanding of (and
+appreciation for) weather and climate systems. A further goal is to advance students' understanding of
+several cross-cutting concepts in geography and Earth Science, as well as some transferrable practical
+skills. The general concepts include:
+Understanding fundamental controls and responses in environmental systems, such as
+conservation principles, and tendencies towards equilibrium.
+Using a hierarchy of models (e.g. conceptual to mechanistic) to understand environmental systems
+at a range of scales.
+Understanding how remote/ultimate causes can govern local/proximate responses.
+Practical skills include:
+The use of Internet information sources to “diagnose” the controls of current environmental
+conditions
+Interpreting multivariate data presented in a range of ways (e.g., altitude vs. pressure coordinates;
+geographic vs. temporal means)
+How the course works (materials and activities): The main information sources in this course are: 1)
+PowerPoint slides that show the key figures and ideas on what the climate system is and how it works; 2)
+Readings posted to the Canvas page; and 3) online sources of current and historical weather and climate
+data, which will demonstrate how the climate system is working in "real time" and over the recent past.
+Topics are organized by weeks, with one outline, PowerPoint, and readings used for the whole week.
+There will be two assignments (an exercise and a “weather report”) and a quiz each week. Canvas will be
+used to post lecture outlines, readings, slide images, and URLs, as well as the links to the assignments
+and quizzes. Please note: It is my aim to adhere to the schedule and structure of assigments stated here,
+but I reserve the right to make changes to the syllabus if conditions require. Any such changes will be
+communicated in class and on Canvas.
+The exercises and “weather reports” (one of each, every week) are designed to reinforce the
+understanding that can be gained from looking at the current weather and archived climate data;
+
+exercises may also focus on synthesizing key concepts presented in lectures. The visual inspection and
+interpretation of the maps and images will be important, but accommodation for alternative methods of
+course-material access may be possible–please let us know as soon as possible. More info on
+accomodations is provided below.
+The weather reports will often involve looking at the weather data sometime between Friday and Monday
+each week and answering a couple of questions. If a distinct weather event is forecast, it may be
+necessary to look at the weather data over a particular interval, after which the questions will become
+more difficult to answer. It is thus recommended to look at the weather report assignment shortly after it
+is posted Friday to see if there is a particular “target” time to focus on. Weather reports may also focus on
+"breaking" climate-science results and reports. In sum, they are an opportunity to engage with the current
+state of the natural climate system, and the state of climate science.
+Exercises and weather reports should be written in full sentences, with proper grammar, and use of
+course-related vocabulary when appropriate.
+Text: No required textbook; assigned readings will be posted as .pdfs and URLs on Canvas, including
+links to current assessments of climate variations. However, some recommended supplemental
+references are available as eBooks from the UO library: Atmosphere, Weather & Climate (Barry, Chorley
+and Serreze, 2009) [link] provides a comprehensive overview; Global Physical Climatology (Hartmann,
+2015) [link] is an excellent advanced but readable text ; The Encyclopedia of Atmospheric Sciences (2nd
+Ed) [link] provides further technical information.
+Websites: Canvas is the central hub for this course; however we will also make frequent use of web
+resources, including:
+The UO Current Weather and Climate page, maintained by UO Prof. Pat Bartlein:
+https://pjbartlein.github.io/UOCWC/
+The NOAA Climate Monitoring portal: http://www.ncdc.noaa.gov/climate-monitoring/
+Technical Requirements: You will need access to the internet, to UO’s Canvas site, and to a browser
+and word processing or text-editing software on a notebook or desktop computer. Although it might be
+technically possible to do some of the exercises and weather reports using a phone or tablet, it is likely to
+be tedious as many weather/climate data pages are not optimized for phones; using a computer is
+recommended. If you have questions about accessing and using Canvas, visit the Canvas Support for
+Students page. If you face Internet access challenges, computer labs are open for students on campus.
+Prerequisites: Geog 141 (or similar introductory Earth-system science course, with consent of instructor)
+Grading: 100 points total. Ten quizzes (in Canvas, 4 points each, 40 pts. total for the quizzes), ten
+exercises that involve the analysis of online data or synthesis of concepts from lecture (4 points each, 40
+points total for the exercises), and ten “weather reports” (2 points each, 20 points total). The quiz
+questions will consist of a mix of multiple-choice and short-answer questions, will emphasize concepts
+(as opposed to factoids), and will also include questions aimed at your ability a) to synthesize material
+presented in the lectures, readings, and related web pages, and b) to interpret climate data in various
+forms (e.g., weather maps, time series). Quizzes will be posted on Mondays and must be completed by
+Wednesday evening. The grade cutoffs will be (lower bounds):
+A+ A A- B+ B B- C+ C C- D+ D
+98 93 90 87 83 80 77 73 70 65 60
+
+Do not use ChatGPT for answers. There is plenty of information in the course materials and links. For this
+class, copying responses from ChatGPT (or similar AI) will be considered misconduct.
+Late work: The quizzes will have specific “hard” due dates, listed in Canvas, and cannot be completed
+late. However, to build in some flexibility, the lowest quiz score (from a missed quiz or otherwise) will be
+"dropped". Exercises and weather reports also should be submitted by the times listed in Canvas. One
+point will be deducted for late submissions. The easiest way to lose points is through simple lateness in
+the submission of exercises and weather reports or in the completion of quizzes. If extenuating
+circumstances come up, get in touch, and we can make a plan. The official policy regarding
+"Incompletes" can be found here.
+Attendance: While attendence isn't a formal part of the grade, it is important for overall success in the
+course and synthesizing the range of topics we will cover. As interesting weather/climate events arise this
+winter, we may spend considerable class time looking at real-time data and this may be difficult to
+reconstruct later. Lecture slides will be posted on Canvas, though this is not a full replacement for the
+delivered lecture. So if you do miss class, try to follow up with classmates or visit our office hours soon to
+fill in the gaps. For illness, family-related, or personal issues, let us know, and we can work out a plan for
+catching up. Please stay home and rest if you are sick!
+University policies on religious accommodation, accessible education, and university-sponsored activities
+will be followed (see sections below for more detail).
+Schedule: See Canvas for details, including readings and weekly outlines. Due dates below are in
+parentheses.
+Week Topic WR (Mon) Quiz (Wed) Exercise (Fri)
+1 Intro, atmospheric composition --- --- 1 (Jan 12)
+2 Energy in the climate system 1 (Jan 16) 1 (Jan 17) 2 (Jan 19)
+3 Moisture in the climate system 2 (Jan 22) 2 (Jan 24) 3 (Jan 26)
+4 Atmos. and Ocean circulation 3 (Jan 29) 3 (Jan 31) 4 (Feb 2)
+5 Secondary circulation features 4 (Feb 5) 4 (Feb 7) 5 (Feb 9)
+6 Upper-level flow and surface weather 5 (Feb 12) 5 (Feb 14) 6 (Feb 16)
+7 Regional climate patterns 6 (Feb 19) 6 (Feb 21) 7 (Feb 23)
+8 Climate variability 7 (Feb 26) 7 (Feb 28) 8 (Mar 1)
+9 Paleoclimate 8 (Mar 4) 8 (Mar 6) 9 (Mar 8)
+10 Modern climate change and the future 9 (Mar 11) 9 (Mar 13) 10 (Mar 15)
+EW --- 10 (Mar 18) 10 (Mar 20) ---
+Communicating with instructors: Announcements will be posted on the Canvas site. We will also
+monitor a Canvas discussion area for practical and topical questions. If something isn't making sense or
+there are issues acessing online data sources, it's likely others have the same question so this is a helpful
+place to post such issues. For other questions about course content, or personal/time sensitive issues,
+reach out via email or come to office hours. I will try to respond within a business day. I enjoy discussing
+climatology, and I want you to learn and succeed in the course, so please don't hesitate to come to office
+hours! I am also available by appointment outside of the regular office hourse; just email me to schedule.
+
+Classroom community expectations: Standard, respectful classroom behavior is expected, and
+extends to Canvas and in office hours. Expect and respect diversity of backgrounds and perspectives;
+help each other learn; be kind and curious. We may occasionally have breakouts to discuss ideas or look
+at data with your neighbors; please be engaged and inclusive during these times. Otherwise, generally
+avoid disruption in class so that others can focus. That said, questions during lectures are encouraged!
+Academic dishonesty policies will be enforced (more below). You are welcome to collaborate on Exercises
+and Weather Reports, provided your answers are constructed independently. You are not allowed to
+collaborate on quizzes. Computers are welcome for notetaking and viewing course-related material. Other
+use of laptops, tablets, and phones in class may be distracting to your classmates and is considered
+unprofessional. Unless prior arrangements have been made, please do not record video or audio in class.
+Expanded course description: The climate system is a set of environmental systems including the
+atmosphere, ocean, biosphere, cryosphere, hydrosphere, and lithosphere. These systems are coupled to
+one another and vary over time and space, and climatology is the study of that coupled system. Climate
+variations occur on a wide range of temporal and spatial scales, and have many drivers, including:
+changes in Earth’s orbit and solar radiation; geologic controls on atmospheric composition and the
+arrangement of continents; intrinsic fluctuations in atmosphere and ocean circulation (i.e., weather); and
+human impacts on atmospheric composition and the land surface. Understanding how the climate
+system works therefore requires input from across the environmental sciences, and because human
+activities clearly influence climate, is also connected to the social sciences.
+The first part of the course examines the basic controls of and variations in energy and moisture in the
+climate system, and describes their temporal and spatial variations. The middle part of the course
+examines atmospheric circulation, its maintenance, and role in redistributing energy and moisture around
+the globe, as well as the connection between larger-scale atmospheric circulation features and the
+seasonal and day-to-day variations of weather at a place. The third part of the course examines the
+spatial and temporal variations of climate, including the global and regional variations of weather and
+climate, climate history on multiple time scales, and modern anthropogenic climate change.
+We will also trace the development of our understanding of how the climate system works via the
+progressive elaboration of simple models of the atmosphere and climate into the conceptual models that
+underly the connection between large-scale circulation features and surface conditions, and the
+numerical models that are used for day-to-day weather forecasting and for projecting future climate
+changes.
+Core Education Requirements: This course is designated as a Natural Science Core Education course.
+At UO, core education is designed to provide a broad, interdisciplinary education that helps students,
+think critically and creatively, communicate clearly, and reflect ethically. Specifically, in this class, you will
+learn and practice:
+Critical thinking, where some examples of topics include:
+Using evidence to draw conclusions: Exercises and Weather Reports will frequently call for looking
+at online sources of model output and/or climate observations, in order to draw conclusions about
+current conditions or changes in time.
+Modeling: The output of numerical models of the atmosphere are examined frequently in lecture.
+As the course progresses, we will be able to tie more and more “observables” to our mechanistic
+understanding of climate.
+Influence of context or underlying assumptions: for example, comparing distinct, imperfect
+sources of information such as weather radar, which is a direct observation of precipitation, but
+
+subject to systematic errors, versus forecast-model output, which is physics-based, but subject to
+the growth of errors over time.
+Creative thinking, where some examples include:
+Acquiring strategies and skills: By the end of course, through daily exposure and the exercises,
+students will be able to interpret real-time satellite imagery, numerical weather forecasting output,
+and current “state-of-the-climate” analyses.
+Going beyond the course material: The “Weather Report” exercises typically have a “exact”
+question, and a “what do you think?” question. An example would be reflecting on the
+effectiveness of different forecast types, and on uncertainties in weather forecasts and climate
+projections.
+Written communication
+Although not the major focus of the course, written communication is emphasized in assignemnts.
+We will ask for full, coherent sentences, and encourage using terms that otherwise would be
+regarded as jargon, but in the context of the exercises allow for efficient expression of technical
+concepts.
+Further resources, policies, and support
+Important links
+UO Division of student life: http://studentaffairs.uoregon.edu/
+University Counseling and Testing Center: http://counseling.uoregon.edu
+UO Accessible Education Center http://aec.uoregon.edu/
+UO Emergency and Safety Services: https://safety.uoregon.edu/emergency-and-safety-services
+Accomodations for religious observances: The University of Oregon respects the right of all students
+to observe their religious holidays, and will make reasonable accommodations, upon request, for these
+observances. If you need to be absent from a class period this term because of a religious obligation or
+observance, please fill out the Student Religious Accommodation Request fillable PDF form and send it
+to me within the first weeks of the course so we can make arrangements in advance.
+Access and accomodations: The visual inspection and interpretation of the maps and images will be
+important, but accommodation for alternative methods of course-material access may be possible–
+please let us know as soon as possible.The University of Oregon and I are dedicated to fostering inclusive
+learning environments for all students and welcomes students with disabilities into all of the University's
+educational programs. The Accessible Education Center (AEC) assists students with disabilities in
+reducing campus-wide and classroom-related barriers. If you have or think you have a disability
+(https://aec.uoregon.edu/content/what-disability) and experience academic barriers, please contact the
+AEC to discuss appropriate accommodations or support. Visit 360 Oregon Hall or aec.uoregon.edu for
+more information. You can contact AEC at 541-346-1155 or via email at uoaec@uoregon.edu.
+Academic Conduct: The University Student Conduct Code (available on the Student Conduct Code and
+Procedures webpage) defines academic misconduct. Students are prohibited from committing or
+attempting to commit any act that constitutes academic misconduct. By way of example, students
+should not give or receive (or attempt to give or receive) unauthorized help on assignments or
+examinations without express permission from the instructor. You are welcome to collaborate on
+
+Exercises and Weather Reports, provided your answers are constructed independently. You are not
+allowed to collaborate on quizzes. Students should properly acknowledge and document all sources of
+information (e.g. quotations, paraphrases, ideas) and use only the sources and resources authorized by
+the instructor. If there is any question about whether an act constitutes academic misconduct, it is the
+students’ obligation to clarify the question with the instructor before committing or attempting to commit
+the act. Additional information about a common form of academic misconduct, plagiarism, is available at
+the Libraries' Citation and Plagiarism page.
+Reporting obligations: Please note we are designated reporters. For information about my reporting
+obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations
+and Civil Rights Compliance (OICRC) website. Students experiencing sex or gender-based discrimination,
+harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for
+help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of
+Students Office at 5411-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123.
+Additional resources are available at UO’s How to Get Support webpage. I am also a mandatory reporter
+of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.
+Mental health and wellbeing Life at college can be very complicated. Students often feel overwhelmed
+or stressed, experience anxiety or depression, struggle with relationships, or just need help navigating
+challenges in their life. If you're facing such challenges, you don't need to handle them on your own--
+there's help and support on campus. As your instructor if I believe you may need additional support, I will
+express my concerns, the reasons for them, and refer you to resources that might be helpful. It is not my
+intention to know the details of what might be bothering you, but simply to let you know I care and that
+help is available. Getting help is a courageous thing to do—for yourself and those you care about.
+University Health Services helps students cope with difficult emotions and life stressors. If you need
+general resources on coping with stress or want to talk with another student who has been in the same
+place as you, visit the Duck Nest (located in the EMU on the ground floor) and get help from one of the
+specially trained Peer Wellness Advocates. University Counseling Services (UCS) has a team of dedicated
+staff members to support you with your concerns, many of whom can provide identity-based support. All
+clinical services are free and confidential. Find out more at counseling.uoregon.edu or by calling 541-346-
+3227 (anytime UCS is closed, the After-Hours Support and Crisis Line is available by calling this same
+number).
+Academic disruption due to campus emergency: In the event of a campus emergency that disrupts
+academic activities, course requirements, deadlines, and grading percentages are subject to change.
+Information about changes in this course will be communicated as soon as possible by email, and on
+Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read
+any announcements and/or access alternative assignments. Students are also expected to continue
+coursework as outlined in this syllabus or other instructions on Canvas.
+Inclement weather: (Stay safe and take notes!) It is generally expected that class will meet unless the
+University is officially closed for inclement weather. If it becomes necessary to cancel class while the
+University remains open, this will be announced on Canvas and by email. Updates on inclement weather
+and closure are also communicated as described on the Inclement Weather webpage.

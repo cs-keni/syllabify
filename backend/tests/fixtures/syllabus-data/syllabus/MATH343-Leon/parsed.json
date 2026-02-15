@@ -1,0 +1,166 @@
+{
+  "course": {
+    "id": "math343",
+    "course_code": "MATH 343",
+    "course_title": "Statistical Models and Methods",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Liliana Pazdan-Siudeja",
+        "email": "lpazdans@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "13:00",
+        "end_time": "13:50",
+        "timezone": "America/Los_Angeles",
+        "location": "191 ANS",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "13:00",
+        "end_time": "13:50",
+        "timezone": "America/Los_Angeles",
+        "location": "191 ANS",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "13:00",
+        "end_time": "13:50",
+        "timezone": "America/Los_Angeles",
+        "location": "191 ANS",
+        "type": "lecture"
+      }
+    ],
+    "location": "191 ANS"
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Homework + WebWork",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterms",
+      "name": "Midterm Exams",
+      "weight_percent": 50,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final exam",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Homework + WebWork",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "WE"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "12hr grace, lowest in-depth dropped; WebWork 2 days 75%",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Homework + WebWork 25%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm Exam 1",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Lowest exam dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Midterm Week 5 Wednesday"
+    },
+    {
+      "id": "midterm_2",
+      "title": "Midterm Exam 2",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Lowest exam dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Midterm Week 8 Wednesday"
+    },
+    {
+      "id": "final_1",
+      "title": "Final exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2025-06-09T14:45:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final Monday June 9 2025, 2:45pm"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

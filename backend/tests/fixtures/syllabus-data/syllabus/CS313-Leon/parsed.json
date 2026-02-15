@@ -1,0 +1,187 @@
+{
+  "course": {
+    "id": "cs313",
+    "course_code": "CS 313",
+    "course_title": "Intermediate Data Structures",
+    "term": "Fall 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Thien Huu Nguyen",
+        "email": "thienn@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "12:00",
+        "end_time": "12:50",
+        "timezone": "America/Los_Angeles",
+        "location": "125 MCK",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "12:00",
+        "end_time": "12:50",
+        "timezone": "America/Los_Angeles",
+        "location": "125 MCK",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "12:00",
+        "end_time": "12:50",
+        "timezone": "America/Los_Angeles",
+        "location": "125 MCK",
+        "type": "lecture"
+      }
+    ],
+    "location": "125 MCK"
+  },
+  "assessment_categories": [
+    {
+      "id": "assignments",
+      "name": "Assignments",
+      "weight_percent": 45,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "Midterm",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 5,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "written_assignments",
+      "title": "Written Assignments",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10% per day, up to 2 days late",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Written assignments 25%"
+    },
+    {
+      "id": "programming_assignments",
+      "title": "Programming Assignments",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10% per day, up to 2 days late",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Programming assignments 20%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": "2025-11-14",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm 11:00am on Nov 14"
+    },
+    {
+      "id": "final_1",
+      "title": "Final",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2025-12-12T10:15:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final Friday Dec 12, 10:15am"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Lowest score dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Quizzes 5% extra credit, lowest dropped"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

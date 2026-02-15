@@ -1,0 +1,255 @@
+Course Title: MATH 343, Statistical Models and Methods
+CRN: 35548
+Class: 1:00-1:50pm, MWF, 191 ANS
+Instructor: Liliana Pazdan-Siudeja
+Office: Tykeson Hall 333E
+Office hours: Monday, Wednesday 11:00-11:50am, Friday 12:00-12:50pm
+Email: lpazdans@uoregon.edu
+Prerequisites: MATH 252
+Important Note:
+• Students who already have credit for MATH 462 cannot get credit for
+MATH 343.
+• Students who take 343 and 462 concurrently cannot get credit for 343.
+• Students who have credit for 343 can later take 462 and get credit, but the
+two courses cannot both be used to satisfy the “four upper-division course”
+requirement for the Math Major.
+Text: ”Statistics for the Sciences”, by Buntinas and Funk.
+Other Recommended Materials: A scientific or graphing calculator. Colored
+pens or pencils.
+Calculators: Calculatorscanbehelpfulforhomeworkandactuallymaybeneeded
+for some of the problems. No calculators will be allowed during exams (unless oth-
+erwise stated).
+Course Content: We will (most likely) do a selection of topics from chapters
+1-10, if time allows.
+Learning Outcomes:
+By the end of the course, the successful student will have knowledge of the ba-
+sic tools of statistics and a certain knowledge of probability theory necessary to
+understand basic models and tests used in statistics.
+In particular, the student will be expected to understand the notion of random
+variable and their mass/density functions and distribution functions, as well as
+typical types of random variables used in statistics, for instance: Bernoulli, bi-
+nomial, uniform, exponential and Gaussian random variables. Additionally, the
+student will be expected to know certain quantities attached to random variables,
+for instance mean, variance and percentiles, their probabilistic interpretation, and
+how to estimate these quantities from data.
+1
+
+The statistical content of the course will revolve mostly around modeling and
+hypothesis testing. The successful student will have an understanding of what
+types of standard random variables are applicable in various situations/models,
+and in some instances what assumptions/simplifications are necessary to model
+certain situations by a particular type of random variable. The student will be
+able to form hypotheses from simple data, and know various methods (tests) to
+confirm/reject a hypothesis within a certain confidence interval under various as-
+sumptions on the data. The student should come away with an understanding of
+how these methods will scale to actual data sets which may arise in the sciences
+or other disciplines.
+Canvas:
+Atcanvas.uoregon.edu you mayloginand accesscoursedocuments such asthis syl-
+labus. In-Depth homework will be posted there. Also, you may view your scores
+on homework and tests at any time. Hence, check it periodically for homework
+assignments, announcements, and to see if your assignment scores are properly
+entered in the grade book.
+CommunicationOurclasswillcommunicatethroughourCanvassite. Announce-
+ments and emails are archived there and automatically forwarded to your UO
+email, and can even reach you by text. Check and adjust your settings under
+Account → Notifications.
+If you contact me with a question, I will try to respond within one business day.
+I typically provide feedback on assignments graded by me within one week.
+Course grade determined by:
+• Homework + WebWork 25%
+• Midterm Exams 25% each
+• Final exam 25%
+Standard grade assignments will be made (e.g. grades in the 80% to 90% range
+will be B’s, those in the 70% to 80% range are C, etc.) Plus and minus grades
+will be awarded in the upper and lower 2% of a bracket. (e.g. A grade of B+ is
+awarded between 88% and 90%; B- between 80% and 82%). I reserve the right to
+apply a course adjustment to grades at the end of the term. Being active in class,
+might be taken into the account while considering “boundary cases”.
+The standards for each level of work:
+Please access the following link for details.
+https://math.uoregon.edu/wp-content/uploads/2014/12/MathGradingStandards-
+1tli4lj.pdf
+In-depth Homework:
+There will be some conceptual homework covering some in-depth problems. As-
+signments will be posted on Canvas every Wednesday (starting Week 2) and must
+be uploaded into Canvas, till 11:59pm the following Wednesday. Homework should
+be in ONE FILE, legible, complete and self-contained. That is, a reader should be
+able to understand exactly what you are trying to demonstrate (be it a problem or
+
+a proof) without referring to any additional resource. The homework assignments
+will be posted on the Canvas webpage for the course and submitted electronically
+through Canvas. Possibly the easiest way to create a file for submission is to neatly
+write your homework solutions and then use a smart phone to create a single pdf of
+the solutions. There are several scanning apps (like Genius Scan or CamScanner)
+that can create a pdf. Note that cell phone images are rarely readable and usually
+too large for Canvas submission. If you have difficulty scanning your homework
+to create a pdf, please let me know as soon as possible. I highly recommend that
+you begin the assignments the day that they are posted and work on them as we
+are discussing the material during the week.
+Homework uploaded up to 12 hours day after its original deadline will be graded
+without penalty. The lowest in-depth homework score will be dropped.
+Homework on WebWork:
+A part of your homework will also be given and collected via WebWork. Web-
+Work is a free, web browser-based program that maintains and grades a pool of
+homework problems that have been selected by your instructor. You will usually
+have a week for completing WW assignment, with two extra days of reduced scor-
+ing (each problem done during that time will be worth 75% of its original value).
+This applies to all but the “Orientation” set.
+Each WeBWorK set will be available via assignments posted on Canvas. Your user
+account in WeBWorK will be created the first time you use the link to WeBWorK
+in a Canvas assignment. Moreover, in order for automatic grade pass back from
+WeBWork to Canvas to work, you must use the link in the assignment at least one
+time. Thus, please make sure that you use links attached to your assignments.
+The lowest WebWork score will be dropped.
+Logging Into WebWork:
+Seehttps://uowebwork.uoregon.edu/webwork2/toaccessWebWorkassignments
+for this class. Among sections of Math 343 you need to access YOURS according
+to the CRN of the class in which you are enrolled. You will need to sign in using
+your regular UofO email credentials: your DuckID as your username and your
+UO email password for password. Once you have logged in, you can change your
+password, if you wish.
+WebWork Practice:
+The first assignment you should complete in WebWork is called “Orientation”.
+It does not involve (much) math, but instead is intended to familiarize you with
+the interface of WebWork: how to look at problems, how to preview and enter
+answers, and so on. This assignment counts as your first homework assignment.
+Do it by the end of Friday night by 11:59pm on Week 1 for credit. These are
+easy points! (if you used this system before, this set should take no more than 10
+minutes).
+Showing Work:
+While doing your WeBWorK homework, I highly recommend having scratch
+paperathand. EventhoughWeBWorKdoesnotgradeyouonyourprocess, having
+a comprehensive thought process is necessary. It will also help you track down
+
+mistakes that you made if the first answer you submit is incorrect. Remember:
+On exams showing your work will be extremely important!
+Getting Help:
+If you have a question about a homework problem, one excellent resource is
+the ”email instructor” button at the bottom of the page. Clicking on that and
+typing a short message about what you have tried on the problem will help your
+instructor diagnose the issue you are having. Please, do not send an email simply
+saying ”What am I doing wrong on this problem?” or ”I can’t get the right answer
+on this one”. On most homework problems it is impossible to figure out what
+you are doing wrong if I only see your answer (which is all WebWork shows me).
+Hence, first you should go back over your work and see if you can find the mistakes
+yourself. If you can’t, feel free to email me, but include a description of how you
+solved the problem as well as any work you did for intermediate steps. The more
+information you give, the more likely it is you get a prompt and helpful reply.
+Exams:
+(1) Midterm Exams: Wednesdays of Week 5 and Week 8, during the class
+(2) Final Exam: Monday, June 9, 2025, 2:45 p.m. (location TBA)
+Bring your UO student ID to all your exams.
+Theuseofcellularphones, oranydevicethatcommunicateswiththeoutsideworld
+is strictly forbidden during exams.
+Note, you are expected to make the given exam times. There are no makeup
+exams. To accommodate for that, the lowest exam score is dropped. This means if
+you miss an exam due to illness then than will be your dropped exam. This policy
+is in place because “life happens”.
+If you miss more than one exam, please note that I will not be able to drop
+additional exams for any reason. All students must be treated equally regardless
+of circumstances.
+Accessibility:
+For those of you who are currently registered with Accessible Education Center
+for a documented disability, please present your paperwork to me during the first
+week of the term so that we can design a plan for you. Those of you with a
+disability (or who might) but are not registered with AEC should contact them
+as soon as possible. It is much more likely that measures can be taken to provide
+adequate special accommodation if the organization is done through AEC. I have
+attempted to provide documents that are accessible. Please let me know if you
+need additional accommodations.
+Student Conduct:
+I plan to treat every student with respect and, as such, expect my students to show
+respect for me and for the class as a whole. Violations of the student conduct code
+result in the incident being included on your student conduct record and can result
+in a failing grade on any course work related to the violation or a failing grade in
+thecourse. TheUniversityofOregonrequiresall instances ofcheatingbereported,
+no matter how small.
+Cheating includes, but is not limited to:
+-Looking at another student’s exam during a test
+-Copying the work of another person (student or otherwise) and submitting it as
+
+your own
+-Usinganymaterialsexceptthoseexplicitlyapprovedduringatest-takingsituation
+-Resubmitting graded work that was altered after being returned
+For a list of other descriptions of cheating, see the Student Conduct Code,
+dos.uoregon.edu/conduct.
+The University Student Conduct Code defines academic misconduct, which in-
+cludes unauthorized help on assignments and examinations and the use of sources
+without acknowledgment. Academic misconduct is prohibited at UO. Conse-
+quencesofareportedmisconducttotheOfficeofStudentConductandCommunity
+Standards can include failure of the course.
+Calculator Policy:
+Scientific and graphing calculators are good tools for learning, and some of the
+homework problems use them. You are welcome to use calculators on homework.
+But no calculators will be allowed on any of the exams in this course. Students
+are expected to be able to perform basic arithmetic operations with fractions and
+decimals by hand.
+Suggestions for Successful Study:
+Don’t get behind in your homework, reading, etc.
+Participate in class, ask questions, and make use of my office hours.
+Make friends with your classmates-you can find out for instance what material was
+covered when you missed the class or discuss homework problems with them.
+Read ahead in the book. Even reading the first few pages of each lesson will help
+the material sink in quicker during lecture and allow you to ask meaningful ques-
+tions.
+Keep all your old homework assignments, midterms, and quizzes - most probably,
+you will find them useful when you are studying for future tests.
+Important Dates.
+Please, see http://registrar.uoregon.edu/calendars.html for details.
+Saturday of Week 1 - Last day to drop without a W
+Sunday of Week 1 - Last day to add/register for a class.
+Sunday of 7th week - Last day to withdraw (drop with a W or change to P/NP.)
+Monday of 9th week - Memorial Day (no classes).
+Community Standards:
+TheUniversityofOregoncommunityisdedicatedtotheadvancementofknowledge
+andthedevelopmentofintegrity. Inordertothriveandexcel,thiscommunitymust
+preserve the freedom of thought and expression of all its members. The University
+of Oregon has a long and illustrious history in the area of academic freedom and
+freedom of speech. A culture of respect that honors the rights, safety, dignity and
+worth of every individual is essential to preserve such freedom. We affirm our
+respect for the rights and well-being of all members.
+Expected Classroom Behavior: Students are expected to behave respectfully
+toward each other and toward the instructor during class time. This includes re-
+fraining from using cell phones during lectures, unless allowed for instructional
+purposes by your instructor.
+
+Attendance: Attendance is not required but it is strongly encouraged, as it gives
+you a chance to ask questions and clarify any potential confusion.
+Academic Disruption: In the event of a campus emergency that disrupts aca-
+demic activities, course requirements, deadlines, and grading percentages are sub-
+ject to change. Information about changes in this course will be communicated as
+soon as possible by email, and on Canvas. If we are not able to meet face-to-face,
+students should immediately log onto Canvas and read any announcements and/or
+access alternative assignments. Students are also expected to continue coursework
+as outlined in this syllabus or other instructions on Canvas.
+In the event that the instructor of this course has to quarantine, this course may
+be taught online during that time.
+Staying Safe in Classes: As the University of Oregon continues in-person in-
+struction, instructors and students play a key role in keeping our community
+healthy and safe.
+Title IX:. I am a designated reporter. For information about my reporting obli-
+gations as an employee, please see Employee Reporting Obligations on the Office
+of Investigations and Civil Rights Compliance (OICRC) website. Students expe-
+riencing sex- or gender-based discrimination, harassment or violence should call
+the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students
+experiencing all forms of prohibited discrimination or harassment may contact the
+Dean of Students Office at 541-346-3216 or the non-confidential Title IX Coor-
+dinator/OICRC at 541-346-3123 to request information and resources. Students
+are not required to participate in an investigation to receive support, including
+requesting academic supportive measures. Additional resources are available at
+investigations.uoregon.edu/how-get-support. I am also a mandatory reporter of
+child abuse. Please find more information at Mandatory Reporting of Child Abuse
+and Neglect.
+Other information:
+• In case of inclement weather, please check Canvas for further instructions.
+In general, the university does not close for snow, etc. If it is not safe for
+you to come to campus, please be sure to email me right away.
+• Astheuniversitycommunityadjuststoteachingandlearninginthecontext
+of the COVID-19 pandemic, course requirements, deadlines, and grading
+percentagesaresubjecttochange,i.e. thesyllabusmightbechanged/updated.
+• I will try to answer emails received by 5pm the same business day but
+please note that same-day response is not guaranteed if an email was re-
+ceived after that time or during a weekend. If I do not respond to your
+email withing two days, please resend it or approach me to let me know
+that you are awaiting my response. Thank you for your cooperation!

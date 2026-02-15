@@ -1,0 +1,388 @@
+CS 314 (Fall 2025; 11587) Computer Organization
+
+Introduction to Course and Instructor
+Course Description
+Introduction to computer organization and instruction-set architecture - digital logic design, binary arithmetic, design of central processing unit and memory, machine-level programming.  In addition to machine-level programming, this course will provide an introduction to the C programming language in the context of bitwise operations, memory management, pointers to memory, and translation between C and the x86-64 instruction set architecture.
+
+Lectures
+MWF 1-1:50 - 221 MCK
+
+Streamed via Zoom (after attendance code is given - does not count as live attendance):
+
+https://uoregon.zoom.us/j/97193072178?pwd=TQx92gPbN2oL5hGd4Raibads4YqRsl.1Links to an external site.
+
+
+Meeting ID: 971 9307 2178
+Passcode: 414234
+
+Lectures are recorded and made available (via Panopto) for subsequent viewing.
+
+Labs
+M 2-2:50; W 2-2:50, 3-3:50 - B026 KLA
+
+Streamed via Zoom (after attendance code is given - does not count as live attendance):
+
+Zoom info:
+
+https://uoregon.zoom.us/j/6643471789?pwd=TE90RGovYjBUM0ozSlFpZGRzVSs5dz09Links to an external site.
+
+Meeting ID: 664 347 1789
+Passcode: 232683
+
+Labs are recorded and made available (via Panopto) for subsequent viewing.
+
+Instructor Information and Office Hours
+Eric D. Wills, Ph.D.
+
+Email: eric@cs.uoregon.edu
+
+Group office hours: MF 12-1, W 2-3 (in person)
+
+156 Deschutes
+
+1:1 office hours: W 4-5 (on Zoom)
+
+https://uoregon.zoom.us/j/97193072178?pwd=TQx92gPbN2oL5hGd4Raibads4YqRsl.1Links to an external site.
+
+
+Meeting ID: 971 9307 2178
+Passcode: 414234
+
+Graduate Teaching Assistants
+Andrew Teske
+
+Email: ateske@uoregon.edu
+
+235 Deschutes
+
+In Person:  Tuesday 10am-11:30am, Thursday 10am-11:30am
+
+Zoom: Friday 3pm-5pm
+
+https://uoregon.zoom.us/j/6643471789?pwd=TE90RGovYjBUM0ozSlFpZGRzVSs5dz09Links to an external site.
+
+Meeting ID: 664 347 1789
+Passcode: 232683
+
+Overall Goal
+To significantly improve programming and debugging skills by developing a deep understanding around every line of code that we read or write.
+
+This course is aligned with CS 205 System Programming and Architecture at the Oregon University System (OUS) level.
+
+Acquired Skills
+Upon successful completion of the course, students will have acquired the following essential skills:
+
+be able to use bitwise operations to efficiently solve problems in C.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+be able to implement a basic direct-mapped caching solution.
+Course Objectives
+Each student will:
+
+Expected Learning Outcome	Acquired Skills
+Proficiently use bitwise operators to solve problems efficiently in C.
+be able to use bitwise operations to efficiently solve problems in C.
+Demonstrate knowledge of unsigned, signed, and floating-point number encodings and binary, decimal, and hexadecimal representations.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Demonstrate usage of a typical instruction set architecture and understand the relationship between C code and data-transfer, arithmetic, and control instructions.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Demonstrate usage of the call stack, including call/return instructions, argument passing, local scope, and register conventions.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Demonstrate knowledge of stack vs heap allocation, array and struct data types.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Comprehend the basic functionality of a modern pipelined microprocessor.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+Demonstrate how various optimization techniques affect assembly code and therefore program performance.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+Understand the modern memory hierarchy, including caching, and how it affects performance.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+be able to implement a basic direct-mapped caching solution.
+Estimated Student Workload
+Each student will:
+
+read assigned readings in the required textbook;
+attend the live lectures;
+attend a weekly lab session, led by one of the graduate teaching assistants, at which you will be introduced to tools and techniques to help you be proficient in developing your projects;
+submit solutions for 8 programming projects - these are individual efforts, and must represent your own work;
+sit and submit the midterm and the final.
+Workload expectations are 12 hours per week.
+
+Activity
+
+Total hours
+
+Remarks
+
+Attend lecture
+View recorded lectures
+
+30
+
+Lecture attendance is required.  Each lecture is recorded and made available for subsequent viewing.
+
+Assigned readings
+
+15
+
+Do the assigned readings BEFORE it is covered in lecture.
+
+Attend labs
+
+10
+
+Lab attendance is required.
+
+Develop and submit projects
+
+50
+
+Start projects early; take advantage of plentiful office hours; use message board to solicit additional assistance.
+
+Revision
+
+15
+
+Studying for midterm and final exams.
+
+Total
+
+120
+
+ 
+
+Course Policies
+Course Materials
+(Required) Computer Systems: A Programmer's Perspective, 3rd Edition by David R. O'Hallaron Randal E. BryantLinks to an external site.
+Message Board
+Please post questions related to course content on Piazza:
+
+https://piazza.com/uoregon/fall2025/cs314Links to an external site.
+
+Grading Policies
+Grading will be based on the following criteria:
+
+10%
+
+Attendance quizzes (in person) - on Canvas - can not be made up - lowest 5 scores dropped - individual submission -  collaboration encouraged
+
+15%
+
+Labs - submitted to Canvas - late policy applies (attendance code dropped 5 days after last lab of the week) - lowest score dropped - individual submission - collaboration encouraged
+
+25%
+
+Assignments - submitted to Canvas - late policy applies - lowest score dropped - individual submission - collaboration and peer review encouraged
+
+25%
+
+Midterm exam - in person - individual submission - individual work only - page of notes (only) allowed
+
+25%
+
+Final exam - in person - individual submission - individual work only - 2 pages of notes (only) allowed
+
+It is the sole responsibility of the student to verify that submissions have been successfully uploaded prior to the due date. To verify a submission, revisit the submission page for the assignment to view your uploaded files.
+
+Grading Criteria
+A
+
+Excellent performance. Very well prepared to continue on in the major. Solid grasp of the concepts and approaches introduced in CS 314
+
+B
+
+Solid performance. You have shown a generally good grasp of the concepts and approaches introduced in CS 314.
+
+C
+
+Acceptable performance, but your grasp of the concepts and approaches will require improvement if you choose to continue in the CS major.
+
+D
+
+Your grasp of concepts and approaches, and/or programming skills, are not yet sufficient to continue in the CS major.
+
+F
+
+Little or no demonstrated grasp of concepts and approaches introduced in CS 314, and/or failure to carry out much of the required work.
+
+Grading Scale
+  A  	 A+ >= 97.00*	 A 93.00 - 96.99 	 A- 90.00 - 92.99
+  B  	 B+ 87.00 - 89.99 	 B 83.00 - 86.99	 B- 80.00 - 82.99
+  C  	 C+ 77.00 - 79.99 	 C 73.00 - 76.99	 C- 70.00 - 72.99
+  D  	 D+ 67.00 - 69.99 	 D 63.00 - 66.99	 D- 60.00 - 62.99
+  F  	 F 0.00 - 59.99 	 	 
+*Eligibility for 'A+' grades will be based on exam scores; only students with exam scores in the top 5% of the course will be considered.
+
+Absences
+In-class lecture attendance will be tracked via attendance quizzes (lowest 5 scores dropped).  Absences will only be excused in accordance with the University Course Attendance and Engagement policy.  Accommodations for prolonged absences may be arranged with the Accessible Education Center (AEC).
+
+Late Work
+Assignments and labs will be automatically penalized 10% of the maximum score for each day after the Canvas due date, up to a maximum penalty of 50%.  For assignments, a 24-hour grace period will be extended between the posted due date and the Canvas due date.  Late penalties will only be waived in accordance with the University Course Attendance and Engagement policy.  Accommodations for flexibility on assignment deadlines may be arranged with the Accessible Education Center (AEC).  Late submissions will not be accepted after the final exam.
+
+As stated above, it is the sole responsibility of the student to verify that submissions have been successfully uploaded prior to the due date.  Incomplete submissions, for any reason, will be subject to the late penalty.
+
+Missed Exams
+Exams can only be rescheduled in accordance with the University Course Attendance and Engagement policy or with respect to Accessible Education Center (AEC) accommodations.
+
+It is against university policy to administer final exams before the posted date/time.
+
+AI Policy
+Students may use GenAI tools in this class to help with course work and assignments. Helpful uses include brainstorming ideas, creating outlines, editing, and so forth.  Although open use of GenAI is allowed in this class, be advised that GenAI suggestions or content can be inaccurate, incomplete or otherwise problematic; using GenAI can impact negatively the quality of your work and your grades.
+
+Classroom Community Expectations
+All members of the class (both students and instructor) can expect to:
+
+Participate and Contribute:  All students are expected to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others.   While all students should participate, participation is not just talking, and a range of participation activities support learning. Participation might look like speaking aloud in the full class and in small groups as well as submitting questions prior to class or engaging with the message board.  We will establish more specific participation guidelines and criteria for contributions in our first weeks of the term.
+
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. We may establish more specific guidelines and protocols to ensure inclusion and equity for all members of our learning community.
+
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don’t hesitate to contact me to ask for assistance or offer suggestions that might help us learn better.
+
+Schedule
+Date
+
+Lectures
+
+Reading
+
+Modules
+
+9/29 - 10/3	
+Great Realities in Computing
+
+Representing and Manipulating Information - Bitwise Ops, Integers
+
+F: 2.1.7
+Week 1-2
+10/6 - 10/10	
+Representing and Manipulating Information - Floating Point
+
+M: 2.2.3
+W: 2.4.1
+F: 2.4.2
+10/13 - 10/17	
+Machine-Level Representation of Programs - History, Data Transfer
+
+No Class Friday
+
+M: 3.2.1
+W 3.4.1
+Week 3
+10/20 - 10/24	
+Machine-Level Representation of Programs - Arithmetic, Control, Procedures
+
+M: 3.5.1 
+W: 3.6.1
+F: 3.7.2 
+Week 4
+10/27 - 10/31	
+Machine-Level Representation of Programs - Data Structures, Memory Layout
+
+Midterm review
+
+M: 3.7.5 
+W: 3.8.1
+Week 5
+11/3 - 11/7	
+Midterm (Monday in person)
+
+Processor Architecture - Y86-64 ISA, Logic Circuits
+
+W: 4.1.2
+F: 4.2.1
+Week 6-7
+11/10 - 11/14	
+Processor Architecture - Y86-64 Processor
+
+No Class Friday
+
+M: 4.3.1 
+W: 4.3.3
+11/17 - 11/21	
+Optimizing Program Performance - Limitation of Optimizing Compilers
+
+Optimizing Program Performance - Modern Processors, Loop Unrolling, Branch Prediction
+
+M: 5.1
+W: 5.2 
+F: 5.8
+Week 8
+11/24 - 11/28	
+The Memory Hierarchy - Memory Technologies, Locality
+
+The Memory Hierarchy - Caching in the Memory Hierarchy
+
+No class Friday
+
+M: 6.1.4 
+W: 6.3.1
+Week 9
+
+12/1 - 12/5	
+The Memory Hierarchy - Direct-Mapped Caches, Set-Associative Caches
+
+Final review
+
+M: 6.4.2
+W: 6.4.3
+
+Week 10
+12/8 - 12/12	Final exam (Wednesday, December 10, 2:45 p.m.)	 	 
+Related Links
+Textbook companion siteLinks to an external site.
+C for Python programmersLinks to an external site.
+Unix Programming Tools GuideLinks to an external site.
+gdb tutorialLinks to an external site.
+Binary to Decimal converterLinks to an external site.
+IEEE-754 converterLinks to an external site.
+logic.ly free demoLinks to an external site.
+Y86-64 simulatorLinks to an external site.
+Y86 Syntax Highlighter for VSCodeLinks to an external site.
+VirtualBox (for x86-64 machines)Links to an external site.
+UTM (for ARM machines)Links to an external site.
+GodboltLinks to an external site. (use x86-64 gcc 14.2 with -Wall -Og -masm=att arguments)
+OnlineGDBLinks to an external site.
+Course Summary:
+Course Summary
+Date	Details	Due
+Wed Oct 1, 2025	Quiz Oct 1, 2025 Attendance	due by 1:05pm
+Fri Oct 3, 2025	Quiz Oct 3, 2025 Attendance	due by 1:05pm
+Mon Oct 6, 2025	Quiz Oct 6, 2025 Attendance	due by 1:05pm
+Wed Oct 8, 2025	Quiz Oct 8, 2025 Attendance	due by 1:05pm
+Quiz Lab 1 (week 2)	due by 3pm
+Fri Oct 10, 2025	Quiz Oct 10, 2025 Attendance	due by 1:05pm
+Sat Oct 11, 2025	Assignment Assignment 1 (due 10/10, grace period until EoD 10/11)	due by 11:59pm
+Mon Oct 13, 2025	Quiz Oct 13, 2025 Attendance	due by 1:05pm
+Wed Oct 15, 2025	Quiz Oct 15, 2025 Attendance	due by 1:05pm
+Quiz Lab 2 (week 3)	due by 3pm
+Sat Oct 18, 2025	Assignment Assignment 2 (due 10/17, grade period until EoD 10/18)	due by 11:59pm
+Mon Oct 20, 2025	Quiz Oct 20, 2025 Attendance	due by 1:05pm
+Wed Oct 22, 2025	Quiz Oct 22, 2025 Attendance	due by 1:05pm
+Quiz Lab 3 (week 4)	due by 3pm
+Fri Oct 24, 2025	Quiz Oct 24, 2025 Attendance	due by 1:05pm
+Sun Oct 26, 2025	Assignment Assignment 3 (due 10/25, grace period until EoD 10/26)	due by 11:59pm
+Mon Oct 27, 2025	Quiz Oct 27, 2025 Attendance	due by 1:05pm
+Wed Oct 29, 2025	Quiz Oct 29, 2025 Attendance	due by 1:05pm
+Quiz Lab 4 (week 5)	due by 3pm
+Sat Nov 1, 2025	Assignment Assignment 4 (due 10/31, grace period until EoD 11/1)	due by 11:59pm
+Wed Nov 5, 2025	Quiz Nov 5, 2025 Attendance	due by 1:05pm
+Fri Nov 7, 2025	Quiz Nov 7, 2025 Attendance	due by 1:05pm
+Mon Nov 10, 2025	Quiz Nov 10, 2025 Attendance	due by 1:05pm
+Wed Nov 12, 2025	Quiz Nov 12, 2025 Attendance	due by 1:05pm
+Quiz Lab 5 (week 7)	due by 3pm
+Mon Nov 17, 2025	Quiz Nov 17, 2025 Attendance	due by 1:05pm
+Assignment Assignment 5 (due 11/14, grace period until EoD 11/15)	due by 11:59pm
+Wed Nov 19, 2025	Quiz Nov 19, 2025 Attendance	due by 1:05pm
+Quiz Lab 6 (week 8)	due by 3pm
+Fri Nov 21, 2025	Quiz Nov 21, 2025 Attendance	due by 1:05pm
+Mon Nov 24, 2025	Quiz Nov 24, 2025 Attendance	due by 1:05pm
+Assignment Assignment 6 (due 11/21, grace period until EoD 11/22)	due by 11:59pm
+Wed Nov 26, 2025	Quiz Nov 26, 2025 Attendance	due by 1:05pm
+Mon Dec 1, 2025	Quiz Dec 1, 2025 Attendance	due by 1:05pm
+Assignment Assignment 7 (due 11/28, grace period until EoD 11/29)	due by 11:59pm
+Wed Dec 3, 2025	Quiz Dec 3, 2025 Attendance	due by 1:05pm
+Quiz Lab 7 (week 10)	due by 3pm
+Sat Dec 6, 2025	Assignment Assignment 8 (due 12/5, grace period until EoD 12/6)	due by 11:59pm

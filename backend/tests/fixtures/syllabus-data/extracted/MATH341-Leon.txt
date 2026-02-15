@@ -1,0 +1,200 @@
+Math 341: Elementary Linear Algebra
+CRN: 40902 Summer 2025
+Instructor: Zhe Xu Office Hours:
+Pronouns: he/him/his TBD
+Office: Fenton 316 or by appointment (email me)
+Email: zhxu@uoregon.edu
+(Please include “Math 341” in the subject line when emailing me)
+Class: MTWRF 10:00 am - 11:50 am
+Anonymous Feedback: All students are encouraged to give me anonymous feedback
+about my teaching through out the term. To access the anonymous feedback submission
+form, log onto the course’s Canvas page, and find the “course organization” module.
+Required Text: Linear Algebra and Its Applications (5th ed) by David Lay, Steven Lay,
+and Judi McDonald. (There is a link to a free online textbook on Canvas.)
+Prerequisites: C− or better in Math 252
+Canvas: You can use our Canvas website to see syllabus, homework assignments, your
+grades and more. To access our class blackboard site go to:
+http://canvas.uoregon.edu/
+Disabilities: TheUniversityofOregonisworkingtocreateinclusivelearningenvironments.
+Please notify me as soon as possible if there are aspects of the instruction or design of this
+course that result in disability-related barriers to our participation. You may also wish
+to contact Disability Services in 164 Oregon Hall at 346-1155 or disabsrv@uoregon.edu
+Academic misconduct: The University Student Conduct Code (conduct.uoregon.edu)
+defines academic misconduct. Students are prohibited from committing or attempting to
+commit any act that constitutes academic misconduct. By way of example, students should
+not give or receive (or attempt to give or receive) unauthorized help on assignments or
+examinations without express permission from the instructor. Students should properly
+acknowledge and document all sources of information (e.g. quotations, paraphrases, ideas)
+and use only the sources and resources authorized by the instructor. If there is any question
+about whether an act constitutes academic misconduct, it is the students’ obligation to
+clarify the question with the instructor before committing or attempting to commit the
+act. Additional information about a common form of academic misconduct, plagiarism, is
+available at https://researchguides.uoregon.edu/citing-plagiarism.
+
+Grading: A: 90% or more, B: 80%–89%, C: 70%–79%, D: 60%–69%, F: below 60%. Plus
+grades will be awarded when the last digit is 8 or higher. Minus grades will be given if
+the last digit is either a 0 or 1. Your final percentage will be rounded to the nearest whole
+number. You must get at least 70% to receive a pass (P) grade if you are taking this course
+with the Pass/No Pass option.
+Attendance: Asignificantportionofyourgradewillcomefromattendingandparticipating
+in class. You should plan to attend every single class. You are responsible for finding out
+what you missed if you are unable to attend.
+
+Course learning outcomes: Math 341 begins with the study of solving systems of
+linear equations by manipulating vectors and matrices. Then it introduces properties of
+matrices including operations, existence of an inverse, and determinants. The main goal
+is the introduction of vector spaces and linear transformations defined by matrices. A
+successful student in this course will be able to
+1. Find the general solution of a system of linear equations using row reduction;
+2. Express a system of linear equations as a matrix equation;
+3. Determine whether a set of vectors is linearly independent or linearly dependent;
+4. Use row operations to determine if a square matrix is invertible and then find its
+inverse when it exists;
+5. Find the determinant of a matrix by using a cofactor expansion or by performing row
+operations;
+6. Understand applications of the determinant including determining it a square matrix
+is nonsingular and the geometric implications for vectors in R2 or R3;
+7. Understand the definition of vector space, subspace, basis, and dimension;
+8. Determine if a given vector lies in the span of a set of given vectors;
+9. Find the dimension of a span of vectors;
+10. Find the coordinates of a vector with respect to a given basis;
+11. Find the null space and range of a linear transformation.
+Weekly assignments, as well as problems on the midterm and final exam, will provide
+students with opportunities to demonstrate the level of their abilities relative to the above
+learning outcomes.
+Daily homework: There will be daily homework except on Fridays. Each daily homework
+will be relatively short; consists of 2-3 questions related the lecture of the same day. There
+are in total sixteen daily homeworks, the lowest four will be dropped to accommodate
+anyone missed a week of the class due to any reasons. Tests: There will be weekly test on
+each Friday, each test covers all materials from the same week except for the last test; the
+last test will be cumulative over all materials.
+
+Tentative Reading Schedule: Below is a tentative schedule of which sections of the
+textbook you are expected to read and when you are expected to read them. For example:
+in week 2, we will discuss section 1.3 on Monday, section 1.4 on Wednesday, and 1.5 on
+Friday.
+Week Sections
+1 1.1 - 1.9
+2 2.1, 2.2,2.3,3.1
+3 3.2, 3.3, 4.1,4.2,4.3
+4 4.3 - 4.6
+Grading Breakdown:
+Daily homework 15%
+Participation 5%
+Weekly Exam 80%
+Make-up and Extra Credit: Late homework will be penalized 10% per day. You may
+unlock extra credit by typesetting all (or almost all) assignments in latex (see Canvas for
+more resources). If you are unable to attend the midterm or quiz, the weight will be trans-
+ferred onto the final exam. A missed final exam will likely result in an incomplete grade in
+the class, and will require a make-up exam.
+Important Dates:
+• June 25 – last day to drop without a ‘W’
+• June 25 – last day to add a class
+• July 10 – last day to drop the course
+
+Expectations
+I expect you to:
+• submit work on time
+• arrive on time, and to minimize the disturbance if you arrive late
+• ask questions
+• provide feedback about the course (anonymously or otherwise)
+• participate in class
+• berespectfulandcourteoustowardsyouclassmates(eg.,chattingduringclassdistracts
+other students, and will not be tolerated)
+• cometoclassprepared(eg.,reviewedcontentfromlastclass,attemptedthehomework,
+etc)
+• spend approximately two hours outside of class on homework, review, etc for every
+one hour spent in class
+• take responsibility for any course content covered when you miss a class
+• attend office hours or make an appointment with me if you would like help
+You can expect me to:
+• arrive on time to class
+• be enthusiastic about the material and about mathematics in general
+• be available to provide help, support, and advice
+• reply to email in less than 24 hours (typically much less than 24 hours)
+• consider and respond to all feedback about the course
+• return work no more than one week after it has been submitted
+• make adjustments to the classroom environment thought-out the term according to
+the needs of the class
+
+What follows is a general description of various University of Oregon policies, not specific
+to this course.
+Academic Disruption due to Campus Emergency: In the event of a campus emer-
+gency that disrupts academic activities, course requirements, deadlines, and grading per-
+centages are subject to change. Information about changes in this course will be communi-
+cated as soon as possible by email, and on Canvas. If we are not able to meet face-to-face,
+students should immediately log onto Canvas and read any announcements and/or access
+alternative assignments. Students are also expected to continue coursework as outlined in
+this syllabus or other instructions on Canvas. In the event that the instructor of this course
+has to quarantine, this course may be taught online during that time.
+Academic Misconduct: The University Student Conduct Code, available at
+https://conduct.uoregon.edu,
+defines academic misconduct. Students are prohibited from committing or attempting to
+commit any act that constitutes academic misconduct. By way of example, students should
+not give or receive (or attempt to give or receive) unauthorized help on assignments or
+examinations without express permission from the instructor. Students should properly
+acknowledge and document all sources of information (e.g. quotations, paraphrases, ideas)
+and use only the sources and resources authorized by the instructor. If there is any question
+about whether an act constitutes academic misconduct, it is the students’ obligation to
+clarify the question with the instructor before committing or attempting to commit the
+act. Additional information about a common form of academic misconduct, plagiarism, is
+available at
+https://researchguides.uoregon.edu/citing-plagiarism.
+Accessible Education: The University of Oregon is working to create inclusive learning
+environments. Please notify me if there are aspects of the instruction or design of this
+course that result in disability-related barriers to your participation. You are also encour-
+aged to contact the Accessible Education Center in 360 Oregon Hall at 541-346-1155 or
+uoaec@uoregon.edu.
+Accommodation for Religious Observances: The university makes reasonable accom-
+modations, upon request, for students who are unable to attend a class for religious obliga-
+tions or observance reasons, in accordance with the university discrimination policy which
+says “Any student who, because of religious beliefs, is unable to attend classes on a partic-
+ular day shall be excused from attendance requirements and from any examination or other
+assignment on that day. The student shall make up the examination or other assignment
+missed because of the absence.” To request accommodations for this course for religious
+observance, visit the Office of the Registrar’s website
+https://registrar.uoregon.edu/calendars/religious-observances
+andcompleteandsubmittotheinstructorthe“StudentReligiousAccommodationRequest”
+form prior to the end of the second week of the term.
+Basic Needs: Any student who has difficulty affording groceries or accessing sufficient
+food to eat every day, or who lacks a safe and stable place to live and believes this may
+
+affect their performance in the course is urged to contact the Dean of Students Office (346-
+3216, 164 Oregon Hall) for support. This UO webpage includes resources for food, housing,
+healthcare, childcare, transportation, technology, finances, and legal support:
+https://blogs.uoregon.edu/basicneeds/food.
+Inclement Weather: It is generally expected that class will meet unless the University
+is officially closed for inclement weather. If it becomes necessary to cancel class while the
+University remains open, this will be announced on Canvas and by email. Updates on
+inclement weather and closure are also communicated in other ways described here:
+https://hr.uoregon.edu/about-hr/campus-notifications/inclement-weather.
+Mental Health and Wellness: Life at college can be very complicated. Students often
+feel overwhelmed or stressed, experience anxiety or depression, struggle with relationships,
+or just need help navigating challenges in their life. If you’re facing such challenges, you
+don’t need to handle them on your own–there’s help and support on campus.
+As your instructor if I believe you may need additional support, I will express my con-
+cerns, the reasons for them, and refer you to resources that might be helpful. It is not my
+intention to know the details of what might be bothering you, but simply to let you know I
+care and that help is available. Getting help is a courageous thing to do—for yourself and
+those you care about.
+University Health Services help students cope with difficult emotions and life stressors.
+If you need general resources on coping with stress or want to talk with another student
+who has been in the same place as you, visit the Duck Nest (located in the EMU on the
+ground floor) and get help from one of the specially trained Peer Wellness Advocates. Find
+out more at health.uoregon.edu/ducknest.
+University Counseling Services (UCS) has a team of dedicated staff members to support
+you with your concerns, many of whom can provide identity-based support. All clinical
+services are free and confidential. Find out more at counseling.uoregon.edu or by calling
+541-346-3227 (anytime UCS is closed, the After-Hours Support and Crisis Line is available
+by calling this same number).
+Reporting Obligations: I am an assisting employee. For information about my reporting
+obligations as an employee, please see Employee Reporting Obligations on the Office of
+Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex or
+gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-
+SAFE[7244]orvisitsafe.uoregon.eduforhelp. Studentsexperiencingallformsofprohibited
+discrimination or harassment may contact the Dean of Students Office at 5411-346-3216 or
+the non-confidential Title IX Coordinator/OICRC at 541-346-3123. Additional resources
+are available at
+https://investigations.uoregon.edu/how-get-support.
+I am also a mandatory reporter of child abuse. Please find more information at Mandatory
+Reporting of Child Abuse and Neglect.

@@ -1,0 +1,149 @@
+CS 322 (Fall 2025; 11591) Intro Software Engin
+Welcome! CIS 322 is an introduction to software engineering, the subfield of computer science concerned with the fact that software is constructed by people. People have limited ability to remember details, work at a limited pace, and make mistakes, so they must find ways to construct software systems piece by piece, collaborating with others, testing as they go. We will approach these fundamental problems through concrete application in a series of weekly mini-projects leading up to one substantial software system.
+
+In this sophomore/junior-level course (which should be taken after CIS 212 but before most 400-level courses) you will build a web-based software system and become familiar with a variety of issues that arise as we move beyond building individual programs into building more complex systems that exist in a larger software ecosystem.
+
+In an era where generative AI (genAI) can "produce" different components of software systems, this course will take a scaffolded approach: start building the components without AI, then use AI for pair programming, and finally unleash the power of AI on a final project. This way students can understand the how AI can be used a multiplier.
+
+Course webpage: Link
+
+Class Location: 112 ESL
+Class Time: Tuesday and Thursday, 2:00 pm to 3:20 pm
+Labs: Fridays from 10:00am to 10:50am (230 LA) and 11:00am to 11:50am (230 LA). This will be primarily open lab time. Generally, the GE-T will explain the project in detail, discuss the grading rubric, etc. I may also assign some specific lab activities. Weekly lab attendance is required for one of the sessions; attending both lab sessions (i.e., your scheduled lab and the other lab) is optional.
+
+Instructor's office hours (online only)
+
+Mondays from 2pm to 3pm, and by appointment. (ZoomLinks to an external site.).
+
+TA's office hours (in-person) 
+
+Wednesdays from 3:30pm to 4:30pm, and by appointment. (Allan Price Science Commons and Research Library).
+
+Slides
+
+To access lecture slides, lab slides, and other misc. resources, go to "Files".
+
+In addition, there is a supplementary material here: https://ix.cs.uoregon.edu/~ram/CS322/ (username: student322 and password: uo_CS322@)
+
+Major Topics
+Week	Description
+1 (Sep 28)	Introduction, Git and Linux basics, and Web Architecture
+2 (Oct 05)	Reviews, Dependence, Introduction to Docker
+3 (Oct 12)	Introduction to Flask, Packaging Software, and Shipping
+4 (Oct 19)	Testing
+5 (Oct 26)	Introduction to Databases, NoSQL, and MongoDB
+6 (Nov 02)	User Interface, and REST API
+Midterm exam; 11/04/2025 at 2:05pm (till 3:05pm)
+7 (Nov 09)	Session Management
+8 (Nov 16)	Introduction to Security
+9 (Nov 23)	Authentication, Forms, and Login
+10 (Nov 30)	Software Integration, and Wrap up
+11 (Dec 07)	Final exam; 12/08/2025 at 12:30pm (till 1:30pm)
+
+Projects are more challenging than the ones in other courses.
+
+
+Due date	Project	Description
+10/05	Project 0Links to an external site.	Familiarize with Git and install docker
+10/12	Project 1Links to an external site.	Simple page server
+(no AI)
+10/19	Project 2Links to an external site.	Docker + Flask
+(no AI)
+10/26	Project 3Links to an external site.	Docker + Flask + Javascript
+(no AI)
+11/02	Project 4Links to an external site.	Docker + Flask + Javascript + AJAX
+(no AI)
+11/16	Project 5Links to an external site.	Docker + Flask + Javascript + AJAX + MongoDB
+(pair programming with AI)
+11/23	Project 6Links to an external site.	Docker + Flask + Javascript + AJAX + MongoDB + REST
+(pair programming with AI)
+11/30	Build your MVP!	Docker + Flask + Javascript + AJAX + MongoDB + REST + UX
+(use AI)
+Expected Learning Outcomes
+The primary learning objective of this course is to enhance student's understanding of basic concepts and practices of software engineering, familiarity with the tools and techniques, followed by an in-depth understanding of various design and implementation aspects.
+
+Upon successful completion of the course, students will be able to:
+
+learn how a particular class of distributed system works (a web application, with a server side and a client side), and more generally how we construct overall systems that extend beyond a single program, machine, or operating system;
+build software that is divided into components written in different programming languages, with shared data in three forms: the internal form on the server, the internal form in the client, and the “on the wire” form to communicate between them; and
+build the components in a scaffolded approach: no AI, AI-augmented pair programming, and force-multiply with AI.
+write documentation of your own code and design adequate for other programmers to use, maintain, and extend your software.
+Acquired Skills
+Upon successful completion of the course, students will have acquired the following skills:
+
+be able to use a persistent database store for some of the data;
+be able to create Application Program Interface (API) services to learn how to interface with them, and you will make small experiments to explore those APIs and test your understanding;
+be able to use AI at different capacities in building software;
+be able to learn to manage versions and deployment of your evolving system using a distributed version control system, and you will develop automated tests to prevent bugs from festering too long; and
+be able to expand your repertoire of programming approaches with some functional and reactive idioms.
+Course Requirements and Grading
+Lectures will be taught in person.
+
+Grading will be based on the following criteria:
+
+Percentage	Component
+50	Mini Projects
+20	Midterm exam
+20	Final exam
+10	Build your MVP!
+Grading Scale:
+  A  	 A+ 96.67-100.00 	 A 93.34-96.66 	 A- 90.00-93.33 
+  B  	 B+ 86.67-89.99 	 B 83.34-86.66 	 B- 80.00-83.33 
+  C  	 C+ 76.67-79.99 	 C 73.34-76.66 	 C- 70.00-73.33 
+  D  	 D+ 66.67-69.99 	 D 63.34-66.66 	 D- 60.00-63.33 
+  F  	 F 0.00-59.99 	 	 
+Use of Generative AI
+
+Unlike prior years, this classes has been redesigned to consider AI in a scaffolded approach: no AI, AI-augmented pair programming, and force-multiply with AI. This means that students can use genAI tools (e.g., ChatGPT, Claude Code, etc.) in this class for certain aspects of course work and assignments. Concrete examples: 
+
+(1) Expanding details or summarizing any lecture topics discussed in class. But note that genAI tools can hallucinate. So, use this at your own risk. For example, you cannot write an incorrect answer in the midterm exam based on what AI taught you and ask for a grade change.
+
+(2) You cannot use content such as text or code generated by GenAI tools in the first warm-up project and the four mini projects (i.e., projects 0 through 4); for these projects, you must be the author/creator of your work submissions.
+
+(3) For projects 5 and 6, you can use a GenAI tool -- as a pair programmar -- to suggest a modular way to design a particular component of the project based on the prompts you provide it, but you cannot submit the generated code by GenAI as if the code is your own. For these two projects, you also should submit your prompts. Be advised, in accordance with UO policy, if I believe you’ve handed in work created whole or in part by GenAI tools, I may submit a report of suspected academic misconduct to the Office of Student Conduct and Community Standards for that office to make a determination of responsibility and, if warranted, assess a grade penalty. So, if you are in doubt or have questions about a particular GenAI tool and if its use is okay, check in with me and let’s discuss!
+
+(4) Finally, in the last project, you will unleash the power of AI to build anything based on all the concepts learned in class. Could be a pet project, could be an MVP for your startup, could be something cool, could be anything. 
+
+Why this redesign? Here is some background and rationale! The past goal of 322, to put it shortly, was to train students to become “excellent software engineers.” However, sticking with this old goal -- especially with growing use of genAI tools in software engineering -- is not going to work anymore. So, how should students take advantage of genAI tools like ChatGPT?
+
+Lately, I’ve been talking with a lot of people in the industry and startup world about how genAI tools are changing the way software engineers work. The message has been pretty consistent: these tools are incredibly powerful. They help software engineers get intellectual work, like programming, done faster and more effectively.
+
+So what does that mean for students in 322? I think the answer is pretty simple: if genAI tools act as multipliers, then the more knowledge and skill you bring to the table, the more value you get from using them. Even in areas like programming, where AI is getting really good, having a strong foundation still makes a big difference. The better you are, the more helpful the tools will be.
+
+The good news is that learning the fundamentals is still essential. That will be the focus of the current and future versions of 322: helping students build a deep understanding of software engineering. Once you have the fundamentals nailed, the tools can amplify your work and help you move faster and go further.
+
+Moving forward, the new course philosophy will be this: don’t start with the tools; start with yourself. The best way to do great things with AI is to first be great in the traditional way, i.e., by putting in the effort to truly understand your "software engineering" craft. Hence the scaffolded approach to using genAI in this course!
+
+Course Attendance and Engagement Policy
+
+(1) Reason-neutral attendance
+
+In-class work is central to meeting our learning objectives. Students may miss four classes this term, regardless of the reason, not including exam days. This means we do not have "excused" or "unexcused" absences except -- as is the case for all UO classes -- in the cases of religious observances, AEC accommodations, and University-sponsored events with signed documentation presented as early in the term as possible but at least a week ahead of the planned absence or need for accommodation.     
+
+(2) Late work and missed exams
+
+Projects in this course are always due on Sundays at 6:00am. Although deadlines are firm, I have built flexibility into the course in the following way: your lowest assignment score will be dropped. 
+
+In the event that you miss a midterm or final exam, a one-time makeup oral exam may be arranged, as long as I am notified at least 24 hours prior to the scheduled exam. 
+
+(3) Extraordinary circumstances, attendance, and deadlines
+
+My course attendance and engagement policies were built with absences and deadline flexibility that students commonly need in mind. There are, however, times when a student may experience an extraordinary circumstance -- an unanticipated and significant crisis -- that impacts their attendance. Exceptions to the attendance policy and/or deadlines may be granted in the event of extraordinary circumstances.
+
+Please contact me as soon as you are able to request it -- ideally before the class or deadline has passed, or, if your circumstance makes this difficult, then as soon as possible afterwards. This exception is not for everyone and will not be offered on an open-ended basis, so if you need to ask for it, please give some consideration to how much time you will realistically need to complete the work.
+
+To activate this policy, send me an email with "CS 322 -- Extraordinary circumstance request -- <your name>" in the subject line, and if you are requesting deadline flexibility, let me know by what updated deadline you will be able to submit your assignment. There is no need to explain or offer information about the nature of the extraordinary circumstance in your email -- we will trust you only to activate this policy in crisis situation. Please note, too, that detailed feedback on your written work may be delayed or impossible to provide if you're submitting to meet an extended deadline. At the end of term, granting extensions is very, very hard for the teaching team because of UO's tight turnaround on grading. Please be in touch in an emergency and we can discuss your options.
+
+Course Summary:
+Course Summary
+Date	Details	Due
+Sun Oct 5, 2025	Assignment Project 0	due by 6am
+Sun Oct 12, 2025	Assignment Project 1	due by 6am
+Sun Oct 19, 2025	Assignment Project 2	due by 6am
+Mon Oct 27, 2025	Assignment Project 3	due by 6am
+Tue Nov 4, 2025	Assignment Midterm exam	due by 3:05pm
+Sun Nov 9, 2025	Assignment Project 4	due by 6am
+Sun Nov 16, 2025	Assignment Project 5	due by 6am
+Sun Nov 23, 2025	Assignment Project 6	due by 6am
+Wed Dec 3, 2025	Assignment Build Something Cool with AI!	due by 6am
+Mon Dec 8, 2025	Assignment Final exam	due by 1:30pm

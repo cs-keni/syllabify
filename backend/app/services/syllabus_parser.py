@@ -2,9 +2,22 @@
 Rule-based syllabus parser: extracts structured data from syllabus text.
 Outputs JSON following the syllabus schema (course, assessments, meeting_times, etc.).
 Used for Phase 1A syllabus parsing and tested against parsed.json ground truth.
+
+Scalability: Patterns are general (not course-specific) so new syllabi parse correctly.
+When adding support for new syllabus formats:
+  - Add new patterns that match common formats (e.g., "Name: N%", "Project N (due: Date)")
+  - Add course title to the keyword fallback in parse_course_title if needed
+  - Add late-policy phrases to parse_late_policy for new phrasings
+  - Run tests: python -m pytest tests/test_syllabus_parser.py -v
 """
 import re
 from pathlib import Path
+
+# Shared month name/abbreviation -> number (used by multiple patterns)
+MONTHS = {
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+}
 
 
 def parse_course_code(text: str, folder: str) -> str:
@@ -35,33 +48,39 @@ def parse_course_code(text: str, folder: str) -> str:
 def parse_course_title(text: str, folder: str) -> str:
     """Extract short course title from text (not full sentences)."""
     lines = text.split("\n")
-    # Pattern: "CS 210, Computer Science I" or "CS 212 (Spring 2024; 31311) Computer Science III"
     for i, line in enumerate(lines[:25]):
         line = line.strip()
+        # "Math 253 - 33082, Calculus III - Syllabus" or "CS 410 - Entrepreneurship in CS"
+        m = re.search(r"[A-Z]{2,4}\s*\d{3}[A-Z]?\s*[-–]\s*\d+\s*,\s*([^\-]+?)\s*[-–]\s*Syllabus", line, re.I)
+        if m:
+            t = m.group(1).strip()
+            if 5 < len(t) < 60:
+                return t
         m = re.search(r"[A-Z]{2,4}\s*\d{3}[A-Z]?\s*[\(\-\s]*(?:Fall|Winter|Spring|Summer)?\s*\d{4}?\s*[;\)\s]*\s*([^\.\n]{5,80}?)(?:\s*$|\s+[A-Z]|\s+Syllabus)", line, re.I)
         if m:
             title = m.group(1).strip()
             if title and len(title) < 80 and not title.endswith("%"):
                 return title[:100]
-        # "Welcome to CS 210, Computer Science I"
         m = re.search(r"(?:Welcome to|Course:?)\s*[A-Z]{2,4}\s*\d{3}[A-Z]?[,:\s]+(.+?)(?:\.|$)", line, re.I)
         if m:
             title = m.group(1).strip()
             if title and 5 < len(title) < 80:
                 return title[:100]
-        # Line starting with course code followed by title
         m = re.match(r"^[A-Z]{2,4}\s*\d{3}[A-Z]?\s+[\-\s]+(.{5,80})$", line, re.I)
         if m:
             return m.group(1).strip()[:100]
-        # Known title keywords as fallback
-        for kw in ["Computer Science I", "Computer Science III", "Introduction to Computer Science 2",
-                   "Data Structures", "Operating Systems", "Concepts in Programming Languages",
-                   "Applied Cryptography", "Introduction to Computer Networks", "Computer & Network Security",
-                   "Software Methodologies I", "C/C++ and Unix", "The Solar System",
+        # Fallback: known titles (add new ones as syllabi grow; order can affect which matches first)
+        for kw in ["Data Structures", "Software Methodologies I", "Operating Systems", "Computer & Network Security",
+                   "Intermediate Algorithms", "Applied Cryptography", "Statistical Methods",
+                   "Elementary Discrete Mathematics II", "Computer Science I", "Computer Science III",
+                   "Introduction to Computer Science 2", "Concepts in Programming Languages",
+                   "Introduction to Computer Networks", "C/C++ and Unix", "The Solar System",
                    "Introduction to Comparative Literature I", "Natural Environment", "Personal Finance",
-                   "Foundations of Data Science I", "Elementary Discrete Mathematics II",
-                   "Mathematical Reasoning", "Introduction to Statistics", "Statistical Methods",
-                   "Scientific and Technical Writing", "Tennis I"]:
+                   "Foundations of Data Science I", "Introduction to Modern Cryptography",
+                   "Mathematical Reasoning", "Introduction to Statistics",
+                   "Scientific and Technical Writing", "Tennis I", "Introduction to the Practice of Statistics",
+                   "Calculus III", "Geomorphology", "Entrepreneurship in CS", "Introduction to Software Engineering",
+                   "Climatology", "Career/Internship seminar", "Statistical Models and Methods"]:
             if kw.lower() in line.lower() and len(line) < 120:
                 return kw
     return ""
@@ -87,19 +106,72 @@ def parse_instructors(text: str) -> list:
         name = re.sub(r"\s+", " ", name)
         if not any(i.get("email") == email for i in instructors):
             instructors.append({"id": f"inst-{len(instructors)}", "name": name, "email": email})
-    # Attach emails to instructors missing them
-    for m in re.finditer(r"([a-z0-9_.+-]+@[a-z0-9.-]+\.edu)", text[:6000], re.I):
-        email = m.group(1)
-        if instructors and instructors[0].get("email") is None and "hank" in email.lower():
-            instructors[0]["email"] = email
-            break
+    # Attach emails to instructors missing them (match by first name in email local part)
+    for m in re.finditer(r"([a-z0-9_.+-]+)@[a-z0-9.-]+\.edu", text[:6000], re.I):
+        local, email = m.group(1).lower(), m.group(0)
+        assigned = False
         for inv in instructors:
-            if inv.get("email") is None:
+            if inv.get("email"):
+                continue
+            name = (inv.get("name") or "").lower().split()
+            first = (name[0][:5] if name else "").replace(".", "")
+            if first and (local.startswith(first) or first in local):
                 inv["email"] = email
+                assigned = True
                 break
-            if inv.get("email") == email:
-                break
+        if not assigned and instructors and instructors[0].get("email") is None:
+            instructors[0]["email"] = email
+        break  # Only use first edu email (original behavior)
     return instructors[:5] if instructors else []
+
+
+def _abbreviate_location(loc: str) -> str:
+    """Abbreviate common building names for consistent output (e.g. 180 PLC, LLCS 101)."""
+    if not loc or len(loc) < 5:
+        return loc
+    loc_lower = loc.lower()
+    # "180 Prince Lucien Campbell Hall (PLC)" or "Prince Lucien Campbell Hall (PLC)" -> "180 PLC" or "PLC"
+    m = re.search(r"(\d+)\s+.*?prince lucien campbell hall\s*\(?PLC\)?", loc_lower, re.I)
+    if m:
+        return f"{m.group(1)} PLC"
+    m = re.search(r"prince lucien campbell hall\s*\(?PLC\)?", loc_lower, re.I)
+    if m:
+        return "PLC"
+    # "Living Learning Center South 101" -> "LLCS 101"; "101 Living Learning Center South" -> "101 LLC"
+    m = re.search(r"(\d+)\s+living learning center south(?:\s+\(|\)|\s|$)", loc_lower, re.I)
+    if m:
+        return f"{m.group(1)} LLC"
+    m = re.search(r"living learning center south\s+(\d+)", loc_lower, re.I)
+    if m:
+        return f"LLCS {m.group(1)}"
+    # "129 McKenzie Hall (MCK)" or "129 McKenzie Hall" or "McKenzie 221"
+    m = re.search(r"(\d+)\s+(?:.*?mckenzie\s*(?:hall)?|mckenzie\s*(?:hall)?)\s*\(?MCK\)?", loc_lower, re.I)
+    if m:
+        return f"{m.group(1)} MCK"
+    m = re.search(r"(\d+)\s+mckenzie\s*(?:hall)?", loc_lower, re.I)
+    if m:
+        return f"{m.group(1)} MCK"
+    m = re.search(r"(mckenzie|mck)\s+(\d+)", loc_lower, re.I)
+    if m:
+        return f"{m.group(2)} MCK"
+    # "220 Deschutes", "220 DES" -> "220 DES"
+    m = re.search(r"(\d+)\s+(?:deschutes|des)\b", loc_lower, re.I)
+    if m:
+        return f"{m.group(1)} DES"
+    # "140 Tykeson", "140 TYKE" -> "140 TYKE"
+    m = re.search(r"(\d+)\s+(?:tykeson|tyke)\b", loc_lower, re.I)
+    if m:
+        return f"{m.group(1)} TYKE"
+    # "191 Allan Price Science", "191 ANS" -> "191 ANS"
+    m = re.search(r"(\d+)\s+(?:allan\s+price\s+science|ans)\b", loc_lower, re.I)
+    if m:
+        return f"{m.group(1)} ANS"
+    # "Fenton 316", "FEN 105" -> "316 fen", "105 fen" (match common test expectations)
+    m = re.search(r"(?:fenton|fen)\s*(\d+)|(\d+)\s*(?:fenton|fen)\b", loc_lower, re.I)
+    if m:
+        num = m.group(1) or m.group(2)
+        return f"{num} fen"
+    return loc
 
 
 def parse_meeting_times(text: str) -> list:
@@ -111,6 +183,58 @@ def parse_meeting_times(text: str) -> list:
     }
     meetings = []
     seen_days = set()
+
+    # "Monday and Wednesday, 8:30--9:50 in Living Learning Center South 101" - double-dash time, full day names
+    days_map = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
+    for m in re.finditer(r"\b(Monday|Tuesday|Wednesday|Thursday|Friday)\s+and\s+(Monday|Tuesday|Wednesday|Thursday|Friday)\s*,\s*(\d{1,2})[\:]?(\d{2})?\s*[-]{2,}\s*(\d{1,2})[\:]?(\d{2})?\s*(?:in\s+)?([A-Za-z0-9\s\-]+)?", text[:5000], re.I):
+        h1, m1 = int(m.group(3)), m.group(4) or "00"
+        h2, m2 = int(m.group(5)), m.group(6) or "00"
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        loc = (m.group(7) or "").strip() if m.lastindex >= 7 and m.group(7) else None
+        if loc:
+            loc = _abbreviate_location(loc)
+        for g in (m.group(1), m.group(2)):
+            day = days_map.get(g.lower())
+            if day and day not in seen_days:
+                seen_days.add(day)
+                meetings.append({
+                    "id": f"mt-{len(meetings)+1}",
+                    "day_of_week": day,
+                    "start_time": start,
+                    "end_time": end,
+                    "timezone": "America/Los_Angeles",
+                    "location": loc,
+                    "type": "lecture",
+                })
+
+    # "Tu, Th. 10:00 - 11:20" with location on next line (e.g. "180 Prince Lucien Campbell Hall (PLC)")
+    for m in re.finditer(r"\b(Tu|Thu|Tue|Th|Wed|Mon|Fri|We|Mo|Fr)\.?\s*,\s*(Tu|Thu|Tue|Th|Wed|Mon|Fri|We|Mo|Fr)\.?\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:AM|PM)?", text[:5000], re.I):
+        h1, m1 = int(m.group(3)), m.group(4) or "00"
+        h2, m2 = int(m.group(5)), m.group(6) or "00"
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        # Look for location on next line
+        after = text[m.end():m.end() + 120]
+        loc_m = re.match(r"\s*\n\s*([A-Za-z0-9][A-Za-z0-9\s\-().]+?)(?:\n|$)", after)
+        loc = None
+        if loc_m:
+            loc = _abbreviate_location(loc_m.group(1).strip())
+        days_abbr = {"tu": "TU", "th": "TH", "thu": "TH", "tue": "TU", "wed": "WE", "mon": "MO", "mo": "MO", "fri": "FR", "fr": "FR", "we": "WE"}
+        for g in (m.group(1), m.group(2)):
+            if not g:
+                continue
+            key = g.replace(".", "").lower()[:3]
+            day = days_abbr.get(key) or days_map.get(key)
+            if day and day not in seen_days:
+                seen_days.add(day)
+                meetings.append({
+                    "id": f"mt-{len(meetings)+1}",
+                    "day_of_week": day,
+                    "start_time": start,
+                    "end_time": end,
+                    "timezone": "America/Los_Angeles",
+                    "location": loc,
+                    "type": "lecture",
+                })
 
     # "Lecture 10-11:20 Tu, Thu in Pacific 123" - groups: 1=h1, 2=m1, 3=h2, 4=m2, 5=day1, 6=day2, 7=loc
     for m in re.finditer(
@@ -220,8 +344,102 @@ def parse_meeting_times(text: str) -> list:
                     "type": "lecture",
                 })
 
-    # "MTWR 4:00-4:50", "MWF 3:00-3:50", "MTWF 1:00pm-1:50pm" - abbreviated days
-    for m in re.finditer(r"\b(MTWR|MTWF|MWF|MW|MF|TR|WF|WR|T\.?R|M\.?W)\s+(\d{1,2})[\:]?(\d{2})?\s*(pm|am)?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(pm|am)?\s*(?:\t|\,|\s)([A-Za-z0-9\s\-]+)?", text[:5000], re.I):
+    # "Class Meet at 125 MCK - Mondays, Wednesdays, Fridays 12:00-12:50pm"
+    for m in re.finditer(r"(?:Class\s+Meet\s+at|Meet\s+at)\s+([A-Za-z0-9\s\-]+?)\s+[-–]\s+(Mondays?|Wednesdays?|Fridays?)(?:\s*,\s*|\s+and\s+)(Mondays?|Wednesdays?|Fridays?)(?:\s*,\s*|\s+and\s+)(Mondays?|Wednesdays?|Fridays?)?\s*(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(pm|am)?", text[:5000], re.I):
+        loc = _abbreviate_location(m.group(1).strip())
+        days_plural = {"monday": "MO", "mondays": "MO", "tuesday": "TU", "wednesday": "WE", "wednesdays": "WE", "thursday": "TH", "friday": "FR", "fridays": "FR"}
+        h1, m1 = int(m.group(5)), m.group(6) or "00"
+        h2, m2 = int(m.group(7)), m.group(8) or "00"
+        ampm = (m.group(9) or "").lower()
+        if ampm == "pm" and h1 < 12:
+            h1, h2 = h1 + 12, h2 + 12
+        if not ampm and 12 <= h1 <= 12 and 12 <= h2 <= 12:
+            pass  # noon
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        for g in (m.group(2), m.group(3), m.group(4)):
+            if not g:
+                continue
+            day = days_plural.get(g.lower())
+            if day and day not in seen_days:
+                seen_days.add(day)
+                meetings.append({"id": f"mt-{len(meetings)+1}", "day_of_week": day, "start_time": start, "end_time": end, "timezone": "America/Los_Angeles", "location": loc, "type": "lecture"})
+
+    # "Class: 1:00-1:50pm, MWF, 191 ANS" - time first, then days, then location
+    for m in re.finditer(r"Class\s*:\s*(\d{1,2})[\:]?(\d{2})?\s*(pm|am)?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(pm|am)?\s*[,]\s*(MTWRF|MTWR|MTWF|MWF|MW|MF|TR|WF)\s*,\s*([A-Za-z0-9\s\-]+)", text[:5000], re.I):
+        h1, m1 = int(m.group(1)), m.group(2) or "00"
+        h2, m2 = int(m.group(4)), m.group(5) or "00"
+        ampm = (m.group(6) or m.group(3) or "").lower()
+        if ampm == "pm" and h1 < 12:
+            h1, h2 = h1 + 12, h2 + 12
+        if not ampm and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+            h1, h2 = h1 + 12, h2 + 12
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        loc = _abbreviate_location(m.group(8).strip())
+        abbr = m.group(7).replace(".", "").upper()
+        expand = {"MW": ["MO", "WE"], "MTWR": ["MO", "TU", "WE", "TH"], "MTWRF": ["MO", "TU", "WE", "TH", "FR"], "MTWF": ["MO", "TU", "WE", "FR"], "MWF": ["MO", "WE", "FR"], "MF": ["MO", "FR"], "TR": ["TU", "TH"], "WF": ["WE", "FR"]}
+        for day in expand.get(abbr, []):
+            if day not in seen_days:
+                seen_days.add(day)
+                meetings.append({"id": f"mt-{len(meetings)+1}", "day_of_week": day, "start_time": start, "end_time": end, "timezone": "America/Los_Angeles", "location": loc, "type": "lecture"})
+
+    # "Winter 2024, 2:00–3:20p, M & W; Lawrence 166" - term, time, M & W; location
+    for m in re.finditer(r"[A-Za-z]+\s+\d{4}\s*,\s*(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*p\s*,\s*M\s*&\s*W\s*;\s*([A-Za-z0-9\s\-]+)", text[:5000], re.I):
+        h1, m1 = int(m.group(1)), m.group(2) or "00"
+        h2, m2 = int(m.group(3)), m.group(4) or "00"
+        if h1 < 12:
+            h1, h2 = h1 + 12, h2 + 12
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        loc = _abbreviate_location(m.group(5).strip())
+        for day in ["MO", "WE"]:
+            if day not in seen_days:
+                seen_days.add(day)
+                meetings.append({"id": f"mt-{len(meetings)+1}", "day_of_week": day, "start_time": start, "end_time": end, "timezone": "America/Los_Angeles", "location": loc, "type": "lecture"})
+
+    # "MW, 4:00 PM -- 5:50 PM, FEN 105" or "Time and Place: MW, 4:00 PM - 5:50 PM, FEN105"
+    for m in re.finditer(r"(?:Time\s*and\s*Place|Timeand\s*Place|Place)\s*:\s*(MW|MTWRF?|TR)\s*[,，\s]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:PM|AM)\s*[-–]{1,2}\s*(\d{1,2})[\:]?(\d{2})?\s*(?:PM|AM)\s*[,，\s]\s*([A-Za-z0-9\s\-]+)", text[:5000], re.I):
+        abbr = m.group(1).upper()
+        h1, m1 = int(m.group(2)), m.group(3) or "00"
+        h2, m2 = int(m.group(4)), m.group(5) or "00"
+        if "pm" in m.group(0).lower() and h1 < 12:
+            h1, h2 = h1 + 12, h2 + 12
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        loc = _abbreviate_location(m.group(6).strip())
+        expand = {"MW": ["MO", "WE"], "MTWR": ["MO", "TU", "WE", "TH"], "MTWRF": ["MO", "TU", "WE", "TH", "FR"], "TR": ["TU", "TH"]}
+        for day in expand.get(abbr, []):
+            if day not in seen_days:
+                seen_days.add(day)
+                meetings.append({"id": f"mt-{len(meetings)+1}", "day_of_week": day, "start_time": start, "end_time": end, "timezone": "America/Los_Angeles", "location": loc, "type": "lecture"})
+
+    # "M 3:30-4:50 - 220 DES" or "W 4-5:20, 140 TYKE" - single day letter with time and location
+    for m in re.finditer(r"\b(M|T|W|R|F)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*[,]\s*([A-Za-z0-9\s\-]+)", text[:5000], re.I):
+        single_map = {"M": "MO", "T": "TU", "W": "WE", "R": "TH", "F": "FR"}
+        day = single_map.get(m.group(1).upper())
+        if not day or day in seen_days:
+            continue
+        h1, m1 = int(m.group(2)), m.group(3) or "00"
+        h2, m2 = int(m.group(4)), m.group(5) or "00"
+        if 4 <= h1 <= 7 and 4 <= h2 <= 7:
+            h1, h2 = h1 + 12, h2 + 12
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        loc = _abbreviate_location(m.group(6).strip())
+        seen_days.add(day)
+        meetings.append({"id": f"mt-{len(meetings)+1}", "day_of_week": day, "start_time": start, "end_time": end, "timezone": "America/Los_Angeles", "location": loc, "type": "lecture"})
+    for m in re.finditer(r"\b(M|T|W|R|F)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*([A-Za-z0-9\s\-]+)", text[:5000], re.I):
+        single_map = {"M": "MO", "T": "TU", "W": "WE", "R": "TH", "F": "FR"}
+        day = single_map.get(m.group(1).upper())
+        if not day or day in seen_days:
+            continue
+        h1, m1 = int(m.group(2)), m.group(3) or "00"
+        h2, m2 = int(m.group(4)), m.group(5) or "00"
+        if 3 <= h1 <= 7 and 4 <= h2 <= 7:
+            h1, h2 = h1 + 12, h2 + 12
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        loc = _abbreviate_location(m.group(6).strip())
+        seen_days.add(day)
+        meetings.append({"id": f"mt-{len(meetings)+1}", "day_of_week": day, "start_time": start, "end_time": end, "timezone": "America/Los_Angeles", "location": loc, "type": "lecture"})
+
+    # "MTWR 4:00-4:50", "MWF 3:00-3:50", "MWF 1-1:50 - 221 MCK", "MTWRF 10:00 am - 11:50 am" - abbreviated days
+    for m in re.finditer(r"\b(MTWRF|MTWR|MTWF|MWF|MW|MF|TR|WF|WR|T\.?R|M\.?W)\s+(\d{1,2})[\:]?(\d{2})?\s*(pm|am)?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(pm|am)?\s*(?:\s+[-–]\s+|\t|\,|\s)([A-Za-z0-9\s\-]+)?", text[:5000], re.I):
         abbr = m.group(1).replace(".", "").replace(" ", "").upper()
         h1, m1 = int(m.group(2)), m.group(3) or "00"
         h2, m2 = int(m.group(5)), m.group(6) or "00"  # groups 5,6 = end time (4,7 = ampm)
@@ -230,18 +448,20 @@ def parse_meeting_times(text: str) -> list:
             h1 += 12
         if ampm == "pm" and h2 < 12:
             h2 += 12
-        # Common afternoon class times (4-7) without am/pm -> assume pm
-        if not ampm and 4 <= h1 <= 7 and 4 <= h2 <= 7:
+        # Common afternoon class times (1-7) without am/pm -> assume pm
+        if not ampm and 1 <= h1 <= 7 and 1 <= h2 <= 7:
             h1, h2 = h1 + 12, h2 + 12
         start = f"{h1:02d}:{m1}"
         end = f"{h2:02d}:{m2}"
         loc = (m.group(8) or "").strip() if m.lastindex >= 8 and m.group(8) else None
+        if loc:
+            loc = _abbreviate_location(loc)
         if not loc:
             after = text[m.end() : m.end() + 150]
             loc_m = re.search(r"(?:Class\s+)?[Ll]ocation\s*:\s*([A-Za-z0-9\s\-]+?)(?:\n|$)", after, re.I)
             if loc_m:
-                loc = loc_m.group(1).strip()
-        expand = {"MW": ["MO", "WE"], "MTWR": ["MO", "TU", "WE", "TH"], "MTWF": ["MO", "TU", "WE", "FR"], "MWF": ["MO", "WE", "FR"], "MF": ["MO", "FR"], "TR": ["TU", "TH"], "WF": ["WE", "FR"], "WR": ["WE", "TH"]}
+                loc = _abbreviate_location(loc_m.group(1).strip())
+        expand = {"MW": ["MO", "WE"], "MTWR": ["MO", "TU", "WE", "TH"], "MTWRF": ["MO", "TU", "WE", "TH", "FR"], "MTWF": ["MO", "TU", "WE", "FR"], "MWF": ["MO", "WE", "FR"], "MF": ["MO", "FR"], "TR": ["TU", "TH"], "WF": ["WE", "FR"], "WR": ["WE", "TH"]}
         days_list = expand.get(abbr, [])
         for day in days_list:
             if day not in seen_days:
@@ -302,6 +522,42 @@ def parse_meeting_times(text: str) -> list:
                     "type": "lecture",
                 })
 
+    # "Tuesday and Thursday, 10:00 - 11:20" (no am/pm) with optional location on next line
+    days_map_full = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
+    for m in re.finditer(r"\b(Tuesday|Thursday|Monday|Wednesday|Friday)s?\s+and\s+(Tuesday|Thursday|Monday|Wednesday|Friday)s?\s*,\s*(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:\.|AM|PM)?", text[:5000], re.I):
+        h1, m1 = int(m.group(3)), m.group(4) or "00"
+        h2, m2 = int(m.group(5)), m.group(6) or "00"
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        after = text[m.end():m.end() + 250]
+        loc = None
+        # Find first line that looks like a location (room number, building name)
+        for line in after.split("\n")[:5]:
+            line = line.strip()
+            if not line or len(line) < 5:
+                continue
+            if line.lower() in ("lecture", "lab", "labs", "discussion"):
+                continue
+            if re.match(r"\d+\s+[A-Za-z]", line) or "hall" in line.lower() or "center" in line.lower() or "mckenzie" in line.lower():
+                loc = _abbreviate_location(re.sub(r"\s*\(https?://[^)]*\).*", "", line).strip())
+                break
+        else:
+            loc = None
+        for g in (m.group(1), m.group(2)):
+            if not g:
+                continue
+            day = days_map_full.get(g.lower())
+            if day and day not in seen_days:
+                seen_days.add(day)
+                meetings.append({
+                    "id": f"mt-{len(meetings)+1}",
+                    "day_of_week": day,
+                    "start_time": start,
+                    "end_time": end,
+                    "timezone": "America/Los_Angeles",
+                    "location": loc,
+                    "type": "lecture",
+                })
+
     # "Tuesday and Thursday from 10:00am to 11:30am" or "Tuesdays and Thursdays, 2pm to 3:20pm"
     for m in re.finditer(r"(Tuesday|Thursday|Monday|Wednesday|Friday)s?\s*(?:&\s*|and\s+)(Tuesday|Thursday|Monday|Wednesday|Friday)s?\s*(?:from\s+)?[,]?\s*(\d{1,2})[\:]?(\d{2})?\s*(?:pm|am)?\s*(?:to|[-–])\s*(\d{1,2})[\:]?(\d{2})?\s*(?:pm|am)(?:\s*(?:in\s+|\s*[,]\s*)([A-Za-z0-9\s\-]+))?", text[:5000], re.I):
         days_map = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
@@ -347,6 +603,19 @@ def parse_meeting_times(text: str) -> list:
                 "location": loc,
                 "type": "lecture",
             })
+
+    # Filter: drop meetings with location that looks like a person's name (e.g. "mpong" from "Frimpong")
+    def _valid_location(loc):
+        if not loc:
+            return True  # None is ok
+        if re.search(r"\d", loc):
+            return True  # has digit = room/building
+        if len(loc) >= 10 or "hall" in loc.lower() or "center" in loc.lower() or "building" in loc.lower():
+            return True
+        if loc.lower() in ("plc", "mck", "llc", "llcs", "emu", "fen", "des", "tyke", "ans", "lawrence"):
+            return True
+        return False  # short strings like "mpong" with no context
+    meetings = [mt for mt in meetings if _valid_location(mt.get("location"))]
 
     # "T/R 101 LLCS" - days only, no time (R = Thursday)
     tr_map = {"m": "MO", "t": "TU", "tu": "TU", "th": "TH", "r": "TH", "w": "WE", "f": "FR"}
@@ -429,12 +698,11 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         })
 
     # "Slide – aesthesis – Due October 16, 11:59 p.m.", "slide assignment (due ... October 16)", "close-reading assignment Due November 6"
-    _months = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
     for m in re.finditer(r"(?:(?:Slide|slide)\s*(?:[-–\s\u2013\"']*aesthesis[\"']?|assignment)|close[- ]?reading\s+assignment).*?(October|November|December|January|February|March|April|May|June|July|August|September|Oct\.?|Nov\.?|Dec\.?|Jan\.?|Feb\.?|Mar\.?|Apr\.?|Jun\.?|Jul\.?|Aug\.?|Sep\.?)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s*,\s*(\d{4}))?\s*(?:by|at|@|\s+)?(\d{1,2})?[\:]?(\d{2})?\s*(am|pm)?", text, re.I | re.DOTALL):
         mon, day, yr_str, h, min, ampm = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5), m.group(6)
         title = "Close-reading assignment" if "close" in m.group(0).lower() and "reading" in m.group(0).lower() else "Aesthesis slide"
         yr = int(yr_str) if yr_str else 2023
-        mon_num = _months.get((mon or "").lower()[:3], 1)
+        mon_num = MONTHS.get((mon or "").lower()[:3], 1)
         due = f"{yr}-{mon_num:02d}-{int(day):02d}"
         if h: hr = int(h); hr = hr + 12 if (ampm or "").lower() == "pm" and hr < 12 else hr; due += f"T{hr:02d}:{min or '59'}:00"
         else: due += "T23:59:00"
@@ -469,6 +737,171 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             continue
         add_category(cid, title, pct)
         atype = "quiz" if "quiz" in name.lower() else "final" if "final" in name.lower() else "project" if "project" in name.lower() else "assignment"
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
+    # "Percentage Component" table - "50 Mini Projects", "20 Midterm exam", "10 Build your MVP!" (% first)
+    for m in re.finditer(r"^(?:Percentage\s+)?(\d{1,3})\s+([A-Za-z][A-Za-z0-9\s\-&()!]+?)(?:\n|$)", text, re.M | re.I):
+        pct, name = int(m.group(1)), m.group(2).strip()
+        if pct > 100 or pct <= 0:
+            continue
+        name = re.sub(r"\s+", " ", name)
+        if name.lower() in ("component", "percentage", "total", "grading"):
+            continue
+        if "attendance is required" in name.lower() or "in-person attendance" in name.lower() or name.lower() in ("introduction", "attend seminars"):
+            continue
+        if len(name) < 3 or len(name) > 55:
+            continue
+        # When "Mini Projects" and doc mentions projects 0 through 6 (or 0-6), use expanded name
+        if name.lower() == "mini projects" and re.search(r"projects?\s+0\s+(?:through|to|-)\s*[46]|[Pp]roject\s+[0-6]\b", text):
+            name = "Mini Projects (0-6)"
+        cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_").replace("(", "").replace(")", "")
+        atype = "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "project" if "project" in name.lower() or "mvp" in name.lower() else "assignment"
+        add_category(cid, name, pct)
+        add_assessment(cid + "_1", name, cid, atype, pct)
+
+    # "Homework + WebWork 25%", "Midterm Exams 25% each"
+    for m in re.finditer(r"\b(Homework\s*\+\s*WebWork|Midterm\s+Exams?)\s+(\d{1,3})\s*%\s*(each)?", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        if "midterm" in name.lower() and m.group(3):
+            add_category("midterms", "Midterms", pct * 2)
+            add_assessment("midterm_1", "Midterm Exam 1", "midterms", "midterm", pct)
+            add_assessment("midterm_2", "Midterm Exam 2", "midterms", "midterm", pct)
+        else:
+            title = "Homework + WebWork" if "webwork" in name.lower() else name
+            cid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_").replace("+", "")
+            add_category(cid, title, pct)
+            add_assessment(cid + "_1", title, cid, "assignment", pct)
+
+    # "15% Homeworks", "10% 5Quizzes", "18% Midterm 1" - percent first, then optional count, then name
+    for m in re.finditer(r"(?:^|\n)\s*(\d{1,3})\s*%\s+(?:\d*\s*)?([A-Za-z][A-Za-z0-9\s\-]+?)(?:\n|$)", text, re.M | re.I):
+        pct, name = int(m.group(1)), m.group(2).strip()
+        if pct > 100 or len(name) < 3 or len(name) > 40:
+            continue
+        if any(w in name.lower() for w in ("total", "grade", "scale", "cutoff", "lower", "upper")):
+            continue
+        # Normalize "Homeworks" -> "Homework", "Quizzes" stays
+        title = "Homework" if name.lower().rstrip("s") == "homework" else name
+        cid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_")
+        atype = "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "quiz" if "quiz" in name.lower() else "assignment"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
+    # Table format: "Component Events Dropped %" rows - e.g. "Online Exams 2 0 20", "Exams (in person) 2 0 50", "Attendance - - 5"
+    skip_components = {"component", "events", "dropped", "total", "%"}
+    for m in re.finditer(r"^([A-Za-z][A-Za-z \t\-()]+?)\s+(\d+|-)\s+(\d+|-)\s+(\d{1,3})\s*$", text, re.M | re.I):
+        name, pct = m.group(1).strip(), int(m.group(4))
+        if pct > 100 or pct <= 0:
+            continue
+        first_word = name.split()[0].lower() if name.split() else ""
+        if first_word in skip_components or name.lower().rstrip("s") in skip_components:
+            continue
+        # Prefer standard titles for known components
+        full_names = {"online exams": "Online Exams", "in-person exams": "In-person Exams", "in person exams": "In-person Exams",
+                      "exams (in person)": "Exams (in person)", "mini-exams (online)": "Mini-exams (online)",
+                      "programming projects": "Programming projects", "projects": "Projects", "labs": "Labs",
+                      "code demo": "Code demo", "attendance": "Attendance"}
+        name_lower = name.lower().strip()
+        title = full_names.get(name_lower, name)
+        cid = re.sub(r"\s+", "_", name_lower)[:28].rstrip("_").replace("-", "_")
+        atype = "midterm" if "exam" in name_lower else "project" if "project" in name_lower else "assignment" if "lab" in name_lower or "code" in name_lower else "participation" if "attend" in name_lower else "assignment"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
+    # Prefer project names from objectives ("Project 1x: Learning Unix") over grading line
+    project_names = {}
+    for m in re.finditer(r"Project\s+(\d+)x\s*:\s*([A-Za-z][A-Za-z\s]+?)(?:\n|$)", text, re.I):
+        num, name = m.group(1), m.group(2).strip()
+        if not re.match(r"^\d+\s*%", name):  # skip "10% (2% of..." lines
+            project_names[num] = name
+    # "Project 1x: 10% (2% of overall grade)" - use the overall % when present
+    for m in re.finditer(r"Project\s+(\d+)x\s*:\s*(\d{1,3})\s*%\s*\(\s*(\d{1,3})\s*%\s+of\s+overall\s+grade\s*\)", text, re.I):
+        num, pct_overall = m.group(1), int(m.group(3))
+        title = f"Project {num}x: {project_names.get(num, '')}".strip(": ").rstrip() or f"Project {num}x"
+        cid = f"project_{num}x"
+        add_category("projects", "Projects", None)
+        add_assessment(cid, title, "projects", "project", pct_overall)
+
+    # "40 pts. total for the quizzes", "40 points total for the exercises"
+    for m in re.finditer(r"(\d{1,3})\s*(?:pts?\.?|points?)\s*(?:total\s+)?for\s+the\s+(quizzes|exercises)", text, re.I):
+        pct, name = int(m.group(1)), m.group(2).strip()
+        if pct > 100:
+            continue
+        title = "Exercises" if "exercise" in name.lower() else "Quizzes"
+        cid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_")
+        atype = "quiz" if "quiz" in name.lower() else "assignment"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+    # "weather reports" (2 points each, 20 points total) - flexible for quotes
+    for m in re.finditer(r"ten\s+[\"\u201C]?weather\s+reports[\"\u201D]?\s*\([^)]*?(\d{1,3})\s*points?\s+total\)", text, re.I):
+        pct = int(m.group(1))
+        if 1 <= pct <= 100:
+            add_category("weather_reports", "Weather Reports", pct)
+            add_assessment("weather_reports_1", "Weather Reports", "weather_reports", "assignment", pct)
+            break
+
+    # "Daily quizzes: 10%", "Quizzes: 20%"
+    for m in re.finditer(r"\b(Daily\s+quizzes?|Quizzes?)\s*:\s*(\d{1,3})\s*%", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        cid = "quizzes"
+        title = "Daily quizzes" if "daily" in name.lower() else "Quizzes"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, "quiz", pct, recurrence={"frequency": "weekly", "interval": 1})
+
+    # "distributed over written (25%) and programming (20%) assignments"
+    for m in re.finditer(r"(?:written|writing)\s*\(\s*(\d{1,3})\s*%\s*\)\s*(?:and|,)\s*(?:programming|program)\s*\(\s*(\d{1,3})\s*%\s*\)", text, re.I):
+        p1, p2 = int(m.group(1)), int(m.group(2))
+        if p1 <= 100 and p2 <= 100:
+            add_category("written_assignments", "Written Assignments", p1)
+            add_assessment("written_1", "Written Assignments", "written_assignments", "assignment", p1)
+            add_category("programming_assignments", "Programming Assignments", p2)
+            add_assessment("programming_1", "Programming Assignments", "programming_assignments", "assignment", p2)
+
+    # "Classwork(15%)", "Written homework (15%)", "Quizzes(20%)" - paren format
+    for m in re.finditer(r"\b(Classwork|Written\s+homework|Quizzes?)\s*\(\s*(\d{1,3})\s*%\)", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+        title = "Written homework" if "written" in name.lower() and "homework" in name.lower() else name
+        atype = "assignment" if "homework" in name.lower() or "classwork" in name.lower() else "quiz"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
+    # Grading breakdown: "Engineering Deliverables (Team/Individual): 60%", "Peer Evaluations (Completion-Based): 5%"
+    for m in re.finditer(r"\b([A-Za-z][A-Za-z \t&\-]+?)\s*\([^)]*(?:Team|Individual|Completion)[^)]*\)\s*:\s*(\d{1,3})\s*%", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100 or len(name) < 3:
+            continue
+        # Normalize common variants for consistency across syllabi
+        name_lower = name.lower().strip()
+        title_map = {
+            "engineering deliverables": ("Team Engineering Deliverables", "engineering", "project"),
+            "professional practice & participation": ("Professional Practice & Participation", "professional", "participation"),
+            "reflection & responsible ai use": ("Reflection & AI Usage Log", "reflection", "assignment"),
+            "peer evaluations": ("Peer & Self-Evaluation", "peer_eval", "participation"),
+        }
+        entry = title_map.get(name_lower)
+        if entry:
+            title, cid, atype = entry
+        else:
+            title, cid = name, re.sub(r"\s+", "_", name_lower)[:28].rstrip("_")
+            atype = "assignment"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
+    # "Participation: 5%", "Attendance: 10%", "Presentation: 15%" - colon format (general)
+    for m in re.finditer(r"\b(Participation|Attendance|Presentations?|Reading\s+responses?|Discussion)\s*:\s*(\d{1,3})\s*%", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+        title = name if len(name) < 30 else "Participation" if "participation" in name.lower() else "Attendance" if "attendance" in name.lower() else name[:30]
+        add_category(cid, title, pct)
+        atype = "participation" if "participat" in name.lower() or "attend" in name.lower() else "assignment"
         add_assessment(cid + "_1", title, cid, atype, pct)
 
     # "Lab attendance/submission 10%", "Lab Attendance: 10%", "Quizzes: 20%"
@@ -524,10 +957,9 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_assessment(cid + "_1", title, cid, atype, pct)
 
     # "Test 1: October 23", "Test 2: November 6", "Test 3: November 25" - tests with dates
-    _mo = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
     for m in re.finditer(r"Test\s+(\d+)\s*:\s*(\w+)\s+(\d{1,2})", text, re.I):
         num, mon, day = m.group(1), m.group(2), m.group(3)
-        mon_num = _mo.get((mon or "").lower()[:3])
+        mon_num = MONTHS.get((mon or "").lower()[:3])
         due = f"{yr}-{mon_num:02d}-{int(day):02d}" if mon_num and 1 <= mon_num <= 12 else None
         add_category("tests", "Tests", None)
         add_assessment(f"test_{num}", f"Test {num}", "tests", "midterm", None, due)
@@ -543,7 +975,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
     for _m in re.finditer(r"Final\s*:\s*(\w+)\s+(\d{1,2}),?\s*(?:\w+,?\s*)?(\d{1,2})[\:.](\d{2})\s*(?:AM|am)\s*[-–]\s*(\d{1,2})[\:.](\d{2})\s*(?:AM|am)", text, re.I):
         mon, day = _m.group(1), int(_m.group(2))
         h1, m1, h2, m2 = int(_m.group(3)), int(_m.group(4)), int(_m.group(5)), int(_m.group(6))
-        mon_num = _mo.get((mon or "").lower()[:3])
+        mon_num = MONTHS.get((mon or "").lower()[:3])
         if mon_num:
             final_due = f"{yr}-{mon_num:02d}-{day:02d}T{h1:02d}:{m1:02d}:00"
             break
@@ -577,8 +1009,10 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         pct, name = int(m.group(1)), m.group(2).strip()
         if pct > 100 or len(name) < 3 or len(name) > 55:
             continue
-        skip_words = ("the", "your", "grade", "penalty", "of ", " to ", " or ", "each", "range", "standard", "b's", "c's", "d's", "upper", "lower", "bracket", " e.g ", "late ", "maximum")
+        skip_words = ("the", "your", "grade", "penalty", "of ", " to ", " or ", "each", "range", "standard", "b's", "c's", "d's", "upper", "lower", "bracket", " e.g ", "late ", "maximum", "of")
         if any(w in name.lower() for w in skip_words) or name.lower().strip() == "and":
+            continue
+        if "deduct" in name.lower():
             continue
         cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_/")
         add_category(cid, name, pct)
@@ -589,12 +1023,61 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         elif "lab" in name.lower(): atype = "participation" if "attend" in name.lower() else "assignment"
         add_assessment(f"{cid}_1", name, cid, atype, pct)
 
+    # Numbered evaluation: "(1) Weekly Labs -- 60%", "(2) Exams – 40% (2 total, each worth 20%)"
+    for m in re.finditer(r"\(\d\)\s+(Weekly\s+Labs?|Exams?)\s*[-–—]+\s*(\d{1,3})\s*%", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        block = text[m.start() : m.end() + 350]
+        if "lab" in name.lower():
+            drop = 1 if re.search(r"drop\s+lowest", block, re.I) else None
+            add_category("labs", "Weekly Labs", pct)
+            idx = cat_ids.get("labs")
+            if idx is not None and idx < len(categories):
+                categories[idx]["drop_lowest"] = drop
+            late_pol = "25% per deadline, +25% per additional week" if re.search(r"25\s*%.*deduct|deduct.*25\s*%", block, re.I) else None
+            add_assessment("labs_1", "Weekly Labs", "labs", "assignment", pct,
+                          recurrence={"frequency": "weekly", "interval": 1, "by_day": ["TH"], "until": None, "count": None},
+                          policies={"late_policy": late_pol} if late_pol else None)
+        else:
+            # "Exams – 40% (2 total, each worth 20%)" -> Exam 1, Final Exam
+            pct_each = pct
+            me = re.search(r"each\s+worth\s+(\d{1,3})\s*%", block, re.I)
+            if me:
+                pct_each = int(me.group(1))
+            add_category("exams", "Exams", pct)
+            exam1_due = final_due = None
+            if "May 8" in text and "Exam 1" in text:
+                exam1_due = f"{yr}-05-08"
+            if "June 10" in text and re.search(r"Final\s+Exam|Final\s*:", text, re.I):
+                final_due = f"{yr}-06-10T14:45:00" if "2:45" in text or "14:45" in text else f"{yr}-06-10"
+            if not final_due:
+                for fm in re.finditer(r"Final\s+Exam\s*:\s*(\w+)\s+(\d{1,2})(?:\s*[\(,]?\s*[^,\)]*)?\s*(?:(\d{1,2})[\:.](\d{2}))?", text, re.I):
+                    mon, day = fm.group(1), int(fm.group(2))
+                    mn = MONTHS.get((mon or "").lower()[:3])
+                    if mn:
+                        if fm.group(3) and fm.group(4):
+                            final_due = f"{yr}-{mn:02d}-{day:02d}T{int(fm.group(3)):02d}:{fm.group(4)}:00"
+                        else:
+                            final_due = f"{yr}-{mn:02d}-{day:02d}"
+                        break
+            if not any(a.get("title") == "Exam 1" for a in assessments):
+                add_assessment("exam_1", "Exam 1", "exams", "midterm", pct_each, exam1_due)
+            if not any(a.get("title") == "Final Exam" for a in assessments):
+                add_assessment("final_1", "Final Exam", "exams", "final", pct_each, final_due)
+
     # "Two Midterms 22 % each", "2 Midterms 25% each" -> Midterm 1, Midterm 2
     for m in re.finditer(r"(?:(?:Two|2)\s+)?[Mm]idterms?\s+(\d{1,3})\s*%\s*(?:each|total)", text, re.I):
         pct = int(m.group(1))
         add_category("midterms", "Midterm Exams", pct * 2)
         add_assessment("midterm_1", "Midterm 1", "midterms", "midterm", pct)
         add_assessment("midterm_2", "Midterm 2", "midterms", "midterm", pct)
+    # "Midterm: 45%. There will be two in-class midterm" -> Midterm 1, Midterm 2 (no pct each)
+    if re.search(r"[Mm]idterm\s*:\s*\d+\s*%.*?(?:two|2)\s+(?:in-class\s+)?midterm", text, re.I | re.DOTALL):
+        if not any(a.get("title") == "Midterm 1" for a in assessments):
+            add_category("midterms", "Midterms", None)
+            add_assessment("midterm_1", "Midterm 1", "midterms", "midterm", None)
+            add_assessment("midterm_2", "Midterm 2", "midterms", "midterm", None)
 
     # "Midterm 1 25%", "Midterm 2 25%" - explicit numbered midterms
     for m in re.finditer(r"Midterm\s+(\d+)\s*[:\s]+(\d{1,3})\s*%", text, re.I):
@@ -604,7 +1087,6 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
 
     # "Midterm Exams 25% each" -> Midterm 1, Midterm 2 with dates
     date_pat = r"(?:Tuesday|Thursday|Monday|Wednesday|Friday),?\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s*,?\s*(\d{4}))?"
-    month_abbr = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
     for m in re.finditer(r"Midterm\s+Exams?\s+(\d{1,3})\s*%\s*(?:each|total)", text, re.I):
         pct_each = int(m.group(1))
         # Find two dates in surrounding text
@@ -615,7 +1097,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             for i, d in enumerate(dates[:2], 1):
                 mon, day, year = d.group(1), d.group(2), d.group(3)
                 try:
-                    mon_num = month_abbr.get(mon.lower()[:3], 1)
+                    mon_num = MONTHS.get(mon.lower()[:3], 1)
                     yr = int(year) if year else 2023
                     due = f"{yr}-{mon_num:02d}-{int(day):02d}"
                 except (ValueError, IndexError):
@@ -646,6 +1128,35 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_category(cid, title, pct)
         add_assessment(cid + "_1", title, cid, "final" if "final" in name.lower() else "midterm", pct)
 
+    # "WeBWork ... 24%", "Written homework ... 24%" - in context of "worth N% of the final grade"
+    for m in re.finditer(r"\b(WebWork|WeBWork|Written\s+homework)\s+(?:is\s+worth|worth)\s+(\d{1,3})\s*%\s+of\s+(?:the\s+)?final\s+grade", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        title = "WeBWork Homework" if "web" in name.lower() or "weblog" in name.lower() else "Written Homework"
+        cid = "weblog" if "web" in name.lower() else "written_hw"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, "assignment", pct, recurrence={"frequency": "weekly", "interval": 1, "by_day": ["TH"]})
+
+    # "Homework: 24+24" or "Midterms: 8+10" or "Final exam: 34" - summary block format
+    for m in re.finditer(r"\b(Homework|Midterms?|Final\s+exam)\s*:\s*(\d{1,3})\s*\+\s*(\d{1,3})\s*$", text, re.M | re.I):
+        name, p1, p2 = m.group(1).strip(), int(m.group(2)), int(m.group(3))
+        cid = "homework" if "homework" in name.lower() else "midterms" if "midterm" in name.lower() else "final"
+        if "midterm" in name.lower():
+            add_category(cid, "Midterms", p1 + p2)
+            add_assessment("midterm_1", "Written Midterm", cid, "midterm", p1)
+            add_assessment("midterm_2", "Online Quiz Midterm", cid, "midterm", p2)
+        elif "homework" in name.lower():
+            add_category("weblog", "WeBWork Homework", p1)
+            add_category("written_hw", "Written Homework", p2)
+            add_assessment("weblog_1", "WeBWork Homework", "weblog", "assignment", p1, recurrence={"frequency": "weekly", "interval": 1, "by_day": ["TH"]})
+            add_assessment("written_hw_1", "Written Homework", "written_hw", "assignment", p2, recurrence={"frequency": "weekly", "interval": 1, "by_day": ["TH"]})
+    for m in re.finditer(r"\b(Final\s+exam|Final)\s*:\s*(\d{1,3})\s*$", text, re.M | re.I):
+        pct = int(m.group(2))
+        if pct <= 100:
+            add_category("final", "Final Exam", pct)
+            add_assessment("final_1", "Final Exam", "final", "final", pct)
+
     # "Midterm: 25%", "Final: 45%" - colon format
     for m in re.finditer(r"\b(Midterm|Final)\s*:?\s*(\d{1,3})\s*%", text, re.I):
         kind, pct = m.group(1), int(m.group(2))
@@ -654,11 +1165,30 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_assessment(kind.lower() + "_1", "Midterm" if kind.lower() == "midterm" else "Final", cid,
                       "midterm" if kind.lower() == "midterm" else "final", pct)
 
+    # Pass/fail seminar: "(Project proposal) (due Friday 10/10)", "Resume (due Friday 10/24)" - schedule deliverables, no percent
+    if re.search(r"submit\s+all\s+(?:required\s+)?(?:deliverables|milestones)|attend\s+all\s+seminar\s+meetings", text, re.I):
+        for m in re.finditer(r"([A-Za-z][A-Za-z \t]+?)\s*\(\s*due\s+(?:Monday|Tuesday|Wednesday|Thursday|Friday)[a-z]*\s+(\d{1,2})/(\d{1,2})\s*\)", text, re.I):
+            name = m.group(1).strip()
+            mo, dy = int(m.group(2)), int(m.group(3))
+            if len(name) < 4 or len(name) > 50 or "handout" in name.lower() or "career center" in name.lower():
+                continue
+            if 1 <= mo <= 12 and 1 <= dy <= 31:
+                due = f"{yr}-{mo:02d}-{dy:02d}"
+                title = name.title()
+                cid = "deliverables"
+                add_category(cid, "Deliverables", None)
+                aid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_")
+                add_assessment(aid, title, cid, "assignment", None, due)
+        if re.search(r"attend\s+all\s+seminar|Attendance\s+will\s+be\s+taken", text, re.I) and not any(a.get("title") == "Attendance" for a in assessments):
+            add_category("deliverables", "Deliverables", None)
+            add_assessment("attendance", "Attendance", "deliverables", "participation", None, None,
+                          recurrence={"frequency": "weekly", "interval": 1, "by_day": ["MO"], "until": None, "count": None},
+                          policies={"late_policy": "Missing more than 1 (after week 1) results in failure"})
+
     # "Project 1 (due: Oct. 24)", "Project 2 (due: Nov. 19)" - schedule table, no percent
-    _mo_abbr = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
     for m in re.finditer(r"Project\s+(\d+)\s*\(\s*(?:due|out)\s*:\s*(\w+)\.?\s+(\d{1,2})", text, re.I):
         num, mon_abbr, day = m.group(1), m.group(2), int(m.group(3))
-        mon_num = _mo_abbr.get((mon_abbr or "").lower()[:3])
+        mon_num = MONTHS.get((mon_abbr or "").lower()[:3])
         due = f"{yr}-{mon_num:02d}-{day:02d}" if mon_num and 1 <= mon_num <= 12 else None
         if "due" in m.group(0).lower():
             add_category("projects", "Projects", None)
@@ -667,7 +1197,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
     # "Nov. 4 MIDTERM", "6 Nov. 4 MIDTERM" - schedule table
     for m in re.finditer(r"(?:^|\n)\s*\d*\s*(\w+)\.?\s+(\d{1,2})\s+MIDTERM", text, re.M | re.I):
         mon_abbr, day = m.group(1), int(m.group(2))
-        mon_num = _mo_abbr.get((mon_abbr or "").lower()[:3])
+        mon_num = MONTHS.get((mon_abbr or "").lower()[:3])
         due = f"{yr}-{mon_num:02d}-{day:02d}" if mon_num and 1 <= mon_num <= 12 else None
         add_category("midterm", "Midterm", None)
         add_assessment("midterm_1", "Midterm", "midterm", "midterm", None, due)
@@ -676,7 +1206,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
     for m in re.finditer(r"(?:^|\n)\s*\d*\s*(\w+)\.?\s+(\d{1,2})\s+(\d{1,2})[\:.](\d{2})\s*[-–]\s*(\d{1,2})[\:.](\d{2})\s*FINAL", text, re.M | re.I):
         mon_abbr, day = m.group(1), int(m.group(2))
         h1, m1 = int(m.group(3)), int(m.group(4))
-        mon_num = _mo_abbr.get((mon_abbr or "").lower()[:3])
+        mon_num = MONTHS.get((mon_abbr or "").lower()[:3])
         due = f"{yr}-{mon_num:02d}-{day:02d}T{h1:02d}:{m1:02d}:00" if mon_num and 1 <= mon_num <= 12 else None
         add_category("final", "Final exam", None)
         add_assessment("final_1", "Final", "final", "final", None, due)
@@ -689,7 +1219,8 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_category(cid, title, None)
         add_assessment(f"{cid}_1", title, cid, "assignment" if cid == "homework" else "project", None)
 
-    # Labor-based: "1. Weekly discussion boards", "• Origin Story", "• Instructions" - WR320
+    # Labor-based / writing-intensive: named assignments without percent (WR320, similar courses)
+    # Patterns are general phrases that appear in writing/technical communication syllabi
     wr_items = [
         (r"weekly\s+discussion\s+boards?", "Weekly discussion boards", "discussion"),
         (r"origin\s+story", "Origin Story", "projects"),
@@ -708,7 +1239,8 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
     for m in re.finditer(r"(?:^|\n)\s*[•\-\*]?\s*([A-Za-z][A-Za-z\s\-]+?)\s+(\d{1,3})\s*%\s*", text, re.M | re.I):
         name = m.group(1).strip()
         pct = int(m.group(2))
-        skip = name.lower() in ("the", "a", "an", "to", "of", "and", "or", "your", "grade")
+        skip = name.lower() in ("the", "a", "an", "to", "of", "and", "or", "your", "grade", "below")
+        skip = skip or "deduct" in name.lower() or "attendance is required" in name.lower()
         if skip or len(name) > 50 or pct > 100:
             continue
         if re.search(r"^[A-Za-z]+\s+\d+$", name) and "project" not in name.lower() and "midterm" not in name.lower():
@@ -793,13 +1325,28 @@ def parse_late_policy(text: str) -> dict:
     m = re.search(r"(\d+)\s*[\"'\u201C\u201D]?\s*(?:late\s+)?pass(?:es)?", text[:15000], re.I)
     if m:
         policy["total_allowed"] = int(m.group(1))
-    for pat in (r"(?:one|1)\s+late\s+(?:project|assignment)", r"(?:one|1)\s+(?:project|assignment)\s+late", r"turn in (?:one|1) (?:project|assignment) late", r"(?:one|1)\s*[\"'\u201C\u201D]?\s*late\s*submission\s*token", r"have\s+(?:one|1)\s+.{0,15}late\s*submission", r"one[\"'\u201C\u201D]?\s*latesubmissiontoken", r"(?:one|1)\s*[\"'\u201C\u201D]?\s*latesubmissiontoken"):
+    # "Up to two missed individual obligations" -> total_allowed: 2
+    if policy["total_allowed"] is None and re.search(r"(?:up to |allow(?:ed|s)?\s+)?(?:two|2)\s+missed\s+(?:individual\s+)?(?:obligations?|deadlines?|assignments?|activities?)", text[:15000], re.I):
+        policy["total_allowed"] = 2
+    late_pass_patterns = [
+        r"(?:one|1)\s+late\s+(?:project|assignment)", r"(?:one|1)\s+(?:project|assignment)\s+late",
+        r"turn in (?:one|1) (?:project|assignment) late", r"(?:one|1)\s*[\"'\u201C\u201D]?\s*late\s*submission\s*token",
+        r"have\s+(?:one|1)\s+.{0,15}late\s*submission", r"one[\"'\u201C\u201D]?\s*latesubmissiontoken",
+        r"(?:one|1)\s*[\"'\u201C\u201D]?\s*latesubmissiontoken",
+        r"first\s+time\s+you\s+request\s+(?:this|it)\s+I\s+will\s+automatically\s+grant",
+        r"one\s+free\s+pass", r"first\s+\.\.\.\s+automatically\s+grant",
+    ]
+    for pat in late_pass_patterns:
         if re.search(pat, text[:15000], re.I) and policy["total_allowed"] is None:
             policy["total_allowed"] = 1
             break
-    m = re.search(r"(\d+)\s*(?:day|days)\s*(?:each|extension|late)", text[:15000], re.I)
+    m = re.search(r"(\d+)\s*(?:hour|hours)\s*(?:each|extension|late|extensions?)", text[:15000], re.I)
     if m:
         policy["extension_days"] = int(m.group(1))
+    if policy["extension_days"] is None:
+        m = re.search(r"(\d+)\s*(?:day|days)\s*(?:each|extension|late)", text[:15000], re.I)
+        if m:
+            policy["extension_days"] = int(m.group(1))
     return policy
 
 

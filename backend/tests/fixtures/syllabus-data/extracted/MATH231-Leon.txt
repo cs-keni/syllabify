@@ -1,0 +1,169 @@
+Welcome to Math 231!
+
+CLASSES:
+
+Monday and Wednesday, 8:30--9:50 in Living Learning Center South 101. I'll post the slides from each class to Canvas too---but that is just as a last resort---COME TO CLASS---you'll learn much better that way.
+
+There is also your discussion section, these meet 4:00--4:50 on Wednesday (Tykeson 32), 5:00--5:50 on Wednesday (Gerlinger 246) or 8:00:8:50 (University 209) or 9:00--9:50 on Thursday (University 209) depending on which one you are registered for. This will usually be used as a time to get practice of solving problems and review.
+
+OTHER IMPORTANT DATES:
+
+There will be an in class midterm during your discussion sections in Week 5 (October 26--27). There will be an 50 minute on-line quiz which you should plan on taking after noon on November 11 and before midnight on November 12 (this is a 36 hour window). The last day to drop this clas is November 13. Our final exam will take place on Wednesday December 7 in LLCS 101 (the usual classroom), 10:15--12:15.
+
+There will be no meeting of your discussion section on November 23--24 (as the 24th is Thanksgiving), but I will post a practice final exam on Canvas on November 23 for you to attempt over the break.
+
+E-MAIL:
+
+Me: brundan@uoregon.edu. I prefer it if you use that directly rather than Canvas e-mail which is a bit useless although it should also work.
+
+Your discussion section leader: Samantha Platt, splatt3@uoregon.edu.
+
+OFFICE HOURS:
+
+I'm going to have open ZOOM office hours at 12:30--1:30 and 4:00-4:30 on Wednesdays and 11:30-12:00 and 1:00-2:00 on Thursdays, you can access them from the Zoom Meetings link on Canvas. My intent is that these are times to come and ask questions about homework. I'm also going to have one in-person office hour at 2:00-3:00 on Friday in Fenton 319. This is intended to be an individual office hour for people who need to talk to me about other issues. I can also fix up different times if something crops up, please just send me an e-mail to request this.
+
+Your discussion section leader will also be having office hours. These will all be in person either in Fenton 305 or in the Fenton lounge area on the top floor (where all the seating and chalkboards are), depending on how many students show up. These will take place on Tuesdays 1:00-2:00, Wednesdays 11:00-12:00, and Thursdays 3:00-4:00.
+
+GRADING:
+
+Each week there will be two types of homework due, WeBWork and written homework. You will be able to see which by looking at the Module for the week in Canvas. Take a look there for more information! BOTH parts of the homework are due at the same time, which is the end of the day on THURSDAY starting in week two. But it is a TERRIBLE IDEA to decide to do all your Math 231 homework on that Thursday---the idea is you are organized and get as much as possible of the WeBWork part (which is meant to be quite routine) out of the way, ideally, by the end of the day on Monday. Then you have time in the week to plug away at the written homework, get any help needed in our office hours on Wednesday and Thursday, and get that finally written up, scanned in and submitted by midnight on Thursday. Beware that the WeBWork homework is not integrated into Canvas. Of course, it is graded automatically, but we will not copy the scores into the Canvas gradebook until the end of term. Written homework will be graded by a grader. Exams will be graded by Samantha and me.
+
+The main purpose of the WeBWork homework is to give you computational practice. The written homework, on the other hand, is to give you experience of tackling more difficult, perhaps proof-based, problems and to write well-explained proofs in your solutions. This involves writing a lot more words (yes, complete sentences!) than you may be used to doing in a math class. The problems for this will overlap the problems covered in class and on worksheets in your discussion section week, but they will not be exactly the same...
+
+Each of the two types of homework is worth 24% of the final grade, so homework is worth 48% of the final grade which is really a lot!!! This means staying on top of the homework each week is going to be a big part of getting through this term. There will be no written homework due in week 5 (there is a written midterm in discussion sections this week) and there will be no WeBWork homework due in week 7 (there is an on-line Canvas quiz to take this week). I will drop your LOWEST written homework score. There is no good way to drop your lowest WeBWork score, so all of the WeBWork will count, but I tend to think that a final WeBWork score of 90% is perfectly good enough for an A student...
+
+There will be TWO midterms, one will be written and take place in the discussion sections in Week 5, the other will be a 50 minute long on-line Canvas quiz which will take place at a time of your choice in the 36 hour window from noon on November 11 (this is also Veteran's day which is a university holiday) to midnight on November 12. These will be worth 8% and 10% of the final grade. Then there will be a FINAL EXAM which will take place in person in the regularly scheduled time in Finals week, 10:15--12:05, Wednesday December 7. This will be worth 36% of the final grade.
+
+So:
+
+Homework: 24+24
+
+Midterms: 8+10
+
+Final exam: 34
+
+Total = 100.
+
+In this class I am going to be asking you to write proofs and solve problems that may be harder than you are used to thinking about in a math class. This can be quite challenging and my experience is that the usual 90/80/70 split for grades does not work at all for it! So I am going to adjust these grade boundaries---it is easier for me than curving scores on exams and homeworks to conform to the 90/80/70 thing! My expectation is that the boundary between B+/A- will be around 85% overall total at the end, the boundary between a C+/B- will be around 70%, ad the boundary between F/C- will be around 55%. However I may adjust those boundaries up or down by a couple of percent depending on everyone's performance on the final examination.
+
+TEXTBOOK:
+
+Rosen, Discrete Mathematics and Applications. This is recommended but not required. It is a very nice book and used for Math 232 too, and definitely worth getting hold of as a back up source. Either the 7th or 8th edition should work. I will be covering parts of chapters 1, 2, 4, 5 and 6 this term. I will explain exactly which sections as we cover them, although I tend to jump around a bit and leave quite a lot of things out since the book is really too long. I think it would be a good idea to read through the sections in the textbook as we cover them in class since it will consolidate your understanding of the ideas. Also it is a good resource for lots more worked examples. The written homeworks will be questions very similar to ones worked out in Rosen!
+
+GETTING HELP WITH HOMEWORK:
+
+I'm often asked if I can recommend a tutor, and I never can because they usually do not know enough about what is actually going on in class to be as help as you might think! You are much better served by coming regularly to scheduled office hours. Try coming to my zoom office hours--even if you have no specific questions you may pick up tips from other students by listening in. Another place to get help about homework is the Math Library, they have drop-in help sessions. See https://library.uoregon.edu/scilib/mathlib.
+
+ATTENDANCE AND LATE WORK:
+
+Attendance in class and in discussion sections is not required, but it would be rash to think that you can pass the class without showing up to as many in person meetings as possible! Coming to lectures is particularly important because I do not follow the textbook in any systematic way. I will post my notes from class to this Canvas site but it is much harder to make sense of the material covered that way. The same goes for the discussion sections which will usually be based around worksheets--this is a valuable time to engage with the material in an active way with other students, something which doesn't really happen in the large lectures.
+
+Homework is due at 11:59pm on Thursdays throughout the term. This means you should complete as much as you can of the on-line WeBWork homework well before then and post scans of your written homework solutions before that deadline. If something goes wrong with scanning homework, you should e-mail the PDF directly to me, but I hope that will be a rare occurrence! I am willing to OCCASIONALLY give 24 hour extensions on homework in the event of some unforeseen crisis, but in order to request this you MUST e-mail me BEFORE the official due date. The first time you request this I will automatically grant your request but after that one free pass I will reduce the points you receive for late work by 50%. I will NOT accept any work that is late by more than 24 hours--if you get yourself in such a situation it is better to move on and focus all your energy on the next homework otherwise you will find yourself falling further behind. Exceptions to this policy apply for people with appropriate AEC accommodations or for other university approved reasons, which must be discussed with me in advance. Remember that I also drop your lowest written homework score...
+
+I do expect attendance at the written midterm which takes place in your discussion section in week 5, and I expect attendance at the final exam on Wednesday of finals week. Please plan your schedule and travel plans at the end of term accordingly. If for some unexpected reason you are forced to miss an exam, I expect you to e-mail me IN ADVANCE so that we can make some reasonable alternative arrangement. I usually offer one opportunity to make up a missed final exam on Friday of finals week, but obviously I would much prefer it if everyone is present the first time around since I don't need to be writing make-up exams!
+
+My policies may sound scary--I am after all trying to manage a 120 student class--but I will do everything reasonable to accommodate you if something unexpected crops up.
+
+DETAILED LIST OF TOPICS:
+
+Weeks 1/2: COUNTING. Mostly sections 6.1 and 6.3 of text, plus a little bit of 6.4. Factorials, counting arrangements of words with repeated letters ("spelling problems"), binomial coefficients ("n choose r"). Counting poker hands of various types, ways of picking r elements from n different elements when order matters and does not matter. Pascal's triangle and the binomial theorem. Balls-in-boxes/stars-and-bars problems with lots of variations. Inclusion/exclusion principle and more examples.
+
+Week 3: LOGIC. Sections 1.1, 1.2, 1.3, 1.4, 1.5 from the textbook but covering only a tiny amount of what is there (skipping all of the wordy stuff).  Propositions and the truth tables for the basic logical connectives. Proving logical equivalences via truth tables. Predicates as propositions with variables. Quantifiers "for all" and "there exists." More complicated logical sentences written using predicates and quantifiers, and practice of negating such statements. The difference between the mathematician's "if and only if" symbol with double thickness left/right arrow and the underlying logical connective with single thickness left/right arrow should be explained since this is confusing--the former means the statement involving the latter is a tautology.
+
+Week 4: FIRST LOOK AT PROOF WRITING. Sections 1.7, 1.8 and 2.4. Lots of examples of proofs in elementary mathematics, practice of writing proofs of various types. Definitions of "even" and "odd" and proofs using them and "contrapositive," definition of rational and irrational and proofs using them and "contrapositive" or "proof by contradiction," e.g. square root or cube root of 2 is irrational. Some other examples of direct proofs especially "if and only if" proofs getting used to the word "converse." Proofs involving inequalities, proofs involving summations and the method of differences. Formulas for \sum_{i=1}^n i, \sum_{i=1}^n i^2, \sum_{i=1}^n i^3, ... from Section 2.4, formula for the sum of a geometric progression \sum_{i=0}^n x^i = (1-x^{n+1}) / (1-x).
+
+Week 5: LANGUAGE OF SETS AND FUNCTIONS. Sections 2.1, 2.2 and 2.3. CIS majors are familiar with the notion of "type" of a variable, and throughout this material it is helpful to see that in mathematics the basic type is "set" but subsequent constructions are refining this notion to introduce more "types" of objects. The notion of sets, elements, subsets, supersets, and equality of sets. Intersections, unions, complements, set minus. Examples of proofs of equality of sets by establishing both containments, and translation of set-theoretic identities to logic identities and truth tables as seen in chapter 1. Recursive definition of natural numbers starting from 0 being the empty set. Power sets, ordered pairs and Cartesian products, size of a set. Definition of a function: domain, range, image. Notions of injective, surjective and bijective, the set Y^X of all functions X --> Y, ordered tuples X^n. Examples of bijections appearing in counting, with more practice of counting.
+
+Weeks 6/7: MATHEMATICAL INDUCTION AND RECURSION. Sections 5.1, 5.2. The basic template for an induction proof, lots of examples proving theorems seen before such as summation formulae from Weeks 3/4, inequalities and more involving the idea of divisibilty. The binomial theorem revisited, and proved now by inducion using the recursive definition of the binomial coefficients. The division algorithm, quotients and remainders, div and mod. Also some recurrence relations such as the Fibonacci sequence and induction proofs involving them.
+
+Weeks 8/9: FUNDAMENTAL THEOREM OF ARITHMETIC. Sections 4.1, 4.2, 4.3. Greatest common divisors and the Euclidean algorithm (the most important recursive algorithm of all). Prime numbers and the fundamental theorem of arithmetic proved by mathematical induction. Proof that p|ab implies p|a or p|b for a prime number p. Lowest common multiples. More examples of proofs involving divisibility, rational/irrational numbers.
+
+Week 10: REVIEW. Time to review the massive amount of language and symbolic notation that has been introduced throughout the course, further practice following the format of questions on the final exam.
+
+COURSE OBJECTIVES:
+
+This class primarily serves current or future CS majors and Math majors. The primary goal for both groups is to learn and use the language of mathematics accurately and correctly. This language involves logic, sets and functions, induction and recursion, and proof. In addition, students will learn some of the essential mathematical concepts and ideas in discrete mathematics, which are required for rigorous studies in most areas of computer science. After completing this course satisfactorily, a student should:
+
+--understand logical arguments and reasoning;
+
+--use the language of sets and functions, and be familiar with formal mathematical definitions, including recursive ones;
+
+--have experience in various proof techniques and in writing clear and understandable mathematical proofs, including proof by mathematical induction;
+
+--be familiar with binomial coefficients and the binomial theorem, and with prime numbers, the Euclidean algorithm, and the Fundamental Theorem of Arithmetic.
+
+LEARNING ENVIRONMENT AND AEC ACCOMMODATIONS:
+
+The University of Oregon strives for inclusive learning environments. Please notify me if the instruction or design of this course results in disability-related barriers to your participation. You are also encouraged to contact the Accessible Education Center at uoaec@uoregon.edu.
+
+You should also contact me as soon as possible if there are any specific accommodations I should know about. For something standard like an accomodation for extra time on exams, you just need to e-mail me your documentation from AEC---and remember to book your spot in the Testing Center for the written midterm/final exam well in advance. For other accommodations, I will do everything I can to facilitate, please do not hesitate to come and talk to me in person if you need extra help (and are comfortable doing that).
+
+ACADEMIC DISRUPTION:
+
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by e-mail and on Canvas. If we are not able to meet face-to-face due to some unexpected circumstances, you should log onto Canvas and read any announcements--you will be expected to continue coursework as explained there.
+
+Please do NOT come to class if you are feeling ill.
+
+EXPECTED CLASSROOM BEHAVIOR:
+
+Students are expected to behave respectfully toward each other and toward the instructor during class time.  This includes refraining from from using cell phones during lectures.
+
+ACADEMIC CONDUCT:
+
+The code of student conduct and community standards is at https://dos.uoregon.edu/conduct. In this course, it is appropriate to give and obtain help on homeworks so long as the work you are submitting is your own and you understand it. It is not appropriate to obtain help on exams or to give help to other students with their exams. Cheating hurts the cheater and all the other honest students in the system, basically: PLEASE DO NOT CHEAT!
+
+ 
+
+GOOD LUCK THIS TERM!!!
+
+ 
+
+Course Summary:
+Course Summary
+Date	Details	Due
+Thu Oct 6, 2022	Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Assignment HW 1	due by 11:59pm
+Assignment WeBWork 1	due by 11:59pm
+Wed Oct 12, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Thu Oct 13, 2022	Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Assignment HW 2	due by 11:59pm
+Assignment WeBWork 2	due by 11:59pm
+Wed Oct 19, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Thu Oct 20, 2022	Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Assignment HW 3	due by 11:59pm
+Assignment WeBWork 3	due by 11:59pm
+Wed Oct 26, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Thu Oct 27, 2022	Assignment Written Midterm Solutions	due by 10am
+Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Assignment There is no Written HW 4!	due by 11:59pm
+Assignment WeBWork 4	due by 11:59pm
+Wed Nov 2, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Thu Nov 3, 2022	Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Assignment HW 5	due by 11:59pm
+Assignment WeBWork 5	due by 11:59pm
+Wed Nov 9, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Thu Nov 10, 2022	Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Assignment HW 6	due by 11:59pm
+Assignment There is no WeBWork 6!	due by 11:59pm
+Sat Nov 12, 2022	Quiz MIDTERM QUIZ (do Friday or Saturday!)	due by 11:59pm
+Wed Nov 16, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Thu Nov 17, 2022	Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Assignment HW 7	due by 11:59pm
+Assignment WeBWork 7	due by 11:59pm
+Wed Nov 23, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Fri Nov 25, 2022	Assignment HW 8 (due Friday not Thursday)	due by 11:59pm
+Assignment WeBWork 8 (due Friday not Thursday)	due by 11:59pm
+Wed Nov 30, 2022	Calendar Event Jon's 12:30--1:30 Wednesday Office Hour	12:30pm to 1:30pm
+Thu Dec 1, 2022	Calendar Event Jon's 11:30-12:00 Thursday Office Hour	11:30am to 12pm
+Calendar Event Jon's 1--2 Thursday Office Hour	1pm to 2pm
+Wed Dec 7, 2022	Assignment Final Exam	due by 10:15am
+Assignment WeBWork Total	 
+Assignment Worksheets	 
+Assignment Written Midterm Review Materials	 

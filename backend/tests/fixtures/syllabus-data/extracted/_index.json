@@ -11,24 +11,48 @@
     "file": "CS210 syllabus.txt",
     "ok": true
   },
+  "CS210-Leon": {
+    "file": "cs-210-syllabus.pdf",
+    "ok": true
+  },
   "CS211": {
     "file": "cs211 syllabus.txt",
+    "ok": true
+  },
+  "CS211-Leon": {
+    "file": "cs-211-syllabus.pdf",
     "ok": true
   },
   "CS212": {
     "file": "cs 212 syllabus.txt",
     "ok": true
   },
+  "CS212-Leon": {
+    "file": "CS212.txt",
+    "ok": true
+  },
   "CS313": {
     "file": "cs313-syll.txt",
+    "ok": true
+  },
+  "CS313-Leon": {
+    "file": "cs313.txt",
     "ok": true
   },
   "CS314": {
     "file": "cs314-syllabus.txt",
     "ok": true
   },
+  "CS314-Leon": {
+    "file": "cs314.txt",
+    "ok": true
+  },
   "CS315": {
     "file": "cs315-syllabi.txt",
+    "ok": true
+  },
+  "CS322-Leon": {
+    "file": "CS 322.txt",
     "ok": true
   },
   "CS330": {
@@ -37,6 +61,14 @@
   },
   "CS333": {
     "file": "333SyllabusV10.pdf",
+    "ok": true
+  },
+  "CS407-Leon": {
+    "file": "cs407.txt",
+    "ok": true
+  },
+  "CS410-Leon": {
+    "file": "CS410.txt",
     "ok": true
   },
   "CS415": {
@@ -71,16 +103,48 @@
     "file": "geog141 syllabus.txt",
     "ok": true
   },
+  "GEOG321-Leon": {
+    "file": "321_syllabus_2024.pdf",
+    "ok": true
+  },
+  "GEOG322-Leon": {
+    "file": "Geog322-syllabus-2024-spring.pdf",
+    "ok": true
+  },
+  "MATH231-Leon": {
+    "file": "math_231.txt",
+    "ok": true
+  },
   "MATH232": {
     "file": "syllabusfall23-1.pdf",
+    "ok": true
+  },
+  "MATH232-Leon": {
+    "file": "math_232_syllabus.pdf",
+    "ok": true
+  },
+  "MATH251-Leon": {
+    "file": "syllabus-251-2022.pdf",
+    "ok": true
+  },
+  "MATH253-Leon": {
+    "file": "Math253-syllabus.pdf",
     "ok": true
   },
   "MATH307": {
     "file": "math307 syllabus.txt",
     "ok": true
   },
+  "MATH341-Leon": {
+    "file": "Syllabus.pdf",
+    "ok": true
+  },
   "MATH343": {
     "file": "math343 syl.txt",
+    "ok": true
+  },
+  "MATH343-Leon": {
+    "file": "Math343Syllabus (1).pdf",
     "ok": true
   },
   "MATH425": {
