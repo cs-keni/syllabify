@@ -371,12 +371,18 @@ def parse_meeting_times(text: str) -> list:
     return meetings[:8]
 
 
-def parse_assessments(text: str, folder: str) -> tuple:
+def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
     """Extract assessment categories and individual assessments."""
     categories = []
     assessments = []
     cat_ids = {}
     seen_assessments = set()
+    # Derive year from term for date parsing (e.g. "Fall 2025" -> 2025)
+    yr = 2024
+    if term:
+        my = re.search(r"(\d{4})", term)
+        if my:
+            yr = int(my.group(1))
 
     def add_category(cid: str, name: str, weight: int | None) -> str:
         if cid not in cat_ids:
@@ -389,6 +395,10 @@ def parse_assessments(text: str, folder: str) -> tuple:
                 "subcategories": [],
                 "grading_bucket": None,
             })
+        elif weight is not None:
+            idx = cat_ids[cid]
+            if idx < len(categories) and categories[idx].get("weight_percent") is None:
+                categories[idx]["weight_percent"] = weight
         return cid
 
     def add_assessment(aid: str, title: str, cid: str, atype: str, pct: int | None, due=None, recurrence=None, policies=None):
@@ -408,7 +418,7 @@ def parse_assessments(text: str, folder: str) -> tuple:
             "category_id": cid,
             "type": atype,
             "due_datetime": due,
-            "all_day": True if due and "T" not in str(due) else True,
+            "all_day": False if due and "T" in str(due) else True,
             "timezone": "America/Los_Angeles" if due and "T" in str(due) else None,
             "weight_percent": pct,
             "points": None,
@@ -447,6 +457,20 @@ def parse_assessments(text: str, folder: str) -> tuple:
         title = f"{kind} {num}".strip() if num else kind
         add_assessment(f"{kind}_{num or 1}".lower().replace(" ", "_"), title, cid, atype, pct)
 
+    # Table-style: "Homework ... 30%", "Quizzes ... 25%", "Project ... 5%", "Final Exam ... 20%", "Think & Explain ... 10%"
+    for m in re.finditer(r"\b(Homework|Quizzes|Project|Final\s+Exam|Think\s*&\s*Explain\s*(?:Questions)?)\s+.{0,90}?(\d{1,3})\s*%", text, re.I | re.DOTALL):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        name = re.sub(r"\s+", " ", name)
+        title = "Think & Explain Questions" if "think" in name.lower() and "explain" in name.lower() else "Final exam" if "final" in name.lower() and "exam" in name.lower() else "Quizzes" if name.lower() == "quizzes" else "Project" if name.lower() == "project" else name
+        cid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_").replace("&", "").replace("__", "_")
+        if not cid or cid in ("total", "the"):
+            continue
+        add_category(cid, title, pct)
+        atype = "quiz" if "quiz" in name.lower() else "final" if "final" in name.lower() else "project" if "project" in name.lower() else "assignment"
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
     # "Lab attendance/submission 10%", "Lab Attendance: 10%", "Quizzes: 20%"
     for m in re.finditer(r"(Lab\s+attendance[/\s]*(?:and|/)\s*submission|Lab\s+Attendance|Quizzes?|Lab\s+attendance)[:\s]+(\d{1,3})\s*%", text, re.I):
         name, pct = m.group(1).strip(), int(m.group(2))
@@ -472,7 +496,7 @@ def parse_assessments(text: str, folder: str) -> tuple:
         add_category(cid, title, pct)
         add_assessment(cid + ("_" + num if num else "_1"), title, cid, atype, pct)
 
-    # "10%\nAttendance quizzes" - percent on one line, name on next
+    # "10%\nAttendance quizzes", "20%\n\nfinal" - percent on one line, name on next
     for m in re.finditer(r"(?:^|\n)\s*(\d{1,3})\s*%\s*\n\s*([A-Za-z][A-Za-z\s\-()/]+?)(?:\s*[-–]|\s+\(|$)", text, re.M | re.I):
         pct, name = int(m.group(1)), m.group(2).strip()
         if pct > 100 or len(name) < 3 or len(name) > 60:
@@ -480,13 +504,73 @@ def parse_assessments(text: str, folder: str) -> tuple:
         skip = any(w in name.lower() for w in ("dropped", "score", "individual", "submission", "canvas", "collaboration", "policy", "apply", "attempts"))
         if skip:
             continue
-        cid = re.sub(r"\s+", "_", name.lower())[:30].rstrip("_/()")
+        title = "Final exam" if name.lower() == "final" else "Midterm" if name.lower() == "midterm" else name
+        cid = "final" if name.lower() == "final" else "midterm" if name.lower() == "midterm" else re.sub(r"\s+", "_", name.lower())[:30].rstrip("_/()")
         if not cid or cid in ("total", "the"):
             continue
-        add_category(cid, name, pct)
+        add_category(cid, title, pct)
         atype = "quiz" if "quiz" in name.lower() else "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "assignment"
         if "lab" in name.lower(): atype = "participation" if "attend" in name.lower() else "assignment"
-        add_assessment(f"{cid}_1", name, cid, atype, pct)
+        add_assessment(f"{cid}_1", title, cid, atype, pct)
+
+    # "midterm (20%)", "final (20%)", "Discussions and Assignments (20% of total)", "Labs and quizzes (40%)"
+    for m in re.finditer(r"\b(midterm|final|Discussions?\s+and\s+Assignments?|Labs?\s+and\s+quizzes?)\s*\(\s*(\d{1,3})\s*%\s*(?:of\s+total(?:\s+grade)?)?\s*\)", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        cid = re.sub(r"\s+", "_", name.lower())[:30].rstrip("_")
+        title = "Midterm" if name.lower() == "midterm" else "Final" if name.lower() == "final" else name
+        atype = "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "assignment" if "discussion" in name.lower() else "quiz"
+        if "lab" in name.lower(): atype = "assignment"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
+    # "Test 1: October 23", "Test 2: November 6", "Test 3: November 25" - tests with dates
+    _mo = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+    for m in re.finditer(r"Test\s+(\d+)\s*:\s*(\w+)\s+(\d{1,2})", text, re.I):
+        num, mon, day = m.group(1), m.group(2), m.group(3)
+        mon_num = _mo.get((mon or "").lower()[:3])
+        due = f"{yr}-{mon_num:02d}-{int(day):02d}" if mon_num and 1 <= mon_num <= 12 else None
+        add_category("tests", "Tests", None)
+        add_assessment(f"test_{num}", f"Test {num}", "tests", "midterm", None, due)
+
+    # "Class participation 5% Homework 15% Program 20% Tests 30% Final 30%" - run-on grading line
+    prog_due = None
+    for _m in re.finditer(r"Prog\.?\s*1\s*\(\s*(\d{1,2})/(\d{1,2})\s*\)", text, re.I):
+        mo, dy = int(_m.group(1)), int(_m.group(2))
+        if 1 <= mo <= 12 and 1 <= dy <= 31:
+            prog_due = f"{yr}-{mo:02d}-{dy:02d}"
+            break
+    final_due = None
+    for _m in re.finditer(r"Final\s*:\s*(\w+)\s+(\d{1,2}),?\s*(?:\w+,?\s*)?(\d{1,2})[\:.](\d{2})\s*(?:AM|am)\s*[-–]\s*(\d{1,2})[\:.](\d{2})\s*(?:AM|am)", text, re.I):
+        mon, day = _m.group(1), int(_m.group(2))
+        h1, m1, h2, m2 = int(_m.group(3)), int(_m.group(4)), int(_m.group(5)), int(_m.group(6))
+        mon_num = _mo.get((mon or "").lower()[:3])
+        if mon_num:
+            final_due = f"{yr}-{mon_num:02d}-{day:02d}T{h1:02d}:{m1:02d}:00"
+            break
+    if not final_due:
+        for _m in re.finditer(r"FINAL\s+EXAM\s*\(\s*(\d{1,2})/(\d{1,2})\s*[,]\s*(\d{1,2})[\:.](\d{2})\s*(?:AM|am)", text, re.I):
+            mo, dy, h1, m1 = int(_m.group(1)), int(_m.group(2)), int(_m.group(3)), int(_m.group(4))
+            if 1 <= mo <= 12 and 1 <= dy <= 31:
+                final_due = f"{yr}-{mo:02d}-{dy:02d}T{h1:02d}:{m1:02d}:00"
+                break
+    for m in re.finditer(r"\b(Class\s+participation|Homework|Program|Tests?|Final)\s+(\d{1,3})\s*%", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        cid = "program" if name.lower() == "program" else re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+        title = "Programming assignment" if name.lower() == "program" else "Class participation" if "participation" in name.lower() else "Final exam" if name.lower() == "final" else name
+        if name.lower() == "tests":
+            add_category("tests", "Tests", pct)
+        else:
+            add_category(cid, title if cid == "program" else name, pct)
+        if name.lower() != "tests":
+            atype = "participation" if "participation" in name.lower() else "final" if name.lower() == "final" else "project" if name.lower() == "program" else "assignment"
+            due = (prog_due if name.lower() == "program" else final_due if name.lower() == "final" else None)
+            add_assessment(cid + "_1", title, cid, atype, pct, due)
+
+    # "Class Project 40%", "Class project 40%"
+    for m in re.finditer(r"\bClass\s+Project\s+(\d{1,3})\s*%", text, re.I):
+        pct = int(m.group(1))
+        add_category("class_project", "Class Project", pct)
+        add_assessment("class_project_1", "Class Project", "class_project", "project", pct)
 
     # "40% programming assignments", "20% homework" - percent first (name on same line as %)
     for m in re.finditer(r"(\d{1,3})\s*%[ \t]+([A-Za-z][A-Za-z \t\-/]+?)(?=[\s\.\,\)$]|\.)", text, re.I):
@@ -569,6 +653,56 @@ def parse_assessments(text: str, folder: str) -> tuple:
         add_category(cid, f"{kind} exam" if kind.lower() == "final" else "Midterm", pct)
         add_assessment(kind.lower() + "_1", "Midterm" if kind.lower() == "midterm" else "Final", cid,
                       "midterm" if kind.lower() == "midterm" else "final", pct)
+
+    # "Project 1 (due: Oct. 24)", "Project 2 (due: Nov. 19)" - schedule table, no percent
+    _mo_abbr = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+    for m in re.finditer(r"Project\s+(\d+)\s*\(\s*(?:due|out)\s*:\s*(\w+)\.?\s+(\d{1,2})", text, re.I):
+        num, mon_abbr, day = m.group(1), m.group(2), int(m.group(3))
+        mon_num = _mo_abbr.get((mon_abbr or "").lower()[:3])
+        due = f"{yr}-{mon_num:02d}-{day:02d}" if mon_num and 1 <= mon_num <= 12 else None
+        if "due" in m.group(0).lower():
+            add_category("projects", "Projects", None)
+            add_assessment(f"project_{num}", f"Project {num}", "projects", "project", None, due)
+
+    # "Nov. 4 MIDTERM", "6 Nov. 4 MIDTERM" - schedule table
+    for m in re.finditer(r"(?:^|\n)\s*\d*\s*(\w+)\.?\s+(\d{1,2})\s+MIDTERM", text, re.M | re.I):
+        mon_abbr, day = m.group(1), int(m.group(2))
+        mon_num = _mo_abbr.get((mon_abbr or "").lower()[:3])
+        due = f"{yr}-{mon_num:02d}-{day:02d}" if mon_num and 1 <= mon_num <= 12 else None
+        add_category("midterm", "Midterm", None)
+        add_assessment("midterm_1", "Midterm", "midterm", "midterm", None, due)
+
+    # "Dec. 11 12:30-14:30 FINAL", "11 Dec. 11 12:30-14:30 FINAL"
+    for m in re.finditer(r"(?:^|\n)\s*\d*\s*(\w+)\.?\s+(\d{1,2})\s+(\d{1,2})[\:.](\d{2})\s*[-–]\s*(\d{1,2})[\:.](\d{2})\s*FINAL", text, re.M | re.I):
+        mon_abbr, day = m.group(1), int(m.group(2))
+        h1, m1 = int(m.group(3)), int(m.group(4))
+        mon_num = _mo_abbr.get((mon_abbr or "").lower()[:3])
+        due = f"{yr}-{mon_num:02d}-{day:02d}T{h1:02d}:{m1:02d}:00" if mon_num and 1 <= mon_num <= 12 else None
+        add_category("final", "Final exam", None)
+        add_assessment("final_1", "Final", "final", "final", None, due)
+
+    # Section headings: "Homework:" or "Projects:" as assignment types (weight None) - DSCI101-style
+    for m in re.finditer(r"(?:^|\n)\s*(Homework|Projects)\s*:\s*[A-Z]", text, re.M | re.I):
+        name = m.group(1).strip()
+        cid = name.lower()
+        title = "Homework" if name.lower() == "homework" else "Projects"
+        add_category(cid, title, None)
+        add_assessment(f"{cid}_1", title, cid, "assignment" if cid == "homework" else "project", None)
+
+    # Labor-based: "1. Weekly discussion boards", "• Origin Story", "• Instructions" - WR320
+    wr_items = [
+        (r"weekly\s+discussion\s+boards?", "Weekly discussion boards", "discussion"),
+        (r"origin\s+story", "Origin Story", "projects"),
+        (r"instructions?\s*(?:[-–—]|\s+[Aa])", "Instructions", "projects"),
+        (r"literature\s+review\s+and\s+research\s+proposal", "Literature review and research proposal", "projects"),
+        (r"procedure\s+description", "Procedure Description", "projects"),
+    ]
+    for pat, title, cid in wr_items:
+        if re.search(pat, text, re.I):
+            cat_name = "Discussion boards" if cid == "discussion" else "Writing Projects"
+            add_category(cid, cat_name, None)
+            aid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_") + "_1"
+            add_assessment(aid, title, cid, "assignment", None)
 
     # "Projects 15%", "Mini-exams 45%", "Final exam 30%", "• Homework 30%", "• Final exam 40%"
     for m in re.finditer(r"(?:^|\n)\s*[•\-\*]?\s*([A-Za-z][A-Za-z\s\-]+?)\s+(\d{1,3})\s*%\s*", text, re.M | re.I):
@@ -659,7 +793,7 @@ def parse_late_policy(text: str) -> dict:
     m = re.search(r"(\d+)\s*[\"'\u201C\u201D]?\s*(?:late\s+)?pass(?:es)?", text[:15000], re.I)
     if m:
         policy["total_allowed"] = int(m.group(1))
-    for pat in (r"(?:one|1)\s+late\s+(?:project|assignment)", r"(?:one|1)\s+(?:project|assignment)\s+late", r"turn in (?:one|1) (?:project|assignment) late"):
+    for pat in (r"(?:one|1)\s+late\s+(?:project|assignment)", r"(?:one|1)\s+(?:project|assignment)\s+late", r"turn in (?:one|1) (?:project|assignment) late", r"(?:one|1)\s*[\"'\u201C\u201D]?\s*late\s*submission\s*token", r"have\s+(?:one|1)\s+.{0,15}late\s*submission", r"one[\"'\u201C\u201D]?\s*latesubmissiontoken", r"(?:one|1)\s*[\"'\u201C\u201D]?\s*latesubmissiontoken"):
         if re.search(pat, text[:15000], re.I) and policy["total_allowed"] is None:
             policy["total_allowed"] = 1
             break
@@ -679,7 +813,7 @@ def parse_syllabus_text(text: str, course_id: str, source_type: str = "txt") -> 
     term = parse_term(text)
     instructors = parse_instructors(text)
     meeting_times = parse_meeting_times(text)
-    categories, assessments = parse_assessments(text, course_id)
+    categories, assessments = parse_assessments(text, course_id, term)
     late_policy = parse_late_policy(text)
 
     loc = None
