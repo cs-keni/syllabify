@@ -12,6 +12,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from app.api.auth import bp as auth_bp
+from app.api.terms import bp as terms_bp
 
 app = Flask(__name__)
 # CORS: set FRONTEND_URL on Render to your Vercel URL (e.g. https://syllabify-iota.vercel.app)
@@ -24,6 +25,7 @@ CORS(
     allow_headers=["Content-Type", "Authorization"],
     methods=["GET", "POST", "OPTIONS", "PUT", "DELETE", "PATCH"],
 )
+
 
 def get_db_connection():
     """Creates and returns a MySQL connection using DB_* environment variables."""
@@ -41,12 +43,17 @@ def get_db_connection():
         connection_timeout=15,
     )
 
+
 app.register_blueprint(auth_bp)
+
+app.register_blueprint(terms_bp)
+
 
 @app.route("/")
 def index():
     """Simple health check / root endpoint. Returns a sample string."""
     return "sample index text"
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

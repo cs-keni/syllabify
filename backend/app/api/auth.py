@@ -21,6 +21,7 @@ DEV_PASSWORD = "ineedtocutmytoenails422"
 def get_db():
     """Returns a MySQL connection using DB_* environment variables."""
     import mysql.connector
+
     port = os.getenv("DB_PORT", "3306")
     try:
         port = int(port)
@@ -51,8 +52,10 @@ def check_password(password, password_hash):
 def ensure_dev_user(cursor):
     """Ensures the dev user exists in the DB. Creates it if missing. Returns
     (user_id, password_hash, security_setup_done)."""
-    cursor.execute("SELECT id, password_hash, security_setup_done FROM Users " \
-    "WHERE username = %s", (DEV_USERNAME,))
+    cursor.execute(
+        "SELECT id, password_hash, security_setup_done FROM Users WHERE username = %s",
+        (DEV_USERNAME,),
+    )
     row = cursor.fetchone()
     if row:
         return row[0], row[1], bool(row[2])
@@ -80,6 +83,7 @@ def decode_token(auth_header):
     """Extracts and decodes JWT from 'Authorization: Bearer <token>'. Returns payload
     dict or None if invalid."""
     import logging
+
     log = logging.getLogger(__name__)
     if not auth_header or not auth_header.startswith("Bearer "):
         return None
@@ -119,8 +123,13 @@ def login():
         token = token_for_user(user_id, DEV_USERNAME)
         # Ensure token is str for JSON (PyJWT can vary by version)
         token_str = token if isinstance(token, str) else token.decode("utf-8")
-        return jsonify({"token": token_str, "username": DEV_USERNAME,
-                        "security_setup_done": security_setup_done})
+        return jsonify(
+            {
+                "token": token_str,
+                "username": DEV_USERNAME,
+                "security_setup_done": security_setup_done,
+            }
+        )
     finally:
         conn.close()
 
@@ -134,6 +143,7 @@ def security_setup():
     if not payload:
         # Log only whether header was sent (do not log the token)
         import logging
+
         logging.getLogger(__name__).info(
             "security-setup 401: Authorization header present=%s",
             bool(auth and auth.startswith("Bearer ")),
@@ -157,12 +167,13 @@ def security_setup():
             if q and a:
                 ah = hash_password(a)
                 cur.execute(
-                    "INSERT INTO UserSecurityAnswers (user_id, question_text, " \
+                    "INSERT INTO UserSecurityAnswers (user_id, question_text, "
                     "answer_hash) VALUES (%s, %s, %s)",
                     (user_id, q[:500], ah),
                 )
-        cur.execute("UPDATE Users SET security_setup_done = TRUE WHERE id = %s",
-                    (user_id,))
+        cur.execute(
+            "UPDATE Users SET security_setup_done = TRUE WHERE id = %s", (user_id,)
+        )
         conn.commit()
         return jsonify({"ok": True})
     finally:
@@ -188,7 +199,8 @@ def me():
         cur.execute("SELECT security_setup_done FROM Users WHERE id = %s", (user_id,))
         row = cur.fetchone()
         security_setup_done = bool(row[0]) if row else False
-        return jsonify({"username": username, "security_setup_done":
-                        security_setup_done})
+        return jsonify(
+            {"username": username, "security_setup_done": security_setup_done}
+        )
     finally:
         conn.close()
