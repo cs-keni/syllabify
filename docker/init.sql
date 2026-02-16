@@ -13,28 +13,6 @@ CREATE TABLE IF NOT EXISTS UserSecurityAnswers (
     FOREIGN KEY(user_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Schedules (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    sched_name VARCHAR(255) NOT NULL,
-    owner_id INT NOT NULL,
-    FOREIGN KEY(owner_id) REFERENCES Users(id)
-);
-
-CREATE TABLE IF NOT EXISTS Assignments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    assignment_name VARCHAR(255) NOT NULL,
-    work_load INT NOT NULL,
-    notes VARCHAR(2048),
-    schedule_id INT NOT NULL,
-    FOREIGN KEY(schedule_id) REFERENCES Schedules(id)
-);
-    assignment_name VARCHAR(255) NOT NULL,
-    work_load INT NOT NULL,
-    notes VARCHAR(2048),
-    schedule_id INT NOT NULL,
-    FOREIGN KEY(schedule_id) REFERENCES Schedules(id)
-);
-
 -- Terms table for semester/quarter management
 CREATE TABLE IF NOT EXISTS Terms (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -47,4 +25,14 @@ CREATE TABLE IF NOT EXISTS Terms (
     FOREIGN KEY(user_id) REFERENCES Users(id) ON DELETE CASCADE,
     INDEX idx_user_active (user_id, is_active),
     INDEX idx_user_dates (user_id, start_date, end_date)
+);
+
+-- Assignments belong directly to Terms (Schedules table removed)
+CREATE TABLE IF NOT EXISTS Assignments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    assignment_name VARCHAR(255) NOT NULL,
+    work_load INT NOT NULL,
+    notes VARCHAR(2048),
+    term_id INT NOT NULL,
+    FOREIGN KEY(term_id) REFERENCES Terms(id) ON DELETE CASCADE
 );

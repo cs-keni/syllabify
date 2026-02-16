@@ -22,5 +22,5 @@ class Assignment(Base):
 
     notes: Mapped[str | None] = mapped_column(String(2048), nullable=True)
 
-    schedule_id: Mapped[int] = mapped_column(ForeignKey("Schedules.id"), nullable=False)
-    owner = relationship("Schedule", back_populates="assignments")
+    term_id: Mapped[int] = mapped_column(ForeignKey("Terms.id"), nullable=False)
+    term = relationship("Term", back_populates="assignments")

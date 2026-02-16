@@ -18,8 +18,4 @@ class User(Base):
 
     username: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
 
-    schedules = relationship(
-        "Schedule", back_populates="owner", cascade="all, delete-orphan"
-    )
-
     terms = relationship("Term", back_populates="owner", cascade="all, delete-orphan")

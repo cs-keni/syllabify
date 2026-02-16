@@ -31,3 +31,6 @@ class Term(Base):
     courses = relationship(
         "Course", back_populates="term", cascade="all, delete-orphan"
     )
+    assignments = relationship(
+        "Assignment", back_populates="term", cascade="all, delete-orphan"
+    )
