@@ -1,0 +1,248 @@
+SCM 445.001 Spring 2025
+Penn State Harrisburg
+School of Business Administration
+SCM 445: Supply Chain Management (3cr.)
+Instructor : Piyal Sarkar, Ph.D.
+Class Hours : Mo We 2:30- 3:45 P.M Location: Olmsted E330
+Office : E335-M Olmsted
+Office Hours : M & W 11:00 A.M - 12:30 P.M or By Appointment
+Telephone : 717-948-6643 Email: pbs5628@psu.edu (Preferred)
+Department : E355 Olmsted Phone: 717-948-6343 Fax: 717-948-6456
+Text : Manufacturing planning & control for supply chain management
+& Handfield. ISBN-13: 9780073377827. Mc Graw-Hill.
+Prerequisites : SCM 301
+Course Mission
+Welcome to Supply Chain Management 445! This course takes a detailed look at how firms manage
+production and inventory. Knowing how much to order (or produce), when to order (or produce), and
+where to put everything are critical skills for supply chain managers. The knowledge you gain from this
+course will make you a valuable hiring prospect for many firms. The aim is to (1) discuss the problems
+and issues confronting operations managers, (2) provide you with language, concepts, insights and
+tools to identify, analyze and solve operations problems as they occur across the organization, and (3)
+demonstrate computer based analytical techniques. We will use a combination of theory, simulations,
+numerical examples, and practical applications to reinforce above concepts and tools.
+Learning Outcomes
+When you will successfully complete this course, YOU will:
+• Discuss the role and importance of the operations management in organizations (manufacturing as well
+as service organizations).
+• Apply linear programming, an optimization technique, to production, marketing and financial problems.
+• Recognize and apply basic appropriate analytical techniques related to decision making in the areas
+such as project management, decision tree approach, and forecasting.
+• Compare inventory management models and apply appropriate models to given situations.
+• Recognize and analyze the importance of supply chain management to an organization in global
+business.
+Teaching Philosophy
+The course is designed to make learning an enjoyable experience. We will look at real world supply chain
+cases to assimilate the intricacies of managing a supply chain. To achieve this, I intend to deviate from the
+largely understood traditional means of learning i.e., prolonged lecturing which does little more than
+providing information. Instead, I plan to have an interesting mix of learning strategies comprising of
+Application Exercises (APEXs), i.e., class exercises, Case Studies, Short Videos, Home Assignments and
+Page 1
+
+SCM 445.001 Spring 2025
+of course some lecturing. The objective is to provide you an opportunity to become more actively involved
+in the learning process. However, you must accept responsibility for your learning and complete all the in-
+class and after-class activities sincerely and on time. I encourage you to participate in the class activities
+and discussions, as also interact with your peers outside the class. Feel free to visit me in my office* or
+wherever we meet on campus to discuss your queries.
+Grading & Examination Policy
+There will be one mid-term examination and one final examination. A typical exam may include a mix of
+objective (multiple choice and T/F), and subjective (computational) questions, based on the material
+presented in the class, RATs and assignments. The point’s breakdown for determining final grades is as
+follows:
+Exam- 40% Project - 20%
+Class Participation- 10%
+Assignments (includes excel & SAP) - 30% (Penalty for late submissions @10 points per day unless
+prior arrangements are made with the instructor). You are expected to look up for HWs, which will be
+posted on Canvas (the course management system) under Modules.
+Class Participation (10%): A portion of the grade for this course is directly tied to your participation in this
+class. Successful participation is defined as consistently adhering to University requirements, as presented
+in this syllabus. It also includes engaging in group or other activities during class that solicit your feedback
+on the readings or material in the lecture. Class participation, which presupposes attendance, also includes
+your involvement in the class discussions (more specifically the quality of your observations and inputs in
+leading a class discussion), your performance in APEXs and Case Studies, if any.
+Letter
+A A- B+ B B- C+ C D F
+Grade
+Percentage >=93 90-92 87-89 83-86 80-82 77-79 70-76 60-69 <60
+Attendance
+You are strongly encouraged to attend every class. A large portion of the learning in this course will come
+from in-class discussions, and APEXs (class exercises); hence, a missed class is a missed opportunity to
+participate in class and to learn from your peers. In the event that you must miss a class, it is your
+responsibility to obtain a copy of any materials distributed during your absence and to find out what you
+may have missed, including homework’s.
+Academic Integrity
+Academic dishonesty is not limited to simply cheating on an exam or assignment. The following is quoted
+directly from the "PSU Faculty Senate Policies for Students" regarding academic integrity and academic
+dishonesty: "Academic integrity is the pursuit of scholarly activity free from fraud and deception and is
+an educational objective of this institution. Academic dishonesty includes, but is not limited to, cheating,
+plagiarizing, fabricating of information or citations, facilitating acts of academic dishonesty by others,
+having unauthorized possession of examinations, submitting work of another person or work previously
+used without informing the instructor, or tampering with the academic work of other students."
+All University and Penn State Harrisburg policies regarding academic integrity/academic
+dishonesty apply to this course and the students enrolled in this course. Refer to the following URL for
+further details on the academic integrity policy of Penn State Harrisburg:
+http://harrisburg.psu.edu/academics/academic-guidelines- and-policies. Each student in this course is
+Page 2
+
+SCM 301.003 Spring 2025
+expected to work entirely on her/his own while taking any exam, to complete assignments on her/his own
+effort without the assistance of others unless directed otherwise by the instructor, and to abide by
+University and Penn State Harrisburg policies about academic integrity and academic dishonesty.
+Academic dishonesty can result in assignment of "F" or "XF" as the final grade for the student. I plan to
+use Turnitin (http://turnitin.psu.edu/), a plagiarism detection tool.
+Disability Access
+Penn State welcomes students with disabilities into the University’s educational programs. Penn State
+values diversity and inclusion; we are committed to a climate of mutual respect and full participation. Our
+goal is to create learning environments that are usable, equitable, inclusive, and welcoming. Every Penn
+State campus has a Student DisAbility Resources office. Student DisAbility Resources at Penn State
+Harrisburg is located in SEC 205. Student Disability Resources can be contacted via email at
+hbgsdr@psu.edu or by phone at 717-948-6025.
+To receive consideration for accommodations, you must contact Student DisAbility Resources (SDR),
+participate in an intake interview, provide documentation of your disability, and complete an online
+Introductory Questionnaire . Additional information is available on the Disability Services
+website (http://harrisburg.psu.edu/disability-services). If the documentation supports requests for
+reasonable accommodations, SDR will provide you with an accommodations letter, which you will give to
+your professors. You will receive accommodations after you give your accommodations letters to your
+professors. You should share your accommodations letters with your professors as early in the semester as
+possible. Professors do not provide accommodations retroactively.
+Counseling & Psychological Services
+Success in college depends heavily on your personal health and wellbeing. Please
+recognize that some stress and anxiety is a normal part of life and the college experience, and it can be
+compounded by unexpected setbacks or life changes outside the classroom. Penn State Harrisburg has a
+number of support options listed in this syllabus.
+If you are experiencing issues that feel unmanageable, you reach the point that you have difficulty
+concentrating and/or feeling motivated, or have anxiety or feelings of depression that interfere with your
+ability to function, you may want to consider talking with someone in CAPS (Counseling and Psychological
+Services). We have a range of services to help you navigate issues that are impacting your ability to be
+healthy, well, and productive.
+You can learn more about the confidential mental health services available on campus by
+visiting https://harrisburg.psu.edu/counseling-psychological-services or by calling (717) 948-6025. CAPS
+is located on the 2nd floor of the Student Enrichment Center, Suite 205.
+You can access crisis services 24/7/365 by calling 1-877-229-6400 or by texting “LIONS” to 741741
+Find us on Instagram @pshhbg_caps_sdr or on Facebook @psuhbgcounselinganddisabilityservices
+Page 3
+
+SCM 445.001 Spring 2025
+Course Schedule
+Course Schedule
+Week/Date Topics
+Week 1 Logistics
+13-Jan-24 Chapters 10A
+Week 2 Inventory control
+20-Jan-24 Chapter 11
+Week 3 Inventory control 2 (Canvas materials)
+27-Jan-24
+Week 4 Manufacturing planning & control ERP systems 1& 1a
+3-Feb-24 (Chapters7777
+Week 5 Demand management (Chapter 2)
+10-Feb-24
+Week 6 Forecasting (Chapter 3 )
+17-Feb-24
+Week 7 Forecasting 2 (Canvas materials)
+24-Feb-24
+Week 8 Sales & Operational Plan (Chapter 4& 4a)
+3-March-24
+WWeeeekk 99 Sales & Operational plan 2
+17-Mar-24
+Week 10 Master Production schedule
+24 Mar-24
+Week 11 MMaatnearigailnsg r eIqnuviernetmoreyn tT phlraonungihnogu tSupplyChain(Chapter11)
+31-Mar-24
+Week 12
+Production control/Just in Time
+7-April-24
+Week 13
+Week 13 Distribution Requirements planning
+14-April- 24
+Week 14
+MPC strategy
+21-April-24
+Wrap up & Review
+Final week Exam & Project presentation
+*Please note that the course schedule is tentative, and minor changes, based on instructor’s discretion, are possible.
+*I may assign additional reading materials such as recent news reports and trade magazine articles as the semester progresses.
+Educational Equity
+Penn State takes great pride to foster a diverse and inclusive environment for students, faculty, and
+staff. Acts of intolerance, discrimination, harassment, and/or incivility due to age, ancestry, color,
+disability, gender, national origin, race, religious belief, sexual orientation, or veteran status are not tolerated
+and can be reported through Educational Equity at the Report Bias
+site: http://equity.psu.edu/reportbias/statement. Penn State’s Code of Conduct can be found at the
+following link https://studentaffairs.psu.edu/support-safety-conduct/student-conduct/code-conduct.
+Page 4
+
+SCM 301.003 Spring 2025
+Direct all inquiries regarding the nondiscrimination policy to The Office of Diversity, Equity, and Inclusion
+at Penn State Harrisburg at 717-948-6016, and to Student Diversity, Equity, and Inclusion at 717-948-4381
+or in person in Olmsted E125.
+Mandated Reporting
+Penn State is committed to equal access to programs, facilities, admission, and employment for all persons.
+It is the policy of the University to maintain an environment free of harassment and free of discrimination
+against any person because of age, race, color, ancestry, national origin, religion, creed, service in the
+uniformed services (as defined in state and federal law), veteran status, sex, sexual orientation, marital or
+family status, pregnancy, pregnancy-related conditions, or physical or mental disability, gender, perceived
+gender, gender identity, gender expression, genetic information or political ideas. Discriminatory conduct
+and harassment, as well as sexual misconduct and relationship violence, violates the dignity of individuals,
+impedes the realization of the University’s educational mission, and will not be tolerated. Gender-based
+and sexual harassment, including sexual violence, are forms of gender discrimination in that they deny or
+limit an individual's ability to participate in or benefit from University programs or activities. For reporting
+resources, and support, please visit titleix.psu.edu.
+Penn State strongly encourages all members of the campus community to take appropriate action by
+providing support and encouraging those impacted by such incidents to submit a report to the Equity &
+Compliance Specialist / Sexual Misconduct Resource Person, Nicholas Paesano (information below). You
+may also submit a report online by using the Incident Report Form found here: Office of Sexual Misconduct
+Prevention & Response Incident Report Form. If the University Title IX staff receives information about
+an incident, they will reach out to offer information about resources, rights, and procedural options available
+to you.
+At Penn State Harrisburg, your point of contact is:
+Nicholas Paesano – Equity & Compliance Specialist/Sexual Misconduct Resource Person
+Penn State Harrisburg
+E125 Olmsted Building
+717-948-4381
+nbp5382@psu.edu
+Penn State’s Interim Title IX Coordinator is:
+Suzanne Adair, Interim Title IX Coordinator
+222 Boucke Building
+University Park, PA 16802
+814-867-0099
+titleix@psu.edu
+Campus Closing
+In the event of a campus closing, delay or cancellation of classes, Canvas will be used to facilitate class
+sessions online. Please refer Penn State Harrisburg’s home page (https://harrisburg.psu.edu/) and make
+sure that you are signed up for text alerts.
+The Russell E. Horn Learning Center:
+The Russell E. Horn Sr. Learning Center may have a tutor who can assist you with this course. An
+appointment is recommended. Appointments are available in-person or on Zoom, depending on your
+preference.
+Page 5
+
+SCM 445.001 Spring 2025
+To make an appointment:
+Visit: Student Enrichment Center Room 201
+Or go to: starfish.psu.edu and click on “My Success Network”
+Or call: 717-948-6475
+Or email: PSHLearningCtr@psu.edu
+The Learning Center can help you in a variety of ways:
+Academic Success Coaches
+Get help with time management, organization, test-taking, study skills, as well as speech and presentation
+preparation and delivery.
+Subject Area Tutoring
+Courses including accounting, biological and behavioral science, computer science, economics, finance,
+mathematics, physical sciences, statistics, engineering, and some world languages are supported by peer
+and professional tutoring.
+Writing
+Get help with the development of essays, papers, resumes, cover letters, scholarship applications and much
+more. We can help at any stage from brainstorming ideas to citing sources to polishing your final product.
+The Lambert Undergraduate Advising Center can assist you with exploring majors and minors,
+understanding academic policies, and planning courses for future semesters.
+Drop-in Quick Question Advising is available during the semester both in-person and online (no
+appointment necessary!). See dates, times, and locations at: bit.ly/whatsnexthbg
+To contact the Advising Center:
+Visit: Student Enrichment Center Room 204
+Or call: 717-948-6604
+Or email: HBGAdvisingCenter@psu.edu
+Madlyn L. Hanes Library
+Library Guides: Access curated resources such as databases, books, and journals relevant to your course
+and areas of study. Browse by topic (subject guides) or by campus and course number (course
+guides): https://libraries.psu.edu/guides.
+Citation guides: https://guides.libraries.psu.edu/CitationStyles
+Page 6

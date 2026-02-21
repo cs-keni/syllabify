@@ -136,6 +136,12 @@ Desktop.ini
 *.sublime-project
 *.sublime-workspace
 
+# Windows reserved names (nul, con, prn, aux) - avoid git add failures
+nul
+con
+prn
+aux
+
 # Temporary files
 *.tmp
 *.temp
@@ -162,3 +168,5 @@ docs/EXPLAIN.md
 docs/ANIMATIONS.md
 docs/PHASES.md
 docs/progress-report2.txt
+docs/syllabus-parser-alternatives.md
+docs/parser-schedule-integration.md
