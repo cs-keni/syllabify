@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../assets/syllabify-logo.jpg';
+import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
 
 export default function Home() {

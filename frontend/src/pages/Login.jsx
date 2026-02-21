@@ -5,7 +5,7 @@
 import { useState } from 'react';
 import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import logo from '../assets/syllabify-logo.jpg';
+import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
 
 /** Login form. Uses AuthContext.login, redirects based on security_setup_done. */
