@@ -1,0 +1,28 @@
+{
+  "course": {
+    "id": "math307",
+    "course_code": "MATH 307",
+    "course_title": "Mathematical Reasoning",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Dev Sinha", "email": "dps@uoregon.edu"}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "MO", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "103 Peterson", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "TU", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "103 Peterson", "type": "lecture"},
+      {"id": "mt-3", "day_of_week": "WE", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "103 Peterson", "type": "lecture"},
+      {"id": "mt-4", "day_of_week": "FR", "start_time": "13:00", "end_time": "13:50", "timezone": "America/Los_Angeles", "location": "103 Peterson", "type": "lecture"}
+    ],
+    "location": "103 Peterson"
+  },
+  "assessment_categories": [
+    {"id": "worksheets", "name": "Worksheets", "weight_percent": null, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "exams", "name": "Exams", "weight_percent": null, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

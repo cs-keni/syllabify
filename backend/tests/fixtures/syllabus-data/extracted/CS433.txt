@@ -1,0 +1,154 @@
+CS 433/533: Computer & Network Security
+Winter 2026
+Course Description
+Asbothascienceandanart,computerandnetworksecurityhasbecomeoneofthosemust-learndisciplines.
+This course will be comprehensive, covering both fundamental security topics and practical solutions. Yet,
+it is designed to be manageable for effective learning. Twenty lectures over ten weeks are designed for this
+class. Here are sample topics (each with a sample question):
+• Elementary cryptography (what is the difference between classic cryptography and public-key cryp-
+tography?)
+• Program security (why virus/worm/Trojan horses are rampant on computer and networks?)
+• Protection in general-purpose operating systems (what is access control of memory/address/file/user
+account?)
+• Designing trusted operating systems (can virtualization or layered design help secure an OS?)
+• Security in networks (can a firewall deal with all network security threats?)
+• Privacy (Is your email or web visits protected with good privacy?)
+• Administering security (how to conduct risk analysis and design your security policies?)
+• Legal and ethical issues in computer security (now that we catch an attacker, so what?)
+Prerequisites
+• CS 415 (Operating Systems) for CS 433; CS 432 Recommended
+Instructor
+• Prof Jun Li
+• Email: lijun@uoregon.edu
+• Office hours: Thursdays 10-11 AM, Deschutes 362
+TA
+• Kai Iverson
+• Email: kaive@uoregon.edu
+• Office hours: Mondays 2:30-3:30 PM, Wednesdays 10:30-11:30 AM, Thursdays TBD, De-
+schutes 313
+1
+
+Textbooks and Readings
+• Textbook: Security in Computing, 6th edition, by Charles P. Pfleeger, Shari Lawrence Pfleeger and
+Lizzie Coles-Kemp. ISBN-10: 0137891210.
+• Slides: Class slides will be provided on Canvas as soon as they are available.
+Expected Learning Outcomes
+Upon successful completion of the course, students will be able to:
+• Understand basic concepts of cryptography, including classic and public key cryptography and use of
+encryption;
+• Understand fundamental concepts and issues with program security, including buffer overflow, com-
+puter viruses, and countermeasures against program threats;
+• Becomefamiliarwithsecuritymethodsofordinaryoperatingsystems(OS)andconceptsandmethods
+for trusted OS;
+• Become aware ofthreats in networks andbecome familiarwith common methods in securingnetworks
+and communications, including firewalls and security protocols;
+• Understand basic concepts with cloud computing security;
+• Grasp essential concepts with security administration, legal and ethical security issues, and privacy;
+and
+• Developedexperienceinworkingonaterm-longclassproject, includingskillsrangingfromidentifying
+a topic, developing a plan, and executing the plan.
+Acquired Skills
+Upon successful completion of the course, students will have acquired the following essential skills:
+• Identifying an interesting security project topic and developing a plan for carrying out the project;
+• Exercising a systematic approach to a security problem;
+• Improved skills in programming and data analysis; and
+• Improved team work and presentation skills.
+Estimated Student Workload
+The workload of this course is expected to be as follows.
+• Class attendance and participation. Students should attend the lectures and actively participate in
+the class, including raising questions and participating discussions.
+• Course review and homework.
+– Students should carefully review the class materials after the class.
+– There will be 3-4 homeworks throughout the term.
+2
+
+• Class project. Every student is required to form a team of 2 or 3 students to work on a class project
+(3 for CS 433 and 2 for CS 533 with exception request to TA). With the help of the professor and the
+TA, every team will identify an interesting problem related to the course material, design, implement,
+and evaluate a solution, and write a project report.
+Warning: The class project can be a lot of fun, but can be also time-demanding. Start ASAP.
+• Midterm: February 19, 2026, in class.
+• No Final Exam.
+Course Requirements and Grading
+• Overall:
+Class participation 10% Homework 15% Midterm 35% Class Project 40%
+• For class project:
+Project proposal 15% Project proposal presentation 5% Midterm report 15%
+Project presentation 10% Final deliverables 55%
+• Grading rubric:
+A+ [95, 100]% A [90, 95)% A- [85, 90)% B+ [80, 85)% B [75, 80)% B- [70, 75)%
+C+ [65, 70)% C [60, 65)% C- [55, 60)% D+ [50, 55)% D [45, 50)% D- [40, 45)% F [0,40)%
+A Excellent. Solid grasp of concepts, approaches, and/or skills introduced or used in this course.
+Very well prepared to apply this knowledge to future studies or employment.
+B Verygood. Generallygoodgraspofconcepts,approaches,and/orskillsintroducedorusedinthis
+course. Prepared to apply this knowledge to future studies or employment.
+C Pass. Basic grasp of concepts, approaches, and/or skills introduced or used in this course. Mini-
+mally prepared to apply this knowledge to future studies or employment.
+D No Pass (Earns UO credit). Demonstrated grasp of concepts, approaches, and/or programming
+skills introduced or used in this course is not yet sufficient to apply this knowledge to future
+studies or employment.
+F No Pass (No credit). Little or no demonstrated grasp of concepts, approaches, and/or program-
+ming skills introduced or used in this course, and/or failure to carry out much of the required
+work.
+A+ Distinction. A+ grades will be given only in cases where the student has excelled in all course
+topics and overall performance is distinctly better than that required for an A grade.
+Schedule(tentative)
+Course Policies
+Class attendance
+We apply a “reason-neural” class attendance policy in that we will not ask for reasons for absences, except
+for disability-related accommodations, religious observances, university-sponsored events, and cases where
+students have Emergency Academic Notification through the Dean of Students. In those cases, it is up to
+the student to ask for accommodations for these reasons and provide the necessary documentation prior to
+missing class or turning in late work, usually at the beginning of the term.
+A student may miss up to two classes with no impact on their grade; an exception can be made in
+extraordinary circumstances by emailing a request (without disclosing details) to the TA.
+We will randomly check student class attendance using quizzes, class photos, or attendance sheet. For
+each 10% of no attendance record beyond the first 10%, the student will lose 10% of class participation
+points.
+3
+
+Lecture Section Coverage Projects and Homework
+1 (1/6) 1.1–1.7 syllabus; introduction
+2 (1/8) 2.1–2.2 authentication and access control
+3 (1/13) 2.3 elementary cryptogrphy (1)
+4 (1/15) 2.3 elementary cryptogrphy (2) project idea presentation
+5 (1/20) slides use of encryption (1) project proposal due
+6 (1/22) slides use of encryption (2)
+7 (1/27) 3.1–3.3 program security
+8 (1/29) 5.1 operating systems security (1) HW 1 due
+9 (2/3) 5.2 operating systems security (2)
+10 (2/5) 6.1–6.3 network security (1)
+11 (2/10) 6.4–6.5 network security (2) HW 2 due
+12 (2/12) 6.6–6.10 network security (3) project midterm report due
+13 (2/17) buffer lecture
+14 (2/19) - Midterm
+15 (2/24) 8.1–8.2 cloud security
+16 (2/26) 10.3-4;11.1–8 incidents, risk, legal issues and ethics HW 3 due
+17 (3/3) 9; 13 privacy; emerging topics
+18 (3/5) midterm discussion HW 4 due
+19 (3/10) - project presentation
+20 (3/12) - project presentation
+project delivery (report etc.)
+Late Submissions of Assignments
+Allstudentshaveone“latesubmissiontoken”—anopportunitytoturninanassignmentuptooneweeklate
+for any reason, no questions asked (except for assignments due in week 10 or finals week). You may wait
+until week 10 to elect which late submission to apply this token.
+Except for the 7 days waived by the token, 15% penalty per day will be applied to any late submission.
+Outside Classroom Communication
+WeencourageeveryonetogetintouchwiththeprofessorandtheTAwhenyouhaveaquestion. Youremail
+subject must begin with CS 433: or CS 533: to help email filtering.
+GenAI Use
+StudentscanuseGenAItoolsinthisclasstohelpwithcertainaspectsofcourseworkandassignments. This
+includes reviewing course materials, brainstorming ideas, creating a paper outline, or summarizing findings
+of research articles in the literature. However, you cannot use content such as text or graphics created by
+GenAI tools in your work; rather, you must be the author/creator of your work submissions. For example,
+you can use a GenAI tool to suggest a paper outline based on a draft you provide it, but you cannot submit
+a paper with part or all of its text generated by GenAI as if the text is your own writing. Be advised, in
+accordance with UO policy, if I believe you’ve handed in work created in whole or in part by GenAI tools,
+I may submit a report of suspected academic misconduct to the Office of Student Conduct and Community
+Standards for that office to make a determination of responsibility and, if warranted, assess a grade penalty.
+So, if you are in doubt or have questions about a particular GenAI tool and if its use is okay, check in with
+me or TA and let’s discuss!
+University Course Policies
+Please see https://teaching.uoregon.edu/university-course-policies.
+4

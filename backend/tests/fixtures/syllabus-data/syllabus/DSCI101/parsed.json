@@ -1,0 +1,139 @@
+{
+  "course": {
+    "id": "dsci101",
+    "course_code": "DSCI 101",
+    "course_title": "Foundations of Data Science I",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "16:00",
+        "end_time": "17:20",
+        "timezone": "America/Los_Angeles",
+        "location": "Straub 145",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "16:00",
+        "end_time": "17:20",
+        "timezone": "America/Los_Angeles",
+        "location": "Straub 145",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": null,
+        "end_time": null,
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lab"
+      }
+    ],
+    "location": "Straub 145"
+  },
+  "assessment_categories": [
+    {
+      "id": "lab",
+      "name": "Lab attendance",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "lab_1",
+      "title": "Lab attendance",
+      "category_id": "lab",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "FR"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Lab attendance required, 5% of final grade"
+    },
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Up to 48h late with -2% per hour",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Homework assignments"
+    },
+    {
+      "id": "projects_1",
+      "title": "Projects",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Projects"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

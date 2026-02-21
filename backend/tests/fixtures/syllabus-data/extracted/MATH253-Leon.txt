@@ -1,0 +1,109 @@
+Math 253 - 33082, Calculus III - Syllabus
+Timeand Place: MW,4:00 PM --5:50 PM，FEN105.
+Instructor: YanGe Email：yge7@uoregon.edu Office: 220UOAnnex
+TentativeOffice Hour: Friday: 1:00 PM- 2:15PM(Starting fromweek 2),or byappointment.
+Location:Fenton Hall213
+Prerequisite: Math252or theinstructor’s permission.
+Textbook: OpenSTAX Calculus VolumeII.Availablefor freeat
+https://openstax.org/details/books/calculus-volume-2
+Content: We will coverroughlyChapter 5and6.
+Topics we will cover: sequences, series, various convergence and divergence tests, power series and
+Taylor series, Taylor’s remaindertheorem, power series solutions to differential equations(not in our
+textbook, butsupplementary materials willbeavailable inour lecture notes.)
+TentativeWeeklySchedule: Adjustments maybemade aswegothrough thequarter.
+ Week1 5.1 Sequences;Graphofasequence;Limitofasequence;Convergent/Divergent;
+ Week2 5.2,5.3 Series,Divergencetest;Geometricseries;Harmonicseries;Telescopingseries;
+ Week3 5.3,5.4 Integraltests(p-series);ComparisionTest;
+ Week4 5.5,5.6 Alternatingseries,RatioandRoottests;Strategyfortestingseries;
+ Week5 6.1,6.2 Powerseries;
+ Week6 6.3 TaylorandMaclaurinseries;
+ Week7 6.3 MoreonTaylorseriesandrepresentingfunctions;
+ Week8 6.4 ApplicationofTaylorseries;
+ Week9 Lecturenotes ApplicationofTaylorseries;
+ Week10 Review,catch-up.
+Homework Practices: Homework Practices will be assigned every week on the WeBWorK and
+due on each Saturday at 23:59. For logging into the WeBWorK and getting more information,
+please readthelast page ofthissyllabus: “More informationonusing theWebWork”.
+Quizzes: In-class quizzes on some Mondays. These will be timed, pencil & paper quizzes given at
+the last 20-mins of the class. Quizzes will generally cover material on lecture notes, important
+concepts,andformulas learnedin thepreviousweek.
+Exams: Two midterms and one final. The midterms will be held in 4th and 8th week, respectively.
+For each exam, lecture notes, calculators, and cellphones are NOT allowed. Only one 3x5 inches
+note card(Front and back) is permitted. UO ID is needed for each exam. Final exam is fixed. If
+
+you have to miss one of the midterms due to extraordinary circumstances, you must ask for my
+permission andschedule amake-up exam in advance.
+Grades: Gradeswill beweighted asfollows:
+15% 9Homeworks
+10% 5Quizzes
+18% Midterm 1
+22% Midterm 2
+35% Final
+Thegrading scalegenerallyis: 95-100% A+; 90-94.99% A; 85-89.99%A-; 80-84.99%B+;
+75-79.99%B; 70-74.99%B-; 67-69.99% C+; 62-66.99%C; 60-61.99%C-; 50-59.00% D
+andbelow F.
+Calculator and Electronicdevise policy:
+Calculatorsare not allowed onquzzies &exams, butyoucan use forhomework assignments.
+Learning Objectives: The eventual goal of this course is to understand and use power series
+approximationsoffunctions.Specific goals:
+1. Show sequencesdoordon’t convergeusingthe definition ofalimit.
+2. Usestandard series convergencetests. Finderror boundsfor partialsums.
+3. Estimate sums using the integral test, the alternating test, or the comparison test, depending on
+circumstances.
+4. Calculate radiusofconvergenceand intervalofconvergence forpower series.
+5. Calculate Taylorseries. Represent commontranscendental functionsas powerseries.
+6. Use Taylor’s remainder theorem to approximate values of transcendental functions to given
+levelsofaccuracy.
+7. Give power series solutions to appropriate differential equations. Recognize solutions when
+common transcendentalfunctions.
+Need Math Helps:
+1. Scheduled office hours: Any questions in class and homeworks will be welcome. If you can’t
+makemy officehours, emailmeto setupan appointment.
+2. Knight Library: Tutoring and Academic Engagement Center (TAEC) provides drop-in math and
+writing tutoringonthe4th floor ofKnight library.See https://library.uoregon.edu/tutoring.
+Learn Environment and AEC Accommodations: The University of Oregon strives for inclusive
+learning environments. Please notify me if the instruction or design of this course results in
+disability-related barriers to your participation. You are also encouraged to contact the Accessible
+Education Center at uoaec@uoregon.edu. You should also contact me(yge7@uoregon.edu) as soon
+as possible if there are any specific accommodations I should know about. For something standard
+
+like an accommodation for extra time on exams, you just need to e-mail me your documentation
+from AEC---and remember to book your spot in the Testing Center for the written midterm/final
+exam well in advance. For other accommodations, I will do everything I can to facilitate, please do
+nothesitate to contact meifyouneed extrahelp.
+Academic Conduct: The code of student conduct and community standards is at
+https://dos.uoregon.edu/conduct. In this course, it is not appropriate to help each other on exams, to
+look at other students exams, or to bring unauthorized material to exams. Any type of academic
+dishonestywill not betolerated!
+
+More information on using the WebWork
+Showing work:
+When working on your assignment you should have scratch paper available and neatly write out your
+thought process in solving the problem. While WebWork does not grade you on this process, writing
+it out carefully will train you in the skills you need. It will help you track down mistakes, and it will
+help us track down mistakes when you ask for our help. If you ask us a question about a homework
+problem in office hours, the first thing we will probably do is ask you to show us your work. Also,
+remember that on quizzes and exams showing your work will sometimes be required. It is important
+topractice thiseachweek whiledoing your homeworkassignments.
+Logging in to Webwork: First goto themain login pageat
+.
+https://uowebwork.uoregon.edu/webwork2
+Select the "Math 253-your section". Your username is your DuckID: for instance, if your uoregon
+email address is johndoe@uoregon.edu, your DuckID is "johndoe" (without the quotation marks).
+Yourpassword isthe sameas yourUOemailpassword.
+Getting help:
+If you have a question about a homework problem, one excellent resource is the "Email instructor"
+button at the bottom of the WebWork screen. Clicking on that and typing a short message about what
+you'vetriedontheproblem willhelpme diagnosetheissue you're having.
+What you should NOT do: Do not send an email simply saying "What am I doing wrong on this
+problem" or "I can't seem to get the right answer on this one." On most homework problems it is
+impossible to figure out what you are doing wrong if I only see your answer (which is all WebWork
+showsme).
+What you SHOULD do: If WebWork tells you your answer is wrong, first go back over your work
+and see if you can find the mistakes yourself. If you can't, feel free to email me, and include a
+description of how you solved the problem as well as any work you did for intermediate steps. The
+moreinformationyougive,themore likely itis youwill getaprompt andhelpful reply.
+Tips for using WebWork: http://math.uoregon.edu/undergraduate/webwork.
+Format of Inputting your Answers: Get information on the format of how to enter things from
+belowpage listingthefunctionsWeBWorKunderstands:
+https://webwork.maa.org/wiki/Available_Functions.

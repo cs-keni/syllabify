@@ -1,0 +1,111 @@
+Math 232, Fall 2023 (CRN 13078)
+Instructor: Ryan Takahashi Office Hours: M 2:00-3:30, R 2:45-3:45, or by ap-
+Class Meetings: MTWR 4:00-4:50 pointment
+Office: McArthur Court 104B E-mail: rtakahas@uoregon.edu
+Learning Outcomes
+ThiscourseaimstobuildonthefoundationalmathematicalideasfromMath231,includinglogic,languageof
+sets and functions, mathematical proofs, and recursive algorithms. It also develops important new concepts
+and tools, including the theory of linear recurrence relations via generating functions, and some of the
+combinatorial mathematics arising from graphs and trees. A successful student should:
+(cid:136) consolidate the accurate usage of the language of mathematics initiated in Math 231;
+(cid:136) gain more proof-writing experience and see some more significant proofs in the various applications;
+(cid:136) learn new tools for solving recurrence relations and gain more familiarity with the method of proof by
+induction;
+(cid:136) understand some of the mathematics of networks, graphs, planar graphs and trees
+Text
+Rosen, Discrete Mathematics and Applications, 7th or 8th ed. Homework will be posted on Canvas, so the
+text isn’t strictly required, but is recommended as a resource.
+Homework
+Homework will typically be due once a week, by the beginning of class on Tuesdays. All assignments will be
+postedonCanvas. Youshouldwrite(ortype)upyoursolutionsneatlyonaseparatepagefromtheproblem
+statements and submit them on Canvas (pdf is the safest choice, but any format that can be opened in the
+Canvas grader will be accepted).
+Exams
+There will be two 50-minute midterm exams, given during class time on Tuesday, October 17 (Week 4) and
+Thursday, November 9 (Week 7). There will also be a cumulative two-hour final exam from 2:45-4:45 on
+Tuesday, December 5 in our usual classroom.
+Absences
+Attendanceisnotmandatedexceptontheaboveexamdates. Ifyoumissclass,youshouldfirstborrownotes
+from a classmate, then set up a meeting with me if you have further questions about the missed content.
+Apart from absences due to university-sanctioned events, I am not permitted to distinguish between “ex-
+cused” and “unexcused” absences. Because of this, I am not able to give makeup exams. To mitigate the
+penaltyformissingamidterm(forexample,duetoillness),Iwilldropyourlowermidtermscoreandreplace
+it with your final exam score (if this works in your favor).
+
+Grading
+Course grades are weighted according to the following scheme:
+Homework 20%
+Midterm Exams 25% each
+Final Exam 30%
+Standard grade assignments will be made (i.e. grades in the 80% to 90% range are B’s, those in the 70% to
+80% range are C’s, and so on). A+ grades are awarded at my discretion to students who have excelled in all
+aspects of the course. Other plus and minus grades will be awarded in the upper and lower 3% of a bracket
+(e.g. a grade of B+ is awarded between 87% and 90%; B- between 80% and 83%). I reserve the right to
+apply a course adjustment to grades at the end of the term.
+Departmental standards for grading can be found at
+https://math.uoregon.edu/wp-content/uploads/2014/12/MathGradingStandards-1tli4lj.pdf
+General University Policies
+The following are standard university policies, not specific to this class.
+Academic Misconduct: The University Student Conduct Code, available at
+https://conduct.uoregon.edu,
+defines academic misconduct. Students are prohibited from committing or attempting to commit any act
+that constitutes academic misconduct. By way of example, students should not give or receive (or attempt
+to give or receive) unauthorized help on assignments or examinations without express permission from the
+instructor. Students should properly acknowledge and document all sources of information (e.g. quotations,
+paraphrases, ideas) and use only the sources and resources authorized by the instructor. If there is any
+question about whether an act constitutes academic misconduct, it is the students’ obligation to clarify the
+question with the instructor before committing or attempting to commit the act. Additional information
+about a common form of academic misconduct, plagiarism, is available at
+https://researchguides.uoregon.edu/citing-plagiarism.
+Accessible Education: The University of Oregon is working to create inclusive learning environments.
+Please notify me if there are aspects of the instruction or design of this course that result in disability-
+related barriers to your participation. You are also encouraged to contact the Accessible Education Center
+in 360 Oregon Hall at 541-346-1155 or uoaec@uoregon.edu.
+Accommodation for Religious Observances: The university makes reasonable accommodations, upon
+request, for students who are unable to attend a class for religious obligations or observance reasons, in
+accordance with the university discrimination policy which says “Any student who, because of religious
+beliefs, is unable to attend classes on a particular day shall be excused from attendance requirements and
+
+from any examination or other assignment on that day. The student shall make up the examination or
+other assignment missed because of the absence.” To request accommodations for this course for religious
+observance, visit the Office of the Registrar’s website
+https://registrar.uoregon.edu/calendars/religious-observances
+and complete and submit to the instructor the “Student Religious Accommodation Request” form prior to
+the end of the second week of the term.
+Basic Needs: Any student who has difficulty affording groceries or accessing sufficient food to eat every
+day, or who lacks a safe and stable place to live and believes this may affect their performance in the course
+is urged to contact the Dean of Students Office (346-3216, 164 Oregon Hall) for support. This UO webpage
+includes resources for food, housing, healthcare, childcare, transportation, technology, finances, and legal
+support:
+https://blogs.uoregon.edu/basicneeds/food.
+Inclement Weather: It is generally expected that class will meet unless the University is officially closed
+for inclement weather. If it becomes necessary to cancel class while the University remains open, this will
+be announced on Canvas and by email. Updates on inclement weather and closure are also communicated
+in other ways described here:
+https://hr.uoregon.edu/about-hr/campus-notifications/inclement-weather.
+MentalHealthandWellness: Lifeatcollegecanbeverycomplicated. Studentsoftenfeeloverwhelmedor
+stressed,experienceanxietyordepression,strugglewithrelationships,orjustneedhelpnavigatingchallenges
+in their life. If you’re facing such challenges, you don’t need to handle them on your own–there’s help and
+support on campus.
+As your instructor if I believe you may need additional support, I will express my concerns, the reasons for
+them, and refer you to resources that might be helpful. It is not my intention to know the details of what
+might be bothering you, but simply to let you know I care and that help is available. Getting help is a
+courageous thing to do—for yourself and those you care about.
+University Health Services help students cope with difficult emotions and life stressors. If you need general
+resources on coping with stress or want to talk with another student who has been in the same place as you,
+visit the Duck Nest (located in the EMU on the ground floor) and get help from one of the specially trained
+Peer Wellness Advocates. Find out more at health.uoregon.edu/ducknest.
+University Counseling Services (UCS) has a team of dedicated staff members to support you with your
+concerns, many of whom can provide identity-based support. All clinical services are free and confidential.
+Findoutmoreatcounseling.uoregon.eduorbycalling541-346-3227(anytimeUCSisclosed,theAfter-Hours
+Support and Crisis Line is available by calling this same number).
+Reporting Obligations: Iamanassistingemployee. Forinformationaboutmyreportingobligationsasan
+employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Com-
+
+pliance(OICRC)website. Studentsexperiencingsexorgender-baseddiscrimination, harassmentorviolence
+shouldcallthe24-7hotline541-346-SAFE[7244]orvisitsafe.uoregon.eduforhelp. Studentsexperiencingall
+forms of prohibited discrimination or harassment may contact the Dean of Students Office at 5411-346-3216
+or the non-confidential Title IX Coordinator/OICRC at 541-346-3123. Additional resources are available at
+https://investigations.uoregon.edu/how-get-support.
+I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of
+Child Abuse and Neglect.

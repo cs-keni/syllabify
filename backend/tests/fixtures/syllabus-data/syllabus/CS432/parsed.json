@@ -1,0 +1,37 @@
+{
+  "course": {
+    "id": "cs432",
+    "course_code": "CS 432",
+    "course_title": "Introduction to Computer Networks",
+    "term": "Fall 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Prof. Jun Li", "email": "lijun@cs.uoregon.edu"}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "TU", "start_time": "08:30", "end_time": "09:50", "timezone": "America/Los_Angeles", "location": "Lillis 112", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "TH", "start_time": "08:30", "end_time": "09:50", "timezone": "America/Los_Angeles", "location": "Lillis 112", "type": "lecture"}
+    ],
+    "location": "Lillis 112"
+  },
+  "assessment_categories": [
+    {"id": "participation", "name": "Class participation", "weight_percent": 5, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "homework", "name": "Homework", "weight_percent": 15, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "program", "name": "Program", "weight_percent": 20, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "tests", "name": "Tests", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final exam", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "participation_1", "title": "Class participation", "category_id": "participation", "type": "participation", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 5, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Class participation 5%"},
+    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 15, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Homework 15%"},
+    {"id": "program_1", "title": "Programming assignment", "category_id": "program", "type": "project", "due_datetime": "2025-10-31", "all_day": true, "timezone": null, "weight_percent": 20, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Program 20%"},
+    {"id": "test_1", "title": "Test 1", "category_id": "tests", "type": "midterm", "due_datetime": "2025-10-23", "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Test 1: October 23"},
+    {"id": "test_2", "title": "Test 2", "category_id": "tests", "type": "midterm", "due_datetime": "2025-11-06", "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Test 2: November 6"},
+    {"id": "test_3", "title": "Test 3", "category_id": "tests", "type": "midterm", "due_datetime": "2025-11-25", "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Test 3: November 25"},
+    {"id": "final_1", "title": "Final exam", "category_id": "final", "type": "final", "due_datetime": "2025-12-08T08:00:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final: December 8, Monday, 8:00 AM - 10:00 AM"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

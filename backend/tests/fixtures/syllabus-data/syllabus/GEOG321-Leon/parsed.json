@@ -1,0 +1,158 @@
+{
+  "course": {
+    "id": "geog321",
+    "course_code": "GEOG 321",
+    "course_title": "Climatology",
+    "term": "Winter 2024",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "John Christian",
+        "email": "jchr@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "14:00",
+        "end_time": "15:20",
+        "timezone": "America/Los_Angeles",
+        "location": "Lawrence 166",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "14:00",
+        "end_time": "15:20",
+        "timezone": "America/Los_Angeles",
+        "location": "Lawrence 166",
+        "type": "lecture"
+      }
+    ],
+    "location": "Lawrence 166"
+  },
+  "assessment_categories": [
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 40,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exercises",
+      "name": "Exercises",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "weather_reports",
+      "name": "Weather Reports",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "WE"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Hard due date; lowest dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Quizzes 40%"
+    },
+    {
+      "id": "exercises_1",
+      "title": "Exercises",
+      "category_id": "exercises",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "FR"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "1 point deducted for late",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Exercises 40%"
+    },
+    {
+      "id": "weather_reports_1",
+      "title": "Weather Reports",
+      "category_id": "weather_reports",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "MO"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "1 point deducted for late",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Weather reports 20%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

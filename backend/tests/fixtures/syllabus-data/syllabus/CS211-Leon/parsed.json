@@ -1,0 +1,189 @@
+{
+  "course": {
+    "id": "cs211",
+    "course_code": "CS 211",
+    "course_title": "Computer Science II",
+    "term": "Winter 2024",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Juan Flores",
+        "email": "jflore10@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Los_Angeles",
+        "location": "101 LLC",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Los_Angeles",
+        "location": "101 LLC",
+        "type": "lecture"
+      }
+    ],
+    "location": "101 LLC"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams (in person)",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "weight_percent": 30,
+      "drop_lowest": 2,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "mini_exams",
+      "name": "Mini-exams (online)",
+      "weight_percent": 10,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "code_demo",
+      "name": "Code demo",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "attendance",
+      "name": "Attendance",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exams_1",
+      "title": "Exams (in person)",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Exams in person 2, 50%"
+    },
+    {
+      "id": "projects_1",
+      "title": "Projects",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Lowest 2 dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Projects 9, drop 2, 30%"
+    },
+    {
+      "id": "mini_exams_1",
+      "title": "Mini-exams (online)",
+      "category_id": "mini_exams",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Lowest 1 dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Mini-exams online 4, drop 1, 10%"
+    },
+    {
+      "id": "code_demo_1",
+      "title": "Code demo",
+      "category_id": "code_demo",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Code demo 5%"
+    },
+    {
+      "id": "attendance_1",
+      "title": "Attendance",
+      "category_id": "attendance",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Attendance 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

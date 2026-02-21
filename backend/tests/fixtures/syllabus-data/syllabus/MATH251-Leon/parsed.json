@@ -1,0 +1,164 @@
+{
+  "course": {
+    "id": "math251",
+    "course_code": "MATH 251",
+    "course_title": "Calculus",
+    "term": "Fall 2022",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Weiyong He",
+        "email": "whe@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "13:00",
+        "end_time": "13:50",
+        "timezone": "America/Los_Angeles",
+        "location": "Straub 251",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TU",
+        "start_time": "13:00",
+        "end_time": "13:50",
+        "timezone": "America/Los_Angeles",
+        "location": "Straub 251",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "WE",
+        "start_time": "13:00",
+        "end_time": "13:50",
+        "timezone": "America/Los_Angeles",
+        "location": "Straub 251",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "FR",
+        "start_time": "13:00",
+        "end_time": "13:50",
+        "timezone": "America/Los_Angeles",
+        "location": "Straub 251",
+        "type": "lecture"
+      }
+    ],
+    "location": "Straub 251"
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterms",
+      "name": "Midterms",
+      "weight_percent": 45,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Homework via WebWork 25%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm 1",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": "2022-10-25",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm 1 Tuesday Week 5 (Oct 25)"
+    },
+    {
+      "id": "midterm_2",
+      "title": "Midterm 2",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": "2022-11-18",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm 2 Friday Week 8 (Nov 18)"
+    },
+    {
+      "id": "final_1",
+      "title": "Final",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2022-12-06T14:45:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final 14:45 Tuesday Dec 6, Straub 251"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

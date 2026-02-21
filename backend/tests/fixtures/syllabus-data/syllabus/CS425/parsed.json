@@ -1,0 +1,32 @@
+{
+  "course": {
+    "id": "cs425",
+    "course_code": "CS 425",
+    "course_title": "Concepts in Programming Languages",
+    "term": "Spring 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Zena M. Ariola", "email": "ariola@uoregon.edu"}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "WE", "start_time": "16:00", "end_time": "17:20", "timezone": "America/Los_Angeles", "location": "McKenzie 221", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "FR", "start_time": "16:00", "end_time": "17:20", "timezone": "America/Los_Angeles", "location": "McKenzie 221", "type": "lecture"},
+      {"id": "mt-3", "day_of_week": "MO", "start_time": "08:30", "end_time": "09:50", "timezone": "America/Los_Angeles", "location": "McKenzie 221", "type": "discussion"}
+    ],
+    "location": "McKenzie 221"
+  },
+  "assessment_categories": [
+    {"id": "midterm_1", "name": "Midterm 1", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm_2", "name": "Midterm 2", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final exam", "weight_percent": 40, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "midterm_1", "title": "Midterm 1", "category_id": "midterm_1", "type": "midterm", "due_datetime": "2025-04-23", "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm 1 30% April 23rd"},
+    {"id": "midterm_2", "title": "Midterm 2", "category_id": "midterm_2", "type": "midterm", "due_datetime": "2025-05-16", "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm 2 30% May 16th"},
+    {"id": "final_1", "title": "Final", "category_id": "final", "type": "final", "due_datetime": "2025-06-11T14:45:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 40, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final 40% Wednesday, Jun 11th, 2025, 2:45 p.m"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

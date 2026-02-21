@@ -1,0 +1,128 @@
+{
+  "course": {
+    "id": "geog322",
+    "course_code": "GEOG 322",
+    "course_title": "Geomorphology",
+    "term": "Spring 2024",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Mark Fonstad",
+        "email": "fonstad@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "14:00",
+        "end_time": "15:20",
+        "timezone": "America/Los_Angeles",
+        "location": "125 MCK",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "14:00",
+        "end_time": "15:20",
+        "timezone": "America/Los_Angeles",
+        "location": "125 MCK",
+        "type": "lecture"
+      }
+    ],
+    "location": "125 MCK"
+  },
+  "assessment_categories": [
+    {
+      "id": "labs",
+      "name": "Weekly Labs",
+      "weight_percent": 60,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "labs_1",
+      "title": "Weekly Labs",
+      "category_id": "labs",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "TH"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "25% per deadline, +25% per additional week",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Weekly Labs 60%"
+    },
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2024-05-08",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Exam 1 May 8"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "exams",
+      "type": "final",
+      "due_datetime": "2024-06-10T14:45:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final June 10, 2:45pm-4:45pm"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

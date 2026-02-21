@@ -1,0 +1,34 @@
+{
+  "course": {
+    "id": "cs333",
+    "course_code": "CS 333",
+    "course_title": "Applied Cryptography",
+    "term": "Fall 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Yingjiu (Joe) Li", "email": "yingjiul@uoregon.edu"}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "WE", "start_time": "16:00", "end_time": "17:20", "timezone": "America/Los_Angeles", "location": "Chiles 128", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "FR", "start_time": "16:00", "end_time": "17:20", "timezone": "America/Los_Angeles", "location": "Chiles 128", "type": "lecture"}
+    ],
+    "location": "Chiles 128"
+  },
+  "assessment_categories": [
+    {"id": "exercises", "name": "Exercises", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "participation", "name": "Class participation", "weight_percent": 10, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm", "name": "Midterm", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final exam", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "exercise_1", "title": "Exercise 1", "category_id": "exercises", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Exercise 1 (10%)"},
+    {"id": "exercise_2", "title": "Exercise 2", "category_id": "exercises", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Exercise 2 (10%)"},
+    {"id": "exercise_3", "title": "Exercise 3", "category_id": "exercises", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Exercise 3 (10%)"},
+    {"id": "midterm_1", "title": "Midterm", "category_id": "midterm", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm: class time in week 6"},
+    {"id": "final_1", "title": "Final exam", "category_id": "final", "type": "final", "due_datetime": "2025-12-11T14:45:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final: Thursday, December 11, 2025, 2:45pm-4:15pm"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

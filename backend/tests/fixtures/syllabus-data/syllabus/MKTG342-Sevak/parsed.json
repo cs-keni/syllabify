@@ -1,0 +1,188 @@
+{
+  "course": {
+    "id": "mktg342-sevak",
+    "course_code": "MKTG 342",
+    "course_title": "Marketing Research",
+    "term": "Fall 2023",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Dr. Ozge Aybat",
+        "email": "oua3@psu.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "13:35",
+        "end_time": "14:50",
+        "timezone": "America/Los_Angeles",
+        "location": "E-330 Olmsted",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "13:35",
+        "end_time": "14:50",
+        "timezone": "America/Los_Angeles",
+        "location": "E-330 Olmsted",
+        "type": "lecture"
+      }
+    ],
+    "location": "E-330 Olmsted"
+  },
+  "assessment_categories": [
+    {
+      "id": "midterms",
+      "name": "Midterm Exams",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "group_project",
+      "name": "Group Project",
+      "weight_percent": 17.5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "presentation",
+      "name": "Presentation / Peer Review",
+      "weight_percent": 7.5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "participation",
+      "name": "Participation / Assignments",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "midterm_1",
+      "title": "Midterm I",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm I 20%"
+    },
+    {
+      "id": "midterm_2",
+      "title": "Midterm II",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm II 20%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final 20%"
+    },
+    {
+      "id": "group_project_1",
+      "title": "Group Project",
+      "category_id": "group_project",
+      "type": "project",
+      "due_datetime": "2023-12-11",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 17.5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10% per 24 hours late"
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Group Project 17.5%, due Dec 11"
+    },
+    {
+      "id": "presentation_1",
+      "title": "Presentation / Peer Review",
+      "category_id": "presentation",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 7.5,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Presentation / Peer Review 7.5%"
+    },
+    {
+      "id": "participation_1",
+      "title": "Participation / Assignments",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Participation / Assignments 15%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

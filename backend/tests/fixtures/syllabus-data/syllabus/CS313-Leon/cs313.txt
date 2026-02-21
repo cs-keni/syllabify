@@ -1,0 +1,417 @@
+CS 313 (Fall 2025; 11583) Interm Data Structures
+Jump to Today
+Course Title: Intermediate Data Structures
+Course Number: CS 313
+Course Description
+Our main theme is the equation (proposed by Niklas Wirth) "Programs=Algorithms + Data Structures." First, we will review the asymptotic complexity notations, loop invariants and recurrence equations, as well as the basic linear data structures. Then, we will discuss rooted ordered trees and their usage, especially as search structures (i.e., Binary Search Trees, Red-Black Trees). We will conclude with some basic sorting algorithms and some analysis using the newly introduced data structures. The objective of the course is to acquire facility using tools to analyze (and design!) algorithms (computational complexity, proofs of correctness) and structuring the information manipulated by the algorithms.
+
+Class Page
+https://classes.cs.uoregon.edu/25F/cs313/ 
+
+Class Meet at 125 MCK - Mondays, Wednesdays, Fridays 12:00-12:50pm
+Instructor Contact Information
+Prof. Thien Huu Nguyen
+Email: thienn@uoregon.edu
+
+Office: Deschutes 330
+Office hours: Wed 15:00-17:00, and by appointment
+
+Graduate Teaching Assistant
+Huy Nguyen
+Email: huy@uoregon.edu
+
+Office: Deschutes 258 
+Office hours: Tue 14:00-16:00, Thu 14:00-16:00, and by appointment
+
+Yasong Liu
+
+Email: yasong@uoregon.edu 
+
+Office: Deschutes 258
+Office hours: Fri 14:00-17:00, and by appointment
+
+ 
+
+Zoom Links
+This is an in-person class. Lectures, labs, and office hours will be done in-person. However, to facilitate discussions, during office hours, Thien might also meet students via Zoom if there are no students showing up in his office.
+
+Thien's Office Hour Link: https://uoregon.zoom.us/j/707451263?pwd=dGJ4ZFB2NjFoWFZ5MS9NZjdncWxVdz09Links to an external site.Links to an external site.
+
+Piazza
+Please sign up for Piazza for course questions/comments/discussions and miscellaneous announcements: 
+
+https://piazza.com/uoregon/fall2025/cs313Links to an external site.  
+Prerequisites
+CIS 212 - Computer Science III
+MATH 231-232
+Textbooks and Readings
+(Required) Cormen, Leiserson, Rivest, & Stein, Introduction to Algorithms, 3rd Edition, MIT Press, 2009 (CLRS). (text homepageLinks to an external site.)
+(Optional) Dasgupta, Papadimitriou, and Vazirani, Algorithms, McGraw-Hill, 2008 (Also used in 315.).
+(Optional) Michael Goodrich and Roberto Tamassia, Data Structures and Algorithms in Java, 3rd Edition, Wiley, 2004.
+(Optional) Weiss, Data Structures and Problem Solving using Java, Addison-Wesley, 1998.
+(Optional) Knuth, The Art of Computer Programming, vol.I, Addison-Wesley 1975.
+Expected Learning Outcomes
+This course develops basic concepts and applications of data structures in computer science. The primary topics are familiarity with asymptotic complexity notations, loop invariants, recurrence equations, analysis of basic linear data structures along with their applications to computational problems, rooted ordered trees and their usage and analysis for basic operations of data structures: searches, additions, deletions, and basic sorting algorithms along with their analysis using the newly introduced data structures.
+
+Upon successful completion of the course, students will be able to:
+
+demonstrate facility with asymptotic complexity notations, common functions and their asymptotic relations;
+demonstrate the ability to use asymptotic complexity notations and common functions to measure the complexity of basic algorithms (loops, recurrence, searches, additions, deletions);
+demonstrate facility using loop invariants to prove the correctness of loop functions;
+demonstrate facility with basic operations in linear data structures (stacks, queues, priority queues), their complexity, and their applications to some basic problems (expression evaluation, tree traversal);
+demonstrate facility with heaps (binary and binomial), procedures for basic operations (searches, additions, deletions) and their complexity;
+demonstrate facility with hash tables and basic hash functions;
+demonstrate facility with self-balancing trees (AVL, 2-3-4, and Red-Black trees), procedures for basic operations, and their complexity;
+demonstrate facility with basic sorting algorithms, their procedures, and their complexity; and
+demonstrate the ability to use the introduced data structures to develop efficient algorithms for some basic problems and compute the complexity for those algorithms.
+Acquired Skills
+Upon successful completion of the course, students will have acquired the following essential skills:
+
+be able to implement the introduced data structures and their operations using a programming language (e.g., Python);
+be able to design efficient algorithms for some basic problems in computer science using the introduced data structures, and implement them using a programming language;
+be able to run the implemented programs in computers and debug the programs if necessary.
+Estimated Student Workload
+Each student will:
+
+read assigned readings in the required textbook;
+attend the lectures delivered weekly;
+attend a weekly lab session, led by our graduate teaching assistant, at which you will be introduced to problems, tools and techniques to help you be proficient in doing assigned programming assignments;
+do and submit solutions for 3-4 written assignments, and 3-4 programming assignments;
+programming and written assignments are individual efforts, and must represent your own work;
+sit and submit the midterm and the final.
+Workload expectations are 12-13 hours per week.
+
+Activity
+
+Total hours
+
+Remarks
+
+Attend lectures and/or view recorded lectures
+
+30
+
+Class attendance is mandatory
+
+Assigned readings
+
+20
+
+Do the assigned readings (ideally before it is covered in lecture)
+
+Attend labs
+
+10
+
+Lab attendance is mandatory
+
+Do and submit assignments and labs
+
+50
+
+Start doing assignments early; take advantage of plentiful office hours; use Piazza for additional assistance.
+
+Revision
+
+15
+
+Studying for midterm and final
+
+Total
+
+125
+
+ 
+
+Course Requirements and Grading
+This course will be taught in-person using Canvas and Piazza for assignments and discussions. Lectures might be recorded via Zoom and made available for subsequent viewing.
+
+Grading will be based on the following criteria:
+
+45%
+
+distributed over written (25%) and programming (20%) assignments
+
+25%
+
+midterm
+
+30%
+
+final
+
+In addition, there will be small quizzes that we plan to post every week. You can do those quizzes to get extra credits in this class. We will drop the quiz with the lowest score for you. The total score of the quizzes will be worth 5% to your final score.
+
+
+CIS majors and minors, and DSCI majors, must take CIS 313 graded; others may take it graded or P/NP.
+
+Grading rubric
+A
+
+Excellent performance. Very well prepared to continue on in the major. Solid grasp of the concepts and approaches introduced in CIS 313
+
+B
+
+Solid performance. You have shown a generally good grasp of the concepts and approaches introduced in CIS 313.
+
+C
+
+Acceptable performance, but your grasp of the concepts and approaches will require improvement if you choose to continue in the CIS major.
+
+D
+
+Your grasp of concepts and approaches, and/or programming skills, are not yet sufficient to continue in the CIS or DSCI major.
+
+F
+
+Little or no demonstrated grasp of concepts and approaches introduced in CIS 313, and/or failure to carry out much of the required work.
+
+ 
+
+Grading Scale
+A+ >= 99.0
+
+B+ 86.7-89.9
+
+C+ 76.7-79.9
+
+D+ 66.7-66.9
+
+F 0.0-59.9
+
+A  93.4-98.9
+
+B  83.4-86.6
+
+C  73.4-76.6
+
+D  63.4-66.6
+
+ 
+
+A- 90.0-93.3
+
+B- 80.0-83.3
+
+C- 70.0-73.3
+
+D- 60.0-63.3
+
+ 
+
+ 
+
+Approximate Schedule
+Lecture
+
+Topic
+
+Readings in CLRS
+
+Labs and
+assignments
+
+01 (09/29)
+
+02 (10/01)
+
+03 (10/03)
+
+algorithm analysis, measuring complexity, big-oh notation, proofs of correctness
+
+Ch 1 (pages 5-14)
+
+Ch 2.1 (pages 16-22)
+
+Ch 2.2 (pages 23-29)
+
+Ch 3 (pages 43-59)
+
+ 
+
+04 (10/06)
+
+05 (10/08)
+
+06 (10/10)
+
+continue content from week 1
+
+ 
+
+ 
+
+07 (10/13)
+
+08 (10/15)
+
+09 (10/17)
+
+linear data structures: linked lists, stacks, queues, priority queues
+
+Ch 10 (pages 232-248)
+
+ 
+
+10 (10/20)
+
+11 (10/22)
+
+12 (10/24)
+
+binary heaps, heap operations, heapsort, binomial heaps
+
+Ch 6 (pages 151-164)
+
+ 
+
+13 (10/27)
+
+14 (10/29)
+
+15 (10/31)
+
+continue content from week 4
+
+ 
+
+ 
+
+16 (11/03)
+
+17 (11/05)
+
+18 (11/07)
+
+hash tables, binary trees: definitions, operations, binary tree efficiency
+
+Ch 11 (pages 253-266)
+
+Ch 12 (pages 286-303)
+
+ 
+
+19 (11/10)
+
+20 (11/12)
+
+continue with binary search trees,
+
+intro to self-balancing trees: rotations, AVL trees, 2-3-4 trees;
+
+midterm review
+
+Ch 13.1-13.3 (pages 308-322)
+
+ 
+
+21 (11/14)
+
+MIDTERM (11:00am-)
+
+MIDTERM (11:00am-)
+
+MIDTERM (11:00am-)
+
+22 (11/17)
+
+23 (11/19)
+
+24 (11/21)
+
+continue content from week 7
+
+ 
+
+ 
+
+25 (11/24)
+
+26 (11/26)
+
+No class on 11/28 (Thanksgiving)
+
+Red-black trees, red-black deletion
+
+Ch 13 (pages 308-329)
+
+ 
+
+28 (12/01)
+
+29 (12/03)
+
+30 (12/05)
+
+quicksort, analysis, decision tree bound, linear time sorts, order statistics, final review
+
+Ch 7 (pages 170-184)
+
+Ch 8.1-8.3 (pages 191-199)
+
+ 
+
+Wednesday, 12/10, 10:15 a.m. 
+
+FINAL
+
+FINAL
+
+FINAL
+
+Course Policies
+Late Work
+All assignments are due by 11:59 pm of the stated due date. Please submit your assignments on Canvas. Assignments will be accepted for up to two days past the due date with a penalty of 10% per (calendar) day.
+
+Barriers and Accommodations
+Our goal is a fully inclusive class, accessible to everyone. If you encounter or anticipate barriers to full participation and fair evaluation for any reason, please communicate your needs to the instructor so that we can find a suitable accommodation. If you encounter or observe other impediments to full participation, for yourself or others, please share your concerns with the instructor. You are also encouraged to contact the Accessible Education Center.
+
+It is particularly important that you inform the instructor in the first week of the quarter if you require accommodation. Delayed notification of such a requirement may make it impossible to provide the accommodation.
+
+Academic Honesty
+The University Student Conduct Code (available at /courses/274725/file_contents/course%20files/conduct.uoregon.edu) defines academic misconduct. Students are prohibited from committing or attempting to commit any act that constitutes academic misconduct. Students should properly acknowledge and document all sources of information (e.g., quotations, paraphrases, ideas) and use only the sources and resources authorized by the instructor. If there is any question about whether an act constitutes academic misconduct, it is the student’s obligation to clarify the question with the instructor before committing to attempting to commit the act.
+
+All projects turned in for the course must be your own work. Copying from other class members or other sources is not acceptable. If you collaborate with someone else on an assignment, you must indicate such on the work you turn in. Collaboration that is not explicitly credited is plagiarism.
+
+Academic honesty is expected and cases of suspected dishonesty will be handled according to university policy. In particular, copying someone else's work (including material found on the web) will not be tolerated. If solutions to assignments are obtained from outside sources, the source must be cited.
+
+You are also responsible for protecting your work. That is, you must take reasonable precautions to prevent your work from being copied. This means that if you store your assignment solutions on a shared server, the file permissions must be set to keep others from accessing your files. If you are working on assignments in the lab, you must remove any of your files from the lab machine before you leave.
+
+Turning in someone else's code is collusion, and is a particularly heinous form of plagiarism; if collusion is detected, all individuals involved (i.e., the copyee and all copyers) will be given a grade of F in the course.
+
+Generative AI (GenAI) Policy
+Students may not use GenAI tools in this course to produce course materials or assignments in whole or in part. All work you submit for this course toward completion of course requirements must be your own original work done specifically for this course and without substantive assistance from others, including GenAI. Work you’ve completed for previous courses or are developing for other courses this term also should not be submitted for this course.  In accordance with UO policy, if I believe you’ve handed in work created all or in part by GenAI, I will submit a report of suspected academic misconduct to the Office of Student Conduct and Community Standards for that office to make a determination of responsibility. If you have any questions or doubts, please ask!
+
+Academic Disruption due to Campus Emergency
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by email and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and./or access alternative assignments. Students are also encouraged to continue the readings and other assignments as outlined in this syllabus or subsequent versions of the syllabus.
+
+Prohibited Discrimination and Harassment Reporting
+I am a designated reporter. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex- or gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of Students Office at 541-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123 to request information and resources. Students are not required to participate in an investigation to receive support, including requesting academic supportive measures. Additional resources are available at investigations.uoregon.edu/how-get-support.
+
+I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.
+
+Pregnancy Modifications. Pregnant and parenting students are eligible for academic and work modifications related to pregnancy, childbirth, loss of pregnancy, termination of pregnancy, lactation, and related medical conditions. To request pregnancy-related modifications, students should complete the Request for Pregnancy Modifications formLinks to an external site. on the OICRC website. OICRC coordinates academic and other modifications for pregnant and parenting students to ensure students can continue to access their education and university programs and activities.
+
+Course Summary:
+Course Summary
+Date	Details	Due
+Mon Oct 6, 2025	Quiz Quiz 1: Syllabus	due by 11:59pm
+Wed Oct 8, 2025	Assignment Programming Assignment 0	due by 11:59pm
+Fri Oct 17, 2025	Assignment Written Assignment 1	due by 11:59pm
+Sat Oct 18, 2025	Quiz Quiz 2: Asymptotic Analysis 1	due by 11:59pm
+Wed Oct 22, 2025	Assignment Programming Assignment 1	due by 11:59pm
+Quiz Quiz 3: More Asymptotic Analysis	due by 11:59pm
+Wed Oct 29, 2025	Quiz Quiz 4: Even more complexity analysis	due by 11:59pm
+Fri Oct 31, 2025	Assignment Written Assignment 2	due by 11:59pm
+Wed Nov 5, 2025	Assignment Programming Assignment 2	due by 11:59pm
+Quiz Quiz 5: Loop Invariants	due by 11:59pm
+Wed Nov 12, 2025	Quiz Quiz 6: Lists, Stacks, Queues, and Loops	due by 11:59pm
+Fri Nov 14, 2025	Assignment Midterm	due by 11:59pm
+Tue Nov 18, 2025	Assignment Written Assignment 3	due by 11:59pm
+Wed Nov 19, 2025	Assignment Programming Assignment 3	due by 11:59pm
+Quiz Quiz 7: Binary Heaps	due by 11:59pm
+Tue Dec 2, 2025	Quiz Quiz 8: Binary search trees and basic rotations	due by 11:59pm
+Wed Dec 3, 2025	Assignment Programming Assignment 4	due by 11:59pm
+Thu Dec 4, 2025	Assignment Written Assignment 4	due by 11:59pm
+Tue Dec 9, 2025	Quiz Quiz 9: B-trees	due by 11:59pm
+Fri Dec 12, 2025	Assignment Final	due by 11:59pm

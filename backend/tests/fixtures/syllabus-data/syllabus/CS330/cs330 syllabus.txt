@@ -1,0 +1,486 @@
+CS 330 (Spring 2025; 31458) C/C++ and Unix
+Course Title: C/C++ and Unix
+Course Number: CIS 330
+
+Course Description
+The primary objective of this course is to become familiar with practical software design and programming activities in a C/C++ and Unix environment. The course does not assume any previous experience with C/C++, but does assume programming experience in other languages. Familiarity with data structures and object oriented programming is assumed. In addition to learning many aspects of the C and C++ languages, we will focus on good programming practices and tools that support them, such as revision control and shell scripting. We will also cover topics in systems, parallel programming, and simple linear algebra. Throughout the course, we will focus on issues of good programming style and practices. The assignments and project will be done in a Unix environment and we will learn about various Unix tools along the way.
+
+Prerequisites
+CIS 314 - Computer Organization
+Instructor Contact Information
+Jee Choi
+
+Email: jeec@uoregon.edu
+Office hours: M, W 11:30 AM - 12:30 PM and by appointment
+
+Location: Deschutes 328
+
+Graduate Teaching & Learning Assistants
+TA: Kai Iverson
+Email: kaive@uoregon.edu
+
+Bitbucket username: kaiiverson510@gmail.com
+
+Office hours: Tuesday 11:30 AM - 01:30 PM, Thursday 12:00 PM - 2:00 PM
+
+Location: DES 227
+
+LA: Sadie Shinault
+Email: sshinaul@uoregon.edu
+Office hours: Monday 2:00 PM - 4:00 PM, Friday 12:00 PM - 2:00 PM
+
+Location: DES 258
+
+LA: Makani Buckley
+Email: makanib@uoregon.edu
+Office hours: Tuesday, Thursday 3:00 PM - 5:00 PM
+
+Location: DES 258
+
+Lecture & Lab
+Lecture: MW 10:00 - 11:20 (in-person) @ 229 MCK (McKenzie Hall)
+
+Lab: F 10:00 - 10:50 (in-person) @ 229 MCK (McKenzie Hall)
+
+Office Hour Summary
+ 
+
+Sun
+
+Mon
+
+Tue
+
+Wed
+
+Thu
+
+Fri
+
+Sat
+
+7:30 - 8:00
+
+ 
+
+8:30 - 9:00
+
+ 
+
+9:00 - 9:30
+
+ 
+
+9:30 - 10:00
+
+ 
+
+10-11
+
+ 
+
+11:00 - 11:30
+
+ 
+
+11:30 - 12:00
+
+ 
+
+Jee Choi	Kai Iverson	Jee Choi			
+12:00 - 12:30
+
+ 
+
+Jee Choi	Kai Iverson	Jee Choi	Kai Iverson	Sadie Shinault	
+12:30 - 13:00
+
+ 
+
+Kai Iverson		Kai Iverson	Sadie Shinault	
+13:00 - 13:30
+
+ 
+
+Kai Iverson		Kai Iverson	Sadie Shinault	
+13:30 - 14:00
+
+ 
+
+Kai Iverson	Sadie Shinault	
+14:00 - 14:30
+
+ 
+
+Sadie Shinault
+
+14:30-15:00
+
+ 
+
+Sadie Shinault
+
+15-16
+
+Sadie Shinault	Makani Buckley		Makani Buckley		
+16-17
+
+Makani Buckley		Makani Buckley		
+17-18
+
+ 
+
+Textbooks and Readings
+C and Data Structures - a well-structured approachby Joseph S. Sventek
+A PDF version is available on Canvas,
+Computer SystemsLinks to an external site., by Randal E. Bryant and David R. O’Hallaron
+Thinking in C++: Introduction to Standard C++Links to an external site., 2nd Edition, Volume 1, by Bruce Eckel.
+Thinking in C++: Practical ProgrammingLinks to an external site., 2nd Edition, Volume 2 , Bruce Eckel.
+Useful as a detailed reference on more modern C++ features:
+C++ in One Hour a Day, Teach Yourself, 8th Edition, Siddhartha Rao, 2017.
+Expected Learning Outcomes
+This course continues the development of basic concepts and practices of programming in C from CIS 212 and extends them to C++. The primary topics are familiarity with the Unix environment, programming real-world applications using C and C++.
+
+Upon successful completion of the course, students will be able to:
+
+demonstrate facility using the default Linux shell (bash) including command invocation, IO redirection, file system navigation, environment variables, pipes, and compression and file packaging;
+describe what occurs at each step of the edit-compile-link-execute cycle of program development;
+demonstrate the ability to program moderate-sized programs using the C programming language;
+demonstrate the ability to program moderate-sized programs using the C++ programming language;
+demonstrate the ability to use gdb and valgrind to find and correct programmatic and memory errors in C programs;
+demonstrate the ability to translate high-level algorithms to fully functional and bug-free implementations using C and C++.
+Acquired Skills
+Upon successful completion of the course, students will have acquired the following essential skills:
+
+be able to effectively use the Linux shell in the development and testing of moderate-sized C/C++ programs;
+be able to write and exploit Makefiles in the development of C programs; and
+be able to translate high-level algorithms to C and C++ code and debug them.
+Estimated Student Workload
+Each student will:
+
+read assigned readings in the required textbook;
+attend the lectures;
+attend a weekly lab session, led by one of the graduate teaching assistants, at which you will be introduced to tools and techniques to help you be proficient in developing your projects;
+submit solutions for programming assignments - these are individual efforts, and must represent your own work;
+sit and submit the midterm and the final.
+Workload expectations are 12-13 hours per week, but may vary depending on your coding and debugging skills.
+
+Activity
+
+Total hours
+
+Remarks
+
+Attend lecture
+
+
+30
+
+In-person
+
+Assigned readings
+
+10
+
+Do the assigned readings BEFORE it is covered in lecture
+
+Attend labs
+
+10
+
+In-person
+
+Develop and submit projects
+
+60
+
+Start projects early; take advantage of office hours.
+
+Revision
+
+15
+
+Studying for midterm and final
+
+Total
+
+125
+
+ 
+
+Course Requirements and Grading
+This course will be taught in-person.
+
+Grading will be based on the following criteria:
+
+40%
+
+programming assignments
+
+10%
+
+lab attendance/submission
+
+10%
+
+Quiz
+
+20%
+
+midterm
+
+20%
+
+final
+
+ 
+
+Grading rubric
+A
+
+Excellent performance. Very well prepared to continue on in the major. Solid grasp of the concepts and approaches introduced in CIS 330
+
+B
+
+Solid performance. You have shown a generally good grasp of the concepts and approaches introduced in CIS 330
+
+C
+
+Acceptable performance, but your grasp of the concepts and approaches will require improvement if you choose to continue in the CIS major.
+
+D
+
+Your grasp of concepts and approaches, and/or programming skills, are not yet sufficient to continue in the CIS major.
+
+F
+
+Little or no demonstrated grasp of concepts and approaches introduced in CIS 330, and/or failure to carry out much of the required work.
+
+ 
+
+Grading Scale
+A+ 97-100
+
+B+ 87-89
+
+C+ 77-79
+
+D+ 67-69
+
+F 0.0-59.99
+
+A  93-96
+
+B  83-86
+
+C  73-76
+
+D  63-66
+
+ 
+
+A- 90-92
+
+B- 80-82
+
+C- 70-72
+
+D- 60-62
+
+ 
+
+ 
+
+Schedule
+Date
+
+Topic
+
+Reading
+
+Slides
+
+Assignments
+01 (3/31)
+
+Introduction to Unix
+
+C and Data Structures Chapter 2;
+
+vimLinks to an external site.; grepLinks to an external site.
+
+installing Ubuntu with virtualboxLinks to an external site.
+
+01-unix.pdfDownload 01-unix.pdf	
+02  (4/2)
+
+Introduction to C
+
+C and Data Structures Chapter 3, 4.3, 4.4, 4.7, and 4.8; gitLinks to an external site.; scanfLinks to an external site.; printfLinks to an external site.; git commit messagesLinks to an external site.
+
+02-intro-to-c-and-git.pdfDownload 02-intro-to-c-and-git.pdf	
+03  (4/7)
+
+Memory and Pointers I
+
+C and Data Structures Chapter 4.6; C pointersLinks to an external site.
+
+03-pointers.pdfDownload 03-pointers.pdf	
+04  (4/9)
+
+Memory and Pointers II
+
+05  (4/14) 
+
+Numerical Methods
+
+Matrix Multiplication VisualizationLinks to an external site.	04-spmv.pdfDownload 04-spmv.pdf	
+06  (4/16)
+
+Building code
+
+C and Data Structures Chapter 4.10 - 4.11; libraryLinks to an external site.; MakefileLinks to an external site.	05-building-code.pdfDownload 05-building-code.pdf	
+07  (4/21)
+
+ 
+
+Debugging, breadth-first search (BFS)
+
+ELFLinks to an external site. (part 1 - 2); Links to an external site.gdbLinks to an external site.; valgrindLinks to an external site.; linkingLinks to an external site.	06-debug-bfs.pdfDownload 06-debug-bfs.pdf	
+08 (4/23)
+
+Midterm Review
+
+Sample midterm Download Sample midterm; sample midterm solutionDownload sample midterm solution
+
+09 (4/28)
+
+Midterm
+
+10 (4/30)
+
+ Introduction to C++
+
+Thinking in C++ Chapter 1~4	07-intro-to-cpp.pdfDownload 07-intro-to-cpp.pdf	
+11  (5/5)
+
+Classes and Objects
+
+08-objects.pdfDownload 08-objects.pdf	
+12  (5/7)
+
+Access control; Initialization and cleanup I;
+
+Thinking in C++ Chapter 5~6	09-access-control.pdfDownload 09-access-control.pdf	
+13  (5/12)
+
+ Initialization and cleanup II
+
+10-initialization-cleanup.pdfDownload 10-initialization-cleanup.pdf	
+14  (5/14)
+
+Constants I; Cryptography
+
+Thinking in C++ Chapter 8; ciphersLinks to an external site.
+
+11-constants.pdfDownload 11-constants.pdf
+
+12-encryption.pdfDownload 12-encryption.pdf
+
+15  (5/19)
+
+Constants II
+
+12-constants.pdfDownload 12-constants.pdf
+
+ 
+
+16 (5/21)
+
+Copy constructors; BSTs; Quicksort
+
+Thinking in C++ Chapter 11	
+13-copy-constructors.pdfDownload 13-copy-constructors.pdf
+
+13-bst.pdfDownload 13-bst.pdf
+
+Extra Credit - Parallel ProgrammingDownload Extra Credit - Parallel Programming
+
+17 (5/26)
+
+Memorial Day
+
+18 (5/28)
+
+Namespace	Thinking in C++ Chapter 10	
+ 14-name-control.pdfDownload 14-name-control.pdf
+
+19 (6/2)
+
+Operator Overloading; Red and Black Tree (RBT)
+
+Thinking in C++ Chapter 12	
+15-operator-overloading.pdfDownload 15-operator-overloading.pdf
+
+15-red-black-tree.pdfDownload 15-red-black-tree.pdf
+
+20  (6/4)
+
+Templates,
+
+Final Exam Review
+
+Thinking in C++ Chapter 13	
+16-templates.pdfDownload 16-templates.pdf
+
+Final sample Download Final sample; Final solutionDownload Final solution
+
+10:15 -12:15
+
+(6/11)
+
+Final exam
+
+ 
+
+Course Policies
+Grading Policy
+All assignments will be graded on functionality and aesthetics. Each problem on an assignment will be graded as a whole. Code that does not compile with the “-std=c11” flag for C and “-std=c++14” for C++ (as supported by gcc versions 4.9 or newer) will be assigned 0 points, no exceptions. Functioning code will be examined for proper use of comments, readability (appropriate whitespace and indenting), and understandability (use of intuitive variable names and language constructs). In short, code with proper functionality is expected, but understandable code is equally important.
+
+Late Work
+Late project submissions will not be accepted unless prior arrangements have been made with the instructor at least 24 hours before the due date and time. Under no circumstances will late submissions be accepted after the solution has been discussed in class.
+
+Extra Credit
+There will be opportunities for extra credit in assignments and exams. In addition, lab will contribute 10% of your total grade. You can miss one lab without penalty.
+
+Barriers and Accommodations
+The University of Oregon is working to create inclusive learning environments. Please notify me if there are aspects of the instruction or design of this course that result in disability-related barriers to your participation. You are also encouraged to contact the Accessible Education Center in Oregon Hall, Suite 360 at 541-346-1155 or uoaec@uoregon.edu.
+
+It is particularly important that you inform the instructor in the first week of the quarter if you require accommodation. Delayed notification of such a requirement may make it impossible to provide the accommodation.
+
+Academic Honesty (and Generative AI)
+Discussion of course material and collaboration with other students is encouraged but students must write/type and submit their own solutions. Your code and proofs (if applicable) should never contain sections which are identical to the submission of another student, past or present. Submitted work must be entirely that of the student(s) whose name(s) appear(s) on the submission and not solicited in any way from others (this includes generative AI). Violation of these policies can result in automatic failure of the course.
+
+Any use of code from a source other than the course textbook or the examples from lectures/labs (if it doesn't violate the policy outlined above) needs to be explicitly cited in the comments of your submitted code. Submissions will be analyzed using MossLinks to an external site. when applicable.
+
+See the University of Oregon’s policy on academic misconduct for more information.
+
+See the University of Oregon's policy on the use of Generative AI for more information.
+
+Academic Disruption due to Campus Emergency
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by email and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and./or access alternative assignments. Students are also encouraged to continue the readings and other assignments as outlined in this syllabus or subsequent versions of the syllabus.
+
+Prohibited Discrimination and Harassment Reporting
+I am a designated reporter. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing any form of prohibited discrimination or harassment, including sex or gender-based violence, may seek information and resources at safe.uoregon.edu, or investigations.uoregon.edu or contact the non-confidential Title IX office/Office of Civil Rights Compliance (541-346-3123), or Dean of Students offices (541-346-3216), or call the 24-7 hotline 541-346-SAFE for help. I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.
+
+ 
+
+Staying Safe in Classes
+As the University of Oregon continues in-person instruction, instructors and students play a key role in keeping our community healthy and safe.
+
+ Support: The following resources are available to you as a student. 
+
+University Health Services or call (541) 346-2770
+University Counseling Center or call (541) 346-3277 or (541) 346-3227 (after hrs.)
+Academic Advising or call (541) 346-3211
+Dean of Students or call (541)-346-3216
