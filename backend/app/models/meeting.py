@@ -13,8 +13,12 @@ class Meeting(Base):
 
     course_id: Mapped[int] = mapped_column(ForeignKey("Courses.id"), nullable=False)
 
-    start_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    start_time: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
 
-    end_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    end_time: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
 
     course = relationship("Course", back_populates="meetings")

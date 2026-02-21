@@ -1,11 +1,11 @@
 """
-Parse due dates from syllabus text. Handles common formats: MM/DD, Jan 15, February 15, 2025, etc.
+Parse due dates from syllabus text.
+Handles common formats: MM/DD, Jan 15, February 15, 2025, etc.
 """
 import re
 from datetime import date, datetime
 
 from dateutil import parser as dateutil_parser
-
 
 # Common phrases that mean "no date"
 TBA_PATTERNS = (

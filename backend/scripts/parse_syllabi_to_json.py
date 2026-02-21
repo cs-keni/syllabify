@@ -3,9 +3,7 @@ Parse extracted syllabus text into structured JSON following syllabus-schema-tem
 Reads from extracted/*.txt, writes parsed.json to syllabus/{course}/
 """
 import json
-import os
 import re
-from datetime import datetime
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent

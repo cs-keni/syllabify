@@ -11,7 +11,6 @@ When adding support for new syllabus formats:
   - Run tests: python -m pytest tests/test_syllabus_parser.py -v
 """
 import re
-from pathlib import Path
 
 # Shared month name/abbreviation -> number (used by multiple patterns)
 MONTHS = {
@@ -1472,7 +1471,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_assessment(kind.lower(), kind, cid, "midterm" if "midterm" in kind.lower() else "final", int(pct_str), due)
 
     # "Final Tuesday June 11th @ 8am" or "June 11, 8am"
-    for m in re.finditer(rf"Final\s+(?:exam\s+)?(?:Tuesday\s+)?(?:June|Jun)\s+(\d{{1,2}})(?:st|nd|rd|th)?\s*(?:@\s+)?(\d{{1,2}})?(?::(\d{{2}}))?\s*(am|pm)?", text, re.I):
+    for m in re.finditer(r"Final\s+(?:exam\s+)?(?:Tuesday\s+)?(?:June|Jun)\s+(\d{1,2})(?:st|nd|rd|th)?\s*(?:@\s+)?(\d{1,2})?(?::(\d{2}))?\s*(am|pm)?", text, re.I):
         day_str, h, min, ampm = m.group(1), m.group(2), m.group(3), m.group(4)
         yr = 2024 if "Spring 2024" in text[:500] else 2025
         due_date = f"{yr}-06-11"

@@ -8,7 +8,8 @@ from pathlib import Path
 def extract_text_from_file(file) -> str:
     """
     Extract plain text from a file (PDF, DOCX, or TXT).
-    file: file-like object (e.g. from request.files) or bytes, must have .filename or detect by content.
+    file: file-like object (e.g. from request.files) or bytes,
+    must have .filename or detect by content.
     Returns plaintext string for parsing.
     """
     # Get filename and content
@@ -67,7 +68,9 @@ def _extract_docx(content: bytes) -> str:
             parts.append(para.text)
     for table in doc.tables:
         for row in table.rows:
-            row_text = " | ".join(cell.text.strip() for cell in row.cells if cell.text.strip())
+            row_text = " | ".join(
+                cell.text.strip() for cell in row.cells if cell.text.strip()
+            )
             if row_text:
                 parts.append(row_text)
     return "\n\n".join(parts) if parts else ""

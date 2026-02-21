@@ -17,9 +17,13 @@ class Assignment(Base):
 
     notes: Mapped[str | None] = mapped_column(String(2048), nullable=True)
 
-    start_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    start_date: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
 
-    due_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    due_date: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
 
     course_id: Mapped[int] = mapped_column(ForeignKey("Courses.id"), nullable=False)
 

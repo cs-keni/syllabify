@@ -87,7 +87,9 @@ def create_course(term_id):
         )
         course_id = cur.lastrowid
         conn.commit()
-        return jsonify({"id": course_id, "course_name": course_name, "assignment_count": 0}), 201
+        return jsonify(
+            {"id": course_id, "course_name": course_name, "assignment_count": 0}
+        ), 201
     finally:
         conn.close()
 

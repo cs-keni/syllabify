@@ -13,9 +13,13 @@ class StudyTime(Base):
 
     notes: Mapped[str | None] = mapped_column(String(2048), nullable=True)
 
-    start_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    start_time: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
 
-    end_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    end_time: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
 
     term_id: Mapped[int] = mapped_column(ForeignKey("Terms.id"), nullable=False)
 
