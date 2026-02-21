@@ -27,12 +27,53 @@ CREATE TABLE IF NOT EXISTS Terms (
     INDEX idx_user_dates (user_id, start_date, end_date)
 );
 
--- Assignments belong directly to Terms (Schedules table removed)
+-- Courses belong to a Term
+CREATE TABLE IF NOT EXISTS Courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    term_id INT NOT NULL,
+    CONSTRAINT fk_courses_term
+        FOREIGN KEY (term_id)
+        REFERENCES Terms(id)
+        ON DELETE CASCADE
+);
+
+-- Assignments belong to a Course
 CREATE TABLE IF NOT EXISTS Assignments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     assignment_name VARCHAR(255) NOT NULL,
     work_load INT NOT NULL,
     notes VARCHAR(2048),
+    start_date DATETIME NOT NULL,
+    due_date DATETIME NOT NULL,
+    course_id INT NOT NULL,
+    CONSTRAINT fk_assignments_course
+        FOREIGN KEY (course_id)
+        REFERENCES Courses(id)
+        ON DELETE CASCADE
+);
+
+-- Meetings belong to a Course (recurring class times)
+CREATE TABLE IF NOT EXISTS Meetings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    CONSTRAINT fk_meetings_course
+        FOREIGN KEY (course_id)
+        REFERENCES Courses(id)
+        ON DELETE CASCADE
+);
+
+-- StudyTimes belong to a Term (user-defined available study windows)
+CREATE TABLE IF NOT EXISTS StudyTimes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    notes VARCHAR(2048),
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
     term_id INT NOT NULL,
-    FOREIGN KEY(term_id) REFERENCES Terms(id) ON DELETE CASCADE
+    CONSTRAINT fk_study_times_term
+        FOREIGN KEY (term_id)
+        REFERENCES Terms(id)
+        ON DELETE CASCADE
 );

@@ -134,6 +134,97 @@ export async function activateTerm(termId) {
   return data;
 }
 
+/** GET /api/terms/:termId/courses. Returns { courses: [...] }. */
+export async function getCourses(termId) {
+  const res = await fetch(`${BASE}/api/terms/${termId}/courses`, {
+    headers: headers(true),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch courses');
+  return data;
+}
+
+/** POST /api/terms/:termId/courses. Returns { id, course_name, assignment_count }. */
+export async function createCourse(termId, courseName) {
+  const res = await fetch(`${BASE}/api/terms/${termId}/courses`, {
+    method: 'POST',
+    headers: headers(true),
+    body: JSON.stringify({ course_name: courseName }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to create course');
+  return data;
+}
+
+/** GET /api/courses/:courseId. Returns course with assignments array. */
+export async function getCourse(courseId) {
+  const res = await fetch(`${BASE}/api/courses/${courseId}`, {
+    headers: headers(true),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch course');
+  return data;
+}
+
+/** DELETE /api/courses/:courseId. Returns { ok: true }. */
+export async function deleteCourse(courseId) {
+  const res = await fetch(`${BASE}/api/courses/${courseId}`, {
+    method: 'DELETE',
+    headers: headers(true),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to delete course');
+  return data;
+}
+
+/** POST /api/courses/:courseId/assignments. Bulk-saves parsed assignments. */
+export async function addAssignments(courseId, assignments) {
+  const res = await fetch(`${BASE}/api/courses/${courseId}/assignments`, {
+    method: 'POST',
+    headers: headers(true),
+    body: JSON.stringify({ assignments }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to save assignments');
+  return data;
+}
+
+/** POST /api/syllabus/parse with file or text. Returns { course_name, assignments, ... }. */
+export async function parseSyllabus(fileOrText) {
+  const token =
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('syllabify_token')
+      : null;
+  const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
+
+  let res;
+  if (fileOrText instanceof File) {
+    const form = new FormData();
+    form.append('file', fileOrText);
+    res = await fetch(`${BASE}/api/syllabus/parse`, {
+      method: 'POST',
+      headers: authHeader,
+      body: form,
+      credentials: 'include',
+    });
+  } else {
+    res = await fetch(`${BASE}/api/syllabus/parse`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...authHeader },
+      body: JSON.stringify({ text: fileOrText }),
+      credentials: 'include',
+    });
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Parse failed');
+  return data;
+}
+
 export default {
   login,
   securitySetup,
@@ -144,4 +235,10 @@ export default {
   updateTerm,
   deleteTerm,
   activateTerm,
+  getCourses,
+  createCourse,
+  getCourse,
+  deleteCourse,
+  addAssignments,
+  parseSyllabus,
 };

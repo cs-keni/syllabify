@@ -1,25 +1,31 @@
 /**
- * Upload PDF or paste syllabus text. Simulates parse (real API TODO). Calls onComplete with course name.
+ * Upload PDF or paste syllabus text. Calls real parse API. Calls onComplete with parsed data.
  * DISCLAIMER: Project structure may change. Functions may be added or modified.
  */
 import { useState } from 'react';
+import { parseSyllabus } from '../api/client';
 
-/** Renders upload/paste form. onComplete(courseName) called when parse succeeds. */
+/** Renders upload/paste form. onComplete({ course_name, assignments }) called when parse succeeds. */
 export default function SyllabusUpload({ onComplete }) {
   const [mode, setMode] = useState('file');
   const [file, setFile] = useState(null);
   const [paste, setPaste] = useState('');
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState('');
 
-  /** Handles form submit. Simulates API parse, then calls onComplete. */
-  const handleSubmit = e => {
+  /** Handles form submit. Calls parse API, then calls onComplete with result. */
+  const handleSubmit = async e => {
     e.preventDefault();
     setUploading(true);
-    // Simulate parse; in real app call API
-    setTimeout(() => {
+    setError('');
+    try {
+      const data = await parseSyllabus(mode === 'file' ? file : paste.trim());
+      onComplete(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setUploading(false);
-      onComplete('CS 422');
-    }, 800);
+    }
   };
 
   const canSubmit = mode === 'file' ? file : paste.trim().length > 0;
@@ -78,6 +84,8 @@ export default function SyllabusUpload({ onComplete }) {
           />
         </div>
       )}
+
+      {error && <p className="text-sm text-red-500">{error}</p>}
 
       <div className="flex justify-end">
         <button

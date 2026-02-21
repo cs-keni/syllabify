@@ -10,6 +10,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Upload from './pages/Upload';
+import Course from './pages/Course';
 import Schedule from './pages/Schedule';
 import Preferences from './pages/Preferences';
 import Login from './pages/Login';
@@ -48,6 +49,7 @@ function AppRoutes() {
       <Route path="/app" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="upload" element={<Upload />} />
+        <Route path="courses/:courseId" element={<Course />} />
         <Route path="schedule" element={<Schedule />} />
         <Route path="preferences" element={<Preferences />} />
         <Route path="*" element={<Navigate to="/app" replace />} />

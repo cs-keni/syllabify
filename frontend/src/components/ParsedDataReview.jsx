@@ -45,6 +45,8 @@ export default function ParsedDataReview({
   assignments,
   onAssignmentsChange,
   onConfirm,
+  saving = false,
+  saveError = '',
 }) {
   /** Updates one assignment field and notifies parent via onAssignmentsChange. */
   const updateAssignment = (id, field, value) => {
@@ -108,13 +110,15 @@ export default function ParsedDataReview({
           </tbody>
         </table>
       </div>
+      {saveError && <p className="text-sm text-red-500">{saveError}</p>}
       <div className="flex justify-end">
         <button
           type="button"
           onClick={onConfirm}
-          className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+          disabled={saving}
+          className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50 transition-colors duration-200"
         >
-          Confirm and continue
+          {saving ? 'Saving…' : 'Confirm and continue'}
         </button>
       </div>
     </div>

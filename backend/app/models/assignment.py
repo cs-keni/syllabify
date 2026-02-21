@@ -1,11 +1,6 @@
-# Assignment ORM model.
-# TODO: SQLAlchemy model (3NF). id, course_id, title, due_date, est_minutes,
-#       type (exam/homework), etc. Relationships to course.
-#
-# DISCLAIMER: Project structure may change. Fields/relationships may be added or
-# modified. This describes the general idea.
+from datetime import datetime
 
-from sqlalchemy import ForeignKey, Integer, String
+from sqlalchemy import DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..db.base import Base
@@ -22,5 +17,10 @@ class Assignment(Base):
 
     notes: Mapped[str | None] = mapped_column(String(2048), nullable=True)
 
-    term_id: Mapped[int] = mapped_column(ForeignKey("Terms.id"), nullable=False)
-    term = relationship("Term", back_populates="assignments")
+    start_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+    due_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+    course_id: Mapped[int] = mapped_column(ForeignKey("Courses.id"), nullable=False)
+
+    course = relationship("Course", back_populates="assignments")
