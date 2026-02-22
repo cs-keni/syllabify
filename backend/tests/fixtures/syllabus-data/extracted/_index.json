@@ -3,6 +3,22 @@
     "file": "ASTR 121 Syllabus (Winter 2024).pdf",
     "ok": true
   },
+  "BA241-Sevak": {
+    "file": "BA 241 Fall 2025 syllabus-Sevak.doc",
+    "ok": false
+  },
+  "BA242-Sevak": {
+    "file": "BA242.2 Fall Syllabusfinalrev-Sevak.doc",
+    "ok": false
+  },
+  "BA364-Sevak": {
+    "file": "BA 364Y_ International Business and Society-Sevak.pdf",
+    "ok": true
+  },
+  "CAS101-Sevak": {
+    "file": "CAS101N_Spring 2025 Syllabus-Sevak.pdf",
+    "ok": true
+  },
   "COLT101": {
     "file": "COLT 101 S 2023 - STUDENT SYLLABUS - Literature as Aesthesis .pdf",
     "ok": true
@@ -95,6 +111,10 @@
     "file": "DSCI101_Syllabus_Winter2025.docx",
     "ok": true
   },
+  "ENGL221-Sevak": {
+    "file": "ENGL221 Syllabus Spring 25-Sevak.docx",
+    "ok": true
+  },
   "FIN281": {
     "file": "fin281syllabus S24 (1).pdf",
     "ok": true
@@ -151,8 +171,16 @@
     "file": "Math425_525-Syllabus.pdf",
     "ok": true
   },
+  "MKTG342-Sevak": {
+    "file": "Syllabus_Marketing_Research_Fall2023_Aybat-Sevak.docx",
+    "ok": true
+  },
   "PERS271": {
     "file": "pers271 syllabus.txt",
+    "ok": true
+  },
+  "SCM445-Sevak": {
+    "file": "SCM 445 Syllabus Spring-Sevak.pdf",
     "ok": true
   },
   "WR320": {
