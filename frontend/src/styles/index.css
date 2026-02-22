@@ -19,9 +19,9 @@
   --color-ink: #374151;
   --color-ink-muted: #6b7280;
   --color-ink-subtle: #9ca3af;
-  --color-accent: #0F8A4C;
+  --color-accent: #0f8a4c;
   --color-accent-hover: #094728;
-  --color-accent-muted: #F5C30F;
+  --color-accent-muted: #f5c30f;
   --color-border: #e5e7eb;
   --color-border-subtle: #f3f4f6;
 }
@@ -30,11 +30,11 @@
   --color-surface: #111827;
   --color-surface-elevated: #1f2937;
   --color-surface-muted: #374151;
-  --color-ink: #0F8A4C;
+  --color-ink: #0f8a4c;
   --color-ink-muted: #d1d5db;
   --color-ink-subtle: #9ca3af;
-  --color-accent: #F5C30F;
-  --color-accent-hover: #0F8A4C;
+  --color-accent: #f5c30f;
+  --color-accent-hover: #0f8a4c;
   --color-accent-muted: #094728;
   --color-border: #374151;
   --color-border-subtle: #1f2937;

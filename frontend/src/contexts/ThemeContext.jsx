@@ -24,12 +24,12 @@ export function ThemeProvider({ children }) {
     localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
-  const setTheme = (value) => {
+  const setTheme = value => {
     setThemeState(value === 'dark' ? 'dark' : 'light');
   };
 
   const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setThemeState(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   return (

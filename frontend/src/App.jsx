@@ -36,8 +36,14 @@ function AppRoutes() {
       <Route path="/security-setup" element={<SecuritySetup />} />
       {/* Redirect legacy paths (old nav used /upload, /schedule, /preferences) */}
       <Route path="/upload" element={<Navigate to="/app/upload" replace />} />
-      <Route path="/schedule" element={<Navigate to="/app/schedule" replace />} />
-      <Route path="/preferences" element={<Navigate to="/app/preferences" replace />} />
+      <Route
+        path="/schedule"
+        element={<Navigate to="/app/schedule" replace />}
+      />
+      <Route
+        path="/preferences"
+        element={<Navigate to="/app/preferences" replace />}
+      />
       <Route path="/app" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="upload" element={<Upload />} />

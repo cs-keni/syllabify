@@ -36,7 +36,12 @@ export default function Layout() {
   const linkRefs = useRef([]);
   const prevIndexRef = useRef(null);
 
-  const [indicator, setIndicator] = useState({ left: 0, top: 0, width: 0, height: 0 });
+  const [indicator, setIndicator] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
   const [transition, setTransition] = useState('none');
   const [mounted, setMounted] = useState(false);
 
@@ -60,7 +65,9 @@ export default function Layout() {
     // Distance-based: longer = more duration, stronger bounce
     const duration = 150 + distance * 50;
     const easing = getEasing(distance);
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isReduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
     const transitionValue = isReduced
       ? 'none'
       : `left ${duration}ms ${easing}, width ${duration}ms ${easing}, top ${duration}ms ${easing}, height ${duration}ms ${easing}`;
@@ -129,7 +136,9 @@ export default function Layout() {
               {navItems.map(({ to, label, end }, i) => (
                 <NavLink
                   key={to}
-                  ref={el => { linkRefs.current[i] = el; }}
+                  ref={el => {
+                    linkRefs.current[i] = el;
+                  }}
                   to={to}
                   end={end}
                   className={({ isActive }) =>

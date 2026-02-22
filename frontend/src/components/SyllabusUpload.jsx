@@ -72,29 +72,29 @@ export default function SyllabusUpload({ onComplete, token }) {
 
       {mode === 'file' && (
         <div className="animate-fade-in">
-        <label className="block rounded-input border-2 border-dashed border-border bg-surface-muted p-8 text-center cursor-pointer hover:border-accent/40 hover:scale-[1.01] transition-all duration-200">
-          <input
-            type="file"
-            accept=".pdf,.docx,.txt"
-            className="hidden"
-            onChange={e => setFile(e.target.files?.[0] || null)}
-          />
-          <span className="text-sm text-ink-muted">
-            {file ? file.name : 'Drop PDF, DOCX, or TXT — or click to browse'}
-          </span>
-        </label>
+          <label className="block rounded-input border-2 border-dashed border-border bg-surface-muted p-8 text-center cursor-pointer hover:border-accent/40 hover:scale-[1.01] transition-all duration-200">
+            <input
+              type="file"
+              accept=".pdf,.docx,.txt"
+              className="hidden"
+              onChange={e => setFile(e.target.files?.[0] || null)}
+            />
+            <span className="text-sm text-ink-muted">
+              {file ? file.name : 'Drop PDF, DOCX, or TXT — or click to browse'}
+            </span>
+          </label>
         </div>
       )}
 
       {mode === 'paste' && (
         <div className="animate-fade-in">
-        <textarea
-          value={paste}
-          onChange={e => setPaste(e.target.value)}
-          placeholder="Paste syllabus text here…"
-          rows={8}
-          className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent           resize-y"
-        />
+          <textarea
+            value={paste}
+            onChange={e => setPaste(e.target.value)}
+            placeholder="Paste syllabus text here…"
+            rows={8}
+            className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent           resize-y"
+          />
         </div>
       )}
 

@@ -48,7 +48,7 @@ export default function Dashboard() {
     }
   }, [token]);
 
-  const handleDeleteCourse = async (id) => {
+  const handleDeleteCourse = async id => {
     if (!token) return;
     try {
       await deleteCourse(token, id);
@@ -86,8 +86,8 @@ export default function Dashboard() {
           >
             <p className="text-sm text-ink mb-3">
               These are placeholder values to show an example of what the page
-              might look like. They will be replaced with real data once we have a
-              working backend.
+              might look like. They will be replaced with real data once we have
+              a working backend.
             </p>
             <button
               type="button"
