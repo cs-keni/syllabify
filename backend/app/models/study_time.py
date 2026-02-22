@@ -6,9 +6,12 @@
 # modified. This describes the general idea.
 
 from datetime import datetime
-from sqlalchemy import Integer, String, ForeignKey, DateTime
+
+from sqlalchemy import DateTime, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from ..db.base import Base
+
 
 class StudyTime(Base):
     __tablename__ = "StudyTimes"

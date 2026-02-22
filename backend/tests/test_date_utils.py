@@ -1,8 +1,6 @@
 """Tests for date_utils: parse_due_date."""
 from datetime import date
 
-import pytest
-
 from app.utils.date_utils import parse_due_date
 
 

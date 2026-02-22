@@ -6,7 +6,6 @@ from datetime import date, datetime
 
 from dateutil import parser as dateutil_parser
 
-
 # Common phrases that mean "no date"
 TBA_PATTERNS = (
     r"\bTBA\b",

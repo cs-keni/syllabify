@@ -3,7 +3,7 @@ Syllabus API: POST /parse for file upload or pasted text.
 Returns course_name, assignments, confidence, raw_text.
 Parse does NOT persist; use POST /api/courses after review.
 """
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token
 from app.services.parsing_service import parse_file, parse_text
