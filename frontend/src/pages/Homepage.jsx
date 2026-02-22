@@ -24,7 +24,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-1">
               <Link
                 to="/login"
-                className="text-center rounded-button bg-accent px-3 py-1.5 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200"
+                className="text-center rounded-button bg-[#0F8A4C] px-3 py-1.5 text-sm font-medium text-white no-underline hover:bg-[#094728] transition-colors duration-200"
               >
                 Log in
               </Link>
@@ -51,7 +51,7 @@ export default function Home() {
               <ThemeToggle />
               <Link
                 to="/login"
-                className="rounded-button bg-accent px-4 py-2.5 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200 animate-fade-in [animation-delay:100ms]"
+                className="rounded-button bg-[#0F8A4C] px-4 py-2.5 text-sm font-medium text-white no-underline hover:bg-[#094728] transition-colors duration-200 animate-fade-in [animation-delay:100ms]"
               >
                 Log in
               </Link>
