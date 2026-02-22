@@ -6,29 +6,58 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
-          <div className="relative flex items-center justify-between">
-            <div className="text-lg font-semibold tracking-tight text-ink animate-fade-in">
-              Syllabify
-            </div>
-            <div className="absolute left-1/2 translate-y-1.5 -translate-x-1/2">
-              <img
-                src={logo}
-                alt="Syllabify"
-                className="h-[256px] w-[256px] object-contain animate-scale-in"
-              />
-            </div>
-            <div className="flex items-center gap-2">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
+          <div className="sm:hidden space-y-1.5">
+            <div className="relative flex items-center justify-between gap-1.5">
+              <div className="text-base font-semibold tracking-tight text-ink animate-fade-in">
+                Syllabify
+              </div>
               <ThemeToggle />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+                <img
+                  src={logo}
+                  alt="Syllabify"
+                  className="h-40 w-40 object-contain animate-scale-in"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-1">
               <Link
                 to="/login"
-                className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200 animate-fade-in [animation-delay:100ms]"
+                className="text-center rounded-button bg-accent px-3 py-1.5 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200"
               >
                 Log in
               </Link>
               <button
                 type="button"
-                className="rounded-button border border-border bg-surface px-4 py-2 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200 animate-fade-in [animation-delay:400ms]"
+                className="rounded-button border border-border bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200"
+              >
+                Sign up
+              </button>
+            </div>
+          </div>
+          <div className="relative hidden sm:flex items-center justify-between gap-3">
+            <div className="text-lg font-semibold tracking-tight text-ink animate-fade-in">
+              Syllabify
+            </div>
+            <div className="pointer-events-none absolute left-1/2 -translate-x-1/2">
+              <img
+                src={logo}
+                alt="Syllabify"
+                className="h-28 w-28 md:h-40 md:w-40 lg:h-48 lg:w-48 object-contain animate-scale-in"
+              />
+            </div>
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <ThemeToggle />
+              <Link
+                to="/login"
+                className="rounded-button bg-accent px-4 py-2.5 text-sm font-medium text-white no-underline hover:bg-accent-hover transition-colors duration-200 animate-fade-in [animation-delay:100ms]"
+              >
+                Log in
+              </Link>
+              <button
+                type="button"
+                className="rounded-button border border-border bg-surface px-4 py-2.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200 animate-fade-in [animation-delay:400ms]"
               >
                 Sign up
               </button>
@@ -37,8 +66,8 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 pt-10">
-        <section className="rounded-3xl border border-border bg-surface-elevated p-8 sm:p-12 shadow-card">
+      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 pt-8 sm:pt-10">
+        <section className="rounded-3xl border border-border bg-surface-elevated p-6 sm:p-12 shadow-card">
           <p className="text-sm uppercase tracking-[0.2em] text-accent animate-fade-in-up">
             Academic planning, made simple
           </p>
