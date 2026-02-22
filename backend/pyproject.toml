@@ -6,7 +6,7 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
-ignore = []
+ignore = ["E501"]  # Line too long — syllabus_parser has many long regex lines
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

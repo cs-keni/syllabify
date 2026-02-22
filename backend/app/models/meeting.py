@@ -1,8 +1,11 @@
 
 from datetime import datetime
+
 from sqlalchemy import DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from ..db.base import Base
+
 
 class Meeting(Base):
     __tablename__ = "Meetings"

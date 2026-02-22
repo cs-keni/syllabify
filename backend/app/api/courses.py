@@ -4,7 +4,7 @@ Courses API: GET list, POST create (save after review), DELETE.
 import os
 
 import mysql.connector
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token
 

@@ -92,7 +92,11 @@ export async function parseSyllabus(token, { file, text, mode = 'rule' }) {
  * Returns { courses: [{ id, name, assignment_count }] }.
  */
 export async function getCourses(token) {
-  const t = token ?? (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
+  const t =
+    token ??
+    (typeof localStorage !== 'undefined'
+      ? localStorage.getItem('syllabify_token')
+      : null);
   if (!t) throw new Error('Login required');
   const res = await fetch(`${BASE}/api/courses`, {
     headers: headers(true, t),
@@ -109,7 +113,11 @@ export async function getCourses(token) {
  * Returns { id, course_name }.
  */
 export async function saveCourse(token, { course_name, assignments }) {
-  const t = token ?? (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
+  const t =
+    token ??
+    (typeof localStorage !== 'undefined'
+      ? localStorage.getItem('syllabify_token')
+      : null);
   if (!t) throw new Error('Login required');
   const body = {
     course_name: course_name || 'Course',
@@ -134,7 +142,11 @@ export async function saveCourse(token, { course_name, assignments }) {
  * DELETE /api/courses/:id with JWT.
  */
 export async function deleteCourse(token, courseId) {
-  const t = token ?? (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
+  const t =
+    token ??
+    (typeof localStorage !== 'undefined'
+      ? localStorage.getItem('syllabify_token')
+      : null);
   if (!t) throw new Error('Login required');
   const res = await fetch(`${BASE}/api/courses/${courseId}`, {
     method: 'DELETE',
