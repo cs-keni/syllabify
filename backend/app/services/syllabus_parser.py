@@ -756,8 +756,13 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         yr = int(yr_str) if yr_str else 2023
         mon_num = MONTHS.get((mon or "").lower()[:3], 1)
         due = f"{yr}-{mon_num:02d}-{int(day):02d}"
-        if h: hr = int(h); hr = hr + 12 if (ampm or "").lower() == "pm" and hr < 12 else hr; due += f"T{hr:02d}:{min or '59'}:00"
-        else: due += "T23:59:00"
+        if h:
+            hr = int(h)
+            if (ampm or "").lower() == "pm" and hr < 12:
+                hr += 12
+            due += f"T{hr:02d}:{min or '59'}:00"
+        else:
+            due += "T23:59:00"
         cid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_")
         add_category(cid, title, None)
         add_assessment(cid + "_1", title, cid, "assignment", None, due)
@@ -1132,7 +1137,8 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             continue
         add_category(cid, title, pct)
         atype = "quiz" if "quiz" in name.lower() else "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "assignment"
-        if "lab" in name.lower(): atype = "participation" if "attend" in name.lower() else "assignment"
+        if "lab" in name.lower():
+            atype = "participation" if "attend" in name.lower() else "assignment"
         add_assessment(f"{cid}_1", title, cid, atype, pct)
 
     # "midterm (20%)", "final (20%)", "Discussions and Assignments (20% of total)", "Labs and quizzes (40%)"
@@ -1141,7 +1147,8 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         cid = re.sub(r"\s+", "_", name.lower())[:30].rstrip("_")
         title = "Midterm" if name.lower() == "midterm" else "Final" if name.lower() == "final" else name
         atype = "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "assignment" if "discussion" in name.lower() else "quiz"
-        if "lab" in name.lower(): atype = "assignment"
+        if "lab" in name.lower():
+            atype = "assignment"
         add_category(cid, title, pct)
         add_assessment(cid + "_1", title, cid, atype, pct)
 
@@ -1163,7 +1170,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
     final_due = None
     for _m in re.finditer(r"Final\s*:\s*(\w+)\s+(\d{1,2}),?\s*(?:\w+,?\s*)?(\d{1,2})[\:.](\d{2})\s*(?:AM|am)\s*[-–]\s*(\d{1,2})[\:.](\d{2})\s*(?:AM|am)", text, re.I):
         mon, day = _m.group(1), int(_m.group(2))
-        h1, m1, h2, m2 = int(_m.group(3)), int(_m.group(4)), int(_m.group(5)), int(_m.group(6))
+        h1, m1 = int(_m.group(3)), int(_m.group(4))
         mon_num = MONTHS.get((mon or "").lower()[:3])
         if mon_num:
             final_due = f"{yr}-{mon_num:02d}-{day:02d}T{h1:02d}:{m1:02d}:00"
@@ -1206,10 +1213,14 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_/")
         add_category(cid, name, pct)
         atype = "assignment"
-        if "exam" in name.lower() or "midterm" in name.lower(): atype = "midterm" if "midterm" in name.lower() else "final"
-        elif "quiz" in name.lower(): atype = "quiz"
-        elif "project" in name.lower(): atype = "project"
-        elif "lab" in name.lower(): atype = "participation" if "attend" in name.lower() else "assignment"
+        if "exam" in name.lower() or "midterm" in name.lower():
+            atype = "midterm" if "midterm" in name.lower() else "final"
+        elif "quiz" in name.lower():
+            atype = "quiz"
+        elif "project" in name.lower():
+            atype = "project"
+        elif "lab" in name.lower():
+            atype = "participation" if "attend" in name.lower() else "assignment"
         add_assessment(f"{cid}_1", name, cid, atype, pct)
 
     # Numbered evaluation: "(1) Weekly Labs -- 60%", "(2) Exams – 40% (2 total, each worth 20%)"

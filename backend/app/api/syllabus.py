@@ -23,10 +23,9 @@ def parse():
     if not payload:
         return jsonify({"error": "unauthorized"}), 401
     try:
-        user_id = int(payload.get("sub"))
+        int(payload.get("sub"))  # validate JWT has numeric sub
     except (TypeError, ValueError):
         return jsonify({"error": "unauthorized"}), 401
-    # user_id validated but not used here; save endpoint uses it
 
     text = None
     file = None
