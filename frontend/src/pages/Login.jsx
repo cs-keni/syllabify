@@ -5,7 +5,7 @@
 import { useState } from 'react';
 import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import logo from '../assets/syllabify-logo.jpg';
+import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
 
 /** Login form. Uses AuthContext.login, redirects based on security_setup_done. */
@@ -41,26 +41,50 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
-          <div className="relative flex items-center justify-between">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
+          <div className="sm:hidden space-y-1.5">
+            <div className="relative flex items-center justify-between gap-1.5">
+              <Link
+                to="/"
+                className="text-base font-semibold tracking-tight text-ink no-underline hover:text-accent"
+              >
+                Syllabify
+              </Link>
+              <ThemeToggle />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+                <img
+                  src={logo}
+                  alt="Syllabify"
+                  className="h-40 w-40 object-contain animate-scale-in"
+                />
+              </div>
+            </div>
+            <Link
+              to="/"
+              className="block text-center rounded-button border border-border bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted"
+            >
+              Back to home
+            </Link>
+          </div>
+          <div className="relative hidden sm:flex items-center justify-between gap-3">
             <Link
               to="/"
               className="text-lg font-semibold tracking-tight text-ink no-underline hover:text-accent"
             >
               Syllabify
             </Link>
-            <div className="absolute left-1/2 translate-y-1.5 -translate-x-1/2">
+            <div className="pointer-events-none absolute left-1/2 -translate-x-1/2">
               <img
                 src={logo}
                 alt="Syllabify"
-                className="h-[256px] w-[256px] object-contain animate-scale-in"
+                className="h-28 w-28 md:h-40 md:w-40 lg:h-48 lg:w-48 object-contain animate-scale-in"
               />
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
               <Link
                 to="/"
-                className="rounded-button border border-border bg-surface px-4 py-2 text-sm font-medium text-ink no-underline hover:bg-surface-muted"
+                className="rounded-button border border-border bg-surface px-4 py-2.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted"
               >
                 Back to home
               </Link>
@@ -69,7 +93,7 @@ export default function Login() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 pt-10">
+      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 pt-8 sm:pt-10">
         <div className="mx-auto max-w-md">
           <div className="text-center animate-fade-in">
             <p className="text-sm uppercase tracking-[0.2em] text-accent">
@@ -85,7 +109,7 @@ export default function Login() {
 
           <form
             onSubmit={handleSubmit}
-            className="mt-8 rounded-3xl border border-border bg-surface-elevated p-6 sm:p-8 shadow-card space-y-4 animate-fade-in-up [animation-delay:200ms]"
+            className="mt-6 sm:mt-8 rounded-3xl border border-border bg-surface-elevated p-5 sm:p-8 shadow-card space-y-4 animate-fade-in-up [animation-delay:200ms]"
           >
             {error && (
               <p className="text-sm text-red-700 bg-red-50 dark:text-red-300 dark:bg-red-900/30 border border-red-200 dark:border-red-800/60 rounded-button px-3 py-2 animate-slide-down">
@@ -131,7 +155,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-button bg-accent py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-60 transition-colors duration-200"
+              className="w-full rounded-button bg-[#0F8A4C] py-2.5 text-sm font-medium text-white hover:bg-[#094728] disabled:opacity-60 transition-colors duration-200"
             >
               {submitting ? 'Logging in...' : 'Log in'}
             </button>

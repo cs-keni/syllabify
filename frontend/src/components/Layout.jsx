@@ -109,59 +109,59 @@ export default function Layout() {
     <div className="min-h-screen flex flex-col bg-surface">
       <header className="sticky top-0 z-10 bg-surface-elevated border-b border-border shadow-card">
         <nav className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-14 items-center justify-between">
+          <div className="flex min-h-14 flex-wrap items-center gap-2 py-2 md:flex-nowrap md:justify-between md:py-0">
             <NavLink
               to="/"
-              className="text-lg font-semibold text-ink no-underline hover:text-accent transition-colors duration-200"
+              className="order-1 text-lg font-semibold text-ink no-underline hover:text-accent transition-colors duration-200"
             >
               Syllabify
             </NavLink>
-            <div className="flex items-center gap-1">
+            <div
+              ref={navContainerRef}
+              className="relative order-3 flex basis-full items-center gap-1 overflow-x-auto pb-1 md:order-2 md:basis-auto md:pb-0"
+            >
+              {mounted && (
+                <div
+                  className="absolute rounded-button bg-accent-muted -z-[1]"
+                  style={{
+                    left: indicator.left,
+                    top: indicator.top,
+                    width: indicator.width,
+                    height: indicator.height,
+                    transition,
+                  }}
+                  aria-hidden
+                />
+              )}
+              {navItems.map(({ to, label, end }, i) => (
+                <NavLink
+                  key={to}
+                  ref={el => {
+                    linkRefs.current[i] = el;
+                  }}
+                  to={to}
+                  end={end}
+                  className={({ isActive }) =>
+                    `whitespace-nowrap rounded-button px-3 py-2.5 text-sm font-medium no-underline transition-colors duration-200 ${
+                      isActive
+                        ? 'text-accent'
+                        : 'text-ink-muted hover:bg-surface-muted hover:text-ink'
+                    }`
+                  }
+                >
+                  {label}
+                </NavLink>
+              ))}
+            </div>
+            <div className="order-2 ml-auto flex items-center gap-1 md:order-3 md:ml-0">
               <ThemeToggle />
-              <div
-                ref={navContainerRef}
-                className="relative flex items-center gap-1"
-              >
-                {mounted && (
-                  <div
-                    className="absolute rounded-button bg-accent-muted -z-[1]"
-                    style={{
-                      left: indicator.left,
-                      top: indicator.top,
-                      width: indicator.width,
-                      height: indicator.height,
-                      transition,
-                    }}
-                    aria-hidden
-                  />
-                )}
-                {navItems.map(({ to, label, end }, i) => (
-                  <NavLink
-                    key={to}
-                    ref={el => {
-                      linkRefs.current[i] = el;
-                    }}
-                    to={to}
-                    end={end}
-                    className={({ isActive }) =>
-                      `rounded-button px-3 py-2 text-sm font-medium no-underline transition-colors duration-200 ${
-                        isActive
-                          ? 'text-accent'
-                          : 'text-ink-muted hover:bg-surface-muted hover:text-ink'
-                      }`
-                    }
-                  >
-                    {label}
-                  </NavLink>
-                ))}
-              </div>
-              <span className="ml-2 text-sm text-ink-muted px-2">
+              <span className="hidden sm:inline ml-1 text-sm text-ink-muted px-2">
                 {user.username}
               </span>
               <button
                 type="button"
                 onClick={logout}
-                className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+                className="rounded-button bg-accent px-3 py-2.5 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
               >
                 Log out
               </button>
@@ -169,7 +169,7 @@ export default function Layout() {
           </div>
         </nav>
       </header>
-      <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <Outlet />
       </main>
     </div>
