@@ -42,12 +42,6 @@ export default function Layout() {
     width: 0,
     height: 0,
   });
-  const [indicator, setIndicator] = useState({
-    left: 0,
-    top: 0,
-    width: 0,
-    height: 0,
-  });
   const [transition, setTransition] = useState('none');
   const [mounted, setMounted] = useState(false);
 
@@ -71,9 +65,6 @@ export default function Layout() {
     // Distance-based: longer = more duration, stronger bounce
     const duration = 150 + distance * 50;
     const easing = getEasing(distance);
-    const isReduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
     const isReduced = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
