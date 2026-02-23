@@ -155,43 +155,6 @@ export default function Layout() {
             </div>
             <div className="order-2 ml-auto flex items-center gap-1 md:order-3 md:ml-0">
               <ThemeToggle />
-              <div
-                ref={navContainerRef}
-                className="relative flex items-center gap-1"
-              >
-                {mounted && (
-                  <div
-                    className="absolute rounded-button bg-accent-muted -z-[1]"
-                    style={{
-                      left: indicator.left,
-                      top: indicator.top,
-                      width: indicator.width,
-                      height: indicator.height,
-                      transition,
-                    }}
-                    aria-hidden
-                  />
-                )}
-                {navItems.map(({ to, label, end }, i) => (
-                  <NavLink
-                    key={to}
-                    ref={el => {
-                      linkRefs.current[i] = el;
-                    }}
-                    to={to}
-                    end={end}
-                    className={({ isActive }) =>
-                      `rounded-button px-3 py-2 text-sm font-medium no-underline transition-colors duration-200 ${
-                        isActive
-                          ? 'text-accent'
-                          : 'text-ink-muted hover:bg-surface-muted hover:text-ink'
-                      }`
-                    }
-                  >
-                    {label}
-                  </NavLink>
-                ))}
-              </div>
               <span className="ml-2 text-sm text-ink-muted px-2">
                 {user.username}
               </span>
