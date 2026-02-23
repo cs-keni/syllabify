@@ -88,74 +88,42 @@ export async function parseSyllabus(token, { file, text, mode = 'rule' }) {
 }
 
 /**
- * GET /api/courses with JWT.
- * Returns { courses: [{ id, name, assignment_count }] }.
- */
-export async function getCourses(token) {
-  const t =
-    token ??
-    (typeof localStorage !== 'undefined'
-      ? localStorage.getItem('syllabify_token')
-      : null);
-  if (!t) throw new Error('Login required');
-  const res = await fetch(`${BASE}/api/courses`, {
-    headers: headers(true, t),
-    credentials: 'include',
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to load courses');
-  return data;
-}
-
-/**
- * POST /api/courses with JWT. Save course + assignments after review.
+ * Create course under active term and add assignments.
  * Body: { course_name, assignments: [{ name, due?, hours? }] }.
  * Returns { id, course_name }.
+ * termId optional: if omitted, fetches terms and uses the active one.
  */
-export async function saveCourse(token, { course_name, assignments }) {
-  const t =
-    token ??
-    (typeof localStorage !== 'undefined'
-      ? localStorage.getItem('syllabify_token')
-      : null);
-  if (!t) throw new Error('Login required');
-  const body = {
-    course_name: course_name || 'Course',
-    assignments: (assignments || []).map(a => ({
-      name: a.name,
-      due: a.due || null,
-      hours: a.hours ?? 3,
-    })),
-  };
-  const res = await fetch(`${BASE}/api/courses`, {
-    method: 'POST',
-    headers: headers(true, t),
-    body: JSON.stringify(body),
-    credentials: 'include',
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to save course');
-  return data;
-}
-
-/**
- * DELETE /api/courses/:id with JWT.
- */
-export async function deleteCourse(token, courseId) {
-  const t =
-    token ??
-    (typeof localStorage !== 'undefined'
-      ? localStorage.getItem('syllabify_token')
-      : null);
-  if (!t) throw new Error('Login required');
-  const res = await fetch(`${BASE}/api/courses/${courseId}`, {
-    method: 'DELETE',
-    headers: headers(true, t),
-    credentials: 'include',
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to delete course');
-  return data;
+export async function saveCourse(token, termIdOrPayload, maybePayload) {
+  let termId;
+  let payload;
+  if (typeof termIdOrPayload === 'object') {
+    payload = termIdOrPayload;
+    const termsRes = await fetch(`${BASE}/api/terms`, {
+      headers: headers(true),
+      credentials: 'include',
+    });
+    const termsData = await termsRes.json().catch(() => ({}));
+    if (!termsRes.ok)
+      throw new Error(termsData.error || 'Failed to fetch terms');
+    const terms = termsData.terms || [];
+    const active = terms.find(t => t.is_active) || terms[0];
+    if (!active) throw new Error('No term found. Create a term first.');
+    termId = active.id;
+  } else {
+    termId = termIdOrPayload;
+    payload = maybePayload;
+  }
+  const { course_name, assignments } = payload || {};
+  const course = await createCourse(termId, course_name || 'Course');
+  const items = (assignments || []).map(a => ({
+    name: a.name,
+    due: a.due || null,
+    hours: a.hours ?? 3,
+  }));
+  if (items.length > 0) {
+    await addAssignments(course.id, items);
+  }
+  return { id: course.id, course_name: course.course_name || course_name };
 }
 
 /** GET /api/auth/me with JWT. Returns { username, security_setup_done } or null if invalid. */
@@ -304,37 +272,6 @@ export async function addAssignments(courseId, assignments) {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to save assignments');
-  return data;
-}
-
-/** POST /api/syllabus/parse with file or text. Returns { course_name, assignments, ... }. */
-export async function parseSyllabus(fileOrText) {
-  const token =
-    typeof localStorage !== 'undefined'
-      ? localStorage.getItem('syllabify_token')
-      : null;
-  const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
-
-  let res;
-  if (fileOrText instanceof File) {
-    const form = new FormData();
-    form.append('file', fileOrText);
-    res = await fetch(`${BASE}/api/syllabus/parse`, {
-      method: 'POST',
-      headers: authHeader,
-      body: form,
-      credentials: 'include',
-    });
-  } else {
-    res = await fetch(`${BASE}/api/syllabus/parse`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...authHeader },
-      body: JSON.stringify({ text: fileOrText }),
-      credentials: 'include',
-    });
-  }
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Parse failed');
   return data;
 }
 

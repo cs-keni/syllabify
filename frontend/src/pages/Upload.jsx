@@ -5,9 +5,10 @@
  */
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import SyllabusUpload from '../components/SyllabusUpload';
 import ParsedDataReview from '../components/ParsedDataReview';
-import { addAssignments } from '../api/client';
+import { addAssignments, saveCourse } from '../api/client';
 
 const STEPS = [
   { id: 'upload', label: 'Upload' },
@@ -18,6 +19,11 @@ const STEPS = [
 /** Step-based upload flow. Manages step state, parsed course name, and assignments. */
 export default function Upload() {
   const { token } = useAuth();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const [createdCourseId, setCreatedCourseId] = useState(null);
+  const courseId = state?.courseId ?? createdCourseId;
+  const initialCourseName = state?.courseName ?? '';
   const [step, setStep] = useState(0);
   const [assignments, setAssignments] = useState([]);
   const [parsedCourseName, setParsedCourseName] = useState('');
@@ -112,10 +118,11 @@ export default function Upload() {
                 setSaveError(null);
                 setSaving(true);
                 try {
-                  await saveCourse(token, {
+                  const result = await saveCourse(token, {
                     course_name: parsedCourseName || 'Course',
                     assignments,
                   });
+                  if (result?.id) setCreatedCourseId(result.id);
                   setStep(2);
                 } catch (err) {
                   setSaveError(err.message || 'Failed to save');

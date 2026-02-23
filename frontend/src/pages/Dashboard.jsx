@@ -1,13 +1,12 @@
 /**
  * Dashboard: weekly overview, upcoming assignments, course cards.
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { getCourses, deleteCourse } from '../api/client';
+import { getCourses, createCourse, deleteCourse } from '../api/client';
 import CourseCard from '../components/CourseCard';
 import TermSelector from '../components/TermSelector';
-import { getCourses, createCourse } from '../api/client';
 
 const PLACEHOLDER_MODAL_KEY = 'syllabify_placeholder_modal_dismissed';
 
@@ -41,19 +40,27 @@ export default function Dashboard() {
   const [showPlaceholderModal, setShowPlaceholderModal] = useState(false);
   const [courses, setCourses] = useState([]);
   const [coursesError, setCoursesError] = useState(null);
+  const [currentTermId, setCurrentTermId] = useState(null);
+  const [loadingCourses, setLoadingCourses] = useState(false);
+  const [courseError, setCourseError] = useState('');
+  const [adding, setAdding] = useState(false);
+  const [newCourseName, setNewCourseName] = useState('');
+  const [saving, setSaving] = useState(false);
+  const inputRef = useRef(null);
 
-  useEffect(() => {
-    if (token) {
-      getCourses(token)
-        .then(data => setCourses(data.courses || []))
-        .catch(() => setCoursesError('Could not load courses'));
-    }
-  }, [token]);
+  const closePlaceholderModal = () => {
+    setShowPlaceholderModal(false);
+    try {
+      localStorage.setItem(PLACEHOLDER_MODAL_KEY, '1');
+    } catch (_) {}
+  };
+
+  // Courses load when term changes (via handleTermChange from TermSelector)
 
   const handleDeleteCourse = async id => {
     if (!token) return;
     try {
-      await deleteCourse(token, id);
+      await deleteCourse(id);
       setCourses(prev => prev.filter(c => c.id !== id));
     } catch (err) {
       setCoursesError(err.message || 'Could not delete');
@@ -273,7 +280,7 @@ export default function Dashboard() {
                   <CourseCard
                     course={{
                       id: c.id,
-                      name: c.name,
+                      name: c.course_name || c.name,
                       term: '',
                       assignmentCount: c.assignment_count ?? 0,
                     }}

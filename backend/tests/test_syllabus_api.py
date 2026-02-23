@@ -66,7 +66,7 @@ def test_parse_file_upload(decode_token, client):
     assert "assignments" in out
 
 
-# --- Courses API (save, list, delete) ---
+# --- Courses API (term-based: create, list, delete) ---
 
 
 @patch("app.api.courses.get_db")
@@ -76,15 +76,13 @@ def test_create_course(decode_token, get_db, client):
     conn = MagicMock()
     cur = MagicMock()
     cur.lastrowid = 1
+    cur.fetchone.return_value = {"id": 1}  # term exists
     conn.cursor.return_value = cur
     get_db.return_value = conn
 
     res = client.post(
-        "/api/courses",
-        json={
-            "course_name": "CS 422",
-            "assignments": [{"name": "A1", "due": "2025-02-15", "hours": 4}],
-        },
+        "/api/terms/1/courses",
+        json={"course_name": "CS 422"},
         headers=auth_headers,
     )
     assert res.status_code == 201
@@ -97,8 +95,8 @@ def test_create_course(decode_token, get_db, client):
 def test_create_course_requires_auth(decode_token, client):
     decode_token.return_value = None
     res = client.post(
-        "/api/courses",
-        json={"course_name": "CS 422", "assignments": []},
+        "/api/terms/1/courses",
+        json={"course_name": "CS 422"},
         headers=auth_headers,
     )
     assert res.status_code == 401
@@ -110,14 +108,12 @@ def test_list_courses(decode_token, get_db, client):
     decode_token.return_value = _jwt_payload()
     conn = MagicMock()
     cur = MagicMock()
-    cur.fetchall.return_value = [{"id": 1, "name": "CS 422", "assignment_count": 3}]
-    conn.cursor.return_value.__enter__ = lambda self: cur
-    conn.cursor.return_value.__exit__ = lambda *a: None
-    conn.cursor.return_value = MagicMock(return_value=cur)
-    conn.close = MagicMock()
+    cur.fetchone.return_value = {"id": 1}  # term exists
+    cur.fetchall.return_value = [{"id": 1, "course_name": "CS 422", "assignment_count": 3}]
+    conn.cursor.return_value = cur
     get_db.return_value = conn
 
-    res = client.get("/api/courses", headers=auth_headers)
+    res = client.get("/api/terms/1/courses", headers=auth_headers)
     assert res.status_code == 200
     data = res.get_json()
     assert "courses" in data
