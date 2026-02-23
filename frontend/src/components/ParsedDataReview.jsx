@@ -1,15 +1,23 @@
 /**
- * Editable table of parsed assignments. User can edit name, due, hours and confirm.
- * DISCLAIMER: Project structure may change. Functions may be added or modified.
+ * Editable table of parsed assignments and assessments (exams, projects, etc.).
+ * User can edit name, type, due, hours; add or delete rows; then confirm.
  */
 import { useState } from 'react';
+
+const ASSESSMENT_TYPES = [
+  { value: 'assignment', label: 'Assignment' },
+  { value: 'midterm', label: 'Midterm' },
+  { value: 'final', label: 'Final' },
+  { value: 'quiz', label: 'Quiz' },
+  { value: 'project', label: 'Project' },
+  { value: 'participation', label: 'Participation' },
+];
 
 /** Inline-editable cell. Toggles between display and input on click. */
 function EditableCell({ value, onChange, type = 'text' }) {
   const [editing, setEditing] = useState(false);
   const [local, setLocal] = useState(value);
 
-  /** Saves edited value and exits edit mode. */
   const save = () => {
     onChange(local);
     setEditing(false);
@@ -39,7 +47,7 @@ function EditableCell({ value, onChange, type = 'text' }) {
   );
 }
 
-/** Table of assignments with editable cells. onAssignmentsChange updates list; onConfirm saves and proceeds. */
+/** Table of assignments with editable cells, type column, and add/delete. */
 export default function ParsedDataReview({
   courseName,
   assignments,
@@ -48,11 +56,22 @@ export default function ParsedDataReview({
   saving = false,
   saveError = '',
 }) {
-  /** Updates one assignment field and notifies parent via onAssignmentsChange. */
   const updateAssignment = (id, field, value) => {
     onAssignmentsChange(
       assignments.map(a => (a.id === id ? { ...a, [field]: value } : a))
     );
+  };
+
+  const addRow = () => {
+    const newId = `temp-${Date.now()}`;
+    onAssignmentsChange([
+      ...assignments,
+      { id: newId, name: '', due: '', hours: 3, type: 'assignment' },
+    ]);
+  };
+
+  const deleteRow = (id) => {
+    onAssignmentsChange(assignments.filter(a => a.id !== id));
   };
 
   return (
@@ -64,14 +83,17 @@ export default function ParsedDataReview({
         </div>
       )}
       <p className="text-sm text-ink-muted">
-        Edit any cell by clicking. Confirm when everything looks correct.
+        Edit any cell by clicking. Add or remove rows as needed, then confirm.
       </p>
       <div className="overflow-x-auto rounded-input border border-border">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border bg-surface-muted">
               <th className="text-left font-medium text-ink px-3 py-2">
-                Assignment
+                Title
+              </th>
+              <th className="text-left font-medium text-ink px-3 py-2">
+                Type
               </th>
               <th className="text-left font-medium text-ink px-3 py-2">
                 Due date
@@ -79,6 +101,7 @@ export default function ParsedDataReview({
               <th className="text-left font-medium text-ink px-3 py-2">
                 Hours
               </th>
+              <th className="w-10 px-2 py-2" aria-label="Remove row" />
             </tr>
           </thead>
           <tbody>
@@ -93,6 +116,21 @@ export default function ParsedDataReview({
                     value={a.name}
                     onChange={v => updateAssignment(a.id, 'name', v)}
                   />
+                </td>
+                <td className="px-3 py-2">
+                  <select
+                    value={a.type || 'assignment'}
+                    onChange={e =>
+                      updateAssignment(a.id, 'type', e.target.value)
+                    }
+                    className="w-full rounded border border-border bg-surface px-2 py-1 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-accent"
+                  >
+                    {ASSESSMENT_TYPES.map(({ value, label }) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
                 </td>
                 <td className="px-3 py-2">
                   <EditableCell
@@ -110,13 +148,30 @@ export default function ParsedDataReview({
                     type="number"
                   />
                 </td>
+                <td className="px-2 py-2">
+                  <button
+                    type="button"
+                    onClick={() => deleteRow(a.id)}
+                    className="rounded-button p-1.5 text-ink-muted hover:bg-red-500/10 hover:text-red-600 transition-colors"
+                    title="Remove row"
+                    aria-label="Remove row"
+                  >
+                    <span aria-hidden>×</span>
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      {saveError && <p className="text-sm text-red-500">{saveError}</p>}
-      <div className="flex justify-end">
+      <div className="flex flex-wrap items-center justify-end gap-3">
+        <button
+          type="button"
+          onClick={addRow}
+          className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors duration-200"
+        >
+          + Add assignment
+        </button>
         <button
           type="button"
           onClick={onConfirm}

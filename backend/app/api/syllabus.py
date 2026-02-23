@@ -64,6 +64,8 @@ def parse():
         "course_name": course_name,
         "assignments": assignments,
     }
+    if result.get("assessments") is not None:
+        resp["assessments"] = result["assessments"]
     if result.get("confidence"):
         resp["confidence"] = result["confidence"]
     if result.get("raw_text") is not None:

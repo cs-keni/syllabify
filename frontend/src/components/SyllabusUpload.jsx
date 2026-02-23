@@ -12,7 +12,16 @@ export default function SyllabusUpload({ onComplete, token }) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
 
-  /** Handles form submit. Calls real parse API. */
+  /** Infer default hours from assessment type. */
+  const hoursFromType = (type) => {
+    const t = (type || '').toLowerCase();
+    if (t === 'midterm' || t === 'final') return 2;
+    if (t === 'quiz') return 1;
+    if (t === 'project') return 4;
+    return 3;
+  };
+
+  /** Handles form submit. Calls real parse API. Uses assessments when present for types/exams. */
   const handleSubmit = async e => {
     e.preventDefault();
     setError(null);
@@ -21,12 +30,27 @@ export default function SyllabusUpload({ onComplete, token }) {
       const payload = mode === 'file' ? { file } : { text: paste.trim() };
       const data = await parseSyllabus(token, payload);
       const courseName = data.course_name || 'Course';
-      const raw = data.assignments || [];
+      // Prefer assessments from full parser (includes type, due_datetime, exams)
+      const raw =
+        Array.isArray(data.assessments) && data.assessments.length > 0
+          ? data.assessments.map((a) => ({
+              name: a.title || '',
+              due_date: a.due_datetime ? String(a.due_datetime).slice(0, 10) : '',
+              hours: hoursFromType(a.type),
+              type: a.type || 'assignment',
+            }))
+          : (data.assignments || []).map((a) => ({
+              name: a.name || '',
+              due_date: a.due_date || '',
+              hours: a.hours ?? 3,
+              type: a.type || 'assignment',
+            }));
       const assignments = raw.map((a, i) => ({
         id: `temp-${i}`,
         name: a.name || '',
         due: a.due_date || '',
         hours: a.hours ?? 3,
+        type: a.type || 'assignment',
       }));
       onComplete(courseName, assignments);
     } catch (err) {

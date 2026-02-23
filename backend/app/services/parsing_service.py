@@ -1,6 +1,7 @@
 """
-Syllabus parsing: extract assignments, due dates, hours from plain text.
-Uses rule-based heuristics (regex, tables, prose patterns).
+Syllabus parsing: extract course info and assessments from plain text.
+Uses the full syllabus_parser (schema with assessments, exams, categories)
+and maps to API shape (course_name, assignments) for backward compatibility.
 """
 import re
 
@@ -11,43 +12,132 @@ from app.utils.document_utils import extract_text_from_file
 def parse_file(file, mode: str = "rule") -> dict:
     """Extract text from file via document_utils, then parse with parse_text."""
     text = extract_text_from_file(file)
-    return parse_text(text, mode=mode)
+    filename = getattr(file, "filename", None) or ""
+    source_type = "pdf" if str(filename).lower().endswith(".pdf") else "txt"
+    return parse_text(text, mode=mode, source_type=source_type)
 
 
-def parse_text(text: str, mode: str = "rule") -> dict:
+def parse_text(text: str, mode: str = "rule", source_type: str = "txt") -> dict:
     """
-    Parse syllabus text into course_name and assignments.
-    Returns { course_name, assignments, raw_text?, confidence? }
-    assignments: [{ name, due_date (YYYY-MM-DD or null), hours }]
+    Parse syllabus text into course_name, assignments, and full assessments.
+    Returns { course_name, assignments, assessments?, raw_text?, confidence? }
+    assignments: [{ name, due_date (YYYY-MM-DD or null), hours, type? }] for UI/save.
+    assessments: full schema list (title, type, due_datetime, weight_percent, ...) for UI.
     """
     if not text or not text.strip():
         return {
             "course_name": "Course",
             "assignments": [],
+            "assessments": [],
             "raw_text": text or "",
             "confidence": "low",
         }
 
     if mode in ("hybrid", "ai"):
-        # Optional: call AI parser if available
         try:
             from app.services.ai_parser import parse_with_ai
             return parse_with_ai(text)
         except ImportError:
             pass
 
-    return _parse_rulebased(text)
+    return _parse_with_syllabus_parser(text, source_type)
 
 
-def _parse_rulebased(text: str) -> dict:
-    """Rule-based extraction: course name, assignments with name, due_date, hours."""
+def _hours_from_assessment_type(atype: str) -> int:
+    """Infer default hours from assessment type (midterm/final/quiz/project/assignment)."""
+    if not atype:
+        return 3
+    t = (atype or "").lower()
+    if t in ("midterm", "final"):
+        return 2
+    if t == "quiz":
+        return 1
+    if t == "project":
+        return 4
+    return 3
+
+
+def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
+    """
+    Use full syllabus_parser (schema with assessments, exams, categories).
+    Maps to course_name + assignments for API, and returns assessments for UI.
+    """
+    try:
+        from app.services.syllabus_parser import parse_syllabus_text
+    except ImportError:
+        return _parse_rulebased_fallback(text)
+
+    course_id = "upload"
+    result = parse_syllabus_text(text, course_id, source_type)
+    course = result.get("course") or {}
+    course_name = (course.get("course_code") or course.get("course_title") or "Course").strip()
+    assessments = result.get("assessments") or []
+
+    # Dedupe: prefer (title_normalized, type) with due_datetime or highest weight_percent
+    # Skip obvious junk: too short, or sentence fragments
+    def _is_junk_title(t: str) -> bool:
+        if not t or len(t) < 3:
+            return True
+        t_lower = t.lower()
+        if t_lower in ("each", "class"):
+            return True
+        if t_lower.startswith("except for ") or "waived by the token" in t_lower:
+            return True
+        if "textbooks and readings" in t_lower and len(t) < 30:
+            return True
+        return False
+
+    seen = {}
+    for a in assessments:
+        title = (a.get("title") or "").strip()
+        if _is_junk_title(title):
+            continue
+        atype = a.get("type") or "assignment"
+        key = (title.lower()[:50], atype)
+        due_datetime = a.get("due_datetime")
+        due_date = (due_datetime[:10] if due_datetime and len(due_datetime) >= 10 else None)
+        weight = a.get("weight_percent")
+        existing = seen.get(key)
+        # Prefer row with due date, or higher weight, or longer title
+        if existing is None or (
+            (due_date and not existing.get("due_date"))
+            or (weight is not None and (existing.get("weight") or 0) < (weight or 0))
+            or (len(title) > len(existing.get("name") or ""))
+        ):
+            seen[key] = {
+                "name": title,
+                "due_date": due_date,
+                "hours": _hours_from_assessment_type(atype),
+                "type": atype,
+                "weight": weight,
+            }
+
+    assignments = [
+        {"name": v["name"], "due_date": v["due_date"], "hours": v["hours"], "type": v["type"]}
+        for v in seen.values()
+    ]
+    # Assessments-shaped list (deduped) for frontend so it gets type/due
+    assessments_for_api = [
+        {"title": v["name"], "due_datetime": v["due_date"], "type": v["type"]}
+        for v in seen.values()
+    ]
+
+    confidence = "high" if len(assignments) >= 1 else "low"
+    return {
+        "course_name": course_name,
+        "assignments": assignments,
+        "assessments": assessments_for_api,
+        "raw_text": None if confidence == "high" else text,
+        "confidence": confidence,
+    }
+
+
+def _parse_rulebased_fallback(text: str) -> dict:
+    """Fallback if syllabus_parser unavailable: simple regex extraction."""
     course_name = _extract_course_name(text)
     assignments = []
-
-    # Try table-like extraction (rows with | or tabs)
     lines = text.split("\n")
     for line in lines:
-        # Pattern: "Assignment 1 | 2/15 | 4" or "Week 3: Midterm - Feb 15"
         parts = re.split(r"\s*[\|\t]\s*", line.strip())
         if len(parts) >= 2:
             name = parts[0].strip()
@@ -59,16 +149,13 @@ def _parse_rulebased(text: str) -> dict:
                     "due_date": due.isoformat() if due else None,
                     "hours": hours,
                 })
-
-    # Prose patterns: "Assignment 1 due Feb 15", "Midterm - March 3"
     if not assignments:
         assignments = _extract_from_prose(text)
-
-    # If still few results, return low confidence with raw text
     confidence = "high" if len(assignments) >= 2 else "low"
     return {
         "course_name": course_name,
         "assignments": assignments,
+        "assessments": [],
         "raw_text": text if confidence == "low" else None,
         "confidence": confidence,
     }
