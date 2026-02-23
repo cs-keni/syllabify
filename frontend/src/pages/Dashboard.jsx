@@ -1,20 +1,64 @@
-import { useState, useEffect, useRef } from 'react';
+/**
+ * Dashboard: weekly overview, upcoming assignments, course cards.
+ */
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { getCourses, deleteCourse } from '../api/client';
 import CourseCard from '../components/CourseCard';
 import TermSelector from '../components/TermSelector';
 import { getCourses, createCourse } from '../api/client';
 
-export default function Dashboard() {
-  const [currentTermId, setCurrentTermId] = useState(null);
-  const [courses, setCourses] = useState([]);
-  const [loadingCourses, setLoadingCourses] = useState(false);
-  const [courseError, setCourseError] = useState('');
+const PLACEHOLDER_MODAL_KEY = 'syllabify_placeholder_modal_dismissed';
 
-  // Inline add-course form state
-  const [adding, setAdding] = useState(false);
-  const [newCourseName, setNewCourseName] = useState('');
-  const [saving, setSaving] = useState(false);
-  const inputRef = useRef(null);
+const MOCK_UPCOMING = [
+  {
+    id: '1',
+    title: 'Assignment 3 (Placeholder)',
+    course: 'CS 422',
+    due: 'Feb 2',
+    hours: 4,
+  },
+  {
+    id: '2',
+    title: 'Reading quiz (Placeholder)',
+    course: 'CS 422',
+    due: 'Feb 4',
+    hours: 1,
+  },
+  {
+    id: '3',
+    title: 'Lab 2 (Placeholder)',
+    course: 'CS 422',
+    due: 'Feb 6',
+    hours: 3,
+  },
+];
+
+/** Main dashboard. Shows placeholder weekly chart, upcoming list, and courses. */
+export default function Dashboard() {
+  const { token } = useAuth();
+  const [showPlaceholderModal, setShowPlaceholderModal] = useState(false);
+  const [courses, setCourses] = useState([]);
+  const [coursesError, setCoursesError] = useState(null);
+
+  useEffect(() => {
+    if (token) {
+      getCourses(token)
+        .then(data => setCourses(data.courses || []))
+        .catch(() => setCoursesError('Could not load courses'));
+    }
+  }, [token]);
+
+  const handleDeleteCourse = async id => {
+    if (!token) return;
+    try {
+      await deleteCourse(token, id);
+      setCourses(prev => prev.filter(c => c.id !== id));
+    } catch (err) {
+      setCoursesError(err.message || 'Could not delete');
+    }
+  };
 
   useEffect(() => {
     if (adding && inputRef.current) inputRef.current.focus();
@@ -56,6 +100,35 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-10">
+      {showPlaceholderModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/20 animate-fade-in"
+          onClick={closePlaceholderModal}
+          onKeyDown={e => e.key === 'Escape' && closePlaceholderModal()}
+          role="presentation"
+        >
+          <div
+            className="rounded-card bg-surface-elevated border border-border shadow-dropdown p-4 max-w-md mx-4 animate-scale-in"
+            onClick={e => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+          >
+            <p className="text-sm text-ink mb-3">
+              These are placeholder values to show an example of what the page
+              might look like. They will be replaced with real data once we have
+              a working backend.
+            </p>
+            <button
+              type="button"
+              onClick={closePlaceholderModal}
+              className="rounded-button bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">Dashboard</h1>
         <p className="mt-1 text-sm text-ink-muted">
@@ -195,9 +268,17 @@ export default function Dashboard() {
                 <div
                   key={c.id}
                   className="animate-fade-in-up"
-                  style={{ animationDelay: `${i * 80}ms` }}
+                  style={{ animationDelay: `${780 + i * 50}ms` }}
                 >
-                  <CourseCard course={c} />
+                  <CourseCard
+                    course={{
+                      id: c.id,
+                      name: c.name,
+                      term: '',
+                      assignmentCount: c.assignment_count ?? 0,
+                    }}
+                    onDelete={() => handleDeleteCourse(c.id)}
+                  />
                 </div>
               ))
             )}

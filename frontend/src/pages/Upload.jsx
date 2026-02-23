@@ -17,16 +17,12 @@ const STEPS = [
 
 /** Step-based upload flow. Manages step state, parsed course name, and assignments. */
 export default function Upload() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const courseId = location.state?.courseId || null;
-  const initialCourseName = location.state?.courseName || '';
-
+  const { token } = useAuth();
   const [step, setStep] = useState(0);
   const [assignments, setAssignments] = useState([]);
-  const [parsedCourseName, setParsedCourseName] = useState(initialCourseName);
+  const [parsedCourseName, setParsedCourseName] = useState('');
   const [saving, setSaving] = useState(false);
-  const [saveError, setSaveError] = useState('');
+  const [saveError, setSaveError] = useState(null);
 
   const currentStepId = STEPS[step].id;
 
@@ -98,14 +94,35 @@ export default function Upload() {
       <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card min-h-[320px]">
         <div key={currentStepId} className="animate-fade-in">
           {currentStepId === 'upload' && (
-            <SyllabusUpload onComplete={handleUploadComplete} />
+            <SyllabusUpload
+              token={token}
+              onComplete={(courseName, parsedAssignments) => {
+                setParsedCourseName(courseName);
+                setAssignments(parsedAssignments || []);
+                setStep(1);
+              }}
+            />
           )}
           {currentStepId === 'review' && (
             <ParsedDataReview
               courseName={parsedCourseName || 'Course'}
               assignments={assignments}
               onAssignmentsChange={setAssignments}
-              onConfirm={handleConfirm}
+              onConfirm={async () => {
+                setSaveError(null);
+                setSaving(true);
+                try {
+                  await saveCourse(token, {
+                    course_name: parsedCourseName || 'Course',
+                    assignments,
+                  });
+                  setStep(2);
+                } catch (err) {
+                  setSaveError(err.message || 'Failed to save');
+                } finally {
+                  setSaving(false);
+                }
+              }}
               saving={saving}
               saveError={saveError}
             />

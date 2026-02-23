@@ -6,7 +6,7 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
-ignore = []
+ignore = ["E501"]  # Line too long — syllabus_parser has many long regex lines
 
 [tool.ruff.lint.per-file-ignores]
 # Cherry-picked parser has long regex, inline logic, and unused captures — not our code to reformat
