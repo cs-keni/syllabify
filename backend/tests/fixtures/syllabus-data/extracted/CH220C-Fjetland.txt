@@ -1,0 +1,849 @@
+CH 220C
+ORGANIC CHEMISTRY LABORATORY
+Fall, 2012
+Section Page
+1. GENERAL INFORMATION 2
+2. SAFETY INFORMATION 2
+3. ATTENDANCE 3
+Make-Up Policy 3
+4. LABORATORY PROTOCOL 3
+Assigned Reading 3
+Pre-Lab Quizzes 3
+Lab Notebook 3
+Samples 5
+Chemicals 5
+Due Dates for Reports 5
+5. ORIENTATION 6
+In-Lab Information 6
+Library Information 6
+6. CHECK-IN 7
+7. DROP PROCEDURE 7
+8. GRADING PROCEDURE 7
+9. POLICY ON CHEATING 8
+10. TA OFFICE HOURS 9
+11. FACULTY COURSE COORDINATORS 9
+12. COURSE WEB PAGE 9
+13. CHECK-OUT INSTRUCTIONS 9
+14. HINTS TO MINIMIZE FRUSTRATION IN ORGANIC CHEMISTRY 9
+15. WORK SCHEDULE 11
+Lab Report Due Date Schedule 11
+Experiments 11
+16. SUPPLEMENTS 18
+A. Extraction of Unknown 18
+B. Recrystallization of Unknown Products 19
+C. Methyl Benzoate 20
+D. Methyl Orange 21
+1
+
+1. GENERAL INFORMATION
+REGISTRATION PROBLEMS
+If you are having difficulty in completing your registration for the laboratory, consult Supplement A for the
+procedure to follow to resolve any problems.
+PRE- and CO-REQUISITES
+Pre- and co-requisites for CH 220C listed in the Course Schedule. Important: Because the lecture and
+laboratory courses are co-requisites of each other, dropping one of them requires that you drop the other as well,
+unless the drop occurs during the final 2 laboratory periods of the term.
+Pre- and co-requisites will be checked and students not meeting the requirements must drop the course.
+REQUIRED or RECOMMENDED COURSE MATERIALS
+A. Experimental Organic Chemistry, 5th edition, by J. C. Gilbert and S. F. Martin, Saunders College Publishing, 2010
+(Required).
+B. Lab Notebook: A “carbon copy” notebook with quadrille-ruled pages with page numbers. The recommended notebook will
+be sold by Student Affiliates of the American Chemical Society at the beginning of each term (Required).
+C. Turnitin.com Access Code
+D. One Combination Lock: These must be sturdy combination locks. UT Chem locks are available at the University Co-op.
+You MUST have them for check-in. Otherwise you will not be allowed to check into the laboratory until you have obtained
+the required locks. See p. 7 or this document for information regarding your responsibility for your equipment (Required).
+E. UT ID card: Bring your UT ID card to every laboratory session. It is needed to obtain items from the stockroom.
+2. SAFETY INFORMATION
+If you are pregnant now or become pregnant during the semester, you must immediately consult with the coordinator about your
+eligibility to continue in this course.
+CLOTHING
+Street Clothes: Shorts or short skirts cannot be worn in the laboratory at any time, with or without a lab coat. Your
+shirt must at least have short sleeves and cover your torso, i.e., tank tops are not permitted.
+Note: If you wear these to laboratory you will be sent home to change. On hot days you may wish to
+bring a pair of jeans or sweatpants to change into before entering the lab.
+Shoes: Closed-toe shoes must be worn, i.e. sandals or clogs are not allowed.
+Protective clothing: It is strongly recommended that you wear a lab coat or apron in the laboratory at all times.
+SAFETY GOGGLES
+The clear safety goggles provided by the department must be worn at all times in the lab. If your vision is corrected,
+wear your glasses under the clear safety goggles. Safety glasses are not permitted as substitutes for the goggles.
+Not wearing goggles in the laboratory will result in your expulsion for the remainder of the period.
+RADIO AND TAPE PLAYERS
+Radio, MP3 and tape or CD players are not allowed in lab.
+2
+
+JEWELRY
+It is strongly recommended that you not wear rings, bracelets, or watches to the lab. Such items can trap chemicals
+next to your skin, thereby worsening the effects of burns or allergic reactions. Also NOTE that the solvents used in
+this course may permanently mar the synthetic materials contained in watchbands and crystals!
+3. ATTENDANCE
+LAB LECTURE
+Attendance at the laboratory lecture before your regularly scheduled laboratory period is required. This lecture
+provides some of the general "How To's of Organic Chemistry", and helpful hints on performing the experiments. It
+also correlates the laboratory experiments with the topics being covered in the lecture section. Most of this
+information is not written down anywhere; the only way to get it is from the lecture. Material discussed in the
+laboratory Lecture is also one of the primary sources of material for the quizzes in the course. Finally, there may be
+a quiz at the end of every lab lecture.
+LABORATORY
+Attendance will be taken at all laboratory sessions. You will not receive credit for any experiment scheduled for a
+laboratory period for which you have an unexcused absence. If you have an excused absence, you must obtain a
+makeup permit before you will be permitted to work in any of the labs outside of your own regularly scheduled
+laboratory period.
+In some cases, data will be collected by groups of two or more students. Zero credit will be given if you are not
+present or did not participate in the experimental work. You are NOT PERMITTED to use data collected by others
+in the group work if you are not present at the time the work is done.
+MAKE-UP POLICY
+Makeup Only excused absences may be made-up. Excused absences are those that are beyond your control, such as major
+emergencies and illness. Written verification of an excuse must be submitted for all absences, e.g., a doctor's note). To be
+eligible for a make-up laboratory period, you must request a permit for the make-up from Dr. Fjetland within one week of
+the excused absence.
+A specific make-up day will be established for each experiment and that is the only day upon which the make-up work may
+be performed. You must have a make-up permit and must be on time to be eligible for the make-up lab.
+Excuses will not be granted for the following occurrences, among others: oversleeping, trips not connected with official
+University activities, the need to study for another class, conflict with an exam. It is your responsibility to register for a
+laboratory section that avoids recurring conflicts that are not of an emergency nature.
+There will be no exceptions to this policy!
+Make-up reports are due when stated by Dr Fjetland.
+4. LABORATORY PROTOCOL
+ASSIGNED READING
+Prior to each laboratory lecture, you should read the assigned pages of your text or of any hand-out associated with
+the experiments you are to perform.
+PRE-LAB QUIZZES
+A pre-lab will be given the first five minutes of wet lab. The questions will be based upon the procedure and the theory of
+the experiment. It is strongly recommended so that you can use it to study for the quizzes. If you miss the quiz, you miss it.
+There will be no makeup quizzes given.
+3
+
+LAB NOTEBOOK
+The laboratory notebook is a critical record of your accomplishments in the laboratory so you should treat it accordingly by
+making careful and complete entries in it. Your lab notebook must be written in ink. If an error is made, draw a single line
+through the error and then continue. Note that the original pages in your laboratory notebook should never be removed;
+rather, turn in the carbon copies of these pages as directed. The pages should be sequentially numbered and your name
+should appear at the upper right-hand corner of each page. Leave the first 2 pages of the notebook blank for future use as a
+TABLE OF CONTENTS. This notebook is the last line of defense if there are any problems with grades, which means
+DON’T THROW IT OUT.
+Your notebook will be turned in at the end of the semester and be graded on organization, neatness and thoroughness. You
+need not use consecutive pages in your laboratory notebook for each experiment, but this may have an effect on your
+notebook score. However, if you are unable to use consecutive pages, carefully reference on which page(s) additional entries
+for a particular experiment are to be found.
+Note: All preliminary and final write-ups and Post-Lab exercises are to be done by yourself. Data interpretation
+and analysis are your individual responsibility and must also be done by yourself. Otherwise, the actions of
+the cheating policy (see Section 9) are applicable.
+There is only 1 format for the laboratory notebook consisting of the following:
+1. Heading: Use a new page of the notebook to start the entries for the experiment. Provide information that includes your
+name, the date, the title of the experiment, and a reference to the place in the laboratory textbook or other source where the
+procedure may be found. See page 7 of your laboratory textbook for an example.
+2. Introduction: Give a brief introduction to the experiment in which you clearly state the purpose(s) of the experiment. This
+should require no more than ¼ of a page.
+3. Main Reaction(s): Write a balanced equation giving the main reaction(s) for the conversion of the starting material(s) to
+product(s). If you are conducting a preparative type experiment, such as the synthesis of cyclohexene, the reaction that
+converts cyclohexanol to cyclohexene is given along with all the catalysts and conditions required (see page 10 of your
+textbook for an example). If you are conducting an investigative experiment, no general reaction is required.
+4. Table of Chemical Data: Set up a table chemical data as an aid in summarizing the amounts and properties of all
+reagents,catalysts and product(s). Also include those chemicals used in the cleanup of the products such as solvents.
+The following information needs to be included into the table:
+a. Name of compound
+b. Molecular formula of the compound
+c. Molecular weight of the compound
+d. Melting point and boiling point of the compound
+e. Density (d) of the compound
+f. Color of the compound
+g. Solubilities of the compound
+h. Hazards of the compound
+i. Symptoms of exposure
+j. Treatments for exposure to the compound
+5. Procedure: Reference the source and page of the procedure and then give a summary of what you will be doing that day.
+Also include any changes that have been made
+6. Data and Results: Any observations that you make during the experiment belong here. This includes things like the color
+of the solution when mixed, how the reaction proceeded and what happened when you added a reactant. This section also
+includes the observed melting point, weight, and percent yield of the product. You must also put any and all spectra, TLC or
+other type of data in this section.
+7. Discussion and Conclusion: Discuss the theory behind the experiment performed and give a detailed mechanism of the
+reaction if one exists. Then write a conclusion stating whether or not the experiment demonstrated the principles and if not,
+why the data were inaccurate. This section should be started on a fresh page and should be no longer than 2 pages in length.
+4
+
+8. Post-Lab Exercises: Assigned post-lab exercises for a particular experiment are to be answered in your lab notebook in this
+section. They need to be placed after the conclusion section.
+For more information on specifics of each section of the notebook, consult your TA.
+SAMPLES
+All samples obtained in the laboratory must be submitted in a properly labeled, sealed container. The label must
+include:
+a. Date
+b. Name of compound
+c. MP measured
+d. Weight or volume of compound
+e. Percent yield of compound
+f. Your name, laboratory day and time
+Full credit for Final Reports require that you turn in all products produced in the course of your experimental work.
+CHEMICALS
+All reagents should be in your laboratory prior to the start of the laboratory period. Dry reagents are kept in the
+cupboards and liquid reagents are kept in the hoods. Any unknowns you may need can be obtained from the
+Stockroom (NHB). You will need to obtain an unknown card from your TA to pick up the unknown sample.
+DUE DATES FOR REPORTS
+The Preliminary Report includes sections 1-5 from above and is to be completed before the beginning of the laboratory
+specified in the Work Schedule. The TA will check and grade it to make sure that you have completed the preliminary
+report. It is your responsibility to make sure that the TA has checked and signed your preliminary report. If you haven’t
+completed the preliminary report when you walk into lab, you will not be allowed in until it is completed. Then you must
+complete the lab in the time remaining, and you will be deducted 50% credit.
+The Final Report is complete when sections 6-8 from above are completed. Any other assignments, as specified separately
+on the Work Schedule for the laboratory, are to be submitted separately. Your TA will sign the data section of your
+notebook after you have completed the experiment. It is your responsibility to make sure that your TA has signed your data
+section.
+The Final Report is due on the date listed in the work schedule. All Final Reports are to be turned in to your TA at the
+beginning of the wet laboratory on the due date. Anything turned in after that time will be graded as late. Late Final Reports
+will receive 50% credit up to one week late. After one week, no credit will be accorded for the report. The Final Report
+discussions will be turned in typed. The typed discussion will be submitted to the Turn-It-In website to be checked and
+printed. The printed report will then be turned into your TA along with your data section and your post lab questions.
+Information regarding Turn-It-In can be found on the webpage. Please ensure that you have printed the Turn-It-In
+report in the correct format, or it will not be accepted. Directions on how to print your report are on the webpage.
+Make-up labs: All papers due at the missed laboratory period will be due at your next regularly scheduled laboratory
+period. Final reports for experiments completed in the make-up laboratory are due as directed by the instructor. The same
+penalties as given above for late submissions also apply here.
+5. ORIENTATION
+IN-LAB INFORMATION
+On the first day of laboratory you will receive a form that lists various safety-related items that you are to locate in the room.
+It is important that you complete the form accurately to demonstrate your knowledge of the locations. The completed form is
+to be submitted as directed by your instructor.
+5
+
+LIBRARY INFORMATION
+There is a variety of sources in the Chemistry Library (WEL 2.132) that you may need to consult during this course. To
+acquaint with these sources, on the first day of laboratory you arel assigned an exercise for which you must supply the
+information listed.
+The sources that contain the information are briefly discussed below. There are synonyms for some of the compounds, so if
+you fail to find the substance listed under the name you were provided, check for synonyms. Printed sources are located in
+the Chemistry Library on the Handbook Table, which is in the reference area in the front part of the library.
+Information Required References to Consult
+A. Name of Compound: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1,2,3,4,5
+B. Other Common/IUPAC Name of Compound: . . . . . . . . . . . . . 1,2,3,4,5
+C. Structural Formula: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2,3,4,5
+D. MW: (i.e. molecular weight): . . . . . . . . . . . . . . . . . . . . . . . . 2,3,5
+E. MP/BP: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1,3,4,5
+F. Density (d): . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1,2,3,5
+G. Color: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1,2,3,4,5
+H. Solubilities: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2,3,5
+I. Hazards: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1,3,4,5
+J. Treatment for Exposure: . . . . . . . . . . . . . . . . . . . . . . . . . . . 1,4,5
+1. Material Safety Data Sheets (MSDS)
+MSDS are available from various sites on the Web. They are created by chemical manufacturers and can contain a
+variety of different data; no two are the same, and many different MSDS can exist for the same chemical. Good starting
+points are: http://www.utexas.edu/business/oehs/msds/ and http://www.lib.utexas.edu/chem/internet.html#msds. The
+Organic Labs page (http://www.cm.utexas.edu/CH210C/) provides access to abbreviated forms of relevant MSDS.
+2. CRC Handbook of Chemistry and Physics
+Located on the Handbook Table, in many editions. Find the table in the CRC called “Physical Constants of Organic
+Compounds,” and look up your compound by name. Remember that a particular compound may go by many different
+names, so check synonyms! Older CRCs are quite different from newer ones in the way they are indexed and arranged; if
+you don’t find your compound in one, try another edition. The newest editions have useful formula, synonym and
+structural formula indexes after the Table itself. Abbreviations used in the Table are defined at its beginning. Do not use
+the index in the back of the CRC to find compound information. The CRC Handbook is now available on the Web.
+The link can be found on http://www.lib.utexas.edu/chem/internet.html.
+3. Merck Index
+Also on the Handbook Table. This book contains information about common organic, inorganic, and biological
+substances, and has a Synonym Index in the back.
+4. Sigma-Aldrich Library of Chemical Safety Data
+Two large black volumes located on the Handbook Table. Look up your compound name or its molecular formula (if
+you know it) in the Index in the back of Vol. 2. The entry will provide a structural formula as well as some physical data
+and hazard information.
+5. Dictionary of Organic Compounds
+Also on the Handbook Table. This set of books contains information about common organic, inorganic, and biological
+substances, and has separate Synonym and Formula Index volumes.
+6
+
+6. OTHER USEFUL WEB RESOURCES
+Chemfinder: http://chemfinder.cambridgesoft.com/
+NIST Chemistry WebBook: http://webbook.nist.gov/chemistry/
+Lange's Handbook of Chemistry: http://www.knovel.com/knovel2/Toc.jsp?BookID=47
+6. CHECK-IN
+At the assigned laboratory period you will check into a drawer and hall locker that contain all your equipment. A copy
+of the checklist is attached (see Section 14). Anything that is missing or broken can be replaced free of charge during the CHECK-IN
+period. After this time, you will be responsible for all equipment and glassware. At check-out, drawers and lockers will
+be checked by the TA for broken or missing items, which you must be replace. Be aware that you are responsible for
+the safe storage of your equipment. Lost or stolen glassware will be reported to the UT Police and investigated by them.
+To replace broken glassware or equipment, go to the stockroom with your student ID and purchase the needed
+replacements. You will be sent a bill from the University for any such items. Be very careful with your ground-glass
+kits. Each kit has a total replacement value of $165.
+You are required to check out of your drawer upon completing the semester or dropping the course (see below). A $25
+penalty plus a charge for missing equipment will be assessed if you fail to check out.
+7. DROP PROCEDURE
+The last date on which you may drop the course without academic penalty is September 14th, 2012.
+To drop the course on or before to this date, check out of your drawer and hall locker during your regular laboratory
+Period (see Section 13).
+To drop the course after this date, a) obtain a drop form the office of the Dean of your College; b) deliver the form to the
+Lower Division Course Office, WEL 2.212, and obtain a check-out slip from that office that is to be completed by your
+TA when you check out of the laboratory; c) check out of the laboratory during your regular laboratory period and have
+the check-out slip signed by your TA; d) return the signed slip to the Lower Division Chemistry Office for further
+processing of your drop.
+8. GRADING PROCEDURE
+GRADING SCALE
+This laboratory course uses the +/- grading scale. This grading scale has the following distribution:
+Grade GPA Grade GPA Recommended % Range
+A 4 92‐100%
+A‐ 3.67 90 ‐ 92%
+B+ 3.33 88 ‐ 90%
+B 3 82 ‐ 88%
+B‐ 2.67 80 ‐ 82%
+C+ 2.33 78 ‐ 80%
+C 2 72 ‐ 78%
+C‐ 1.67 70 ‐ 72%
+D+ 1.33 68 ‐ 70%
+D 1 62 ‐ 68%
+D‐ 0.67 60 ‐ 62%
+F 0 Below 60%
+7
+
+FINAL GRADE DETERMINATION
+Each laboratory section will be graded on an individual curve, and distributions will be posted periodically. TAs will be
+provided common guidelines for evaluation of reports and laboratory Technique. Final grades will be determined by
+a computerized procedure. The final laboratory letter grade will be calculated as follows:
+a. A class curve may be established, and a letter grade will be assigned on the basis of the final total score and this
+curve, if any.
+b. To earn a C- or better in the course you must complete all assigned work and turn in all required reports.
+REGRADES AND CORRECTIONS
+Once an assignment has been returned, you will have one week to get an error corrected. After the week has passed,
+no regrades or corrections will be made on that assignment. The only exception to this is the correction of an error
+in the entry of the grade on the computer or an error in addition.
+POINT DISTRIBUTION
+What Points
+Preliminary Report 10 ea
+Heading 1
+Introduction 1
+Reactions 1
+Table of Chemical Information 4
+Procedure 3
+Final Report 100 ea
+Data and Results 20
+Discussion and Conclusion 40
+Technique 25
+Post-Lab Exercises 15
+Quiz 50 ea
+9. POLICY ON CHEATING FOR THE DEPARTMENT OF CHEMISTRY AND BIOCHEMISTRY
+The University of Texas at Austin expects honesty and integrity to be the ordinary way of life in all student activities.
+Plagiarism, or the use of another person’s statements without giving proper credit, is dishonest and is regarded as cheating. Although
+group study and projects are often appropriate, it is expected that individual assignments and examinations will be the private efforts
+of the particular student.
+The following are considered examples of cheating:
+1. Copying raw data for a laboratory without actually participating in acquisition of the raw data.
+2. Inventing data.
+3. Filling in parts of laboratory reports that require the raw data for calculations or interpretation before the data are collected.
+4. Holding discussions so thorough that they result in identical laboratory reports, homework assignments, and computer
+programs.
+5. Allowing anyone to copy any laboratory report, homework assignment, test, or computer program, either now or in the
+future.
+8
+
+6. Gaining access to, having in your possession at any time, or using old laboratory reports for any purpose. If you have
+questions regarding the format of any laboratory write-up, you should consult your TA or AI.
+A student detected cheating beyond any reasonable doubt in the preparation of any individual assignment is subject to disciplinary
+action. See the General Information Bulletin.
+10. TA OFFICE HOURS
+TAs will hold office hours in Welch 2.304 in one of the stalls at times posted at this office, or on the web page. Feel free to consult
+with any TA and to ask questions concerning either laboratory or lecture material. It is Departmental policy that undergraduate
+students are not permitted in research laboratories. If you wish to consult your TA outside of his/her scheduled office hours, use e-
+mail and your TA will contact you.
+11. FACULTY COURSE COORDINATOR
+Dr. Conrad Fjetland
+Office: NHB 1.128
+Phone: 232-7676
+Email: crfjetland@cm.utexas.edu
+Office hours: M, Th 3-4 or by appointment
+12. COURSE WEB PAGE
+A web page has been developed for the course. Among other things, it provides the course syllabus, a listing of office hours, and links
+to MSDS information and web pages, if any, for the various lecture sections associated with the lab sections. The URL is
+http://courses.cm.utexas.edu/cfjetland/ch210c/.
+13. CHECK-OUT INSTRUCTIONS
+1. Wash all chemical residues off of your glassware. There is a waste bottle provided for this purpose.
+2. Discard all trash, i.e., corks, Parafilm™, papers, gloves, etc.
+3. Dispose of all chemical samples in the appropriate containers.
+4. Return all extra equipment and items not specified on the equipment list. This includes glass stirring rods. There is a
+dishpan in the hood for such items.
+5. Check all of your equipment before coming to the storeroom to purchase any missing items. This will minimize the number
+of times you have to seek assistance from the storeroom personnel and will help speed the check-out process. Feel free to
+check the dishpan in the hood for the missing items you need before going to the storeroom to replace them.
+6. Have your TA check your equipment only after you have replaced any missing items.
+14. HINTS TO MINIMIZE FRUSTRATIONS IN ORGANIC CHEMISTRY
+Organic chemistry is one of the most exciting and challenging courses you will encounter at UT-Austin. The course encompasses a
+broad range of topics including petrochemicals, polymers, pharmaceuticals, and life-sustaining biochemical processes. Organic
+chemistry can bring immense pleasure and numerous rewards. Yet it may also foster frustrations, most of which involve time
+constraints. You may often feel overwhelmed by the sheer volume of material to be learned and the amount of work accompanying
+the demands of the laboratory. These are legitimate concerns. Much information is indeed covered, and considerable time is required
+both in and out of the laboratory itself.
+9
+
+There tend to be two major gripes that students have concerning the lab:
+A. Keeping a laboratory notebook and preparing for experiments require too much time.
+Good science practices dictate that certain documentation be present in your laboratory book. Because we believe in teaching
+good science, this problem cannot be changed. With practice, you should become more efficient at preparing your laboratory
+book. A pointer: If you can’t find the necessary information (physical data, hazards) in a reasonable amount of time, don’t
+worry about it.
+B. Students feel rushed during the laboratory period.
+To a certain extent, this is true. Most organic experiments involve several steps and techniques, one or more of which is
+often laborious and time-consuming. This is the nature of the beast. Nonetheless, organic experiments can be fun, especially
+if you can minimize frustrations. Fortunately, we have more control over time constraints during lab. Handling these
+problems is merely a matter of time management--making the most efficient use of your time in lab. To that end, the
+following suggestions should prove helpful:
+1. Come to laboratory prepared. This point can’t be overemphasized. People who know what they are doing before
+starting are far more efficient than people who must constantly refer back to a procedure to find out what they are
+going to do next. Advance preparation also lets you find any ambiguous points in the procedure. You can then ask
+to have these clarified during laboratory lecture.
+2. Start the experiment as soon as possible. This is usually not a problem. But you should be aware that you don’t
+have time to stop for a soft drink or to chit-chat on the way to the lab, if it occurs immediately following the
+laboratory lecture.
+3. Familiarize yourself with the location of frequently used chemicals and equipment in the lab. You will save time by
+not constantly having to ask where things are.
+4. Make the most efficient use of “dead time.” Many organic experiments have a stirring or reflux period during
+which there is nothing to do but wait. This time should be used for cleaning glassware and getting chemicals and/or
+apparatus ready for the subsequent steps. If there are qualitative tests assigned, they may be performed during such
+periods. These tests should not be done before starting the main reaction.
+5. Don’t presume that every reaction will work perfectly (or even at all). Often, these “tried and true” reactions fail to
+proceed the way the book describes. Even professional organic chemists with years of experience can’t get every
+reaction to work for them, despite the fact that the reaction may be cited extensively in the scientific literature.
+6. Clean your glassware before you leave lab. Like your pots and pans at home, laboratory apparatus is far easier to
+clean just after it is used rather than a week later. You will then be ready to start the next week’s experiment
+without delay.
+7. Remember that your TAs and AI are here to help you. If you have any problems or feel your frustration level rising,
+please don’t hesitate to talk to us. Here’s to a successful, enjoyable semester!
+10
+
+16. WORK SCHEDULE
+LAB REPORT DUE DATE SCHEDULE*
+Report Due Report Due Report Due
+Distillation Period 4 Substitution Period 8 Luminol Period 12
+Extraction Period 6 Grignard Period 9 Dehydrbromination Period 12
+Stereochemistry Period 6 Aldol Condensation Period 10 Relative Rates Period 12
+Arenes Period 7 9-Fluorenone Period 10 Nitration Period 13
+Stilbene Period 7 Methyl Benzoate Period 11 Methyl Orange Period 13
+* All reports are due at the beginning of the period.
+EXPERIMENTS
+REQUIRED PRE-LAB PREPARATION! Read about the techniques listed at the start of each experiment in preparation
+for working in the laboratory.
+Period 1 Lab Lecture: 8-29, 8-30 Wet Lab: 8-31, 9-4, 9-5
+Due Today
+Reading Assignments (due by lab lecture)
+CH 1, Parts 1–11 of General Information in Syllabus, Secs. 2.7, 3.1and 3.3
+What Are We Doing Today? (In Wet Lab)
+CHECK-IN
+THERMOMETER CALIBRATION and MELTING POINTS (Investigative)
+(Procedure, Sec. 2.7, p. 38, Sec. 3.3, pp. 117–118, Part A)
+You do not need to have a write-up for the Thermometer calibration. Store the data in your notebook.
+Notes for Melting Point Calibration
+• You will be given your own apparatus and three samples with known melting points. Take the melting point for each
+recording the difference for each in your notebook. Make note of this difference on the apparatus as well.
+11
+
+Period 2 Lab Lecture: 9-6, 9-10 Wet Lab: 9-7, 9-11, 9-12
+Due Today
+Reading Assignments (due by lab lecture)
+Secs. 2.14, 4.1-4.4, 6.1 and 6.4
+What Are We Doing Today? (In Wet Lab)
+FRACTIONAL DISTILLATION AND GAS CHROMATOGRAPHY (Investigative)
+(Procedure, p. 141-142, Procedure, GC, TBA)(Post Lab Questions: pp. 143-144, Problems 6,7,13 pp. 208-209, Problem 2)
+You do not need a procedure for the GC in the pre-lab writeup and there is no writeup for the Melting Point.
+Notes for Fractional Distillation
+• You will be given an unknown mixture of two solvents from the table below.
+Solvent Boiling Point (°C)
+Acetone 56.5
+Methanol 64.7
+Hexane 68.8
+Cyclohexane 80.7
+Heptane 98.4
+Ethyl Benzene 136.2
+Toluene 110.6
+• Set up the apparatus for the fractional distillation as pictured in Fig. 2.39, p. 59. Use 30-mL of the unknown mixture
+that is provided. Be sure to insulate your apparatus with cotton wrapped in aluminum foil. This insulation should
+include the stillpot as described in the laboratory lecture.
+• Prior to performing the distillation, prepare a graph in your notebook for plotting the head temperature vs. the
+cumulative volume of distillate obtained. During the distillation, look for plateaus, collect three fractions, A, B and C,
+and record their respective volumes. Measure the amount of residual liquid in the distillation flask (if any) so that a %
+composition of distilled liquid can be calculated. Also record the boiling points of A and C.
+Notes for Gas Chromatography
+• Each person is to shoot fractions A, B and C. Your TA will shoot the original sample and provide the necessary data.
+Identify what you think are the correct solvents by their respective boiling points. Then shoot those two solvents on the
+GC to confirm that identity.
+• Use the data from your traces to calculate the percent compositions of the original mixture and fractions A, B and C.
+Include these calculations in your Final Report. Record the results a table having the following form.
+Sample Boiling range (°C) Volume (mL) % Composition
+Fraction A 58-60 8 90.5:9.5
+Fraction B 60-102 7 NA
+Fraction C 102-110 15 14.7:85.3
+Mixture NA 30 30.2/69.8
+• In the “Conclusions” section of your final report, determine the percent composition of the unknown mixture by two
+different methods. Method one is by using the temperature vs. volume graph. Method 2 is by using the GC data for
+each individual fraction collected. Compare the results from each method with the original sample GC data supplied by
+your TA. Then compare the results with the rest of the lab section.
+12
+
+Period 3 Lab Lecture: 9-13, 9-17 Wet Lab: 9-14, 9-18, 9-19
+Due Today
+Reading Assignments (due by lecture)
+Secs. 2.7, 2.21, 3.1-3.3, 5.1–5.3, Supplement A and Supplement B
+What Are We Doing Today? (in wet lab)
+EXTRACTION AND RECRYSTALLIZATION: DAY 1 (Investigative)
+(Procedure, extraction, miniscale Supplement A, Procedure, recrystallization, Supplement B)
+(Product Analysis: MP, % Recovery) (Post Lab Questions: pp. 167-171, Problems 6,8,10,11)
+• Obtain 1 g of the unknown mixture that is a 1:1:1 ratio
+• Before coming to lab, prepare a table in your notebook that has the headings and entries shown below.
+Initial Crude Recovery MP Crude Purified Recovery
+Compound Amt. (g) Amt (g) (%) (°C) Amt. (g) (%) MP Purified (°C)
+Acid
+Base
+Neutral
+• For the recrystallizations in this experiment, recrystallize each crude sample in the appropriate solvent provided by the
+TA.
+Period 4 Lecture: 9-20, 9-24 Wet Lab: 9-21, 9-25, 9-26
+Due Today
+Reading Assignment (due by lecture)
+Secs. 7.1, 7.3-7.5
+What Are We Doing Today? (In wet lab)
+EXTRACTION AND RECRYSTALLIZATION: DAY 2
+(STEREOCHEMISTRY:ISOMERIZATION OF DIMETHYL MALEATE (Preparative) and ANALYSIS OF CARVONES
+(Investigative) (Procedure, miniscale, pp. 220-221, Procedure, p. 225-226 Part 1, Procedure, polarimetry, TBA)
+(Product Analysis: MP, % Yield) (Post Lab Questions: pp. 222-223, Problems 2,4,6 pp. 226-227 Problem 8)
+Notes for Stereochemistry
+• Use great care in handling the bromine solutions, as specified in the “Safety Alert!”.
+• For the sample to be kept in the dark, wrap the tube in aluminum foil and leave it on the bench-top.
+• Test the odor and determine the optical rotation of the carvone samples provided.
+13
+
+Period 5 Lecture: 9-27, 10-1 Wet Lab: 9-28, 10-2, 10-3
+Due Today
+Reading Assignment (due by lecture)
+Secs. 9.1, 9.3, 10.1, 10.4 and 10.6
+What Are We Doing Today? (In wet lab)
+FREE-RADICAL CHAIN REACTIONS: BROMINATION OF ARENES (Investigative)
+(Procedure, pp. 326-328) (Product Analysis: Rates of Reactivity) (Post Lab Questions: pp. 328-329, Problems 2,4,8)
+ADDITION REACTIONS OF ALKENES: BROMINATION OF (E)-STILBENE (Preparative)
+(Procedure, miniscale, pp. 377-378) (Product Analysis: % Yield, MP) (Post Lab Questions: p. 381-382, Problems 1,5,8)
+These are to be written as two separate reports.
+Notes for Bromination
+• Save your product for Period 10 dehydrobromination.
+Period 6 Lab Lecture: 10-4, 10-8 Wet Lab: 10-5, 10-9, 10-10
+Due Today
+Reading Assignment (Due by lecture)
+Secs. 14.1–14.4 and Sec. 25.9
+What Are We Doing Today? (In wet lab)
+NUCLEOPHILIC SUBSTITUTION: PREPARATION OF 1-BROMOBUTANE (Preparative)
+(Procedure, miniscale, pp. 467-468) (Product Analysis: IR, % Yield, Halide Tests)
+(Post Lab Questions: pp. 470-472, Problems 2, 5, 9, 12)
+ALKYL HALIDE CLASSIFICATION TESTS (Investigative)
+(Procedure, pp. 869-871)
+This is 1 report
+Notes for Substitution
+• Note: Despite what it says in the textbook, the 1-bromobutane layer obtained during the work-up of the reaction
+mixture is not cloudy.
+• Conduct the reaction at ½ scale.
+Notes for Alkyl Halide Tests
+• Prepare a table in your notebook that has the headings that follow. The results for each test that you perform on
+each compound are to be entered in this table.
+Compound Sodium Iodide Silver Nitrate
+• Perform the tests on your product and on the other compounds provided in the hood! Put all used and unused
+reagents in the waste bottle. Rinse your test tubes once with acetone and put the rinse liquid in the waste bottle.
+Then wash your glassware at the sink.
+• In the “Conclusions” section of your Final Report, explain the reactivities of each compound in terms of its
+structure and suggest possible structures for products of any positive tests that you observed.
+14
+
+Notes for Next Week
+• WASH ALL GLASSWARE NEEDED FOR PERIOD 7’S EXPERIMENT THIS WEEK SO THAT THEY
+HAVE A WEEK TO DRY.
+Period 7 Lab Lecture: 10-11, 10-15 Wet Lab: 10-12, 10-16, 10-17
+Due Today
+Reading Assignments
+Secs. 19.1–19.4
+What Are We Doing Today?
+ORGANOMETALLIC REACTIONS: PREPARATION OF BENZOIC ACID (Preparative)
+(Procedures, miniscale, pp. 643-645, and pp. 655-656) (Product Analysis: IR, % Yield, MP)
+(Post Lab Questions: pp 660-663, Problems 3, 13, 15, 19 )
+Notes for Grignard
+• All glassware must be completely dry! (Place the glassware in the oven for 20 minutes to dry. It is not necessary to
+flame-dry. Lightly grease the ground joints before placing the glassware in the oven. After drying, assemble the
+glassware while it is still hot.
+• Plan to add 1 or 2 crystals of iodine, no more than that, prior to beginning to add 2-bromopentane to the magnesium.
+You will receive additional instructions for initiating the reaction from your AI.
+• You will perform this reaction at ½ scale.
+Period 8 Lab Lecture: 10-18, 10-22 Wet Lab: 10-19, 10-23, 10-24
+Due Today
+Reading Assignment (due by lecture)
+Secs., 18.1 and 18.3 and 17.1, 17.2, 17.4
+What Are We Doing Today? (In wet lab)
+ALDOL CONDENSATION: PREPARATION OF TRANS-p-ANISALACETOPHENONE (Preparative)
+(Procedure, microscale, pp. 620-621) (Product Analysis: IR, MP, % Yield)
+(Post Lab Questions: pp. 622-623, Problems 2, 5, 10)
+REDUCTION OF CARBONYL COMPOUNDS: PREPARATION OF FLUORENOL (Preparative)
+(Procedure, microscale, pp.583-584) (Product Analysis: IR, MP, % Yield)
+(Post Lab Questions: pp. 584-585, Problems 2, 3, 6, 11)
+These are to be written as two Separate Reports
+Period 9 Lab Lecture: 10-25, 10-29 Wet Lab: 10-26, 10-30, 10-31
+Due Today
+Reading Assignment (due by lecture)
+Secs. 20.1,20.2, Supplement C
+What Are We Doing Today? (In wet lab)
+ESTERIFICATION: PREPARATION OF METHYL BENZOATE (Preparative)
+(Procedure, miniscale, Supplement C) (Product Analysis: IR, % Yield) (Post Lab Questions: pp. 676-677, Problems 1, 5, 7)
+15
+
+Period 10 Lab Lecture: 11-1, 11-5 Wet Lab: 11-2, 11-6, 11-7
+Due Today
+Reading Assignment (due by lecture)
+Secs. 11.1,11.2, 20.1 and 20.4
+What Are We Doing Today? (In wet lab)
+CHEMILUMINESCENCE: SYNTHESIS OF LUMINOL
+(Procedure, microscale, pp. 694 and pp. 695) (Product Anlysis: Did it Glow)
+(Post Lab Questions: pp. 695-696, Problems 1, 2, 4)
+ALKYNE FORMATION: DEHYDROBROMINATION OF MESO-STILBENE DIBROMIDE(Preparative)
+(Procedure, microscale, pp. 406-407) (Product Analysis: % Yield, MP) (Post Lab Questions: pp. 408-409, Problems 2,4,6)
+These are to written as two separate reports
+Notes for Dehydrobromination
+• Use the meso-stilbene dibromide that you prepared from period 5. If you did not make enough, some will be
+provided.
+Period 11 Lab Lecture: 11-8, 11-12 Wet Lab: 11-9, 11-13, 11-14
+Due Today
+Reading Assignment (Due by lecture)
+Secs. 15.1, 15.4 and 15.5
+What Are We Doing Today? (In wet lab)
+ELECTROPHILIC AROMATIC SUBSTITUTION: NITRATION OF BROMOBENZENE (Preparative)
+(Procedure, microscale, pp.516-517) (Product Analysis:% Yield, MP)
+(Post Lab Questions: pp. 519-520, Problems 2, 5, 6, 9)
+ELECTROPHILIC AROMATIC SUBSTITUTION: RELATIVE RATES OF REACTION (Investigative)
+(Procedure, pp. 525-526 (part A)) (Product Analysis: Relative rates of Reaction)
+(Post Lab Questions: pp. 527-528, Problems 1, 3, 9)
+These are to be written as two Separate Reports
+Notes for Rates of Reaction
+• Predict the order of reactivity before you come to lab and have that prediction in your notebook.
+• Do the rate determination on the following compounds: phenol, 2-bromophenol, 3-bromphenol, 4-bromophenol, anisole,
+acetanilide, benzoic acid and diphenyl ether.
+Period 12 Lab Lecture: 11-15, 11-26 Wet Lab: 11-16, 11-27, 11-28
+Due Today
+Reading Assignment (due by lecture)
+Supplement D
+What Are We Doing Today? (In wet lab)
+PREPARATION OF A DYE: METHYL ORANGE (Preparative)
+(Procedure, Supplement D) (Product Analysis: Dyeing analysis, pH affect) (Post Lab Questions: None)
+16
+
+Period 13 Lab Lecture: 11-29, 12-3 Wet Lab: 11-30, 12-4, 12-5
+Due Today
+Reading Assignment (due by lecture)
+None
+What Are We Doing Today? (In wet lab)
+CHECKOUT
+17
+
+16. SUPPLEMENTS
+A. Acid-Base Extraction (Miniscale)
+To prepare for this experiment, study the detailed instructions for using a separatory funnel.
+Obtain from your instructor a 1 g of the unknown mixture (it is 1:1:1). Using an Erlenmeyer flask, dissolve the mixture in about
+30 mL of ethyl acetate. Transfer the solution to the separatory funnel and the extract it sequentially with three 10–mL portions of
+6 M hydrochloric acid. Combine the three aqueous acidic layers from the extractions in an Erlenmeyer flask labeled “acidic
+extract.”
+Extract the remaining organic layer in the separatory funnel with three 10 mL portions of 6 M NaOH. Combine the three
+aqueous basic layers from the extractions in an Erlenmeyer flask labeled “basic” extract.
+Transfer the organic layer into an Erlenmeyer flask labeled “neutral” extract. Dry the sample with Na SO .
+2 4
+While the organic solution is drying, cool both of the aqueous extracts in an ice-water bath. Neutralize the “acidic extract” with 6
+M sodium hydroxide and add a little excess base to make the solution distinctly basic to pH paper. Neutralize the “basic extract”
+with 6 M hydrochloric acid and add a little excess acid to make the solution distinctly acidic to pH paper. Upon neutralization, a
+precipitate should form in each flask.
+Collect the precipitates separately by vacuum filtration. Wash each of the precipitated solids on the Büchner funnel with cold
+distilled water. Collect the filtrate and label them appropriately.
+Separate the “organic solution” from the sodium sulfate by gravity filtration and remove the solvent by simple distillation.
+Discontinue the distillation when only a small amount of material remains in the distillation pot. Allow the pot to cool and then
+attach it to the water aspirator to remove the last small amount of the solvent. Be sure to have a clean Büchner flask as an
+aspirator trap. Gently swirl the liquid in the pot to expose a greater surface area and to facilitate vaporization. The pot can also
+be warmed mildly with the warmth of your hands.
+Transfer the resulting solid residue to the third vial and allow it to air-dry in the same way.
+After the samples have been dried, re-weigh each of the vials to obtain the weight of the crude solids, and determine the melting
+point of each of them. The reported melting points are given below.
+Compounds MP (°C)
+Acidic benzoic acid 122–123
+2-methylbenzoic acid 103–105
+2-chlorobenzoic acid 138–140
+salicylic acid 158–160
+Basic 4-nitroaniline 149–151
+2-methyl-4-nitroaniline 131–133
+3-nitroaniline 112–114
+Neutral 9-fluorenone 82–85
+anthracene 216–218
+fluorene 114–116
+phenanthrene 101–103
+Continue the experiment as directed to determine a suitable recrystallization solvent for each solid obtained.
+18
+
+16. SUPPLEMENTS (CONT.)
+B. Recrystallization of Acidic or Basic Products
+Recrystallization as a purification technique involves the following:
+Selecting an appropriate solvent.
+The following criteria must be met for a solvent to be used in a recrystallization:
+1. The compound should be soluble (approx. 1 g in 20 mL) in hot solvent, but insoluble in cold solvent.
+2. The impurities present in the compound need to either be completely insoluble in the solvent or be completely soluble in the
+solvent (at all temperatures).
+3. The solvent should be volatile enough that it can be easily removed from the crystals.
+4. The boiling point of the solvent should be lower than the melting point of the crystals, otherwise the crystals could melt before
+they dissolve in the solvent and form an oil. This event is called “oiling out” of the solid, and makes the crystals much more
+difficult to isolate.
+Dissolving the crystals.
+Place the solid in a suitable container. Add a small volume of solvent and bring it to a boil. After the solvent starts boiling, add small
+amounts of fresh solvent until all of the solid dissolves. It is important that you use a minimum amount of solvent.
+Forming the purified crystals.
+Allow the hot solution to cool SLOWLY to room temperature. Cooling the solution too rapidly (by placing it in an ice-water bath)
+causes crystals to be formed too rapidly and may possibly lead to entrapment in the crystals not only of solvent but also of other
+impurities. If no crystals form after an appropriate amount of time, several measures can be taken. For example you may seed the
+solution by adding a crystal or two of the original compound. Also, you may use a glass rod to scratch the side of the container at the
+air-liquid interface. If all else fails, place the container in an ice-water bath.
+Isolating the purified crystals.
+Isolate the crystals obtained from the recrystallization by vacuum filtration using a Hirsch or Büchner funnel depending upon the
+volume of crystals obtained. Then rinse the purified crystals with a small amount of COLD solvent.
+Drying the crystals.
+The purified crystals are usually allowed to air-dry in a watch glass or a vial.
+PROCEDURE
+Note: Each lab will be split into groups of 3.
+Place about 20 mg of solid in each of 6 test tubes. Label each test tube according to the solvent you will be testing and add about 0.5
+mL of solvent to the solid in the test tube.
+Label each of the solids in the test tubes as either soluble or insoluble at room temperature. If the solid is insoluble, heat the mixture
+and again label it as either soluble or insoluble.
+For the solids that are insoluble at room temperature but soluble at a higher temperature, let the solutions cool and examine the
+crystals to see which solvent appears to give the best yield of solid and the highest quality crystals.
+Once your group has determined the solvent for your solid, check with your TA who will then inform the rest of the class which
+solvent you selected. You should then recrystallize all three of the acidic and basic products using the specified solvents.
+19
+
+16. SUPPLEMENTS (CONT.)
+C. Fischer Esterification: Synthesis of Methyl Benzoate
+Esters are important functional groups that can be synthesized in a number of different ways. Many esters have pleasant
+odors and are often used in foods and perfumes. One method to synthesize and ester is by combining an alcohol and a carboxylic acid.
+The problem with this method is that the alcohol is not a strong enough nucleophile to attack the carbonyl carbon of the carboxylic
+acid. Fischer overcame this problem by adding a strong acid to the reaction, which protonates the carbonyl oxygen generating a better
+electrophile. Because each step in the mechanism is reversible, care must be taken to avoid reversing the reaction.
+OH
+O +
+H+ O H
+R R + R'-OH R OH
++
+OH OH O R'
+H
+O + H O
+R R
++ H O
+2
+O R' O R'
+We will be synthesizing methyl benzoate from methanol and the benzoic acid that we made previously. Methy l benzoate is
+commonly used in the perfume industry and the food industry as a flavor additive.
+APPARATUS
+A 100 mL round bottom flask, a condenser, a stirbar, an aluminum heating block and a hot plate.
+PROCEDURE FOR THE FORMATION OF METHYL BENZOATE
+Synthesis
+Place 1.0 g of benzoic acid and 25 mL of methanol in a 100-mL round-bottomed flask, cool the mixture in ice, pour 1.5 mL
+of concentrated sulfuric acid slowly and carefully down the walls of the flask, and then swirl to mix the components. Attach a
+reflux condenser, add 3 boiling chips, and reflux the mixture gently for 1 hr. with the set-up shown.
+Isolation and Purification
+Cool the solution, decant it into a separatory funnel containing 25 mL of water, and rinse the flask with 25 mL of diethyl
+ether (Use wet ether found in a supply bottle in each hood). Add this ether to the separatory funnel, shake thoroughly, and drain off the
+water layer, which contains the sulfuric acid and the bulk of the methanol. Extract the ether in the separatory funnel with 25 mL of
+water followed by 25 mL of 10% sodium bicarbonate to remove unreacted benzoic acid. Again shake, with frequent release of
+pressure by inverting the separatory funnel and opening the stopcock, until no further reaction is apparent; then drain off the
+bicarbonate layer into a beaker. If this aqueous material is made strongly acidic with hydrochloric acid, unreacted benzoic acid may be
+observed. Wash the ether layer in the separatory funnel with saturated sodium chloride solution, and dry the solution over anhydrous
+calcium chloride in a 125-mL Erlenmeyer flask. Add sufficient anhydrous calcium chloride so that it no longer clumps together on the
+bottom of the flask. After 10 min, decant the dry ether solution into a dry 50-mL Erlenmeyer flask, wash the drying agent with an
+additional 5 mL of ether, and decant again.
+Remove the ether by evaporation in the hood. When evaporation is complete, add 2 to 3 spatula tips full of anhydrous
+calcium chloride to the residual oil and air dry for about 5 min longer.
+20
+
+16. SUPPLEMENTS (CONT.)
+D. Preparation of Methyl Orange
+Humans have been using dyes since prehistoric times. Madder, which is today called alizarin, is extracted from the roots of
+the madder plant and is an example of one of the oldest known dyes; it ranges from brilliant red to orange in color. A similar dye to
+alizarin is called henna, which has long been used in dyeing human hair red and is derived from the leaves, seeds, and thorns of the
+henna plant. Another example of an ancient dye is indigo, which is light blue to navy in color and is obtained from the leaves of the
+indigo plant, Indigofera tinctoria; it has been in use in Asia for more than 4000 years.
+O OH O
+O O
+OH OH
+Br N N Br
+H H
+O O
+Alizarin Henna Indigo
+Plants were the main source of dyes until the middle of the 19th century, although other living organisms, insects, for
+example, provided dyes. In the case of plants, roots, leaves and berries could simply be boiled in water to extract the dyes. Today,
+dyes are made synthetically rather than being isolated from natural sources. The first such dye, Perkin’s Mauve, was accidentally
+discovered by William H. Perkin, an English chemist, when he attempted the synthesis of quinine from allyltoluidine, His discovery
+led to the production of pararosaniline, malachite green and crystal violet, all of which are in a group classifed as triphenylmethyl
+dyes.
+H N H H 3 C N + CH C 3 l - H 3 C N + CH C 3 l -
+H N NH (CH ) N (CH ) N N(CH )
+2 2 3 2 3 2 3 2
+Pararosaniline Malachite Green Crystal Violet
+Today, the most common dyes are the azo dyes, which are formed from a coupling reaction between aryl diazonium salts and
+phenols and other aromatic amines. They are called azo dyes because they contain a nitrogen-nitrogen double bond, is the so-called
+an azo group. The reaction first involves reaction between nitrous acid and an aromatic amine to produce an aryl diazonium salt, a
+process called diazotization. Next, the phenol or aromatic amine is added to the salt in a reaction called diazonium coupling.
+R
+..
+N N
+..
+R
+Azo group (in anti form)
++ -
+Ar NH HNO + HCl Ar N N Cl + 2 H O
+2+ 2 2
+Diazotization
+21
+
++ .. H + B - H
+Ar N N N(CH 3 ) 2 N(CH 3 ) 2 N(CH 3 ) 2 + BH
+N N N N
+Ar Ar
+Diazonium Coupling
+In the following experiment, you will be synthesizing methyl orange, which is commonly used as an acid-base indicator. It is
+synthesized from N,N-dimethylaniline and sulfanilic acid. The initial product is a bright red intermediate called helianthin, which
+yields methyl orange after addition of base. After synthesizing the dye, you will test its ability to color cotton. You will also
+determine if it can be used to indicate the pH of different solutions.
+H
+N(CH )
+3 2(CH ) N+
+3 2
+- O S N + H HNO 2 - O S N + N N
+3 3 3 2
+Sulfanilic acid
+(as zwitterion) Proton -
+SO
+transfer 3
+(CH ) N (CH ) N
+3 2 3 2
+NaOH +
+N N N N
+H
+- -
+SO SO
+3 3
+Methyl Orange Helianthin (red)
+APPARATUS
+Three 10 x100-mm test tube, a 5 mL conical vial, a heating block, a hotplate for heating, a spinvane, a 25-mL Erlenmeyer flask, a 30
+mL beaker, Hirsch funnel and filter flask for filtration.
+PROCEDURE FOR THE FORMATION OF METHYL ORANGE
+Diazotization of Sulfanilic Acid
+Add 1.25 mL of water to a 5 mL conical vial. Next add 120 mg of sulfanilic acid and 35 mg of sodium carbonate. Using a heating
+block and hot plate, heat the solution to boiling until all is dissolved. Allow the solution to cool to room temperature. Once it has
+cooled, add 50 mg of sodium nitrite and stir the mixture with a glass rod until the solids are dissolved. Now cool the vial in ice, and
+with stirring, add 0.75 g of ice and 0.125 mL of concentrated HCl. Once the white solid has precipitated, set the vial aside for use
+later in the reaction.
+Formation of Methyl Orange
+To a 25-mL Erlenmeyer flask, add 75 mg of N,N-dimethylaniline, a spinvane and 65 mg of acetic acid and stir the mixture to achieve
+homogeneity. Add the diazotized sulfanilic acid slurry from above, rinsing the last of the solid out of the test tube with a few drops of
+water. Stir the mixture thoroughly. When a stiff paste has formed, add 1 mL of 3 M aqueous NaOH. Heat the solution to the boiling
+point, stirring constantly to avoid bumping. When most of the solid has dissolved, allow the solution to cool to room temperature, and
+then cool it in ice for 10 min. Collect the crystalline product by vacuum filtration with a Hirsch funnel and rinse it with 3 mL of
+saturated sodium chloride solution.
+22
+
+Dyeing Test
+To a 30-mL beaker, combine 50 mg of recrystallized methyl orange, 0.5 mL of 1 M aqueous sodium sulfate, 15 mL of water and 5
+drops of 1 M aqueous sulfuric acid and mix thoroughly. Bring the solution close to the boiling point and place a small piece of cotton
+into the solution for 5 min. Remove the cotton, allow it to cool and then rinse thoroughly with tap water at the sink. Allow the cotton
+to dry and then compare it to undyed cotton.
+Indicator Test
+Place a few crystals of methyl orangeinto three test tubes. Next add a few drops of 0.5 M aqueous HCl to one tube and a few drops of
+0.5 M aqueous NaOH to a second test tube until the color changes. To the third test tube, add a few drops of water. Record the
+different color changes you observe for each solution.
+23

@@ -1,0 +1,122 @@
+{
+  "course": {
+    "id": "bio370-2011250795",
+    "course_code": "BIO 370",
+    "course_title": "Evolution",
+    "term": "Spring 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Ulrich Mueller",
+        "email": "umueller@mail.utexas.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": "Mark Bierner",
+        "email": "bierner@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 100,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-02-15T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "~Feb 15"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-03-08T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "Mar 8"
+    },
+    {
+      "id": "exam_3",
+      "title": "Exam 3",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-04-07T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "Apr 7"
+    },
+    {
+      "id": "exam_4",
+      "title": "Exam 4",
+      "category_id": "exams",
+      "type": "final",
+      "due_datetime": "2011-05-05T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Fourth exam serves as final; no separate final",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "May 5 serves as final"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

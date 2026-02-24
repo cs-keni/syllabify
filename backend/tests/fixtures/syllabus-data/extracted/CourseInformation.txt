@@ -1,0 +1,49 @@
+Fourier Optics EE383P
+COURSE INFORMATION
+Class meets T Th 2:00 – 3:30 pm GDC 5.304
+Prerequisite: Working understanding of Signals and Systems (especially Fourier Transforms), or
+consent of the Instructor.
+Course Description: Fourier optics is the study of how concepts from linear and space-invariant
+systems can provide powerful descriptors of how optical waves propagate. The Fourier transform is
+one such powerful descriptor, and is of great utility in decomposing electric fields into their harmonic
+plane-wave components. This enables rigorous understanding of how light propagates within
+instruments composed of linear optical elements, such as is the case with microscopes, telescopes,
+and cameras. Fourier optics also introduces a coherent-analysis framework, which enables rich
+analysis and understanding of illumination sources ranging from modulated lasers to incoherent white-
+light sources. Light coherence also has applications for optical information processing and holography.
+Lastly, Fourier Optics also presents a theoretical foundation for diffraction theory, which allows one to
+calculate and predict imaging resolution and other interference-based phenomena.
+General Syllabus:
+1. Introduction to 2-D Linear Systems (Text Ch. 2)
+2. Scalar Diffraction Theory (Ch. 3)
+3. Fourier Transforming Properties of Lenses (Ch. 6)
+4. Fourier Analysis of Imaging Systems (Ch. 7)
+5. Optical Information Processing (Ch. 10 )
+6. Fourier Optics Applications (Ch. 11 and miscellaneous)
+Instructor: Prof. Shwetadwip Chowdhury: shwetadwip.chowdhury@utexas.edu
+Teaching Assistant: TBD
+Office Hours: Tuesday, 10:00-11:30 in EER 5.808
+Textbook: Joseph W. Goodman, Introduction to Fourier Optics 4th ed., MacMillan Learning, 2017
+Course work: All students will do a class project in teams of two-three students involving a simulation
+of an optical system employing topics from Fourier optics. The one project report per team will be a
+paged-limited memo type report, and both team members will receive the same grade.
+Homework: Consists mostly of problems from Goodman book. Generally due on the first lecture after
+the set of lectures covering the relevant content. Late homework is worth 2/3 when turned in one class
+late, 1/3 when a week late, and zero thereafter.
+Grading:
+1. 2 exams. 25% ea.
+2. Homework problem assignments. 25% in total
+3. Group project, simulation using computational techniques and report on results (due on last
+day of class). 25%
+Scholastic Dishonesty:
+UT policy will be followed. This is not intended to tell you that it won't be tolerated (it won't), but to tell
+you what is permissible and what is not.
+
+Homework: conferring with others is allowed, but what you submit must be your own work (not copied).
+For the project, one common version is submitted. What you submit must be the team's own work,
+programs, results, etc., or it must be referenced properly. If it's not referenced, and it's not yours, then
+it is plagiarism. I do encourage consulting all sources that you can (including your uncle at IBM) so
+long as those sources are acknowledged. Be careful to cite web sources completely as well.
+Exams: Note sheets and programmable calculators are allowed for the exams. Any exchange of
+information (one-way or two-way) outside of you, your note sheet, and your calculator during the exam
+is obviously NOT OK. Prior knowledge of exam questions is also NOT OK.

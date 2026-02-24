@@ -1,0 +1,80 @@
+CS371p: Object-Oriented Programming https://www.cs.utexas.edu/users/downing/cs371p/
+CS371p: Spring 2015
+Object-Oriented Programming
+About
+Books
+Evaluations
+Git
+Grading
+Schedule
+Topics
+View the Project on GitHub gpdowning/cs371p
+This is a course on object-oriented programming using C++.
+Estimates of the required effort to do well are:
+3 hours per week of studying
+10 hours per week of programming
+5,000 lines of C++ code
+Lecture
+Unique Days Time Place
+51992 MWF 11am JGB 2.218
+Instructors
+Type Name Days Time Place
+Glenn Downing MF 12-12:50pm
+Lecturer downing@cs.utexas.edu GDC 6.308
+@gpdowning F 2-2:50pm
+1 of 3 2/4/15, 11:15 AM
+
+CS371p: Object-Oriented Programming https://www.cs.utexas.edu/users/downing/cs371p/
+Pulkit Gupta GDC 1.302
+TA T 11am-12pm
+pulkit.gupta@utexas.edu (TA Desk #2)
+Aizhuldyz Gabbassova
+T 2-3pm
+aigabbass90@gmail.com
+Dilnur Yuldashev
+Proctors W 8-9am GDC 3.302
+dilnur92@utexas.edu
+Liem Ta
+Th 4-6pm
+liemta@utexas.edu
+Resources
+An Introduction to Object-Oriented Programming, 3rd Edition
+Book
+[sample chapters online]
+Tools git
+Canvas
+Websites GitHub
+Piazza
+Prerequisites
+The following coursework with a grade of at least C- in each: Computer Science 311,
+311H, 313H, or 313K; Computer Science 307, 314, 314H, 315, or 315H; Computer
+Science 310, 310H, 429, or 429H; and Mathematics 408C, 408K, or 408N.
+Special Needs
+Any student with a documented disability who requires academic accommodations
+should contact Services for Students with Disabilities at 471-6259 (voice) or
+1-866-329-3986 (Video Phone) as soon as possible to request an official letter outlining
+authorized accommodations.
+You must provide this letter to me by the 12th class day. Project deadlines will not be
+extended for special-needs students.
+2 of 3 2/4/15, 11:15 AM
+
+CS371p: Object-Oriented Programming https://www.cs.utexas.edu/users/downing/cs371p/
+Incompletes
+To be eligible for an incomplete you must have a letter grade of C or better and a written,
+verifiable excuse for missing the last test. This is a necessary but insufficient condition
+for receiving an incomplete.
+Academic Integrity
+Students who violate University rules on academic dishonesty are subject to disciplinary
+penalties, including the possibility of failure in the course and/or dismissal from the
+University. Since such dishonesty harms the individual, all students, and the integrity of
+the University, policies on academic dishonesty will be strictly enforced. For further
+information please visit the Student Judicial Services Web site: Student Judicial
+Services.
+Programming assignments will be compared using Moss. You may share design ideas
+with your fellow students. You may not share code in any way with your fellow students.
+The penalty for academic dishonesty will be a course grade of F and a referral of the case
+to the Dean of Students. Further penalties, including suspension or expulsion from the
+university may be imposed by that office.
+This project is maintained by gpdowning
+Hosted on GitHub Pages — Theme by orderedlist
+3 of 3 2/4/15, 11:15 AM

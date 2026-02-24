@@ -1,0 +1,221 @@
+{
+  "course": {
+    "id": "bio446l-2011250300",
+    "course_code": "BIO 446L",
+    "course_title": "Human Microscopic and Gross Anatomy",
+    "term": "Spring 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Paul Findell",
+        "email": "paulfindell@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "WCH 1.120",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "WCH 1.120",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "WCH 1.120",
+        "type": "lecture"
+      }
+    ],
+    "location": "WCH 1.120"
+  },
+  "assessment_categories": [
+    {
+      "id": "lecture_exams",
+      "name": "Lecture Midterm Exams",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "lecture_final",
+      "name": "Lecture Final Exam",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "classwork",
+      "name": "Classwork (CPS)",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "lab_exams",
+      "name": "Lab Exams",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "lab_quizzes",
+      "name": "Lab Quizzes",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "lab_attendance",
+      "name": "Lab Attendance and Participation",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "lecture_exams_1",
+      "title": "Lecture Midterm Exams",
+      "category_id": "lecture_exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No makeup; use final section if excused",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "4 lecture exams"
+    },
+    {
+      "id": "lecture_final_1",
+      "title": "Lecture Final Exam",
+      "category_id": "lecture_final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Comprehensive lecture final"
+    },
+    {
+      "id": "classwork_1",
+      "title": "Classwork (CPS)",
+      "category_id": "classwork",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "CPS quizzes and problems"
+    },
+    {
+      "id": "lab_exams_1",
+      "title": "Lab Exams",
+      "category_id": "lab_exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "2 lab exams"
+    },
+    {
+      "id": "lab_quizzes_1",
+      "title": "Lab Quizzes",
+      "category_id": "lab_quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Lab quizzes 5%"
+    },
+    {
+      "id": "lab_attendance_1",
+      "title": "Lab Attendance and Participation",
+      "category_id": "lab_attendance",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Lab attendance 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

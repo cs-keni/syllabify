@@ -1,0 +1,37 @@
+Textbook http://www.cs.utexas.edu/~lili/classes/S15/info.htm
+Textbook
+Required textbook: Mobile Communications by Jochen Schiller, Addison-Wesley
+Recommended references:
+Ad Hoc Networking by Charles E. Perkins, Addison Wesley
+Wireless Communications: Principles and Practice by Theodore S. Rappaport, Prentice Hall
+Computer Networking: A Top-Down Approach Featuring the Internet
+802.11 Wireless Networks: The Definitive Guide by Matthew Gast
+The above books have been reserved at UT library for you to check out for up to 2 hours
+Course Material
+Physical layer (signal propagation, multiplexing, modulation)
+Medium access control, cellular networks, WiFi, HIPERLAN, Bluetooth
+Mobile IP
+Ruting in ad hoc networks
+Wireless transport protocols
+Wireless applications
+Wireless network security
+Prerequisites
+CS 312 and CS 429 are required.
+CS 356 (Computer Networks) are highly recommended, but not required.
+Note to non-CS majors:
+Non-CS majors can request to take CS courses in the CS Undergraduate Advising Office. You will
+need to fill out a very short form at the front counter. The prerequisite include enrolled or
+completed EE 322C (Data Structures). Students with this background are registered if there is
+space available when they make the request.
+Grading
+Class participation (10%) (include in-class quizzes): Everyone is expected to attend all the
+1 of 2 2/4/15, 10:56 AM
+
+Textbook http://www.cs.utexas.edu/~lili/classes/S15/info.htm
+classes and contribute to classroom discussion.
+Homework (40%): We will have several homework assignments: some are programming
+assignments and others are paper-pencil homework. Programming assignment should be emailed
+to TA before class, and paper-pencil homework should be handed in at the beginning of the class.
+Exam I (20%) and Exam II (30%): We will have two exams
+We will strictly enforce UTCS code of conduct.
+2 of 2 2/4/15, 10:56 AM

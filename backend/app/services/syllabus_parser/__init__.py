@@ -28,6 +28,8 @@ def parse_syllabus_text(text: str, course_id: str, source_type: str = "txt") -> 
     Returns dict with course, assessment_categories, assessments, grading_structure,
     late_pass_policy, schedule, metadata.
     """
+    # Normalize unicode hyphens/dashes (soft hyphen, en-dash, etc.) to ASCII for consistent matching
+    text = re.sub(r"[\u00AD\u2010\u2011\u2012\u2013\u2014\u2015]", "-", text)
     course_code = parse_course_code(text, course_id)
     course_title = parse_course_title(text, course_id) or course_code
     term = parse_term(text)

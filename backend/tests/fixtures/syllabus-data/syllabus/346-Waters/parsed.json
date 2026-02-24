@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "346-waters",
+    "course_code": "CS 346",
+    "course_title": "Cryptography",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Brent Waters",
+        "email": "bwaters@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "11:00",
+        "end_time": "12:30",
+        "timezone": "America/Chicago",
+        "location": "GDC 1.304",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "11:00",
+        "end_time": "12:30",
+        "timezone": "America/Chicago",
+        "location": "GDC 1.304",
+        "type": "lecture"
+      }
+    ],
+    "location": "GDC 1.304"
+  },
+  "assessment_categories": [
+    {
+      "id": "problem_sets",
+      "name": "Problem sets",
+      "weight_percent": 45,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "In-class examinations",
+      "weight_percent": 45,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "participation",
+      "name": "Class participation",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "research",
+      "name": "Research investigation",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "problem_sets_1",
+      "title": "Problem sets",
+      "category_id": "problem_sets",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 45,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Problem sets 45%"
+    },
+    {
+      "id": "exams_1",
+      "title": "In-class examinations",
+      "category_id": "exams",
+      "type": "exam",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 45,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "In-class examinations 45%"
+    },
+    {
+      "id": "participation_1",
+      "title": "Class participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Class participation 5%"
+    },
+    {
+      "id": "research_1",
+      "title": "Research investigation",
+      "category_id": "research",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Research investigation 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

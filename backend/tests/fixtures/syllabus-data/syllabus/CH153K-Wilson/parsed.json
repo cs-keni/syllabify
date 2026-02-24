@@ -1,0 +1,228 @@
+{
+  "course": {
+    "id": "ch153k-wilson",
+    "course_code": "CH 153K",
+    "course_title": "Physical Chemistry Laboratory",
+    "term": "Fall 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Robb Wilson",
+        "email": null
+      },
+      {
+        "id": "inst-1",
+        "name": "Alan Campion",
+        "email": null
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "09:00",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "MO",
+        "start_time": "14:00",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "TU",
+        "start_time": "14:00",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "WE",
+        "start_time": "14:00",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-5",
+        "day_of_week": "TH",
+        "start_time": "14:00",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-6",
+        "day_of_week": "MO",
+        "start_time": "19:00",
+        "end_time": "22:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-7",
+        "day_of_week": "TU",
+        "start_time": "19:00",
+        "end_time": "22:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-8",
+        "day_of_week": "WE",
+        "start_time": "19:00",
+        "end_time": "22:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      },
+      {
+        "id": "mt-9",
+        "day_of_week": "TH",
+        "start_time": "19:00",
+        "end_time": "22:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 4.138",
+        "type": "lab"
+      }
+    ],
+    "location": "WEL 4.138"
+  },
+  "assessment_categories": [
+    {
+      "id": "lab_reports",
+      "name": "Lab Reports",
+      "weight_percent": 75,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "error_analyses",
+      "name": "Error Analyses",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "rough_drafts",
+      "name": "Rough Drafts",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "analysis_techniques",
+      "name": "Analysis Techniques Assignment",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "lab_reports_1",
+      "title": "Lab Reports",
+      "category_id": "lab_reports",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 75,
+      "points": 75,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "5 lab reports"
+    },
+    {
+      "id": "error_analyses_1",
+      "title": "Error Analyses",
+      "category_id": "error_analyses",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": 15,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Best 3 of error analyses"
+    },
+    {
+      "id": "rough_drafts_1",
+      "title": "Rough Drafts",
+      "category_id": "rough_drafts",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": 5,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "2 rough drafts"
+    },
+    {
+      "id": "analysis_1",
+      "title": "Analysis Techniques Assignment",
+      "category_id": "analysis_techniques",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": 5,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Due at start of third lab"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

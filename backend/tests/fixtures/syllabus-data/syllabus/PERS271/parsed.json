@@ -14,8 +14,33 @@
     ],
     "location": "Student Tennis Center"
   },
-  "assessment_categories": [],
-  "assessments": [],
+  "assessment_categories": [
+    {
+      "id": "participation",
+      "name": "Attendance and Participation",
+      "weight_percent": 100,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "participation_1",
+      "title": "Attendance and Participation (80% required to pass)",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 100,
+      "points": null,
+      "recurrence": null,
+      "policies": {"late_policy": null, "late_pass_allowed": null},
+      "confidence": 0.9,
+      "source_excerpt": "80% attendance to pass"
+    }
+  ],
   "grading_structure": {"type": "flat", "buckets": []},
   "late_pass_policy": {"total_allowed": null, "extension_days": null},
   "schedule": [],

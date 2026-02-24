@@ -1,0 +1,70 @@
+Physics n303L – Summer 2017 – Engineering Physics II
+M-Tu-W-Th-F 10:00–11:15am – PAI 4.42 – Unique No. 88160
+Instructor: Prof. John Markert. Office: RLM 13.314, 471-1039. Office Hours: M 1:30–2:30, Th 1:30–2:30.
+Or by appointment, or after class (outside PAI 4.42). E-mail: markert@physics.utexas.edu
+LA/TA: Learning Assistants: To be announced. Teaching Assistant: To be announced.
+Textbook: Required: Physics for Engineers and Scientists, 3rd Ed., Ohanian and Markert, Vol. 2 (either print
+or electronic version). iClicker remote required (below). Optional: (Study guide, etc.). Tutorials
+at http://www.wwnorton.com/college/physics/om/index.shtml (“Online Concept Tutorials”).
+“Quizzes:” Three in-class exams on alternate Thursdays: June 15, June 29, and July 13. An equation sheet
+will be provided; also, you may bring one 8.5"x11" handwritten sheet (both sides OK).
+Final: The final exam is mandatory, Thursday, July 27, 7:00 p.m.–10:00 p.m. Location TBA.
+Homework: Read and study the chapter assigned on the back of this sheet before coming to class. Homework
+is submitted on Quest (https://quest.cns.utexas.edu/student) and is due 4am every Tuesday and
+Friday (so HW really due Monday and Thursday nights). Exceptions: No homework on Thursday
+nights after exams (6/15, 6/29, and 7/13). Solutions will appear on Quest 2 hours after the due time.
+Coaching/ TA/LA help sessions TBA. Computer/Quest help in PMCL in RLM 7.306. Coaching tables on
+Help: 5th floor of RLM may have some daytime TA help (use escalators for floors 5–7). Jester West
+and Kinsolving have had physics study groups Su–Th 7:30–10:30pm. Sanger Learning
+Center (JES A332) has tutoring, peer academic coaching, and specialist appointments:
+http://www.utexas.edu/ugs/slc or call 512-471-3614.
+Classwork: iClicker system. Buy a new or used iClicker remote and register its serial number in Canvas only
+(https://utexas.instructure.com/courses) at the i>Clicker tab. We will practice on F 6/2 and begin
+on M 6/5. Attendance and participation by iClicker will be posted in Canvas. (Students with
+better attendance usually get higher grades.)
+Overall Grade:
+Grade: Homework (best 10 out of 12) 15% A 90-100 B– 70-75 D+ 50-55
+Quizzes (best 2 of 3) 45% A– 85-90 C+ 65-70 D 45-50
+Classwork (3 drops) 10% B+ 80-85 C 60-65 D– 40-45
+Final Exam 30% B 75-80 C– 55-60 F < 40
+
+No make-ups are allowed. I drop the two lowest homeworks, one lowest quiz, and three iClicker sessions to
+accommodate students with extraneous circumstances.
+Engineering Physics II: Electricity, Magnetism, and Optics. Chapter Topics:
+22-Electric Force; 23-Electric Field; 24-Gauss’ Law; 25-Potential and Energy; 26-Capacitance; 27-Current and
+Resistance; 28-DC Circuits, 29-Magnetic Force, Field, and Ampere’s Law; 30-Currents and Charges in a
+Magnetic Field; 31-Induction and Faraday’s Law; 32-AC Circuits, 33-Electromagnetic Waves, 34-Geometrical
+Optics, 35-Interference and Diffraction.
+Read and study chapters listed below before coming to class.
+Reading Chapters
+Week | Mon Tue Wed Thu Fri | Monday Homework Thursday Homework
+29-May | — — — 22 22 | Register iClicker in Canvas; start HW#1
+05-June | 22/23 23 23 24 24 | #1 Ch 22 4am Tu 6/06 (Mon night) #2 Ch 23 4am F 6/09 (Th night)
+12-June | 24 25 25 Quiz1 26 | #3 Ch 24 4am Tu 6/13 (Mon night)
+*Quiz 1: Thursday, June 15, 10-11:15am (Quiz 1: Ch. 22–24)
+19-June | 26 27 27 28 28 | #4 Ch 25-26 4am Tu 6/20 (Mon night) #5 Ch 27 4am F 6/23 (Th night)
+26-June | 28 29 29 Quiz2 30 | #6 Ch 28 4am Tu 6/27 (Mon night)
+*Quiz 2: Thursday, June 29, 10-11:15am (Quiz 2: Ch. 25–28)
+03-July | 30 Holiday 30 31 31 | #7 Ch 29 4am Tu 7/04 (Mon night) #8 Ch 30 4am F 7/07 (Th night)
+10-July | 31 32 32 Quiz3 33 | #9 Ch 31 4am Tu 7/11 (Mon night)
+*Quiz 3: Thursday, July 13, 10-11:15am (Quiz 3: Ch. 29–31)
+17-July | 33 34 34 35 35 | #10 Ch 32-33 4am Tu 7/18 (Mon night) #11 Ch 34 4am F 7/21 (Th night)
+24-July | 35 Rev/Mod X Final X | #12 Ch 35 4am Tu 7/25 (Mon night)
+*Final Exam: Thursday, July 27, 7:00 p.m.–10:00 p.m., location TBA.
+This course makes use of the web-based Quest content delivery and homework server system maintained by the
+College of Natural Sciences. This homework service will require a $30 charge per student for its use, which goes toward
+the maintenance and operation of the resource. Please go to http://quest.cns.utexas.edu to log in to the Quest system
+for this class. After the 12th day of class, when you log into Quest you will be asked to pay via credit card on a secure
+payment site. You have the option to wait up to 30 days to pay while still continuing to use Quest for your assignments. If
+you are taking more than one course using Quest, you will not be charged more than $60/semester. For payment
+questions, email quest.fees@cns.utexas.edu.
+This course carries the Quantitative Reasoning flag.
+This course may be used to fulfill three hours of the natural science and technology (Part I or Part II) component of
+the university core curriculum and addresses the following four core objectives established by the Texas Higher
+Education Coordinating Board––communication skills, critical thinking skills, teamwork, and empirical and quantitative
+skills, via homework, exams, class participation, and section meetings.
+Student Accommodations
+Students with a documented disability may request appropriate academic accommodations from the
+Division of Diversity and Community Engagement, Services for Students with Disabilities, 512-471-6259
+(voice) or 1-866-329-3986 (video phone). http://ddce.utexas.edu/disability/about/ Please request a meeting as
+soon as possible to discuss any accommodations.

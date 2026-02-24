@@ -1,0 +1,141 @@
+{
+  "course": {
+    "id": "ch204-lyon",
+    "course_code": "CH 204",
+    "course_title": "Introduction to Chemical Practice",
+    "term": "Fall 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Dr. Donna C. Lyon",
+        "email": "dclyon@cm.utexas.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "laboratory",
+      "name": "Laboratory work",
+      "weight_percent": 60,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 25,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "ta_evaluations",
+      "name": "TA evaluations",
+      "weight_percent": 10,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "post_labs",
+      "name": "Post-lab assignments",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "laboratory_1",
+      "title": "Laboratory work",
+      "category_id": "laboratory",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "laboratory work... 60% of your grade"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "remainder will count 25% of your grade"
+    },
+    {
+      "id": "ta_evals_1",
+      "title": "TA evaluations",
+      "category_id": "ta_evaluations",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "TA evaluations are 10% of the course grade"
+    },
+    {
+      "id": "post_labs_1",
+      "title": "Post-lab assignments",
+      "category_id": "post_labs",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "assignments are 5% of the course grade"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

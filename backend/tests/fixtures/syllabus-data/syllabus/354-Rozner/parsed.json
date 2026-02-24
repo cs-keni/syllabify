@@ -1,0 +1,159 @@
+{
+  "course": {
+    "id": "354-rozner",
+    "course_code": "CS 356",
+    "course_title": "Computer Networks",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Eric Rozner",
+        "email": null
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "programming",
+      "name": "Programming Assignments",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "wireshark",
+      "name": "Wireshark Labs",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterms",
+      "name": "Exams",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "Homework 1-5 due"
+    },
+    {
+      "id": "programming_1",
+      "title": "Programming Assignments",
+      "category_id": "programming",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "Programming Assignment 1-4"
+    },
+    {
+      "id": "wireshark_1",
+      "title": "Wireshark Labs",
+      "category_id": "wireshark",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "Wireshark Lab 1-2"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm 1",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Midterm 1 March 5"
+    },
+    {
+      "id": "midterm_2",
+      "title": "Midterm 2",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Midterm 2 May 7"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

@@ -1,0 +1,30 @@
+Syllabus
+Coding Theory
+CS395T, EE381V, M390C
+INSTRUCTORS: Alex Dimakis (UTA 7.210, ph. 512-471-3068
+dimakis@austin.utexas.edu), Felipe Voloch (RLM 9.122, ph. 512-471-2674,
+voloch@math.utexas.edu) and David Zuckerman (GDC 4.508, ph. 512-471-9729,
+diz@cs.utexas.edu).
+Place and Time: TTh 11:00 -- 12:30 in RLM 11.176
+Texts: Book draft by V. Guruswami, A. Rudra, and M. Sudan, available here
+Prerequisites: Basic undergraduate Algebra background
+Grading Policy:Final Exam: 50%, Homework (every other week): 40%, Participation:
+10%
+DESCRIPTION: Error-correcting codes provide a way to efficiently add
+redundancy to data, so that the original data can be recovered even in the
+presence of noise. Such codes are essential in modern communication and
+storage of data, where high reliability is required. From its engineering roots,
+coding theory has evolved to use sophisticated mathematical techniques,
+centering around algebra but also involving probability and combinatorics.
+Moreover, coding theory has recently found unexpected uses in computer
+science.
+In this interdisciplinary course, we study coding theory from the different
+perspectives of professors in math, computer science, and electrical engineering.
+We develop the mathematical tools, construct important codes and associated
+algorithms, and discuss applications in computer science and communication.
+Class Outline
+Part I: Algebraic coding: including Hamming, Reed-Solomon, BCH and Golay codes.
+Part II: Algorithmic coding: including decoding algorithms, concatenated codes and
+applications to complexity theory
+Part III: Random Coding and Communications: Shannon’s coding theorem, LDPC and
+rateless coding, network coding and related topics.

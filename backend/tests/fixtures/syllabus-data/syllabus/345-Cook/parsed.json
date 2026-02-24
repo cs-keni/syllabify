@@ -1,0 +1,108 @@
+{
+  "course": {
+    "id": "345-cook",
+    "course_code": "CS 345",
+    "course_title": "Programming Languages",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "William Cook",
+        "email": "wcook@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "09:30",
+        "end_time": "11:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 5.302",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "09:30",
+        "end_time": "11:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 5.302",
+        "type": "lecture"
+      }
+    ],
+    "location": "GDC 5.302"
+  },
+  "assessment_categories": [
+    {
+      "id": "assignments",
+      "name": "Assignments",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "assignments_1",
+      "title": "Assignments",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Assignments 50%"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Quizzes 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

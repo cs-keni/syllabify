@@ -1,0 +1,104 @@
+M316K: Foundations of Arithmetic
+Fall Semester 2012
+Instructor: Hanna Bennett
+Email: hbennett@math.utexas.edu
+Office: RLM 11.154
+Phone: 475-8595
+Office hours: MW 11 am–12 pm; Th 3-4 pm
+and by appointment
+Class meets: MWF 10–11 am in RLM 5.118
+Textbook: Mathematics for Elementary Teachers, 3rd Edition, by Sybilla Beckmann.
+Content: We will primarily be covering material from Chapters 1–8 of the textbook. We may
+cover related topics from other sources.
+Webpage: Blackboard: http:courses.utexas.edu
+Assignments, grades, and additional resources will be posted there.
+Prerequisite: Successful completion of any of the following with a grade of C or better: M 302,
+M 303D, M 305G or 505G, or M 316.
+Unique Number: 55855
+Course description: An analysis, from an advanced perspective, of the concepts and algorithms of
+arithmetic, including sets; numbers; numeration systems; definitions, properties, and algorithms of
+arithmetic operations; and percents, ratios, and proportions. Problem solving is stressed.
+What that means: We'll be looking at many of the topics taught in elementary school mathematics
+classes, but in a much deeper way than you will be teaching it. We'll especially be focusing on
+questions of why: Why are mathematical concepts, such as the decimal system, set up the way they are?
+Why do the algorithms (methods) for operations (such as division) work? Just as importantly, we'll be
+strengthening your skills and confidence as a mathematician. The more comfortable you are with
+mathematics, the better you'll be able to teach it to your students.
+Grading: your course grade will be determined from the following components:
+• Participation (20%)
+• Weekly homework drafts (10%)
+• Weekly homework revised (10%)
+• Skills Quizzes (20%)
+• Calculation Quiz (10%)
+• Final exam (30%)
+Participation: you will receive a daily participation score out of 3 possible points, which will be
+posted to Blackboard. If you participated well, you will receive 2/3; 3 points is reserved for exceptional
+participation. You will receive 1 point if you were tardy or present but need to participate more. If you
+do not attend class, or attend but are disruptive to others' learning, you will receive a 0. The three
+lowest scores, except for those received for being disruptive, will be dropped. Note that this means you
+can miss 3 classes without penalty. At the end of the semester, all scores will be computed as a
+percentage of the highest participation score in the class.
+
+Homework: Homework problems will be assigned weekly. These problems will not be routine, and
+will often require lengthy solutions; you should expect to spend a significant amount of time on the
+homework. Each week, you will be asked to revise your solution to one of the problems from the
+previous week's assignment. These revisions will be graded closely for clarity, order, and precision in
+addition to completeness and correctness.
+Quizzes: There will be approximately one 20-minute quiz for each chapter; these will be designed to
+check that you have developed the mathematical skills covered in that chapter. The lowest quiz score
+will be dropped, and the rest of the quizzes will each contribute equally to the final grade. Makeup
+quizzes will not be allowed except under exceptional circumstances.
+Calculation quiz: The list of Texas Essential Knowledge and Skills for Mathematics states that
+students are expected to preform many calculations without the use of calculators. As such, it is
+important that you are able to do this as well! A quiz testing these skills will be given at least once in
+class and may be retaken up to once a week during office hours (or by appointment). Retakes will have
+similar, but different problems. Your final grade will include the highest score you earn on this quiz.
+Final exam: The final exam for this class will be
+Saturday, December 15, 9:00-12:00 noon
+The schedule of all final exams can be found at http://registrar.utexas.edu/schedules/129/finals. These
+times are scheduled by the university and cannot be rescheduled for any reason. Please make travel
+arrangements accordingly.
+Letter grades will be determined on a scale that will be determined after percentages have been
+computed, but will be at least as generous as the following: above 94, A; 90-94, A-; 87-90, B+; 84-87,
+B; 80-84, B-; 77-80, C+; 74-77, C; 70-74, C-; 60-70, D; below 60: F. Note: percentages will not be
+rounded, but a grade that is exactly one of the cutoffs will receive the higher grade.
+Other policies:
+Calculators: will not be allowed on any quizzes or the final. With a few rare exceptions, we will not be
+using them in class either. In order to prepare for the tests, I recommend that you not use them in your
+homework unless instructed to do so.
+Attendance: Because participation is a large component of your grade, attendance is mandatory. You
+may miss three classes without penalty.
+Documented Disability Statement: Upon request, the University of Texas provides appropriate
+academic accommodations for qualified students with disabilities. For more information, contact
+Services for Students with Disabilities (SSD) at (512) 4471-6259 (voice) or 1-866-329-3986 (video
+phone). If you plan to use accommodations, please notify me early in the semester.
+Academic integrity:
+• University of Texas Honor Code: The core values of The University of Texas at Austin are
+learning, discovery, freedom, leadership, individual opportunity and responsibility. Each
+member of the university is expected to uphold these values through integrity, honesty, trust,
+
+fairness and respect toward peers and community.
+• Cheating on exams, including copying, use of prohibited resources (including notes and
+calculators) will be taken very seriously and will generally result in an immediate F for the
+course.
+• you are encouraged to work with your classmates on homework and classroom activities. I
+am happy to help you find groups to meet with regularly if you would like.
+• However, it's important to understand the difference between collaboration and copying. The
+solutions you turn in should be written in your own words. One way to ensure this is to
+never look at someone else's solutions, or let them look at yours—if you haven't seen them, you
+can't copy them!
+• If you use a resource other than the textbook for a problem, cite your sources! You'll still need
+to make sure that you write your solution in your own words.
+• The bottom line is this: if you hand something in for credit, you must understand it. I
+reserve the right to ask you to come in and explain your solutions.
+• For more information, see:
+http://www.lib.utexas.edu/services/instruction/learningmodules/plagiarism
+Religious Holy Days: By UT Austin policy, you must notify me of your pending absence at least
+fourteen days prior to the date of observance of a religious holy day. If you must miss a class, an
+examination, a work assignment, or a project in order to observe a religious holy day, I will give you an
+opportunity to complete the missed work within a reasonable time after the absence.
+Email: E-mail is recognized as an official mode of university correspondence; therefore, you are
+responsible for reading your e-mail for university and course-related information and announcements.
+You are responsible to keep the university informed about changes to your e-mail address. You should
+check your e-mail regularly and frequently—I recommend daily, but at minimum twice a week—to
+stay current with university-related communications, some of which may be time-critical.

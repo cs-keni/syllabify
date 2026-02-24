@@ -454,6 +454,20 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             atype = "participation" if "attend" in name.lower() else "assignment"
         add_assessment(f"{cid}_1", title, cid, atype, pct)
 
+    # "Grading: homework 40%, two mid-terms 20% each, final 20%" - name first, then percent (comma-separated)
+    for m in re.finditer(r"\b(homework|final)\s+(\d{1,3})\s*%\s*(?=,|two|$|\n)", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        block = text[max(0, m.start() - 50) : m.start()]
+        if "grading" not in block.lower() and "grade" not in block.lower():
+            continue  # only in grading context
+        title = "Homework" if name.lower() == "homework" else "Final"
+        cid = "homework" if name.lower() == "homework" else "final"
+        atype = "assignment" if name.lower() == "homework" else "final"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
     # "midterm (20%)", "final (20%)", "Discussions and Assignments (20% of total)", "Labs and quizzes (40%)"
     for m in re.finditer(r"\b(midterm|final|Discussions?\s+and\s+Assignments?|Labs?\s+and\s+quizzes?)\s*\(\s*(\d{1,3})\s*%\s*(?:of\s+total(?:\s+grade)?)?\s*\)", text, re.I):
         name, pct = m.group(1).strip(), int(m.group(2))
@@ -513,13 +527,62 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_category("class_project", "Class Project", pct)
         add_assessment("class_project_1", "Class Project", "class_project", "project", pct)
 
+    # "midterm will count for 25%" / "one midterm... 25% of the course grade" (SICS345-style)
+    for m in re.finditer(r"[Mm]idterm[^.]*?(\d{1,3})\s*%\s+(?:of\s+the\s+course\s+grade|of\s+your\s+grade)", text, re.I):
+        pct = int(m.group(1))
+        if pct <= 100 and not any(a.get("title", "").lower() == "midterm" and a.get("weight_percent") == pct for a in assessments):
+            add_category("midterm", "Midterm", pct)
+            add_assessment("midterm_1", "Midterm", "midterm", "midterm", pct)
+
+    # CH204-style: "remainder will count 25% of your grade" (quizzes), "assignments are 5% of the course grade" (post-labs)
+    for m in re.finditer(r"remainder\s+will\s+count\s+(\d{1,3})\s*%\s+of\s+your\s+grade", text, re.I):
+        pct = int(m.group(1))
+        if pct <= 100 and "quiz" in text[max(0, m.start() - 300) : m.start()].lower():
+            add_category("quizzes", "Quizzes", pct)
+            add_assessment("quizzes_1", "Quizzes", "quizzes", "quiz", pct)
+            break
+    for m in re.finditer(r"assignments\s+are\s+(\d{1,3})\s*%\s+of\s+the\s+course\s+grade", text, re.I):
+        pct = int(m.group(1))
+        if pct <= 100 and ("post" in text[max(0, m.start() - 200) : m.start()].lower() or "post-lab" in text.lower()):
+            add_category("post_labs", "Post-lab assignments", pct)
+            add_assessment("post_labs_1", "Post-lab assignments", "post_labs", "assignment", pct)
+            break
+    for m in re.finditer(r"accounts\s+for\s+(\d{1,3})\s*%\s+of\s+your\s+grade", text, re.I):
+        pct = int(m.group(1))
+        if pct <= 100 and "laboratory" in text[max(0, m.start() - 150) : m.start()].lower():
+            add_category("laboratory", "Laboratory work", pct)
+            add_assessment("laboratory_1", "Laboratory work", "laboratory", "assignment", pct)
+            break
+    for m in re.finditer(r"TA\s+evaluations?\s+are\s+(\d{1,3})\s*%\s+of\s+the\s+course\s+grade", text, re.I):
+        pct = int(m.group(1))
+        if pct <= 100:
+            add_category("ta_evaluations", "TA evaluations", pct)
+            add_assessment("ta_evaluations_1", "TA evaluations", "ta_evaluations", "assignment", pct)
+            break
+
     # "40% programming assignments", "20% homework" - percent first (name on same line as %)
-    for m in re.finditer(r"(\d{1,3})\s*%[ \t]+([A-Za-z][A-Za-z \t\-/]+?)(?=[\s\.\,\)$]|\.)", text, re.I):
+    _garbage_phrases = (
+        "remainder will count", "assignments are", "a late penalty of", "the homework and vice-versa",
+        "and the final", "the midterm", "the final exam will count for",
+        "backbone", "accounts for",  # prose fragments like "laboratory work...accounts for"
+    )
+    for m in re.finditer(r"(\d{1,3})\s*%[ \t]+([A-Za-z][A-Za-z \t\-/\n]+?)(?=[\s\.\,\)$]|\.)", text, re.I):
         pct, name = int(m.group(1)), m.group(2).strip()
         if pct > 100 or len(name) < 3 or len(name) > 55:
             continue
+        name_lower = name.lower()
+        if any(g in name_lower for g in _garbage_phrases):
+            continue
+        if "laboratory" in name_lower and ("backbone" in name_lower or "accounts" in name_lower):
+            name = "Laboratory work"
+        elif "remainder" in name_lower and "quiz" in text[max(0, m.start() - 200) : m.start()].lower():
+            name = "Quizzes"
+        elif name_lower.startswith("assignments are") or (name_lower.startswith("assignments") and "post" in text[max(0, m.start() - 150) : m.start()].lower()):
+            name = "Post-lab assignments"
+        elif "ta evaluation" in text[max(0, m.start() - 150) : m.start()].lower() or "ta's evaluation" in text[max(0, m.start() - 150) : m.start()].lower():
+            name = "TA evaluations"
         skip_words = ("the", "your", "grade", "penalty", "of ", " to ", " or ", "each", "range", "standard", "b's", "c's", "d's", "upper", "lower", "bracket", " e.g ", "late ", "maximum", "of")
-        if any(w in name.lower() for w in skip_words) or name.lower().strip() == "and":
+        if any(w in name_lower for w in skip_words) or name.lower().strip() == "and":
             continue
         if "deduct" in name.lower():
             continue
@@ -579,8 +642,39 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             if not any(a.get("title") == "Final Exam" for a in assessments):
                 add_assessment("final_1", "Final Exam", "exams", "final", pct_each, final_due)
 
-    # "Two Midterms 22 % each", "2 Midterms 25% each" -> Midterm 1, Midterm 2
-    for m in re.finditer(r"(?:(?:Two|2)\s+)?[Mm]idterms?\s+(\d{1,3})\s*%\s*(?:each|total)", text, re.I):
+    # "25 percent: App grade", "24 percent: Student review of work" (07770-Quigley)
+    # Stop at period or next "N percent" to avoid capturing full sentences.
+    # Note: text is pre-normalized (unicode hyphens -> ASCII) in parse_syllabus_text
+    for m in re.finditer(r"(\d{1,3})\s+percent\s*:\s*([A-Za-z][A-Za-z\s\-]+?)(?=\.|\d+\s+percent|\n|$)", text, re.I):
+        pct, name = int(m.group(1)), m.group(2).strip()
+        if pct > 100 or len(name) < 3 or len(name) > 50:
+            continue
+        if any(g in name.lower() for g in ("grade scale", "percentage", "total")):
+            continue
+        # Collapse multiple hyphens (from unicode normalization) to single hyphen
+        name = re.sub(r"-+", "-", name)
+        cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+        atype = "project" if "app" in name.lower() or "demo" in name.lower() else "participation" if "review" in name.lower() else "assignment"
+        add_category(cid, name, pct)
+        add_assessment(cid + "_1", name, cid, atype, pct)
+
+    # "30% Homework, 30% Midterm Project, 30% Final Project, 10% Class Participation" (comma-separated)
+    for m in re.finditer(r"(\d{1,3})\s*%\s+([A-Za-z][A-Za-z\s]+?)(?=\s*,\s*\d+\s*%|\s*$|\n)", text, re.I):
+        pct, name = int(m.group(1)), m.group(2).strip()
+        if pct > 100 or len(name) < 3 or len(name) > 45:
+            continue
+        if any(g in name.lower() for g in ("wikipedia", "references", "suggest", "grading", "total")):
+            continue
+        if "\n" in name:
+            continue
+        name = re.sub(r"\s+", " ", name)
+        cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+        atype = "project" if "project" in name.lower() else "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "participation" if "participation" in name.lower() or "class" in name.lower() else "assignment"
+        add_category(cid, name, pct)
+        add_assessment(cid + "_1", name, cid, atype, pct)
+
+    # "Two Midterms 22 % each", "2 Midterms 25% each", "two mid-terms 20% each" -> Midterm 1, Midterm 2
+    for m in re.finditer(r"(?:(?:Two|2)\s+)?[Mm]id[-]?terms?\s+(\d{1,3})\s*%\s*(?:each|total)", text, re.I):
         pct = int(m.group(1))
         add_category("midterms", "Midterm Exams", pct * 2)
         add_assessment("midterm_1", "Midterm 1", "midterms", "midterm", pct)

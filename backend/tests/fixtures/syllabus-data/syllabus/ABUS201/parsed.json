@@ -1,0 +1,191 @@
+{
+  "course": {
+    "id": "abus201",
+    "course_code": "ABUS 201",
+    "course_title": "Introduction to Cognitive Science",
+    "term": "Fall 2014",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "David Beaver",
+        "email": "dib@utexas.edu"
+      },
+      {
+        "id": "inst-1",
+        "name": "Zenzi Griffin",
+        "email": "zgriffin@utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "09:30",
+        "end_time": "11:00",
+        "timezone": "America/Chicago",
+        "location": "MEZ 1.216",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "09:30",
+        "end_time": "11:00",
+        "timezone": "America/Chicago",
+        "location": "MEZ 1.216",
+        "type": "lecture"
+      }
+    ],
+    "location": "MEZ 1.216"
+  },
+  "assessment_categories": [
+    {
+      "id": "discussion",
+      "name": "Weekly Discussion Posts",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "assignments",
+      "name": "Bi-weekly assignments",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "paper",
+      "name": "Long paper",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "attendance",
+      "name": "Attendance",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "interaction",
+      "name": "Classroom interaction",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "discussion_1",
+      "title": "Weekly Discussion Posts",
+      "category_id": "discussion",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Weekly Discussion Posts 30%"
+    },
+    {
+      "id": "assignments_1",
+      "title": "Bi-weekly assignments",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Bi-weekly assignments 30%"
+    },
+    {
+      "id": "paper_1",
+      "title": "Long paper",
+      "category_id": "paper",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Long paper 25%"
+    },
+    {
+      "id": "attendance_1",
+      "title": "Attendance",
+      "category_id": "attendance",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Attendance 5%"
+    },
+    {
+      "id": "interaction_1",
+      "title": "Classroom interaction",
+      "category_id": "interaction",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Classroom interaction 10%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

@@ -10,13 +10,15 @@ def test_parse_empty_text():
     r = parse_text("")
     assert r["course_name"]
     assert r["assignments"] == []
-    assert r.get("confidence") == "low"
+    conf = r.get("confidence") or {}
+    assert conf.get("label") == "low"
+    assert conf.get("score") == 0
 
 
 def test_parse_whitespace_only():
     r = parse_text("   \n\n  ")
     assert r["assignments"] == []
-    assert r.get("confidence") == "low"
+    assert (r.get("confidence") or {}).get("label") == "low"
 
 
 def test_parse_extracts_course_name():
@@ -32,6 +34,19 @@ def test_parse_table_like():
     names = [a["name"] for a in r["assignments"]]
     assert "Assignment 1" in names or "Assignment" in str(names)
     assert any(a.get("hours") for a in r["assignments"])
+
+
+def test_confidence_structure():
+    """Confidence is { score, label, breakdown? } for UI."""
+    r = parse_text("CS 422 Software Methodology\nHW 1 | 2/15 | 4\nExam 1 25%\nTuTh 2-3pm GDC 2.216")
+    conf = r.get("confidence")
+    assert conf is not None
+    assert "score" in conf
+    assert "label" in conf
+    assert 0 <= conf["score"] <= 100
+    assert conf["label"] in ("low", "medium", "high")
+    if "breakdown" in conf:
+        assert isinstance(conf["breakdown"], dict)
 
 
 def test_parse_prose_assignment_due():

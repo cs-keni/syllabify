@@ -1,0 +1,214 @@
+{
+  "course": {
+    "id": "bio373-2011250940",
+    "course_code": "BIO 373",
+    "course_title": "Ecology",
+    "term": "Spring 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Martha Maas",
+        "email": "mmaas@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "12:30",
+        "end_time": "14:00",
+        "timezone": "America/Chicago",
+        "location": "CBA 4.328",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "12:30",
+        "end_time": "14:00",
+        "timezone": "America/Chicago",
+        "location": "CBA 4.328",
+        "type": "lecture"
+      }
+    ],
+    "location": "CBA 4.328"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 50,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "participation",
+      "name": "Participation",
+      "weight_percent": 13,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 17,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-02-10T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 12,
+      "points": 50,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No make-ups; drop lowest",
+        "late_pass_allowed": 1
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Feb 10 50 pts"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 12,
+      "points": 50,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "50 pts"
+    },
+    {
+      "id": "exam_3",
+      "title": "Exam 3",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 12,
+      "points": 50,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "50 pts"
+    },
+    {
+      "id": "exam_4",
+      "title": "Exam 4",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 12,
+      "points": 50,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "50 pts"
+    },
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": 60,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Late homework not accepted",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "4 assignments 15 pts each"
+    },
+    {
+      "id": "participation_1",
+      "title": "Participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 13,
+      "points": 40,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Attendance and participation 40 pts"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Pop Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 17,
+      "points": 50,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No make-ups; drop lowest",
+        "late_pass_allowed": 1
+      },
+      "confidence": 0.9,
+      "source_excerpt": "6 pop quizzes 10 pts each"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

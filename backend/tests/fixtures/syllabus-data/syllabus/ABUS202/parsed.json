@@ -1,0 +1,115 @@
+{
+  "course": {
+    "id": "abus202",
+    "course_code": "ABUS 202",
+    "course_title": "EMBA Foundations of Strategy for Executives",
+    "term": "Spring 2022",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Puay Khoon Toh",
+        "email": "pk.toh@mccombs.utexas.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "participation",
+      "name": "Class Participation",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam / Quiz",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "project",
+      "name": "Group Project Presentation",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "participation_1",
+      "title": "Class Participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Class Participation 25%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam / Quiz",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No late submissions, no make-ups",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final Exam/Quiz 25% take-home"
+    },
+    {
+      "id": "project_1",
+      "title": "Group Project Presentation",
+      "category_id": "project",
+      "type": "project",
+      "due_datetime": "2022-04-29T00:00:00",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Group Project 50% Apr 29"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

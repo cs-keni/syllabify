@@ -1,0 +1,106 @@
+M408Ls Integral Calculus and Series Summer 2012
+92312 & 92313
+LECTURE: MWF 8:30 to 10:30 in PAI 2.48
+DISCUSSION:
+92312 TTh 8:30 to 10:30 in CPE 2.212
+92313 TTh 10:30 to 12:30 in CPE 2.212
+INSTRUCTOR: Dr. Gary Berg
+Office: RLM 13.164 phone: 471-6410 email: gberg@math.utexas.edu
+Office Hours: MWF 10:45 to 11:30 or by appointment.
+TA:
+92312 Yoonsang Lee Office: RLM 9.124 phone: 475 9134
+email: ylee@math.utexas.edu
+Office Hours: TTh 1 to 3
+92313 Giovanni Franklin Office: RLM 11.112 phone: 475 9521
+email: gfranklin@math.utexas.edu
+Office Hours: MW 1 to 3
+TEXT: Stewart, Calculus, 7th Edition
+PREREQUISITE: A grade of C or better in M408K, M408N, or an equivalent course.
+WEBSITE: Blackboard will be used to post course documents and announcements. Quest will be
+used for the homework and to post exam grades.
+HOMEWORK: There will be a homework assignment twice each week ( due Tuesday and
+Thursday at 11pm) covering one or more sections from the book to be submitted online through
+Quest. A score of 0 to 100 (percent) will be given to each assignment.
+Quest is mostly multiple-choice for which there is no partial credit, though retries are
+usually allowed. A correct answer on a first retry will give you some of the credit, but be aware
+that too many incorrect retries can give you a negative score. Numeric answers for Quest must be
+accurate to one percent.
+Two homework grades will be dropped.
+
+ATTENDENCE: You are expected to attend class, although it is not part of your grade.
+TESTS: There will be three tests and one comprehensive final exam. If you miss a test, contact
+me as soon as possible. The test dates are (tentatively) set for:
+Test 1… Tue. July 17; Test 2… Thur. July 26; Test 3… Tue. Aug. 7
+Makeup exams are given only for serious reasons such as illness or emergency and must be
+verified.
+FINAL EXAM: The final exam is comprehensive (with some emphasis on material not yet
+tested) and mandatory and will be given Saturday August 11 from 7 to 10 pm.
+GRADES: The homework will contribute 20% of your grade. The three tests will each contribute
+20% of your course grade. The Final Exam will count for 20% of your grade and may also be
+substituted for the lowest regular test grade (making the final worth 40% if it is to your
+advantage). Letter grades for the course will be assigned based on these percentages:
+92 or better is an A; 90 or better is an A–; 88 or better is a B+; 82 or better is a B; 80 or better is
+a B–; 78 or better is a C+; 72 or better is a C; 70 or better is a C–; 68 or better is a D+; 62 or
+better is a D; and 60 or better is a D–.
+There will be no extra credit or special deals at the end of the semester. If not making a
+good grade in this course will have a dire effect on your career, then either drop the course, or
+work really hard. Doing calculus efficiently is heavily dependent on developing certain skills,
+and these can usually only be developed through lots of practice.
+SYLLABUS: A syllabus for this course can be found at the mathematics homepage. A schedule
+is included at the end of this handout.
+HELP: The Learning Skills Center in Jester offers help of many kinds, including printed
+material, videotapes, and free or inexpensive tutoring.
+The University of Texas at Austin provides upon request appropriate academic
+accommodations for qualified students with disabilities. For more information, contact the Office
+of the Dean of Students at 471-6259, (471-4641 TTY).
+
+HONESTY: I encourage people to work together on homework and help each other. Do not fall
+into the trap of thinking that because you think you understand a solution presented by someone
+else, you know how to solve the problem. You must struggle with this material on your own to
+develop the necessary skills. Cheating on an exam will likely get you ejected from the course,
+and possibly from the University.
+QUEST: This course makes use of the web-based Quest content delivery and homework server
+system maintained by the College of Natural Sciences. This homework service will require a
+$22charge per student for its use, which goes toward the maintenance and operation of the
+resource. Please go tohttp://quest.cns.utexas.edu to log in to the Quest system for this class.
+After the 12th day of class, when you log into Quest you will be asked to pay via credit card on a
+secure payment site. You have the option to wait up to 30 days to pay while still continuing to use
+Quest for your assignments. If you are taking more than one course using Quest, you will not be
+charged more than $50/semester. Quest provides mandatory instructional material for this
+course, just as is your textbook, etc. For payment questions, email quest.fees@cns.utexas.edu.
+
+SCHEDULE:
+Ch. 5 Integrals (4 hours)
+5.3 The Fundamental Theorem of Calculus (review) 7/9
+5.4 Indefinite Integrals and the Net Change Theorem 7/11
+5.5 The Substitution Rule 7/11
+Ch. 6 Applications of Integration (2 hours)
+6.1 Areas between Curves 7/13
+6.2 Volumes 7/13
+6.3 Volumes by Cylindrical Shells (optional)
+Ch. 7 Techniques of Integration (9 hours)
+7.1 Integration by Parts 7/16
+7.2 Trigonometric Integrals (light) 7/16
+7.3 Trigonometric Substitution 7/18
+7.4 Integration of Rational Functions by Partial Fractions 7/20
+7.5 Strategy for Integration 7/20
+7.7 Approximate Integration (optional)
+7.8 Improper Integrals 7/23
+Ch. 11 Infinite Sequences and Series (16 hours)
+11.1 Sequences 7/25
+11.2 Series 7/25
+11.3 The Integral Test and Estimates of Sums 7/27
+11.4 The Comparison Tests 7/27
+11.5 Alternating Series 7/30
+11.6 Absolute Convergence and the Ratio and Root Tests 7/30
+11.7 Strategy for Testing Series 8/1
+11.8 Power Series 8/1
+11.9 Representations of Functions as Power Series 8/3
+11.10 Taylor and Maclaurin Series 8/3
+11.11 Applications of Taylor Polynomials (optional)
+Ch. 14 Partial Derivatives (1 hour)
+14.3 Partial Derivatives 8/6
+Ch. 15 Multiple Integrals (4 hours)
+15.1 Double Integrals over Rectangles 8/6
+15.2 Iterated Integrals 8/8
+15.3 Double Integrals over General Regions 8/10

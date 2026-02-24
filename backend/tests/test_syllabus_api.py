@@ -43,6 +43,9 @@ def test_parse_json_text(decode_token, client):
     assert "course_name" in data
     assert "assignments" in data
     assert isinstance(data["assignments"], list)
+    assert "confidence" in data
+    assert "score" in data["confidence"]
+    assert "label" in data["confidence"]
 
 
 @patch("app.api.syllabus.decode_token")

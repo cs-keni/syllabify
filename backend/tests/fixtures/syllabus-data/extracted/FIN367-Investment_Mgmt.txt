@@ -1,0 +1,286 @@
+Syllabus
+FIN 367 Investment Management
+Spring 2019
+(Lastupdatedon12/21/2019)
+Prof. Andres Donangelo, Ph.D., CFA
+Contact Information
+instructor Prof. Donangelo
+e-mail: andres.donangelo@mccombs.utexas.edu
+personal webpage: http://faculty.mccombs.utexas.edu/donangelo/
+office hours: room CBA 6.224, TuTh 9:00am–10:00am
+Teaching Assistants
+name: David Xiaoyu Xu
+e-mail: xyxu@utexas.edu
+office: CBA 3.312J
+office hours: Tue 2:00pm–3:00pm, Thu 2:00pm–3:00pm
+name: Lin Yang
+e-mail: lin.yang@mccombs.utexas.edu
+office: CBA 5.324D
+office hours: TBA
+name: Tim Park
+e-mail: tim.park@mccombs.utexas.edu
+office: CBA 1.312E
+office hours: Tue 10:00am–11:00am, Thu 10:00am–11:00am
+1 Course Overview
+1.1 Objective
+The course will focus on the application of financial theory to the issues and problems of
+investment management. Topics will include portfolio optimization and asset allocation, the
+basicsofbondandderivativepricing,thetheoryofassetpricingmodelsandtheirimplications
+for investments, as well as evaluating investment management performance.
+Themainobjectiveofthiscourseistoprovidestudentswithaframeworkformakingfinancial
+decisions related to Investments. These decisions are relevant for institutional investors
+(pension, mutual, and hedge funds), individual investors, corporate treasurers, and anyone
+who seeks to use or understand domestic or international investing.
+1
+
+1.2 Prerequisites
+Finance367isaRestrictedCourseforstudentswhoarecurrentlyenrolledinamajorprogram
+in the College of Business and Administration. Note that several prerequisites apply for
+this course and are published in the Course Schedule. Prior completion of Finance 357
+or Finance 357 H, Statistics 371G or Statistics 371 H are among these requirements. In
+addition, proficiency in mathematics and spreadsheet packages is assumed. Students who
+are uncertain as to whether they satisfy these requirements should notify the instructor.
+1.3 Course Materials
+(cid:136)
+Lecture Notes: these are the main course text and material to prepare for your
+exams. Lecture notes will be handed out at the beginning of each class day. These
+handouts will include all the formulas you need to solve problems, as well as a broad
+overview of the material we discuss in class. You will need to attend and take your
+own notes during class for many important discussions and topics not on the handouts
+but that also comprise material covered in the exams.
+(cid:136)
+Calculator. Any calculator capable of power and logarithm operations is acceptable
+(in the unlikely case that you don’t already have a calculator, the TI-30XS is cheap and
+more than capable for our needs). You will need to use the calculator in the exams, so
+you cannot replaced it with your phone or computer. Please bring your calculator to
+class every day.
+(cid:136)
+Textbook: Investments by Zvi Bodie, Alex Kane, and Alan Marcus, 10th or 9th
+Editions. This textbook is a valuable additional reference for the material we teach
+in the course. However, exam and homework questions will be more closely related
+to lecture notes and discussions. Because of that, and because this textbook is so
+expensive, there is no need to purchase the latest edition (i.e., the 11th Edition). We
+will not use Connect or any other electronic service offered by the textbook’s editor.
+1.4 Grading
+You can collect up to 100 points in this course as follows:
+1. Three Exams (25 points each).
+2. Mutual Fund Management Game (10 points).
+3. Homeworks (10 points).
+2
+
+4. Participation (5 points).
+1.4.1 Exams
+(cid:136)
+The three exams given during the semester will carry equal weight toward your fi-
+nal grade. Exams will be noncumulative. The tests will include both qualitative and
+quantitative material. The qualitative questions are usually short answer or multiple
+choices. The exams will cover topics from the lecture notes, class discussions, assign-
+ments, and, to a lesser extent, assigned readings from the textbook. Needless to say:
+thebestwaytopreparefortheexamsistokeepupwiththecoursematerialthroughout
+the semester.
+(cid:136)
+No makeup examinations will be given without the prior consent of the instructor.
+Such consent will only be given for demonstrable conflicts and with the proper docu-
+mentation.
+(cid:136)
+You lowest score among the first two exams will be dropped from your final exam grade
+computation only if this raises your final total score. Your total exam score (up to the
+75 points) will be calculated as the maximum of:
+Option 1: E1+E2+E3 (i.e., total score if no exam score is dropped)
+Option 2: 75(E2+E3) (i.e., total score if first exam score is dropped)
+50
+Option 3: 75(E1+E3) (i.e., total score if second exam score is dropped)
+50
+where E1, E2, and E3 represent your scores in the first, second, and third exam scores
+(up to 25 points), respectively.
+1.4.2 Homeworks
+(cid:136)
+Homeworks are due before class a week after they are made available. You can either
+give me your assignment just before lecture or you can take it to the Finance depart-
+ment reception (CBA 6.222). If you chose the latter, make sure to time stamp it (as
+evidence that you in fact met the deadline), and ask one of our assistants to place it
+in our mailboxes. Keep in mind that the Finance department is only open from 8am
+until 5pm (weekdays).
+(cid:136)
+Students must submit their assignment solutions individually. However, we encourage
+you to discuss and work on the assignments with your classmates.
+(cid:136)
+If you get stuck on any problem, do not hesitate to come to our office hours for help.
+In total, our TAs and the instructor in charge of the course half offer at all times 6
+different options of hours of office hours per week to make sure that at least one suits
+you. Make sure to take advantage of this resource!
+3
+
+(cid:136)
+Latehomeworkswillnotbeaccepted. Noexceptions! Ifyoucannotmakeittotheclass
+in which a homework is due, please take your homework to the Finance department
+reception (CBA 6.222), time stamp it (as evidence that you in fact met the deadline),
+and ask one of our assistants to place it in the instructor’s mailbox.
+(cid:136)
+Wewillhaveatotalof9assignments, allofwhichwillbegradedonascalefrom0to100
+points). The final assignment score will only take into account your highest 8 scores.
+Some assignments might be mandatory (i.e., the associated score cannot be dropped
+from your final assignment score). We will announce this beforehand. Your total
+assignment grade will be calculated as the average of the highest 8 homework scores x
+10 The multiplication by 10 is just a rescaling to make sure that the maximum total
+100 100
+assignment score is 10 points.
+1.4.3 Mutual Fund Management Game
+(cid:136)
+This is a group project in which you will work in the design, marketing, and manage-
+ment of a mutual fund family.
+(cid:136)
+I will randomly assign students to groups in the first few weeks of the course.
+(cid:136)
+More information about the the game, including the timeline of events and grading
+scheme will be provided during the first few weeks.
+1.4.4 Participation
+The participation grade is meant to improve the quality of our interactions and class-
+room atmosphere. Being respectful and having a professional attitude towards your
+classmates, TAs, and instructor, as well as fully abiding by UT’s Honor Code is all you
+need to earn your full 5 participation points.
+1.5 Course Policy
+Fairness to Students: We strive to treat students with dignity and fairness. This does not
+mean that we will always agree with your ideas. If you feel that we have been unfair in any
+way, please let us know. We know that sometimes it takes courage to do so.
+Teaching Notes: Lecture notes will be posted on Canvas after class, but homework solutions
+will NOT be posted, emailed, or distributed in any other electronic form. You can only
+collect hard copy of homework solutions in class before lectures. If you miss a class, please
+go to the instructor’s office hours to get a hard copy of the homework solutions.
+4
+
+Grading: There are no verbal appeals of grade changes. Exams will not be returned and can
+be reviewed only during TA office hours during the two weeks following the reception of the
+grade. You should submit a written statement explaining the problem within one week of
+receiving your grade and we will be happy to re-grade any exam or assignment. The entire
+exam or case will be re-graded and the score may increase, remain the same, or decrease.
+Academic Honesty: We take academic honesty very seriously. We expect you to adhere to
+The McCombs Code of Ethics and to comply with collaboration restrictions noted in the
+syllabus and on assignments throughout the semester.
+2 Important Notifications
+2.1 Students with disabilities
+Upon request, the University of Texas at Austin provides appropriate academic accommo-
+dations for qualified students with disabilities. Services for Students with Disabilities (SSD)
+is housed in the Office of the Dean of Students, located on the fourth floor of the Student
+Services Building. Information on how to register, downloadable forms, including guidelines
+for documentation, accommodation request letters, and releases of information are available
+online at deanofstudents.utexas.edu/ssd/index.php. Please do not hesitate to contact SSD
+at (512) 471-6259, VP: (512) 232-2937 or via e-mail if you have any questions.
+2.2 Religious holidays
+By UT Austin policy, you must notify me of your pending absence at least fourteen days
+prior to the date of observance of a religious day. If you must miss an examination or a
+group presentation in order to observe a religious holiday, you will be given the opportunity
+to complete the missed work within a reasonable time after absence.
+2.3 Policy on Scholastic Dishonesty
+The McCombs School of Business has no tolerance for acts of scholastic dishonesty. The re-
+sponsibilities of both students and faculty with regard to scholastic dishonesty are described
+in detail in the BBA Programs Statement on Scholastic Dishonesty at
+www.mccombs.utexas.edu/BBA/Code-of-Ethics.aspx. Byteachingthiscourse,wehaveagreed
+to observe all faculty responsibilities described in that document. By enrolling in this class,
+5
+
+you have agreed to observe all student responsibilities described in that document. If the
+application of the Statement on Scholastic Dishonesty to this class or its assignments is un-
+clear in any way, it is your responsibility to ask me for clarification. Students who violate
+University rules on scholastic dishonesty are subject to disciplinary penalties, including the
+possibility of failure in the course and/or dismissal from the University. Since dishonesty
+harms the individual, all students, the integrity of the University, and the value of our aca-
+demic brand, policies on scholastic dishonesty will be strictly enforced. You should refer to
+the Student Judicial Services website at deanofstudents.utexas.edu/sjs/ to access the official
+University policies and procedures on scholastic dishonesty as well as further elaboration on
+what constitutes scholastic dishonesty.
+2.4 Campus Safety
+Please note the following recommendations regarding emergency evacuation, provided by the
+Office of Campus Safety and Security, 512-471-5767, www.utexas.edu/safety:
+(cid:136)
+Occupants of buildings on The University of Texas at Austin campus are required to
+evacuate buildings when a fire alarm is activated. Alarm activation or announcement
+requires exiting and assembling outside.
+(cid:136)
+Familiarize yourself with all exit doors of each classroom and building you may occupy.
+Remember that the nearest exit door may not be the one you used when entering the
+building.
+(cid:136)
+Students requiring assistance in evacuation should inform the instructor in writing
+during the first week of class.
+(cid:136)
+In the event of an evacuation, follow the instruction of faculty or class instructors.
+(cid:136)
+Do not re-enter a building unless given instructions by the following: Austin Fire
+Department, The University of Texas at Austin Police Department, or Fire Prevention
+Services office.
+(cid:136)
+Behavior Concerns Advice Line (BCAL): 512-232-5050
+(cid:136)
+Further information regarding emergency evacuation routes and emergency procedures
+can be found at: http://www.utexas.edu/emergency.
+2.5 Privacy in Canvas
+Information in Canvas is protected by your UTEID login. Please be aware that we will use a
+merged Canvas site for all sections of the course that we are teaching this semester. This will
+6
+
+allow students in other sections to see that you are enrolled in the course and send you email
+from within Canvas. However, they will not actually learn your email address and no other
+personal data will be revealed through Canvas. If you have any concerns, please contact the
+ITS Help Desk at 475-9400 for help removing your name from view of other students.
+7
+
+Tentative Schedule for FIN 367, Spring 2019, PART 1/3
+(subject to adjustments, see course calendar on Canvas for most updated version)
+Week Date Topic Readings∗ Deliverables∗∗
+Week 1 Wednesday, Jan 23 Course Overview
+Wednesday, Jan 23 The Investment Environment 1, 2
+Week 2 Monday, Jan 28 Basic Concepts I 5.1, 5.2
+Wednesday, Jan 30 Basic Concepts II 5.4-5.6, 5.8
+Week 3 Monday, Feb 4 Portfolio Choice I 6.1-6.5, Appendix A
+Wednesday, Feb 6 Portfolio Choice II 7.1-7.3 HW1
+Week 4 Monday, Feb 11 Portfolio Choice III 7.4
+Wednesday, Feb 13 CAPM Theory 9 HW2
+Week 5 Monday, Feb 18 CAPM Practice 13.1, 13.2
+Wednesday, Feb 20 Market Efficiency 11 HW3
+Week 6.a Monday, Feb 25 Exam 1 (no lecture this day)
+(6pm–7:30pm, room UTC 2.112A)
+∗ Unless otherwise noted, numbers refer to chapter/section from both the 9th and 10th editions of Investments by Bodie, Kane, and Marcus.
+∗∗ HW = homework deliverable. MG = management game deliverable. Homeworks will be distributed the week before the due date.
+8
+
+Tentative Schedule for FIN 367, Spring 2019, PART 2/3
+(subject to adjustments, see course calendar on Canvas for most updated version)
+Week Date Topic Readings∗ Deliverables∗∗
+Week 6.b Wednesday, Feb 27 Trading Activity 2.4, 3, 4
+Week 7 Monday, Mar 4 Equity Valuation I 18.1-18.3
+Wednesday, Mar 6 Equity Valuation II 18.4 HW4
+Friday, Mar 8 MG1: Prospectus (by e-mail)
+Week 8 Monday, Mar 11 Group Presentation (Day 1) 18.4
+Wednesday, Mar 13 Group Presentation (Day 2) 14.1-14.3
+(Trading platform opens)
+Week 9 Monday, Mar 18 (Spring Break)
+Wednesday, Mar 20 (Spring Break)
+Week 10 Monday, Mar 25 Fixed Income: Basics 2.2, 14.4
+Wednesday, Mar 27 Fixed Income: Bond Markets 15.1-15.3 HW5
+Week 11 Monday, Apr 01 Fixed Income: The Yield Curve 15.1-15.3
+Wednesday, Apr 03 Fixed Income: Review 15.4, 16.1, 16.2 HW6
+Week 12.a Monday, Apr 8 Exam 2 (no lecture this day)
+(6pm–7:30pm, room UTC 2.102A)
+∗ Unless otherwise noted, numbers refer to chapter/section from both the 9th and 10th editions of Investments by Bodie, Kane, and Marcus.
+∗∗ HW = homework deliverable. MG = management game deliverable. Homeworks will be distributed the week before the due date.
+9
+
+Tentative Schedule for FIN 367, Spring 2019, PART 3/3
+(subject to adjustments, see course calendar on Canvas for most updated version)
+Week Date Topic Readings∗ Deliverables∗∗
+Week 12.b Wednesday, Apr 10 Derivatives: Forwards and Futures 22.1, 22.4, 22.5, 23.2
+Week 13 Wednesday, Apr 15 Derivatives: Options I 20.1, 20.2, 20.4
+Wednesday, Apr 17 Derivatives: Options II 21.1-21.3 HW7
+Week 14 Monday, Apr 22 Derivatives: Options III 21.4, 21.5
+Wednesday, Apr 24 When Things Go Wrong 24 HW8
+Friday, Apr 26 MG1: Last day of trading
+Week 15 Monday, Apr 29 Behavioral Finance I 12.1
+Wednesday, May 1 Behavioral Finance II 12.2
+Week 16 Monday, May 6 Review for exam HW9
+MG2: Letter to Investors
+Wednesday, May 8 Exam 3 (no lecture this day)
+(6pm–7:30pm, rooms UTC 4.122/4.122)
+∗ Unless otherwise noted, numbers refer to chapter/section from both the 9th and 10th editions of Investments by Bodie, Kane, and Marcus.
+∗∗ HW = homework deliverable. MG = management game deliverable. Homeworks will be distributed the week before the due date.
+10

@@ -1,0 +1,143 @@
+{
+  "course": {
+    "id": "ch353",
+    "course_code": "CH 353",
+    "course_title": "Physical Chemistry I",
+    "term": "Spring 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Lauren Webb",
+        "email": "lwebb@cm.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 2.304",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 2.304",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 2.304",
+        "type": "lecture"
+      }
+    ],
+    "location": "WEL 2.304"
+  },
+  "assessment_categories": [
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 30,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 40,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": 300,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "7 quizzes, drop lowest",
+        "late_pass_allowed": 1
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Fridays, 50 pts each"
+    },
+    {
+      "id": "exams_1",
+      "title": "Exams",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": 400,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "5 exams, drop lowest; no makeup",
+        "late_pass_allowed": 1
+      },
+      "confidence": 0.9,
+      "source_excerpt": "4 at 100 pts each"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2012-05-12T09:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 30,
+      "points": 300,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "May 12 9am, 3 hr"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 1,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

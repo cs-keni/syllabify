@@ -1,0 +1,195 @@
+{
+  "course": {
+    "id": "361c-young",
+    "course_code": "CS 361C",
+    "course_title": "Information Assurance and Security",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Bill Young",
+        "email": "byoung@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "timezone": "America/Chicago",
+        "location": "CLA 0.130",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "timezone": "America/Chicago",
+        "location": "CLA 0.130",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "timezone": "America/Chicago",
+        "location": "CLA 0.130",
+        "type": "lecture"
+      }
+    ],
+    "location": "CLA 0.130"
+  },
+  "assessment_categories": [
+    {
+      "id": "attendance_quizzes",
+      "name": "Attendance, Quizzes and Participation",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "paper_presentation",
+      "name": "Paper and presentation",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "other_assignments",
+      "name": "Other Assignments",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "Midterm Test",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Test",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "attendance_quizzes_1",
+      "title": "Attendance, Quizzes and Participation",
+      "category_id": "attendance_quizzes",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Attendance, Quizzes and Participation 10%"
+    },
+    {
+      "id": "paper_presentation_1",
+      "title": "Paper and presentation",
+      "category_id": "paper_presentation",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Paper and presentation 30%"
+    },
+    {
+      "id": "other_assignments_1",
+      "title": "Other Assignments",
+      "category_id": "other_assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Other Assignments 20%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm Test",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Midterm Test March 11 20%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Test",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final Test May 6 20%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

@@ -4,7 +4,7 @@
     "course_code": "CAS 101N",
     "course_title": "Introduction to Human Communication",
     "term": "Spring 2025",
-    "timezone": "America/Los_Angeles",
+    "timezone": "America/New_York",
     "instructors": [
       {
         "id": "inst-0",
@@ -18,7 +18,7 @@
         "day_of_week": "TU",
         "start_time": "13:35",
         "end_time": "14:50",
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "location": "EAB 102",
         "type": "lecture"
       },
@@ -27,7 +27,7 @@
         "day_of_week": "TH",
         "start_time": "13:35",
         "end_time": "14:50",
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "location": "EAB 102",
         "type": "lecture"
       }
@@ -150,7 +150,10 @@
       "recurrence": {
         "frequency": "weekly",
         "interval": 1,
-        "by_day": ["TU", "TH"],
+        "by_day": [
+          "TU",
+          "TH"
+        ],
         "until": null,
         "count": null
       },

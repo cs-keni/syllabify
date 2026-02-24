@@ -6,6 +6,91 @@ and maps to API shape (course_name, assignments) for backward compatibility.
 import re
 
 from app.utils.date_utils import parse_due_date
+
+
+def compute_parse_confidence(parser_result: dict | None, course_name: str, assignments: list) -> dict:
+    """
+    Compute 0-100 confidence score from parse completeness (post-hoc heuristic).
+    Returns { score: int, label: str, breakdown?: dict } for UI display.
+    """
+    def _label(s: int) -> str:
+        if s >= 70:
+            return "high"
+        if s >= 40:
+            return "medium"
+        return "low"
+
+    if not parser_result:
+        # Fallback path: simpler scoring from course_name + assignments only
+        score = 0
+        if course_name and course_name not in ("Course", ""):
+            score += 30
+        n = len(assignments)
+        if n >= 3:
+            score += 45
+        elif n >= 1:
+            score += 30
+        with_due = sum(1 for a in assignments if a.get("due_date"))
+        if n and with_due:
+            score += 25 * min(1.0, with_due / n)
+        return {"score": min(100, score), "label": _label(min(100, score))}
+
+    course = parser_result.get("course") or {}
+    assessments = parser_result.get("assessments") or []
+    meeting_times = course.get("meeting_times") or []
+    instructors = course.get("instructors") or []
+    late_policy = parser_result.get("late_pass_policy") or {}
+    breakdown = {}
+
+    # Course code (0-20): e.g. "CS 314" vs folder-like "105-Thompson"
+    code = (course.get("course_code") or "").strip()
+    if re.match(r"^[A-Z]{2,4}\s*\d{3}[A-Z]?$", code, re.I):
+        breakdown["course_code"] = 20
+    elif code and 3 <= len(code) <= 20 and "-" not in code and "_" not in code:
+        breakdown["course_code"] = 10
+    else:
+        breakdown["course_code"] = 0
+
+    # Course title (0-15): real title, not folder name
+    title = (course.get("course_title") or "").strip()
+    if title and 5 <= len(title) <= 120 and title != code:
+        if not re.match(r"^[\w\-_.]+$", title) or " " in title:
+            breakdown["course_title"] = 15
+        else:
+            breakdown["course_title"] = 5
+    elif title:
+        breakdown["course_title"] = 5
+    else:
+        breakdown["course_title"] = 0
+
+    # Meeting times (0-25)
+    mt_score = 0
+    if meeting_times:
+        with_time = sum(1 for m in meeting_times if m.get("start_time") or m.get("end_time"))
+        with_loc = sum(1 for m in meeting_times if (m.get("location") or "").strip())
+        mt_score = 10 + min(10, with_time * 4) + min(5, with_loc * 2)
+    breakdown["meeting_times"] = min(25, mt_score)
+
+    # Assessments (0-25)
+    a_score = 0
+    if assessments:
+        a_score = 10 + min(10, len(assessments) * 2)
+        with_weight = sum(1 for a in assessments if a.get("weight_percent") is not None)
+        if with_weight > 0:
+            total = sum(a.get("weight_percent") or 0 for a in assessments)
+            if 90 <= total <= 110:
+                a_score += 5
+    breakdown["assessments"] = min(25, a_score)
+
+    # Instructor (0-10)
+    inst = (instructors[0].get("name") or "").strip() if instructors else ""
+    breakdown["instructor"] = 10 if inst and inst.lower() != "staff" else (5 if inst else 0)
+
+    # Late policy (0-5)
+    breakdown["late_policy"] = 5 if late_policy.get("total_allowed") is not None else 0
+
+    total = min(100, sum(breakdown.values()))
+    return {"score": total, "label": _label(total), "breakdown": breakdown}
 from app.utils.document_utils import extract_text_from_file
 
 
@@ -30,7 +115,7 @@ def parse_text(text: str, mode: str = "rule", source_type: str = "txt") -> dict:
             "assignments": [],
             "assessments": [],
             "raw_text": text or "",
-            "confidence": "low",
+            "confidence": {"score": 0, "label": "low"},
         }
 
     if mode in ("hybrid", "ai"):
@@ -140,14 +225,22 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
             assessments_for_api.append({"title": a["name"], "due_datetime": a.get("due_date"), "type": atype})
         if fallback.get("course_name") and not course_name:
             course_name = fallback["course_name"]
+        conf = compute_parse_confidence(None, course_name, assignments)
+        return {
+            "course_name": course_name,
+            "assignments": assignments,
+            "assessments": assessments_for_api,
+            "raw_text": text if conf["label"] == "low" else None,
+            "confidence": conf,
+        }
 
-    confidence = "high" if len(assignments) >= 1 else "low"
+    conf = compute_parse_confidence(result, course_name, assignments)
     return {
         "course_name": course_name,
         "assignments": assignments,
         "assessments": assessments_for_api,
-        "raw_text": None if confidence == "high" else text,
-        "confidence": confidence,
+        "raw_text": None if conf["label"] == "high" else text,
+        "confidence": conf,
     }
 
 
@@ -170,13 +263,13 @@ def _parse_rulebased_fallback(text: str) -> dict:
                 })
     if not assignments:
         assignments = _extract_from_prose(text)
-    confidence = "high" if len(assignments) >= 2 else "low"
+    conf = compute_parse_confidence(None, course_name, assignments)
     return {
         "course_name": course_name,
         "assignments": assignments,
         "assessments": [],
-        "raw_text": text if confidence == "low" else None,
-        "confidence": confidence,
+        "raw_text": text if conf["label"] == "low" else None,
+        "confidence": conf,
     }
 
 

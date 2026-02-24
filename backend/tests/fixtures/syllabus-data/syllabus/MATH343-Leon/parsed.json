@@ -1,9 +1,9 @@
 {
   "course": {
-    "id": "math343",
+    "id": "math343-leon",
     "course_code": "MATH 343",
     "course_title": "Statistical Models and Methods",
-    "term": null,
+    "term": "Spring 2025",
     "timezone": "America/Los_Angeles",
     "instructors": [
       {

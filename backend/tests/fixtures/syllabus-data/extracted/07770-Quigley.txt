@@ -1,0 +1,162 @@
+Mobile News App Design
+A cross-­‐disciplinary course between the School of Journalism and the Computer
+Sciences department at the University of Texas at Austin
+Spring 2015
+Instructor: Robert Quigley
+robert.quigley@austin.utexas.edu Twitter: @robquig
+Phone: 512-­‐471-­‐0030, Office hours: Tues 9:30 to 11, Thurs 11 to 12:30 +
+appointment.
+Tech instructor: Jeff Linwood: jlinwood@gmail.com
+TA: Seokho Lee: walangmada@gmail.com
+Class: T-­‐TH 12:30 p.m. to 2 p.m. BMC 3.208
+Course overview
+What is the secret to Apple’s success?
+“It’s in Apple’s DNA that technology alone is not enough – it’s technology married
+with liberal arts, married with the humanities that yields us the results that makes
+our heart sing.” – Steve Jobs
+Journalists have been traditionally afraid of technology. Those in the tech world
+have traditionally been afraid of liberal arts. Both have been weary of each other.
+That has to change.
+In this course, you will work toward building an iPhone app in one semester, with
+the goal of having an app accepted in the Apple App Store.
+Journalism students: You will dream big, research your ideas, test them, work with
+your peers, work with Austin’s vibrant tech community, learn code, learn how to
+speak to coders, learn to communicate your ideas, learn design and find your place
+in the future of journalism and mobile development. After this course, you will be a
+developer.
+Computer science students: You will be challenged on the programming. We will be
+looking for ambitious ideas that stretch your knowledge and abilities. You will also
+learn in a meaningful way how to communicate ideas, learn how to work in a team
+environment and learn about the journalism industry, its ethics and tenets.
+Everyone in this class will learn what it takes to be a well-­‐rounded developer, not
+just a communicator or a programmer.
+The class is led by a longtime journalist who worked with developers at the Austin
+American-­‐Statesman to create one of the first iPhone apps for a newspaper of its
+size. Robert Quigley has also worked closely with the newsroom to bring it into the
+
+digital age as Internet editor and social media editor. Joining him is Jeff Linwood, an
+Austin mobile developer and entrepreneur.
+The class will culminate with a demo day. Students will show off their creations to a
+panel of professionals, students and academics and to the general public.
+Objectives
+By the end of this course, you will:
+* Be able to call yourself a developer who can work in a dynamic team environment
+* Know how to pitch a great idea and understand on a deep level what resources it
+will take to execute on that idea
+* Understand and work within the agile development method
+* Understand the vital importance of user interface and user experience
+* Understand what type of content works on mobile news platforms
+* Know how to intelligently critique mobile content and platforms
+* Be able to speak to a programmer and understand the limitations and possibilities
+of programming and design (for the journalism students)
+* Be able to speak to a content producer and understand the limitations and
+possibilities of content (for the computer science students)
+* Understand how to communicate complex tech challenges through various
+platforms
+* Understand the various business models for mobile apps
+* Gain the skills needed to execute all phases of building an iPhone app.
+Teamwork
+Early in the semester, students will be divided into teams. The teams will be a
+mixture of computer science and journalism students, and each team will be given
+freedom to pursue projects independently with guidance.
+The teams will also publish regular blog posts that include photos, video and text
+stories about their products on utapps.com and run social media campaigns for their
+teams.
+Structure of the class
+* The student teams will brainstorm, research and pitch their idea to the instructors
+for approval.
+* Students will then immediately begin researching and wireframing their apps.
+* Following the agile development method, there will be four “sprints” through the
+semester. At the end of each sprint, the development team will have to show their
+work in front of the class.
+* There will be blog posts, news stories, video stories and developers’-­‐diary style
+posts that each team must produce throughout the semester.
+* Each team will have a social media presence that the team will be responsible for
+maintaining
+* There will be stand-­‐up style demos at the end of each mini sprint. At the end of the
+
+course, there will be a Demo Day on April 26 that all students will be required to
+attend. The students will show off their work to academics and professionals from
+the journalism and tech worlds. The public will also be invited to attend.
+* We will use our class time to typically give short lectures (20 minutes or less) and
+spend the rest of the time working on your iPhone projects.
+Required reading:
+* Apple.com’s developer guide (developer.apple.com/iphone)
+Suggested reading:
+For advanced students (mainly computer science majors):
+* Cownway and Hillegass: “IOS Programming, the Big Nerd Ranch Guide” (3rd ed.)
+* Isaacson, Walter: “Steve Jobs: A biography”
+* AP Style Guide
+* Shore: “The Art of Agile Development” Publisher: O’Reilly
+Also required:
+1. All students must participate in a Demo Day, tentatively scheduled for May 2.
+2. Students will be expected to attend a hackathon on March 12 (event runs from
+noon to midnight) at the Austin American-­‐Statesman. Your team will blog about the
+experience for a grade.
+Assessment/how you’re graded
+25 percent: App grade. This is a team grade. Your team will be assessed on the
+usability, creativity and execution of your app. As part of this grade, your team will
+also be required to turn in plans for sprints, and an initial pitch assignment.
+24 percent: Student review of work. Individual grade. Teamwork is central to this
+course and to developing an app outside of this course. You are expected to be a
+strong teammate, and you will be assessed on your contributions twice during the
+semester.
+16 percent: End-­‐of-­‐sprint demos. Team grade. At the end of each sprint, you will
+stand in front of the class with your team and present your progress and product.
+14 percent: Blogging. This is a team grade. Your team is expected to post on
+utapps.com at least 14 times during the semester about your product, the process,
+or anything related to the mobile development industry.
+14 percent: Videos. This is a team grade. Throughout the course of the semester,
+you are required to post at least four videos and host them on utapps.com. The
+videos should be related to your process and product and will be used during Demo
+
+Day.
+7 percent: Social media. This is a team grade. Your product needs a social presence,
+and as a team you are expected to use social media to reach out to potential
+customers.
+Grade scale:
+Grade Percentage
+A 93-­‐100
+A-­‐ 90-­‐92
+B+ 87-­‐89
+B 83-­‐86
+B-­‐ 80-­‐82
+C+ 77-­‐79
+C 73-­‐76
+C-­‐ 70-­‐72
+D 60-­‐69
+Other important information
+* Your grades and the submission of your evaluations will be handled through
+Blackboard. Quizzes will be administered through Blackboard as well.
+* University Honor Code: All students are expected to abide by the University of
+Texas Honor Code, which reads: “The core values of The University of Texas at
+Austin are learning, discovery, freedom, leadership, individual opportunity, and
+responsibility. Each member of the university is expected to uphold these values
+through integrity, honesty, trust, fairness, and respect toward peers and
+community.”
+* Students with Disabilities Please notify your instructor of any
+modification/adaptation you may require to accommodate a disability-­‐related need.
+You will be requested to provide documentation to the Dean of Student's Office in
+order that the most appropriate accommodations can be determined. Specialized
+services are available on campus through Services for Students with Disabilities.
+http://www.utexas.edu/diversity/ddce/ssd/
+*Policy on Scholastic Dishonesty: The University defines academic dishonesty as
+cheating, plagiarism, unauthorized collaboration, falsifying academic records, and
+any act designed to avoid participating honestly in the learning process. Scholastic
+dishonesty also includes, but is not limited to, providing false or misleading
+
+information to receive a postponement or an extension on a test, quiz, or other
+assignment, and submission of essentially the same written assignment for two
+courses without the prior permission of the instructor. By accepting this syllabus,
+you have agreed to these guidelines and must adhere to them. Scholastic dishonesty
+damages both the student's learning experience and readiness for the future
+demands of a work-­‐career. Students who violate University rules on scholastic
+dishonesty are subject to disciplinary penalties, including the possibility of failure in
+the course and/or dismissal from the University.
+http://deanofstudents.utexas.edu/sjs/acint_student.php. For the University's
+official definition of scholastic dishonesty, see Section 11-­‐802,
+Institutional Rules on Student Services and Activities.
+http://registrar.utexas.edu/catalogs/gi08-­‐09/app/gi08.appc03.html#sec-­‐11-­‐802-­‐
+scholastic-­‐dishonesty19
+* Campus emergency information
+http://www.utexas.edu/safety/terms/

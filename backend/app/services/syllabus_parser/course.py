@@ -37,6 +37,8 @@ def parse_course_title(text: str, folder: str) -> str:
     lines = text.split("\n")
     course_title_keywords = [
         "Data Structures", "Software Methodologies I", "Operating Systems",
+        "Mobile News App Design", "Competitive Programming", "Solid State Physics I",
+        "Carbon and 2D Devices", "C++ Programming",
         "Computer & Network Security", "Intermediate Algorithms",
         "Applied Cryptography", "Statistical Methods",
         "Elementary Discrete Mathematics II", "Computer Science I",

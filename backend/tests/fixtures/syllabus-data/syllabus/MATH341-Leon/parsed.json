@@ -1,6 +1,6 @@
 {
   "course": {
-    "id": "math341",
+    "id": "math341-leon",
     "course_code": "MATH 341",
     "course_title": "Elementary Linear Algebra",
     "term": "Summer 2025",
@@ -19,7 +19,7 @@
         "start_time": "10:00",
         "end_time": "11:50",
         "timezone": "America/Los_Angeles",
-        "location": "Fenton 316",
+        "location": null,
         "type": "lecture"
       },
       {
@@ -28,7 +28,7 @@
         "start_time": "10:00",
         "end_time": "11:50",
         "timezone": "America/Los_Angeles",
-        "location": "Fenton 316",
+        "location": null,
         "type": "lecture"
       },
       {
@@ -37,7 +37,7 @@
         "start_time": "10:00",
         "end_time": "11:50",
         "timezone": "America/Los_Angeles",
-        "location": "Fenton 316",
+        "location": null,
         "type": "lecture"
       },
       {
@@ -46,7 +46,7 @@
         "start_time": "10:00",
         "end_time": "11:50",
         "timezone": "America/Los_Angeles",
-        "location": "Fenton 316",
+        "location": null,
         "type": "lecture"
       },
       {
@@ -55,11 +55,11 @@
         "start_time": "10:00",
         "end_time": "11:50",
         "timezone": "America/Los_Angeles",
-        "location": "Fenton 316",
+        "location": null,
         "type": "lecture"
       }
     ],
-    "location": "Fenton 316"
+    "location": null
   },
   "assessment_categories": [
     {
