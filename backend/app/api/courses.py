@@ -112,7 +112,7 @@ def get_course(course_id):
 
         cur.execute(
             """
-            SELECT id, assignment_name, work_load, notes, start_date, due_date
+            SELECT id, assignment_name, work_load, notes, start_date, due_date, assignment_type
             FROM Assignments
             WHERE course_id = %s
             ORDER BY due_date
@@ -188,13 +188,16 @@ def add_assignments(course_id):
             except (ValueError, TypeError):
                 due_dt = now
 
+            atype = (a.get("type") or "assignment").strip().lower()
+            if atype not in ("assignment", "midterm", "final", "quiz", "project", "participation"):
+                atype = "assignment"
             cur.execute(
                 """
                 INSERT INTO Assignments
-                  (assignment_name, work_load, notes, start_date, due_date, course_id)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                  (assignment_name, work_load, notes, start_date, due_date, assignment_type, course_id)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
                 """,
-                (name, work_load, a.get("notes") or None, now, due_dt, course_id),
+                (name, work_load, a.get("notes") or None, now, due_dt, atype, course_id),
             )
             inserted += 1
 

@@ -1,5 +1,6 @@
 /**
- * Editable table of parsed assignments and assessments (exams, projects, etc.).
+ * Editable table of parsed assignments and assessments, organized by section.
+ * Sections: Exams, Projects, Assignments, Quizzes, Participation, Other.
  * User can edit name, type, due, hours; add or delete rows; then confirm.
  */
 import { useState } from 'react';
@@ -12,6 +13,25 @@ const ASSESSMENT_TYPES = [
   { value: 'project', label: 'Project' },
   { value: 'participation', label: 'Participation' },
 ];
+
+/** Map assignment type -> section for grouping. */
+const TYPE_TO_SECTION = {
+  midterm: 'exams',
+  final: 'exams',
+  project: 'projects',
+  assignment: 'assignments',
+  quiz: 'quizzes',
+  participation: 'participation',
+};
+const SECTION_ORDER = ['exams', 'projects', 'assignments', 'quizzes', 'participation', 'other'];
+const SECTION_LABELS = {
+  exams: 'Exams (midterms & finals)',
+  projects: 'Projects',
+  assignments: 'Assignments',
+  quizzes: 'Quizzes',
+  participation: 'Participation',
+  other: 'Other',
+};
 
 /** Inline-editable cell. Toggles between display and input on click. */
 function EditableCell({ value, onChange, type = 'text' }) {
@@ -47,7 +67,102 @@ function EditableCell({ value, onChange, type = 'text' }) {
   );
 }
 
-/** Table of assignments with editable cells, type column, and add/delete. */
+/** Group assignments by section. */
+function groupBySection(assignments) {
+  const groups = { exams: [], projects: [], assignments: [], quizzes: [], participation: [], other: [] };
+  for (const a of assignments) {
+    const t = (a.type || 'assignment').toLowerCase();
+    const section = TYPE_TO_SECTION[t] || 'other';
+    groups[section].push(a);
+  }
+  return groups;
+}
+
+/** Single section table. */
+function SectionTable({ label, items, onUpdate, onDelete }) {
+  const updateAssignment = (id, field, value) => {
+    onUpdate(id, field, value);
+  };
+
+  if (items.length === 0) return null;
+
+  return (
+    <div className="mb-6">
+      <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider mb-2 px-1">
+        {label}
+      </h3>
+      <div className="overflow-x-auto rounded-input border border-border">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-border bg-surface-muted">
+              <th className="text-left font-medium text-ink px-3 py-2">Title</th>
+              <th className="text-left font-medium text-ink px-3 py-2">Type</th>
+              <th className="text-left font-medium text-ink px-3 py-2">Due date</th>
+              <th className="text-left font-medium text-ink px-3 py-2">Hours</th>
+              <th className="w-10 px-2 py-2" aria-label="Remove row" />
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((a, i) => (
+              <tr
+                key={a.id}
+                className="border-b border-border-subtle animate-fade-in-up"
+                style={{ animationDelay: `${i * 60}ms` }}
+              >
+                <td className="px-3 py-2">
+                  <EditableCell
+                    value={a.name}
+                    onChange={v => updateAssignment(a.id, 'name', v)}
+                  />
+                </td>
+                <td className="px-3 py-2">
+                  <select
+                    value={a.type || 'assignment'}
+                    onChange={e => updateAssignment(a.id, 'type', e.target.value)}
+                    className="w-full rounded border border-border bg-surface px-2 py-1 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-accent"
+                  >
+                    {ASSESSMENT_TYPES.map(({ value, label }) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td className="px-3 py-2">
+                  <EditableCell
+                    value={a.due || a.due_date || ''}
+                    onChange={v => updateAssignment(a.id, 'due', v)}
+                    type="date"
+                  />
+                </td>
+                <td className="px-3 py-2">
+                  <EditableCell
+                    value={String(a.hours)}
+                    onChange={v => updateAssignment(a.id, 'hours', Number(v) || 0)}
+                    type="number"
+                  />
+                </td>
+                <td className="px-2 py-2">
+                  <button
+                    type="button"
+                    onClick={() => onDelete(a.id)}
+                    className="rounded-button p-1.5 text-ink-muted hover:bg-red-500/10 hover:text-red-600 transition-colors"
+                    title="Remove row"
+                    aria-label="Remove row"
+                  >
+                    <span aria-hidden>×</span>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/** Editable review with sections. */
 export default function ParsedDataReview({
   courseName,
   assignments,
@@ -62,17 +177,19 @@ export default function ParsedDataReview({
     );
   };
 
-  const addRow = () => {
+  const addRow = (defaultType = 'assignment') => {
     const newId = `temp-${Date.now()}`;
     onAssignmentsChange([
       ...assignments,
-      { id: newId, name: '', due: '', hours: 3, type: 'assignment' },
+      { id: newId, name: '', due: '', hours: 3, type: defaultType },
     ]);
   };
 
   const deleteRow = (id) => {
     onAssignmentsChange(assignments.filter(a => a.id !== id));
   };
+
+  const groups = groupBySection(assignments);
 
   return (
     <div className="space-y-4">
@@ -83,95 +200,35 @@ export default function ParsedDataReview({
         </div>
       )}
       <p className="text-sm text-ink-muted">
-        Edit any cell by clicking. Add or remove rows as needed, then confirm.
+        Review parsed data by section. Edit any cell by clicking, remove duplicates or bad entries,
+        add new ones, then confirm.
       </p>
-      <div className="overflow-x-auto rounded-input border border-border">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-border bg-surface-muted">
-              <th className="text-left font-medium text-ink px-3 py-2">
-                Title
-              </th>
-              <th className="text-left font-medium text-ink px-3 py-2">
-                Type
-              </th>
-              <th className="text-left font-medium text-ink px-3 py-2">
-                Due date
-              </th>
-              <th className="text-left font-medium text-ink px-3 py-2">
-                Hours
-              </th>
-              <th className="w-10 px-2 py-2" aria-label="Remove row" />
-            </tr>
-          </thead>
-          <tbody>
-            {assignments.map((a, i) => (
-              <tr
-                key={a.id}
-                className="border-b border-border-subtle animate-fade-in-up"
-                style={{ animationDelay: `${i * 80}ms` }}
-              >
-                <td className="px-3 py-2">
-                  <EditableCell
-                    value={a.name}
-                    onChange={v => updateAssignment(a.id, 'name', v)}
-                  />
-                </td>
-                <td className="px-3 py-2">
-                  <select
-                    value={a.type || 'assignment'}
-                    onChange={e =>
-                      updateAssignment(a.id, 'type', e.target.value)
-                    }
-                    className="w-full rounded border border-border bg-surface px-2 py-1 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-accent"
-                  >
-                    {ASSESSMENT_TYPES.map(({ value, label }) => (
-                      <option key={value} value={value}>
-                        {label}
-                      </option>
-                    ))}
-                  </select>
-                </td>
-                <td className="px-3 py-2">
-                  <EditableCell
-                    value={a.due}
-                    onChange={v => updateAssignment(a.id, 'due', v)}
-                    type="date"
-                  />
-                </td>
-                <td className="px-3 py-2">
-                  <EditableCell
-                    value={String(a.hours)}
-                    onChange={v =>
-                      updateAssignment(a.id, 'hours', Number(v) || 0)
-                    }
-                    type="number"
-                  />
-                </td>
-                <td className="px-2 py-2">
-                  <button
-                    type="button"
-                    onClick={() => deleteRow(a.id)}
-                    className="rounded-button p-1.5 text-ink-muted hover:bg-red-500/10 hover:text-red-600 transition-colors"
-                    title="Remove row"
-                    aria-label="Remove row"
-                  >
-                    <span aria-hidden>×</span>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="flex flex-wrap items-center justify-end gap-3">
-        <button
-          type="button"
-          onClick={addRow}
-          className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors duration-200"
-        >
-          + Add assignment
-        </button>
+      {SECTION_ORDER.map(section => (
+        <SectionTable
+          key={section}
+          label={SECTION_LABELS[section]}
+          items={groups[section]}
+          onUpdate={updateAssignment}
+          onDelete={deleteRow}
+        />
+      ))}
+      <div className="flex flex-wrap items-center justify-end gap-3 pt-2">
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => addRow('assignment')}
+            className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors duration-200"
+          >
+            + Add assignment
+          </button>
+          <button
+            type="button"
+            onClick={() => addRow('midterm')}
+            className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors duration-200"
+          >
+            + Add exam
+          </button>
+        </div>
         <button
           type="button"
           onClick={onConfirm}

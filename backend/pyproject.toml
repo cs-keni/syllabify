@@ -9,8 +9,8 @@ select = ["E", "F", "I", "N", "W"]
 ignore = ["E501"]  # Line too long — syllabus_parser has many long regex lines
 
 [tool.ruff.lint.per-file-ignores]
-# Cherry-picked parser has long regex, inline logic, and unused captures — not our code to reformat
-"app/services/syllabus_parser.py" = ["E501", "E701", "E702", "F841"]
+# Parser modules have long regex, inline logic — not our code to reformat
+"app/services/syllabus_parser/*.py" = ["E501", "E701", "E702", "F841"]
 # Script files have long output strings and print statements
 "scripts/*.py" = ["E501"]
 

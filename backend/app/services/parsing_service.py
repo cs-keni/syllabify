@@ -122,6 +122,25 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
         for v in seen.values()
     ]
 
+    # If full parser found nothing, fall back to simple table/prose extraction
+    if len(assignments) == 0:
+        fallback = _parse_rulebased_fallback(text)
+        fallback_items = fallback.get("assignments") or []
+        assignments = []
+        assessments_for_api = []
+        for a in fallback_items:
+            atype = a.get("type") or _infer_type_from_name(a.get("name", ""))
+            item = {
+                "name": a["name"],
+                "due_date": a.get("due_date"),
+                "hours": a.get("hours", 3),
+                "type": atype,
+            }
+            assignments.append(item)
+            assessments_for_api.append({"title": a["name"], "due_datetime": a.get("due_date"), "type": atype})
+        if fallback.get("course_name") and not course_name:
+            course_name = fallback["course_name"]
+
     confidence = "high" if len(assignments) >= 1 else "low"
     return {
         "course_name": course_name,
@@ -175,6 +194,22 @@ def _extract_course_name(text: str) -> str:
         if len(line) < 100 and not line.startswith(" "):
             return line[:80]
     return "Course"
+
+
+def _infer_type_from_name(name: str) -> str:
+    """Infer assignment type from name (for fallback extraction)."""
+    n = (name or "").lower()
+    if "midterm" in n or ("exam" in n and "final" not in n):
+        return "midterm"
+    if "final" in n:
+        return "final"
+    if "quiz" in n:
+        return "quiz"
+    if "project" in n:
+        return "project"
+    if "participat" in n or "attend" in n:
+        return "participation"
+    return "assignment"
 
 
 def _infer_hours(name: str, explicit: str | None) -> int:

@@ -117,8 +117,9 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
   const course = await createCourse(termId, course_name || 'Course');
   const items = (assignments || []).map(a => ({
     name: a.name,
-    due: a.due || null,
+    due: a.due || a.due_date || null,
     hours: a.hours ?? 3,
+    type: a.type || 'assignment',
   }));
   if (items.length > 0) {
     await addAssignments(course.id, items);
