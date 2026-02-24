@@ -237,11 +237,13 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
 
     conf = compute_parse_confidence(result, course_name, assignments)
     meeting_times = course.get("meeting_times") or []
+    instructors = course.get("instructors") or []
     return {
         "course_name": course_name,
         "assignments": assignments,
         "assessments": assessments_for_api,
         "meeting_times": meeting_times,
+        "instructors": instructors,
         "raw_text": None if conf["label"] == "high" else text,
         "confidence": conf,
     }

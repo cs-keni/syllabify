@@ -234,6 +234,55 @@ function AddMeetingModal({ open, onClose, onAdd }) {
   );
 }
 
+/** Form to add an instructor or TA. */
+function AddInstructorModal({ open, onClose, onAdd }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    onAdd({
+      id: `inst-${Date.now()}`,
+      name: name.trim() || 'Instructor',
+      email: email.trim() || null,
+    });
+    onClose();
+    setName('');
+    setEmail('');
+  };
+
+  return (
+    <Modal open={open} onClose={onClose} title="Add instructor or TA">
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <div>
+          <label className="block text-sm font-medium text-ink-muted">Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="e.g. Jane Smith"
+            className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-ink-muted">Email (optional)</label>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="e.g. jane@university.edu"
+            className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30"
+          />
+        </div>
+        <div className="flex gap-2 pt-2">
+          <button type="button" onClick={onClose} className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:bg-surface-muted">Cancel</button>
+          <button type="submit" className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover">Add</button>
+        </div>
+      </form>
+    </Modal>
+  );
+}
+
 /** Form to add a new assessment. */
 function AddAssessmentModal({ open, onClose, onAdd, defaultType = 'assignment' }) {
   const [name, setName] = useState('');
@@ -366,9 +415,15 @@ function SortableMeetingRow({ meeting, onUpdate, onDelete }) {
         </select>
       </td>
       <td className="px-3 py-2">
-        <span className="text-sm text-ink">{meeting.start_time || '—'}</span>
-        <span className="text-ink-muted mx-1">–</span>
-        <span className="text-sm text-ink">{meeting.end_time || '—'}</span>
+        {meeting.start_time && meeting.end_time ? (
+          <>
+            <span className="text-sm text-ink">{meeting.start_time}</span>
+            <span className="text-ink-muted mx-1">–</span>
+            <span className="text-sm text-ink">{meeting.end_time}</span>
+          </>
+        ) : (
+          <span className="text-sm text-ink-muted italic">TBD</span>
+        )}
       </td>
       <td className="px-3 py-2">
         <EditableCell value={meeting.location || ''} onChange={v => onUpdate(meeting.id, 'location', v)} />
@@ -563,7 +618,7 @@ function AssessmentSectionBox({ sectionId, label, items, onUpdate, onDelete, onO
                 <th className="text-left font-medium text-ink px-3 py-2">Title</th>
                 <th className="text-left font-medium text-ink px-3 py-2">Type</th>
                 <th className="text-left font-medium text-ink px-3 py-2">Due date</th>
-                <th className="text-left font-medium text-ink px-3 py-2">Hours</th>
+                <th className="text-left font-medium text-ink px-3 py-2" title="Estimated effort in hours (used by the scheduler; edit as needed).">Hours</th>
                 <th className="w-10 px-2 py-2" aria-label="Remove" />
               </tr>
             </thead>
@@ -589,6 +644,11 @@ function AssessmentSectionBox({ sectionId, label, items, onUpdate, onDelete, onO
 
 export default function ParsedDataReview({
   courseName,
+  instructors = [],
+  onInstructorsChange,
+  confidence = null,
+  studyHoursPerWeek = '',
+  onStudyHoursPerWeekChange,
   meetingTimes = [],
   onMeetingTimesChange,
   assignments,
@@ -599,6 +659,7 @@ export default function ParsedDataReview({
 }) {
   const [addMeetingOpen, setAddMeetingOpen] = useState(false);
   const [addAssessmentOpen, setAddAssessmentOpen] = useState(false);
+  const [addInstructorOpen, setAddInstructorOpen] = useState(false);
   const [addAssessmentSection, setAddAssessmentSection] = useState('assignments');
   const [activeId, setActiveId] = useState(null);
 
@@ -696,16 +757,95 @@ export default function ParsedDataReview({
   const allMeetingIds = meetingTimes.map(m => m.id);
   const allAssignmentIds = assignments.map(a => a.id);
 
+  const confidenceLabel = confidence?.label ? String(confidence.label).charAt(0).toUpperCase() + String(confidence.label).slice(1) : null;
+  const confidenceScore = confidence?.score != null ? Number(confidence.score) : null;
+
   return (
     <div className="space-y-6">
-      <h2 className="text-lg font-medium text-ink">{courseName}</h2>
+      <div className="flex flex-wrap items-center gap-3">
+        <h2 className="text-lg font-medium text-ink">{courseName}</h2>
+        {confidenceLabel != null && (
+          <span
+            className="rounded-full px-2.5 py-0.5 text-xs font-medium bg-surface-muted text-ink-muted"
+            title={confidenceScore != null ? `Parse confidence: ${confidenceScore}%` : 'Parse confidence'}
+          >
+            Confidence: {confidenceLabel}
+            {confidenceScore != null ? ` (${confidenceScore}%)` : ''}
+          </span>
+        )}
+      </div>
+      {onStudyHoursPerWeekChange && (
+        <section className="rounded-card border border-border bg-surface-elevated overflow-hidden">
+          <div className="px-4 py-3 border-b border-border bg-surface-muted">
+            <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Course settings</h3>
+          </div>
+          <div className="px-4 py-3">
+            <label className="block text-sm font-medium text-ink-muted mb-1">Study hours per week (optional)</label>
+            <input
+              type="number"
+              min={0}
+              max={168}
+              placeholder="e.g. 10"
+              value={studyHoursPerWeek}
+              onChange={e => onStudyHoursPerWeekChange(e.target.value)}
+              className="w-24 rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
+            />
+            <p className="text-xs text-ink-muted mt-1">Max hours the scheduler will allocate for this course per week. Leave blank for no cap.</p>
+          </div>
+        </section>
+      )}
+      {(instructors.length > 0 || onInstructorsChange) && (
+        <section className="rounded-card border border-border bg-surface-elevated overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-surface-muted">
+            <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Instructors & contact</h3>
+            {onInstructorsChange && (
+              <button
+                type="button"
+                onClick={() => setAddInstructorOpen(true)}
+                className="rounded-button border border-border px-3 py-1.5 text-sm font-medium text-ink-muted hover:bg-surface hover:text-ink transition-colors"
+              >
+                + Add
+              </button>
+            )}
+          </div>
+          {instructors.length === 0 ? (
+            <p className="px-4 py-4 text-sm text-ink-muted">No instructors extracted. Add one if your syllabus lists an instructor or TA.</p>
+          ) : (
+            <ul className="divide-y divide-border">
+              {instructors.map((inst, i) => (
+                <li key={inst.id || i} className="flex items-center justify-between gap-2 px-4 py-2 text-sm">
+                  <span>
+                    <span className="font-medium text-ink">{inst.name || 'Instructor'}</span>
+                    {inst.email && (
+                      <span className="text-ink-muted ml-2">
+                        <a href={`mailto:${inst.email}`} className="text-accent hover:underline">{inst.email}</a>
+                      </span>
+                    )}
+                  </span>
+                  {onInstructorsChange && (
+                    <button
+                      type="button"
+                      onClick={() => onInstructorsChange(instructors.filter((_, j) => j !== i))}
+                      className="rounded-button p-1.5 text-ink-muted hover:bg-red-500/10 hover:text-red-600"
+                      title="Remove"
+                      aria-label="Remove"
+                    >
+                      ×
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
       {saveError && (
         <div className="rounded-input bg-red-500/10 border border-red-500/30 px-3 py-2 text-sm text-red-600">
           {saveError}
         </div>
       )}
       <p className="text-sm text-ink-muted">
-        Review and organize parsed data. Edit cells by clicking, add or remove rows, and drag items to reorder or move between sections. Then confirm to save.
+        Review and organize parsed data. Edit cells by clicking, add or remove rows, and drag items to reorder or move between sections. <span className="block mt-1">Hours are estimated effort per item for the scheduler—edit them to match how much time you plan to spend.</span> Then confirm to save.
       </p>
 
       <DndContext
@@ -741,12 +881,12 @@ export default function ParsedDataReview({
                     const m = meetingTimes.find(x => x.id === activeId);
                     if (!m) return null;
                     const dayLabel = DAYS.find(d => d.value === m.day_of_week)?.label || m.day_of_week;
-                    const timeRange = [m.start_time, m.end_time].filter(Boolean).join(' – ') || '—';
+                    const timeDisplay = m.start_time && m.end_time ? `${m.start_time} – ${m.end_time}` : 'TBD';
                     return (
                       <tr className="border-b border-border-subtle bg-surface-elevated">
                         <td className="w-8 px-2 py-2 text-ink-muted">⋮⋮</td>
                         <td className="px-3 py-2">{dayLabel}</td>
-                        <td className="px-3 py-2">{timeRange}</td>
+                        <td className="px-3 py-2">{timeDisplay}</td>
                         <td className="px-3 py-2">{m.location || '—'}</td>
                         <td className="px-3 py-2">{MEETING_TYPES.find(t => t.value === (m.type || 'lecture'))?.label || m.type}</td>
                         <td className="w-10" />
@@ -783,6 +923,11 @@ export default function ParsedDataReview({
         open={addMeetingOpen}
         onClose={() => setAddMeetingOpen(false)}
         onAdd={item => onMeetingTimesChange([...meetingTimes, item])}
+      />
+      <AddInstructorModal
+        open={addInstructorOpen}
+        onClose={() => setAddInstructorOpen(false)}
+        onAdd={inst => onInstructorsChange && onInstructorsChange([...instructors, inst])}
       />
       <AddAssessmentModal
         open={addAssessmentOpen}

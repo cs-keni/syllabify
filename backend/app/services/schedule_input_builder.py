@@ -51,7 +51,7 @@ def build_engine_input(user_id: int, term_id: int | None = None, course_ids: lis
             placeholders = ",".join(["%s"] * len(course_ids))
             cur.execute(
                 f"""
-                SELECT c.id, c.course_name, t.term_name, t.start_date, t.end_date
+                SELECT c.id, c.course_name, c.study_hours_per_week, t.term_name, t.start_date, t.end_date
                 FROM Courses c
                 JOIN Terms t ON t.id = c.term_id
                 WHERE c.term_id = %s AND c.id IN ({placeholders}) AND t.user_id = %s
@@ -61,7 +61,7 @@ def build_engine_input(user_id: int, term_id: int | None = None, course_ids: lis
         else:
             cur.execute(
                 """
-                SELECT c.id, c.course_name, t.term_name, t.start_date, t.end_date
+                SELECT c.id, c.course_name, c.study_hours_per_week, t.term_name, t.start_date, t.end_date
                 FROM Courses c
                 JOIN Terms t ON t.id = c.term_id
                 WHERE c.term_id = %s AND t.user_id = %s
@@ -120,6 +120,7 @@ def build_engine_input(user_id: int, term_id: int | None = None, course_ids: lis
             courses_out.append({
                 "id": str(cid),
                 "course_code": cr["course_name"],
+                "study_hours_per_week": cr.get("study_hours_per_week"),
                 "meeting_times": meeting_times,
                 "work_items": work_items,
             })

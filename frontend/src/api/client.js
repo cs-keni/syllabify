@@ -113,8 +113,8 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
     termId = termIdOrPayload;
     payload = maybePayload;
   }
-  const { course_name, assignments, meeting_times } = payload || {};
-  const course = await createCourse(termId, course_name || 'Course');
+  const { course_name, assignments, meeting_times, study_hours_per_week } = payload || {};
+  const course = await createCourse(termId, course_name || 'Course', study_hours_per_week);
   const items = (assignments || []).map(a => ({
     name: a.name,
     due: a.due || a.due_date || null,
@@ -244,11 +244,13 @@ export async function getCourses(termId) {
 }
 
 /** POST /api/terms/:termId/courses. Returns { id, course_name, assignment_count }. */
-export async function createCourse(termId, courseName) {
+export async function createCourse(termId, courseName, studyHoursPerWeek = null) {
+  const body = { course_name: courseName };
+  if (studyHoursPerWeek != null && studyHoursPerWeek !== '') body.study_hours_per_week = studyHoursPerWeek;
   const res = await fetch(`${BASE}/api/terms/${termId}/courses`, {
     method: 'POST',
     headers: headers(true),
-    body: JSON.stringify({ course_name: courseName }),
+    body: JSON.stringify(body),
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));

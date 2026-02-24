@@ -11,7 +11,7 @@ def _owns_course(cur, course_id, user_id):
     """Returns course row if user owns it (via term), else None."""
     cur.execute(
         """
-        SELECT c.id, c.course_name, c.term_id, t.term_name
+        SELECT c.id, c.course_name, c.term_id, c.study_hours_per_week, t.term_name
         FROM Courses c
         JOIN Terms t ON t.id = c.term_id
         WHERE c.id = %s AND t.user_id = %s
@@ -42,12 +42,12 @@ def list_courses(term_id):
 
         cur.execute(
             """
-            SELECT c.id, c.course_name,
+            SELECT c.id, c.course_name, c.study_hours_per_week,
                    COUNT(a.id) AS assignment_count
             FROM Courses c
             LEFT JOIN Assignments a ON a.course_id = c.id
             WHERE c.term_id = %s
-            GROUP BY c.id, c.course_name
+            GROUP BY c.id, c.course_name, c.study_hours_per_week
             ORDER BY c.id
             """,
             (term_id,),
@@ -70,6 +70,14 @@ def create_course(term_id):
     course_name = (data.get("course_name") or "").strip()
     if not course_name:
         return jsonify({"error": "course_name is required"}), 400
+    study_hours_per_week = data.get("study_hours_per_week")
+    if study_hours_per_week is not None:
+        try:
+            study_hours_per_week = int(study_hours_per_week)
+            if study_hours_per_week < 0 or study_hours_per_week > 168:
+                study_hours_per_week = None
+        except (TypeError, ValueError):
+            study_hours_per_week = None
 
     conn = get_db()
     try:
@@ -82,13 +90,13 @@ def create_course(term_id):
             return jsonify({"error": "Term not found"}), 404
 
         cur.execute(
-            "INSERT INTO Courses (course_name, term_id) VALUES (%s, %s)",
-            (course_name, term_id),
+            "INSERT INTO Courses (course_name, term_id, study_hours_per_week) VALUES (%s, %s, %s)",
+            (course_name, term_id, study_hours_per_week),
         )
         course_id = cur.lastrowid
         conn.commit()
         return jsonify(
-            {"id": course_id, "course_name": course_name, "assignment_count": 0}
+            {"id": course_id, "course_name": course_name, "study_hours_per_week": study_hours_per_week, "assignment_count": 0}
         ), 201
     finally:
         conn.close()

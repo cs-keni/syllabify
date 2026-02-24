@@ -27,17 +27,22 @@ export default function Upload() {
   const [step, setStep] = useState(0);
   const [assignments, setAssignments] = useState([]);
   const [meetingTimes, setMeetingTimes] = useState([]);
+  const [instructors, setInstructors] = useState([]);
+  const [confidence, setConfidence] = useState(null);
+  const [studyHoursPerWeek, setStudyHoursPerWeek] = useState('');
   const [parsedCourseName, setParsedCourseName] = useState('');
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState(null);
 
   const currentStepId = STEPS[step].id;
 
-  /** Called by SyllabusUpload with { course_name, meeting_times, assignments } from parse API. */
-  const handleUploadComplete = ({ course_name, meeting_times, assignments: parsed }) => {
+  /** Called by SyllabusUpload with { course_name, meeting_times, assignments, instructors, confidence } from parse API. */
+  const handleUploadComplete = ({ course_name, meeting_times, assignments: parsed, instructors: inst, confidence: conf }) => {
     setParsedCourseName(course_name || initialCourseName);
     setMeetingTimes(Array.isArray(meeting_times) ? meeting_times : []);
     setAssignments(parsed || []);
+    setInstructors(Array.isArray(inst) ? inst : []);
+    setConfidence(conf || null);
     setStep(1);
   };
 
@@ -108,6 +113,8 @@ export default function Upload() {
                 setParsedCourseName(payload.course_name || initialCourseName);
                 setMeetingTimes(Array.isArray(payload.meeting_times) ? payload.meeting_times : []);
                 setAssignments(payload.assignments || []);
+                setInstructors(Array.isArray(payload.instructors) ? payload.instructors : []);
+                setConfidence(payload.confidence || null);
                 setStep(1);
               }}
             />
@@ -115,6 +122,11 @@ export default function Upload() {
           {currentStepId === 'review' && (
             <ParsedDataReview
               courseName={parsedCourseName || 'Course'}
+              instructors={instructors}
+              onInstructorsChange={setInstructors}
+              confidence={confidence}
+              studyHoursPerWeek={studyHoursPerWeek}
+              onStudyHoursPerWeekChange={setStudyHoursPerWeek}
               meetingTimes={meetingTimes}
               onMeetingTimesChange={setMeetingTimes}
               assignments={assignments}
@@ -123,11 +135,14 @@ export default function Upload() {
                 setSaveError(null);
                 setSaving(true);
                 try {
-                  const result = await saveCourse(token, {
+                  const payload = {
                     course_name: parsedCourseName || 'Course',
                     assignments,
                     meeting_times: meetingTimes,
-                  });
+                  };
+                  const hrs = studyHoursPerWeek !== '' ? parseInt(studyHoursPerWeek, 10) : null;
+                  if (hrs != null && !Number.isNaN(hrs) && hrs >= 0) payload.study_hours_per_week = hrs;
+                  const result = await saveCourse(token, payload);
                   if (result?.id) setCreatedCourseId(result.id);
                   setStep(2);
                 } catch (err) {
@@ -164,6 +179,9 @@ export default function Upload() {
                     setStep(0);
                     setAssignments([]);
                     setMeetingTimes([]);
+                    setInstructors([]);
+                    setConfidence(null);
+                    setStudyHoursPerWeek('');
                     setParsedCourseName(initialCourseName);
                   }}
                   className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:text-ink transition-colors duration-200"

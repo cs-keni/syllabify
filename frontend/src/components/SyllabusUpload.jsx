@@ -53,7 +53,9 @@ export default function SyllabusUpload({ onComplete, token }) {
         type: a.type || 'assignment',
       }));
       const meeting_times = Array.isArray(data.meeting_times) ? data.meeting_times : [];
-      onComplete({ course_name: courseName, meeting_times, assignments });
+      const instructors = Array.isArray(data.instructors) ? data.instructors : [];
+      const confidence = data.confidence || null;
+      onComplete({ course_name: courseName, meeting_times, assignments, instructors, confidence });
     } catch (err) {
       setError(err.message || 'Parse failed');
     } finally {

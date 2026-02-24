@@ -13,6 +13,8 @@ class Course(Base):
 
     term_id: Mapped[int] = mapped_column(ForeignKey("Terms.id"), nullable=False)
 
+    study_hours_per_week: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
     term = relationship("Term", back_populates="courses")
     assignments = relationship(
         "Assignment", back_populates="course", cascade="all, delete-orphan"
