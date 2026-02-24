@@ -56,6 +56,15 @@ const DAYS = [
   { value: 'SU', label: 'Sunday' },
 ];
 
+const MEETING_TYPES = [
+  { value: 'lecture', label: 'Lecture' },
+  { value: 'lab', label: 'Lab' },
+  { value: 'discussion', label: 'Discussion' },
+  { value: 'office_hours', label: 'Office hours (instructor)' },
+  { value: 'ta_office_hours', label: 'Office hours (TA)' },
+  { value: 'other', label: 'Other' },
+];
+
 function groupBySection(assignments) {
   const groups = { exams: [], projects: [], assignments: [], quizzes: [], participation: [], other: [] };
   for (const a of assignments) {
@@ -200,10 +209,9 @@ function AddMeetingModal({ open, onClose, onAdd }) {
             onChange={e => setMeetingType(e.target.value)}
             className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
           >
-            <option value="lecture">Lecture</option>
-            <option value="lab">Lab</option>
-            <option value="discussion">Discussion</option>
-            <option value="other">Other</option>
+            {MEETING_TYPES.map(({ value, label }) => (
+              <option key={value} value={value}>{label}</option>
+            ))}
           </select>
         </div>
         <div className="flex gap-2 pt-2">
@@ -365,7 +373,17 @@ function SortableMeetingRow({ meeting, onUpdate, onDelete }) {
       <td className="px-3 py-2">
         <EditableCell value={meeting.location || ''} onChange={v => onUpdate(meeting.id, 'location', v)} />
       </td>
-      <td className="px-3 py-2 text-sm text-ink-muted">{meeting.type || 'lecture'}</td>
+      <td className="px-3 py-2">
+        <select
+          value={meeting.type || 'lecture'}
+          onChange={e => onUpdate(meeting.id, 'type', e.target.value)}
+          className="w-full rounded border border-border bg-surface px-2 py-1 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-accent"
+        >
+          {MEETING_TYPES.map(({ value, label }) => (
+            <option key={value} value={value}>{label}</option>
+          ))}
+        </select>
+      </td>
       <td className="w-10 px-2 py-2">
         <button
           type="button"
@@ -730,7 +748,7 @@ export default function ParsedDataReview({
                         <td className="px-3 py-2">{dayLabel}</td>
                         <td className="px-3 py-2">{timeRange}</td>
                         <td className="px-3 py-2">{m.location || '—'}</td>
-                        <td className="px-3 py-2">{m.type || 'lecture'}</td>
+                        <td className="px-3 py-2">{MEETING_TYPES.find(t => t.value === (m.type || 'lecture'))?.label || m.type}</td>
                         <td className="w-10" />
                       </tr>
                     );

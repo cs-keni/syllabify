@@ -1,7 +1,35 @@
 """
 Meeting times extraction: day, start, end, location.
+Distinguishes class/lecture meetings from instructor and TA office hours.
 """
 import re
+
+# Day-name words or fragments that often appear as location when regex captures too much
+_DAY_WORDS = re.compile(
+    r"^(?:mon|tues?|wed(?:nes)?|thu(?:rs)?|fri|sat|sun)?days?\s*\d*|"
+    r"^[a-z]*days?\s*\d+|"
+    r"^or\s*\d+$|"
+    r"^rs?days?\s*(?:tbd)?$|"
+    r"^\d+\s*$",
+    re.I,
+)
+
+
+def _location_looks_invalid(loc: str) -> bool:
+    """Return True if location is likely a parsing error (day fragment, 'or 3', etc.)."""
+    if not loc or not (loc := loc.strip()):
+        return True
+    if len(loc) <= 2 and not loc.isdigit():
+        return True
+    # "or 3", "Wednesdays 10", "nesdays 10", "rsdays TBD"
+    if _DAY_WORDS.search(loc):
+        return True
+    if re.match(r"^(?:mon|tues?|wed|thu|fri|sat|sun)", loc, re.I) and not re.search(r"\d{2,}", loc):
+        return True
+    # Invalid time-like "30:00" etc. mistaken as location
+    if re.search(r"\d{2}\s*:\s*\d{2}", loc) and "hall" not in loc.lower() and "room" not in loc.lower():
+        return True
+    return False
 
 
 def _abbreviate_location(loc: str) -> str:
@@ -65,8 +93,21 @@ def _abbreviate_location(loc: str) -> str:
     return loc
 
 
+def _normalize_location(loc: str | None) -> str | None:
+    """Return None if location looks invalid (fragment/garbage), else abbreviate if known."""
+    if not loc or not (loc := loc.strip()):
+        return None
+    if _location_looks_invalid(loc):
+        return None
+    return _abbreviate_location(loc) if len(loc) >= 3 else loc
+
+
 def parse_meeting_times(text: str) -> list:
-    """Extract structured meeting times: day, start, end, location."""
+    """Extract structured meeting times: day, start, end, location.
+    Distinguishes lecture/class meetings from instructor and TA office hours.
+    """
+    # Normalize hyphenated line breaks (e.g. "De-\nschutes" -> "Deschutes")
+    text = re.sub(r"-\s*\n\s*", "", text)
     day_map = {
         "m": "MO", "tu": "TU", "tues": "TU", "we": "WE", "wed": "WE",
         "th": "TH", "thu": "TH", "thurs": "TH", "f": "FR", "fr": "FR", "fri": "FR",
@@ -74,8 +115,86 @@ def parse_meeting_times(text: str) -> list:
     }
     meetings = []
     seen_days = set()
+    seen_oh_keys: set[tuple[str, str, str]] = set()  # (day, start, end) for office hours
 
     days_map = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
+
+    # --- Office hours (instructor and TA): run first so we tag them before generic patterns ---
+    # "Office hours: Thursdays 10-11 AM, Deschutes 362" / "Mondays 2:30-3:30 PM, Wednesdays 10:30-11:30 AM, Thursdays TBD, Deschutes 313"
+    for block in re.finditer(
+        r"(?:Office\s+hours?|OH)\s*:\s*([^\n]{20,200})",
+        text,
+        re.I,
+    ):
+        segment = block.group(1)
+        prev = text[max(0, block.start() - 250) : block.start()]
+        is_ta = bool(re.search(r"(?:^|\n)\s*TA\s*(?:\n|$)", prev, re.I))
+        meeting_type = "ta_office_hours" if is_ta else "office_hours"
+        # Default location from end of block (e.g. "..., Deschutes 313")
+        default_loc = None
+        loc_at_end = re.search(r",\s*([A-Za-z0-9][A-Za-z0-9\s\-\.]{2,30})\s*$", segment)
+        if loc_at_end:
+            default_loc = _normalize_location(loc_at_end.group(1).strip())
+        parts = re.split(r",\s*(?=(?:Mon|Tues?|Wed|Thu|Fri|Sat|Sun)days?)", segment)
+        for part in parts:
+            part = part.strip()
+            loc = default_loc
+            loc_match = re.search(r",\s*([A-Za-z0-9][A-Za-z0-9\s\-\.]{2,30})\s*$", part)
+            if loc_match:
+                cand = loc_match.group(1).strip()
+                if not _location_looks_invalid(cand):
+                    loc = _normalize_location(cand)
+                part = part[: loc_match.start()].strip()
+            # "Thursdays 10-11 AM" or "Mondays 2:30-3:30 PM" or "Wednesdays 10:30-11:30 AM" or "Thursdays TBD"
+            for m in re.finditer(
+                r"(Monday|Tuesday|Wednesday|Thursday|Friday)s?\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:AM|PM)?",
+                part,
+                re.I,
+            ):
+                day = days_map.get(m.group(1).lower())
+                if not day:
+                    continue
+                h1, m1 = int(m.group(2)), m.group(3) or "00"
+                h2, m2 = int(m.group(4)), m.group(5) or "00"
+                if "am" in m.group(0).lower() and "pm" not in m.group(0).lower() and 8 <= h1 <= 11:
+                    pass
+                elif h1 < 12 and ("pm" in m.group(0).lower() or (h1 <= 7 and "am" not in m.group(0).lower())):
+                    h1, h2 = h1 + 12, h2 + 12
+                start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+                key = (day, start, end)
+                if key in seen_oh_keys:
+                    continue
+                seen_oh_keys.add(key)
+                meetings.append({
+                    "id": f"mt-{len(meetings)+1}",
+                    "day_of_week": day,
+                    "start_time": start,
+                    "end_time": end,
+                    "timezone": "America/Los_Angeles",
+                    "location": loc,
+                    "type": meeting_type,
+                })
+            for m in re.finditer(
+                r"(Monday|Tuesday|Wednesday|Thursday|Friday)s?\s+TBD",
+                part,
+                re.I,
+            ):
+                day = days_map.get(m.group(1).lower())
+                if not day:
+                    continue
+                key = (day, "TBD", "TBD")
+                if key in seen_oh_keys:
+                    continue
+                seen_oh_keys.add(key)
+                meetings.append({
+                    "id": f"mt-{len(meetings)+1}",
+                    "day_of_week": day,
+                    "start_time": None,
+                    "end_time": None,
+                    "timezone": "America/Los_Angeles",
+                    "location": loc,
+                    "type": meeting_type,
+                })
 
     # "Class is held MW 1-1:50 PAI 3.02" or "Class is held MW 1--1:50 PAI 3.02" (UT Austin; soft-hyphen normalizes to -)
     for m in re.finditer(
@@ -621,6 +740,7 @@ def parse_meeting_times(text: str) -> list:
                 })
 
     # "Wednesdays 4:00 - 5:20 PM, McKenzie 221", "Fridays 4:00 - 5:20 PM", "Monday 8:30 - 9:50 AM"
+    # Skip slots already added as office hours; validate location to avoid day-name fragments.
     days_plural = {"mondays": "MO", "tuesdays": "TU", "wednesdays": "WE", "thursdays": "TH", "fridays": "FR", "monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
     for m in re.finditer(r"\b(Monday|Tuesday|Wednesday|Thursday|Friday)s?\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:AM|PM)\s*(?:,\s*)([A-Za-z0-9\s\-]+)?", text[:5000], re.I):
         day = days_plural.get(m.group(1).lower())
@@ -632,13 +752,17 @@ def parse_meeting_times(text: str) -> list:
             pass
         elif h1 < 12 and ("pm" in m.group(0).lower() or (h1 <= 7 and "am" not in m.group(0).lower())):
             h1, h2 = h1 + 12, h2 + 12
+        start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+        if (day, start, end) in seen_oh_keys:
+            continue
+        raw_loc = (m.group(6) or "").strip() if m.lastindex >= 6 and m.group(6) else None
+        loc = _normalize_location(raw_loc) if raw_loc else None
         seen_days.add(day)
-        loc = (m.group(6) or "").strip() if m.lastindex >= 6 and m.group(6) else None
         meetings.append({
             "id": f"mt-{len(meetings)+1}",
             "day_of_week": day,
-            "start_time": f"{h1:02d}:{m1}",
-            "end_time": f"{h2:02d}:{m2}",
+            "start_time": start,
+            "end_time": end,
             "timezone": "America/Los_Angeles",
             "location": loc,
             "type": "lecture",
@@ -748,15 +872,17 @@ def parse_meeting_times(text: str) -> list:
                 "type": "lecture",
             })
 
-    # Filter: drop meetings with location that looks like a person's name (e.g. "mpong" from "Frimpong")
+    # Filter: drop meetings with location that looks like a person's name or day fragment
     def _valid_location(loc):
         if not loc:
             return True  # None is ok
+        if _location_looks_invalid(loc):
+            return False
         if re.search(r"\d", loc):
             return True  # has digit = room/building
         if len(loc) >= 10 or "hall" in loc.lower() or "center" in loc.lower() or "building" in loc.lower():
             return True
-        if loc.lower() in ("plc", "mck", "llc", "llcs", "emu", "fen", "des", "tyke", "ans", "lawrence"):
+        if loc.lower() in ("plc", "mck", "llc", "llcs", "emu", "fen", "des", "tyke", "ans", "lawrence", "deschutes"):
             return True
         return False  # short strings like "mpong" with no context
     meetings = [mt for mt in meetings if _valid_location(mt.get("location"))]
