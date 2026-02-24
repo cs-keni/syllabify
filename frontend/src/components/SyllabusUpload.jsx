@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { parseSyllabus } from '../api/client';
 
-/** Renders upload/paste form. onComplete(courseName, assignments) called when parse succeeds. */
+/** Renders upload/paste form. onComplete({ course_name, meeting_times, assignments }) when parse succeeds. */
 export default function SyllabusUpload({ onComplete, token }) {
   const [mode, setMode] = useState('file');
   const [file, setFile] = useState(null);
@@ -52,7 +52,8 @@ export default function SyllabusUpload({ onComplete, token }) {
         hours: a.hours ?? 3,
         type: a.type || 'assignment',
       }));
-      onComplete(courseName, assignments);
+      const meeting_times = Array.isArray(data.meeting_times) ? data.meeting_times : [];
+      onComplete({ course_name: courseName, meeting_times, assignments });
     } catch (err) {
       setError(err.message || 'Parse failed');
     } finally {

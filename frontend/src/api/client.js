@@ -113,7 +113,7 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
     termId = termIdOrPayload;
     payload = maybePayload;
   }
-  const { course_name, assignments } = payload || {};
+  const { course_name, assignments, meeting_times } = payload || {};
   const course = await createCourse(termId, course_name || 'Course');
   const items = (assignments || []).map(a => ({
     name: a.name,
@@ -124,7 +124,23 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
   if (items.length > 0) {
     await addAssignments(course.id, items);
   }
+  if (Array.isArray(meeting_times) && meeting_times.length > 0) {
+    await addMeetings(course.id, meeting_times);
+  }
   return { id: course.id, course_name: course.course_name || course_name };
+}
+
+/** POST /api/courses/:courseId/meetings. Bulk-save meeting times (from parsed syllabus). */
+export async function addMeetings(courseId, meeting_times) {
+  const res = await fetch(`${BASE}/api/courses/${courseId}/meetings`, {
+    method: 'POST',
+    headers: headers(true),
+    body: JSON.stringify({ meeting_times }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to save meeting times');
+  return data;
 }
 
 /** GET /api/auth/me with JWT. Returns { username, security_setup_done } or null if invalid. */
@@ -291,5 +307,6 @@ export default {
   getCourse,
   deleteCourse,
   addAssignments,
+  addMeetings,
   parseSyllabus,
 };

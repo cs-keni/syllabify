@@ -26,15 +26,17 @@ export default function Upload() {
   const initialCourseName = state?.courseName ?? '';
   const [step, setStep] = useState(0);
   const [assignments, setAssignments] = useState([]);
+  const [meetingTimes, setMeetingTimes] = useState([]);
   const [parsedCourseName, setParsedCourseName] = useState('');
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState(null);
 
   const currentStepId = STEPS[step].id;
 
-  /** Called by SyllabusUpload with { course_name, assignments } from real API. */
-  const handleUploadComplete = ({ course_name, assignments: parsed }) => {
+  /** Called by SyllabusUpload with { course_name, meeting_times, assignments } from parse API. */
+  const handleUploadComplete = ({ course_name, meeting_times, assignments: parsed }) => {
     setParsedCourseName(course_name || initialCourseName);
+    setMeetingTimes(Array.isArray(meeting_times) ? meeting_times : []);
     setAssignments(parsed || []);
     setStep(1);
   };
@@ -102,9 +104,10 @@ export default function Upload() {
           {currentStepId === 'upload' && (
             <SyllabusUpload
               token={token}
-              onComplete={(courseName, parsedAssignments) => {
-                setParsedCourseName(courseName);
-                setAssignments(parsedAssignments || []);
+              onComplete={(payload) => {
+                setParsedCourseName(payload.course_name || initialCourseName);
+                setMeetingTimes(Array.isArray(payload.meeting_times) ? payload.meeting_times : []);
+                setAssignments(payload.assignments || []);
                 setStep(1);
               }}
             />
@@ -112,6 +115,8 @@ export default function Upload() {
           {currentStepId === 'review' && (
             <ParsedDataReview
               courseName={parsedCourseName || 'Course'}
+              meetingTimes={meetingTimes}
+              onMeetingTimesChange={setMeetingTimes}
               assignments={assignments}
               onAssignmentsChange={setAssignments}
               onConfirm={async () => {
@@ -121,6 +126,7 @@ export default function Upload() {
                   const result = await saveCourse(token, {
                     course_name: parsedCourseName || 'Course',
                     assignments,
+                    meeting_times: meetingTimes,
                   });
                   if (result?.id) setCreatedCourseId(result.id);
                   setStep(2);
@@ -139,7 +145,8 @@ export default function Upload() {
               <h2 className="text-lg font-medium text-ink">All set</h2>
               <p className="text-sm text-ink-muted">
                 You've confirmed {assignments.length} assignment
-                {assignments.length !== 1 ? 's' : ''}.
+                {assignments.length !== 1 ? 's' : ''}
+                {meetingTimes.length > 0 ? ` and ${meetingTimes.length} meeting time${meetingTimes.length !== 1 ? 's' : ''}` : ''}.
               </p>
               <div className="flex gap-3">
                 {courseId && (
@@ -156,6 +163,7 @@ export default function Upload() {
                   onClick={() => {
                     setStep(0);
                     setAssignments([]);
+                    setMeetingTimes([]);
                     setParsedCourseName(initialCourseName);
                   }}
                   className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:text-ink transition-colors duration-200"
