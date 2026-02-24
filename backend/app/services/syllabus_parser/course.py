@@ -53,6 +53,7 @@ def parse_course_title(text: str, folder: str) -> str:
         "Calculus III", "Geomorphology", "Entrepreneurship in CS",
         "Introduction to Software Engineering", "Climatology",
         "Career/Internship seminar", "Statistical Models and Methods",
+        "Computer Fluency",
     ]
     for line in lines[:25]:
         line = line.strip()

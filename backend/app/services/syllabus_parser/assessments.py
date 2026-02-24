@@ -129,6 +129,69 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_category(cid, name, pct)
         add_assessment(cid + "_1", name, cid, atype, pct)
 
+    # "3 exams, each contributing 23% of the final grade" -> Exam 1, 2, 3 at 23% each
+    for m in re.finditer(r"(\d+)\s+exams?\s*,\s*each\s+contributing\s+(\d{1,3})\s*%\s*of\s+(?:the\s+)?(?:final\s+)?grade", text, re.I):
+        num, pct = int(m.group(1)), int(m.group(2))
+        if 1 <= num <= 10 and 1 <= pct <= 100:
+            add_category("exams", "Exams", pct * num)
+            for i in range(1, num + 1):
+                add_assessment(f"exam_{i}", f"Exam {i}", "exams", "midterm", pct)
+
+    # "Semester Exams 50% (2 exams during semester, 25% each)" or "Semester Exams (2 exams, 25% each) 50%"
+    for m in re.finditer(r"Semester\s+Exams?\s*(?:(\d{1,3})\s*%\s*)?\((\d+)\s+exams?\s*(?:during\s+semester,?\s*)?(\d{1,3})\s*%\s*each\)(?:\s*(\d{1,3})\s*%)?", text, re.I):
+        pct_total = int(m.group(4) or m.group(1) or 0)
+        num, pct_each = int(m.group(2)), int(m.group(3))
+        if 1 <= num <= 10 and 1 <= pct_each <= 100:
+            pct_total = pct_total or pct_each * num
+            add_category("semester_exams", "Semester Exams", pct_total)
+            add_assessment("semester_exams_1", f"Semester Exams ({num} exams, {pct_each}% each)", "semester_exams", "midterm", pct_total)
+
+    # "Homework, 5 x 4% each: 20%", "Case Analyses (teams), 3 x 10% each: 30%"
+    for m in re.finditer(r"((?:Case\s+Analyses|Homework)(?:\s*\([^)]+\))?)\s*,\s*(\d+)\s+x\s+(\d{1,3})\s*%\s*each\s*:\s*(\d{1,3})\s*%", text, re.I):
+        name, count, pct_each, pct_total = m.group(1).strip(), int(m.group(2)), int(m.group(3)), int(m.group(4))
+        if pct_total > 100 or count < 1:
+            continue
+        name_clean = "Homework" if "homework" in name.lower() else "Case Analyses"
+        cid = "homework" if "homework" in name.lower() else "cases"
+        add_category(cid, name_clean, pct_total)
+        add_assessment(cid + "_1", f"{name_clean} ({count} x {pct_each}%)", cid, "assignment" if "homework" in name.lower() else "project", pct_total)
+
+    # "Three midterms 20%/ea", "Three midterms (20% each) 60%", "3 Midterm Exams (20% each) 60%"
+    for m in re.finditer(r"(?:Three|3|Two|2)\s+mid[-]?terms?\s+(\d{1,3})\s*%\s*(?:/ea|each)", text, re.I):
+        pct = int(m.group(1))
+        if 1 <= pct <= 100:
+            num = 3 if re.search(r"three|3", m.group(0), re.I) else 2
+            add_category("midterms", "Midterms", pct * num)
+            for i in range(1, num + 1):
+                add_assessment(f"midterm_{i}", f"Midterm {i}", "midterms", "midterm", pct)
+    for m in re.finditer(r"(?:Three|3)\s+mid[-]?terms?\s*\(\s*(\d{1,3})\s*%\s*each\s*\)\s*(\d{1,3})\s*%", text, re.I):
+        pct_each, _total = int(m.group(1)), int(m.group(2))
+        if 1 <= pct_each <= 100:
+            add_category("midterms", "Midterms", pct_each * 3)
+            for i in range(1, 4):
+                add_assessment(f"midterm_{i}", f"Midterm {i}", "midterms", "midterm", pct_each)
+
+    # "Homework assignments contributing 25% of the final grade", "Discussion section quizzes contributing 6%"
+    for m in re.finditer(r"(Homework\s+assignments?|Discussion\s+section\s+quizzes?)\s+contributing\s+(\d{1,3})\s*%\s*of\s+(?:the\s+)?(?:final\s+)?grade", text, re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        name_lower = name.lower()
+        if "homework" in name_lower:
+            title = "Homework"
+            cid = "homework"
+            atype = "assignment"
+        elif "quiz" in name_lower:
+            title = "Quizzes"
+            cid = "quizzes"
+            atype = "quiz"
+        else:
+            title = name
+            cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+            atype = "assignment"
+        add_category(cid, title, pct)
+        add_assessment(cid + "_1", title, cid, atype, pct)
+
     # "Homework + WebWork 25%", "Midterm Exams 25% each"
     for m in re.finditer(r"\b(Homework\s*\+\s*WebWork|Midterm\s+Exams?)\s+(\d{1,3})\s*%\s*(each)?", text, re.I):
         name, pct = m.group(1).strip(), int(m.group(2))
