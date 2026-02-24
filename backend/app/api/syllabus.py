@@ -63,6 +63,7 @@ def parse():
     resp = {
         "course_name": course_name,
         "assignments": assignments,
+        "meeting_times": result.get("meeting_times") or [],
     }
     if result.get("assessments") is not None:
         resp["assessments"] = result["assessments"]

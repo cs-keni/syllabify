@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from flask import Blueprint, jsonify, request
 
@@ -126,7 +126,30 @@ def get_course(course_id):
             if a.get("due_date"):
                 a["due_date"] = a["due_date"].isoformat()
 
+        cur.execute(
+            """
+            SELECT id, day_of_week, start_time_str, end_time_str, location, meeting_type
+            FROM Meetings
+            WHERE course_id = %s AND day_of_week IS NOT NULL
+            """,
+            (course_id,),
+        )
+        meetings = cur.fetchall()
+        # Engine-friendly format: day_of_week, start_time, end_time, location, type
+        meeting_times = [
+            {
+                "id": m["id"],
+                "day_of_week": m["day_of_week"],
+                "start_time": m["start_time_str"] or "",
+                "end_time": m["end_time_str"] or "",
+                "location": m["location"],
+                "type": m["meeting_type"] or "lecture",
+            }
+            for m in meetings
+        ]
+
         course["assignments"] = assignments
+        course["meeting_times"] = meeting_times
         return jsonify(course)
     finally:
         conn.close()
@@ -191,6 +214,22 @@ def add_assignments(course_id):
             atype = (a.get("type") or "assignment").strip().lower()
             if atype not in ("assignment", "midterm", "final", "quiz", "project", "participation"):
                 atype = "assignment"
+
+            # Fallback for empty due: use term end_date (for scheduling engine)
+            if not due_raw and due_dt == now:
+                cur.execute(
+                    "SELECT t.end_date FROM Courses c JOIN Terms t ON t.id = c.term_id WHERE c.id = %s",
+                    (course_id,),
+                )
+                row = cur.fetchone()
+                if row and row.get("end_date"):
+                    end_d = row["end_date"]
+                    due_dt = (
+                        datetime.combine(end_d, datetime.min.time())
+                        if isinstance(end_d, date) and not isinstance(end_d, datetime)
+                        else end_d
+                    )
+
             cur.execute(
                 """
                 INSERT INTO Assignments
@@ -198,6 +237,54 @@ def add_assignments(course_id):
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
                 """,
                 (name, work_load, a.get("notes") or None, now, due_dt, atype, course_id),
+            )
+            inserted += 1
+
+        conn.commit()
+        return jsonify({"ok": True, "inserted": inserted}), 201
+    finally:
+        conn.close()
+
+
+@bp.route("/api/courses/<int:course_id>/meetings", methods=["POST"])
+def add_meetings(course_id):
+    """Bulk-add recurring meeting times (from parsed syllabus) for scheduling engine."""
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "unauthorized"}), 401
+
+    user_id = int(payload.get("sub"))
+    data = request.get_json() or {}
+    items = data.get("meeting_times", [])
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        if not _owns_course(cur, course_id, user_id):
+            return jsonify({"error": "Course not found"}), 404
+
+        # Delete existing meetings for this course (replace on save)
+        cur.execute("DELETE FROM Meetings WHERE course_id = %s", (course_id,))
+
+        inserted = 0
+        for m in items:
+            day = (m.get("day_of_week") or "").strip().upper()
+            if not day or len(day) < 2:
+                continue
+            start_str = (m.get("start_time") or m.get("start_time_str") or "").strip()
+            end_str = (m.get("end_time") or m.get("end_time_str") or "").strip()
+            if not start_str or not end_str:
+                continue
+            loc = (m.get("location") or "").strip() or None
+            mtype = (m.get("type") or m.get("meeting_type") or "lecture").strip()
+            cur.execute(
+                """
+                INSERT INTO Meetings
+                  (course_id, day_of_week, start_time_str, end_time_str, location, meeting_type)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                """,
+                (course_id, day[:2], start_str[:5], end_str[:5], loc, mtype[:50]),
             )
             inserted += 1
 

@@ -230,15 +230,18 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
             "course_name": course_name,
             "assignments": assignments,
             "assessments": assessments_for_api,
+            "meeting_times": [],
             "raw_text": text if conf["label"] == "low" else None,
             "confidence": conf,
         }
 
     conf = compute_parse_confidence(result, course_name, assignments)
+    meeting_times = course.get("meeting_times") or []
     return {
         "course_name": course_name,
         "assignments": assignments,
         "assessments": assessments_for_api,
+        "meeting_times": meeting_times,
         "raw_text": None if conf["label"] == "high" else text,
         "confidence": conf,
     }
@@ -268,6 +271,7 @@ def _parse_rulebased_fallback(text: str) -> dict:
         "course_name": course_name,
         "assignments": assignments,
         "assessments": [],
+        "meeting_times": [],
         "raw_text": text if conf["label"] == "low" else None,
         "confidence": conf,
     }

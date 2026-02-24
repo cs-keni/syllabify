@@ -13,6 +13,7 @@ from flask_cors import CORS
 
 from app.api.auth import bp as auth_bp
 from app.api.courses import bp as courses_bp
+from app.api.schedule import bp as schedule_bp
 from app.api.syllabus import bp as syllabus_bp
 from app.api.terms import bp as terms_bp
 
@@ -49,6 +50,7 @@ def get_db_connection():
 app.register_blueprint(auth_bp)
 app.register_blueprint(terms_bp)
 app.register_blueprint(courses_bp)
+app.register_blueprint(schedule_bp)
 app.register_blueprint(syllabus_bp)
 
 
