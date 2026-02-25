@@ -27,6 +27,12 @@ def parse_course_code(text: str, folder: str) -> str:
         prefix, base, suffix = m.group(1), m.group(2), m.group(3)
         if prefix.upper() not in skip_prefixes:
             return f"{prefix} {base}{suffix}".strip()
+    # "Mw427L" or "Mw 427L" -> M 427L (Mw is typo for M/Mathematics when followed by course number)
+    for m in re.finditer(r"^Mw\s*(\d{3}[A-Za-z]?)\b", first_block, re.M | re.I):
+        num = m.group(1)
+        if not num.startswith("20"):
+            return f"M {num.upper()}"
+
     # "Physics n303L" -> PHY 303L (lowercase letter prefix in number, strip it)
     for m in re.finditer(r"^([A-Za-z]+)\s+([a-z]?\d{3}[A-Za-z]?)\b", first_block, re.M | re.I):
         subj, num = m.group(1).strip(), m.group(2)

@@ -179,6 +179,60 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             for i in range(1, 4):
                 add_assessment(f"midterm_{i}", f"Midterm {i}", "midterms", "midterm", pct_each)
 
+    # "mid-term test contributes half of the grade and the end-term test the other half" -> Mid-term 50%, End-term 50%
+    if re.search(r"mid[- ]?term\s+test\s+contributes\s+half.*end[- ]?term\s+test\s+the\s+other\s+half", text, re.I | re.DOTALL):
+        add_category("midterm", "Mid-term test", 50)
+        add_assessment("midterm_1", "Mid-term test", "midterm", "midterm", 50)
+        add_category("final", "End-term test", 50)
+        add_assessment("final_1", "End-term test", "final", "final", 50)
+
+    # "10 points on attending exercise sections", "30 points on three homeworks (10 points on each)", "60 points on three midterms (20 points on each)" - 100 total
+    pts_match = re.search(
+        r"(\d+)\s+points\s+on\s+attending\s+exercise\s+sections\s+"
+        r"(\d+)\s+points\s+on\s+three\s+homeworks?\s*\((\d+)\s+points\s+on\s+each\s+homework\)\s+"
+        r"(\d+)\s+points\s+on\s+three\s+midterms?\s*\((\d+)\s+points\s+on\s+each\s+midterm\)",
+        text, re.I
+    )
+    if pts_match:
+        p_ex, p_hw, p_hw_each, p_mid, p_mid_each = int(pts_match.group(1)), int(pts_match.group(2)), int(pts_match.group(3)), int(pts_match.group(4)), int(pts_match.group(5))
+        if p_ex + p_hw + p_mid == 100:
+            add_category("participation", "Exercise sections", p_ex)
+            add_assessment("participation_1", "Exercise sections", "participation", "participation", p_ex)
+            add_category("homework", "Homework", p_hw)
+            for i in range(1, 4):
+                add_assessment(f"homework_{i}", f"Homework {i}", "homework", "assignment", p_hw_each)
+            add_category("midterms", "Midterms", p_mid)
+            for i in range(1, 4):
+                add_assessment(f"midterm_{i}", f"Midterm {i}", "midterms", "midterm", p_mid_each)
+
+    # "three tests will each contribute 20% of your course grade" -> Test 1, 2, 3 at 20%
+    for m in re.finditer(r"(?:three|3)\s+tests?\s+will\s+each\s+contribute\s+(\d{1,3})\s*%\s+of\s+(?:your\s+)?(?:course\s+)?grade", text, re.I):
+        pct = int(m.group(1))
+        if 1 <= pct <= 100:
+            add_category("tests", "Tests", pct * 3)
+            for i in range(1, 4):
+                add_assessment(f"test_{i}", f"Test {i}", "tests", "midterm", pct)
+            break
+
+    # "3 midterms, each worth 100 points" + "DAILY WORK (75 points)" + "FINAL EXAM (150 points)" = 525 total
+    if (re.search(r"3\s+midterms?\s*,\s*each\s+worth\s+100\s+points", text, re.I) and
+            re.search(r"DAILY\s+WORK\s*\(\s*75\s+points\s*\)|weighted\s+75\s+points\s+towards", text, re.I) and
+            re.search(r"FINAL\s+EXAM\s*\(\s*150\s+points\s*\)", text, re.I)):
+        add_category("midterms", "Midterms", 57)
+        for i in range(1, 4):
+            add_assessment(f"midterm_{i}", f"Midterm {i}", "midterms", "midterm", 19)
+        add_category("daily", "Daily work", 14)
+        add_assessment("daily_1", "Daily work", "daily", "assignment", 14)
+        add_category("final", "Final exam", 29)
+        add_assessment("final_1", "Final exam", "final", "final", 29)
+
+    # "homework will contribute 20% of your grade" (when paired with three tests)
+    for m in re.finditer(r"[Tt]he\s+homework\s+will\s+contribute\s+(\d{1,3})\s*%\s+of\s+(?:your\s+)?(?:course\s+)?grade", text, re.I):
+        pct = int(m.group(1))
+        if 1 <= pct <= 100:
+            add_category("homework", "Homework", pct)
+            add_assessment("homework_1", "Homework", "homework", "assignment", pct)
+
     # "3 Examinations @ 20% each" -> Examinations category + Examination 1, 2, 3
     for m in re.finditer(r"(\d+)\s+Examinations?\s+@\s+(\d{1,3})\s*%\s*each", text, re.I):
         num, pct_each = int(m.group(1)), int(m.group(2))
@@ -188,6 +242,13 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             for i in range(1, num + 1):
                 add_assessment(f"exam_{i}", f"Examination {i}", "exams", "midterm", pct_each)
             break
+
+    # "Homework/Attendance: 10%" - single combined (not split)
+    for m in re.finditer(r"Grading\s*:.*?Homework/Attendance\s*:\s*(\d{1,3})\s*%", text, re.I | re.DOTALL):
+        pct = int(m.group(1))
+        if 1 <= pct <= 100:
+            add_category("homework", "Homework/Attendance", pct)
+            add_assessment("homework_1", "Homework/Attendance", "homework", "assignment", pct)
 
     # "Homework/Attend. 30%/5%" -> split into Homework 30%, Attendance 5%
     for m in re.finditer(r"(?:Grading|Grade)\s*:.*?([A-Za-z]+)/([A-Za-z\.]+)\s+(\d{1,3})\s*%/(\d{1,3})\s*%", text, re.I | re.DOTALL):
