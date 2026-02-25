@@ -2,7 +2,9 @@
 Syllabus parsing: extract course info and assessments from plain text.
 Uses the full syllabus_parser (schema with assessments, exams, categories)
 and maps to API shape (course_name, assignments) for backward compatibility.
+Hybrid mode: structured extraction + LLM parsing, with heuristic fallback.
 """
+import os
 import re
 
 from app.utils.date_utils import parse_due_date
@@ -104,11 +106,128 @@ def compute_parse_confidence(parser_result: dict | None, course_name: str, assig
 
     total = min(100, sum(breakdown.values()))
     return {"score": total, "label": _label(total), "breakdown": breakdown}
-from app.utils.document_utils import extract_text_from_file
+from app.utils.document_utils import extract_text_from_file, extract_structured_from_file
+
+
+def _intermediate_from_text(text: str) -> dict:
+    """Build intermediate format from raw text (for pasted text, no file)."""
+    from app.utils.document_utils import _detect_sections, _extract_candidate_dates, _extract_candidate_percentages
+    return {
+        "raw_text": text,
+        "sections": _detect_sections(text),
+        "tables": [],
+        "candidate_dates": _extract_candidate_dates(text),
+        "candidate_percentages": _extract_candidate_percentages(text),
+        "metadata": {"source_type": "txt"},
+    }
+
+
+def _parse_hybrid_file(file) -> dict:
+    """Hybrid parse: structured extraction + LLM, fallback to heuristic."""
+    intermediate = extract_structured_from_file(file)
+    filename = getattr(file, "filename", None) or ""
+    source_type = "pdf" if str(filename).lower().endswith(".pdf") else "docx" if str(filename).lower().endswith(".docx") else "txt"
+    result = _parse_hybrid(intermediate, source_type)
+    if result is not None:
+        return result
+    text = intermediate.get("raw_text") or extract_text_from_file(file)
+    return _parse_with_syllabus_parser(text, source_type)
+
+
+def _parse_hybrid(intermediate: dict, source_type: str) -> dict | None:
+    """Call LLM parser, map to API shape. Returns None on failure."""
+    try:
+        from app.services.llm_parser import parse_with_llm
+    except ImportError:
+        return None
+    llm_result = parse_with_llm(intermediate)
+    if not llm_result:
+        return None
+    raw_text = intermediate.get("raw_text", "")
+    return _map_llm_result_to_api(llm_result, source_type, raw_text)
+
+
+def _map_llm_result_to_api(llm_result: dict, source_type: str, raw_text: str = "") -> dict:
+    """Map LLM output to parsing_service API shape (course_name, assignments, assessments, meeting_times, instructors, confidence)."""
+    course = llm_result.get("course") or {}
+    assessments = llm_result.get("assessments") or []
+    course_name = (course.get("course_code") or course.get("course_title") or "Course").strip()
+
+    seen = {}
+    for a in assessments:
+        title = (a.get("title") or "").strip()
+        if _is_junk_title(title):
+            continue
+        atype = a.get("type") or "assignment"
+        due_datetime = a.get("due_datetime")
+        due_date = due_datetime[:10] if due_datetime and len(due_datetime) >= 10 else None
+        weight = a.get("weight_percent")
+        key = (title.lower()[:50], atype)
+        if key not in seen or (due_date and not seen[key].get("due_date")):
+            seen[key] = {
+                "name": title,
+                "due_date": due_date,
+                "hours": _hours_from_assessment_type(atype),
+                "type": atype,
+                "weight": weight,
+            }
+    assignments = [
+        {"name": v["name"], "due_date": v["due_date"], "hours": v["hours"], "type": v["type"]}
+        for v in seen.values()
+    ]
+    assessments_for_api = [
+        {"title": v["name"], "due_datetime": v["due_date"], "type": v["type"]}
+        for v in seen.values()
+    ]
+    meeting_times = course.get("meeting_times") or []
+    instructors = course.get("instructors") or []
+    conf = compute_parse_confidence(llm_result, course_name, assignments)
+    return {
+        "course_name": course_name,
+        "assignments": assignments,
+        "assessments": assessments_for_api,
+        "meeting_times": meeting_times,
+        "instructors": instructors,
+        "raw_text": None if conf["label"] == "high" else raw_text,
+        "confidence": conf,
+    }
+
+
+def _is_junk_title(t: str) -> bool:
+    """Filter obvious junk assessment titles."""
+    if not t or len(t) < 3:
+        return True
+    t_lower = t.lower()
+    if t_lower in ("each", "class", "lab"):
+        return True
+    if re.match(r"^lab\s*\d+$", t_lower):
+        return True
+    if t_lower.startswith("continue with ") or "no class" in t_lower:
+        return True
+    if t_lower in ("midterm midterm midterm", "no class no class"):
+        return True
+    if t_lower.startswith("except for ") or "waived by the token" in t_lower:
+        return True
+    if "textbooks and readings" in t_lower and len(t) < 30:
+        return True
+    if t_lower.startswith("of ") and "participation" in t_lower:
+        return True
+    if "lecture section coverage" in t_lower and "homework" in t_lower:
+        return True
+    if t_lower == "learning outcomes" or t_lower == "missed exams":
+        return True
+    if "late projects" in t_lower and "submissions will incur" in t_lower:
+        return True
+    if "late submissions will incur" in t_lower:
+        return True
+    return False
 
 
 def parse_file(file, mode: str = "rule") -> dict:
     """Extract text from file via document_utils, then parse with parse_text."""
+    use_llm = os.getenv("USE_LLM_PARSER", "").lower() == "true"
+    if use_llm and mode in ("hybrid", "rule", "ai"):
+        return _parse_hybrid_file(file)
     text = extract_text_from_file(file)
     filename = getattr(file, "filename", None) or ""
     source_type = "pdf" if str(filename).lower().endswith(".pdf") else "txt"
@@ -130,6 +249,13 @@ def parse_text(text: str, mode: str = "rule", source_type: str = "txt") -> dict:
             "raw_text": text or "",
             "confidence": {"score": 0, "label": "low"},
         }
+
+    use_llm = os.getenv("USE_LLM_PARSER", "").lower() == "true"
+    if use_llm and mode in ("hybrid", "rule", "ai"):
+        intermediate = _intermediate_from_text(text)
+        result = _parse_hybrid(intermediate, source_type)
+        if result is not None:
+            return result
 
     if mode in ("hybrid", "ai"):
         try:
@@ -172,31 +298,6 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
     assessments = result.get("assessments") or []
 
     # Dedupe: prefer (title_normalized, type) with due_datetime or highest weight_percent
-    # Skip obvious junk: too short, or sentence fragments
-    def _is_junk_title(t: str) -> bool:
-        if not t or len(t) < 3:
-            return True
-        t_lower = t.lower()
-        if t_lower in ("each", "class"):
-            return True
-        if t_lower.startswith("except for ") or "waived by the token" in t_lower:
-            return True
-        if "textbooks and readings" in t_lower and len(t) < 30:
-            return True
-        if t_lower.startswith("of ") and "participation" in t_lower:
-            return True
-        if "lecture section coverage" in t_lower and "homework" in t_lower:
-            return True
-        if t_lower == "learning outcomes":
-            return True
-        if t_lower == "missed exams":
-            return True
-        if "late projects" in t_lower and "submissions will incur" in t_lower:
-            return True
-        if "late submissions will incur" in t_lower:
-            return True
-        return False
-
     no_final_exam = bool(re.search(r"\bno\s+final\s+exam\b|\bno\s+final\b", text[:5000], re.I))
     seen = {}
     for a in assessments:

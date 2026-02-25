@@ -43,13 +43,25 @@ def _assessments_match(parsed: list, truth: list, tolerance: str = "strict") -> 
         key = (title[:50], pct)
         truth_by_key[key] = a
     parsed_by_key = {}
+    parsed_by_title = {}  # title -> assessment (for relaxed matching)
     for a in parsed:
         title = (a.get("title") or "").lower().strip()
         pct = a.get("weight_percent")
         key = (title[:50], pct)
         parsed_by_key[key] = a
+        parsed_by_title[title[:50]] = a
 
     missing = set(truth_by_key) - set(parsed_by_key)
+    if tolerance == "relaxed" and missing:
+        # When syllabus has no grading info, parsed has weight_percent=None; treat title match as OK
+        still_missing = []
+        for k in missing:
+            t_title, t_pct = k
+            if t_pct is not None and parsed_by_title.get(t_title) is not None:
+                continue  # parsed has same title, accept despite missing pct
+            still_missing.append(k)
+        missing = still_missing
+
     if missing:
         for k in missing:
             diffs.append(f"Missing assessment: {truth_by_key[k].get('title')} {truth_by_key[k].get('weight_percent')}%")

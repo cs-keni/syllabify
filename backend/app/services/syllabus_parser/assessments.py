@@ -128,6 +128,18 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             continue
         if "attendance is required" in name.lower() or "in-person attendance" in name.lower() or name.lower() in ("introduction", "attend seminars"):
             continue
+        # Skip schedule table rows (e.g. "2 LAB", "4 MIDTERM", "11 NO CLASS", "21 Continue with IPC")
+        name_lower = name.lower().strip()
+        if name_lower in ("lab", "midterm", "no class"):
+            continue
+        if name_lower.startswith("continue with ") or "no class" in name_lower:
+            continue
+        if "\t" in m.group(2):  # tabs = schedule table structure, not grading
+            continue
+        # "MIDTERM MIDTERM MIDTERM" or "NO CLASS NO CLASS" - repeated schedule cell
+        words = set(name_lower.split())
+        if words <= {"midterm"} or words <= {"no", "class"} or (words <= {"lab"} and len(name_lower) < 15):
+            continue
         if len(name) < 3 or len(name) > 55:
             continue
         # When "Mini Projects" and doc mentions projects 0 through 6 (or 0-6), use expanded name
@@ -343,7 +355,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_assessment(cid + "_1", title, cid, atype, pct)
 
     # Table format: "Component Events Dropped %" rows - e.g. "Online Exams 2 0 20", "Exams (in person) 2 0 50", "Attendance - - 5"
-    skip_components = {"component", "events", "dropped", "total", "%"}
+    skip_components = {"component", "events", "dropped", "total", "%", "lab"}
     for m in re.finditer(r"^([A-Za-z][A-Za-z \t\-()]+?)\s+(\d+|-)\s+(\d+|-)\s+(\d{1,3})\s*$", text, re.M | re.I):
         name, pct = m.group(1).strip(), int(m.group(4))
         if pct > 100 or pct <= 0:
@@ -735,6 +747,9 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         name, num, pct_str = m.group(1), m.group(2), m.group(3)
         pct = int(float(pct_str))
         if pct > 100:
+            continue
+        # Skip "Lab 0".."Lab 15" - the number is lab session index, not percent (schedule table)
+        if name.lower() == "lab" and (num is not None or pct <= 15):
             continue
         name_lower = name.lower()
         # "Group Project" when syllabus mentions group project and we see "Project 50"

@@ -141,6 +141,9 @@ This document describes the assessment and grading formats the syllabus parser r
 
 The parser skips or filters:
 
+- **Schedule table rows:** Percentage Component pattern skips "2 LAB", "4 MIDTERM", "11 NO CLASS", "21 Continue with IPC" (tabs = table structure; "lab", "midterm", "no class" as standalone names)
+- **Lab number vs percent:** Table format skips "Lab 0"–"Lab 15" (schedule sessions) — when name is Lab and (num present or pct ≤ 15)
+- **Component table:** Skips "lab" as first word (schedule column, not grading)
 - "of class participation", "each", "lecture section coverage"
 - Names starting with "of " or "except for "
 - "Learning Outcomes", "Missed Exams", "Late Projects Late submissions will incur a"

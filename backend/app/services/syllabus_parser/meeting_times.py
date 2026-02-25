@@ -1487,12 +1487,34 @@ def parse_meeting_times(text: str) -> list:
                     "type": "lecture",
                 })
 
-    # "LAB will be on Thursday, B026 Klamath" - single day, location, no time
+    # "LAB will be on Thursday, B026 Klamath" - single day, location, no time (lab type)
+    seen_labs: set[tuple[str, str]] = set()
+    for m in re.finditer(r"(?:LAB|Lab)\s+will\s+be\s+on\s+(Monday|Tuesday|Wednesday|Thursday|Friday)s?\s*[,]\s*([A-Za-z0-9\s\-]{3,30})", text[:4000], re.I):
+        days_map = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
+        day = days_map.get(m.group(1).lower())
+        loc = _normalize_location(m.group(2).strip())
+        if day and loc and "room" not in (loc or "").lower()[:10]:
+            key = (day, loc)
+            if key not in seen_labs:
+                seen_labs.add(key)
+                meetings.append({
+                    "id": f"mt-{len(meetings)+1}",
+                    "day_of_week": day,
+                    "start_time": None,
+                    "end_time": None,
+                    "timezone": "America/Los_Angeles",
+                    "location": loc,
+                    "type": "lab",
+                })
+    # "will be on Thursday, B026 Klamath" - generic (no LAB prefix), only if day not yet seen
     for m in re.finditer(r"(?:will be\s+)?on\s+(Monday|Tuesday|Wednesday|Thursday|Friday)s?\s*[,]\s*([A-Za-z0-9\s\-]{3,30})", text[:4000], re.I):
         days_map = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
         day = days_map.get(m.group(1).lower())
         loc = m.group(2).strip()
         if day and day not in seen_days and "room" not in loc.lower()[:10]:
+            prev = text[max(0, m.start() - 50) : m.start()]
+            if "LAB" in prev or "Lab" in prev:
+                continue  # already handled by LAB pattern above
             seen_days.add(day)
             meetings.append({
                 "id": f"mt-{len(meetings)+1}",
