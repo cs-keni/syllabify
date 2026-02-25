@@ -24,6 +24,14 @@ def parse_course_code(text: str, folder: str) -> str:
         m = re.search(r"\b([A-Z]{2,4})\s*396\s*L\b", text[:1500], re.I)
         if m:
             return f"{m.group(1)} 396L"
+    # "371M-Scott" folder: prefer "CS 371M" when "Computer Science 371M" in title; skip prerequisite matches
+    if "-" in folder and re.search(r"\d{3}[A-Za-z]?", folder):
+        first_part = folder.split("-")[0].split("_")[0]
+        if re.match(r"\d{3}[A-Za-z]?", first_part):
+            if re.search(r"Computer\s+Science\s+" + re.escape(first_part), text[:1500], re.I):
+                return f"CS {first_part}"
+            if re.search(r"\bCS\s+" + re.escape(first_part), text[:1500], re.I):
+                return f"CS {first_part}"
     # Prefer "Subject Number" from first line (e.g. "Physics 336k", "CS 331")
     skip_subjects = {"spring", "fall", "summer", "winter", "section", "unique", "time", "place"}
     first_block = text[:600]
@@ -94,6 +102,7 @@ def parse_course_title(text: str, folder: str) -> str:
     lines = text.split("\n")
     course_title_keywords = [
         "Algorithms and Complexity", "Data Structures", "Software Methodologies I", "Operating Systems",
+        "Mobile Computing", "Computer Architecture", "3D Game Development Capstone",
         "Mobile News App Design", "Competitive Programming", "Solid State Physics I",
         "Carbon and 2D Devices", "C++ Programming",
         "Computer & Network Security", "Intermediate Algorithms",
@@ -156,10 +165,21 @@ def parse_course_title(text: str, folder: str) -> str:
             r"^[A-Z]{2,4}\s*\d{3}[A-Z]?\s+[\-\s]+(.{5,80})$", line, re.I
         )
         if m:
-            return m.group(1).strip()[:100]
+            title = m.group(1).strip()[:100]
+            # Skip when it's a term (e.g. "Spring 2015") not a course title
+            if not re.match(r"^(?:Fall|Spring|Summer|Winter)\s+\d{4}$", title, re.I):
+                return title
         for kw in course_title_keywords:
             if kw.lower() in line.lower() and len(line) < 120:
                 return kw
+        # "processor architecture" or "micro-architecture" -> Computer Architecture
+        if re.search(r"processor\s+architecture|micro[-]?architecture", line, re.I) and len(line) < 150:
+            return "Computer Architecture"
+    # Folder-derived fallback (e.g. 350C-Gheith -> Computer Architecture)
+    folder_titles = {"350c": "Computer Architecture"}
+    fkey = folder.lower().replace("-", " ").split()[0] if folder else ""
+    if fkey in folder_titles and re.search(r"architecture|processor|verilog|pipelining", text[:3000], re.I):
+        return folder_titles[fkey]
     return ""
 
 

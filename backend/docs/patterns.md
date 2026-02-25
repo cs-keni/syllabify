@@ -72,6 +72,21 @@ This document describes the assessment and grading formats the syllabus parser r
 - `Grading: Homework: 25%, Test 1: 25%, Test 2: 25%, Test 3: 25%.` (colon block; allow ending at period)
 - `Homework and quizzes: 10%`, `Programming Assignments: 60%`, `Tutorial Exercises: 15%` (standalone)
 
+### Equals Format (raw score breakdown)
+
+- **Format:** `Tests = 45`, `Assignments = 40`, `Quizzes = 15` (often in Evaluation section)
+- When doc mentions "three midterms each worth N points", expands Tests = 45 → Test 1, Test 2, Test 3 at 15% each
+
+### Bullet Format (Evaluation section)
+
+- **Format:** `* Design milestones (~ 12): 50%`, `* Class participation: 10%`
+- Supports optional parenthetical like `(~ 12)` after name
+
+### Points-Based (1000-point scale)
+
+- **Format:** "Final grades are based on 1000 points" + "Attendance" (1 pt/lecture) + "Assignments and Projects" table
+- Produces: Attendance 10%, Assignments and Projects 90%
+
 ### Other Common Patterns
 
 - `Name (N%)` — e.g. "Participation in Discussion Forums (25%)"
@@ -88,6 +103,7 @@ This document describes the assessment and grading formats the syllabus parser r
 - **Lowercase prefix in number:** `Physics n303L` → `PHY 303L` (strips leading lowercase letter)
 - **Mw typo:** `Mw427L` or `Mw 427L` → `M 427L` (Mathematics)
 - **Folder-derived:** Uses course folder (e.g. `opt3-dist`) when text contains matching code
+- **Term vs title:** Skips "Spring 2015" / "Fall 2024" when parsed as title from "CS350C - Spring 2015"
 - **Prerequisite skip:** Skips course title from lines containing "prerequisite", "coursework", "grade of at least"
 - **Late account:** `"late account" of 3 days` → total_allowed: 3
 
@@ -116,6 +132,8 @@ This document describes the assessment and grading formats the syllabus parser r
 - **Time: TTh ... Place:** `Time: TTh 11:00 - 12:30. Place: CAL 100` (skips generic TTh when "Time:" in prev; fixes "30. Place" junk)
 - **Class Meetings PM fix:** `12:00-1:00pm` → 12:00–13:00 (end hour &lt; 12 gets +12 when pm)
 - **396KL folder:** When folder ends with L (e.g. 396KL) and text has both 396K and 396L, prefer PHY 396L
+- **Lectures: TTh 3:30-5pm, GDC 5.302:** Comma before location (TTh pattern skips when "pm"/"am" wrongly captured as location)
+- **350C folder:** "processor architecture" or "micro-architecture" in text → "Computer Architecture" title
 
 ---
 
@@ -126,6 +144,8 @@ The parser skips or filters:
 - "of class participation", "each", "lecture section coverage"
 - Names starting with "of " or "except for "
 - "Learning Outcomes", "Missed Exams", "Late Projects Late submissions will incur a"
+- Section headers: "Course Overview", "Evaluation", "Overall breakdown", "Schedule", "Instructors" (when number ≤ 10)
+- "The worst" (from "The worst 20% of your quizzes will be dropped")
 
 ---
 
