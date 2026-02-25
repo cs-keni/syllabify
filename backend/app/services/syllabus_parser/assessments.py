@@ -365,6 +365,9 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
             title = "Midterm Exam"
         elif "final" in name.lower() and "exam" in name.lower():
             title = "Final Exam"
+        elif "final" in name.lower() and "deliverable" in name.lower():
+            # "Final deliverables" = project component, not final exam; skip adding as assessment
+            continue
         cid = re.sub(r"\s+", "_", title.lower())[:28].rstrip("_").replace("/", "_")
         atype = "participation" if "participation" in title.lower() else "assignment" if "reading" in title.lower() or "creative" in title.lower() else "midterm" if "midterm" in title.lower() else "final" if "final" in title.lower() else "assignment"
         add_category(cid, title, pct)
@@ -590,6 +593,25 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_category("class_project", "Class Project", pct)
         add_assessment("class_project_1", "Class Project", "class_project", "project", pct)
 
+    # "Midterm: February 19, 2026, in class" - single midterm with date
+    for m in re.finditer(
+        r"Midterm\s*:\s*(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s*,\s*(\d{4}))?(?:\s*,\s*in\s+class)?",
+        text, re.I
+    ):
+        mon, day_str, yr_str = m.group(1), m.group(2), m.group(3)
+        mon_num = MONTHS.get((mon or "").lower()[:3])
+        if mon_num and 1 <= int(day_str) <= 31:
+            due_yr = int(yr_str) if yr_str else yr
+            due = f"{due_yr}-{mon_num:02d}-{int(day_str):02d}"
+            # Look for weight in nearby context (e.g. "Midterm 35%" in grading line)
+            ctx = text[m.end():m.end() + 500]
+            wm = re.search(r"Midterm\s+(\d{1,3})\s*%", ctx, re.I)
+            pct = int(wm.group(1)) if wm and 1 <= int(wm.group(1)) <= 100 else None
+            if not any(a.get("title") == "Midterm" and a.get("category_id") == "midterm" for a in assessments):
+                add_category("midterm", "Midterm", pct)
+                add_assessment("midterm_1", "Midterm", "midterm", "midterm", pct, due)
+            break  # one such midterm per syllabus
+
     # "midterm will count for 25%" / "one midterm... 25% of the course grade" (SICS345-style)
     for m in re.finditer(r"[Mm]idterm[^.]*?(\d{1,3})\s*%\s+(?:of\s+the\s+course\s+grade|of\s+your\s+grade)", text, re.I):
         pct = int(m.group(1))
@@ -628,10 +650,25 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         "remainder will count", "assignments are", "a late penalty of", "the homework and vice-versa",
         "and the final", "the midterm", "the final exam will count for",
         "backbone", "accounts for",  # prose fragments like "laboratory work...accounts for"
+        "of class participation",  # fragment from "10% of class participation points"
+        "except for the", "waived by the token",  # late policy fragments
+        "textbooks and readings",  # section header, not grading component
+        "lecture section coverage",  # schedule table header
     )
+
+    def _is_junk_name(n: str) -> bool:
+        n = (n or "").strip().lower()
+        if len(n) < 3 or n in ("each", "class"):
+            return True
+        if n.startswith("of ") or n.startswith("except for "):
+            return True
+        return any(g in n for g in _garbage_phrases)
+
     for m in re.finditer(r"(\d{1,3})\s*%[ \t]+([A-Za-z][A-Za-z \t\-/\n]+?)(?=[\s\.\,\)$]|\.)", text, re.I):
         pct, name = int(m.group(1)), m.group(2).strip()
         if pct > 100 or len(name) < 3 or len(name) > 55:
+            continue
+        if _is_junk_name(name):
             continue
         name_lower = name.lower()
         if any(g in name_lower for g in _garbage_phrases):
@@ -966,6 +1003,10 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         cid = "exam_grade" if any(c["id"] == "exam_grade" for c in categories) else add_category("final", "Final exam", None)
         if not any(a["title"].lower() == "final" for a in assessments):
             add_assessment("final", "Final", cid, "final", None, due)
+
+    # "No Final Exam" - remove final exam assessments when syllabus explicitly states no final
+    if re.search(r"\bno\s+final\s+exam\b|\bno\s+final\b", text[:5000], re.I):
+        assessments[:] = [a for a in assessments if a.get("type") != "final"]
 
     return categories, assessments
 

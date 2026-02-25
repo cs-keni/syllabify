@@ -71,7 +71,7 @@ def compute_parse_confidence(parser_result: dict | None, course_name: str, assig
         mt_score = 10 + min(10, with_time * 4) + min(5, with_loc * 2)
     breakdown["meeting_times"] = min(25, mt_score)
 
-    # Assessments (0-25)
+    # Assessments (0-25): reward completeness but penalize duplicates
     a_score = 0
     if assessments:
         a_score = 10 + min(10, len(assessments) * 2)
@@ -80,6 +80,19 @@ def compute_parse_confidence(parser_result: dict | None, course_name: str, assig
             total = sum(a.get("weight_percent") or 0 for a in assessments)
             if 90 <= total <= 110:
                 a_score += 5
+        # Penalize duplicate types (e.g. 3x participation, 2x midterm when only 1 expected)
+        type_counts = {}
+        for a in assessments:
+            t = a.get("type") or "assignment"
+            type_counts[t] = type_counts.get(t, 0) + 1
+        dup_penalty = 0
+        if type_counts.get("participation", 0) > 1:
+            dup_penalty += 3
+        if type_counts.get("midterm", 0) > 1:
+            dup_penalty += 2
+        if type_counts.get("project", 0) > 3:
+            dup_penalty += 2
+        a_score = max(0, a_score - dup_penalty)
     breakdown["assessments"] = min(25, a_score)
 
     # Instructor (0-10)
@@ -170,25 +183,49 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
             return True
         if "textbooks and readings" in t_lower and len(t) < 30:
             return True
+        if t_lower.startswith("of ") and "participation" in t_lower:
+            return True
+        if "lecture section coverage" in t_lower and "homework" in t_lower:
+            return True
         return False
 
+    no_final_exam = bool(re.search(r"\bno\s+final\s+exam\b|\bno\s+final\b", text[:5000], re.I))
     seen = {}
     for a in assessments:
         title = (a.get("title") or "").strip()
         if _is_junk_title(title):
             continue
+        if no_final_exam and title.lower() in ("final", "final exam"):
+            continue
         atype = a.get("type") or "assignment"
-        key = (title.lower()[:50], atype)
+        # Normalize participation titles for deduplication: "In Class Participation", "Class participation", "of class participation" -> same
+        key_title = title.lower()[:50]
+        if atype == "participation" and "participation" in key_title:
+            if "class" in key_title or "in class" in key_title or key_title.startswith("of "):
+                key_title = "class participation"
+        # Normalize midterm: "Midterm" and "Midterm exam" -> same
+        if atype == "midterm" and ("midterm" in key_title or "exam" in key_title):
+            key_title = "midterm"
+        # Normalize project: "Project" and "Class Project" (same thing when both ~40%)
+        if atype == "project" and ("class project" in key_title or key_title == "project"):
+            key_title = "class project"
+        key = (key_title, atype)
         due_datetime = a.get("due_datetime")
         due_date = (due_datetime[:10] if due_datetime and len(due_datetime) >= 10 else None)
         weight = a.get("weight_percent")
         existing = seen.get(key)
-        # Prefer row with due date, or higher weight, or longer title
-        if existing is None or (
-            (due_date and not existing.get("due_date"))
-            or (weight is not None and (existing.get("weight") or 0) < (weight or 0))
-            or (len(title) > len(existing.get("name") or ""))
-        ):
+        # Prefer: 1) due date (never replace row with due_date by one without), 2) higher weight, 3) longer title
+        if existing is None:
+            should_replace = True
+        elif due_date and not existing.get("due_date"):
+            should_replace = True  # we have date, existing doesn't
+        elif not due_date and existing.get("due_date"):
+            should_replace = False  # keep existing (it has date)
+        else:
+            should_replace = (
+                weight is not None and (existing.get("weight") or 0) < (weight or 0)
+            ) or (len(title) > len(existing.get("name") or ""))
+        if should_replace:
             seen[key] = {
                 "name": title,
                 "due_date": due_date,

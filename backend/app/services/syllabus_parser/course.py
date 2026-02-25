@@ -99,6 +99,45 @@ def parse_instructors(text: str) -> list:
     instructors = []
     seen_emails: set[str] = set()
 
+    # --- Instructor block: "Instructor" or "Course Instructor" header, then bullet lines with name + Email:
+    # e.g. "Instructor\n• Prof Jun Li\n• Email: lijun@uoregon.edu"
+    inst_blocks = list(re.finditer(
+        r"(?:^|\n)\s*(?:Course\s+)?Instructor\s*(?:\n|$)",
+        text[:5000], re.I
+    ))
+    for inst_m in inst_blocks:
+        block_start = inst_m.end()
+        block_end = min(block_start + 600, len(text))
+        block = text[block_start:block_end]
+        # Stop at next major section (TA, Prerequisites, etc.)
+        next_section = re.search(r"(?:^|\n)(?:TA|Teaching\s+Assistant|Prerequisites|Textbooks|Course\s+Description)\s", block, re.I | re.M)
+        if next_section:
+            block = block[:next_section.start()]
+        for name_m in re.finditer(
+            r"(?:^|\n)\s*[•\-\*]?\s*([A-Za-z][A-Za-z\.\s\-']{2,50}?)(?=\s*\n|\s+Email\s*:|\s*$)",
+            block, re.M
+        ):
+            name = re.sub(r"\s+", " ", name_m.group(1).strip())
+            if len(name) < 3 or name.lower() in ("email", "office", "hours", "name", "n/a", "tbd"):
+                continue
+            if re.match(r"^(Instructor|Professor|Office|Email|Course)\s*$", name, re.I):
+                continue
+            # Skip "Prof" as standalone - look for "Prof Jun Li" style
+            if name.lower() == "prof":
+                continue
+            after_name = block[name_m.end():name_m.end() + 250]
+            email_m = re.search(r"Email\s*:\s*([a-z0-9_.+-]+@[a-z0-9.-]+\.(?:edu|com|org))", after_name, re.I)
+            email = email_m.group(1).lower() if email_m else None
+            if email and email in seen_emails:
+                continue
+            if email:
+                seen_emails.add(email)
+            if not any(i.get("name") == name and (i.get("email") == email or (not i.get("email") and not email)) for i in instructors):
+                instructors.append({
+                    "id": f"inst-{len(instructors)}", "name": name, "email": email
+                })
+            break  # one instructor per block
+
     # --- Primary instructor: "Instructor", "Professor", "Name" : Name ...
     for m in re.finditer(
         r"(?:Instructor|Course instructor|Professor|Name)\s*(?:Contact)?\s*[:\t]+\s*"
