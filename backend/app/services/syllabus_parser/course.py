@@ -4,12 +4,50 @@ Course metadata extraction: code, title, term, instructors.
 import re
 
 
+# Department name -> standard course prefix (e.g. Physics -> PHY)
+_DEPT_ABBREV = {
+    "physics": "PHY", "phys": "PHY", "philosophy": "PHIL", "phil": "PHIL",
+    "computer": "CS", "mathematics": "MATH", "math": "MATH",
+    "chemistry": "CH", "biology": "BIO", "economics": "ECO",
+    "electrical": "EE", "engineering": "EE", "mechanical": "ME",
+}
+
+
 def parse_course_code(text: str, folder: str) -> str:
     """Extract course code (e.g. CS 210) from text or folder."""
     skip_prefixes = {
         "ROOM", "WEEK", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR",
         "JUN", "JUL", "AUG", "SEP", "MTWR", "PLC", "DES", "MCK", "LIL",
     }
+    # Prefer "Subject Number" from first line (e.g. "Physics 336k", "CS 331")
+    skip_subjects = {"spring", "fall", "summer", "winter", "section", "unique", "time", "place"}
+    first_block = text[:600]
+    # "EE 382 N" -> "EE 382N" (space before letter suffix on first line)
+    for m in re.finditer(r"^([A-Z]{2,4})\s+(\d{3})\s+([A-Z])\b", first_block, re.M | re.I):
+        prefix, base, suffix = m.group(1), m.group(2), m.group(3)
+        if prefix.upper() not in skip_prefixes:
+            return f"{prefix} {base}{suffix}".strip()
+    # "Physics n303L" -> PHY 303L (lowercase letter prefix in number, strip it)
+    for m in re.finditer(r"^([A-Za-z]+)\s+([a-z]?\d{3}[A-Za-z]?)\b", first_block, re.M | re.I):
+        subj, num = m.group(1).strip(), m.group(2)
+        if len(num) > 1 and num[0].islower() and num[0].isalpha():  # "n303L" -> "303L"
+            num = num[1:]
+        subj_lower = subj.lower()
+        if subj_lower in skip_prefixes or subj_lower in skip_subjects or len(subj) < 2:
+            continue
+        if num.startswith("20") and len(num) >= 3:  # year like 2014
+            continue
+        abbrev = _DEPT_ABBREV.get(subj_lower) or subj.upper()[:4]
+        code = f"{abbrev} {num.upper()}"
+        if len(code) >= 5 and not any(c in code for c in ".#"):
+            return code
+    # Prefer "EE 382N" over "EE 382" when text has "382 N" (letter suffix)
+    skip_suffix = {"or", "and", "to"}
+    for m in re.finditer(r"\b([A-Z]{2,4})\s*(\d{3})\s*([A-Z])\b", text[:800], re.I):
+        prefix, base, suffix = m.group(1), m.group(2), m.group(3)
+        if prefix.upper() in skip_prefixes or prefix.lower() in skip_suffix:
+            continue
+        return f"{prefix} {base}{suffix}".strip()
     m0 = re.match(r"^([A-Za-z]+)(\d{3}[A-Za-z]?)$", folder.replace("_", ""))
     if m0:
         folder_prefix, folder_num = m0.group(1), m0.group(2)
@@ -17,6 +55,14 @@ def parse_course_code(text: str, folder: str) -> str:
         pat = re.escape(folder_prefix) + r"\s*" + re.escape(folder_num)
         if re.search(pat, text[:1500], re.I):
             return folder_code
+    # Prefer "EE 382N" over "EE 382" when text has "382 N" or "382N" (letter suffix)
+    for m in re.finditer(r"\b([A-Z]{2,4})\s*(\d{3})\s*([A-Z])\b", text[:800], re.I):
+        prefix, base, suffix = m.group(1), m.group(2), m.group(3)
+        if prefix.upper() in skip_prefixes:
+            continue
+        if m0 and prefix.upper() != folder_prefix.upper():
+            continue
+        return f"{prefix} {base}{suffix}".strip()
     for m in re.finditer(r"\b([A-Z]{2,4})\s*(\d{3}[A-Z]?)\b", text[:800], re.I):
         prefix, num = m.group(1), m.group(2)
         if prefix.upper() in skip_prefixes:
@@ -55,6 +101,14 @@ def parse_course_title(text: str, folder: str) -> str:
         "Career/Internship seminar", "Statistical Models and Methods",
         "Computer Fluency",
     ]
+    # "Physics 336k, Classical Dynamics, Spring 2016" or "CS 331, Algorithms and Complexity"
+    for line in lines[:8]:
+        line = line.strip()
+        m = re.match(r"^[A-Za-z]+\s+\d{3}[A-Za-z]?\s*,\s*([^,]{5,70}?)(?:\s*,\s*(?:Fall|Spring|Summer|Winter)\s+\d{4})?\s*$", line, re.I)
+        if m:
+            t = m.group(1).strip()
+            if t and len(t) > 4 and not t.endswith("%"):
+                return t[:80]
     for line in lines[:25]:
         line = line.strip()
         # "Math 253 - 33082, Calculus III - Syllabus"
@@ -74,6 +128,8 @@ def parse_course_title(text: str, folder: str) -> str:
         if m:
             title = m.group(1).strip()
             if title and len(title) < 80 and not title.endswith("%"):
+                if title.lower().startswith(("or ", "and ", "to ")):
+                    continue
                 return title[:100]
         m = re.search(
             r"(?:Welcome to|Course:?)\s*[A-Z]{2,4}\s*\d{3}[A-Z]?[,:\s]+(.+?)(?:\.|$)",
@@ -98,6 +154,45 @@ def parse_instructors(text: str) -> list:
     """Extract instructor and TA names and emails."""
     instructors = []
     seen_emails: set[str] = set()
+
+    # --- Teaching Team block: "Teaching Team" with two-column "Name (Instructor) Name (GE)" format
+    # e.g. "Juan Flores (Instructor) Hritvik Jekki (GE)" then "Office: X Office: Y", "Email: X E-mail: Y", "Zoom: X Zoom: Y"
+    teaching_team = re.search(
+        r"(?:^|\n)\s*Teaching\s+Team\s*(?:\n|$)(.+?)(?=(?:^|\n)\s*(?:Course\s+Overview|Description|Prerequisites|1\.\s|2\.\s|\d+\.\s))",
+        text[:4000], re.I | re.DOTALL
+    )
+    if teaching_team:
+        block = teaching_team.group(1).strip()
+        # Extract names with roles: "Name (Instructor)", "Name (GE)", "Name (TA)"
+        names_with_roles = []
+        for role in ["Instructor", "GE", "TA"]:
+            for name_m in re.finditer(
+                r"([A-Za-z][A-Za-z\.\s\-']{2,40}?)\s*\(\s*" + re.escape(role) + r"\s*\)",
+                block, re.I
+            ):
+                name = re.sub(r"\s+", " ", name_m.group(1).strip())
+                if len(name) >= 3 and name.lower() not in ("email", "office", "zoom"):
+                    names_with_roles.append((name, name_m.start()))
+        names_with_roles.sort(key=lambda x: x[1])
+        # Extract emails, offices, zoom URLs in order (two columns = 2 of each)
+        emails = re.findall(r"(?:Email|E-mail)\s*:\s*([a-z0-9_.+-]+@[a-z0-9.-]+\.(?:edu|com|org))", block, re.I)
+        offices = re.findall(r"Office\s*:\s*([A-Za-z0-9\s\-]+?)(?=\s*Office\s*:|\s*(?:Email|E-mail|Zoom)|\s*$|\n)", block, re.I)
+        zooms = re.findall(r"Zoom\s*:\s*(https?://[^\s\)]+)", block, re.I)
+        for idx, (name, _) in enumerate(names_with_roles):
+            email = emails[idx].lower() if idx < len(emails) else None
+            office = offices[idx].strip() if idx < len(offices) else None
+            zoom_url = zooms[idx].strip() if idx < len(zooms) else None
+            if email and email in seen_emails:
+                continue
+            if email:
+                seen_emails.add(email)
+            if not any(i.get("name") == name for i in instructors):
+                inst = {"id": f"inst-{len(instructors)}", "name": name, "email": email}
+                if office:
+                    inst["office"] = office
+                if zoom_url:
+                    inst["zoom_url"] = zoom_url
+                instructors.append(inst)
 
     # --- Instructor block: "Instructor" or "Course Instructor" header, then bullet lines with name + Email:
     # e.g. "Instructor\n• Prof Jun Li\n• Email: lijun@uoregon.edu"

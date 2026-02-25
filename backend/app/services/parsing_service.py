@@ -187,6 +187,14 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
             return True
         if "lecture section coverage" in t_lower and "homework" in t_lower:
             return True
+        if t_lower == "learning outcomes":
+            return True
+        if t_lower == "missed exams":
+            return True
+        if "late projects" in t_lower and "submissions will incur" in t_lower:
+            return True
+        if "late submissions will incur" in t_lower:
+            return True
         return False
 
     no_final_exam = bool(re.search(r"\bno\s+final\s+exam\b|\bno\s+final\b", text[:5000], re.I))

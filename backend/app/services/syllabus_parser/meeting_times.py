@@ -97,6 +97,11 @@ def _normalize_location(loc: str | None) -> str | None:
     """Return None if location looks invalid (fragment/garbage), else abbreviate if known."""
     if not loc or not (loc := loc.strip()):
         return None
+    # Strip trailing "Lectures", "Instructor", "Office" or newline+word (e.g. "ECJ 1.306\nInstructor" -> "ECJ 1.306")
+    loc = re.sub(r"\s*\n\s*[A-Za-z]+\s*$", "", loc, re.I)
+    loc = re.sub(r"\s*\n\s*Lectures\s*$", "", loc, re.I)
+    loc = re.sub(r"\s+Lectures\s*$", "", loc, re.I)
+    loc = loc.strip()
     if _location_looks_invalid(loc):
         return None
     return _abbreviate_location(loc) if len(loc) >= 3 else loc
@@ -302,6 +307,265 @@ def parse_meeting_times(text: str) -> list:
             start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
             loc = _abbreviate_location(m.group(5).strip())
             for day in ["TU", "TH"]:
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "Date/Time/Location: MW / 10:30-11:45 AM / ECJ 1.306" - pipe-separated (run even if office hours already added)
+    if not any(m.get("type") == "lecture" for m in meetings):
+        for m in re.finditer(
+            r"Date/Time/Location\s*:\s*(MW|MWF|TR|TTH|TTh)\s*/\s*(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:AM|PM|am|pm)?\s*/\s*([A-Za-z0-9][A-Za-z0-9\-\. ]*?)(?:\s*\n|$)",
+            text[:3000],
+            re.I,
+        ):
+            h1, m1 = int(m.group(2)), m.group(3) or "00"
+            h2, m2 = int(m.group(4)), m.group(5) or "00"
+            if re.search(r"pm|PM", m.group(0), re.I) and h1 < 12:
+                h1, h2 = h1 + 12, h2 + 12
+            elif not re.search(r"am|AM", m.group(0), re.I) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = _normalize_location(m.group(6).strip())
+            if not loc:
+                continue
+            abbr = m.group(1).upper().replace(" ", "")
+            expand = {"TTH": ["TU", "TH"], "TR": ["TU", "TH"], "MWF": ["MO", "WE", "FR"], "MW": ["MO", "WE"]}
+            for day in expand.get(abbr, []):
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "Hours: Monday & Wednesday" + next line "5:00 PM to 6:30 PM" + "Location: ECJ 1.214"
+    if not any(m.get("type") == "lecture" for m in meetings):
+        for m in re.finditer(
+            r"Hours\s*:\s*Monday\s*&\s*Wednesday\s*\n\s*(\d{1,2})[\:]?(\d{2})?\s*(?:AM|PM|am|pm)?\s+to\s+(\d{1,2})[\:]?(\d{2})?\s*(?:AM|PM|am|pm)?\s*\n\s*Location\s*:\s*([A-Za-z0-9\s\-\.]+)",
+            text[:3000],
+            re.I,
+        ):
+            h1, m1 = int(m.group(1)), m.group(2) or "00"
+            h2, m2 = int(m.group(3)), m.group(4) or "00"
+            if re.search(r"pm|PM", m.group(0), re.I) and h1 < 12:
+                h1, h2 = h1 + 12, h2 + 12
+            elif not re.search(r"am|AM", m.group(0), re.I) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = _normalize_location(m.group(5).strip())
+            if not loc:
+                continue
+            for day in ["MO", "WE"]:
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "Information Time: MW 9:30-11:00am" + "Location: GDC 5.302" (within next ~150 chars)
+    if not any(m.get("type") == "lecture" for m in meetings):
+        for m in re.finditer(
+            r"Information\s+Time\s*:\s*(MW|MWF|TR|TTH|TTh)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?(?:am|pm|AM|PM)?[\s\S]{0,150}?Location\s*:\s*([A-Za-z0-9\s\-\.]+)",
+            text[:3000],
+            re.I,
+        ):
+            h1, m1 = int(m.group(2)), m.group(3) or "00"
+            h2, m2 = int(m.group(4)), m.group(5) or "00"
+            if re.search(r"pm|PM", m.group(0), re.I) and h1 < 12:
+                h1, h2 = h1 + 12, h2 + 12
+            elif not re.search(r"am|AM", m.group(0), re.I) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = _normalize_location(m.group(6).strip())
+            if not loc:
+                continue
+            abbr = m.group(1).upper().replace(" ", "")
+            expand = {"TTH": ["TU", "TH"], "TR": ["TU", "TH"], "MWF": ["MO", "WE", "FR"], "MW": ["MO", "WE"]}
+            for day in expand.get(abbr, []):
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "Class time: MWF 9-10am; Location: CLA 0.130" - semicolon-separated
+    if not any(m.get("type") == "lecture" for m in meetings):
+        for m in re.finditer(
+            r"Class\s+time\s*:\s*(MWF|MW|TR|TTH|TTh|WF|T\s+R)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?(?:am|pm|AM|PM)?\s*(?:;\s*Location\s*:\s*([A-Za-z0-9][A-Za-z0-9\-\. ]*))?",
+            text[:3000],
+            re.I,
+        ):
+            days_raw = m.group(1).replace(" ", "").upper()
+            if "T" in days_raw and "R" in days_raw:
+                abbr = "TR"
+            elif "W" in days_raw and "F" in days_raw and "M" not in days_raw:
+                abbr = "WF"
+            else:
+                abbr = days_raw
+            h1, m1 = int(m.group(2)), m.group(3) or "00"
+            h2, m2 = int(m.group(4)), m.group(5) or "00"
+            if re.search(r"pm|PM", m.group(0), re.I) and h1 < 12:
+                h1, h2 = h1 + 12, h2 + 12
+            elif not re.search(r"am|AM", m.group(0), re.I) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = _normalize_location(m.group(6).strip()) if m.group(6) else None
+            if not loc and m.end() < len(text):
+                loc_m = re.search(r"Location\s*:\s*([A-Za-z0-9\s\-\.]+)", text[m.end():m.end()+150], re.I)
+                if loc_m:
+                    loc = _normalize_location(loc_m.group(1).strip())
+            expand = {"TTH": ["TU", "TH"], "TR": ["TU", "TH"], "MWF": ["MO", "WE", "FR"], "MW": ["MO", "WE"], "WF": ["WE", "FR"]}
+            for day in expand.get(abbr, []):
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "M-Tu-W-Th-F 10:00–11:15am – PAI 4.42" - hyphenated days = MTWRF
+    if not any(m.get("type") == "lecture" for m in meetings):
+        for m in re.finditer(
+            r"M[-–]Tu[-–]W[-–]Th[-–]F\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?(?:am|pm|AM|PM)?\s*[-–]\s*([A-Za-z0-9\s\-\.]+)",
+            text[:3000],
+            re.I,
+        ):
+            h1, m1 = int(m.group(1)), m.group(2) or "00"
+            h2, m2 = int(m.group(3)), m.group(4) or "00"
+            if re.search(r"pm|PM", m.group(0), re.I) and h1 < 12:
+                h1, h2 = h1 + 12, h2 + 12
+            elif not re.search(r"am|AM", m.group(0), re.I) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = _normalize_location(m.group(5).strip())
+            if not loc:
+                continue
+            for day in ["MO", "TU", "WE", "TH", "FR"]:
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "Section: Unique #55895, Meets MWF, 2-3 PM, RLM 7.104" or "12-1 PM" (noon to 1pm)
+    if not meetings:
+        for m in re.finditer(
+            r"Meets\s+(MWF|MW|TR|TTH|TTh)\s*,\s*(\d{1,2})\s*[-–]\s*(\d{1,2})\s*(?:AM|PM|am|pm)?\s*,\s*([A-Za-z0-9\s\-\.]+)",
+            text[:3000],
+            re.I,
+        ):
+            h1, h2 = int(m.group(2)), int(m.group(3))
+            is_pm = bool(re.search(r"pm|PM", m.group(0)))
+            if is_pm:
+                if h1 < 12:
+                    h1 += 12
+                if h2 < 12:
+                    h2 += 12
+            elif not re.search(r"am|AM", m.group(0)) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:00", f"{h2:02d}:00"
+            loc = _normalize_location(m.group(4).strip())
+            if not loc:
+                continue
+            abbr = m.group(1).upper().replace(" ", "")
+            expand = {"TTH": ["TU", "TH"], "TR": ["TU", "TH"], "MWF": ["MO", "WE", "FR"], "MW": ["MO", "WE"]}
+            for day in expand.get(abbr, []):
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "Spring 2015 TTH 12:30-2:00 CAL 100" - Season Year TTH time location
+    if not meetings:
+        for m in re.finditer(
+            r"(?:Spring|Fall|Summer|Winter)\s+\d{4}\s+(TTH|TTh|TR|MWF|MW)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s+([A-Za-z0-9\s\-\.]+)",
+            text[:3000],
+            re.I,
+        ):
+            h1, m1 = int(m.group(2)), m.group(3) or "00"
+            h2, m2 = int(m.group(4)), m.group(5) or "00"
+            if 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = _normalize_location(m.group(6).strip())
+            if not loc:
+                continue
+            abbr = m.group(1).upper().replace(" ", "")
+            expand = {"TTH": ["TU", "TH"], "TR": ["TU", "TH"], "MWF": ["MO", "WE", "FR"], "MW": ["MO", "WE"]}
+            for day in expand.get(abbr, []):
+                if day not in seen_days:
+                    seen_days.add(day)
+                    meetings.append({
+                        "id": f"mt-{len(meetings)+1}",
+                        "day_of_week": day,
+                        "start_time": start,
+                        "end_time": end,
+                        "timezone": "America/Los_Angeles",
+                        "location": loc,
+                        "type": "lecture",
+                    })
+
+    # "Time: TTh 11:00 - 12:30. Place: CAL 100" or "Time: MW 9:30-11:00am"
+    if not meetings:
+        for m in re.finditer(
+            r"Time\s*:\s*(TTh|TTH|TR|MWF|MW)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:\.|am|pm|AM|PM)?\s*(?:\.\s*Place:\s*([A-Za-z0-9\s\-\.]+))?",
+            text[:3000],
+            re.I,
+        ):
+            h1, m1 = int(m.group(2)), m.group(3) or "00"
+            h2, m2 = int(m.group(4)), m.group(5) or "00"
+            if re.search(r"pm|PM", m.group(0), re.I) and h1 < 12:
+                h1, h2 = h1 + 12, h2 + 12
+            elif not re.search(r"am|AM", m.group(0), re.I) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = _normalize_location(m.group(6).strip()) if m.group(6) else None
+            abbr = m.group(1).upper().replace(" ", "")
+            expand = {"TTH": ["TU", "TH"], "TR": ["TU", "TH"], "MWF": ["MO", "WE", "FR"], "MW": ["MO", "WE"]}
+            for day in expand.get(abbr, []):
                 if day not in seen_days:
                     seen_days.add(day)
                     meetings.append({
@@ -768,7 +1032,33 @@ def parse_meeting_times(text: str) -> list:
             "type": "lecture",
         })
 
-    # "Tuesday/Thursday, 16:00-17:20, 125 McKenzie Hall" - slash, 24h time
+    # "Monday / Wednesday / Friday, 9:00 am – 10:00 am, WEL 2.304" - 3 days with slashes
+    for m in re.finditer(r"\b(Monday|Tuesday|Wednesday|Thursday|Friday)\s*/\s*(Monday|Tuesday|Wednesday|Thursday|Friday)\s*/\s*(Monday|Tuesday|Wednesday|Thursday|Friday)\s*,\s*(\d{1,2})[\:]?(\d{2})?\s*(?:am|pm)?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:am|pm)?\s*(?:,\s*)?([A-Za-z0-9\s\-\.]+)?", text[:5000], re.I):
+        days_map = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
+        h1, m1 = int(m.group(4)), m.group(5) or "00"
+        h2, m2 = int(m.group(6)), m.group(7) or "00"
+        # 9:00 am – 10:00 am: keep as 09:00-10:00; 2:00 pm: add 12
+        if "pm" in m.group(0).lower() and h1 < 12 and h1 >= 1:
+            h1, h2 = h1 + 12, h2 + 12
+        loc_raw = (m.group(8) or "").strip()
+        loc = _normalize_location(loc_raw) if len(loc_raw) > 2 else None
+        for g in (m.group(1), m.group(2), m.group(3)):
+            if not g:
+                continue
+            day = days_map.get(g.lower())
+            if day and day not in seen_days:
+                seen_days.add(day)
+                meetings.append({
+                    "id": f"mt-{len(meetings)+1}",
+                    "day_of_week": day,
+                    "start_time": f"{h1:02d}:{m1}",
+                    "end_time": f"{h2:02d}:{m2}",
+                    "timezone": "America/Los_Angeles",
+                    "location": loc,
+                    "type": "lecture",
+                })
+
+    # "Tuesday/Thursday, 16:00-17:20, 125 McKenzie Hall" - slash, 24h time (2 days)
     for m in re.finditer(r"\b(Tuesday|Thursday|Monday|Wednesday|Friday)\s*/\s*(Tuesday|Thursday|Monday|Wednesday|Friday)\s*,\s*(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:,\s*)?([A-Za-z0-9\s\-]+)?", text[:5000], re.I):
         days_map = {"monday": "MO", "tuesday": "TU", "wednesday": "WE", "thursday": "TH", "friday": "FR"}
         h1, m1 = int(m.group(3)), m.group(4) or "00"
@@ -871,6 +1161,15 @@ def parse_meeting_times(text: str) -> list:
                 "location": loc,
                 "type": "lecture",
             })
+
+    # Cleanup: strip "Lectures" suffix from location (e.g. "B040 PSC\nLectures" -> "B040 PSC")
+    for mt in meetings:
+        loc = mt.get("location")
+        if loc:
+            cleaned = re.sub(r"\s*\n\s*Lectures\s*$", "", loc, re.I)
+            cleaned = re.sub(r"\s+Lectures\s*$", "", cleaned, re.I)
+            if cleaned != loc:
+                mt["location"] = cleaned.strip() or None
 
     # Filter: drop meetings with location that looks like a person's name or day fragment
     def _valid_location(loc):
