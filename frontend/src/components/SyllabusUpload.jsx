@@ -38,12 +38,14 @@ export default function SyllabusUpload({ onComplete, token }) {
               due_date: a.due_datetime ? String(a.due_datetime).slice(0, 10) : '',
               hours: hoursFromType(a.type),
               type: a.type || 'assignment',
+              confidence: typeof a.confidence === 'number' ? a.confidence : null,
             }))
           : (data.assignments || []).map((a) => ({
               name: a.name || '',
               due_date: a.due_date || '',
               hours: a.hours ?? 3,
               type: a.type || 'assignment',
+              confidence: typeof a.confidence === 'number' ? a.confidence : null,
             }));
       const assignments = raw.map((a, i) => ({
         id: `temp-${i}`,
@@ -51,6 +53,7 @@ export default function SyllabusUpload({ onComplete, token }) {
         due: a.due_date || '',
         hours: a.hours ?? 3,
         type: a.type || 'assignment',
+        confidence: a.confidence ?? null,
       }));
       const meeting_times = Array.isArray(data.meeting_times) ? data.meeting_times : [];
       const instructors = Array.isArray(data.instructors) ? data.instructors : [];

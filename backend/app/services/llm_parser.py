@@ -13,7 +13,9 @@ SYSTEM_PROMPT = """You are a syllabus parser. Extract course info, meeting times
 
 Output strictly valid JSON matching the schema. Use ISO 8601 for dates (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS for times).
 Infer academic year from term (e.g. Fall 2025 -> 2025). Assign confidence 0.0-1.0 per assessment based on how clearly the syllabus states it. Use 0.9+ only when you see explicit due date and/or weight. Use 0.5-0.7 when inferring from schedule context.
-If unclear, use null. Do not invent data. day_of_week must be MO, TU, WE, TH, FR, SA, or SU. type for assessments must be assignment, midterm, final, quiz, project, or participation."""
+If unclear, use null. Do not invent data. day_of_week must be MO, TU, WE, TH, FR, SA, or SU. type for assessments must be assignment, midterm, final, quiz, project, or participation.
+
+Do NOT include as assessments: grade scale entries (A 90, B 80, C 70, D 60), policy text (accommodation for religious observances, grades are assigned according to...), sentence fragments, section headers, or anything that is not an actual graded deliverable (homework, project, exam, quiz, etc.). Meeting location must be a room/building, not a section title like "Prerequisites"."""
 
 # JSON schema for structured output (OpenAI strict mode)
 SYLLABUS_JSON_SCHEMA = {

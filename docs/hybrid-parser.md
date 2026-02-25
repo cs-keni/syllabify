@@ -630,4 +630,31 @@ When both LLM and heuristic produce results, options:
 | New: LLM parser | `backend/app/services/llm_parser.py` |
 | New: validator | `backend/app/services/validation.py` or inside `llm_parser` |
 
-**Note:** `parsing_service.parse_text()` already supports `mode="hybrid"` and `mode="ai"` (looks for `ai_parser`). We will implement the hybrid path there; the `ai_parser` import can be replaced or the logic consolidated.
+**Note:** `parsing_service.parse_text()` already supports `mode="hybrid"` and `mode="ai"` (looks for `ai_parser`). We implement the hybrid path; the `ai_parser` import falls through to heuristic when absent.
+
+---
+
+## Implementation Status
+
+| Phase | Status | Notes |
+|-------|--------|-------|
+| Phase 0 | ✅ Done | openai dep, .env.example |
+| Phase 1 | ✅ Done | extract_structured_from_file |
+| Phase 2 | ✅ Done | llm_parser.py, GPT-4o-mini |
+| Phase 3 | ✅ Done | Hybrid flow, fallback, feature flag |
+| Phase 4 | ✅ Done | UI confidence highlighting (low-confidence rows get amber background + tooltip) |
+
+---
+
+## Known Issues & Post-Parse Filtering
+
+The LLM sometimes returns junk that we filter in `_is_junk_title` and `_clean_meeting_times`:
+
+| Issue | Example | Fix |
+|-------|---------|-----|
+| Grade scale entries | "B 80", "C 70", "D 60" | Filter: `^[A-D]\s*\d{2,3}$` |
+| Policy text | "Accommodation for Religious Observances" | Filter: contains "accommodation" + "religious" |
+| Sentence fragments | "done during that time will be worth", "Grades are assigned according to the scale" | Filter: contains phrases |
+| Bad meeting location | "Prerequisites" (section header) | `_clean_meeting_times`: section words → null |
+
+**LLM prompt:** Explicit instructions added to exclude grade scales, policy text, sentence fragments. Meeting location must be room/building, not section title.

@@ -470,11 +470,14 @@ function SortableAssessmentRow({ item, onUpdate, onDelete, sectionId }) {
     transition,
   };
 
+  const lowConfidence = typeof item.confidence === 'number' && item.confidence < 0.6;
+
   return (
     <tr
       ref={setNodeRef}
       style={style}
-      className={`border-b border-border-subtle ${isDragging ? 'opacity-60 bg-surface-muted' : ''}`}
+      title={lowConfidence ? 'Parsed with low confidence—please verify' : undefined}
+      className={`border-b border-border-subtle ${isDragging ? 'opacity-60 bg-surface-muted' : ''} ${lowConfidence ? 'bg-amber-50 dark:bg-amber-950/30' : ''}`}
     >
       <td className="w-8 px-2 py-2 cursor-grab active:cursor-grabbing" {...attributes} {...listeners} aria-label="Drag to reorder">
         <span className="text-ink-muted select-none">⋮⋮</span>

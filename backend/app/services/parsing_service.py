@@ -163,6 +163,7 @@ def _map_llm_result_to_api(llm_result: dict, source_type: str, raw_text: str = "
         due_date = due_datetime[:10] if due_datetime and len(due_datetime) >= 10 else None
         weight = a.get("weight_percent")
         key = (title.lower()[:50], atype)
+        conf_val = a.get("confidence")
         if key not in seen or (due_date and not seen[key].get("due_date")):
             seen[key] = {
                 "name": title,
@@ -170,16 +171,17 @@ def _map_llm_result_to_api(llm_result: dict, source_type: str, raw_text: str = "
                 "hours": _hours_from_assessment_type(atype),
                 "type": atype,
                 "weight": weight,
+                "confidence": conf_val if isinstance(conf_val, (int, float)) else None,
             }
     assignments = [
-        {"name": v["name"], "due_date": v["due_date"], "hours": v["hours"], "type": v["type"]}
+        {"name": v["name"], "due_date": v["due_date"], "hours": v["hours"], "type": v["type"], "confidence": v.get("confidence")}
         for v in seen.values()
     ]
     assessments_for_api = [
-        {"title": v["name"], "due_datetime": v["due_date"], "type": v["type"]}
+        {"title": v["name"], "due_datetime": v["due_date"], "type": v["type"], "confidence": v.get("confidence")}
         for v in seen.values()
     ]
-    meeting_times = course.get("meeting_times") or []
+    meeting_times = _clean_meeting_times(course.get("meeting_times") or [])
     instructors = course.get("instructors") or []
     conf = compute_parse_confidence(llm_result, course_name, assignments)
     return {
@@ -191,6 +193,19 @@ def _map_llm_result_to_api(llm_result: dict, source_type: str, raw_text: str = "
         "raw_text": None if conf["label"] == "high" else raw_text,
         "confidence": conf,
     }
+
+
+def _clean_meeting_times(meeting_times: list) -> list:
+    """Fix meeting times: location that looks like section header (Prerequisites, etc.) -> empty."""
+    section_words = {"prerequisites", "schedule", "grading", "course", "overview", "policies"}
+    out = []
+    for m in meeting_times:
+        m = dict(m)
+        loc = (m.get("location") or "").strip().lower()
+        if loc in section_words or (len(loc) < 25 and loc.replace(" ", "") in section_words):
+            m["location"] = None
+        out.append(m)
+    return out
 
 
 def _is_junk_title(t: str) -> bool:
@@ -219,6 +234,19 @@ def _is_junk_title(t: str) -> bool:
     if "late projects" in t_lower and "submissions will incur" in t_lower:
         return True
     if "late submissions will incur" in t_lower:
+        return True
+    # Grade scale entries: "A 90", "B 80", "C 70", "D 60" (letter + number = grade cutoff)
+    if re.match(r"^[A-D]\s*\d{2,3}$", t_lower.strip()):
+        return True
+    # Policy / accommodation text, not actual assignments
+    if "accommodation" in t_lower and ("religious" in t_lower or "observance" in t_lower):
+        return True
+    # Sentence fragments (policy text, not assignment names)
+    if "during that time" in t_lower or "will be worth" in t_lower:
+        return True
+    if "grades are assigned" in t_lower or "according to the scale" in t_lower:
+        return True
+    if t_lower.startswith("done ") or t_lower.startswith("work "):
         return True
     return False
 
