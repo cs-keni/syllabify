@@ -66,6 +66,11 @@ This document describes the assessment and grading formats the syllabus parser r
 - `three tests will each contribute 20% of your course grade` → Test 1, 2, 3 at 20%
 - `The homework will contribute 20% of your grade` → Homework 20%
 - `3 midterms each worth 100 pts` + `DAILY WORK (75 points)` + `FINAL EXAM (150 points)` = 525 total → Midterm 1–3 at 19% each, Daily work 14%, Final 29%
+- `Exams (2): 30% (15% each)` → Exam 1, Exam 2 at 15% each
+- `Three Tests (15% each): 45%` → Test 1, 2, 3 at 15% each
+- `Grades` section (no colon): `Grades\n...Quizzes: 10%\nTutorial Exercises: 15%\nProgramming Assignments: 30%\nThree Tests (15% each): 45%`
+- `Grading: Homework: 25%, Test 1: 25%, Test 2: 25%, Test 3: 25%.` (colon block; allow ending at period)
+- `Homework and quizzes: 10%`, `Programming Assignments: 60%`, `Tutorial Exercises: 15%` (standalone)
 
 ### Other Common Patterns
 
@@ -83,6 +88,8 @@ This document describes the assessment and grading formats the syllabus parser r
 - **Lowercase prefix in number:** `Physics n303L` → `PHY 303L` (strips leading lowercase letter)
 - **Mw typo:** `Mw427L` or `Mw 427L` → `M 427L` (Mathematics)
 - **Folder-derived:** Uses course folder (e.g. `opt3-dist`) when text contains matching code
+- **Prerequisite skip:** Skips course title from lines containing "prerequisite", "coursework", "grade of at least"
+- **Late account:** `"late account" of 3 days` → total_allowed: 3
 
 ---
 
@@ -105,6 +112,10 @@ This document describes the assessment and grading formats the syllabus parser r
 - **Slash-separated days:** `Monday / Wednesday / Friday, 9:00 am – 10:00 am, WEL 2.304`
 - **Location cleanup:** Strips trailing "Lectures", "Instructor", "Office" (e.g. `ECJ 1.306\nInstructor` → `ECJ 1.306`)
 - **Office hours exclusion:** TuTh in "Office hours: ...; TuTh 10:30-11:30a" is not parsed as lecture; location must contain digit and be under 50 chars
+- **Tuesdays and Thursdays:** `Tuesdays and Thursdays, 3:30 to 5:30, in room RLM 5.114` or `room TBA`
+- **Time: TTh ... Place:** `Time: TTh 11:00 - 12:30. Place: CAL 100` (skips generic TTh when "Time:" in prev; fixes "30. Place" junk)
+- **Class Meetings PM fix:** `12:00-1:00pm` → 12:00–13:00 (end hour &lt; 12 gets +12 when pm)
+- **396KL folder:** When folder ends with L (e.g. 396KL) and text has both 396K and 396L, prefer PHY 396L
 
 ---
 

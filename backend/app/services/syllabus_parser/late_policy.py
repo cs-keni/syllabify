@@ -10,6 +10,10 @@ def parse_late_policy(text: str) -> dict:
     m = re.search(r"(\d+)\s*[\"'\u201C\u201D]?\s*(?:late\s+)?pass(?:es)?", text[:15000], re.I)
     if m:
         policy["total_allowed"] = int(m.group(1))
+    if policy["total_allowed"] is None:
+        m = re.search(r'["\u201C\u201D]?\s*late\s+account\s*["\u201C\u201D]?\s+of\s+(\d+)\s+days?', text[:15000], re.I)
+        if m:
+            policy["total_allowed"] = int(m.group(1))
     # "Up to two missed individual obligations" -> total_allowed: 2
     if policy["total_allowed"] is None and re.search(r"(?:up to |allow(?:ed|s)?\s+)?(?:two|2)\s+missed\s+(?:individual\s+)?(?:obligations?|deadlines?|assignments?|activities?)", text[:15000], re.I):
         policy["total_allowed"] = 2

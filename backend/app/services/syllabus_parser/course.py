@@ -19,6 +19,11 @@ def parse_course_code(text: str, folder: str) -> str:
         "ROOM", "WEEK", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR",
         "JUN", "JUL", "AUG", "SEP", "MTWR", "PLC", "DES", "MCK", "LIL",
     }
+    # "396KL" folder: syllabus covers both 396K and 396L; prefer 396L when folder ends with L
+    if folder.upper().endswith("L") and re.search(r"\b([A-Z]{2,4})\s*396\s*L\b", text[:1500], re.I):
+        m = re.search(r"\b([A-Z]{2,4})\s*396\s*L\b", text[:1500], re.I)
+        if m:
+            return f"{m.group(1)} 396L"
     # Prefer "Subject Number" from first line (e.g. "Physics 336k", "CS 331")
     skip_subjects = {"spring", "fall", "summer", "winter", "section", "unique", "time", "place"}
     first_block = text[:600]
@@ -88,7 +93,7 @@ def parse_course_title(text: str, folder: str) -> str:
     """Extract short course title from text (not full sentences)."""
     lines = text.split("\n")
     course_title_keywords = [
-        "Data Structures", "Software Methodologies I", "Operating Systems",
+        "Algorithms and Complexity", "Data Structures", "Software Methodologies I", "Operating Systems",
         "Mobile News App Design", "Competitive Programming", "Solid State Physics I",
         "Carbon and 2D Devices", "C++ Programming",
         "Computer & Network Security", "Intermediate Algorithms",
@@ -136,6 +141,8 @@ def parse_course_title(text: str, folder: str) -> str:
             if title and len(title) < 80 and not title.endswith("%"):
                 if title.lower().startswith(("or ", "and ", "to ")):
                     continue
+                if any(w in line.lower() for w in ("prerequisite", "coursework", "grade of at least", "co-req")):
+                    continue  # Skip prerequisite lines (e.g. "CS 311 or 311H, 314 or 314H...")
                 return title[:100]
         m = re.search(
             r"(?:Welcome to|Course:?)\s*[A-Z]{2,4}\s*\d{3}[A-Z]?[,:\s]+(.+?)(?:\.|$)",

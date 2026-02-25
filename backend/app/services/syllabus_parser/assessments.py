@@ -657,6 +657,16 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         atype = "participation" if "participat" in name.lower() or "attend" in name.lower() else "assignment"
         add_assessment(cid + "_1", title, cid, atype, pct)
 
+    # "Homework and quizzes: 10%", "Programming Assignments: 60%", "Tutorial Exercises: 15%"
+    for m in re.finditer(r"\b(Homework\s+and\s+quizzes|Programming\s+Assignments|Tutorial\s+Exercises)\s*:\s*(\d{1,3})\s*%", text[:4000], re.I):
+        name, pct = m.group(1).strip(), int(m.group(2))
+        if pct > 100:
+            continue
+        cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+        atype = "assignment"
+        add_category(cid, name, pct)
+        add_assessment(cid + "_1", name, cid, atype, pct)
+
     # "Lab attendance/submission 10%", "Lab Attendance: 10%", "Quizzes: 20%"
     for m in re.finditer(r"(Lab\s+attendance[/\s]*(?:and|/)\s*submission|Lab\s+Attendance|Quizzes?|Lab\s+attendance)[:\s]+(\d{1,3})\s*%", text, re.I):
         name, pct = m.group(1).strip(), int(m.group(2))
@@ -692,7 +702,7 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         pct, name = int(m.group(1)), m.group(2).strip()
         if pct > 100 or len(name) < 3 or len(name) > 60:
             continue
-        skip = any(w in name.lower() for w in ("dropped", "score", "individual", "submission", "canvas", "collaboration", "policy", "apply", "attempts"))
+        skip = any(w in name.lower() for w in ("dropped", "score", "individual", "submission", "canvas", "collaboration", "policy", "apply", "attempts", "correctly", "configuration", "receive", "requirements", "grade reduced", "more of these", "pm -", "gdc"))
         if skip:
             continue
         title = "Final exam" if name.lower() == "final" else "Midterm" if name.lower() == "midterm" else name
@@ -730,8 +740,50 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
         add_category(cid, title, pct)
         add_assessment(cid + "_1", title, cid, atype, pct)
 
-    # "Grading: 30 % Assignments, 15 % Test 1..." or "Course grade: In class quizzes 6%, Homework 24%..."
-    for m in re.finditer(r"(?:Grading|Course\s+grade)\s*:\s*([^.]+?)(?=\n|$|Course\s+grades|Video|Regrade|Disabilities)", text[:3000], re.I | re.DOTALL):
+    # "Exams (2): 30% (15% each)" -> Exam 1, Exam 2 at 15% each
+    for m in re.finditer(r"Exams?\s*\(\s*(\d+)\s*\)\s*:\s*(\d{1,3})\s*%\s*\(\s*(\d{1,3})\s*%\s*each\s*\)", text[:4000], re.I):
+        num, total, each = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        if 1 <= num <= 5 and 1 <= each <= 100:
+            cid = "exams"
+            add_category(cid, "Exams", total)
+            for i in range(1, num + 1):
+                add_assessment(f"exam_{i}", f"Exam {i}", cid, "midterm", each)
+
+    # "Three Tests (15% each): 45%" -> Test 1, 2, 3 at 15% each
+    for m in re.finditer(r"(?:Three|(\d))\s+Tests?\s*\(\s*(\d{1,3})\s*%\s*each\s*\)\s*:\s*(\d{1,3})\s*%", text[:4000], re.I):
+        num_str, each, total = m.group(1), int(m.group(2)), int(m.group(3))
+        num = int(num_str) if num_str else 3
+        if 2 <= num <= 5 and 1 <= each <= 100:
+            cid = "tests"
+            add_category(cid, "Tests", total)
+            for i in range(1, num + 1):
+                add_assessment(f"test_{i}", f"Test {i}", cid, "midterm", each)
+
+    # "Grades" section (no colon): "Grades\nYour performance...\nQuizzes: 10%\nTutorial Exercises: 15%..."
+    for m in re.finditer(r"(?:^|\n)\s*Grades\s*\n(.*?)(?=\n\s*(?:Study\s+Groups|Academic\s+Misconduct|Your\s+Responsibilities)|\Z)", text[:12000], re.I | re.DOTALL):
+        block = m.group(1)
+        for item in re.finditer(r"([A-Za-z][A-Za-z0-9\s\-]+?)\s*:\s*(\d{1,3})\s*%", block, re.I):
+            name, pct = item.group(1).strip(), int(item.group(2))
+            if pct > 100 or len(name) < 2 or len(name) > 45:
+                continue
+            if any(w in name.lower() for w in ("grading", "total", "course", "each", "three tests", "exams (")):
+                continue
+            name = re.sub(r"\s+", " ", name)
+            cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
+            atype = "midterm" if "test" in name.lower() else "quiz" if "quiz" in name.lower() else "assignment"
+            add_category(cid, name, pct)
+            add_assessment(cid + "_1", name, cid, atype, pct)
+        for item in re.finditer(r"Three\s+Tests?\s*\(\s*(\d{1,3})\s*%\s*each\s*\)\s*:\s*(\d{1,3})\s*%", block, re.I):
+            each, total = int(item.group(1)), int(item.group(2))
+            if 1 <= each <= 100:
+                cid = "tests"
+                add_category(cid, "Tests", total)
+                for i in range(1, 4):
+                    add_assessment(f"test_{i}", f"Test {i}", cid, "midterm", each)
+
+    # "Grading: 30 % Assignments, 15 % Test 1..." or "Course grade: In class quizzes 6%, Homework 24%..." or "Grades:" section
+    # Allow block to end at period (e.g. "Test 3: 25%.") or newline
+    for m in re.finditer(r"(?:Grading|Course\s+grade|Grades?)\s*:\s*([^.]+?)(?=\.|\n|$|Course\s+grades|Video|Regrade|Disabilities|Study\s+Groups)", text[:3000], re.I | re.DOTALL):
         block = m.group(1)
         for item in re.finditer(r"(\d{1,3})\s*%\s+([A-Za-z][A-Za-z0-9\s\-]+?)(?=\s*,\s*\d|\s*,\s*and|\s+and\s+|\s*$|\n)", block, re.I):
             pct, name = int(item.group(1)), item.group(2).strip()
@@ -754,6 +806,8 @@ def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
                 continue
             if "highest two test" in name.lower() or "test scores" in name.lower():
                 continue
+            if "three tests" in name.lower() or "exams (" in name.lower():
+                continue  # Handled by Exams (2)/Three Tests patterns above
             name = re.sub(r"\s+", " ", name)
             cid = re.sub(r"\s+", "_", name.lower())[:28].rstrip("_")
             atype = "midterm" if "midterm" in name.lower() else "final" if "final" in name.lower() else "exam" if "test" in name.lower() or "exam" in name.lower() else "project" if "project" in name.lower() or "paper" in name.lower() else "participation" if "presentation" in name.lower() or "participation" in name.lower() else "quiz" if "quiz" in name.lower() else "assignment"

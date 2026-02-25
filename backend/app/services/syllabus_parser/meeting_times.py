@@ -241,6 +241,8 @@ def parse_meeting_times(text: str) -> list:
         prev = text[max(0, m.start() - 80) : m.start()]
         if re.search(r"Office\s+hours\s*:.*[;:]?\s*$|;\s*$", prev, re.I):
             continue  # Skip TuTh in "Office hours: ...; TuTh" context
+        if re.search(r"Time\s*:\s*", prev, re.I):
+            continue  # Skip - let "Time: TTh ... Place:" pattern handle it
         h1, m1 = int(m.group(2)), m.group(3) or "00"
         h2, m2 = int(m.group(4)), m.group(5) or "00"
         if re.search(r"p\.?m\.?|pm\b", m.group(0), re.I):
@@ -252,6 +254,8 @@ def parse_meeting_times(text: str) -> list:
             h1, h2 = h1 + 12, h2 + 12
         start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
         loc = (m.group(6) or "").strip()
+        if re.match(r"^\d{1,2}\.?\s*(?:Place)?$", loc, re.I):
+            continue  # Skip "30. Place" or "12" - wrong capture from "Time: TTh 11:00-12:30. Place:"
         if loc and len(loc) > 2 and re.search(r"\d", loc) and len(loc) < 50:
             loc = _abbreviate_location(loc)
         for day in ["TU", "TH"]:
@@ -554,7 +558,7 @@ def parse_meeting_times(text: str) -> list:
                         "type": "lecture",
                     })
 
-    # "Class Meetings: MWF 12:00-1:00pm, GSB 2.126"
+    # "Class Meetings: MWF 12:00-1:00pm, GSB 2.126" (12:00-1:00pm = 12:00-13:00)
     if not any(m.get("type") == "lecture" for m in meetings):
         for m in re.finditer(
             r"Class\s+Meetings?\s*:\s*(MWF|MW|TR|TTH|TTh)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?(?:pm|am|PM|AM)?\s*,\s*([A-Za-z0-9][A-Za-z0-9\-\. ]*)",
@@ -563,8 +567,11 @@ def parse_meeting_times(text: str) -> list:
         ):
             h1, m1 = int(m.group(2)), m.group(3) or "00"
             h2, m2 = int(m.group(4)), m.group(5) or "00"
-            if re.search(r"pm|PM", m.group(0), re.I) and h1 < 12:
-                h1, h2 = h1 + 12, h2 + 12
+            if re.search(r"pm|PM", m.group(0), re.I):
+                if h1 < 12:
+                    h1 += 12
+                if h2 < 12:
+                    h2 += 12
             elif not re.search(r"am|AM", m.group(0), re.I) and 1 <= h1 <= 7 and 1 <= h2 <= 7:
                 h1, h2 = h1 + 12, h2 + 12
             start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
@@ -747,10 +754,39 @@ def parse_meeting_times(text: str) -> list:
                         "type": "lecture",
                     })
 
+    # "Tuesdays and Thursdays, 3:30 to 5:30, in room RLM 5.114" or "Tuesdays and Thursdays, 3:30 to 5:30, room TBA"
+    if not any(m.get("type") == "lecture" for m in meetings):
+        for m in re.finditer(
+            r"Tuesdays?\s+and\s+Thursdays?\s*,\s*(\d{1,2})[\:]?(\d{2})?\s+to\s+(\d{1,2})[\:]?(\d{2})?\s*,\s*(?:in\s+room\s+)?([A-Za-z0-9][A-Za-z0-9\-\. ]{1,45})",
+            text[:10000],
+            re.I,
+        ):
+            h1, m1 = int(m.group(1)), m.group(2) or "00"
+            h2, m2 = int(m.group(3)), m.group(4) or "00"
+            if 1 <= h1 <= 7 and 1 <= h2 <= 7:
+                h1, h2 = h1 + 12, h2 + 12
+            start, end = f"{h1:02d}:{m1}", f"{h2:02d}:{m2}"
+            loc = (m.group(5) or "").strip()
+            if loc and (re.search(r"\d", loc) or "TBA" in loc.upper()) and len(loc) < 50:
+                loc = _normalize_location(loc) or loc
+                for day in ["TU", "TH"]:
+                    if day not in seen_days:
+                        seen_days.add(day)
+                        meetings.append({
+                            "id": f"mt-{len(meetings)+1}",
+                            "day_of_week": day,
+                            "start_time": start,
+                            "end_time": end,
+                            "timezone": "America/Los_Angeles",
+                            "location": loc,
+                            "type": "lecture",
+                        })
+                break
+
     # "Time: TTh 11:00 - 12:30. Place: CAL 100" or "Time: MW 9:30-11:00am"
     if not meetings:
         for m in re.finditer(
-            r"Time\s*:\s*(TTh|TTH|TR|MWF|MW)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:\.|am|pm|AM|PM)?\s*(?:\.\s*Place:\s*([A-Za-z0-9\s\-\.]+))?",
+            r"Time\s*:\s*(TTh|TTH|TR|MWF|MW)\s+(\d{1,2})[\:]?(\d{2})?\s*[-–]\s*(\d{1,2})[\:]?(\d{2})?\s*(?:\.|am|pm|AM|PM)?\s*(?:\s*\.?\s*Place:\s*([A-Za-z0-9\s\-\.]+))?",
             text[:3000],
             re.I,
         ):
