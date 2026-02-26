@@ -158,11 +158,22 @@ def login():
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
-        cur.execute(
-            "SELECT id, username, password_hash, security_setup_done FROM Users "
-            "WHERE username = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
-            (username,),
-        )
+        try:
+            cur.execute(
+                "SELECT id, username, password_hash, security_setup_done FROM Users "
+                "WHERE username = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
+                (username,),
+            )
+        except Exception as e:
+            if "is_disabled" in str(e) and "Unknown column" in str(e):
+                # Migration 003 not applied yet; run without is_disabled filter
+                cur.execute(
+                    "SELECT id, username, password_hash, security_setup_done FROM Users "
+                    "WHERE username = %s",
+                    (username,),
+                )
+            else:
+                raise
         row = cur.fetchone()
         if not row:
             return jsonify({"error": "invalid credentials"}), 401

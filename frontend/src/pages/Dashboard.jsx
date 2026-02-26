@@ -280,9 +280,9 @@ export default function Dashboard() {
                   <CourseCard
                     course={{
                       id: c.id,
-                      name: c.course_name || c.name,
+                      course_name: c.course_name || c.name || 'Course',
                       term: '',
-                      assignmentCount: c.assignment_count ?? 0,
+                      assignment_count: c.assignment_count ?? 0,
                     }}
                     onDelete={() => handleDeleteCourse(c.id)}
                   />
