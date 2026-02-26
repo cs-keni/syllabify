@@ -131,7 +131,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6 sm:space-y-10">
       {showPlaceholderModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/20 animate-fade-in"
@@ -170,30 +170,32 @@ export default function Dashboard() {
         </p>
       </div>
 
-      <div className="rounded-card bg-surface-elevated border border-border p-4 shadow-card animate-fade-in [animation-delay:100ms]">
+      <div className="rounded-card bg-surface-elevated border border-border p-3 sm:p-4 shadow-card animate-fade-in [animation-delay:100ms]">
         <TermSelector onTermChange={handleTermChange} />
       </div>
 
-      <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in [animation-delay:200ms]">
+      <section className="rounded-card bg-surface-elevated border border-border p-4 sm:p-6 shadow-card animate-fade-in [animation-delay:200ms]">
         <div className="flex items-center gap-2 mb-3">
           <h2 className="text-sm font-medium text-ink">This week</h2>
           <span className="text-xs text-ink-subtle bg-surface-muted rounded-button px-2 py-0.5">
             Placeholder
           </span>
         </div>
-        <div className="flex gap-4 items-end">
-          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => (
-            <div key={day} className="flex-1 flex flex-col items-center gap-1">
-              <div
-                className="w-full rounded-t min-h-[4px] bg-accent-muted max-h-24 origin-bottom animate-bar-grow"
-                style={{
-                  height: `${[4, 6, 2, 5, 3, 0, 0][i]}rem`,
-                  animationDelay: `${i * 120}ms`,
-                }}
-              />
-              <span className="text-xs text-ink-subtle">{day}</span>
-            </div>
-          ))}
+        <div className="overflow-x-auto">
+          <div className="flex gap-4 items-end min-w-[420px]">
+            {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => (
+              <div key={day} className="flex-1 flex flex-col items-center gap-1">
+                <div
+                  className="w-full rounded-t min-h-[4px] bg-accent-muted max-h-24 origin-bottom animate-bar-grow"
+                  style={{
+                    height: `${[4, 6, 2, 5, 3, 0, 0][i]}rem`,
+                    animationDelay: `${i * 120}ms`,
+                  }}
+                />
+                <span className="text-xs text-ink-subtle">{day}</span>
+              </div>
+            ))}
+          </div>
         </div>
         <p className="mt-3 text-xs text-ink-subtle">
           Hours of work scheduled this week.
@@ -202,8 +204,8 @@ export default function Dashboard() {
 
       <div className="grid gap-8 lg:grid-cols-2">
         {/* Upcoming (placeholder) */}
-        <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:400ms]">
-          <div className="flex items-center justify-between mb-4">
+        <section className="rounded-card bg-surface-elevated border border-border p-4 sm:p-6 shadow-card animate-fade-in-up [animation-delay:400ms]">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-medium text-ink">Upcoming</h2>
               <span className="text-xs text-ink-subtle bg-surface-muted rounded-button px-2 py-0.5">
@@ -224,16 +226,16 @@ export default function Dashboard() {
         </section>
 
         {/* Courses section */}
-        <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:700ms]">
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+        <section className="rounded-card bg-surface-elevated border border-border p-4 sm:p-6 shadow-card animate-fade-in-up [animation-delay:700ms]">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
             <h2 className="text-sm font-medium text-ink">Courses</h2>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
               <label htmlFor="sort-courses" className="text-xs text-ink-muted">Sort:</label>
               <select
                 id="sort-courses"
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value)}
-                className="rounded-input border border-border bg-surface px-2 py-1 text-xs"
+                className="rounded-input border border-border bg-surface px-2 py-1 text-xs flex-1 sm:flex-none"
               >
                 <option value="name">Name</option>
                 <option value="count-desc">Assignments (most)</option>
@@ -244,7 +246,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => setAdding(true)}
-                className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-200"
+                className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-200 self-start sm:self-auto"
               >
                 + Add course
               </button>
@@ -255,7 +257,7 @@ export default function Dashboard() {
           {adding && (
             <form
               onSubmit={handleAddCourse}
-              className="flex gap-2 mb-4 animate-fade-in"
+              className="flex flex-col sm:flex-row gap-2 mb-4 animate-fade-in"
             >
               <input
                 ref={inputRef}
@@ -263,12 +265,12 @@ export default function Dashboard() {
                 value={newCourseName}
                 onChange={e => setNewCourseName(e.target.value)}
                 placeholder="e.g. CS 422"
-                className="flex-1 rounded-input border border-border bg-surface px-3 py-1.5 text-sm text-ink placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
+                className="w-full sm:flex-1 rounded-input border border-border bg-surface px-3 py-1.5 text-sm text-ink placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
               />
               <button
                 type="submit"
                 disabled={saving || !newCourseName.trim()}
-                className="rounded-button bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50 transition-colors"
+                className="rounded-button bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50 transition-colors w-full sm:w-auto"
               >
                 {saving ? 'Saving…' : 'Save'}
               </button>
@@ -278,7 +280,7 @@ export default function Dashboard() {
                   setAdding(false);
                   setNewCourseName('');
                 }}
-                className="rounded-button px-3 py-1.5 text-sm text-ink-muted hover:text-ink transition-colors"
+                className="rounded-button px-3 py-1.5 text-sm text-ink-muted hover:text-ink transition-colors w-full sm:w-auto"
               >
                 Cancel
               </button>
