@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
+import ErrorBoundary from './components/ErrorBoundary';
 import Dashboard from './pages/Dashboard';
 import Upload from './pages/Upload';
 import Course from './pages/Course';
@@ -34,6 +35,7 @@ function AppRoutes() {
   const { isLoading } = useAuth();
   if (isLoading) return <Loading />;
   return (
+    <ErrorBoundary>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
@@ -59,6 +61,7 @@ function AppRoutes() {
         <Route path="*" element={<Navigate to="/app" replace />} />
       </Route>
     </Routes>
+    </ErrorBoundary>
   );
 }
 

@@ -4,7 +4,7 @@
  * DISCLAIMER: Project structure may change. Components/steps may be added or modified.
  */
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import SyllabusUpload from '../components/SyllabusUpload';
 import ParsedDataReview from '../components/ParsedDataReview';
@@ -67,7 +67,13 @@ export default function Upload() {
   return (
     <div className="space-y-8">
       <div className="animate-fade-in">
-        <h1 className="text-2xl font-semibold text-ink">Upload syllabus</h1>
+        <Link
+          to="/app"
+          className="text-sm text-ink-muted hover:text-ink transition-colors no-underline"
+        >
+          ← Dashboard
+        </Link>
+        <h1 className="mt-2 text-2xl font-semibold text-ink">Upload syllabus</h1>
         <p className="mt-1 text-sm text-ink-muted">
           {initialCourseName
             ? `Uploading syllabus for ${initialCourseName}.`

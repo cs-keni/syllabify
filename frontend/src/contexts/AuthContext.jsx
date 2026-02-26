@@ -35,6 +35,17 @@ export function AuthProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    const onUnauthorized = () => {
+      setToken(null);
+      setUser(null);
+      localStorage.removeItem(TOKEN_KEY);
+      window.location.href = '/login?expired=1';
+    };
+    window.addEventListener('auth:unauthorized', onUnauthorized);
+    return () => window.removeEventListener('auth:unauthorized', onUnauthorized);
+  }, []);
+
+  useEffect(() => {
     const t = localStorage.getItem(TOKEN_KEY);
     if (!t) {
       setIsLoading(false);

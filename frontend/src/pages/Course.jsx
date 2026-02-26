@@ -50,7 +50,7 @@ function getDatePresets() {
   ];
 }
 
-function AssignmentRow({ assignment, courseId, token, onUpdated, onRemoved }) {
+function AssignmentRow({ assignment, courseId, allAssignments, token, onUpdated, onRemoved }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(assignment.assignment_name);
   const [due, setDue] = useState(toInputDate(assignment.due_date));
@@ -121,23 +121,28 @@ function AssignmentRow({ assignment, courseId, token, onUpdated, onRemoved }) {
           placeholder="Name"
           className="flex-1 min-w-[120px] rounded-input border border-border bg-surface px-2 py-1 text-sm"
         />
-        <div className="flex items-center gap-1">
-          <input
-            type="date"
-            value={due}
-            onChange={e => setDue(e.target.value)}
-            className="rounded-input border border-border bg-surface px-2 py-1 text-sm"
-          />
-          {getDatePresets().slice(0, 3).map(p => (
-            <button
-              key={p.label}
-              type="button"
-              onClick={() => setDue(p.value)}
-              className="rounded-button border border-border px-1 py-0.5 text-xs text-ink-muted hover:text-ink"
-            >
-              {p.label}
-            </button>
-          ))}
+        <div>
+          <div className="flex items-center gap-1">
+            <input
+              type="date"
+              value={due}
+              onChange={e => setDue(e.target.value)}
+              className="rounded-input border border-border bg-surface px-2 py-1 text-sm"
+            />
+            {getDatePresets().slice(0, 3).map(p => (
+              <button
+                key={p.label}
+                type="button"
+                onClick={() => setDue(p.value)}
+                className="rounded-button border border-border px-1 py-0.5 text-xs text-ink-muted hover:text-ink"
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+          {due && (allAssignments || []).filter(a => a.id !== assignment.id).some(a => a.due_date && String(a.due_date).slice(0, 10) === due) && (
+            <p className="text-xs text-amber-600 mt-0.5">Same date as another assignment</p>
+          )}
         </div>
         <input
           type="number"
@@ -236,6 +241,18 @@ export default function Course() {
     refreshCourse().finally(() => setLoading(false));
   }, [courseId]);
 
+  useEffect(() => {
+    if (!course) return;
+    try {
+      const key = 'syllabify_recent_courses';
+      const stored = JSON.parse(localStorage.getItem(key) || '[]');
+      const entry = { id: course.id, course_name: course.course_name, term_name: course.term_name };
+      const filtered = stored.filter(c => c.id !== course.id);
+      const next = [entry, ...filtered].slice(0, 5);
+      localStorage.setItem(key, JSON.stringify(next));
+    } catch (_) {}
+  }, [course]);
+
   const handleDelete = async () => {
     setDeleting(true);
     try {
@@ -293,7 +310,7 @@ export default function Course() {
         refreshCourse={refreshCourse}
         navigate={navigate}
       />
-      <AddAssignmentForm courseId={courseId} token={token} onAdded={refreshCourse} />
+      <AddAssignmentForm courseId={courseId} courseAssignments={course.assignments} token={token} onAdded={refreshCourse} />
       <PasteParseSection courseId={courseId} token={token} onAdded={refreshCourse} />
     </div>
   );
@@ -308,7 +325,7 @@ function CourseHeader({
   handleDelete,
 }) {
   return (
-    <div className="flex items-start justify-between gap-4">
+    <div className="sticky top-14 z-10 -mx-4 -mt-6 px-4 pt-6 pb-4 -mb-4 bg-surface border-b border-border flex items-start justify-between gap-4">
       <div>
         <nav className="flex items-center gap-1.5 text-sm text-ink-muted" aria-label="Breadcrumb">
           <Link to="/app" className="hover:text-ink transition-colors no-underline">
@@ -370,6 +387,13 @@ function CourseHeader({
 }
 
 function AssignmentsSection({ course, token, refreshCourse, navigate }) {
+  const [sortBy, setSortBy] = useState('due');
+  const assignments = [...(course.assignments || [])].sort((a, b) => {
+    if (sortBy === 'name') return (a.assignment_name || '').localeCompare(b.assignment_name || '');
+    const ad = a.due_date ? new Date(a.due_date) : new Date(0);
+    const bd = b.due_date ? new Date(b.due_date) : new Date(0);
+    return sortBy === 'due-desc' ? bd - ad : ad - bd;
+  });
   return (
     <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card">
       <div className="flex items-center justify-between mb-4">
@@ -379,17 +403,30 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
             {course.assignments?.length ?? 0}
           </span>
         </h2>
-        <button
-          type="button"
-          onClick={() =>
-            navigate('/app/upload', {
-              state: { courseId: course.id, courseName: course.course_name },
-            })
-          }
-          className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
-        >
-          + Upload syllabus
-        </button>
+        <div className="flex items-center gap-2">
+          <label htmlFor="sort-assignments" className="text-xs text-ink-muted">Sort:</label>
+          <select
+            id="sort-assignments"
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value)}
+            className="rounded-input border border-border bg-surface px-2 py-1 text-xs"
+          >
+            <option value="due">Due date</option>
+            <option value="due-desc">Due (latest first)</option>
+            <option value="name">Name</option>
+          </select>
+          <button
+            type="button"
+            onClick={() =>
+              navigate('/app/upload', {
+                state: { courseId: course.id, courseName: course.course_name },
+              })
+            }
+            className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
+          >
+            + Upload syllabus
+          </button>
+        </div>
       </div>
 
       {!course.assignments?.length ? (
@@ -410,11 +447,12 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
         </div>
       ) : (
         <ul className="space-y-2">
-          {course.assignments.map(a => (
+          {assignments.map(a => (
             <AssignmentRow
               key={a.id}
               assignment={a}
               courseId={course.id}
+              allAssignments={course.assignments}
               token={token}
               onUpdated={refreshCourse}
               onRemoved={refreshCourse}
@@ -426,7 +464,7 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
   );
 }
 
-function AddAssignmentForm({ courseId, token, onAdded }) {
+function AddAssignmentForm({ courseId, courseAssignments, token, onAdded }) {
   const [expanded, setExpanded] = useState(false);
   const [name, setName] = useState('');
   const [due, setDue] = useState('');
@@ -503,6 +541,9 @@ function AddAssignmentForm({ courseId, token, onAdded }) {
                 </button>
               ))}
             </div>
+            {due && (courseAssignments || []).some(a => a.due_date && String(a.due_date).slice(0, 10) === due) && (
+              <p className="text-xs text-amber-600 mt-1">Another assignment is due on this date.</p>
+            )}
           </div>
           <div>
             <label className="block text-xs text-ink-muted mb-0.5">Hours</label>

@@ -53,7 +53,25 @@ export default function Dashboard() {
   const [adding, setAdding] = useState(false);
   const [newCourseName, setNewCourseName] = useState('');
   const [saving, setSaving] = useState(false);
+  const [sortBy, setSortBy] = useState('name');
   const inputRef = useRef(null);
+  const [recentCourses, setRecentCourses] = useState([]);
+
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem('syllabify_recent_courses') || '[]');
+      setRecentCourses(stored.filter(c => c.id && c.course_name));
+    } catch (_) {
+      setRecentCourses([]);
+    }
+  }, [courses]);
+
+  const sortedCourses = [...courses].sort((a, b) => {
+    if (sortBy === 'name') return (a.course_name || '').localeCompare(b.course_name || '');
+    const ac = a.assignment_count ?? 0;
+    const bc = b.assignment_count ?? 0;
+    return sortBy === 'count-desc' ? bc - ac : ac - bc;
+  });
 
   const closePlaceholderModal = () => {
     setShowPlaceholderModal(false);
@@ -207,8 +225,21 @@ export default function Dashboard() {
 
         {/* Courses section */}
         <section className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:700ms]">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
             <h2 className="text-sm font-medium text-ink">Courses</h2>
+            <div className="flex items-center gap-2">
+              <label htmlFor="sort-courses" className="text-xs text-ink-muted">Sort:</label>
+              <select
+                id="sort-courses"
+                value={sortBy}
+                onChange={e => setSortBy(e.target.value)}
+                className="rounded-input border border-border bg-surface px-2 py-1 text-xs"
+              >
+                <option value="name">Name</option>
+                <option value="count-desc">Assignments (most)</option>
+                <option value="count-asc">Assignments (least)</option>
+              </select>
+            </div>
             {currentTermId && !adding && (
               <button
                 type="button"
@@ -288,7 +319,24 @@ export default function Dashboard() {
                 </button>
               </div>
             ) : (
-              courses.map((c, i) => (
+              <>
+                {recentCourses.length > 0 && (
+                  <div className="mb-4">
+                    <p className="text-xs text-ink-muted mb-2">Recently viewed</p>
+                    <div className="flex flex-wrap gap-1">
+                      {recentCourses.map(c => (
+                        <Link
+                          key={c.id}
+                          to={`/app/courses/${c.id}`}
+                          className="rounded-button border border-border bg-surface px-2 py-1 text-xs text-ink-muted hover:text-ink hover:bg-surface-muted no-underline"
+                        >
+                          {c.course_name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {sortedCourses.map((c, i) => (
                 <div
                   key={c.id}
                   className="animate-fade-in-up"
@@ -304,7 +352,8 @@ export default function Dashboard() {
                     onDelete={() => handleDeleteCourse(c.id)}
                   />
                 </div>
-              ))
+              ))}
+              </>
             )}
           </div>
         </section>

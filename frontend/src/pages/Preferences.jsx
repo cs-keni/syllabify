@@ -3,6 +3,7 @@
  * Backend integration: Phase 4 (Account), Phase 6 (study prefs).
  */
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { getProfile, updateProfile, getPreferences, updatePreferences } from '../api/client';
 import toast from 'react-hot-toast';
@@ -79,7 +80,13 @@ export default function Preferences() {
   return (
     <div className="space-y-8">
       <div className="animate-fade-in">
-        <h1 className="text-2xl font-semibold text-ink">Preferences</h1>
+        <Link
+          to="/app"
+          className="text-sm text-ink-muted hover:text-ink transition-colors no-underline"
+        >
+          ← Dashboard
+        </Link>
+        <h1 className="mt-2 text-2xl font-semibold text-ink">Preferences</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Manage your account and study preferences.
         </p>

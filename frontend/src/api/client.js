@@ -8,6 +8,19 @@
 
 const BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
+/** Like fetch but on 401 from authenticated API calls, clears token and dispatches auth:unauthorized. */
+async function apiFetch(url, opts = {}) {
+  const res = await fetch(url, opts);
+  const hadAuth = opts.headers && (opts.headers.Authorization || opts.headers.authorization);
+  if (res.status === 401 && hadAuth && typeof url === 'string' && url.includes('/api/')) {
+    try {
+      localStorage.removeItem('syllabify_token');
+      window.dispatchEvent(new CustomEvent('auth:unauthorized', { detail: { message: 'Session expired. Please sign in again.' } }));
+    } catch (_) {}
+  }
+  return res;
+}
+
 /** Returns fetch headers. If withAuth and token provided, adds Authorization: Bearer. */
 function headers(withAuth = false, token = null) {
   const h = { 'Content-Type': 'application/json' };
@@ -22,7 +35,7 @@ function headers(withAuth = false, token = null) {
 
 /** POST to /api/auth/register. Returns { id, username, security_setup_done }. Throws on error. */
 export async function register(username, password) {
-  const res = await fetch(`${BASE}/api/auth/register`, {
+  const res = await apiFetch(`${BASE}/api/auth/register`, {
     method: 'POST',
     headers: headers(false),
     body: JSON.stringify({ username, password }),
@@ -34,7 +47,7 @@ export async function register(username, password) {
 
 /** POST to /api/auth/login. Returns { token, username, security_setup_done }. Throws on error. */
 export async function login(username, password) {
-  const res = await fetch(`${BASE}/api/auth/login`, {
+  const res = await apiFetch(`${BASE}/api/auth/login`, {
     method: 'POST',
     headers: headers(false),
     body: JSON.stringify({ username, password }),
@@ -46,7 +59,7 @@ export async function login(username, password) {
 
 /** POST to /api/auth/security-setup with JWT. Saves security Q&A. Throws on error. */
 export async function securitySetup(token, questions) {
-  const res = await fetch(`${BASE}/api/auth/security-setup`, {
+  const res = await apiFetch(`${BASE}/api/auth/security-setup`, {
     method: 'POST',
     headers: headers(true, token),
     body: JSON.stringify({ questions }),
@@ -88,7 +101,7 @@ export async function parseSyllabus(token, { file, text, mode = 'rule' }) {
     throw new Error('provide file or text');
   }
 
-  const res = await fetch(url.toString(), {
+  const res = await apiFetch(url.toString(), {
     method: 'POST',
     headers: reqHeaders,
     body,
@@ -110,7 +123,7 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
   let payload;
   if (typeof termIdOrPayload === 'object') {
     payload = termIdOrPayload;
-    const termsRes = await fetch(`${BASE}/api/terms`, {
+    const termsRes = await apiFetch(`${BASE}/api/terms`, {
       headers: headers(true),
       credentials: 'include',
     });
@@ -144,7 +157,7 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
 
 /** POST /api/courses/:courseId/meetings. Bulk-save meeting times (from parsed syllabus). */
 export async function addMeetings(courseId, meeting_times) {
-  const res = await fetch(`${BASE}/api/courses/${courseId}/meetings`, {
+  const res = await apiFetch(`${BASE}/api/courses/${courseId}/meetings`, {
     method: 'POST',
     headers: headers(true),
     body: JSON.stringify({ meeting_times }),
@@ -159,7 +172,7 @@ export async function addMeetings(courseId, meeting_times) {
 export async function getProfile(token) {
   const t = token || (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
   if (!t) return null;
-  const res = await fetch(`${BASE}/api/users/me`, {
+  const res = await apiFetch(`${BASE}/api/users/me`, {
     headers: headers(true, t),
     credentials: 'include',
   });
@@ -170,7 +183,7 @@ export async function getProfile(token) {
 
 /** GET /api/admin/users with JWT. Admin only. Returns { users: [...] }. */
 export async function getAdminUsers(token) {
-  const res = await fetch(`${BASE}/api/admin/users`, {
+  const res = await apiFetch(`${BASE}/api/admin/users`, {
     headers: headers(true, token),
     credentials: 'include',
   });
@@ -181,7 +194,7 @@ export async function getAdminUsers(token) {
 
 /** PUT /api/admin/users/:id/disable. Body: { disabled }. Admin only. */
 export async function disableUser(token, userId, disabled) {
-  const res = await fetch(`${BASE}/api/admin/users/${userId}/disable`, {
+  const res = await apiFetch(`${BASE}/api/admin/users/${userId}/disable`, {
     method: 'PUT',
     headers: headers(true, token),
     body: JSON.stringify({ disabled: !!disabled }),
@@ -194,7 +207,7 @@ export async function disableUser(token, userId, disabled) {
 
 /** PUT /api/admin/users/:id/reset-security. Admin only. */
 export async function resetUserSecurity(token, userId) {
-  const res = await fetch(`${BASE}/api/admin/users/${userId}/reset-security`, {
+  const res = await apiFetch(`${BASE}/api/admin/users/${userId}/reset-security`, {
     method: 'PUT',
     headers: headers(true, token),
     body: JSON.stringify({}),
@@ -209,7 +222,7 @@ export async function resetUserSecurity(token, userId) {
 export async function getPreferences(token) {
   const t = token || (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
   if (!t) return null;
-  const res = await fetch(`${BASE}/api/users/me/preferences`, {
+  const res = await apiFetch(`${BASE}/api/users/me/preferences`, {
     headers: headers(true, t),
     credentials: 'include',
   });
@@ -220,7 +233,7 @@ export async function getPreferences(token) {
 
 /** PUT /api/users/me/preferences. Body: { work_start?, work_end?, preferred_days?, max_hours_per_day? }. */
 export async function updatePreferences(token, prefs) {
-  const res = await fetch(`${BASE}/api/users/me/preferences`, {
+  const res = await apiFetch(`${BASE}/api/users/me/preferences`, {
     method: 'PUT',
     headers: headers(true, token),
     body: JSON.stringify(prefs),
@@ -233,7 +246,7 @@ export async function updatePreferences(token, prefs) {
 
 /** PUT /api/users/me with JWT. Body: { email }. Returns updated profile. */
 export async function updateProfile(token, { email }) {
-  const res = await fetch(`${BASE}/api/users/me`, {
+  const res = await apiFetch(`${BASE}/api/users/me`, {
     method: 'PUT',
     headers: headers(true, token),
     body: JSON.stringify({ email: email || null }),
@@ -252,7 +265,7 @@ export async function me(token) {
       ? localStorage.getItem('syllabify_token')
       : null);
   if (!t) return null;
-  const res = await fetch(`${BASE}/api/auth/me`, {
+  const res = await apiFetch(`${BASE}/api/auth/me`, {
     headers: headers(true, t),
     credentials: 'include',
   });
@@ -263,7 +276,7 @@ export async function me(token) {
 
 /** GET /api/terms. Returns { terms: [...] }. Throws on error. */
 export async function getTerms() {
-  const res = await fetch(`${BASE}/api/terms`, {
+  const res = await apiFetch(`${BASE}/api/terms`, {
     headers: headers(true),
     credentials: 'include',
   });
@@ -274,7 +287,7 @@ export async function getTerms() {
 
 /** POST /api/terms. Creates new term. Returns { term: {...} }. Throws on error. */
 export async function createTerm(termData) {
-  const res = await fetch(`${BASE}/api/terms`, {
+  const res = await apiFetch(`${BASE}/api/terms`, {
     method: 'POST',
     headers: headers(true),
     body: JSON.stringify(termData),
@@ -287,7 +300,7 @@ export async function createTerm(termData) {
 
 /** GET /api/terms/:id. Returns { term: {...} }. Throws on error. */
 export async function getTerm(termId) {
-  const res = await fetch(`${BASE}/api/terms/${termId}`, {
+  const res = await apiFetch(`${BASE}/api/terms/${termId}`, {
     headers: headers(true),
     credentials: 'include',
   });
@@ -298,7 +311,7 @@ export async function getTerm(termId) {
 
 /** PUT /api/terms/:id. Updates term. Returns { term: {...} }. Throws on error. */
 export async function updateTerm(termId, termData) {
-  const res = await fetch(`${BASE}/api/terms/${termId}`, {
+  const res = await apiFetch(`${BASE}/api/terms/${termId}`, {
     method: 'PUT',
     headers: headers(true),
     body: JSON.stringify(termData),
@@ -311,7 +324,7 @@ export async function updateTerm(termId, termData) {
 
 /** DELETE /api/terms/:id. Deletes term. Returns { message: "..." }. Throws on error. */
 export async function deleteTerm(termId) {
-  const res = await fetch(`${BASE}/api/terms/${termId}`, {
+  const res = await apiFetch(`${BASE}/api/terms/${termId}`, {
     method: 'DELETE',
     headers: headers(true),
     credentials: 'include',
@@ -323,7 +336,7 @@ export async function deleteTerm(termId) {
 
 /** POST /api/terms/:id/activate. Sets term as active. Returns { term: {...} }. Throws on error. */
 export async function activateTerm(termId) {
-  const res = await fetch(`${BASE}/api/terms/${termId}/activate`, {
+  const res = await apiFetch(`${BASE}/api/terms/${termId}/activate`, {
     method: 'POST',
     headers: headers(true),
     credentials: 'include',
@@ -335,7 +348,7 @@ export async function activateTerm(termId) {
 
 /** GET /api/terms/:termId/courses. Returns { courses: [...] }. */
 export async function getCourses(termId) {
-  const res = await fetch(`${BASE}/api/terms/${termId}/courses`, {
+  const res = await apiFetch(`${BASE}/api/terms/${termId}/courses`, {
     headers: headers(true),
     credentials: 'include',
   });
@@ -348,7 +361,7 @@ export async function getCourses(termId) {
 export async function createCourse(termId, courseName, studyHoursPerWeek = null) {
   const body = { course_name: courseName };
   if (studyHoursPerWeek != null && studyHoursPerWeek !== '') body.study_hours_per_week = studyHoursPerWeek;
-  const res = await fetch(`${BASE}/api/terms/${termId}/courses`, {
+  const res = await apiFetch(`${BASE}/api/terms/${termId}/courses`, {
     method: 'POST',
     headers: headers(true),
     body: JSON.stringify(body),
@@ -361,7 +374,7 @@ export async function createCourse(termId, courseName, studyHoursPerWeek = null)
 
 /** GET /api/courses/:courseId. Returns course with assignments array. */
 export async function getCourse(courseId) {
-  const res = await fetch(`${BASE}/api/courses/${courseId}`, {
+  const res = await apiFetch(`${BASE}/api/courses/${courseId}`, {
     headers: headers(true),
     credentials: 'include',
   });
@@ -384,7 +397,7 @@ export async function updateCourse(token, courseId, payload) {
   };
   if (study_hours_per_week != null && study_hours_per_week !== '')
     body.study_hours_per_week = study_hours_per_week;
-  const res = await fetch(`${BASE}/api/courses/${courseId}`, {
+  const res = await apiFetch(`${BASE}/api/courses/${courseId}`, {
     method: 'PUT',
     headers: headers(true, token),
     body: JSON.stringify(body),
@@ -397,7 +410,7 @@ export async function updateCourse(token, courseId, payload) {
 
 /** DELETE /api/courses/:courseId. Returns { ok: true }. */
 export async function deleteCourse(courseId) {
-  const res = await fetch(`${BASE}/api/courses/${courseId}`, {
+  const res = await apiFetch(`${BASE}/api/courses/${courseId}`, {
     method: 'DELETE',
     headers: headers(true),
     credentials: 'include',
@@ -409,7 +422,7 @@ export async function deleteCourse(courseId) {
 
 /** PATCH /api/assignments/:id. Body: { assignment_name?, due_date?, hours?, type? }. */
 export async function updateAssignment(token, assignmentId, body) {
-  const res = await fetch(`${BASE}/api/assignments/${assignmentId}`, {
+  const res = await apiFetch(`${BASE}/api/assignments/${assignmentId}`, {
     method: 'PATCH',
     headers: headers(true, token),
     body: JSON.stringify(body || {}),
@@ -422,7 +435,7 @@ export async function updateAssignment(token, assignmentId, body) {
 
 /** DELETE /api/assignments/:id. */
 export async function deleteAssignment(token, assignmentId) {
-  const res = await fetch(`${BASE}/api/assignments/${assignmentId}`, {
+  const res = await apiFetch(`${BASE}/api/assignments/${assignmentId}`, {
     method: 'DELETE',
     headers: headers(true, token),
     credentials: 'include',
@@ -434,7 +447,7 @@ export async function deleteAssignment(token, assignmentId) {
 
 /** POST /api/courses/:courseId/assignments. Bulk-saves parsed assignments. */
 export async function addAssignments(courseId, assignments) {
-  const res = await fetch(`${BASE}/api/courses/${courseId}/assignments`, {
+  const res = await apiFetch(`${BASE}/api/courses/${courseId}/assignments`, {
     method: 'POST',
     headers: headers(true),
     body: JSON.stringify({ assignments }),

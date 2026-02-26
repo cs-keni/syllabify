@@ -5,12 +5,35 @@ import { useState } from 'react';
 import { parseSyllabus } from '../api/client';
 
 /** Renders upload/paste form. onComplete({ course_name, meeting_times, assignments }) when parse succeeds. */
+const ACCEPT = '.pdf,.docx,.txt';
+
 export default function SyllabusUpload({ onComplete, token }) {
   const [mode, setMode] = useState('file');
   const [file, setFile] = useState(null);
   const [paste, setPaste] = useState('');
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
+  const [dragOver, setDragOver] = useState(false);
+
+  const acceptFile = f => {
+    if (!f) return false;
+    const ext = (f.name || '').toLowerCase().slice(-4);
+    return ext === '.pdf' || ext === '.txt' || ext.endsWith('.docx');
+  };
+
+  const handleDrop = e => {
+    e.preventDefault();
+    setDragOver(false);
+    const f = e.dataTransfer?.files?.[0];
+    if (f && acceptFile(f)) setFile(f);
+  };
+
+  const handleDragOver = e => {
+    e.preventDefault();
+    setDragOver(true);
+  };
+
+  const handleDragLeave = () => setDragOver(false);
 
   /** Infer default hours from assessment type. */
   const hoursFromType = (type) => {
@@ -102,15 +125,22 @@ export default function SyllabusUpload({ onComplete, token }) {
 
       {mode === 'file' && (
         <div className="animate-fade-in">
-          <label className="block rounded-input border-2 border-dashed border-border bg-surface-muted p-8 text-center cursor-pointer hover:border-accent/40 hover:scale-[1.01] transition-all duration-200">
+          <label
+            className={`block rounded-input border-2 border-dashed p-8 text-center cursor-pointer transition-all duration-200 ${
+              dragOver ? 'border-accent bg-accent-muted/30' : 'border-border bg-surface-muted hover:border-accent/40'
+            }`}
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+          >
             <input
               type="file"
-              accept=".pdf,.docx,.txt"
+              accept={ACCEPT}
               className="hidden"
               onChange={e => setFile(e.target.files?.[0] || null)}
             />
             <span className="text-sm text-ink-muted">
-              {file ? file.name : 'Drop PDF, DOCX, or TXT — or click to browse'}
+              {file ? file.name : 'Drop PDF, DOCX, or TXT here — or click to browse'}
             </span>
           </label>
         </div>

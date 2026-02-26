@@ -2,16 +2,22 @@
  * Login page. Validates credentials via AuthContext, redirects to Dashboard or SecuritySetup.
  * DISCLAIMER: Project structure may change. Functions may be added or modified.
  */
-import { useState } from 'react';
-import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, Link, Navigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
+import toast from 'react-hot-toast';
 
 /** Login form. Uses AuthContext.login, redirects based on security_setup_done. */
 export default function Login() {
   const { user, securitySetupDone, login } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const expired = searchParams.get('expired');
+  useEffect(() => {
+    if (expired === '1') toast.error('Session expired. Please sign in again.');
+  }, [expired]);
   if (user && securitySetupDone) return <Navigate to="/app" replace />;
   if (user && !securitySetupDone)
     return <Navigate to="/security-setup" replace />;
