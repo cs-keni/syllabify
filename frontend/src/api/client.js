@@ -26,7 +26,9 @@ async function apiFetch(url, opts = {}) {
           detail: { message: 'Session expired. Please sign in again.' },
         })
       );
-    } catch (_) {}
+    } catch (_) {
+      // Ignore storage/event failures during forced logout handling.
+    }
   }
   return res;
 }
