@@ -1,6 +1,5 @@
 """User profile and settings. GET/PUT /api/users/me."""
 import re
-
 from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token, get_db

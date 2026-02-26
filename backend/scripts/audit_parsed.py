@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Audit all parsed.json files for completeness and schema consistency."""
 import json
+import os
 from pathlib import Path
 
 SYLLABUS_DIR = Path(__file__).parent.parent / "tests" / "fixtures" / "syllabus-data" / "syllabus"

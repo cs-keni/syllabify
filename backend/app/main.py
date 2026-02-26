@@ -17,8 +17,8 @@ from app.api.auth import bp as auth_bp
 from app.api.courses import bp as courses_bp
 from app.api.schedule import bp as schedule_bp
 from app.api.syllabus import bp as syllabus_bp
-from app.api.terms import bp as terms_bp
 from app.api.users import bp as users_bp
+from app.api.terms import bp as terms_bp
 
 app = Flask(__name__)
 # CORS: set FRONTEND_URL on Render to your Vercel URL (e.g. https://syllabify-iota.vercel.app)

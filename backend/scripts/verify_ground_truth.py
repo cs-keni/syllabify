@@ -4,6 +4,7 @@ Verify parsed.json ground truth against extracted text for test fixture accuracy
 Reports timezone mismatches, missing fields, and potential inaccuracies.
 """
 import json
+import re
 from pathlib import Path
 
 SYLLABUS_DIR = Path(__file__).parent.parent / "tests" / "fixtures" / "syllabus-data" / "syllabus"
@@ -77,7 +78,7 @@ def main():
     for cid, current, expected in tz_mismatches:
         print(f"  {cid}: has {current} -> should be {expected}")
 
-    print("\n=== SUMMARY ===")
+    print(f"\n=== SUMMARY ===")
     print(f"  Timezone mismatches: {len(tz_mismatches)}")
     print(f"  No extracted text: {len(missing_extracted)}")
     print(f"  Null/empty instructors: {len(null_instructors)}")
