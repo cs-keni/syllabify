@@ -5,6 +5,7 @@ import re
 
 from .constants import MONTHS
 
+
 def parse_assessments(text: str, folder: str, term: str | None = None) -> tuple:
     """Extract assessment categories and individual assessments."""
     categories = []
