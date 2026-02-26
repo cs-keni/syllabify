@@ -31,7 +31,26 @@ function toInputDate(d) {
   return x.toISOString().slice(0, 10);
 }
 
-function AssignmentRow({ assignment, token, onUpdated, onRemoved }) {
+function getDatePresets() {
+  const today = new Date();
+  const toYMD = d => d.toISOString().slice(0, 10);
+  const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+  const nextMonday = () => {
+    const d = new Date(today);
+    const day = d.getDay();
+    d.setDate(d.getDate() + (day === 0 ? 1 : 8 - day));
+    return d;
+  };
+  return [
+    { label: 'Today', value: toYMD(today) },
+    { label: 'Tomorrow', value: toYMD(addDays(today, 1)) },
+    { label: 'Next Mon', value: toYMD(nextMonday()) },
+    { label: '+1 wk', value: toYMD(addDays(today, 7)) },
+    { label: '+2 wks', value: toYMD(addDays(today, 14)) },
+  ];
+}
+
+function AssignmentRow({ assignment, courseId, token, onUpdated, onRemoved }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(assignment.assignment_name);
   const [due, setDue] = useState(toInputDate(assignment.due_date));
@@ -54,6 +73,25 @@ function AssignmentRow({ assignment, token, onUpdated, onRemoved }) {
       onUpdated?.();
     } catch (e) {
       toast.error(e.message || 'Failed to update');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDuplicate = async () => {
+    if (!courseId) return;
+    setSaving(true);
+    try {
+      await addAssignments(courseId, [{
+        name: (assignment.assignment_name || '') + ' (copy)',
+        due: assignment.due_date || null,
+        hours: (assignment.work_load || 0) / 4,
+        type: assignment.assignment_type || 'assignment',
+      }]);
+      toast.success('Assignment duplicated');
+      onUpdated?.();
+    } catch (e) {
+      toast.error(e.message || 'Failed to duplicate');
     } finally {
       setSaving(false);
     }
@@ -83,12 +121,24 @@ function AssignmentRow({ assignment, token, onUpdated, onRemoved }) {
           placeholder="Name"
           className="flex-1 min-w-[120px] rounded-input border border-border bg-surface px-2 py-1 text-sm"
         />
-        <input
-          type="date"
-          value={due}
-          onChange={e => setDue(e.target.value)}
-          className="rounded-input border border-border bg-surface px-2 py-1 text-sm"
-        />
+        <div className="flex items-center gap-1">
+          <input
+            type="date"
+            value={due}
+            onChange={e => setDue(e.target.value)}
+            className="rounded-input border border-border bg-surface px-2 py-1 text-sm"
+          />
+          {getDatePresets().slice(0, 3).map(p => (
+            <button
+              key={p.label}
+              type="button"
+              onClick={() => setDue(p.value)}
+              className="rounded-button border border-border px-1 py-0.5 text-xs text-ink-muted hover:text-ink"
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
         <input
           type="number"
           min="0.5"
@@ -127,13 +177,26 @@ function AssignmentRow({ assignment, token, onUpdated, onRemoved }) {
     );
   }
 
+  const isOverdue = assignment.due_date && new Date(assignment.due_date) < new Date(new Date().toDateString());
   return (
-    <li className="flex items-center justify-between px-3 py-2 rounded-button border border-border-subtle bg-surface text-sm group">
-      <span className="font-medium text-ink">{assignment.assignment_name}</span>
+    <li className={`flex items-center justify-between px-3 py-2 rounded-button border text-sm group ${isOverdue ? 'border-red-300 bg-red-50/50 dark:border-red-800 dark:bg-red-950/30' : 'border-border-subtle bg-surface'}`}>
+      <span className={`font-medium ${isOverdue ? 'text-red-600 dark:text-red-400' : 'text-ink'}`}>
+        {assignment.assignment_name}
+        {isOverdue && <span className="ml-2 text-xs font-normal text-red-500">Overdue</span>}
+      </span>
       <div className="flex items-center gap-2 shrink-0">
         <span className="text-ink-muted">
           {formatDate(assignment.due_date)} · {((assignment.work_load || 0) / 4).toFixed(1)}h
         </span>
+        <button
+          type="button"
+          onClick={handleDuplicate}
+          disabled={saving}
+          className="opacity-0 group-hover:opacity-100 rounded-button border border-border px-2 py-0.5 text-xs text-ink-muted hover:text-ink disabled:opacity-50 transition-opacity"
+          title="Duplicate"
+        >
+          Copy
+        </button>
         <button
           type="button"
           onClick={() => setEditing(true)}
@@ -187,8 +250,18 @@ export default function Course() {
 
   if (loading) {
     return (
-      <div className="animate-pulse text-sm text-ink-muted py-12 text-center">
-        Loading course…
+      <div className="space-y-8 animate-fade-in">
+        <div>
+          <div className="h-4 bg-border/40 rounded w-48 mb-3" />
+          <div className="h-8 bg-border/50 rounded w-64 mb-2" />
+          <div className="h-4 bg-border/30 rounded w-32" />
+        </div>
+        <div className="rounded-card border border-border bg-surface p-6 space-y-3">
+          <div className="h-4 bg-border/40 rounded w-24 mb-4" />
+          {[1, 2, 3, 4, 5].map(i => (
+            <div key={i} className="h-12 bg-border/20 rounded" />
+          ))}
+        </div>
       </div>
     );
   }
@@ -237,12 +310,15 @@ function CourseHeader({
   return (
     <div className="flex items-start justify-between gap-4">
       <div>
-        <Link
-          to="/app"
-          className="text-sm text-ink-muted hover:text-ink transition-colors no-underline"
-        >
-          ← Dashboard
-        </Link>
+        <nav className="flex items-center gap-1.5 text-sm text-ink-muted" aria-label="Breadcrumb">
+          <Link to="/app" className="hover:text-ink transition-colors no-underline">
+            Dashboard
+          </Link>
+          <span aria-hidden>/</span>
+          <span className="text-ink">{course.term_name || 'Term'}</span>
+          <span aria-hidden>/</span>
+          <span className="text-ink font-medium">{course.course_name}</span>
+        </nav>
         <h1 className="mt-2 text-2xl font-semibold text-ink">{course.course_name}</h1>
         <p className="mt-1 text-sm text-ink-muted">{course.term_name}</p>
       </div>
@@ -317,8 +393,9 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
       </div>
 
       {!course.assignments?.length ? (
-        <div className="py-8 text-center space-y-3">
-          <p className="text-sm text-ink-muted">No assignments yet.</p>
+        <div className="py-10 px-6 text-center rounded-button border border-dashed border-border bg-surface-muted/30">
+          <p className="text-sm font-medium text-ink mb-1">No assignments yet</p>
+          <p className="text-sm text-ink-muted mb-4">Upload a syllabus to extract them, or add one manually below.</p>
           <button
             type="button"
             onClick={() =>
@@ -326,9 +403,9 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
                 state: { courseId: course.id, courseName: course.course_name },
               })
             }
-            className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+            className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover"
           >
-            Upload syllabus to extract assignments
+            Upload syllabus
           </button>
         </div>
       ) : (
@@ -337,6 +414,7 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
             <AssignmentRow
               key={a.id}
               assignment={a}
+              courseId={course.id}
               token={token}
               onUpdated={refreshCourse}
               onRemoved={refreshCourse}
@@ -411,8 +489,20 @@ function AddAssignmentForm({ courseId, token, onAdded }) {
               type="date"
               value={due}
               onChange={e => setDue(e.target.value)}
-              className="rounded-input border border-border bg-surface px-3 py-2 text-sm"
+              className="rounded-input border border-border bg-surface px-3 py-2 text-sm mb-1"
             />
+            <div className="flex flex-wrap gap-1">
+              {getDatePresets().map(p => (
+                <button
+                  key={p.label}
+                  type="button"
+                  onClick={() => setDue(p.value)}
+                  className="rounded-button border border-border px-1.5 py-0.5 text-xs text-ink-muted hover:text-ink hover:bg-surface-muted"
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
           </div>
           <div>
             <label className="block text-xs text-ink-muted mb-0.5">Hours</label>

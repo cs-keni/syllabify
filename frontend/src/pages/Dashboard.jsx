@@ -34,9 +34,16 @@ const MOCK_UPCOMING = [
   },
 ];
 
+function getGreeting() {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 17) return 'Good afternoon';
+  return 'Good evening';
+}
+
 /** Main dashboard. Shows placeholder weekly chart, upcoming list, and courses. */
 export default function Dashboard() {
-  const { token } = useAuth();
+  const { user, token } = useAuth();
   const [showPlaceholderModal, setShowPlaceholderModal] = useState(false);
   const [courses, setCourses] = useState([]);
   const [coursesError, setCoursesError] = useState(null);
@@ -137,7 +144,9 @@ export default function Dashboard() {
       )}
 
       <div className="animate-fade-in">
-        <h1 className="text-2xl font-semibold text-ink">Dashboard</h1>
+        <h1 className="text-2xl font-semibold text-ink">
+          {user?.username ? `${getGreeting()}, ${user.username}` : 'Dashboard'}
+        </h1>
         <p className="mt-1 text-sm text-ink-muted">
           Your weekly overview and upcoming assignments.
         </p>
@@ -251,25 +260,33 @@ export default function Dashboard() {
 
           <div className="space-y-3">
             {!currentTermId ? (
-              <p className="text-sm text-ink-muted py-4">
-                Select a term above to view its courses.
-              </p>
+              <div className="py-8 text-center rounded-button border border-dashed border-border bg-surface-muted/50">
+                <p className="text-sm text-ink-muted mb-2">Select a term above to view its courses.</p>
+                <p className="text-xs text-ink-subtle">Choose an existing term or create a new one.</p>
+              </div>
             ) : loadingCourses ? (
-              <p className="text-sm text-ink-muted py-4 animate-pulse">
-                Loading courses…
-              </p>
+              <>
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="rounded-card border border-border bg-surface p-4 animate-pulse">
+                    <div className="h-5 bg-border/50 rounded w-1/3 mb-2" />
+                    <div className="h-4 bg-border/30 rounded w-1/4" />
+                  </div>
+                ))}
+              </>
             ) : courses.length === 0 ? (
-              <p className="text-sm text-ink-muted py-4">
-                No courses yet.{' '}
+              <div className="py-10 px-6 text-center rounded-button border border-dashed border-border bg-surface-muted/30">
+                <p className="text-sm font-medium text-ink mb-1">No courses yet</p>
+                <p className="text-sm text-ink-muted mb-4">
+                  Upload a syllabus to extract assignments, or add a course manually.
+                </p>
                 <button
                   type="button"
                   onClick={() => setAdding(true)}
-                  className="text-accent hover:text-accent-hover underline"
+                  className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover"
                 >
                   Add a course
-                </button>{' '}
-                to get started.
-              </p>
+                </button>
+              </div>
             ) : (
               courses.map((c, i) => (
                 <div

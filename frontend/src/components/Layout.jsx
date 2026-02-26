@@ -3,9 +3,10 @@
  * Nav uses a sliding indicator that moves between tabs with distance-based bounce animation.
  */
 import { useRef, useLayoutEffect, useState, useEffect } from 'react';
-import { Outlet, NavLink, Navigate, useLocation } from 'react-router-dom';
+import { Outlet, NavLink, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import ThemeToggle from './ThemeToggle';
+import ShortcutsOverlay from './ShortcutsOverlay';
 
 const navItems = [
   { to: '/app', label: 'Dashboard', end: true },
@@ -47,17 +48,66 @@ export default function Layout() {
   const [transition, setTransition] = useState('none');
   const [mounted, setMounted] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  const [offline, setOffline] = useState(typeof navigator !== 'undefined' && !navigator.onLine);
   const profileRef = useRef(null);
+  const navigate = useNavigate();
 
   const pathname = location.pathname;
+
+  useEffect(() => {
+    const onOnline = () => setOffline(false);
+    const onOffline = () => setOffline(true);
+    window.addEventListener('online', onOnline);
+    window.addEventListener('offline', onOffline);
+    return () => {
+      window.removeEventListener('online', onOnline);
+      window.removeEventListener('offline', onOffline);
+    };
+  }, []);
+
+  const gPendingRef = useRef(false);
+  useEffect(() => {
+    const onKey = e => {
+      const inInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+      if (inInput || e.ctrlKey || e.metaKey || e.altKey) {
+        gPendingRef.current = false;
+        return;
+      }
+      if (e.key === '?') {
+        e.preventDefault();
+        setShortcutsOpen(open => !open);
+        gPendingRef.current = false;
+        return;
+      }
+      if (gPendingRef.current) {
+        gPendingRef.current = false;
+        if (e.key === 'd') navigate('/app');
+        else if (e.key === 'u') navigate('/app/upload');
+        else if (e.key === 's') navigate('/app/schedule');
+        else if (e.key === 'p') navigate('/app/preferences');
+        return;
+      }
+      if (e.key === 'g') gPendingRef.current = true;
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [navigate]);
 
   useEffect(() => {
     if (!profileOpen) return;
     const onClickOutside = e => {
       if (profileRef.current && !profileRef.current.contains(e.target)) setProfileOpen(false);
     };
+    const onEscape = e => {
+      if (e.key === 'Escape') setProfileOpen(false);
+    };
     document.addEventListener('click', onClickOutside);
-    return () => document.removeEventListener('click', onClickOutside);
+    document.addEventListener('keydown', onEscape);
+    return () => {
+      document.removeEventListener('click', onClickOutside);
+      document.removeEventListener('keydown', onEscape);
+    };
   }, [profileOpen]);
 
   const initials = user?.username
@@ -128,6 +178,18 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-surface">
+      <a
+        href="#main-content"
+        className="absolute -top-12 left-4 z-[100] rounded-button bg-accent px-4 py-2 text-sm font-medium text-white no-underline opacity-0 transition-opacity focus:top-4 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2"
+      >
+        Skip to main content
+      </a>
+      {offline && (
+        <div className="bg-amber-500 text-amber-950 text-sm text-center py-1.5 px-4 font-medium" role="status">
+          You're offline. Some features may not work.
+        </div>
+      )}
+      <ShortcutsOverlay open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />
       <header className="sticky top-0 z-10 bg-surface-elevated border-b border-border shadow-card">
         <nav className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="flex min-h-14 flex-wrap items-center gap-2 py-2 md:flex-nowrap md:justify-between md:py-0">
@@ -175,6 +237,15 @@ export default function Layout() {
               ))}
             </div>
             <div className="order-2 ml-auto flex items-center gap-2 md:order-3 md:ml-0">
+              <button
+                type="button"
+                onClick={() => setShortcutsOpen(true)}
+                className="rounded-button px-2 py-1 text-xs text-ink-subtle hover:text-ink hover:bg-surface-muted"
+                title="Keyboard shortcuts (?)"
+                aria-label="Show keyboard shortcuts"
+              >
+                ?
+              </button>
               <ThemeToggle />
               <div className="relative" ref={profileRef}>
                 <button
@@ -241,7 +312,7 @@ export default function Layout() {
           </div>
         </nav>
       </header>
-      <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <main id="main-content" className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <Outlet />
       </main>
     </div>

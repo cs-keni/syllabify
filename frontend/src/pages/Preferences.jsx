@@ -85,7 +85,8 @@ export default function Preferences() {
         </p>
       </div>
 
-      <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card space-y-8 max-w-xl animate-fade-in-up [animation-delay:200ms]">
+      <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:200ms]">
+        <div className="grid gap-8 lg:grid-cols-2">
         <section>
           <h2 className="text-sm font-medium text-ink mb-3">Account</h2>
           <form onSubmit={handleSaveAccount} className="flex flex-col gap-3">
@@ -113,7 +114,7 @@ export default function Preferences() {
           </form>
         </section>
 
-        <form onSubmit={handleSavePreferences}>
+        <form onSubmit={handleSavePreferences} className="space-y-8">
           <section>
             <h2 className="text-sm font-medium text-ink mb-3">Work hours</h2>
             <div className="flex items-center gap-4">
@@ -187,8 +188,9 @@ export default function Preferences() {
             {saving ? 'Saving…' : 'Save preferences'}
           </button>
         </form>
+        </div>
 
-        <p className="text-xs text-ink-subtle">
+        <p className="mt-8 pt-6 border-t border-border text-xs text-ink-subtle">
           Calendar theme, dark mode, and per-course colors will be available in
           a future update.
         </p>
