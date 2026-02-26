@@ -25,13 +25,17 @@ export function AuthProvider({ children }) {
 
   /** Fetches current user from API using token. Returns true if valid. */
   const loadUser = useCallback(async t => {
-    const data = await api.me(t);
-    if (data) {
-      setUser({ username: data.username, is_admin: !!data.is_admin });
-      setSecuritySetupDone(!!data.security_setup_done);
-      return true;
+    try {
+      const data = await api.me(t);
+      if (data) {
+        setUser({ username: data.username, is_admin: !!data.is_admin });
+        setSecuritySetupDone(!!data.security_setup_done);
+        return true;
+      }
+      return false;
+    } catch {
+      return false;
     }
-    return false;
   }, []);
 
   useEffect(() => {
@@ -52,15 +56,18 @@ export function AuthProvider({ children }) {
       return;
     }
     setToken(t);
-    loadUser(t).then(ok => {
-      if (!ok) {
-        localStorage.removeItem(TOKEN_KEY);
-        setToken(null);
-        setUser(null);
-        setSecuritySetupDone(true);
-      }
-      setIsLoading(false);
-    });
+    loadUser(t)
+      .then(ok => {
+        if (!ok) {
+          localStorage.removeItem(TOKEN_KEY);
+          setToken(null);
+          setUser(null);
+          setSecuritySetupDone(true);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [loadUser]);
 
   /** Calls API login, stores token, updates state. Returns { security_setup_done }. */

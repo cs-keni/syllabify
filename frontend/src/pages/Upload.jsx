@@ -90,9 +90,9 @@ export default function Upload() {
               onClick={() => setStep(i)}
               className={`rounded-button px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                 i === step
-                  ? 'bg-accent text-white'
+                  ? 'bg-[#0F8A4C] text-[#F5C30F] hover:bg-[#094728]'
                   : i < step
-                    ? 'bg-accent-muted text-accent'
+                    ? 'bg-[#0F8A4C]/20 text-[#F5C30F] hover:bg-[#0F8A4C]/30'
                     : 'bg-surface-muted text-ink-muted hover:text-ink'
               }`}
             >
@@ -101,7 +101,7 @@ export default function Upload() {
             {i < STEPS.length - 1 && (
               <span
                 className={`mx-1 w-6 h-0.5 rounded ${
-                  i < step ? 'bg-accent' : 'bg-border'
+                  i < step ? 'bg-[#0F8A4C]' : 'bg-border'
                 }`}
               />
             )}

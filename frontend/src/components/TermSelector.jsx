@@ -90,7 +90,7 @@ export default function TermSelector({ onTermChange }) {
         <span className="text-sm text-ink-muted">No terms yet.</span>
         <button
           onClick={() => setShowModal(true)}
-          className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+          className="rounded-button bg-[#0F8A4C] px-3 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] transition-colors"
         >
           + Create First Term
         </button>

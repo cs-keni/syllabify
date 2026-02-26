@@ -164,7 +164,7 @@ export default function SyllabusUpload({ onComplete, token }) {
         <button
           type="submit"
           disabled={!canSubmit || uploading}
-          className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {uploading ? 'Parsing…' : 'Parse syllabus'}
         </button>

@@ -114,7 +114,7 @@ export default function Preferences() {
             <button
               type="submit"
               disabled={saving || loading}
-              className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-60 w-fit"
+              className="rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] disabled:opacity-60 w-fit"
             >
               {saving ? 'Saving…' : 'Save'}
             </button>
@@ -161,7 +161,7 @@ export default function Preferences() {
                       setSelectedDays(next);
                     }}
                     disabled={loading}
-                    className="rounded border-border text-accent focus:ring-accent"
+                    className="rounded border-border accent-accent focus:ring-accent"
                   />
                   {day}
                 </label>
@@ -190,7 +190,7 @@ export default function Preferences() {
           <button
             type="submit"
             disabled={saving || loading}
-            className="mt-4 rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover disabled:opacity-60 w-fit"
+            className="mt-4 rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] disabled:opacity-60 w-fit"
           >
             {saving ? 'Saving…' : 'Save preferences'}
           </button>
