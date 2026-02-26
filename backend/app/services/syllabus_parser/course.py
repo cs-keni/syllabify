@@ -3,7 +3,6 @@ Course metadata extraction: code, title, term, instructors.
 """
 import re
 
-
 # Department name -> standard course prefix (e.g. Physics -> PHY)
 _DEPT_ABBREV = {
     "physics": "PHY", "phys": "PHY", "philosophy": "PHIL", "phil": "PHIL",
