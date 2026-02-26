@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
   const loadUser = useCallback(async t => {
     const data = await api.me(t);
     if (data) {
-      setUser({ username: data.username });
+      setUser({ username: data.username, is_admin: !!data.is_admin });
       setSecuritySetupDone(!!data.security_setup_done);
       return true;
     }
@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
     const t = data.token;
     localStorage.setItem(TOKEN_KEY, t);
     setToken(t);
-    setUser({ username: data.username });
+    setUser({ username: data.username, is_admin: !!data.is_admin });
     setSecuritySetupDone(!!data.security_setup_done);
     return { security_setup_done: !!data.security_setup_done };
   }, []);

@@ -104,29 +104,79 @@ def decode_token(auth_header):
         return None
 
 
+@bp.route("/register", methods=["POST"])
+def register():
+    """Create new user. No auto-login."""
+    import re
+
+    data = request.get_json() or {}
+    username = (data.get("username") or "").strip()
+    password = data.get("password") or ""
+
+    if not username:
+        return jsonify({"error": "username is required"}), 400
+    if not password:
+        return jsonify({"error": "password is required"}), 400
+    if len(username) < 3 or len(username) > 50:
+        return jsonify({"error": "username must be 3-50 characters"}), 400
+    if not re.match(r"^[a-zA-Z0-9_]+$", username):
+        return jsonify({"error": "username may only contain letters, numbers, and underscore"}), 400
+    if len(password) < 8:
+        return jsonify({"error": "password must be at least 8 characters"}), 400
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute("SELECT id FROM Users WHERE username = %s", (username,))
+        if cur.fetchone():
+            return jsonify({"error": "username already taken"}), 400
+
+        hashed = hash_password(password)
+        cur.execute(
+            "INSERT INTO Users (username, password_hash, security_setup_done) VALUES (%s, %s, FALSE)",
+            (username, hashed),
+        )
+        user_id = cur.lastrowid
+        conn.commit()
+        return jsonify(
+            {"id": user_id, "username": username, "security_setup_done": False}
+        ), 201
+    finally:
+        conn.close()
+
+
 @bp.route("/login", methods=["POST"])
 def login():
-    """Accepts username/password, validates against dev user, returns JWT and
+    """Accepts username/password, validates against DB, returns JWT and
     security_setup_done."""
     data = request.get_json() or {}
     username = (data.get("username") or "").strip()
     password = data.get("password") or ""
     if not username or not password:
         return jsonify({"error": "username and password required"}), 400
-    if username != DEV_USERNAME or password != DEV_PASSWORD:
-        return jsonify({"error": "invalid credentials"}), 401
+
     conn = get_db()
     try:
-        cur = conn.cursor()
-        user_id, _, security_setup_done = ensure_dev_user(cur)
-        conn.commit()
-        token = token_for_user(user_id, DEV_USERNAME)
-        # Ensure token is str for JSON (PyJWT can vary by version)
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT id, username, password_hash, security_setup_done FROM Users "
+            "WHERE username = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
+            (username,),
+        )
+        row = cur.fetchone()
+        if not row:
+            return jsonify({"error": "invalid credentials"}), 401
+        if not check_password(password, row.get("password_hash") or ""):
+            return jsonify({"error": "invalid credentials"}), 401
+
+        user_id = row["id"]
+        security_setup_done = bool(row.get("security_setup_done"))
+        token = token_for_user(user_id, row["username"])
         token_str = token if isinstance(token, str) else token.decode("utf-8")
         return jsonify(
             {
                 "token": token_str,
-                "username": DEV_USERNAME,
+                "username": row["username"],
                 "security_setup_done": security_setup_done,
             }
         )
@@ -192,15 +242,20 @@ def me():
         user_id = int(payload.get("sub"))
     except (TypeError, ValueError):
         return jsonify({"error": "unauthorized"}), 401
-    username = payload.get("username", "")
     conn = get_db()
     try:
-        cur = conn.cursor()
-        cur.execute("SELECT security_setup_done FROM Users WHERE id = %s", (user_id,))
-        row = cur.fetchone()
-        security_setup_done = bool(row[0]) if row else False
-        return jsonify(
-            {"username": username, "security_setup_done": security_setup_done}
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT username, security_setup_done, is_admin FROM Users WHERE id = %s",
+            (user_id,),
         )
+        row = cur.fetchone()
+        if not row:
+            return jsonify({"error": "unauthorized"}), 401
+        return jsonify({
+            "username": row.get("username") or payload.get("username", ""),
+            "security_setup_done": bool(row.get("security_setup_done")),
+            "is_admin": bool(row.get("is_admin")) if row.get("is_admin") is not None else False,
+        })
     finally:
         conn.close()

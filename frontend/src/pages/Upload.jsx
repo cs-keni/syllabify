@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import SyllabusUpload from '../components/SyllabusUpload';
 import ParsedDataReview from '../components/ParsedDataReview';
-import { addAssignments, saveCourse } from '../api/client';
+import { addAssignments, saveCourse, updateCourse } from '../api/client';
 
 const STEPS = [
   { id: 'upload', label: 'Upload' },
@@ -142,8 +142,12 @@ export default function Upload() {
                   };
                   const hrs = studyHoursPerWeek !== '' ? parseInt(studyHoursPerWeek, 10) : null;
                   if (hrs != null && !Number.isNaN(hrs) && hrs >= 0) payload.study_hours_per_week = hrs;
-                  const result = await saveCourse(token, payload);
-                  if (result?.id) setCreatedCourseId(result.id);
+                  if (state?.courseId) {
+                    await updateCourse(token, state.courseId, payload);
+                  } else {
+                    const result = await saveCourse(token, payload);
+                    if (result?.id) setCreatedCourseId(result.id);
+                  }
                   setStep(2);
                 } catch (err) {
                   setSaveError(err.message || 'Failed to save');

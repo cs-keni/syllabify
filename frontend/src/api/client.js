@@ -20,6 +20,18 @@ function headers(withAuth = false, token = null) {
   return h;
 }
 
+/** POST to /api/auth/register. Returns { id, username, security_setup_done }. Throws on error. */
+export async function register(username, password) {
+  const res = await fetch(`${BASE}/api/auth/register`, {
+    method: 'POST',
+    headers: headers(false),
+    body: JSON.stringify({ username, password }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Registration failed');
+  return data;
+}
+
 /** POST to /api/auth/login. Returns { token, username, security_setup_done }. Throws on error. */
 export async function login(username, password) {
   const res = await fetch(`${BASE}/api/auth/login`, {
@@ -143,7 +155,96 @@ export async function addMeetings(courseId, meeting_times) {
   return data;
 }
 
-/** GET /api/auth/me with JWT. Returns { username, security_setup_done } or null if invalid. */
+/** GET /api/users/me with JWT. Returns { id, username, email, security_setup_done }. */
+export async function getProfile(token) {
+  const t = token || (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
+  if (!t) return null;
+  const res = await fetch(`${BASE}/api/users/me`, {
+    headers: headers(true, t),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) return null;
+  return data;
+}
+
+/** GET /api/admin/users with JWT. Admin only. Returns { users: [...] }. */
+export async function getAdminUsers(token) {
+  const res = await fetch(`${BASE}/api/admin/users`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to load users');
+  return data;
+}
+
+/** PUT /api/admin/users/:id/disable. Body: { disabled }. Admin only. */
+export async function disableUser(token, userId, disabled) {
+  const res = await fetch(`${BASE}/api/admin/users/${userId}/disable`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({ disabled: !!disabled }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update');
+  return data;
+}
+
+/** PUT /api/admin/users/:id/reset-security. Admin only. */
+export async function resetUserSecurity(token, userId) {
+  const res = await fetch(`${BASE}/api/admin/users/${userId}/reset-security`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({}),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to reset');
+  return data;
+}
+
+/** GET /api/users/me/preferences. Returns { work_start, work_end, preferred_days, max_hours_per_day }. */
+export async function getPreferences(token) {
+  const t = token || (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
+  if (!t) return null;
+  const res = await fetch(`${BASE}/api/users/me/preferences`, {
+    headers: headers(true, t),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) return null;
+  return data;
+}
+
+/** PUT /api/users/me/preferences. Body: { work_start?, work_end?, preferred_days?, max_hours_per_day? }. */
+export async function updatePreferences(token, prefs) {
+  const res = await fetch(`${BASE}/api/users/me/preferences`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify(prefs),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to save preferences');
+  return data;
+}
+
+/** PUT /api/users/me with JWT. Body: { email }. Returns updated profile. */
+export async function updateProfile(token, { email }) {
+  const res = await fetch(`${BASE}/api/users/me`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({ email: email || null }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update profile');
+  return data;
+}
+
+/** GET /api/auth/me with JWT. Returns { username, security_setup_done, is_admin } or null if invalid. */
 export async function me(token) {
   const t =
     token ||
@@ -269,6 +370,31 @@ export async function getCourse(courseId) {
   return data;
 }
 
+/**
+ * PUT /api/courses/:courseId. Replace course assignments and meetings.
+ * Body: { course_name?, study_hours_per_week?, assignments, meeting_times }.
+ * Used when re-uploading syllabus from Course page.
+ */
+export async function updateCourse(token, courseId, payload) {
+  const { course_name, assignments, meeting_times, study_hours_per_week } = payload || {};
+  const body = {
+    course_name: course_name || 'Course',
+    assignments: Array.isArray(assignments) ? assignments : [],
+    meeting_times: Array.isArray(meeting_times) ? meeting_times : [],
+  };
+  if (study_hours_per_week != null && study_hours_per_week !== '')
+    body.study_hours_per_week = study_hours_per_week;
+  const res = await fetch(`${BASE}/api/courses/${courseId}`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify(body),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update course');
+  return data;
+}
+
 /** DELETE /api/courses/:courseId. Returns { ok: true }. */
 export async function deleteCourse(courseId) {
   const res = await fetch(`${BASE}/api/courses/${courseId}`, {
@@ -278,6 +404,31 @@ export async function deleteCourse(courseId) {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to delete course');
+  return data;
+}
+
+/** PATCH /api/assignments/:id. Body: { assignment_name?, due_date?, hours?, type? }. */
+export async function updateAssignment(token, assignmentId, body) {
+  const res = await fetch(`${BASE}/api/assignments/${assignmentId}`, {
+    method: 'PATCH',
+    headers: headers(true, token),
+    body: JSON.stringify(body || {}),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update assignment');
+  return data;
+}
+
+/** DELETE /api/assignments/:id. */
+export async function deleteAssignment(token, assignmentId) {
+  const res = await fetch(`${BASE}/api/assignments/${assignmentId}`, {
+    method: 'DELETE',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to delete assignment');
   return data;
 }
 
@@ -296,8 +447,13 @@ export async function addAssignments(courseId, assignments) {
 
 export default {
   login,
+  register,
   securitySetup,
   me,
+  getProfile,
+  updateProfile,
+  getPreferences,
+  updatePreferences,
   getTerms,
   createTerm,
   getTerm,
@@ -308,7 +464,10 @@ export default {
   createCourse,
   getCourse,
   deleteCourse,
+  updateCourse,
   addAssignments,
   addMeetings,
+  updateAssignment,
+  deleteAssignment,
   parseSyllabus,
 };

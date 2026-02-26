@@ -13,7 +13,9 @@ import Upload from './pages/Upload';
 import Course from './pages/Course';
 import Schedule from './pages/Schedule';
 import Preferences from './pages/Preferences';
+import Admin from './pages/Admin';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import SecuritySetup from './pages/SecuritySetup';
 import Home from './pages/Homepage';
 import './styles/index.css';
@@ -35,6 +37,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/security-setup" element={<SecuritySetup />} />
       {/* Redirect legacy paths (old nav used /upload, /schedule, /preferences) */}
       <Route path="/upload" element={<Navigate to="/app/upload" replace />} />
@@ -52,6 +55,7 @@ function AppRoutes() {
         <Route path="courses/:courseId" element={<Course />} />
         <Route path="schedule" element={<Schedule />} />
         <Route path="preferences" element={<Preferences />} />
+        <Route path="admin" element={<Admin />} />
         <Route path="*" element={<Navigate to="/app" replace />} />
       </Route>
     </Routes>

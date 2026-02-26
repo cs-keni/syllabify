@@ -163,6 +163,108 @@ def get_course(course_id):
         conn.close()
 
 
+@bp.route("/api/courses/<int:course_id>", methods=["PUT"])
+def update_course(course_id):
+    """Replace course metadata, assignments, and meetings (used when re-uploading syllabus)."""
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "unauthorized"}), 401
+
+    user_id = int(payload.get("sub"))
+    data = request.get_json() or {}
+    assignments_payload = data.get("assignments", [])
+    meeting_times_payload = data.get("meeting_times", [])
+    course_name = (data.get("course_name") or "").strip()
+    study_hours_per_week = data.get("study_hours_per_week")
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        course = _owns_course(cur, course_id, user_id)
+        if not course:
+            return jsonify({"error": "Course not found"}), 404
+
+        if course_name:
+            cur.execute(
+                "UPDATE Courses SET course_name = %s WHERE id = %s",
+                (course_name, course_id),
+            )
+        if study_hours_per_week is not None:
+            try:
+                sh = int(study_hours_per_week)
+                if 0 <= sh <= 168:
+                    cur.execute(
+                        "UPDATE Courses SET study_hours_per_week = %s WHERE id = %s",
+                        (sh, course_id),
+                    )
+            except (TypeError, ValueError):
+                pass
+
+        cur.execute("DELETE FROM Assignments WHERE course_id = %s", (course_id,))
+        now = datetime.utcnow()
+        for a in assignments_payload:
+            name = (a.get("name") or "").strip()
+            if not name:
+                continue
+            hours = float(a.get("hours") or 0)
+            work_load = max(1, int(hours * 4))
+            due_raw = a.get("due") or a.get("due_date")
+            try:
+                due_dt = datetime.fromisoformat(due_raw) if due_raw else now
+            except (ValueError, TypeError):
+                due_dt = now
+            atype = (a.get("type") or "assignment").strip().lower()
+            if atype not in ("assignment", "midterm", "final", "quiz", "project", "participation"):
+                atype = "assignment"
+            if not due_raw and due_dt == now:
+                cur.execute(
+                    "SELECT t.end_date FROM Courses c JOIN Terms t ON t.id = c.term_id WHERE c.id = %s",
+                    (course_id,),
+                )
+                row = cur.fetchone()
+                if row and row.get("end_date"):
+                    end_d = row["end_date"]
+                    due_dt = (
+                        datetime.combine(end_d, datetime.min.time())
+                        if isinstance(end_d, date) and not isinstance(end_d, datetime)
+                        else end_d
+                    )
+            cur.execute(
+                """
+                INSERT INTO Assignments
+                  (assignment_name, work_load, notes, start_date, due_date, assignment_type, course_id)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                """,
+                (name, work_load, a.get("notes") or None, now, due_dt, atype, course_id),
+            )
+
+        cur.execute("DELETE FROM Meetings WHERE course_id = %s", (course_id,))
+        for m in meeting_times_payload:
+            day = (m.get("day_of_week") or "").strip().upper()
+            if not day or len(day) < 2:
+                continue
+            start_str = (m.get("start_time") or m.get("start_time_str") or "").strip()
+            end_str = (m.get("end_time") or m.get("end_time_str") or "").strip()
+            if not start_str or not end_str:
+                continue
+            loc = (m.get("location") or "").strip() or None
+            mtype = (m.get("type") or m.get("meeting_type") or "lecture").strip()
+            cur.execute(
+                """
+                INSERT INTO Meetings
+                  (course_id, day_of_week, start_time_str, end_time_str, location, meeting_type)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                """,
+                (course_id, day[:2], start_str[:5], end_str[:5], loc, mtype[:50]),
+            )
+
+        conn.commit()
+        return jsonify({"id": course_id, "course_name": course_name or course.get("course_name")})
+    finally:
+        conn.close()
+
+
 @bp.route("/api/courses/<int:course_id>", methods=["DELETE"])
 def delete_course(course_id):
     """Delete a course and cascade to assignments/meetings."""

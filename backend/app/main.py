@@ -11,10 +11,13 @@ import mysql.connector
 from flask import Flask
 from flask_cors import CORS
 
+from app.api.admin import bp as admin_bp
+from app.api.assignments import bp as assignments_bp
 from app.api.auth import bp as auth_bp
 from app.api.courses import bp as courses_bp
 from app.api.schedule import bp as schedule_bp
 from app.api.syllabus import bp as syllabus_bp
+from app.api.users import bp as users_bp
 from app.api.terms import bp as terms_bp
 
 app = Flask(__name__)
@@ -48,8 +51,11 @@ def get_db_connection():
 
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(admin_bp)
+app.register_blueprint(users_bp)
 app.register_blueprint(terms_bp)
 app.register_blueprint(courses_bp)
+app.register_blueprint(assignments_bp)
 app.register_blueprint(schedule_bp)
 app.register_blueprint(syllabus_bp)
 

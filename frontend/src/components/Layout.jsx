@@ -12,14 +12,16 @@ const navItems = [
   { to: '/app/upload', label: 'Upload syllabus', end: true },
   { to: '/app/schedule', label: 'Schedule', end: true },
   { to: '/app/preferences', label: 'Preferences', end: true },
+  { to: '/app/admin', label: 'Admin', end: true, adminOnly: true },
 ];
 
-function getActiveIndex(pathname) {
-  if (pathname === '/app' || pathname === '/app/') return 0;
-  if (pathname.startsWith('/app/upload')) return 1;
-  if (pathname.startsWith('/app/schedule')) return 2;
-  if (pathname.startsWith('/app/preferences')) return 3;
-  return 0;
+function getActiveIndex(pathname, items) {
+  const idx = items.findIndex(item =>
+    item.end
+      ? pathname === item.to || pathname === item.to + '/'
+      : pathname.startsWith(item.to)
+  );
+  return idx >= 0 ? idx : 0;
 }
 
 /** Cubic-bezier with overshoot: bouncy settle. More distance = stronger bounce. */
@@ -46,7 +48,8 @@ export default function Layout() {
   const [mounted, setMounted] = useState(false);
 
   const pathname = location.pathname;
-  const activeIndex = getActiveIndex(pathname);
+  const navItemsFiltered = navItems.filter(item => !item.adminOnly || user?.is_admin);
+  const activeIndex = getActiveIndex(pathname, navItemsFiltered);
 
   useLayoutEffect(() => {
     const container = navContainerRef.current;
@@ -133,7 +136,7 @@ export default function Layout() {
                   aria-hidden
                 />
               )}
-              {navItems.map(({ to, label, end }, i) => (
+              {navItemsFiltered.map(({ to, label, end }, i) => (
                 <NavLink
                   key={to}
                   ref={el => {
