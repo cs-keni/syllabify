@@ -36,7 +36,7 @@ export default function SyllabusUpload({ onComplete, token }) {
   const handleDragLeave = () => setDragOver(false);
 
   /** Infer default hours from assessment type. */
-  const hoursFromType = (type) => {
+  const hoursFromType = type => {
     const t = (type || '').toLowerCase();
     if (t === 'midterm' || t === 'final') return 2;
     if (t === 'quiz') return 1;
@@ -56,19 +56,23 @@ export default function SyllabusUpload({ onComplete, token }) {
       // Prefer assessments from full parser (includes type, due_datetime, exams)
       const raw =
         Array.isArray(data.assessments) && data.assessments.length > 0
-          ? data.assessments.map((a) => ({
+          ? data.assessments.map(a => ({
               name: a.title || '',
-              due_date: a.due_datetime ? String(a.due_datetime).slice(0, 10) : '',
+              due_date: a.due_datetime
+                ? String(a.due_datetime).slice(0, 10)
+                : '',
               hours: hoursFromType(a.type),
               type: a.type || 'assignment',
-              confidence: typeof a.confidence === 'number' ? a.confidence : null,
+              confidence:
+                typeof a.confidence === 'number' ? a.confidence : null,
             }))
-          : (data.assignments || []).map((a) => ({
+          : (data.assignments || []).map(a => ({
               name: a.name || '',
               due_date: a.due_date || '',
               hours: a.hours ?? 3,
               type: a.type || 'assignment',
-              confidence: typeof a.confidence === 'number' ? a.confidence : null,
+              confidence:
+                typeof a.confidence === 'number' ? a.confidence : null,
             }));
       const assignments = raw.map((a, i) => ({
         id: `temp-${i}`,
@@ -78,10 +82,20 @@ export default function SyllabusUpload({ onComplete, token }) {
         type: a.type || 'assignment',
         confidence: a.confidence ?? null,
       }));
-      const meeting_times = Array.isArray(data.meeting_times) ? data.meeting_times : [];
-      const instructors = Array.isArray(data.instructors) ? data.instructors : [];
+      const meeting_times = Array.isArray(data.meeting_times)
+        ? data.meeting_times
+        : [];
+      const instructors = Array.isArray(data.instructors)
+        ? data.instructors
+        : [];
       const confidence = data.confidence || null;
-      onComplete({ course_name: courseName, meeting_times, assignments, instructors, confidence });
+      onComplete({
+        course_name: courseName,
+        meeting_times,
+        assignments,
+        instructors,
+        confidence,
+      });
     } catch (err) {
       setError(err.message || 'Parse failed');
     } finally {
@@ -127,7 +141,9 @@ export default function SyllabusUpload({ onComplete, token }) {
         <div className="animate-fade-in">
           <label
             className={`block rounded-input border-2 border-dashed p-8 text-center cursor-pointer transition-all duration-200 ${
-              dragOver ? 'border-accent bg-accent-muted/30' : 'border-border bg-surface-muted hover:border-accent/40'
+              dragOver
+                ? 'border-accent bg-accent-muted/30'
+                : 'border-border bg-surface-muted hover:border-accent/40'
             }`}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
@@ -140,7 +156,9 @@ export default function SyllabusUpload({ onComplete, token }) {
               onChange={e => setFile(e.target.files?.[0] || null)}
             />
             <span className="text-sm text-ink-muted">
-              {file ? file.name : 'Drop PDF, DOCX, or TXT here — or click to browse'}
+              {file
+                ? file.name
+                : 'Drop PDF, DOCX, or TXT here — or click to browse'}
             </span>
           </label>
         </div>

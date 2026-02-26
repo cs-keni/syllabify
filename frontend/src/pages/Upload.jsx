@@ -37,7 +37,13 @@ export default function Upload() {
   const currentStepId = STEPS[step].id;
 
   /** Called by SyllabusUpload with { course_name, meeting_times, assignments, instructors, confidence } from parse API. */
-  const handleUploadComplete = ({ course_name, meeting_times, assignments: parsed, instructors: inst, confidence: conf }) => {
+  const handleUploadComplete = ({
+    course_name,
+    meeting_times,
+    assignments: parsed,
+    instructors: inst,
+    confidence: conf,
+  }) => {
     setParsedCourseName(course_name || initialCourseName);
     setMeetingTimes(Array.isArray(meeting_times) ? meeting_times : []);
     setAssignments(parsed || []);
@@ -73,7 +79,9 @@ export default function Upload() {
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-2 text-2xl font-semibold text-ink">Upload syllabus</h1>
+        <h1 className="mt-2 text-2xl font-semibold text-ink">
+          Upload syllabus
+        </h1>
         <p className="mt-1 text-sm text-ink-muted">
           {initialCourseName
             ? `Uploading syllabus for ${initialCourseName}.`
@@ -115,11 +123,17 @@ export default function Upload() {
           {currentStepId === 'upload' && (
             <SyllabusUpload
               token={token}
-              onComplete={(payload) => {
+              onComplete={payload => {
                 setParsedCourseName(payload.course_name || initialCourseName);
-                setMeetingTimes(Array.isArray(payload.meeting_times) ? payload.meeting_times : []);
+                setMeetingTimes(
+                  Array.isArray(payload.meeting_times)
+                    ? payload.meeting_times
+                    : []
+                );
                 setAssignments(payload.assignments || []);
-                setInstructors(Array.isArray(payload.instructors) ? payload.instructors : []);
+                setInstructors(
+                  Array.isArray(payload.instructors) ? payload.instructors : []
+                );
                 setConfidence(payload.confidence || null);
                 setStep(1);
               }}
@@ -146,8 +160,12 @@ export default function Upload() {
                     assignments,
                     meeting_times: meetingTimes,
                   };
-                  const hrs = studyHoursPerWeek !== '' ? parseInt(studyHoursPerWeek, 10) : null;
-                  if (hrs != null && !Number.isNaN(hrs) && hrs >= 0) payload.study_hours_per_week = hrs;
+                  const hrs =
+                    studyHoursPerWeek !== ''
+                      ? parseInt(studyHoursPerWeek, 10)
+                      : null;
+                  if (hrs != null && !Number.isNaN(hrs) && hrs >= 0)
+                    payload.study_hours_per_week = hrs;
                   if (state?.courseId) {
                     await updateCourse(token, state.courseId, payload);
                   } else {
@@ -171,7 +189,10 @@ export default function Upload() {
               <p className="text-sm text-ink-muted">
                 You've confirmed {assignments.length} assignment
                 {assignments.length !== 1 ? 's' : ''}
-                {meetingTimes.length > 0 ? ` and ${meetingTimes.length} meeting time${meetingTimes.length !== 1 ? 's' : ''}` : ''}.
+                {meetingTimes.length > 0
+                  ? ` and ${meetingTimes.length} meeting time${meetingTimes.length !== 1 ? 's' : ''}`
+                  : ''}
+                .
               </p>
               <div className="flex gap-3">
                 {courseId && (

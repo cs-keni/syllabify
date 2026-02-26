@@ -11,11 +11,21 @@ const BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 /** Like fetch but on 401 from authenticated API calls, clears token and dispatches auth:unauthorized. */
 async function apiFetch(url, opts = {}) {
   const res = await fetch(url, opts);
-  const hadAuth = opts.headers && (opts.headers.Authorization || opts.headers.authorization);
-  if (res.status === 401 && hadAuth && typeof url === 'string' && url.includes('/api/')) {
+  const hadAuth =
+    opts.headers && (opts.headers.Authorization || opts.headers.authorization);
+  if (
+    res.status === 401 &&
+    hadAuth &&
+    typeof url === 'string' &&
+    url.includes('/api/')
+  ) {
     try {
       localStorage.removeItem('syllabify_token');
-      window.dispatchEvent(new CustomEvent('auth:unauthorized', { detail: { message: 'Session expired. Please sign in again.' } }));
+      window.dispatchEvent(
+        new CustomEvent('auth:unauthorized', {
+          detail: { message: 'Session expired. Please sign in again.' },
+        })
+      );
     } catch (_) {}
   }
   return res;
@@ -138,8 +148,13 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
     termId = termIdOrPayload;
     payload = maybePayload;
   }
-  const { course_name, assignments, meeting_times, study_hours_per_week } = payload || {};
-  const course = await createCourse(termId, course_name || 'Course', study_hours_per_week);
+  const { course_name, assignments, meeting_times, study_hours_per_week } =
+    payload || {};
+  const course = await createCourse(
+    termId,
+    course_name || 'Course',
+    study_hours_per_week
+  );
   const items = (assignments || []).map(a => ({
     name: a.name,
     due: a.due || a.due_date || null,
@@ -170,7 +185,11 @@ export async function addMeetings(courseId, meeting_times) {
 
 /** GET /api/users/me with JWT. Returns { id, username, email, security_setup_done }. */
 export async function getProfile(token) {
-  const t = token || (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
+  const t =
+    token ||
+    (typeof localStorage !== 'undefined'
+      ? localStorage.getItem('syllabify_token')
+      : null);
   if (!t) return null;
   const res = await apiFetch(`${BASE}/api/users/me`, {
     headers: headers(true, t),
@@ -207,12 +226,15 @@ export async function disableUser(token, userId, disabled) {
 
 /** PUT /api/admin/users/:id/reset-security. Admin only. */
 export async function resetUserSecurity(token, userId) {
-  const res = await apiFetch(`${BASE}/api/admin/users/${userId}/reset-security`, {
-    method: 'PUT',
-    headers: headers(true, token),
-    body: JSON.stringify({}),
-    credentials: 'include',
-  });
+  const res = await apiFetch(
+    `${BASE}/api/admin/users/${userId}/reset-security`,
+    {
+      method: 'PUT',
+      headers: headers(true, token),
+      body: JSON.stringify({}),
+      credentials: 'include',
+    }
+  );
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to reset');
   return data;
@@ -220,7 +242,11 @@ export async function resetUserSecurity(token, userId) {
 
 /** GET /api/users/me/preferences. Returns { work_start, work_end, preferred_days, max_hours_per_day }. */
 export async function getPreferences(token) {
-  const t = token || (typeof localStorage !== 'undefined' ? localStorage.getItem('syllabify_token') : null);
+  const t =
+    token ||
+    (typeof localStorage !== 'undefined'
+      ? localStorage.getItem('syllabify_token')
+      : null);
   if (!t) return null;
   const res = await apiFetch(`${BASE}/api/users/me/preferences`, {
     headers: headers(true, t),
@@ -358,9 +384,14 @@ export async function getCourses(termId) {
 }
 
 /** POST /api/terms/:termId/courses. Returns { id, course_name, assignment_count }. */
-export async function createCourse(termId, courseName, studyHoursPerWeek = null) {
+export async function createCourse(
+  termId,
+  courseName,
+  studyHoursPerWeek = null
+) {
   const body = { course_name: courseName };
-  if (studyHoursPerWeek != null && studyHoursPerWeek !== '') body.study_hours_per_week = studyHoursPerWeek;
+  if (studyHoursPerWeek != null && studyHoursPerWeek !== '')
+    body.study_hours_per_week = studyHoursPerWeek;
   const res = await apiFetch(`${BASE}/api/terms/${termId}/courses`, {
     method: 'POST',
     headers: headers(true),
@@ -389,7 +420,8 @@ export async function getCourse(courseId) {
  * Used when re-uploading syllabus from Course page.
  */
 export async function updateCourse(token, courseId, payload) {
-  const { course_name, assignments, meeting_times, study_hours_per_week } = payload || {};
+  const { course_name, assignments, meeting_times, study_hours_per_week } =
+    payload || {};
   const body = {
     course_name: course_name || 'Course',
     assignments: Array.isArray(assignments) ? assignments : [],

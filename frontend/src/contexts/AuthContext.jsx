@@ -46,7 +46,8 @@ export function AuthProvider({ children }) {
       window.location.href = '/login?expired=1';
     };
     window.addEventListener('auth:unauthorized', onUnauthorized);
-    return () => window.removeEventListener('auth:unauthorized', onUnauthorized);
+    return () =>
+      window.removeEventListener('auth:unauthorized', onUnauthorized);
   }, []);
 
   useEffect(() => {

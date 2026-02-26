@@ -36,7 +36,14 @@ const TYPE_TO_SECTION = {
   quiz: 'quizzes',
   participation: 'participation',
 };
-const SECTION_ORDER = ['exams', 'projects', 'assignments', 'quizzes', 'participation', 'other'];
+const SECTION_ORDER = [
+  'exams',
+  'projects',
+  'assignments',
+  'quizzes',
+  'participation',
+  'other',
+];
 const SECTION_LABELS = {
   exams: 'Exams (midterms & finals)',
   projects: 'Projects',
@@ -66,7 +73,14 @@ const MEETING_TYPES = [
 ];
 
 function groupBySection(assignments) {
-  const groups = { exams: [], projects: [], assignments: [], quizzes: [], participation: [], other: [] };
+  const groups = {
+    exams: [],
+    projects: [],
+    assignments: [],
+    quizzes: [],
+    participation: [],
+    other: [],
+  };
   for (const a of assignments) {
     const t = (a.type || 'assignment').toLowerCase();
     const section = TYPE_TO_SECTION[t] || 'other';
@@ -124,7 +138,10 @@ function Modal({ open, onClose, title, children }) {
         className="rounded-card bg-surface-elevated border border-border shadow-card max-w-md w-full max-h-[90vh] overflow-y-auto animate-fade-in-up"
         onClick={e => e.stopPropagation()}
       >
-        <h3 id="modal-title" className="text-lg font-medium text-ink px-4 pt-4 pb-2">
+        <h3
+          id="modal-title"
+          className="text-lg font-medium text-ink px-4 pt-4 pb-2"
+        >
           {title}
         </h3>
         <div className="px-4 pb-4">{children}</div>
@@ -169,12 +186,16 @@ function AddMeetingModal({ open, onClose, onAdd }) {
           className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
         >
           {DAYS.map(d => (
-            <option key={d.value} value={d.value}>{d.label}</option>
+            <option key={d.value} value={d.value}>
+              {d.label}
+            </option>
           ))}
         </select>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="block text-sm font-medium text-ink-muted">Start</label>
+            <label className="block text-sm font-medium text-ink-muted">
+              Start
+            </label>
             <input
               type="time"
               value={startTime}
@@ -183,7 +204,9 @@ function AddMeetingModal({ open, onClose, onAdd }) {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-ink-muted">End</label>
+            <label className="block text-sm font-medium text-ink-muted">
+              End
+            </label>
             <input
               type="time"
               value={endTime}
@@ -193,7 +216,9 @@ function AddMeetingModal({ open, onClose, onAdd }) {
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Location (optional)</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Location (optional)
+          </label>
           <input
             type="text"
             value={location}
@@ -203,14 +228,18 @@ function AddMeetingModal({ open, onClose, onAdd }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Type</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Type
+          </label>
           <select
             value={meetingType}
             onChange={e => setMeetingType(e.target.value)}
             className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
           >
             {MEETING_TYPES.map(({ value, label }) => (
-              <option key={value} value={value}>{label}</option>
+              <option key={value} value={value}>
+                {label}
+              </option>
             ))}
           </select>
         </div>
@@ -255,7 +284,9 @@ function AddInstructorModal({ open, onClose, onAdd }) {
     <Modal open={open} onClose={onClose} title="Add instructor or TA">
       <form onSubmit={handleSubmit} className="space-y-3">
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Name</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Name
+          </label>
           <input
             type="text"
             value={name}
@@ -265,7 +296,9 @@ function AddInstructorModal({ open, onClose, onAdd }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Email (optional)</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Email (optional)
+          </label>
           <input
             type="email"
             value={email}
@@ -275,8 +308,19 @@ function AddInstructorModal({ open, onClose, onAdd }) {
           />
         </div>
         <div className="flex gap-2 pt-2">
-          <button type="button" onClick={onClose} className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:bg-surface-muted">Cancel</button>
-          <button type="submit" className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover">Add</button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink-muted hover:bg-surface-muted"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover"
+          >
+            Add
+          </button>
         </div>
       </form>
     </Modal>
@@ -284,11 +328,18 @@ function AddInstructorModal({ open, onClose, onAdd }) {
 }
 
 /** Form to add a new assessment. */
-function AddAssessmentModal({ open, onClose, onAdd, defaultType = 'assignment' }) {
+function AddAssessmentModal({
+  open,
+  onClose,
+  onAdd,
+  defaultType = 'assignment',
+}) {
   const [name, setName] = useState('');
   const [type, setType] = useState(defaultType);
   const [due, setDue] = useState('');
-  const [hours, setHours] = useState(type === 'midterm' || type === 'final' ? 2 : type === 'quiz' ? 1 : 3);
+  const [hours, setHours] = useState(
+    type === 'midterm' || type === 'final' ? 2 : type === 'quiz' ? 1 : 3
+  );
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -310,7 +361,9 @@ function AddAssessmentModal({ open, onClose, onAdd, defaultType = 'assignment' }
     <Modal open={open} onClose={onClose} title="Add assessment">
       <form onSubmit={handleSubmit} className="space-y-3">
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Title</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Title
+          </label>
           <input
             type="text"
             value={name}
@@ -320,7 +373,9 @@ function AddAssessmentModal({ open, onClose, onAdd, defaultType = 'assignment' }
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Type</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Type
+          </label>
           <select
             value={type}
             onChange={e => {
@@ -334,12 +389,16 @@ function AddAssessmentModal({ open, onClose, onAdd, defaultType = 'assignment' }
             className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
           >
             {ASSESSMENT_TYPES.map(({ value, label }) => (
-              <option key={value} value={value}>{label}</option>
+              <option key={value} value={value}>
+                {label}
+              </option>
             ))}
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Due date (optional)</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Due date (optional)
+          </label>
           <input
             type="date"
             value={due}
@@ -348,7 +407,9 @@ function AddAssessmentModal({ open, onClose, onAdd, defaultType = 'assignment' }
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-ink-muted">Estimated hours</label>
+          <label className="block text-sm font-medium text-ink-muted">
+            Estimated hours
+          </label>
           <input
             type="number"
             min={1}
@@ -400,7 +461,12 @@ function SortableMeetingRow({ meeting, onUpdate, onDelete }) {
       style={style}
       className={`border-b border-border-subtle ${isDragging ? 'opacity-60 bg-surface-muted' : ''}`}
     >
-      <td className="w-8 px-2 py-2 cursor-grab active:cursor-grabbing" {...attributes} {...listeners} aria-label="Drag to reorder">
+      <td
+        className="w-8 px-2 py-2 cursor-grab active:cursor-grabbing"
+        {...attributes}
+        {...listeners}
+        aria-label="Drag to reorder"
+      >
         <span className="text-ink-muted select-none">⋮⋮</span>
       </td>
       <td className="px-3 py-2">
@@ -410,7 +476,9 @@ function SortableMeetingRow({ meeting, onUpdate, onDelete }) {
           className="w-full rounded border border-border bg-surface px-2 py-1 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-accent"
         >
           {DAYS.map(d => (
-            <option key={d.value} value={d.value}>{d.label}</option>
+            <option key={d.value} value={d.value}>
+              {d.label}
+            </option>
           ))}
         </select>
       </td>
@@ -426,7 +494,10 @@ function SortableMeetingRow({ meeting, onUpdate, onDelete }) {
         )}
       </td>
       <td className="px-3 py-2">
-        <EditableCell value={meeting.location || ''} onChange={v => onUpdate(meeting.id, 'location', v)} />
+        <EditableCell
+          value={meeting.location || ''}
+          onChange={v => onUpdate(meeting.id, 'location', v)}
+        />
       </td>
       <td className="px-3 py-2">
         <select
@@ -435,7 +506,9 @@ function SortableMeetingRow({ meeting, onUpdate, onDelete }) {
           className="w-full rounded border border-border bg-surface px-2 py-1 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-accent"
         >
           {MEETING_TYPES.map(({ value, label }) => (
-            <option key={value} value={value}>{label}</option>
+            <option key={value} value={value}>
+              {label}
+            </option>
           ))}
         </select>
       </td>
@@ -463,27 +536,41 @@ function SortableAssessmentRow({ item, onUpdate, onDelete, sectionId }) {
     transform,
     transition,
     isDragging,
-  } = useSortable({ id: item.id, data: { kind: 'assessment', section: sectionId } });
+  } = useSortable({
+    id: item.id,
+    data: { kind: 'assessment', section: sectionId },
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
   };
 
-  const lowConfidence = typeof item.confidence === 'number' && item.confidence < 0.6;
+  const lowConfidence =
+    typeof item.confidence === 'number' && item.confidence < 0.6;
 
   return (
     <tr
       ref={setNodeRef}
       style={style}
-      title={lowConfidence ? 'Parsed with low confidence—please verify' : undefined}
+      title={
+        lowConfidence ? 'Parsed with low confidence—please verify' : undefined
+      }
       className={`border-b border-border-subtle ${isDragging ? 'opacity-60 bg-surface-muted' : ''} ${lowConfidence ? 'bg-amber-50 dark:bg-amber-950/30' : ''}`}
     >
-      <td className="w-8 px-2 py-2 cursor-grab active:cursor-grabbing" {...attributes} {...listeners} aria-label="Drag to reorder">
+      <td
+        className="w-8 px-2 py-2 cursor-grab active:cursor-grabbing"
+        {...attributes}
+        {...listeners}
+        aria-label="Drag to reorder"
+      >
         <span className="text-ink-muted select-none">⋮⋮</span>
       </td>
       <td className="px-3 py-2">
-        <EditableCell value={item.name} onChange={v => onUpdate(item.id, 'name', v)} />
+        <EditableCell
+          value={item.name}
+          onChange={v => onUpdate(item.id, 'name', v)}
+        />
       </td>
       <td className="px-3 py-2">
         <select
@@ -492,7 +579,9 @@ function SortableAssessmentRow({ item, onUpdate, onDelete, sectionId }) {
           className="w-full rounded border border-border bg-surface px-2 py-1 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-accent"
         >
           {ASSESSMENT_TYPES.map(({ value, label }) => (
-            <option key={value} value={value}>{label}</option>
+            <option key={value} value={value}>
+              {label}
+            </option>
           ))}
         </select>
       </td>
@@ -526,14 +615,21 @@ function SortableAssessmentRow({ item, onUpdate, onDelete, sectionId }) {
 }
 
 /** Section box: Meeting times. */
-function MeetingTimesSection({ meetingTimes, onMeetingTimesChange, onOpenAddModal }) {
-  const { setNodeRef: setDroppableRef, isOver } = useDroppable({ id: 'section-meetings' });
+function MeetingTimesSection({
+  meetingTimes,
+  onMeetingTimesChange,
+  onOpenAddModal,
+}) {
+  const { setNodeRef: setDroppableRef, isOver } = useDroppable({
+    id: 'section-meetings',
+  });
   const updateMeeting = (id, field, value) => {
     onMeetingTimesChange(
       meetingTimes.map(m => (m.id === id ? { ...m, [field]: value } : m))
     );
   };
-  const deleteMeeting = id => onMeetingTimesChange(meetingTimes.filter(m => m.id !== id));
+  const deleteMeeting = id =>
+    onMeetingTimesChange(meetingTimes.filter(m => m.id !== id));
 
   const ids = meetingTimes.map(m => m.id);
 
@@ -556,21 +652,34 @@ function MeetingTimesSection({ meetingTimes, onMeetingTimesChange, onOpenAddModa
       </div>
       <div className="overflow-x-auto">
         {meetingTimes.length === 0 ? (
-          <p className="px-4 py-6 text-sm text-ink-muted text-center">No meeting times. Add one if your syllabus includes a schedule.</p>
+          <p className="px-4 py-6 text-sm text-ink-muted text-center">
+            No meeting times. Add one if your syllabus includes a schedule.
+          </p>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-surface-muted">
                 <th className="w-8 px-2 py-2" aria-label="Reorder" />
-                <th className="text-left font-medium text-ink px-3 py-2">Day</th>
-                <th className="text-left font-medium text-ink px-3 py-2">Time</th>
-                <th className="text-left font-medium text-ink px-3 py-2">Location</th>
-                <th className="text-left font-medium text-ink px-3 py-2">Type</th>
+                <th className="text-left font-medium text-ink px-3 py-2">
+                  Day
+                </th>
+                <th className="text-left font-medium text-ink px-3 py-2">
+                  Time
+                </th>
+                <th className="text-left font-medium text-ink px-3 py-2">
+                  Location
+                </th>
+                <th className="text-left font-medium text-ink px-3 py-2">
+                  Type
+                </th>
                 <th className="w-10 px-2 py-2" aria-label="Remove" />
               </tr>
             </thead>
             <tbody>
-              <SortableContext items={ids} strategy={verticalListSortingStrategy}>
+              <SortableContext
+                items={ids}
+                strategy={verticalListSortingStrategy}
+              >
                 {meetingTimes.map(m => (
                   <SortableMeetingRow
                     key={m.id}
@@ -589,8 +698,17 @@ function MeetingTimesSection({ meetingTimes, onMeetingTimesChange, onOpenAddModa
 }
 
 /** Section box: one assessment section (exams, assignments, etc.). */
-function AssessmentSectionBox({ sectionId, label, items, onUpdate, onDelete, onOpenAddModal }) {
-  const { setNodeRef: setDroppableRef, isOver } = useDroppable({ id: `section-${sectionId}` });
+function AssessmentSectionBox({
+  sectionId,
+  label,
+  items,
+  onUpdate,
+  onDelete,
+  onOpenAddModal,
+}) {
+  const { setNodeRef: setDroppableRef, isOver } = useDroppable({
+    id: `section-${sectionId}`,
+  });
   const ids = items.map(a => a.id);
 
   return (
@@ -612,21 +730,37 @@ function AssessmentSectionBox({ sectionId, label, items, onUpdate, onDelete, onO
       </div>
       <div className="overflow-x-auto">
         {items.length === 0 ? (
-          <p className="px-4 py-6 text-sm text-ink-muted text-center">None. Add one or drag from another section.</p>
+          <p className="px-4 py-6 text-sm text-ink-muted text-center">
+            None. Add one or drag from another section.
+          </p>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-surface-muted">
                 <th className="w-8 px-2 py-2" aria-label="Reorder" />
-                <th className="text-left font-medium text-ink px-3 py-2">Title</th>
-                <th className="text-left font-medium text-ink px-3 py-2">Type</th>
-                <th className="text-left font-medium text-ink px-3 py-2">Due date</th>
-                <th className="text-left font-medium text-ink px-3 py-2" title="Estimated effort in hours (used by the scheduler; edit as needed).">Hours</th>
+                <th className="text-left font-medium text-ink px-3 py-2">
+                  Title
+                </th>
+                <th className="text-left font-medium text-ink px-3 py-2">
+                  Type
+                </th>
+                <th className="text-left font-medium text-ink px-3 py-2">
+                  Due date
+                </th>
+                <th
+                  className="text-left font-medium text-ink px-3 py-2"
+                  title="Estimated effort in hours (used by the scheduler; edit as needed)."
+                >
+                  Hours
+                </th>
                 <th className="w-10 px-2 py-2" aria-label="Remove" />
               </tr>
             </thead>
             <tbody data-section={sectionId}>
-              <SortableContext items={ids} strategy={verticalListSortingStrategy}>
+              <SortableContext
+                items={ids}
+                strategy={verticalListSortingStrategy}
+              >
                 {items.map(a => (
                   <SortableAssessmentRow
                     key={a.id}
@@ -663,7 +797,8 @@ export default function ParsedDataReview({
   const [addMeetingOpen, setAddMeetingOpen] = useState(false);
   const [addAssessmentOpen, setAddAssessmentOpen] = useState(false);
   const [addInstructorOpen, setAddInstructorOpen] = useState(false);
-  const [addAssessmentSection, setAddAssessmentSection] = useState('assignments');
+  const [addAssessmentSection, setAddAssessmentSection] =
+    useState('assignments');
   const [activeId, setActiveId] = useState(null);
 
   const groups = groupBySection(assignments);
@@ -674,7 +809,8 @@ export default function ParsedDataReview({
     );
   };
 
-  const deleteAssignment = id => onAssignmentsChange(assignments.filter(a => a.id !== id));
+  const deleteAssignment = id =>
+    onAssignmentsChange(assignments.filter(a => a.id !== id));
 
   const addAssignment = (defaultType = 'assignment') => {
     const newId = `temp-${Date.now()}`;
@@ -684,7 +820,7 @@ export default function ParsedDataReview({
     ]);
   };
 
-  const openAddAssessment = (sectionId) => {
+  const openAddAssessment = sectionId => {
     const typeBySection = {
       exams: 'midterm',
       projects: 'project',
@@ -697,7 +833,7 @@ export default function ParsedDataReview({
     setAddAssessmentOpen(true);
   };
 
-  const handleAddAssessmentFromModal = (item) => {
+  const handleAddAssessmentFromModal = item => {
     onAssignmentsChange([...assignments, item]);
     setAddAssessmentOpen(false);
   };
@@ -706,11 +842,18 @@ export default function ParsedDataReview({
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
   );
 
-  const sectionToType = { exams: 'midterm', projects: 'project', assignments: 'assignment', quizzes: 'quiz', participation: 'participation', other: 'assignment' };
+  const sectionToType = {
+    exams: 'midterm',
+    projects: 'project',
+    assignments: 'assignment',
+    quizzes: 'quiz',
+    participation: 'participation',
+    other: 'assignment',
+  };
 
-  const handleDragStart = (ev) => setActiveId(ev.active.id);
+  const handleDragStart = ev => setActiveId(ev.active.id);
 
-  const handleDragEnd = (ev) => {
+  const handleDragEnd = ev => {
     const { active, over } = ev;
     setActiveId(null);
     if (!over || active.id === over.id) return;
@@ -737,7 +880,9 @@ export default function ParsedDataReview({
       if (overId.startsWith('section-')) {
         const sectionId = overId.replace('section-', '');
         const newType = sectionToType[sectionId] || 'assignment';
-        const updated = assignments.map((a, i) => (i === fromIdx ? { ...a, type: newType } : a));
+        const updated = assignments.map((a, i) =>
+          i === fromIdx ? { ...a, type: newType } : a
+        );
         onAssignmentsChange(updated);
         return;
       }
@@ -745,12 +890,16 @@ export default function ParsedDataReview({
       const toIdx = assignments.findIndex(a => a.id === overId);
       if (toIdx === -1) return;
 
-      const activeSection = TYPE_TO_SECTION[assignments[fromIdx].type] || 'other';
+      const activeSection =
+        TYPE_TO_SECTION[assignments[fromIdx].type] || 'other';
       const overSection = TYPE_TO_SECTION[assignments[toIdx].type] || 'other';
 
       const next = [...assignments];
       const [removed] = next.splice(fromIdx, 1);
-      const item = activeSection !== overSection ? { ...removed, type: sectionToType[overSection] || 'assignment' } : removed;
+      const item =
+        activeSection !== overSection
+          ? { ...removed, type: sectionToType[overSection] || 'assignment' }
+          : removed;
       const insertIdx = toIdx >= fromIdx ? toIdx - 1 : toIdx;
       next.splice(insertIdx, 0, item);
       onAssignmentsChange(next);
@@ -760,8 +909,12 @@ export default function ParsedDataReview({
   const allMeetingIds = meetingTimes.map(m => m.id);
   const allAssignmentIds = assignments.map(a => a.id);
 
-  const confidenceLabel = confidence?.label ? String(confidence.label).charAt(0).toUpperCase() + String(confidence.label).slice(1) : null;
-  const confidenceScore = confidence?.score != null ? Number(confidence.score) : null;
+  const confidenceLabel = confidence?.label
+    ? String(confidence.label).charAt(0).toUpperCase() +
+      String(confidence.label).slice(1)
+    : null;
+  const confidenceScore =
+    confidence?.score != null ? Number(confidence.score) : null;
 
   return (
     <div className="space-y-6">
@@ -770,7 +923,11 @@ export default function ParsedDataReview({
         {confidenceLabel != null && (
           <span
             className="rounded-full px-2.5 py-0.5 text-xs font-medium bg-surface-muted text-ink-muted"
-            title={confidenceScore != null ? `Parse confidence: ${confidenceScore}%` : 'Parse confidence'}
+            title={
+              confidenceScore != null
+                ? `Parse confidence: ${confidenceScore}%`
+                : 'Parse confidence'
+            }
           >
             Confidence: {confidenceLabel}
             {confidenceScore != null ? ` (${confidenceScore}%)` : ''}
@@ -780,10 +937,14 @@ export default function ParsedDataReview({
       {onStudyHoursPerWeekChange && (
         <section className="rounded-card border border-border bg-surface-elevated overflow-hidden">
           <div className="px-4 py-3 border-b border-border bg-surface-muted">
-            <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Course settings</h3>
+            <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">
+              Course settings
+            </h3>
           </div>
           <div className="px-4 py-3">
-            <label className="block text-sm font-medium text-ink-muted mb-1">Study hours per week (optional)</label>
+            <label className="block text-sm font-medium text-ink-muted mb-1">
+              Study hours per week (optional)
+            </label>
             <input
               type="number"
               min={0}
@@ -793,14 +954,19 @@ export default function ParsedDataReview({
               onChange={e => onStudyHoursPerWeekChange(e.target.value)}
               className="w-24 rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
             />
-            <p className="text-xs text-ink-muted mt-1">Max hours the scheduler will allocate for this course per week. Leave blank for no cap.</p>
+            <p className="text-xs text-ink-muted mt-1">
+              Max hours the scheduler will allocate for this course per week.
+              Leave blank for no cap.
+            </p>
           </div>
         </section>
       )}
       {(instructors.length > 0 || onInstructorsChange) && (
         <section className="rounded-card border border-border bg-surface-elevated overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-surface-muted">
-            <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">Instructors & contact</h3>
+            <h3 className="text-sm font-semibold text-ink-muted uppercase tracking-wider">
+              Instructors & contact
+            </h3>
             {onInstructorsChange && (
               <button
                 type="button"
@@ -812,23 +978,40 @@ export default function ParsedDataReview({
             )}
           </div>
           {instructors.length === 0 ? (
-            <p className="px-4 py-4 text-sm text-ink-muted">No instructors extracted. Add one if your syllabus lists an instructor or TA.</p>
+            <p className="px-4 py-4 text-sm text-ink-muted">
+              No instructors extracted. Add one if your syllabus lists an
+              instructor or TA.
+            </p>
           ) : (
             <ul className="divide-y divide-border">
               {instructors.map((inst, i) => (
-                <li key={inst.id || i} className="flex items-center justify-between gap-2 px-4 py-2 text-sm">
+                <li
+                  key={inst.id || i}
+                  className="flex items-center justify-between gap-2 px-4 py-2 text-sm"
+                >
                   <span>
-                    <span className="font-medium text-ink">{inst.name || 'Instructor'}</span>
+                    <span className="font-medium text-ink">
+                      {inst.name || 'Instructor'}
+                    </span>
                     {inst.email && (
                       <span className="text-ink-muted ml-2">
-                        <a href={`mailto:${inst.email}`} className="text-accent hover:underline">{inst.email}</a>
+                        <a
+                          href={`mailto:${inst.email}`}
+                          className="text-accent hover:underline"
+                        >
+                          {inst.email}
+                        </a>
                       </span>
                     )}
                   </span>
                   {onInstructorsChange && (
                     <button
                       type="button"
-                      onClick={() => onInstructorsChange(instructors.filter((_, j) => j !== i))}
+                      onClick={() =>
+                        onInstructorsChange(
+                          instructors.filter((_, j) => j !== i)
+                        )
+                      }
                       className="rounded-button p-1.5 text-ink-muted hover:bg-red-500/10 hover:text-red-600"
                       title="Remove"
                       aria-label="Remove"
@@ -848,7 +1031,13 @@ export default function ParsedDataReview({
         </div>
       )}
       <p className="text-sm text-ink-muted">
-        Review and organize parsed data. Edit cells by clicking, add or remove rows, and drag items to reorder or move between sections. <span className="block mt-1">Hours are estimated effort per item for the scheduler—edit them to match how much time you plan to spend.</span> Then confirm to save.
+        Review and organize parsed data. Edit cells by clicking, add or remove
+        rows, and drag items to reorder or move between sections.{' '}
+        <span className="block mt-1">
+          Hours are estimated effort per item for the scheduler—edit them to
+          match how much time you plan to spend.
+        </span>{' '}
+        Then confirm to save.
       </p>
 
       <DndContext
@@ -883,15 +1072,24 @@ export default function ParsedDataReview({
                   {(() => {
                     const m = meetingTimes.find(x => x.id === activeId);
                     if (!m) return null;
-                    const dayLabel = DAYS.find(d => d.value === m.day_of_week)?.label || m.day_of_week;
-                    const timeDisplay = m.start_time && m.end_time ? `${m.start_time} – ${m.end_time}` : 'TBD';
+                    const dayLabel =
+                      DAYS.find(d => d.value === m.day_of_week)?.label ||
+                      m.day_of_week;
+                    const timeDisplay =
+                      m.start_time && m.end_time
+                        ? `${m.start_time} – ${m.end_time}`
+                        : 'TBD';
                     return (
                       <tr className="border-b border-border-subtle bg-surface-elevated">
                         <td className="w-8 px-2 py-2 text-ink-muted">⋮⋮</td>
                         <td className="px-3 py-2">{dayLabel}</td>
                         <td className="px-3 py-2">{timeDisplay}</td>
                         <td className="px-3 py-2">{m.location || '—'}</td>
-                        <td className="px-3 py-2">{MEETING_TYPES.find(t => t.value === (m.type || 'lecture'))?.label || m.type}</td>
+                        <td className="px-3 py-2">
+                          {MEETING_TYPES.find(
+                            t => t.value === (m.type || 'lecture')
+                          )?.label || m.type}
+                        </td>
                         <td className="w-10" />
                       </tr>
                     );
@@ -909,7 +1107,9 @@ export default function ParsedDataReview({
                         <td className="w-8 px-2 py-2 text-ink-muted">⋮⋮</td>
                         <td className="px-3 py-2">{a.name}</td>
                         <td className="px-3 py-2">{a.type || 'assignment'}</td>
-                        <td className="px-3 py-2">{a.due || a.due_date || '—'}</td>
+                        <td className="px-3 py-2">
+                          {a.due || a.due_date || '—'}
+                        </td>
                         <td className="px-3 py-2">{a.hours}</td>
                         <td className="w-10" />
                       </tr>
@@ -930,13 +1130,25 @@ export default function ParsedDataReview({
       <AddInstructorModal
         open={addInstructorOpen}
         onClose={() => setAddInstructorOpen(false)}
-        onAdd={inst => onInstructorsChange && onInstructorsChange([...instructors, inst])}
+        onAdd={inst =>
+          onInstructorsChange && onInstructorsChange([...instructors, inst])
+        }
       />
       <AddAssessmentModal
         open={addAssessmentOpen}
         onClose={() => setAddAssessmentOpen(false)}
         onAdd={handleAddAssessmentFromModal}
-        defaultType={addAssessmentSection === 'exams' ? 'midterm' : addAssessmentSection === 'projects' ? 'project' : addAssessmentSection === 'quizzes' ? 'quiz' : addAssessmentSection === 'participation' ? 'participation' : 'assignment'}
+        defaultType={
+          addAssessmentSection === 'exams'
+            ? 'midterm'
+            : addAssessmentSection === 'projects'
+              ? 'project'
+              : addAssessmentSection === 'quizzes'
+                ? 'quiz'
+                : addAssessmentSection === 'participation'
+                  ? 'participation'
+                  : 'assignment'
+        }
       />
 
       <div className="flex justify-end pt-2">

@@ -59,7 +59,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     try {
-      const stored = JSON.parse(localStorage.getItem('syllabify_recent_courses') || '[]');
+      const stored = JSON.parse(
+        localStorage.getItem('syllabify_recent_courses') || '[]'
+      );
       setRecentCourses(stored.filter(c => c.id && c.course_name));
     } catch (_) {
       setRecentCourses([]);
@@ -67,7 +69,8 @@ export default function Dashboard() {
   }, [courses]);
 
   const sortedCourses = [...courses].sort((a, b) => {
-    if (sortBy === 'name') return (a.course_name || '').localeCompare(b.course_name || '');
+    if (sortBy === 'name')
+      return (a.course_name || '').localeCompare(b.course_name || '');
     const ac = a.assignment_count ?? 0;
     const bc = b.assignment_count ?? 0;
     return sortBy === 'count-desc' ? bc - ac : ac - bc;
@@ -184,7 +187,10 @@ export default function Dashboard() {
         <div className="overflow-x-auto">
           <div className="flex gap-4 items-end min-w-[420px]">
             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => (
-              <div key={day} className="flex-1 flex flex-col items-center gap-1">
+              <div
+                key={day}
+                className="flex-1 flex flex-col items-center gap-1"
+              >
                 <div
                   className="w-full rounded-t min-h-[4px] bg-accent-muted max-h-24 origin-bottom animate-bar-grow"
                   style={{
@@ -230,7 +236,9 @@ export default function Dashboard() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
             <h2 className="text-sm font-medium text-ink">Courses</h2>
             <div className="flex items-center gap-2 w-full sm:w-auto">
-              <label htmlFor="sort-courses" className="text-xs text-ink-muted">Sort:</label>
+              <label htmlFor="sort-courses" className="text-xs text-ink-muted">
+                Sort:
+              </label>
               <select
                 id="sort-courses"
                 value={sortBy}
@@ -294,13 +302,20 @@ export default function Dashboard() {
           <div className="space-y-3">
             {!currentTermId ? (
               <div className="py-8 text-center rounded-button border border-dashed border-border bg-surface-muted/50">
-                <p className="text-sm text-ink-muted mb-2">Select a term above to view its courses.</p>
-                <p className="text-xs text-ink-subtle">Choose an existing term or create a new one.</p>
+                <p className="text-sm text-ink-muted mb-2">
+                  Select a term above to view its courses.
+                </p>
+                <p className="text-xs text-ink-subtle">
+                  Choose an existing term or create a new one.
+                </p>
               </div>
             ) : loadingCourses ? (
               <>
                 {[1, 2, 3].map(i => (
-                  <div key={i} className="rounded-card border border-border bg-surface p-4 animate-pulse">
+                  <div
+                    key={i}
+                    className="rounded-card border border-border bg-surface p-4 animate-pulse"
+                  >
                     <div className="h-5 bg-border/50 rounded w-1/3 mb-2" />
                     <div className="h-4 bg-border/30 rounded w-1/4" />
                   </div>
@@ -308,9 +323,12 @@ export default function Dashboard() {
               </>
             ) : courses.length === 0 ? (
               <div className="py-10 px-6 text-center rounded-button border border-dashed border-border bg-surface-muted/30">
-                <p className="text-sm font-medium text-ink mb-1">No courses yet</p>
+                <p className="text-sm font-medium text-ink mb-1">
+                  No courses yet
+                </p>
                 <p className="text-sm text-ink-muted mb-4">
-                  Upload a syllabus to extract assignments, or add a course manually.
+                  Upload a syllabus to extract assignments, or add a course
+                  manually.
                 </p>
                 <button
                   type="button"
@@ -324,7 +342,9 @@ export default function Dashboard() {
               <>
                 {recentCourses.length > 0 && (
                   <div className="mb-4">
-                    <p className="text-xs text-ink-muted mb-2">Recently viewed</p>
+                    <p className="text-xs text-ink-muted mb-2">
+                      Recently viewed
+                    </p>
                     <div className="flex flex-wrap gap-1">
                       {recentCourses.map(c => (
                         <Link
@@ -339,22 +359,22 @@ export default function Dashboard() {
                   </div>
                 )}
                 {sortedCourses.map((c, i) => (
-                <div
-                  key={c.id}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${780 + i * 50}ms` }}
-                >
-                  <CourseCard
-                    course={{
-                      id: c.id,
-                      course_name: c.course_name || c.name || 'Course',
-                      term: '',
-                      assignment_count: c.assignment_count ?? 0,
-                    }}
-                    onDelete={() => handleDeleteCourse(c.id)}
-                  />
-                </div>
-              ))}
+                  <div
+                    key={c.id}
+                    className="animate-fade-in-up"
+                    style={{ animationDelay: `${780 + i * 50}ms` }}
+                  >
+                    <CourseCard
+                      course={{
+                        id: c.id,
+                        course_name: c.course_name || c.name || 'Course',
+                        term: '',
+                        assignment_count: c.assignment_count ?? 0,
+                      }}
+                      onDelete={() => handleDeleteCourse(c.id)}
+                    />
+                  </div>
+                ))}
               </>
             )}
           </div>

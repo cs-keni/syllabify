@@ -37,7 +37,10 @@ export default function ShortcutsOverlay({ open, onClose }) {
         className="rounded-card bg-surface-elevated border border-border shadow-dropdown p-6 max-w-md mx-4 animate-scale-in"
         onClick={e => e.stopPropagation()}
       >
-        <h2 id="shortcuts-title" className="text-lg font-semibold text-ink mb-4">
+        <h2
+          id="shortcuts-title"
+          className="text-lg font-semibold text-ink mb-4"
+        >
           Keyboard shortcuts
         </h2>
         <dl className="space-y-3">
@@ -57,9 +60,7 @@ export default function ShortcutsOverlay({ open, onClose }) {
             </div>
           ))}
         </dl>
-        <p className="mt-4 text-xs text-ink-subtle">
-          Press Esc to close
-        </p>
+        <p className="mt-4 text-xs text-ink-subtle">Press Esc to close</p>
       </div>
     </div>
   );
