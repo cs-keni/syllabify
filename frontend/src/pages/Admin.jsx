@@ -58,7 +58,9 @@ export default function Admin() {
 
   if (loading) {
     return (
-      <div className="py-12 text-center text-ink-muted animate-pulse">Loading users…</div>
+      <div className="py-12 text-center text-ink-muted animate-pulse">
+        Loading users…
+      </div>
     );
   }
 
@@ -79,7 +81,9 @@ export default function Admin() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <h1 className="text-2xl font-semibold text-ink">Admin — User management</h1>
+      <h1 className="text-2xl font-semibold text-ink">
+        Admin — User management
+      </h1>
       <div className="rounded-card bg-surface-elevated border border-border overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-surface-muted border-b border-border">
@@ -95,7 +99,10 @@ export default function Admin() {
           </thead>
           <tbody>
             {users.map(u => (
-              <tr key={u.id} className="border-t border-border-subtle hover:bg-surface-muted/50">
+              <tr
+                key={u.id}
+                className="border-t border-border-subtle hover:bg-surface-muted/50"
+              >
                 <td className="p-3 text-ink-muted">{u.id}</td>
                 <td className="p-3 font-medium">{u.username}</td>
                 <td className="p-3 text-ink-muted">{u.email || '—'}</td>

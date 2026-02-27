@@ -3,7 +3,13 @@
  * Nav uses a sliding indicator that moves between tabs with distance-based bounce animation.
  */
 import { useRef, useLayoutEffect, useState, useEffect } from 'react';
-import { Outlet, NavLink, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Outlet,
+  NavLink,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import ShortcutsOverlay from './ShortcutsOverlay';
@@ -49,7 +55,9 @@ export default function Layout() {
   const [mounted, setMounted] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
-  const [offline, setOffline] = useState(typeof navigator !== 'undefined' && !navigator.onLine);
+  const [offline, setOffline] = useState(
+    typeof navigator !== 'undefined' && !navigator.onLine
+  );
   const profileRef = useRef(null);
   const navigate = useNavigate();
 
@@ -69,7 +77,9 @@ export default function Layout() {
   const gPendingRef = useRef(false);
   useEffect(() => {
     const onKey = e => {
-      const inInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+      const inInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(
+        document.activeElement?.tagName
+      );
       if (inInput || e.ctrlKey || e.metaKey || e.altKey) {
         gPendingRef.current = false;
         return;
@@ -97,7 +107,8 @@ export default function Layout() {
   useEffect(() => {
     if (!profileOpen) return;
     const onClickOutside = e => {
-      if (profileRef.current && !profileRef.current.contains(e.target)) setProfileOpen(false);
+      if (profileRef.current && !profileRef.current.contains(e.target))
+        setProfileOpen(false);
     };
     const onEscape = e => {
       if (e.key === 'Escape') setProfileOpen(false);
@@ -116,7 +127,9 @@ export default function Layout() {
         .toUpperCase()
         .replace(/[^A-Z0-9]/g, '') || '?'
     : '?';
-  const navItemsFiltered = navItems.filter(item => !item.adminOnly || user?.is_admin);
+  const navItemsFiltered = navItems.filter(
+    item => !item.adminOnly || user?.is_admin
+  );
   const activeIndex = getActiveIndex(pathname, navItemsFiltered);
 
   useLayoutEffect(() => {
@@ -185,11 +198,17 @@ export default function Layout() {
         Skip to main content
       </a>
       {offline && (
-        <div className="bg-amber-500 text-amber-950 text-sm text-center py-1.5 px-4 font-medium" role="status">
+        <div
+          className="bg-amber-500 text-amber-950 text-sm text-center py-1.5 px-4 font-medium"
+          role="status"
+        >
           You're offline. Some features may not work.
         </div>
       )}
-      <ShortcutsOverlay open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />
+      <ShortcutsOverlay
+        open={shortcutsOpen}
+        onClose={() => setShortcutsOpen(false)}
+      />
       <header className="sticky top-0 z-10 bg-surface-elevated border-b border-border shadow-card">
         <nav className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="flex min-h-14 flex-wrap items-center gap-2 py-2 md:flex-nowrap md:justify-between md:py-0">
@@ -271,7 +290,12 @@ export default function Layout() {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
                 {profileOpen && (
@@ -285,9 +309,24 @@ export default function Layout() {
                       className="flex items-center gap-2 px-4 py-2 text-sm text-ink no-underline hover:bg-surface-muted rounded-t"
                       role="menuitem"
                     >
-                      <svg className="h-4 w-4 text-ink-subtle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <svg
+                        className="h-4 w-4 text-ink-subtle"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
                       </svg>
                       Preferences
                     </NavLink>
@@ -300,8 +339,18 @@ export default function Layout() {
                       className="flex w-full items-center gap-2 px-4 py-2 text-sm text-ink hover:bg-surface-muted rounded-b text-left"
                       role="menuitem"
                     >
-                      <svg className="h-4 w-4 text-ink-subtle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                      <svg
+                        className="h-4 w-4 text-ink-subtle"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
                       </svg>
                       Log out
                     </button>
@@ -312,7 +361,10 @@ export default function Layout() {
           </div>
         </nav>
       </header>
-      <main id="main-content" className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <main
+        id="main-content"
+        className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
+      >
         <Outlet />
       </main>
     </div>

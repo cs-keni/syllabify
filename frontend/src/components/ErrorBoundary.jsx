@@ -18,7 +18,9 @@ export default class ErrorBoundary extends Component {
     if (this.state.error) {
       return (
         <div className="min-h-[50vh] flex flex-col items-center justify-center p-8 bg-surface">
-          <h1 className="text-xl font-semibold text-ink mb-2">Something went wrong</h1>
+          <h1 className="text-xl font-semibold text-ink mb-2">
+            Something went wrong
+          </h1>
           <p className="text-sm text-ink-muted mb-6 text-center max-w-md">
             An unexpected error occurred. Try refreshing the page or going back.
           </p>

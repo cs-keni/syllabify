@@ -1,5 +1,5 @@
 """Assignment CRUD: PATCH /api/assignments/:id, DELETE /api/assignments/:id."""
-from datetime import date, datetime
+from datetime import datetime
 
 from flask import Blueprint, jsonify, request
 

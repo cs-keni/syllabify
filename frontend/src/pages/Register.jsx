@@ -25,7 +25,10 @@ export default function Register() {
     setSubmitting(true);
     try {
       await register(username.trim(), password);
-      navigate('/login', { replace: true, state: { message: 'Account created. Log in.' } });
+      navigate('/login', {
+        replace: true,
+        state: { message: 'Account created. Log in.' },
+      });
     } catch (err) {
       setError(err.message || 'Registration failed');
       setSubmitting(false);
@@ -37,7 +40,10 @@ export default function Register() {
       <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
           <div className="flex items-center justify-between gap-3">
-            <Link to="/" className="text-lg font-semibold tracking-tight text-ink no-underline hover:text-accent">
+            <Link
+              to="/"
+              className="text-lg font-semibold tracking-tight text-ink no-underline hover:text-accent"
+            >
               Syllabify
             </Link>
             <ThemeToggle />
@@ -48,8 +54,12 @@ export default function Register() {
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12 pt-8">
         <div className="mx-auto max-w-md">
           <div className="text-center animate-fade-in">
-            <p className="text-sm uppercase tracking-[0.2em] text-accent">Create account</p>
-            <h1 className="mt-3 text-3xl font-serif font-semibold text-ink">Sign up for Syllabify</h1>
+            <p className="text-sm uppercase tracking-[0.2em] text-accent">
+              Create account
+            </p>
+            <h1 className="mt-3 text-3xl font-serif font-semibold text-ink">
+              Sign up for Syllabify
+            </h1>
             <p className="mt-3 text-sm text-ink-muted">
               Create an account to manage your syllabi and schedules.
             </p>
@@ -65,7 +75,10 @@ export default function Register() {
               </p>
             )}
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-ink mb-1">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-ink mb-1"
+              >
                 Username
               </label>
               <input
@@ -82,7 +95,10 @@ export default function Register() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-ink mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-ink mb-1"
+              >
                 Password
               </label>
               <input
@@ -98,7 +114,10 @@ export default function Register() {
               />
             </div>
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-ink mb-1">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-ink mb-1"
+              >
                 Confirm password
               </label>
               <input
@@ -121,7 +140,10 @@ export default function Register() {
             </button>
             <p className="text-center text-sm text-ink-muted">
               Already have an account?{' '}
-              <Link to="/login" className="text-accent hover:underline font-medium">
+              <Link
+                to="/login"
+                className="text-accent hover:underline font-medium"
+              >
                 Log in
               </Link>
             </p>
