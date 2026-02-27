@@ -695,6 +695,21 @@ export async function addAssignments(courseId, assignments) {
   return data;
 }
 
+/** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. */
+export async function generateStudyTimes(token, termId) {
+  const res = await apiFetch(
+    `${BASE}/api/schedule/terms/${termId}/generate-study-times`,
+    {
+      method: 'POST',
+      headers: headers(true, token),
+      credentials: 'include',
+    }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to generate study times');
+  return data;
+}
+
 export default {
   login,
   register,
@@ -721,4 +736,5 @@ export default {
   updateAssignment,
   deleteAssignment,
   parseSyllabus,
+  generateStudyTimes,
 };
