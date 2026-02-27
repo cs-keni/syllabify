@@ -107,7 +107,7 @@ def get_preferences():
     try:
         cur = conn.cursor(dictionary=True)
         cur.execute(
-            "SELECT work_start, work_end, preferred_days, max_hours_per_day FROM UserPreferences WHERE user_id = %s",
+            "SELECT work_start, work_end, preferred_days, max_hours_per_day, timezone FROM UserPreferences WHERE user_id = %s",
             (user_id,),
         )
         row = cur.fetchone()
@@ -122,12 +122,14 @@ def get_preferences():
                 "work_end": "17:00",
                 "preferred_days": "MO,TU,WE,TH,FR",
                 "max_hours_per_day": 8,
+                "timezone": None,
             })
         return jsonify({
             "work_start": row["work_start"] or "09:00",
             "work_end": row["work_end"] or "17:00",
             "preferred_days": row["preferred_days"] or "MO,TU,WE,TH,FR",
             "max_hours_per_day": int(row["max_hours_per_day"]) if row["max_hours_per_day"] is not None else 8,
+            "timezone": row.get("timezone"),
         })
     finally:
         conn.close()
@@ -157,18 +159,20 @@ def put_preferences():
         max_hours = max(1, min(24, int(max_hours))) if max_hours is not None else 8
     except (TypeError, ValueError):
         max_hours = 8
+    timezone = (data.get("timezone") or "").strip()[:64] or None
 
     conn = get_db()
     try:
         cur = conn.cursor()
         cur.execute(
             """
-            INSERT INTO UserPreferences (user_id, work_start, work_end, preferred_days, max_hours_per_day)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO UserPreferences (user_id, work_start, work_end, preferred_days, max_hours_per_day, timezone)
+            VALUES (%s, %s, %s, %s, %s, %s)
             ON DUPLICATE KEY UPDATE work_start = VALUES(work_start), work_end = VALUES(work_end),
-                preferred_days = VALUES(preferred_days), max_hours_per_day = VALUES(max_hours_per_day)
+                preferred_days = VALUES(preferred_days), max_hours_per_day = VALUES(max_hours_per_day),
+                timezone = VALUES(timezone)
             """,
-            (user_id, work_start, work_end, preferred_days, max_hours),
+            (user_id, work_start, work_end, preferred_days, max_hours, timezone),
         )
         conn.commit()
     finally:

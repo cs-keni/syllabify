@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import {
@@ -8,6 +8,7 @@ import {
   updateAssignment,
   deleteAssignment,
   parseSyllabus,
+  patchCourse,
 } from '../api/client';
 import toast from 'react-hot-toast';
 
@@ -64,6 +65,10 @@ function AssignmentRow({
   token,
   onUpdated,
   onRemoved,
+  onUndoDelete,
+  selectMode,
+  selected,
+  onSelectChange,
 }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(assignment.assignment_name);
@@ -117,11 +122,37 @@ function AssignmentRow({
 
   const handleDelete = async () => {
     if (!window.confirm('Remove this assignment?')) return;
+    const snapshot = {
+      name: assignment.assignment_name,
+      due: assignment.due_date,
+      hours: (assignment.work_load || 0) / 4,
+      type: assignment.assignment_type || 'assignment',
+    };
     setDeleting(true);
     try {
       await deleteAssignment(token, assignment.id);
-      toast.success('Removed');
       onRemoved?.();
+      const t = toast.custom(
+        (props) => (
+          <div
+            className="flex items-center gap-3 rounded-button border border-border bg-surface-elevated px-4 py-2 shadow-lg"
+            role="status"
+          >
+            <span className="text-sm text-ink">Assignment removed.</span>
+            <button
+              type="button"
+              onClick={() => {
+                onUndoDelete?.(snapshot);
+                toast.dismiss(props.id);
+              }}
+              className="text-sm font-medium text-accent hover:text-accent-hover"
+            >
+              Undo
+            </button>
+          </div>
+        ),
+        { duration: 5000 }
+      );
     } catch (e) {
       toast.error(e.message || 'Failed to remove');
     } finally {
@@ -214,8 +245,17 @@ function AssignmentRow({
     new Date(assignment.due_date) < new Date(new Date().toDateString());
   return (
     <li
-      className={`flex items-center justify-between px-3 py-2 rounded-button border text-sm group ${isOverdue ? 'border-red-300 bg-red-50/50 dark:border-red-800 dark:bg-red-950/30' : 'border-border-subtle bg-surface'}`}
+      className={`flex items-center justify-between px-3 py-2 rounded-button border text-sm group ${isOverdue ? 'border-red-300 bg-red-50/50 dark:border-red-800 dark:bg-red-950/30' : 'border-border-subtle bg-surface'} ${selected ? 'ring-2 ring-accent bg-accent-muted/20' : ''}`}
     >
+      {selectMode && (
+        <input
+          type="checkbox"
+          checked={!!selected}
+          onChange={e => onSelectChange?.(e.target.checked)}
+          className="rounded border-border accent-accent mr-2"
+          aria-label={`Select ${assignment.assignment_name}`}
+        />
+      )}
       <span
         className={`font-medium ${isOverdue ? 'text-red-600 dark:text-red-400' : 'text-ink'}`}
       >
@@ -229,6 +269,8 @@ function AssignmentRow({
           {formatDate(assignment.due_date)} ·{' '}
           {((assignment.work_load || 0) / 4).toFixed(1)}h
         </span>
+        {!selectMode && (
+        <>
         <button
           type="button"
           onClick={handleDuplicate}
@@ -253,6 +295,8 @@ function AssignmentRow({
         >
           {deleting ? '…' : 'Remove'}
         </button>
+        </>
+        )}
       </div>
     </li>
   );
@@ -343,6 +387,16 @@ export default function Course() {
         setConfirmDelete={setConfirmDelete}
         deleting={deleting}
         handleDelete={handleDelete}
+        token={token}
+        onColorChange={async color => {
+          try {
+            await patchCourse(token, courseId, { color });
+            setCourse(prev => (prev ? { ...prev, color } : prev));
+            toast.success('Color updated');
+          } catch (e) {
+            toast.error(e.message || 'Failed to update color');
+          }
+        }}
       />
       <AssignmentsSection
         course={course}
@@ -365,6 +419,10 @@ export default function Course() {
   );
 }
 
+const COURSE_COLORS = [
+  '#0f8a4c', '#2563eb', '#7c3aed', '#dc2626', '#ea580c', '#ca8a04', '#059669', '#0891b2',
+];
+
 function CourseHeader({
   course,
   navigate,
@@ -372,7 +430,21 @@ function CourseHeader({
   setConfirmDelete,
   deleting,
   handleDelete,
+  token,
+  onColorChange,
 }) {
+  const [editingColor, setEditingColor] = useState(false);
+  const colorPickerRef = useRef(null);
+  useEffect(() => {
+    if (!editingColor) return;
+    const onClick = e => {
+      if (colorPickerRef.current && !colorPickerRef.current.contains(e.target))
+        setEditingColor(false);
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [editingColor]);
+  const currentColor = course.color || COURSE_COLORS[(course.id || 0) % COURSE_COLORS.length];
   return (
     <div className="sticky top-14 z-10 -mx-4 -mt-6 px-4 pt-6 pb-4 -mb-4 bg-surface border-b border-border flex items-start justify-between gap-4">
       <div>
@@ -397,7 +469,36 @@ function CourseHeader({
         <p className="mt-1 text-sm text-ink-muted">{course.term_name}</p>
       </div>
 
-      <div className="flex gap-2 shrink-0">
+      <div className="flex gap-2 shrink-0 items-center">
+        <div className="relative" ref={colorPickerRef}>
+          <button
+            type="button"
+            onClick={() => setEditingColor(v => !v)}
+            title="Change course color"
+            className="w-8 h-8 rounded-full border-2 border-border hover:border-ink-muted transition-colors"
+            style={{ backgroundColor: currentColor }}
+            aria-label="Change course color"
+          />
+          {editingColor && (
+            <div className="absolute top-full left-0 mt-1 p-2 rounded-button border border-border bg-surface-elevated shadow-dropdown flex flex-wrap gap-1 z-20">
+              {COURSE_COLORS.map(c => (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => {
+                    onColorChange?.(c);
+                    setEditingColor(false);
+                  }}
+                  className={`w-6 h-6 rounded-full border-2 transition-all ${
+                    currentColor === c ? 'border-ink ring-1 ring-ink/30' : 'border-transparent'
+                  }`}
+                  style={{ backgroundColor: c }}
+                  aria-label={`Set color ${c}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
         <button
           type="button"
           onClick={() =>
@@ -445,6 +546,45 @@ function CourseHeader({
 
 function AssignmentsSection({ course, token, refreshCourse, navigate }) {
   const [sortBy, setSortBy] = useState('due');
+  const [selectMode, setSelectMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState(new Set());
+  const [bulkDeleting, setBulkDeleting] = useState(false);
+
+  const handleUndoDelete = async snapshot => {
+    try {
+      await addAssignments(course.id, [
+        {
+          name: snapshot.name,
+          due: snapshot.due,
+          hours: snapshot.hours,
+          type: snapshot.type,
+        },
+      ]);
+      toast.success('Restored');
+      refreshCourse();
+    } catch (e) {
+      toast.error(e.message || 'Failed to restore');
+    }
+  };
+  const handleBulkDelete = async () => {
+    const ids = [...selectedIds];
+    if (!ids.length || !window.confirm(`Remove ${ids.length} assignment(s)?`)) return;
+    setBulkDeleting(true);
+    try {
+      for (const id of ids) {
+        await deleteAssignment(token, id);
+      }
+      toast.success(`Removed ${ids.length} assignment(s)`);
+      setSelectedIds(new Set());
+      setSelectMode(false);
+      refreshCourse();
+    } catch (e) {
+      toast.error(e.message || 'Failed to remove');
+    } finally {
+      setBulkDeleting(false);
+    }
+  };
+
   const assignments = [...(course.assignments || [])].sort((a, b) => {
     if (sortBy === 'name')
       return (a.assignment_name || '').localeCompare(b.assignment_name || '');
@@ -461,7 +601,34 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
             {course.assignments?.length ?? 0}
           </span>
         </h2>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {selectMode ? (
+            <>
+              <button
+                type="button"
+                onClick={handleBulkDelete}
+                disabled={bulkDeleting || selectedIds.size === 0}
+                className="rounded-button bg-red-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-600 disabled:opacity-50"
+              >
+                {bulkDeleting ? 'Deleting…' : `Delete ${selectedIds.size} selected`}
+              </button>
+              <button
+                type="button"
+                onClick={() => { setSelectMode(false); setSelectedIds(new Set()); }}
+                className="rounded-button border border-border px-3 py-1.5 text-xs text-ink-muted hover:text-ink"
+              >
+                Cancel
+              </button>
+            </>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setSelectMode(true)}
+              className="rounded-button border border-border px-3 py-1.5 text-xs text-ink-muted hover:text-ink"
+            >
+              Select
+            </button>
+          )}
           <label htmlFor="sort-assignments" className="text-xs text-ink-muted">
             Sort:
           </label>
@@ -520,6 +687,17 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
               token={token}
               onUpdated={refreshCourse}
               onRemoved={refreshCourse}
+              onUndoDelete={handleUndoDelete}
+              selectMode={selectMode}
+              selected={selectedIds.has(a.id)}
+              onSelectChange={checked =>
+                setSelectedIds(prev => {
+                  const next = new Set(prev);
+                  if (checked) next.add(a.id);
+                  else next.delete(a.id);
+                  return next;
+                })
+              }
             />
           ))}
         </ul>

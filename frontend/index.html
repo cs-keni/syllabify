@@ -7,6 +7,11 @@
         var t=localStorage.getItem('syllabify-theme');
         if(t==='dark')document.documentElement.classList.add('dark');
         else document.documentElement.classList.remove('dark');
+        var a=localStorage.getItem('syllabify-accent')||'green';
+        var p={green:['#0f8a4c','#094728','#dcfce7'],blue:['#2563eb','#1d4ed8','#dbeafe'],purple:['#7c3aed','#5b21b6','#ede9fe'],indigo:['#4f46e5','#3730a3','#e0e7ff']}[a]||['#0f8a4c','#094728','#dcfce7'];
+        document.documentElement.style.setProperty('--color-accent',p[0]);
+        document.documentElement.style.setProperty('--color-accent-hover',p[1]);
+        document.documentElement.style.setProperty('--color-accent-muted',p[2]);
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

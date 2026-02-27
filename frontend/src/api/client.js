@@ -202,6 +202,17 @@ export async function getProfile(token) {
   return data;
 }
 
+/** GET /api/admin/users/:id with JWT. Admin only. Returns user details + terms_count, courses_count, assignments_count. */
+export async function getAdminUserDetails(token, userId) {
+  const res = await apiFetch(`${BASE}/api/admin/users/${userId}`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to load user');
+  return data;
+}
+
 /** GET /api/admin/users with JWT. Admin only. Returns { users: [...] }. */
 export async function getAdminUsers(token) {
   const res = await apiFetch(`${BASE}/api/admin/users`, {
@@ -210,6 +221,19 @@ export async function getAdminUsers(token) {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to load users');
+  return data;
+}
+
+/** PUT /api/admin/users/:id/set-password. Body: { new_password }. Admin only. */
+export async function adminSetPassword(token, userId, newPassword) {
+  const res = await apiFetch(`${BASE}/api/admin/users/${userId}/set-password`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({ new_password: newPassword }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to set password');
   return data;
 }
 
@@ -242,6 +266,19 @@ export async function resetUserSecurity(token, userId) {
   return data;
 }
 
+/** PUT /api/admin/users/:id/set-admin. Body: { is_admin: true|false }. Admin only. */
+export async function setAdminUser(token, userId, isAdmin) {
+  const res = await apiFetch(`${BASE}/api/admin/users/${userId}/set-admin`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({ is_admin: !!isAdmin }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update admin status');
+  return data;
+}
+
 /** GET /api/users/me/preferences. Returns { work_start, work_end, preferred_days, max_hours_per_day }. */
 export async function getPreferences(token) {
   const t =
@@ -269,6 +306,22 @@ export async function updatePreferences(token, prefs) {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to save preferences');
+  return data;
+}
+
+/** POST /api/auth/change-password with JWT. Body: { current_password, new_password }. */
+export async function changePassword(token, { currentPassword, newPassword }) {
+  const res = await apiFetch(`${BASE}/api/auth/change-password`, {
+    method: 'POST',
+    headers: headers(true, token),
+    body: JSON.stringify({
+      current_password: currentPassword,
+      new_password: newPassword,
+    }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to change password');
   return data;
 }
 
@@ -442,6 +495,19 @@ export async function updateCourse(token, courseId, payload) {
   return data;
 }
 
+/** PATCH /api/courses/:courseId. Partial update: { course_name?, color?, study_hours_per_week? }. */
+export async function patchCourse(token, courseId, payload) {
+  const res = await apiFetch(`${BASE}/api/courses/${courseId}`, {
+    method: 'PATCH',
+    headers: headers(true, token),
+    body: JSON.stringify(payload || {}),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update course');
+  return data;
+}
+
 /** DELETE /api/courses/:courseId. Returns { ok: true }. */
 export async function deleteCourse(courseId) {
   const res = await apiFetch(`${BASE}/api/courses/${courseId}`, {
@@ -512,6 +578,7 @@ export default {
   getCourse,
   deleteCourse,
   updateCourse,
+  patchCourse,
   addAssignments,
   addMeetings,
   updateAssignment,

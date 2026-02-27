@@ -6,6 +6,7 @@
 # modified. This describes the general idea as of the current state.
 
 import os
+import re
 
 import bcrypt
 import jwt
@@ -107,8 +108,6 @@ def decode_token(auth_header):
 @bp.route("/register", methods=["POST"])
 def register():
     """Create new user. No auto-login."""
-    import re
-
     data = request.get_json() or {}
     username = (data.get("username") or "").strip()
     password = data.get("password") or ""
@@ -119,10 +118,11 @@ def register():
         return jsonify({"error": "password is required"}), 400
     if len(username) < 3 or len(username) > 50:
         return jsonify({"error": "username must be 3-50 characters"}), 400
-    if not re.match(r"^[a-zA-Z0-9_]+$", username):
-        return jsonify({"error": "username may only contain letters, numbers, and underscore"}), 400
-    if len(password) < 8:
-        return jsonify({"error": "password must be at least 8 characters"}), 400
+    if not re.match(r"^[a-zA-Z0-9_-]+$", username):
+        return jsonify({"error": "username may only contain letters, numbers, underscore, and hyphen"}), 400
+    ok, err = _validate_password_strength(password)
+    if not ok:
+        return jsonify({"error": err}), 400
 
     conn = get_db()
     try:
@@ -241,6 +241,67 @@ def security_setup():
         conn.close()
 
 
+def _validate_password_strength(password):
+    """Returns (ok, error_message). Used for register and change-password."""
+    if len(password) < 8:
+        return False, "password must be at least 8 characters"
+    if not re.search(r"[A-Z]", password):
+        return False, "password must contain at least one uppercase letter"
+    if not re.search(r"[a-z]", password):
+        return False, "password must contain at least one lowercase letter"
+    if not re.search(r"\d", password):
+        return False, "password must contain at least one number"
+    if not re.search(r"[!@#$%^&*()_+\-=\[\]{};':\"\\|,.<>/?`~]", password):
+        return False, "password must contain at least one special character (!@#$%^&* etc.)"
+    return True, None
+
+
+@bp.route("/change-password", methods=["POST"])
+def change_password():
+    """Change password. Requires JWT and current_password verification."""
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "unauthorized"}), 401
+    try:
+        user_id = int(payload.get("sub"))
+    except (TypeError, ValueError):
+        return jsonify({"error": "unauthorized"}), 401
+
+    data = request.get_json() or {}
+    current_password = data.get("current_password") or ""
+    new_password = data.get("new_password") or ""
+
+    if not current_password:
+        return jsonify({"error": "current password is required"}), 400
+    if not new_password:
+        return jsonify({"error": "new password is required"}), 400
+
+    ok, err = _validate_password_strength(new_password)
+    if not ok:
+        return jsonify({"error": err}), 400
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT password_hash FROM Users WHERE id = %s",
+            (user_id,),
+        )
+        row = cur.fetchone()
+        if not row:
+            return jsonify({"error": "unauthorized"}), 401
+        if not check_password(current_password, row.get("password_hash") or ""):
+            return jsonify({"error": "current password is incorrect"}), 400
+
+        hashed = hash_password(new_password)
+        cur.execute("UPDATE Users SET password_hash = %s WHERE id = %s", (hashed, user_id))
+        conn.commit()
+        return jsonify({"ok": True})
+    finally:
+        conn.close()
+
+
 @bp.route("/me", methods=["GET"])
 def me():
     """Returns current user info (username, security_setup_done) from JWT. Requires
@@ -263,10 +324,18 @@ def me():
         row = cur.fetchone()
         if not row:
             return jsonify({"error": "unauthorized"}), 401
+        username = row.get("username") or payload.get("username", "")
+        db_admin = bool(row.get("is_admin")) if row.get("is_admin") is not None else False
+        env_admins = set(
+            u.strip().lower()
+            for u in (os.getenv("ADMIN_USERNAMES") or "").split(",")
+            if u.strip()
+        )
+        is_admin_user = db_admin or (username.strip().lower() in env_admins)
         return jsonify({
-            "username": row.get("username") or payload.get("username", ""),
+            "username": username,
             "security_setup_done": bool(row.get("security_setup_done")),
-            "is_admin": bool(row.get("is_admin")) if row.get("is_admin") is not None else False,
+            "is_admin": is_admin_user,
         })
     finally:
         conn.close()

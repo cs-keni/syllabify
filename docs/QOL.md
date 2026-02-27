@@ -1,5 +1,7 @@
 # Quality of Life — Feature Brainstorm
 
+**Status: Implemented (Feb 2025).** All planned QOL features from the priority list have been implemented. The remaining items in sections 1–20 are a **living brainstorm** for future iterations (global search, PWA, notifications, 2FA, collaboration, etc.). Add new ideas as we discover them—implement when ready.
+
 Ideas to improve the Syllabify user experience. Think from both a **user perspective** (what would make my life easier?) and an **expert engineer** lens (what patterns, polish, and delight matter?).
 
 ---
@@ -253,3 +255,32 @@ Ideas to improve the Syllabify user experience. Think from both a **user perspec
 ---
 
 *Add, remove, or reprioritize as the product evolves.*
+
+---
+
+## Implementation status (last audited: Feb 2025)
+
+The following QOL features from this document have been implemented in the dev branch. No need to re-audit from scratch—treat this as the checkpoint. Remaining items are backlog for future iterations.
+
+### Implemented
+
+| Category | Feature |
+|----------|---------|
+| Layout & Visual | Empty states (No courses/assignments + CTA), skeleton loaders, card shadows, stagger animations |
+| Navigation | Breadcrumbs (Dashboard → Term → Course), back button, keyboard shortcuts (?, g+d, g+u, g+s, g+p, Esc), shortcuts overlay (? key), sticky headers (course, nav), recently viewed (last 5 courses) |
+| Profile | Theme persistence (light/dark in localStorage), reduce motion (prefers-reduced-motion) |
+| Course & Assignment | Due date presets (Today, Tomorrow, Next Mon, +1 wk, +2 wks), duplicate assignment (Copy), overdue highlight (red + badge), sort courses (name/count), sort assignments |
+| Schedule | Conflict highlighting (overlapping blocks in schedule view) |
+| Upload & Parse | Drag-and-drop file upload, confidence display (score + label, low-confidence styling) |
+| Dashboard | Personalized greeting (Good morning/afternoon/evening), course quick stats |
+| Error & Resilience | ErrorBoundary with Retry, 401 handling + redirect, session expiry toast, offline banner |
+| Accessibility | Skip-to-content link, prefers-reduced-motion |
+| **New (Feb 2025)** | **Undo after delete**, **accent color picker**, **per-course colors**, **timezone**, **bulk delete** |
+
+### Not yet implemented (future backlog)
+
+Global search, PWA/offline support, data export, email notifications, two-factor auth, collaboration features, and other advanced items listed above.
+
+---
+
+*This document remains a living brainstorm. The above status reflects dev branch as of Feb 2025.*

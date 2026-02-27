@@ -11,7 +11,7 @@ def _owns_course(cur, course_id, user_id):
     """Returns course row if user owns it (via term), else None."""
     cur.execute(
         """
-        SELECT c.id, c.course_name, c.term_id, c.study_hours_per_week, t.term_name
+        SELECT c.id, c.course_name, c.term_id, c.study_hours_per_week, c.color, t.term_name
         FROM Courses c
         JOIN Terms t ON t.id = c.term_id
         WHERE c.id = %s AND t.user_id = %s
@@ -42,12 +42,12 @@ def list_courses(term_id):
 
         cur.execute(
             """
-            SELECT c.id, c.course_name, c.study_hours_per_week,
+            SELECT c.id, c.course_name, c.study_hours_per_week, c.color,
                    COUNT(a.id) AS assignment_count
             FROM Courses c
             LEFT JOIN Assignments a ON a.course_id = c.id
             WHERE c.term_id = %s
-            GROUP BY c.id, c.course_name, c.study_hours_per_week
+            GROUP BY c.id, c.course_name, c.study_hours_per_week, c.color
             ORDER BY c.id
             """,
             (term_id,),
@@ -70,6 +70,9 @@ def create_course(term_id):
     course_name = (data.get("course_name") or "").strip()
     if not course_name:
         return jsonify({"error": "course_name is required"}), 400
+    color = (data.get("color") or "").strip()
+    if color and not (len(color) == 7 and color.startswith("#")):
+        color = None
     study_hours_per_week = data.get("study_hours_per_week")
     if study_hours_per_week is not None:
         try:
@@ -90,13 +93,13 @@ def create_course(term_id):
             return jsonify({"error": "Term not found"}), 404
 
         cur.execute(
-            "INSERT INTO Courses (course_name, term_id, study_hours_per_week) VALUES (%s, %s, %s)",
-            (course_name, term_id, study_hours_per_week),
+            "INSERT INTO Courses (course_name, term_id, study_hours_per_week, color) VALUES (%s, %s, %s, %s)",
+            (course_name, term_id, study_hours_per_week, color or None),
         )
         course_id = cur.lastrowid
         conn.commit()
         return jsonify(
-            {"id": course_id, "course_name": course_name, "study_hours_per_week": study_hours_per_week, "assignment_count": 0}
+            {"id": course_id, "course_name": course_name, "study_hours_per_week": study_hours_per_week, "color": color or None, "assignment_count": 0}
         ), 201
     finally:
         conn.close()
@@ -176,6 +179,9 @@ def update_course(course_id):
     assignments_payload = data.get("assignments", [])
     meeting_times_payload = data.get("meeting_times", [])
     course_name = (data.get("course_name") or "").strip()
+    color = (data.get("color") or "").strip()
+    if color and not (len(color) == 7 and color.startswith("#")):
+        color = None
     study_hours_per_week = data.get("study_hours_per_week")
 
     conn = get_db()
@@ -189,6 +195,11 @@ def update_course(course_id):
             cur.execute(
                 "UPDATE Courses SET course_name = %s WHERE id = %s",
                 (course_name, course_id),
+            )
+        if "color" in data:
+            cur.execute(
+                "UPDATE Courses SET color = %s WHERE id = %s",
+                (color or None, course_id),
             )
         if study_hours_per_week is not None:
             try:
@@ -261,6 +272,63 @@ def update_course(course_id):
 
         conn.commit()
         return jsonify({"id": course_id, "course_name": course_name or course.get("course_name")})
+    finally:
+        conn.close()
+
+
+@bp.route("/api/courses/<int:course_id>", methods=["PATCH"])
+def patch_course(course_id):
+    """Partial update: course_name, color, study_hours_per_week."""
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "unauthorized"}), 401
+
+    user_id = int(payload.get("sub"))
+    data = request.get_json() or {}
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        course = _owns_course(cur, course_id, user_id)
+        if not course:
+            return jsonify({"error": "Course not found"}), 404
+
+        if "course_name" in data:
+            name = (data.get("course_name") or "").strip()
+            if name:
+                cur.execute(
+                    "UPDATE Courses SET course_name = %s WHERE id = %s",
+                    (name, course_id),
+                )
+        if "color" in data:
+            color = (data.get("color") or "").strip()
+            if color and len(color) == 7 and color.startswith("#"):
+                cur.execute(
+                    "UPDATE Courses SET color = %s WHERE id = %s",
+                    (color, course_id),
+                )
+            else:
+                cur.execute(
+                    "UPDATE Courses SET color = NULL WHERE id = %s",
+                    (course_id,),
+                )
+        if "study_hours_per_week" in data:
+            sh = data.get("study_hours_per_week")
+            try:
+                sh = int(sh) if sh is not None else None
+                if sh is not None and (sh < 0 or sh > 168):
+                    sh = None
+            except (TypeError, ValueError):
+                sh = None
+            cur.execute(
+                "UPDATE Courses SET study_hours_per_week = %s WHERE id = %s",
+                (sh, course_id),
+            )
+
+        conn.commit()
+        course = _owns_course(cur, course_id, user_id)
+        return jsonify(course)
     finally:
         conn.close()
 

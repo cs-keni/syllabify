@@ -1,11 +1,53 @@
 /**
  * Registration page. Creates account, redirects to login.
+ * Real-time password requirement feedback as user types.
  */
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
 import { register } from '../api/client';
+
+const PASSWORD_REQUIREMENTS = [
+  { key: 'length', test: p => p.length >= 8, label: 'At least 8 characters' },
+  { key: 'upper', test: p => /[A-Z]/.test(p), label: 'One uppercase letter' },
+  { key: 'lower', test: p => /[a-z]/.test(p), label: 'One lowercase letter' },
+  { key: 'number', test: p => /\d/.test(p), label: 'One number' },
+  { key: 'special', test: p => /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/.test(p), label: 'One special character (!@#$%^&* etc.)' },
+];
+
+function Requirement({ met, label }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-2 text-xs transition-all duration-200 ${
+        met ? 'text-green-600 dark:text-green-400' : 'text-ink-muted'
+      }`}
+    >
+      <span
+        className={`inline-block w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
+          met
+            ? 'border-green-600 dark:border-green-400 bg-green-600 dark:bg-green-400'
+            : 'border-ink-muted/60'
+        }`}
+      >
+        {met && (
+          <svg
+            className="w-2.5 h-2.5 text-white"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+        )}
+      </span>
+      <span>{label}</span>
+    </span>
+  );
+}
 
 export default function Register() {
   const navigate = useNavigate();
@@ -15,11 +57,21 @@ export default function Register() {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
+  const reqStatus = useMemo(
+    () => PASSWORD_REQUIREMENTS.map(r => ({ ...r, met: r.test(password) })),
+    [password]
+  );
+  const allMet = reqStatus.every(r => r.met);
+
   const handleSubmit = async e => {
     e.preventDefault();
     setError('');
     if (password !== confirmPassword) {
       setError('Passwords do not match');
+      return;
+    }
+    if (!allMet) {
+      setError('Password does not meet all requirements');
       return;
     }
     setSubmitting(true);
@@ -91,7 +143,7 @@ export default function Register() {
                 minLength={3}
                 maxLength={50}
                 className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
-                placeholder="3-50 chars, letters, numbers, underscore"
+                placeholder="3-50 chars, letters, numbers, underscore, hyphen"
               />
             </div>
             <div>
@@ -110,8 +162,13 @@ export default function Register() {
                 autoComplete="new-password"
                 minLength={8}
                 className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
-                placeholder="At least 8 characters"
+                placeholder="Type to see requirements"
               />
+              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">
+                {reqStatus.map(r => (
+                  <Requirement key={r.key} met={r.met} label={r.label} />
+                ))}
+              </div>
             </div>
             <div>
               <label
