@@ -133,7 +133,7 @@ function AssignmentRow({
       await deleteAssignment(token, assignment.id);
       onRemoved?.();
       const t = toast.custom(
-        (props) => (
+        props => (
           <div
             className="flex items-center gap-3 rounded-button border border-border bg-surface-elevated px-4 py-2 shadow-lg"
             role="status"
@@ -270,32 +270,32 @@ function AssignmentRow({
           {((assignment.work_load || 0) / 4).toFixed(1)}h
         </span>
         {!selectMode && (
-        <>
-        <button
-          type="button"
-          onClick={handleDuplicate}
-          disabled={saving}
-          className="opacity-0 group-hover:opacity-100 rounded-button border border-border px-2 py-0.5 text-xs text-ink-muted hover:text-ink disabled:opacity-50 transition-opacity"
-          title="Duplicate"
-        >
-          Copy
-        </button>
-        <button
-          type="button"
-          onClick={() => setEditing(true)}
-          className="opacity-0 group-hover:opacity-100 rounded-button border border-border px-2 py-0.5 text-xs text-ink-muted hover:text-ink transition-opacity"
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          onClick={handleDelete}
-          disabled={deleting}
-          className="opacity-0 group-hover:opacity-100 rounded-button border border-red-200 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 disabled:opacity-50 transition-opacity"
-        >
-          {deleting ? '…' : 'Remove'}
-        </button>
-        </>
+          <>
+            <button
+              type="button"
+              onClick={handleDuplicate}
+              disabled={saving}
+              className="opacity-0 group-hover:opacity-100 rounded-button border border-border px-2 py-0.5 text-xs text-ink-muted hover:text-ink disabled:opacity-50 transition-opacity"
+              title="Duplicate"
+            >
+              Copy
+            </button>
+            <button
+              type="button"
+              onClick={() => setEditing(true)}
+              className="opacity-0 group-hover:opacity-100 rounded-button border border-border px-2 py-0.5 text-xs text-ink-muted hover:text-ink transition-opacity"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              onClick={handleDelete}
+              disabled={deleting}
+              className="opacity-0 group-hover:opacity-100 rounded-button border border-red-200 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 disabled:opacity-50 transition-opacity"
+            >
+              {deleting ? '…' : 'Remove'}
+            </button>
+          </>
         )}
       </div>
     </li>
@@ -420,7 +420,14 @@ export default function Course() {
 }
 
 const COURSE_COLORS = [
-  '#0f8a4c', '#2563eb', '#7c3aed', '#dc2626', '#ea580c', '#ca8a04', '#059669', '#0891b2',
+  '#0f8a4c',
+  '#2563eb',
+  '#7c3aed',
+  '#dc2626',
+  '#ea580c',
+  '#ca8a04',
+  '#059669',
+  '#0891b2',
 ];
 
 function CourseHeader({
@@ -444,7 +451,8 @@ function CourseHeader({
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
   }, [editingColor]);
-  const currentColor = course.color || COURSE_COLORS[(course.id || 0) % COURSE_COLORS.length];
+  const currentColor =
+    course.color || COURSE_COLORS[(course.id || 0) % COURSE_COLORS.length];
   return (
     <div className="sticky top-14 z-10 -mx-4 -mt-6 px-4 pt-6 pb-4 -mb-4 bg-surface border-b border-border flex items-start justify-between gap-4">
       <div>
@@ -490,7 +498,9 @@ function CourseHeader({
                     setEditingColor(false);
                   }}
                   className={`w-6 h-6 rounded-full border-2 transition-all ${
-                    currentColor === c ? 'border-ink ring-1 ring-ink/30' : 'border-transparent'
+                    currentColor === c
+                      ? 'border-ink ring-1 ring-ink/30'
+                      : 'border-transparent'
                   }`}
                   style={{ backgroundColor: c }}
                   aria-label={`Set color ${c}`}
@@ -568,7 +578,8 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
   };
   const handleBulkDelete = async () => {
     const ids = [...selectedIds];
-    if (!ids.length || !window.confirm(`Remove ${ids.length} assignment(s)?`)) return;
+    if (!ids.length || !window.confirm(`Remove ${ids.length} assignment(s)?`))
+      return;
     setBulkDeleting(true);
     try {
       for (const id of ids) {
@@ -610,11 +621,16 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
                 disabled={bulkDeleting || selectedIds.size === 0}
                 className="rounded-button bg-red-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-600 disabled:opacity-50"
               >
-                {bulkDeleting ? 'Deleting…' : `Delete ${selectedIds.size} selected`}
+                {bulkDeleting
+                  ? 'Deleting…'
+                  : `Delete ${selectedIds.size} selected`}
               </button>
               <button
                 type="button"
-                onClick={() => { setSelectMode(false); setSelectedIds(new Set()); }}
+                onClick={() => {
+                  setSelectMode(false);
+                  setSelectedIds(new Set());
+                }}
                 className="rounded-button border border-border px-3 py-1.5 text-xs text-ink-muted hover:text-ink"
               >
                 Cancel

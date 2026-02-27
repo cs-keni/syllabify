@@ -39,7 +39,11 @@ const PASSWORD_REQUIREMENTS = [
   { key: 'upper', test: p => /[A-Z]/.test(p), label: 'One uppercase letter' },
   { key: 'lower', test: p => /[a-z]/.test(p), label: 'One lowercase letter' },
   { key: 'number', test: p => /\d/.test(p), label: 'One number' },
-  { key: 'special', test: p => /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/.test(p), label: 'One special character' },
+  {
+    key: 'special',
+    test: p => /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/.test(p),
+    label: 'One special character',
+  },
 ];
 
 export default function Preferences() {
@@ -85,7 +89,11 @@ export default function Preferences() {
           setSelectedDays(DAY_LABELS.map(d => codes.includes(DAY_TO_CODE[d])));
           const h = prefs.max_hours_per_day;
           setMaxHours(typeof h === 'number' ? h : parseInt(h, 10) || 8);
-          setTimezone(prefs.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+          setTimezone(
+            prefs.timezone ||
+              Intl.DateTimeFormat().resolvedOptions().timeZone ||
+              ''
+          );
         }
       })
       .finally(() => setLoading(false));
@@ -204,15 +212,23 @@ export default function Preferences() {
             </form>
 
             <div className="mt-6 pt-6 border-t border-border">
-              <h3 className="text-sm font-medium text-ink mb-3">Change password</h3>
-              <form onSubmit={handleChangePassword} className="flex flex-col gap-3 max-w-md">
+              <h3 className="text-sm font-medium text-ink mb-3">
+                Change password
+              </h3>
+              <form
+                onSubmit={handleChangePassword}
+                className="flex flex-col gap-3 max-w-md"
+              >
                 {passwordError && (
                   <p className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800/60 rounded-input px-3 py-2">
                     {passwordError}
                   </p>
                 )}
                 <div>
-                  <label htmlFor="currentPassword" className="block text-sm text-ink-muted mb-1">
+                  <label
+                    htmlFor="currentPassword"
+                    className="block text-sm text-ink-muted mb-1"
+                  >
                     Current password
                   </label>
                   <input
@@ -227,7 +243,10 @@ export default function Preferences() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="newPassword" className="block text-sm text-ink-muted mb-1">
+                  <label
+                    htmlFor="newPassword"
+                    className="block text-sm text-ink-muted mb-1"
+                  >
                     New password
                   </label>
                   <input
@@ -245,17 +264,29 @@ export default function Preferences() {
                       <span
                         key={r.key}
                         className={`inline-flex items-center gap-1.5 text-xs transition-all duration-200 ${
-                          r.met ? 'text-green-600 dark:text-green-400' : 'text-ink-muted'
+                          r.met
+                            ? 'text-green-600 dark:text-green-400'
+                            : 'text-ink-muted'
                         }`}
                       >
                         <span
                           className={`inline-block w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
-                            r.met ? 'border-green-600 dark:border-green-400 bg-green-600 dark:bg-green-400' : 'border-ink-muted/60'
+                            r.met
+                              ? 'border-green-600 dark:border-green-400 bg-green-600 dark:bg-green-400'
+                              : 'border-ink-muted/60'
                           }`}
                         >
                           {r.met && (
-                            <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            <svg
+                              className="w-2 h-2 text-white"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clipRule="evenodd"
+                              />
                             </svg>
                           )}
                         </span>
@@ -265,7 +296,10 @@ export default function Preferences() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="confirmNewPassword" className="block text-sm text-ink-muted mb-1">
+                  <label
+                    htmlFor="confirmNewPassword"
+                    className="block text-sm text-ink-muted mb-1"
+                  >
                     Confirm new password
                   </label>
                   <input
@@ -353,10 +387,18 @@ export default function Preferences() {
                     ? `Browser default (${Intl.DateTimeFormat().resolvedOptions().timeZone})`
                     : 'Browser default'}
                 </option>
-                <option value="America/New_York">Eastern (America/New_York)</option>
-                <option value="America/Chicago">Central (America/Chicago)</option>
-                <option value="America/Denver">Mountain (America/Denver)</option>
-                <option value="America/Los_Angeles">Pacific (America/Los_Angeles)</option>
+                <option value="America/New_York">
+                  Eastern (America/New_York)
+                </option>
+                <option value="America/Chicago">
+                  Central (America/Chicago)
+                </option>
+                <option value="America/Denver">
+                  Mountain (America/Denver)
+                </option>
+                <option value="America/Los_Angeles">
+                  Pacific (America/Los_Angeles)
+                </option>
                 <option value="UTC">UTC</option>
               </select>
               <p className="mt-1 text-xs text-ink-subtle">

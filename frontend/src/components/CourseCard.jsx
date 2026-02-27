@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 
 const COURSE_COLORS = [
-  '#0f8a4c', '#2563eb', '#7c3aed', '#dc2626', '#ea580c', '#ca8a04', '#059669', '#0891b2',
+  '#0f8a4c',
+  '#2563eb',
+  '#7c3aed',
+  '#dc2626',
+  '#ea580c',
+  '#ca8a04',
+  '#059669',
+  '#0891b2',
 ];
 
 export default function CourseCard({ course }) {

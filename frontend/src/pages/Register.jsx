@@ -13,7 +13,11 @@ const PASSWORD_REQUIREMENTS = [
   { key: 'upper', test: p => /[A-Z]/.test(p), label: 'One uppercase letter' },
   { key: 'lower', test: p => /[a-z]/.test(p), label: 'One lowercase letter' },
   { key: 'number', test: p => /\d/.test(p), label: 'One number' },
-  { key: 'special', test: p => /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/.test(p), label: 'One special character (!@#$%^&* etc.)' },
+  {
+    key: 'special',
+    test: p => /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/.test(p),
+    label: 'One special character (!@#$%^&* etc.)',
+  },
 ];
 
 function Requirement({ met, label }) {

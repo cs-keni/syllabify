@@ -202,6 +202,19 @@ export async function getProfile(token) {
   return data;
 }
 
+/** POST /api/admin/users with JWT. Admin only. Body: { username, password }. Returns { id, username }. */
+export async function adminCreateUser(token, { username, password }) {
+  const res = await apiFetch(`${BASE}/api/admin/users`, {
+    method: 'POST',
+    headers: headers(true, token),
+    body: JSON.stringify({ username, password }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to create user');
+  return data;
+}
+
 /** GET /api/admin/users/:id with JWT. Admin only. Returns user details + terms_count, courses_count, assignments_count. */
 export async function getAdminUserDetails(token, userId) {
   const res = await apiFetch(`${BASE}/api/admin/users/${userId}`, {

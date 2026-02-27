@@ -1,7 +1,7 @@
 /**
  * Admin page: user management. Distinct admin control-panel aesthetic.
  */
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import {
@@ -11,14 +11,17 @@ import {
   resetUserSecurity,
   setAdminUser,
   adminSetPassword,
+  adminCreateUser,
 } from '../api/client';
 import toast from 'react-hot-toast';
 
 function Badge({ variant, children }) {
   const styles = {
-    success: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300',
+    success:
+      'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300',
     danger: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300',
-    admin: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300',
+    admin:
+      'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300',
     muted: 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400',
   };
   return (
@@ -43,6 +46,12 @@ export default function Admin() {
   const [expandedDetails, setExpandedDetails] = useState(null);
   const [tempPassword, setTempPassword] = useState('');
   const [settingPassword, setSettingPassword] = useState(false);
+  const [selectedIds, setSelectedIds] = useState(new Set());
+  const [bulkAction, setBulkAction] = useState(null); // 'disable' | 'reset-security' | null
+  const [showCreate, setShowCreate] = useState(false);
+  const [newUsername, setNewUsername] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [creating, setCreating] = useState(false);
 
   const filteredUsers = useMemo(() => {
     let result = [...users];
@@ -57,9 +66,12 @@ export default function Admin() {
     if (filterAdmin === 'admin') result = result.filter(u => u.is_admin);
     else if (filterAdmin === 'client') result = result.filter(u => !u.is_admin);
     if (filterStatus === 'active') result = result.filter(u => !u.is_disabled);
-    else if (filterStatus === 'disabled') result = result.filter(u => u.is_disabled);
-    if (filterSecurity === 'done') result = result.filter(u => u.security_setup_done);
-    else if (filterSecurity === 'pending') result = result.filter(u => !u.security_setup_done);
+    else if (filterStatus === 'disabled')
+      result = result.filter(u => u.is_disabled);
+    if (filterSecurity === 'done')
+      result = result.filter(u => u.security_setup_done);
+    else if (filterSecurity === 'pending')
+      result = result.filter(u => !u.security_setup_done);
     return result;
   }, [users, searchQuery, filterAdmin, filterStatus, filterSecurity]);
 
@@ -68,7 +80,11 @@ export default function Admin() {
     { key: 'upper', test: p => /[A-Z]/.test(p), label: 'uppercase' },
     { key: 'lower', test: p => /[a-z]/.test(p), label: 'lowercase' },
     { key: 'num', test: p => /\d/.test(p), label: 'number' },
-    { key: 'special', test: p => /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/.test(p), label: 'special' },
+    {
+      key: 'special',
+      test: p => /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/.test(p),
+      label: 'special',
+    },
   ];
   const tempPasswordOk = PASSWORD_REQS.every(r => r.test(tempPassword));
 
@@ -129,6 +145,15 @@ export default function Admin() {
     load();
   }, [token]);
 
+  useEffect(() => {
+    if (!showCreate) return;
+    const onEsc = e => {
+      if (e.key === 'Escape') setShowCreate(false);
+    };
+    document.addEventListener('keydown', onEsc);
+    return () => document.removeEventListener('keydown', onEsc);
+  }, [showCreate]);
+
   const handleDisable = async (userId, disabled) => {
     try {
       await disableUser(token, userId, disabled);
@@ -159,10 +184,123 @@ export default function Admin() {
     }
   };
 
+  const toggleSelect = id => {
+    setSelectedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+  const toggleSelectAll = () => {
+    if (selectedIds.size === filteredUsers.length) setSelectedIds(new Set());
+    else setSelectedIds(new Set(filteredUsers.map(u => u.id)));
+  };
+  const selectedUsers = filteredUsers.filter(u => selectedIds.has(u.id));
+
+  const handleBulkDisable = async () => {
+    if (selectedUsers.length === 0) return;
+    setBulkAction('disable');
+    let done = 0;
+    let failed = 0;
+    for (const u of selectedUsers) {
+      if (u.id === user?.id) continue; // don't disable self
+      try {
+        await disableUser(token, u.id, true);
+        done++;
+      } catch {
+        failed++;
+      }
+    }
+    setBulkAction(null);
+    setSelectedIds(new Set());
+    load();
+    if (failed) toast.error(`Disabled ${done}, failed ${failed}`);
+    else toast.success(`Disabled ${done} user(s)`);
+  };
+
+  const handleBulkResetSecurity = async () => {
+    if (selectedUsers.length === 0) return;
+    setBulkAction('reset-security');
+    let done = 0;
+    let failed = 0;
+    for (const u of selectedUsers) {
+      try {
+        await resetUserSecurity(token, u.id);
+        done++;
+      } catch {
+        failed++;
+      }
+    }
+    setBulkAction(null);
+    setSelectedIds(new Set());
+    load();
+    if (failed) toast.error(`Reset ${done}, failed ${failed}`);
+    else toast.success(`Reset security for ${done} user(s)`);
+  };
+
+  const handleCreateUser = async e => {
+    e.preventDefault();
+    if (!newUsername.trim() || !newPasswordOk) return;
+    setCreating(true);
+    try {
+      await adminCreateUser(token, {
+        username: newUsername.trim(),
+        password: newPassword,
+      });
+      toast.success(`Created user "${newUsername.trim()}"`);
+      setShowCreate(false);
+      setNewUsername('');
+      setNewPassword('');
+      load();
+    } catch (e) {
+      toast.error(e.message || 'Failed to create');
+    } finally {
+      setCreating(false);
+    }
+  };
+
+  const handleExportCsv = () => {
+    const headers = [
+      'id',
+      'username',
+      'email',
+      'security_setup_done',
+      'is_admin',
+      'is_disabled',
+    ];
+    const rows = filteredUsers.map(u =>
+      headers
+        .map(h => {
+          const v = u[h];
+          const s =
+            v === true ? 'true' : v === false ? 'false' : String(v ?? '');
+          return s.includes(',') || s.includes('"')
+            ? `"${s.replace(/"/g, '""')}"`
+            : s;
+        })
+        .join(',')
+    );
+    const csv = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `syllabify-users-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast.success('Exported CSV');
+  };
+
+  const newPasswordOk = PASSWORD_REQS.every(r => r.test(newPassword));
+
   const totalUsers = users.length;
   const adminCount = users.filter(u => u.is_admin).length;
   const disabledCount = users.filter(u => u.is_disabled).length;
-  const hasFilters = searchQuery.trim() || filterAdmin !== 'all' || filterStatus !== 'all' || filterSecurity !== 'all';
+  const hasFilters =
+    searchQuery.trim() ||
+    filterAdmin !== 'all' ||
+    filterStatus !== 'all' ||
+    filterSecurity !== 'all';
 
   if (loading) {
     return (
@@ -216,8 +354,18 @@ export default function Admin() {
               className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10"
               aria-hidden
             >
-              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              <svg
+                className="w-5 h-5 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
               </svg>
             </span>
             <div>
@@ -229,8 +377,18 @@ export default function Admin() {
             to="/app"
             className="text-sm text-white/80 hover:text-white no-underline transition-colors flex items-center gap-1.5"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
             </svg>
             Back to app
           </Link>
@@ -241,8 +399,18 @@ export default function Admin() {
         {/* Search & filters */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <div className="relative flex-1">
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <svg
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
             </svg>
             <input
               type="search"
@@ -294,27 +462,175 @@ export default function Admin() {
                 Clear filters
               </button>
             )}
+            <button
+              type="button"
+              onClick={handleExportCsv}
+              className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            >
+              Export CSV
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowCreate(true)}
+              className="rounded-lg bg-indigo-600 text-white px-3 py-2 text-sm font-medium hover:bg-indigo-700 transition-colors"
+            >
+              Create user
+            </button>
           </div>
         </div>
+
+        {/* Bulk actions bar */}
+        {selectedIds.size > 0 && (
+          <div className="flex flex-wrap items-center gap-3 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+            <span className="text-sm text-slate-600 dark:text-slate-400">
+              {selectedIds.size} selected
+            </span>
+            <button
+              type="button"
+              onClick={handleBulkDisable}
+              disabled={
+                bulkAction ||
+                !selectedUsers.some(u => u.id !== user?.id && !u.is_disabled)
+              }
+              className="rounded-lg px-3 py-1.5 text-xs font-medium bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300 hover:bg-red-200 disabled:opacity-50"
+            >
+              {bulkAction === 'disable' ? 'Disabling…' : 'Disable selected'}
+            </button>
+            <button
+              type="button"
+              onClick={handleBulkResetSecurity}
+              disabled={bulkAction}
+              className="rounded-lg px-3 py-1.5 text-xs font-medium bg-slate-200 text-slate-700 dark:bg-slate-600 dark:text-slate-200 hover:bg-slate-300 disabled:opacity-50"
+            >
+              {bulkAction === 'reset-security'
+                ? 'Resetting…'
+                : 'Reset security selected'}
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedIds(new Set())}
+              className="text-sm text-slate-500 hover:text-slate-700"
+            >
+              Clear selection
+            </button>
+          </div>
+        )}
+
+        {/* Create user modal */}
+        {showCreate && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 animate-fade-in"
+            onClick={() => setShowCreate(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="create-user-title"
+          >
+            <div
+              className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 max-w-md w-full mx-4 shadow-xl animate-scale-in"
+              onClick={e => e.stopPropagation()}
+            >
+              <h3
+                id="create-user-title"
+                className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4"
+              >
+                Create user
+              </h3>
+              <form onSubmit={handleCreateUser} className="space-y-4">
+                <div>
+                  <label className="block text-sm text-slate-500 dark:text-slate-400 mb-1">
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    value={newUsername}
+                    onChange={e => setNewUsername(e.target.value)}
+                    placeholder="3-50 chars"
+                    className="w-full rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
+                    minLength={3}
+                    maxLength={50}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-slate-500 dark:text-slate-400 mb-1">
+                    Temporary password
+                  </label>
+                  <input
+                    type="password"
+                    value={newPassword}
+                    onChange={e => setNewPassword(e.target.value)}
+                    placeholder="User will change on first login"
+                    className="w-full rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
+                  />
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {PASSWORD_REQS.map(r => (
+                      <span
+                        key={r.key}
+                        className={`text-xs ${r.test(newPassword) ? 'text-emerald-600' : 'text-slate-400'}`}
+                      >
+                        {r.test(newPassword) ? '✓' : '○'} {r.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex gap-2 justify-end">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowCreate(false);
+                      setNewUsername('');
+                      setNewPassword('');
+                    }}
+                    className="rounded-lg px-4 py-2 text-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={!newUsername.trim() || !newPasswordOk || creating}
+                    className="rounded-lg px-4 py-2 text-sm bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
+                  >
+                    {creating ? 'Creating…' : 'Create'}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
 
         {/* Stats bar */}
         <div className="flex flex-wrap gap-4 mb-6">
           <div className="rounded-lg bg-slate-100 dark:bg-slate-800 px-4 py-2 border border-slate-200 dark:border-slate-700">
-            <span className="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">Total users</span>
-            <span className="block text-lg font-semibold text-slate-800 dark:text-slate-100 font-mono">{totalUsers}</span>
+            <span className="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
+              Total users
+            </span>
+            <span className="block text-lg font-semibold text-slate-800 dark:text-slate-100 font-mono">
+              {totalUsers}
+            </span>
           </div>
           <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/40 px-4 py-2 border border-indigo-200 dark:border-indigo-800/60">
-            <span className="text-indigo-600 dark:text-indigo-400 text-xs uppercase tracking-wider">Admins</span>
-            <span className="block text-lg font-semibold text-indigo-800 dark:text-indigo-200 font-mono">{adminCount}</span>
+            <span className="text-indigo-600 dark:text-indigo-400 text-xs uppercase tracking-wider">
+              Admins
+            </span>
+            <span className="block text-lg font-semibold text-indigo-800 dark:text-indigo-200 font-mono">
+              {adminCount}
+            </span>
           </div>
           <div className="rounded-lg bg-red-50 dark:bg-red-950/30 px-4 py-2 border border-red-200 dark:border-red-800/50">
-            <span className="text-red-600 dark:text-red-400 text-xs uppercase tracking-wider">Disabled</span>
-            <span className="block text-lg font-semibold text-red-800 dark:text-red-200 font-mono">{disabledCount}</span>
+            <span className="text-red-600 dark:text-red-400 text-xs uppercase tracking-wider">
+              Disabled
+            </span>
+            <span className="block text-lg font-semibold text-red-800 dark:text-red-200 font-mono">
+              {disabledCount}
+            </span>
           </div>
           {hasFilters && (
             <div className="rounded-lg bg-indigo-100 dark:bg-indigo-900/30 px-4 py-2 border border-indigo-200 dark:border-indigo-700/50">
-              <span className="text-indigo-600 dark:text-indigo-400 text-xs uppercase tracking-wider">Showing</span>
-              <span className="block text-lg font-semibold text-indigo-800 dark:text-indigo-200 font-mono">{filteredUsers.length}</span>
+              <span className="text-indigo-600 dark:text-indigo-400 text-xs uppercase tracking-wider">
+                Showing
+              </span>
+              <span className="block text-lg font-semibold text-indigo-800 dark:text-indigo-200 font-mono">
+                {filteredUsers.length}
+              </span>
             </div>
           )}
         </div>
@@ -325,148 +641,231 @@ export default function Admin() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700">
+                  <th className="text-left p-3 w-10">
+                    <input
+                      type="checkbox"
+                      checked={
+                        filteredUsers.length > 0 &&
+                        selectedIds.size === filteredUsers.length
+                      }
+                      onChange={toggleSelectAll}
+                      className="rounded border-slate-300 accent-indigo-600"
+                      aria-label="Select all"
+                    />
+                  </th>
                   <th className="text-left p-3 w-10" aria-label="Expand" />
-                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-14">ID</th>
-                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs">Username</th>
-                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs hidden sm:table-cell">Email</th>
-                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-20">Security</th>
-                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-16">Admin</th>
-                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-20">Status</th>
-                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs">Actions</th>
+                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-14">
+                    ID
+                  </th>
+                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs">
+                    Username
+                  </th>
+                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs hidden sm:table-cell">
+                    Email
+                  </th>
+                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-20">
+                    Security
+                  </th>
+                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-16">
+                    Admin
+                  </th>
+                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs w-20">
+                    Status
+                  </th>
+                  <th className="text-left p-3 font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider text-xs">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
                 {filteredUsers.map(u => (
-                  <tr
-                    key={u.id}
-                    className={`hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors ${u.is_disabled ? 'opacity-70' : ''}`}
-                  >
-                    <td className="p-3">
-                      <button
-                        type="button"
-                        onClick={() => toggleUserDetails(u.id)}
-                        className="inline-flex items-center justify-center w-6 h-6 rounded text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-colors"
-                        title={expandedUserId === u.id ? 'Hide details' : 'View details'}
-                        aria-expanded={expandedUserId === u.id}
-                      >
-                        <svg
-                          className={`w-4 h-4 transition-transform ${expandedUserId === u.id ? 'rotate-90' : ''}`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-                    </td>
-                    <td className="p-3 font-mono text-slate-500 dark:text-slate-400 text-xs">{u.id}</td>
-                    <td className="p-3 font-medium text-slate-800 dark:text-slate-100">{u.username}</td>
-                    <td className="p-3 text-slate-600 dark:text-slate-400 text-xs hidden sm:table-cell truncate max-w-[180px]" title={u.email || ''}>
-                      {u.email || '—'}
-                    </td>
-                    <td className="p-3">
-                      <Badge variant={u.security_setup_done ? 'success' : 'muted'}>
-                        {u.security_setup_done ? 'Done' : '—'}
-                      </Badge>
-                    </td>
-                    <td className="p-3">
-                      {u.is_admin ? <Badge variant="admin">Admin</Badge> : '—'}
-                    </td>
-                    <td className="p-3">
-                      <Badge variant={u.is_disabled ? 'danger' : 'success'}>
-                        {u.is_disabled ? 'Disabled' : 'Active'}
-                      </Badge>
-                    </td>
-                    <td className="p-3">
-                      <div className="flex flex-wrap gap-1.5">
+                  <Fragment key={u.id}>
+                    <tr
+                      className={`hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors ${u.is_disabled ? 'opacity-70' : ''}`}
+                    >
+                      <td className="p-3">
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.has(u.id)}
+                          onChange={() => toggleSelect(u.id)}
+                          className="rounded border-slate-300 accent-indigo-600"
+                          aria-label={`Select ${u.username}`}
+                        />
+                      </td>
+                      <td className="p-3">
                         <button
                           type="button"
-                          onClick={() => handleDisable(u.id, !u.is_disabled)}
-                          className={`rounded-md px-2 py-1 text-xs font-medium transition-colors ${
-                            u.is_disabled
-                              ? 'bg-emerald-600 text-white hover:bg-emerald-700'
-                              : 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-900/70'
-                          }`}
+                          onClick={() => toggleUserDetails(u.id)}
+                          className="inline-flex items-center justify-center w-6 h-6 rounded text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-colors"
+                          title={
+                            expandedUserId === u.id
+                              ? 'Hide details'
+                              : 'View details'
+                          }
+                          aria-expanded={expandedUserId === u.id}
                         >
-                          {u.is_disabled ? 'Enable' : 'Disable'}
-                        </button>
-                        {u.username !== user?.username && (
-                          <button
-                            type="button"
-                            onClick={() => handleSetAdmin(u.id, !u.is_admin)}
-                            className="rounded-md px-2 py-1 text-xs font-medium bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 hover:bg-indigo-200 dark:hover:bg-indigo-900/70 transition-colors"
-                            title={u.is_admin ? 'Remove admin' : 'Make admin'}
+                          <svg
+                            className={`w-4 h-4 transition-transform ${expandedUserId === u.id ? 'rotate-90' : ''}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
                           >
-                            {u.is_admin ? 'Demote' : 'Make admin'}
-                          </button>
-                        )}
-                        <button
-                          type="button"
-                          onClick={() => handleResetSecurity(u.id)}
-                          className="rounded-md px-2 py-1 text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
-                        >
-                          Reset security
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
                         </button>
-                      </div>
-                    </td>
-                  </tr>
-                  {expandedUserId === u.id && (
-                    <tr className="bg-slate-50/80 dark:bg-slate-800/50">
-                      <td colSpan={7} className="p-4 pl-12">
-                        {expandedDetails ? (
-                        <div className="space-y-4">
-                          <div className="flex flex-wrap gap-6 text-sm">
-                            <span className="text-slate-600 dark:text-slate-400">
-                              <strong className="text-slate-800 dark:text-slate-100">{expandedDetails.terms_count}</strong> terms
-                            </span>
-                            <span className="text-slate-600 dark:text-slate-400">
-                              <strong className="text-slate-800 dark:text-slate-100">{expandedDetails.courses_count}</strong> courses
-                            </span>
-                            <span className="text-slate-600 dark:text-slate-400">
-                              <strong className="text-slate-800 dark:text-slate-100">{expandedDetails.assignments_count}</strong> assignments
-                            </span>
-                          </div>
-                          <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                            <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Set temporary password (account recovery)</label>
-                            <div className="flex flex-wrap items-end gap-2">
-                              <input
-                                type="password"
-                                value={tempPassword}
-                                onChange={e => setTempPassword(e.target.value)}
-                                placeholder="New password"
-                                className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-1.5 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 w-48"
-                              />
-                              <button
-                                type="button"
-                                onClick={handleSetPassword}
-                                disabled={!tempPasswordOk || settingPassword}
-                                className="rounded-lg px-3 py-1.5 text-xs font-medium bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                              >
-                                {settingPassword ? 'Setting…' : 'Set password'}
-                              </button>
-                            </div>
-                            <div className="flex flex-wrap gap-2 mt-1">
-                              {PASSWORD_REQS.map(r => (
-                                <span key={r.key} className={`text-xs ${r.test(tempPassword) ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`}>
-                                  {r.test(tempPassword) ? '✓' : '○'} {r.label}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
+                      </td>
+                      <td className="p-3 font-mono text-slate-500 dark:text-slate-400 text-xs">
+                        {u.id}
+                      </td>
+                      <td className="p-3 font-medium text-slate-800 dark:text-slate-100">
+                        {u.username}
+                      </td>
+                      <td
+                        className="p-3 text-slate-600 dark:text-slate-400 text-xs hidden sm:table-cell truncate max-w-[180px]"
+                        title={u.email || ''}
+                      >
+                        {u.email || '—'}
+                      </td>
+                      <td className="p-3">
+                        <Badge
+                          variant={u.security_setup_done ? 'success' : 'muted'}
+                        >
+                          {u.security_setup_done ? 'Done' : '—'}
+                        </Badge>
+                      </td>
+                      <td className="p-3">
+                        {u.is_admin ? (
+                          <Badge variant="admin">Admin</Badge>
                         ) : (
-                          <span className="text-slate-400 animate-pulse">Loading…</span>
+                          '—'
                         )}
                       </td>
+                      <td className="p-3">
+                        <Badge variant={u.is_disabled ? 'danger' : 'success'}>
+                          {u.is_disabled ? 'Disabled' : 'Active'}
+                        </Badge>
+                      </td>
+                      <td className="p-3">
+                        <div className="flex flex-wrap gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => handleDisable(u.id, !u.is_disabled)}
+                            className={`rounded-md px-2 py-1 text-xs font-medium transition-colors ${
+                              u.is_disabled
+                                ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+                                : 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-900/70'
+                            }`}
+                          >
+                            {u.is_disabled ? 'Enable' : 'Disable'}
+                          </button>
+                          {u.username !== user?.username && (
+                            <button
+                              type="button"
+                              onClick={() => handleSetAdmin(u.id, !u.is_admin)}
+                              className="rounded-md px-2 py-1 text-xs font-medium bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 hover:bg-indigo-200 dark:hover:bg-indigo-900/70 transition-colors"
+                              title={u.is_admin ? 'Remove admin' : 'Make admin'}
+                            >
+                              {u.is_admin ? 'Demote' : 'Make admin'}
+                            </button>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => handleResetSecurity(u.id)}
+                            className="rounded-md px-2 py-1 text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                          >
+                            Reset security
+                          </button>
+                        </div>
+                      </td>
                     </tr>
-                  )}
+                    {expandedUserId === u.id && (
+                      <tr className="bg-slate-50/80 dark:bg-slate-800/50">
+                        <td colSpan={9} className="p-4 pl-12">
+                          {expandedDetails ? (
+                            <div className="space-y-4">
+                              <div className="flex flex-wrap gap-6 text-sm">
+                                <span className="text-slate-600 dark:text-slate-400">
+                                  <strong className="text-slate-800 dark:text-slate-100">
+                                    {expandedDetails.terms_count}
+                                  </strong>{' '}
+                                  terms
+                                </span>
+                                <span className="text-slate-600 dark:text-slate-400">
+                                  <strong className="text-slate-800 dark:text-slate-100">
+                                    {expandedDetails.courses_count}
+                                  </strong>{' '}
+                                  courses
+                                </span>
+                                <span className="text-slate-600 dark:text-slate-400">
+                                  <strong className="text-slate-800 dark:text-slate-100">
+                                    {expandedDetails.assignments_count}
+                                  </strong>{' '}
+                                  assignments
+                                </span>
+                              </div>
+                              <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+                                <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">
+                                  Set temporary password (account recovery)
+                                </label>
+                                <div className="flex flex-wrap items-end gap-2">
+                                  <input
+                                    type="password"
+                                    value={tempPassword}
+                                    onChange={e =>
+                                      setTempPassword(e.target.value)
+                                    }
+                                    placeholder="New password"
+                                    className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-1.5 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 w-48"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={handleSetPassword}
+                                    disabled={
+                                      !tempPasswordOk || settingPassword
+                                    }
+                                    className="rounded-lg px-3 py-1.5 text-xs font-medium bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                                  >
+                                    {settingPassword
+                                      ? 'Setting…'
+                                      : 'Set password'}
+                                  </button>
+                                </div>
+                                <div className="flex flex-wrap gap-2 mt-1">
+                                  {PASSWORD_REQS.map(r => (
+                                    <span
+                                      key={r.key}
+                                      className={`text-xs ${r.test(tempPassword) ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`}
+                                    >
+                                      {r.test(tempPassword) ? '✓' : '○'}{' '}
+                                      {r.label}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <span className="text-slate-400 animate-pulse">
+                              Loading…
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
                 ))}
               </tbody>
             </table>
           </div>
           {filteredUsers.length === 0 && (
             <div className="p-12 text-center text-slate-500 dark:text-slate-400">
-              {users.length === 0 ? 'No users found.' : 'No users match your filters.'}
+              {users.length === 0
+                ? 'No users found.'
+                : 'No users match your filters.'}
             </div>
           )}
         </div>

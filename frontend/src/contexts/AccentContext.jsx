@@ -53,7 +53,9 @@ export function AccentProvider({ children }) {
   };
 
   return (
-    <AccentContext.Provider value={{ accent, setAccent, palettes: Object.keys(PALETTES) }}>
+    <AccentContext.Provider
+      value={{ accent, setAccent, palettes: Object.keys(PALETTES) }}
+    >
       {children}
     </AccentContext.Provider>
   );

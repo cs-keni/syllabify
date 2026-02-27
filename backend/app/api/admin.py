@@ -3,7 +3,12 @@ import os
 
 from flask import Blueprint, jsonify, request
 
-from app.api.auth import decode_token, get_db, hash_password, _validate_password_strength
+from app.api.auth import (
+    _validate_password_strength,
+    decode_token,
+    get_db,
+    hash_password,
+)
 
 bp = Blueprint("admin", __name__, url_prefix="/api/admin")
 
@@ -71,6 +76,48 @@ def list_users():
                 "is_disabled": bool(r.get("is_disabled")),
             })
         return jsonify({"users": users})
+    finally:
+        conn.close()
+
+
+@bp.route("/users", methods=["POST"])
+def create_user():
+    """Create a new user (admin only). For class roster, etc. User should change password on first login."""
+    import re
+
+    if not require_admin():
+        return jsonify({"error": "forbidden"}), 403
+    data = request.get_json() or {}
+    username = (data.get("username") or "").strip()
+    password = data.get("password") or ""
+
+    if not username:
+        return jsonify({"error": "username is required"}), 400
+    if not password:
+        return jsonify({"error": "password is required"}), 400
+    if len(username) < 3 or len(username) > 50:
+        return jsonify({"error": "username must be 3-50 characters"}), 400
+    if not re.match(r"^[a-zA-Z0-9_-]+$", username):
+        return jsonify({"error": "username may only contain letters, numbers, underscore, and hyphen"}), 400
+    ok, err = _validate_password_strength(password)
+    if not ok:
+        return jsonify({"error": err}), 400
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute("SELECT id FROM Users WHERE username = %s", (username,))
+        if cur.fetchone():
+            return jsonify({"error": "username already taken"}), 400
+
+        hashed = hash_password(password)
+        cur.execute(
+            "INSERT INTO Users (username, password_hash, security_setup_done, is_admin) VALUES (%s, %s, FALSE, FALSE)",
+            (username, hashed),
+        )
+        user_id = cur.lastrowid
+        conn.commit()
+        return jsonify({"id": user_id, "username": username}), 201
     finally:
         conn.close()
 
@@ -189,6 +236,7 @@ def admin_set_password(user_id):
 
 
 @bp.route("/users/<int:user_id>/reset-security", methods=["PUT"])
+def reset_security(user_id):
     """Reset security setup for a user. Admin only."""
     if not require_admin():
         return jsonify({"error": "forbidden"}), 403
