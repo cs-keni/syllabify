@@ -8,6 +8,10 @@ import os
 import re
 
 from app.utils.date_utils import parse_due_date
+from app.utils.document_utils import (
+    extract_structured_from_file,
+    extract_text_from_file,
+)
 
 
 def compute_parse_confidence(parser_result: dict | None, course_name: str, assignments: list) -> dict:
@@ -106,12 +110,6 @@ def compute_parse_confidence(parser_result: dict | None, course_name: str, assig
 
     total = min(100, sum(breakdown.values()))
     return {"score": total, "label": _label(total), "breakdown": breakdown}
-
-
-from app.utils.document_utils import (
-    extract_structured_from_file,
-    extract_text_from_file,
-)
 
 
 def _intermediate_from_text(text: str) -> dict:
