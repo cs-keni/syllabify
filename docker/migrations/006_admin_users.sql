@@ -1,13 +1,6 @@
 -- Add initial admin accounts. Run in Railway MySQL console (Query tab) or any MySQL client.
--- Password for all: Changeme123!
+-- DO NOT put real passwords in this file. Use backend/scripts/create_admin_users.py instead:
+--   ADMIN_INITIAL_PASSWORD=your-temp-password ADMIN_USERNAMES=user1,user2 python scripts/create_admin_users.py
 -- Admins should change their password in Preferences after first login.
 -- Uses INSERT IGNORE so existing users are not overwritten.
-
--- Ensure is_admin column exists (migration 003)
--- ALTER TABLE Users ADD COLUMN is_admin BOOLEAN DEFAULT FALSE;
-
-INSERT IGNORE INTO Users (username, password_hash, security_setup_done, is_admin) VALUES
-('admin-andrew',     '$2b$12$ZXgg0wuDJmleqk1sNzm2LOpAaeLyTEqBUyBI2pr5cV3GFyidxoT3m', FALSE, TRUE),
-('admin-leon',       '$2b$12$ZXgg0wuDJmleqk1sNzm2LOpAaeLyTEqBUyBI2pr5cV3GFyidxoT3m', FALSE, TRUE),
-('admin-saintgeorge','$2b$12$ZXgg0wuDJmleqk1sNzm2LOpAaeLyTEqBUyBI2pr5cV3GFyidxoT3m', FALSE, TRUE),
-('admin-kenny',      '$2b$12$ZXgg0wuDJmleqk1sNzm2LOpAaeLyTEqBUyBI2pr5cV3GFyidxoT3m', FALSE, TRUE);
+-- This migration is optional; prefer the Python script for new setups (no secrets in repo).
