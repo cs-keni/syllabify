@@ -12,6 +12,8 @@ import {
   setAdminUser,
   adminSetPassword,
   adminCreateUser,
+  adminDeleteUser,
+  adminSetUserNotes,
   getMaintenance,
   adminSetMaintenance,
   adminGetSettings,
@@ -66,6 +68,11 @@ export default function Admin() {
   const [registrationEnabled, setRegistrationEnabled] = useState(true);
   const [announcement, setAnnouncement] = useState('');
   const [settingsSaving, setSettingsSaving] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(null); // userId or null
+  const [deleteConfirmInput, setDeleteConfirmInput] = useState('');
+  const [deleting, setDeleting] = useState(false);
+  const [adminNotesInput, setAdminNotesInput] = useState('');
+  const [savingNotes, setSavingNotes] = useState(false);
 
   const filteredUsers = useMemo(() => {
     let result = [...users];
@@ -122,13 +129,16 @@ export default function Admin() {
       setExpandedUserId(null);
       setExpandedDetails(null);
       setTempPassword('');
+      setAdminNotesInput('');
       return;
     }
     setExpandedUserId(userId);
     setExpandedDetails(null);
+    setAdminNotesInput('');
     try {
       const data = await getAdminUserDetails(token, userId);
       setExpandedDetails(data);
+      setAdminNotesInput(data.admin_notes || '');
     } catch (e) {
       toast.error(e.message || 'Failed to load details');
       setExpandedUserId(null);
@@ -318,6 +328,42 @@ export default function Admin() {
     refreshAuditLog();
     if (failed) toast.error(`Reset ${done}, failed ${failed}`);
     else toast.success(`Reset security for ${done} user(s)`);
+  };
+
+  const handleDeleteUser = async () => {
+    if (!showDeleteConfirm || deleteConfirmInput !== 'DELETE') return;
+    setDeleting(true);
+    try {
+      await adminDeleteUser(token, showDeleteConfirm);
+      toast.success('User deleted');
+      setShowDeleteConfirm(null);
+      setDeleteConfirmInput('');
+      setExpandedUserId(null);
+      setExpandedDetails(null);
+      load();
+      refreshAuditLog();
+    } catch (e) {
+      toast.error(e.message || 'Failed to delete');
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  const handleSaveNotes = async () => {
+    if (!expandedUserId) return;
+    setSavingNotes(true);
+    try {
+      await adminSetUserNotes(token, expandedUserId, adminNotesInput);
+      setExpandedDetails(prev =>
+        prev ? { ...prev, admin_notes: adminNotesInput } : null
+      );
+      toast.success('Notes saved');
+      refreshAuditLog();
+    } catch (e) {
+      toast.error(e.message || 'Failed to save notes');
+    } finally {
+      setSavingNotes(false);
+    }
   };
 
   const handleCreateUser = async e => {
@@ -755,6 +801,60 @@ export default function Admin() {
           </div>
         )}
 
+        {/* Delete user confirmation modal */}
+        {showDeleteConfirm && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 animate-fade-in"
+            onClick={() => !deleting && setShowDeleteConfirm(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-user-title"
+          >
+            <div
+              className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 max-w-md w-full mx-4 shadow-xl animate-scale-in"
+              onClick={e => e.stopPropagation()}
+            >
+              <h3
+                id="delete-user-title"
+                className="text-lg font-semibold text-red-700 dark:text-red-300 mb-2"
+              >
+                Delete user permanently?
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                This will remove the user and all their terms, courses, and
+                assignments. Type <strong>DELETE</strong> to confirm.
+              </p>
+              <input
+                type="text"
+                value={deleteConfirmInput}
+                onChange={e =>
+                  setDeleteConfirmInput(e.target.value.toUpperCase())
+                }
+                placeholder="DELETE"
+                className="w-full rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm bg-white dark:bg-slate-800 mb-4 focus:outline-none focus:ring-2 focus:ring-red-500/30"
+              />
+              <div className="flex gap-2 justify-end">
+                <button
+                  type="button"
+                  onClick={() => setShowDeleteConfirm(null)}
+                  disabled={deleting}
+                  className="rounded-lg px-4 py-2 text-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteUser}
+                  disabled={deleteConfirmInput !== 'DELETE' || deleting}
+                  className="rounded-lg px-4 py-2 text-sm bg-red-600 text-white hover:bg-red-700 disabled:opacity-50"
+                >
+                  {deleting ? 'Deleting…' : 'Delete permanently'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Create user modal */}
         {showCreate && (
           <div
@@ -1049,6 +1149,30 @@ export default function Admin() {
                               </div>
                               <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
                                 <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">
+                                  Admin notes (only admins see)
+                                </label>
+                                <div className="flex flex-wrap items-end gap-2">
+                                  <textarea
+                                    value={adminNotesInput}
+                                    onChange={e =>
+                                      setAdminNotesInput(e.target.value)
+                                    }
+                                    placeholder="e.g. Contacted about duplicate account"
+                                    rows={2}
+                                    className="flex-1 min-w-[200px] rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-1.5 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={handleSaveNotes}
+                                    disabled={savingNotes}
+                                    className="rounded-lg px-3 py-1.5 text-xs font-medium bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
+                                  >
+                                    {savingNotes ? 'Saving…' : 'Save notes'}
+                                  </button>
+                                </div>
+                              </div>
+                              <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+                                <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">
                                   Set temporary password (account recovery)
                                 </label>
                                 <div className="flex flex-wrap items-end gap-2">
@@ -1086,6 +1210,20 @@ export default function Admin() {
                                   ))}
                                 </div>
                               </div>
+                              {expandedUserId !== user?.id && (
+                                <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setShowDeleteConfirm(expandedUserId);
+                                      setDeleteConfirmInput('');
+                                    }}
+                                    className="rounded-md px-2 py-1 text-xs font-medium bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-900/70"
+                                  >
+                                    Delete user
+                                  </button>
+                                </div>
+                              )}
                             </div>
                           ) : (
                             <span className="text-slate-400 animate-pulse">

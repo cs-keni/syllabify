@@ -376,6 +376,33 @@ export async function resetUserSecurity(token, userId) {
   return data;
 }
 
+/** DELETE /api/admin/users/:id. Body: { confirm: "DELETE" }. Admin only. */
+export async function adminDeleteUser(token, userId) {
+  const res = await apiFetch(`${BASE}/api/admin/users/${userId}`, {
+    method: 'DELETE',
+    headers: headers(true, token),
+    body: JSON.stringify({ confirm: 'DELETE' }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to delete');
+  return data;
+}
+
+/** PUT /api/admin/users/:id/notes. Body: { note_text }. Admin only. */
+export async function adminSetUserNotes(token, userId, noteText) {
+  const res = await apiFetch(`${BASE}/api/admin/users/${userId}/notes`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({ note_text: noteText || '' }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to save notes');
+  return data;
+}
+
 /** PUT /api/admin/users/:id/set-admin. Body: { is_admin: true|false }. Admin only. */
 export async function setAdminUser(token, userId, isAdmin) {
   const res = await apiFetch(`${BASE}/api/admin/users/${userId}/set-admin`, {

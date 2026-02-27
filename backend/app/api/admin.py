@@ -174,7 +174,91 @@ def get_user(user_id):
             (user_id,),
         )
         user_data["assignments_count"] = cur.fetchone()["n"]
+        # Admin notes (optional table)
+        try:
+            cur.execute(
+                "SELECT note_text FROM UserAdminNotes WHERE user_id = %s",
+                (user_id,),
+            )
+            note_row = cur.fetchone()
+            user_data["admin_notes"] = (
+                (note_row["note_text"] or "").strip() if note_row else ""
+            )
+        except Exception:
+            user_data["admin_notes"] = ""
         return jsonify(user_data)
+    finally:
+        conn.close()
+
+
+@bp.route("/users/<int:user_id>/notes", methods=["PUT"])
+def put_user_notes(user_id):
+    """Set admin notes for a user. Admin only."""
+    admin = require_admin()
+    if not admin:
+        return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
+    data = request.get_json() or {}
+    note_text = (data.get("note_text") or data.get("note") or "").strip()[:2000]
+    conn = get_db()
+    try:
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM Users WHERE id = %s", (user_id,))
+        if not cur.fetchone():
+            return jsonify({"error": "user not found"}), 404
+        try:
+            cur.execute(
+                """INSERT INTO UserAdminNotes (user_id, note_text, updated_by_admin_id)
+                   VALUES (%s, %s, %s)
+                   ON DUPLICATE KEY UPDATE note_text = VALUES(note_text),
+                   updated_by_admin_id = VALUES(updated_by_admin_id)""",
+                (user_id, note_text or None, admin_id),
+            )
+        except Exception:
+            return jsonify({"error": "admin notes not available"}), 500
+        conn.commit()
+        target_username = _get_username(conn, user_id)
+        log_admin_action(
+            admin_id, admin_username, "update_admin_notes",
+            target_user_id=user_id, target_username=target_username,
+        )
+        return jsonify({"ok": True, "note_text": note_text})
+    finally:
+        conn.close()
+
+
+@bp.route("/users/<int:user_id>", methods=["DELETE"])
+def delete_user(user_id):
+    """Permanently delete a user and all their data. Admin only. Requires confirm body."""
+    admin = require_admin()
+    if not admin:
+        return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
+    if user_id == admin_id:
+        return jsonify({"error": "cannot delete your own account"}), 400
+    data = request.get_json() or {}
+    if data.get("confirm") != "DELETE":
+        return jsonify({
+            "error": "confirmation required",
+            "message": 'Send { "confirm": "DELETE" } in request body to confirm.',
+        }), 400
+    conn = get_db()
+    try:
+        cur = conn.cursor()
+        cur.execute("SELECT username FROM Users WHERE id = %s", (user_id,))
+        row = cur.fetchone()
+        if not row:
+            return jsonify({"error": "user not found"}), 404
+        target_username = row[0] if isinstance(row, (tuple, list)) else row["username"]
+        cur.execute("DELETE FROM Users WHERE id = %s", (user_id,))
+        conn.commit()
+        if cur.rowcount == 0:
+            return jsonify({"error": "user not found"}), 404
+        log_admin_action(
+            admin_id, admin_username, "delete_user",
+            target_user_id=user_id, target_username=target_username,
+        )
+        return jsonify({"ok": True})
     finally:
         conn.close()
 
