@@ -306,6 +306,58 @@ def put_maintenance():
     return jsonify({"ok": True, "enabled": bool(enabled), "message": message})
 
 
+@bp.route("/settings", methods=["GET"])
+def get_admin_settings():
+    """Get registration and announcement. Admin only."""
+    if not require_admin():
+        return jsonify({"error": "forbidden"}), 403
+    from app.admin_settings import get_announcement_banner, get_registration_enabled
+
+    return jsonify({
+        "registration_enabled": get_registration_enabled(),
+        "announcement": get_announcement_banner(),
+    })
+
+
+@bp.route("/settings", methods=["PUT"])
+def put_admin_settings():
+    """Set registration and/or announcement. Admin only."""
+    admin = require_admin()
+    if not admin:
+        return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
+    from app.admin_settings import (
+        get_announcement_banner,
+        get_registration_enabled,
+        set_announcement_banner,
+        set_registration_enabled,
+    )
+
+    data = request.get_json() or {}
+    changed = []
+    if "registration_enabled" in data:
+        enabled = bool(data["registration_enabled"])
+        if set_registration_enabled(enabled):
+            changed.append("registration")
+            log_admin_action(
+                admin_id, admin_username, "set_registration",
+                details=f"enabled={enabled}",
+            )
+    if "announcement" in data:
+        text = (data.get("announcement") or "").strip()
+        if set_announcement_banner(text):
+            changed.append("announcement")
+            log_admin_action(
+                admin_id, admin_username, "set_announcement",
+                details=text[:100] if text else "cleared",
+            )
+    return jsonify({
+        "ok": True,
+        "registration_enabled": get_registration_enabled(),
+        "announcement": get_announcement_banner(),
+    })
+
+
 @bp.route("/audit-log", methods=["GET"])
 def get_audit_log():
     """Audit log of admin actions. Admin only."""

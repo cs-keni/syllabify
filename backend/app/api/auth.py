@@ -108,11 +108,18 @@ def decode_token(auth_header):
 @bp.route("/register", methods=["POST"])
 def register():
     """Create new user. No auto-login."""
+    from app.admin_settings import get_registration_enabled
     from app.maintenance import get_maintenance_status
 
     enabled, msg = get_maintenance_status()
     if enabled:
         return jsonify({"error": "maintenance", "message": msg}), 503
+
+    if not get_registration_enabled():
+        return jsonify({
+            "error": "registration_closed",
+            "message": "Signups are currently closed. Contact an administrator.",
+        }), 403
 
     data = request.get_json() or {}
     username = (data.get("username") or "").strip()

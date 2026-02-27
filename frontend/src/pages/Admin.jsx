@@ -14,6 +14,8 @@ import {
   adminCreateUser,
   getMaintenance,
   adminSetMaintenance,
+  adminGetSettings,
+  adminSetSettings,
   getAdminStats,
   getAdminAuditLog,
 } from '../api/client';
@@ -61,6 +63,9 @@ export default function Admin() {
   const [maintenanceSaving, setMaintenanceSaving] = useState(false);
   const [stats, setStats] = useState(null);
   const [auditLog, setAuditLog] = useState([]);
+  const [registrationEnabled, setRegistrationEnabled] = useState(true);
+  const [announcement, setAnnouncement] = useState('');
+  const [settingsSaving, setSettingsSaving] = useState(false);
 
   const filteredUsers = useMemo(() => {
     let result = [...users];
@@ -167,6 +172,12 @@ export default function Admin() {
     getAdminAuditLog(token, { limit: 30 })
       .then(d => setAuditLog(d.entries || []))
       .catch(() => setAuditLog([]));
+    adminGetSettings(token)
+      .then(d => {
+        setRegistrationEnabled(d.registration_enabled !== false);
+        setAnnouncement(d.announcement || '');
+      })
+      .catch(() => {});
   }, [token]);
 
   const refreshAuditLog = () => {
@@ -174,6 +185,22 @@ export default function Admin() {
     getAdminAuditLog(token, { limit: 30 })
       .then(d => setAuditLog(d.entries || []))
       .catch(() => setAuditLog([]));
+  };
+
+  const handleSaveSettings = async () => {
+    setSettingsSaving(true);
+    try {
+      await adminSetSettings(token, {
+        registration_enabled: registrationEnabled,
+        announcement: announcement,
+      });
+      toast.success('Settings saved');
+      refreshAuditLog();
+    } catch (e) {
+      toast.error(e.message || 'Failed');
+    } finally {
+      setSettingsSaving(false);
+    }
   };
 
   const handleSetMaintenance = async () => {
@@ -451,6 +478,47 @@ export default function Admin() {
       </div>
 
       <div className="admin-body">
+        {/* Registration & Announcement */}
+        <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 mb-6">
+          <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+            Registration & announcement
+          </h3>
+          <div className="space-y-3">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={registrationEnabled}
+                onChange={e => setRegistrationEnabled(e.target.checked)}
+                className="rounded border-slate-300 accent-indigo-600"
+              />
+              <span className="text-sm">
+                Registration open (allow new signups)
+              </span>
+            </label>
+            <div>
+              <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">
+                Announcement banner (site-wide, leave empty to hide)
+              </label>
+              <input
+                type="text"
+                value={announcement}
+                onChange={e => setAnnouncement(e.target.value)}
+                placeholder="e.g. Syllabify will be down Saturday 2–4am"
+                className="w-full rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm bg-white dark:bg-slate-800"
+                maxLength={500}
+              />
+            </div>
+            <button
+              type="button"
+              onClick={handleSaveSettings}
+              disabled={settingsSaving}
+              className="rounded-lg px-4 py-2 text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
+            >
+              {settingsSaving ? 'Saving…' : 'Save settings'}
+            </button>
+          </div>
+        </div>
+
         {/* Maintenance mode */}
         <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 mb-6">
           <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">

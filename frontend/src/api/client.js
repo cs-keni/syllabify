@@ -53,7 +53,13 @@ export async function register(username, password) {
     body: JSON.stringify({ username, password }),
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Registration failed');
+  if (!res.ok) {
+    const msg =
+      data.error === 'registration_closed'
+        ? data.message || 'Signups are currently closed.'
+        : data.error || 'Registration failed';
+    throw new Error(msg);
+  }
   return data;
 }
 
@@ -202,6 +208,18 @@ export async function getProfile(token) {
   return data;
 }
 
+/** GET /api/settings. Public. Returns { registration_open, announcement }. */
+export async function getSettings() {
+  const res = await apiFetch(`${BASE}/api/settings`, {
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  return {
+    registration_open: data.registration_open !== false,
+    announcement: data.announcement || '',
+  };
+}
+
 /** GET /api/maintenance. Public. Returns { enabled, message }. */
 export async function getMaintenance() {
   const res = await apiFetch(`${BASE}/api/maintenance`, {
@@ -209,6 +227,38 @@ export async function getMaintenance() {
   });
   const data = await res.json().catch(() => ({}));
   return { enabled: !!data.enabled, message: data.message || '' };
+}
+
+/** GET /api/admin/settings. Admin only. Returns { registration_enabled, announcement }. */
+export async function adminGetSettings(token) {
+  const res = await apiFetch(`${BASE}/api/admin/settings`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to load settings');
+  return data;
+}
+
+/** PUT /api/admin/settings. Body: { registration_enabled?, announcement? }. Admin only. */
+export async function adminSetSettings(
+  token,
+  { registration_enabled, announcement }
+) {
+  const res = await apiFetch(`${BASE}/api/admin/settings`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({
+      ...(registration_enabled !== undefined && {
+        registration_enabled: !!registration_enabled,
+      }),
+      ...(announcement !== undefined && { announcement: announcement || '' }),
+    }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update settings');
+  return data;
 }
 
 /** PUT /api/admin/maintenance. Body: { enabled, message }. Admin only. */

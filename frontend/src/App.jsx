@@ -21,7 +21,7 @@ import Register from './pages/Register';
 import SecuritySetup from './pages/SecuritySetup';
 import Home from './pages/Homepage';
 import MaintenancePage from './pages/MaintenancePage';
-import { getMaintenance } from './api/client';
+import { getMaintenance, getSettings } from './api/client';
 import { useState, useEffect } from 'react';
 import './styles/index.css';
 
@@ -30,6 +30,27 @@ function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface">
       <p className="text-ink-muted animate-fade-in">Loading…</p>
+    </div>
+  );
+}
+
+/** Site-wide announcement banner from admin. */
+function AnnouncementBanner() {
+  const [announcement, setAnnouncement] = useState('');
+
+  useEffect(() => {
+    getSettings()
+      .then(s => setAnnouncement(s.announcement || ''))
+      .catch(() => setAnnouncement(''));
+  }, []);
+
+  if (!announcement.trim()) return null;
+  return (
+    <div
+      className="bg-indigo-600 text-white text-center py-2 px-4 text-sm font-medium"
+      role="status"
+    >
+      {announcement}
     </div>
   );
 }
@@ -56,6 +77,7 @@ function AppRoutes() {
   if (isLoading) return <Loading />;
   return (
     <MaintenanceGuard>
+      <AnnouncementBanner />
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -61,7 +61,7 @@ def _maintenance_check():
     if request.method == "OPTIONS":
         return None
     path = request.path or ""
-    if path == "/api/maintenance" and request.method == "GET":
+    if path in ("/api/maintenance", "/api/settings") and request.method == "GET":
         return None
     if path in ("/api/auth/login", "/api/auth/register"):
         return None
@@ -88,6 +88,17 @@ def get_maintenance():
 
     enabled, message = get_maintenance_status()
     return jsonify({"enabled": enabled, "message": message})
+
+
+@app.route("/api/settings", methods=["GET"])
+def get_settings():
+    """Public endpoint. Returns registration and announcement. No auth required."""
+    from app.admin_settings import get_announcement_banner, get_registration_enabled
+
+    return jsonify({
+        "registration_open": get_registration_enabled(),
+        "announcement": get_announcement_banner(),
+    })
 
 
 app.register_blueprint(auth_bp)
