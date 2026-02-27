@@ -5,7 +5,9 @@ Returns normalized JSON (courses, meeting_times, work_items, term) per parser-sc
 from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token
+from app.db.session import SessionLocal
 from app.services.schedule_input_builder import build_engine_input
+from app.services.scheduling_service import generate_study_times
 
 bp = Blueprint("schedule", __name__, url_prefix="/api/schedule")
 
@@ -41,3 +43,36 @@ def get_engine_input():
     if "error" in result and result.get("error") == "No term found":
         return jsonify(result), 404
     return jsonify(result), 200
+
+
+@bp.route("/terms/<int:term_id>/generate-study-times", methods=["POST"])
+def generate_study_times_for_term(term_id):
+    """
+    Generate study times for the given term (scheduling algorithm).
+    For dev: test with curl -X POST -H "Authorization: Bearer <token>" <base>/api/schedule/terms/<term_id>/generate-study-times
+    """
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "unauthorized"}), 401
+
+    session = SessionLocal()
+    try:
+        created = generate_study_times(session, term_id)
+        session.commit()
+        return jsonify({
+            "ok": True,
+            "created_count": len(created),
+            "study_times": [
+                {"start_time": st.start_time.isoformat(), "end_time": st.end_time.isoformat()}
+                for st in created
+            ],
+        }), 201
+    except ValueError as e:
+        session.rollback()
+        return jsonify({"ok": False, "error": str(e)}), 404
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
