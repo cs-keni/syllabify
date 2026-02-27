@@ -12,6 +12,9 @@ import {
   setAdminUser,
   adminSetPassword,
   adminCreateUser,
+  getMaintenance,
+  adminSetMaintenance,
+  getAdminStats,
 } from '../api/client';
 import toast from 'react-hot-toast';
 
@@ -52,6 +55,10 @@ export default function Admin() {
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [creating, setCreating] = useState(false);
+  const [maintenanceEnabled, setMaintenanceEnabled] = useState(false);
+  const [maintenanceMessage, setMaintenanceMessage] = useState('');
+  const [maintenanceSaving, setMaintenanceSaving] = useState(false);
+  const [stats, setStats] = useState(null);
 
   const filteredUsers = useMemo(() => {
     let result = [...users];
@@ -144,6 +151,34 @@ export default function Admin() {
   useEffect(() => {
     load();
   }, [token]);
+
+  useEffect(() => {
+    if (!token) return;
+    getMaintenance().then(d => {
+      setMaintenanceEnabled(d.enabled);
+      setMaintenanceMessage(d.message || '');
+    });
+    getAdminStats(token)
+      .then(d => setStats(d))
+      .catch(() => setStats(null));
+  }, [token]);
+
+  const handleSetMaintenance = async () => {
+    setMaintenanceSaving(true);
+    try {
+      await adminSetMaintenance(token, {
+        enabled: maintenanceEnabled,
+        message: maintenanceMessage,
+      });
+      toast.success(
+        maintenanceEnabled ? 'Maintenance mode ON' : 'Maintenance mode OFF'
+      );
+    } catch (e) {
+      toast.error(e.message || 'Failed');
+    } finally {
+      setMaintenanceSaving(false);
+    }
+  };
 
   useEffect(() => {
     if (!showCreate) return;
@@ -396,6 +431,73 @@ export default function Admin() {
       </div>
 
       <div className="admin-body">
+        {/* Maintenance mode */}
+        <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 mb-6">
+          <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+            Maintenance mode
+          </h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
+            When ON, only admins can access the app. Clients see a maintenance
+            message.
+          </p>
+          <div className="flex flex-wrap items-end gap-3">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={maintenanceEnabled}
+                onChange={e => setMaintenanceEnabled(e.target.checked)}
+                className="rounded border-slate-300 accent-indigo-600"
+              />
+              <span className="text-sm">Maintenance ON</span>
+            </label>
+            <input
+              type="text"
+              value={maintenanceMessage}
+              onChange={e => setMaintenanceMessage(e.target.value)}
+              placeholder="Message shown to users"
+              className="flex-1 min-w-[200px] rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm bg-white dark:bg-slate-800"
+            />
+            <button
+              type="button"
+              onClick={handleSetMaintenance}
+              disabled={maintenanceSaving}
+              className="rounded-lg px-4 py-2 text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50"
+            >
+              {maintenanceSaving ? 'Saving…' : 'Save'}
+            </button>
+          </div>
+        </div>
+
+        {/* System stats */}
+        {stats && (
+          <div className="flex flex-wrap gap-4 mb-6">
+            <div className="rounded-lg bg-slate-100 dark:bg-slate-800 px-4 py-2 border border-slate-200 dark:border-slate-700">
+              <span className="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
+                Terms
+              </span>
+              <span className="block text-lg font-semibold text-slate-800 dark:text-slate-100 font-mono">
+                {stats.total_terms}
+              </span>
+            </div>
+            <div className="rounded-lg bg-slate-100 dark:bg-slate-800 px-4 py-2 border border-slate-200 dark:border-slate-700">
+              <span className="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
+                Courses
+              </span>
+              <span className="block text-lg font-semibold text-slate-800 dark:text-slate-100 font-mono">
+                {stats.total_courses}
+              </span>
+            </div>
+            <div className="rounded-lg bg-slate-100 dark:bg-slate-800 px-4 py-2 border border-slate-200 dark:border-slate-700">
+              <span className="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
+                Assignments
+              </span>
+              <span className="block text-lg font-semibold text-slate-800 dark:text-slate-100 font-mono">
+                {stats.total_assignments}
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Search & filters */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <div className="relative flex-1">

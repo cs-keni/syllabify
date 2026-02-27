@@ -235,6 +235,66 @@ def admin_set_password(user_id):
         conn.close()
 
 
+@bp.route("/maintenance", methods=["GET"])
+def get_maintenance_admin():
+    """Get maintenance status. Admin only (or use public GET /api/maintenance)."""
+    if not require_admin():
+        return jsonify({"error": "forbidden"}), 403
+    from app.maintenance import get_maintenance_status
+
+    enabled, message = get_maintenance_status()
+    return jsonify({"enabled": enabled, "message": message})
+
+
+@bp.route("/maintenance", methods=["PUT"])
+def put_maintenance():
+    """Set maintenance mode. Admin only."""
+    if not require_admin():
+        return jsonify({"error": "forbidden"}), 403
+    data = request.get_json() or {}
+    enabled = data.get("enabled")
+    if enabled is None:
+        return jsonify({"error": "enabled is required"}), 400
+    message = (data.get("message") or "").strip() or "Syllabify is undergoing maintenance. Please try again later."
+    from app.maintenance import set_maintenance
+
+    if not set_maintenance(bool(enabled), message[:500]):
+        return jsonify({"error": "failed to update maintenance settings"}), 500
+    return jsonify({"ok": True, "enabled": bool(enabled), "message": message})
+
+
+@bp.route("/stats", methods=["GET"])
+def get_stats():
+    """System stats for admin dashboard. Admin only."""
+    if not require_admin():
+        return jsonify({"error": "forbidden"}), 403
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute("SELECT COUNT(*) as n FROM Users")
+        total_users = cur.fetchone()["n"]
+        cur.execute("SELECT COUNT(*) as n FROM Users WHERE is_admin = 1")
+        admin_count = cur.fetchone()["n"]
+        cur.execute("SELECT COUNT(*) as n FROM Users WHERE is_disabled = 1")
+        disabled_count = cur.fetchone()["n"]
+        cur.execute("SELECT COUNT(*) as n FROM Terms")
+        total_terms = cur.fetchone()["n"]
+        cur.execute("SELECT COUNT(*) as n FROM Courses")
+        total_courses = cur.fetchone()["n"]
+        cur.execute("SELECT COUNT(*) as n FROM Assignments")
+        total_assignments = cur.fetchone()["n"]
+        return jsonify({
+            "total_users": total_users,
+            "admin_count": admin_count,
+            "disabled_count": disabled_count,
+            "total_terms": total_terms,
+            "total_courses": total_courses,
+            "total_assignments": total_assignments,
+        })
+    finally:
+        conn.close()
+
+
 @bp.route("/users/<int:user_id>/reset-security", methods=["PUT"])
 def reset_security(user_id):
     """Reset security setup for a user. Admin only."""

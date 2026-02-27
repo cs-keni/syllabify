@@ -202,6 +202,39 @@ export async function getProfile(token) {
   return data;
 }
 
+/** GET /api/maintenance. Public. Returns { enabled, message }. */
+export async function getMaintenance() {
+  const res = await apiFetch(`${BASE}/api/maintenance`, {
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  return { enabled: !!data.enabled, message: data.message || '' };
+}
+
+/** PUT /api/admin/maintenance. Body: { enabled, message }. Admin only. */
+export async function adminSetMaintenance(token, { enabled, message }) {
+  const res = await apiFetch(`${BASE}/api/admin/maintenance`, {
+    method: 'PUT',
+    headers: headers(true, token),
+    body: JSON.stringify({ enabled: !!enabled, message: message || '' }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update maintenance');
+  return data;
+}
+
+/** GET /api/admin/stats. Admin only. Returns aggregate counts. */
+export async function getAdminStats(token) {
+  const res = await apiFetch(`${BASE}/api/admin/stats`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to load stats');
+  return data;
+}
+
 /** POST /api/admin/users with JWT. Admin only. Body: { username, password }. Returns { id, username }. */
 export async function adminCreateUser(token, { username, password }) {
   const res = await apiFetch(`${BASE}/api/admin/users`, {

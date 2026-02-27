@@ -108,6 +108,12 @@ def decode_token(auth_header):
 @bp.route("/register", methods=["POST"])
 def register():
     """Create new user. No auto-login."""
+    from app.maintenance import get_maintenance_status
+
+    enabled, msg = get_maintenance_status()
+    if enabled:
+        return jsonify({"error": "maintenance", "message": msg}), 503
+
     data = request.get_json() or {}
     username = (data.get("username") or "").strip()
     password = data.get("password") or ""
@@ -160,16 +166,21 @@ def login():
         cur = conn.cursor(dictionary=True)
         try:
             cur.execute(
-                "SELECT id, username, password_hash, security_setup_done FROM Users "
+                "SELECT id, username, password_hash, security_setup_done, is_admin FROM Users "
                 "WHERE username = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
                 (username,),
             )
         except Exception as e:
             if "is_disabled" in str(e) and "Unknown column" in str(e):
-                # Migration 003 not applied yet; run without is_disabled filter
+                cur.execute(
+                    "SELECT id, username, password_hash, security_setup_done, is_admin FROM Users "
+                    "WHERE username = %s",
+                    (username,),
+                )
+            elif "is_admin" in str(e) and "Unknown column" in str(e):
                 cur.execute(
                     "SELECT id, username, password_hash, security_setup_done FROM Users "
-                    "WHERE username = %s",
+                    "WHERE username = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
                     (username,),
                 )
             else:
@@ -179,6 +190,14 @@ def login():
             return jsonify({"error": "invalid credentials"}), 401
         if not check_password(password, row.get("password_hash") or ""):
             return jsonify({"error": "invalid credentials"}), 401
+
+        from app.maintenance import get_maintenance_status
+
+        enabled, msg = get_maintenance_status()
+        if enabled:
+            is_admin = bool(row.get("is_admin")) if row.get("is_admin") is not None else False
+            if not is_admin:
+                return jsonify({"error": "maintenance", "message": msg}), 503
 
         user_id = row["id"]
         security_setup_done = bool(row.get("security_setup_done"))

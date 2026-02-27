@@ -8,7 +8,7 @@
 import os
 
 import mysql.connector
-from flask import Flask
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 from app.api.admin import bp as admin_bp
@@ -48,6 +48,46 @@ def get_db_connection():
         database=os.getenv("DB_NAME"),
         connection_timeout=15,
     )
+
+
+def _maintenance_check():
+    """Before request: block non-admins when maintenance is on. Skip login, register, maintenance endpoint."""
+    if app.testing:
+        return None
+    from app.api.admin import _is_admin
+    from app.api.auth import decode_token
+    from app.maintenance import get_maintenance_status
+
+    if request.method == "OPTIONS":
+        return None
+    path = request.path or ""
+    if path == "/api/maintenance" and request.method == "GET":
+        return None
+    if path in ("/api/auth/login", "/api/auth/register"):
+        return None
+    enabled, _ = get_maintenance_status()
+    if not enabled:
+        return None
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "maintenance", "message": get_maintenance_status()[1]}), 503
+    username = (payload.get("username") or "").strip()
+    if _is_admin(username):
+        return None
+    return jsonify({"error": "maintenance", "message": get_maintenance_status()[1]}), 503
+
+
+app.before_request(_maintenance_check)
+
+
+@app.route("/api/maintenance", methods=["GET"])
+def get_maintenance():
+    """Public endpoint. Returns maintenance status. No auth required."""
+    from app.maintenance import get_maintenance_status
+
+    enabled, message = get_maintenance_status()
+    return jsonify({"enabled": enabled, "message": message})
 
 
 app.register_blueprint(auth_bp)

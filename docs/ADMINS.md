@@ -2,7 +2,7 @@
 
 What admins can do today, and ideas for future admin features.
 
-**Status: In progress.** Current + **High Priority** + **Medium** (bulk actions, user creation) + **Lower** (export users) are **complete**. Audit log, maintenance mode, and remaining Lower Priority items are **not yet implemented**. Use checkboxes below to track: `[x]` = done, `[ ]` = todo.
+**Status: In progress.** Current + **High Priority** + **Medium** (bulk, user creation, maintenance) + **Lower** (export, system stats) are **complete**. Audit log and remaining Lower items (impersonate, rate limit, feature flags) are **not yet implemented**. Use checkboxes below to track: `[x]` = done, `[ ]` = todo.
 
 ---
 
@@ -53,14 +53,14 @@ Prioritized by impact and effort. Add new ideas here as we discover them. `[x]` 
 |--------|------|-------------|--------|
 | [x] | **Bulk actions** | Select multiple users → disable all, reset security for all | Medium |
 | [ ] | **Audit log** | Log admin actions (who disabled whom, when; who promoted whom) for accountability | High |
-| [ ] | **Maintenance mode** | Toggle "maintenance" so only admins can access the app; show message to clients | Medium |
+| [x] | **Maintenance mode** | Toggle "maintenance" so only admins can access the app; show message to clients | Medium |
 | [x] | **User creation** | Create a new user (e.g. for class roster) with temp password; user must change on first login | Low |
 
 ### Lower Priority
 
 | Status | Idea | Description | Effort |
 |--------|------|-------------|--------|
-| [ ] | **System stats dashboard** | Total users, new signups this week, active courses, storage usage | Medium |
+| [x] | **System stats dashboard** | Total users, new signups this week, active courses, storage usage | Medium |
 | [x] | **Export users** | CSV/JSON export of user list for reporting | Low |
 | [ ] | **Impersonate user** | Admin logs in as another user to debug issues (with clear UI indicator) | High (security-sensitive) |
 | [ ] | **Rate limit / abuse view** | See failed login attempts, flag suspicious activity | High |
