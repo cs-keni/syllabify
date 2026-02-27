@@ -180,6 +180,120 @@ export default function Preferences() {
         </p>
       </div>
 
+      {/* Change password — prominent placement */}
+      <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:100ms]">
+        <h2 className="text-base font-medium text-ink mb-3">Change password</h2>
+        <p className="text-sm text-ink-muted mb-4">
+          Set a new password. You’ll need your current password.
+        </p>
+        <form
+          onSubmit={handleChangePassword}
+          className="flex flex-col gap-3 max-w-md"
+        >
+          {passwordError && (
+            <p className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800/60 rounded-input px-3 py-2">
+              {passwordError}
+            </p>
+          )}
+          <div>
+            <label
+              htmlFor="currentPassword"
+              className="block text-sm text-ink-muted mb-1"
+            >
+              Current password
+            </label>
+            <input
+              id="currentPassword"
+              type="password"
+              value={currentPassword}
+              onChange={e => setCurrentPassword(e.target.value)}
+              required
+              autoComplete="current-password"
+              disabled={loading}
+              className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="newPassword"
+              className="block text-sm text-ink-muted mb-1"
+            >
+              New password
+            </label>
+            <input
+              id="newPassword"
+              type="password"
+              value={newPassword}
+              onChange={e => setNewPassword(e.target.value)}
+              required
+              autoComplete="new-password"
+              disabled={loading}
+              className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
+            />
+            <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
+              {passwordReqStatus.map(r => (
+                <span
+                  key={r.key}
+                  className={`inline-flex items-center gap-1.5 text-xs transition-all duration-200 ${
+                    r.met
+                      ? 'text-green-600 dark:text-green-400'
+                      : 'text-ink-muted'
+                  }`}
+                >
+                  <span
+                    className={`inline-block w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
+                      r.met
+                        ? 'border-green-600 dark:border-green-400 bg-green-600 dark:bg-green-400'
+                        : 'border-ink-muted/60'
+                    }`}
+                  >
+                    {r.met && (
+                      <svg
+                        className="w-2 h-2 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                  {r.label}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="confirmNewPassword"
+              className="block text-sm text-ink-muted mb-1"
+            >
+              Confirm new password
+            </label>
+            <input
+              id="confirmNewPassword"
+              type="password"
+              value={confirmNewPassword}
+              onChange={e => setConfirmNewPassword(e.target.value)}
+              required
+              autoComplete="new-password"
+              disabled={loading}
+              className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={passwordSaving || loading || !passwordAllMet}
+            className="rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] disabled:opacity-60 w-fit"
+          >
+            {passwordSaving ? 'Changing…' : 'Change password'}
+          </button>
+        </form>
+      </div>
+
       <div className="rounded-card bg-surface-elevated border border-border p-6 shadow-card animate-fade-in-up [animation-delay:200ms]">
         <div className="grid gap-8 lg:grid-cols-2">
           <section>
@@ -210,118 +324,6 @@ export default function Preferences() {
                 {saving ? 'Saving…' : 'Save'}
               </button>
             </form>
-
-            <div className="mt-6 pt-6 border-t border-border">
-              <h3 className="text-sm font-medium text-ink mb-3">
-                Change password
-              </h3>
-              <form
-                onSubmit={handleChangePassword}
-                className="flex flex-col gap-3 max-w-md"
-              >
-                {passwordError && (
-                  <p className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800/60 rounded-input px-3 py-2">
-                    {passwordError}
-                  </p>
-                )}
-                <div>
-                  <label
-                    htmlFor="currentPassword"
-                    className="block text-sm text-ink-muted mb-1"
-                  >
-                    Current password
-                  </label>
-                  <input
-                    id="currentPassword"
-                    type="password"
-                    value={currentPassword}
-                    onChange={e => setCurrentPassword(e.target.value)}
-                    required
-                    autoComplete="current-password"
-                    disabled={loading}
-                    className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="newPassword"
-                    className="block text-sm text-ink-muted mb-1"
-                  >
-                    New password
-                  </label>
-                  <input
-                    id="newPassword"
-                    type="password"
-                    value={newPassword}
-                    onChange={e => setNewPassword(e.target.value)}
-                    required
-                    autoComplete="new-password"
-                    disabled={loading}
-                    className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
-                  />
-                  <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
-                    {passwordReqStatus.map(r => (
-                      <span
-                        key={r.key}
-                        className={`inline-flex items-center gap-1.5 text-xs transition-all duration-200 ${
-                          r.met
-                            ? 'text-green-600 dark:text-green-400'
-                            : 'text-ink-muted'
-                        }`}
-                      >
-                        <span
-                          className={`inline-block w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
-                            r.met
-                              ? 'border-green-600 dark:border-green-400 bg-green-600 dark:bg-green-400'
-                              : 'border-ink-muted/60'
-                          }`}
-                        >
-                          {r.met && (
-                            <svg
-                              className="w-2 h-2 text-white"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          )}
-                        </span>
-                        {r.label}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="confirmNewPassword"
-                    className="block text-sm text-ink-muted mb-1"
-                  >
-                    Confirm new password
-                  </label>
-                  <input
-                    id="confirmNewPassword"
-                    type="password"
-                    value={confirmNewPassword}
-                    onChange={e => setConfirmNewPassword(e.target.value)}
-                    required
-                    autoComplete="new-password"
-                    disabled={loading}
-                    className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={passwordSaving || loading || !passwordAllMet}
-                  className="rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] disabled:opacity-60 w-fit"
-                >
-                  {passwordSaving ? 'Changing…' : 'Change password'}
-                </button>
-              </form>
-            </div>
           </section>
 
           <form onSubmit={handleSavePreferences} className="space-y-8">
