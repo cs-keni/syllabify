@@ -2,7 +2,7 @@
 
 What admins can do today, and ideas for future admin features.
 
-**Status: In progress.** Current + **High Priority** + **Medium** (bulk, user creation, maintenance) + **Lower** (export, system stats) are **complete**. Audit log and remaining Lower items (impersonate, rate limit, feature flags) are **not yet implemented**. Use checkboxes below to track: `[x]` = done, `[ ]` = todo.
+**Status: In progress.** Current + **High Priority** + **Medium** (bulk, user creation, maintenance, audit log) + **Lower** (export, system stats) are **complete**. Remaining Lower items (impersonate, rate limit, feature flags) are **not yet implemented**. Use checkboxes below to track: `[x]` = done, `[ ]` = todo.
 
 ---
 
@@ -52,7 +52,7 @@ Prioritized by impact and effort. Add new ideas here as we discover them. `[x]` 
 | Status | Idea | Description | Effort |
 |--------|------|-------------|--------|
 | [x] | **Bulk actions** | Select multiple users → disable all, reset security for all | Medium |
-| [ ] | **Audit log** | Log admin actions (who disabled whom, when; who promoted whom) for accountability | High |
+| [x] | **Audit log** | Log admin actions (who disabled whom, when; who promoted whom) for accountability | High |
 | [x] | **Maintenance mode** | Toggle "maintenance" so only admins can access the app; show message to clients | Medium |
 | [x] | **User creation** | Create a new user (e.g. for class roster) with temp password; user must change on first login | Low |
 

@@ -9,6 +9,7 @@ from app.api.auth import (
     get_db,
     hash_password,
 )
+from app.audit import log_admin_action
 
 bp = Blueprint("admin", __name__, url_prefix="/api/admin")
 
@@ -37,6 +38,14 @@ def _is_admin(username: str) -> bool:
         return bool(row and row.get("is_admin"))
     finally:
         conn.close()
+
+
+def _get_username(conn, user_id: int) -> str | None:
+    """Get username by user id."""
+    cur = conn.cursor(dictionary=True)
+    cur.execute("SELECT username FROM Users WHERE id = %s", (user_id,))
+    row = cur.fetchone()
+    return row["username"] if row else None
 
 
 def require_admin():
@@ -85,8 +94,10 @@ def create_user():
     """Create a new user (admin only). For class roster, etc. User should change password on first login."""
     import re
 
-    if not require_admin():
+    admin = require_admin()
+    if not admin:
         return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
     data = request.get_json() or {}
     username = (data.get("username") or "").strip()
     password = data.get("password") or ""
@@ -117,6 +128,10 @@ def create_user():
         )
         user_id = cur.lastrowid
         conn.commit()
+        log_admin_action(
+            admin_id, admin_username, "create_user",
+            target_user_id=user_id, target_username=username,
+        )
         return jsonify({"id": user_id, "username": username}), 201
     finally:
         conn.close()
@@ -167,8 +182,10 @@ def get_user(user_id):
 @bp.route("/users/<int:user_id>/disable", methods=["PUT"])
 def disable_user(user_id):
     """Set is_disabled for a user. Admin only."""
-    if not require_admin():
+    admin = require_admin()
+    if not admin:
         return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
     data = request.get_json() or {}
     disabled = data.get("disabled")
     if disabled is None:
@@ -180,6 +197,12 @@ def disable_user(user_id):
         conn.commit()
         if cur.rowcount == 0:
             return jsonify({"error": "user not found"}), 404
+        target_username = _get_username(conn, user_id)
+        log_admin_action(
+            admin_id, admin_username,
+            "enable_user" if not disabled else "disable_user",
+            target_user_id=user_id, target_username=target_username,
+        )
         return jsonify({"ok": True})
     finally:
         conn.close()
@@ -191,7 +214,7 @@ def set_admin(user_id):
     admin = require_admin()
     if not admin:
         return jsonify({"error": "forbidden"}), 403
-    admin_id, _ = admin
+    admin_id, admin_username = admin
     if user_id == admin_id:
         return jsonify({"error": "cannot change your own admin status"}), 400
     data = request.get_json() or {}
@@ -205,6 +228,13 @@ def set_admin(user_id):
         conn.commit()
         if cur.rowcount == 0:
             return jsonify({"error": "user not found"}), 404
+        target_username = _get_username(conn, user_id)
+        log_admin_action(
+            admin_id, admin_username,
+            "set_admin" if is_admin else "revoke_admin",
+            target_user_id=user_id, target_username=target_username,
+            details="granted" if is_admin else "revoked",
+        )
         return jsonify({"ok": True, "is_admin": bool(is_admin)})
     finally:
         conn.close()
@@ -213,8 +243,10 @@ def set_admin(user_id):
 @bp.route("/users/<int:user_id>/set-password", methods=["PUT"])
 def admin_set_password(user_id):
     """Set a user's password (admin only). For account recovery. User should change it on next login."""
-    if not require_admin():
+    admin = require_admin()
+    if not admin:
         return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
     data = request.get_json() or {}
     new_password = data.get("new_password") or ""
     if not new_password:
@@ -230,6 +262,11 @@ def admin_set_password(user_id):
         conn.commit()
         if cur.rowcount == 0:
             return jsonify({"error": "user not found"}), 404
+        target_username = _get_username(conn, user_id)
+        log_admin_action(
+            admin_id, admin_username, "admin_password_reset",
+            target_user_id=user_id, target_username=target_username,
+        )
         return jsonify({"ok": True})
     finally:
         conn.close()
@@ -249,8 +286,10 @@ def get_maintenance_admin():
 @bp.route("/maintenance", methods=["PUT"])
 def put_maintenance():
     """Set maintenance mode. Admin only."""
-    if not require_admin():
+    admin = require_admin()
+    if not admin:
         return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
     data = request.get_json() or {}
     enabled = data.get("enabled")
     if enabled is None:
@@ -260,7 +299,50 @@ def put_maintenance():
 
     if not set_maintenance(bool(enabled), message[:500]):
         return jsonify({"error": "failed to update maintenance settings"}), 500
+    log_admin_action(
+        admin_id, admin_username, "set_maintenance",
+        details=f"enabled={enabled} message={message[:100]}",
+    )
     return jsonify({"ok": True, "enabled": bool(enabled), "message": message})
+
+
+@bp.route("/audit-log", methods=["GET"])
+def get_audit_log():
+    """Audit log of admin actions. Admin only."""
+    if not require_admin():
+        return jsonify({"error": "forbidden"}), 403
+    limit = min(int(request.args.get("limit", 50)), 200)
+    offset = max(0, int(request.args.get("offset", 0)))
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        try:
+            cur.execute(
+                """SELECT id, admin_user_id, admin_username, action, target_user_id,
+                          target_username, details, created_at
+                   FROM AdminAuditLog
+                   ORDER BY created_at DESC
+                   LIMIT %s OFFSET %s""",
+                (limit, offset),
+            )
+        except Exception:
+            return jsonify({"entries": []})
+        rows = cur.fetchall()
+        entries = []
+        for r in rows:
+            entries.append({
+                "id": r["id"],
+                "admin_user_id": r["admin_user_id"],
+                "admin_username": r["admin_username"],
+                "action": r["action"],
+                "target_user_id": r["target_user_id"],
+                "target_username": r["target_username"],
+                "details": r.get("details"),
+                "created_at": r["created_at"].isoformat() if r.get("created_at") else None,
+            })
+        return jsonify({"entries": entries})
+    finally:
+        conn.close()
 
 
 @bp.route("/stats", methods=["GET"])
@@ -298,8 +380,10 @@ def get_stats():
 @bp.route("/users/<int:user_id>/reset-security", methods=["PUT"])
 def reset_security(user_id):
     """Reset security setup for a user. Admin only."""
-    if not require_admin():
+    admin = require_admin()
+    if not admin:
         return jsonify({"error": "forbidden"}), 403
+    admin_id, admin_username = admin
     conn = get_db()
     try:
         cur = conn.cursor()
@@ -309,6 +393,11 @@ def reset_security(user_id):
         conn.commit()
         if n == 0:
             return jsonify({"error": "user not found"}), 404
+        target_username = _get_username(conn, user_id)
+        log_admin_action(
+            admin_id, admin_username, "reset_security",
+            target_user_id=user_id, target_username=target_username,
+        )
         return jsonify({"ok": True})
     finally:
         conn.close()

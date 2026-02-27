@@ -15,6 +15,7 @@ import {
   getMaintenance,
   adminSetMaintenance,
   getAdminStats,
+  getAdminAuditLog,
 } from '../api/client';
 import toast from 'react-hot-toast';
 
@@ -59,6 +60,7 @@ export default function Admin() {
   const [maintenanceMessage, setMaintenanceMessage] = useState('');
   const [maintenanceSaving, setMaintenanceSaving] = useState(false);
   const [stats, setStats] = useState(null);
+  const [auditLog, setAuditLog] = useState([]);
 
   const filteredUsers = useMemo(() => {
     let result = [...users];
@@ -102,6 +104,7 @@ export default function Admin() {
       await adminSetPassword(token, expandedUserId, tempPassword);
       toast.success('Password set. User should change it on next login.');
       setTempPassword('');
+      refreshAuditLog();
     } catch (e) {
       toast.error(e.message || 'Failed');
     } finally {
@@ -161,7 +164,17 @@ export default function Admin() {
     getAdminStats(token)
       .then(d => setStats(d))
       .catch(() => setStats(null));
+    getAdminAuditLog(token, { limit: 30 })
+      .then(d => setAuditLog(d.entries || []))
+      .catch(() => setAuditLog([]));
   }, [token]);
+
+  const refreshAuditLog = () => {
+    if (!token) return;
+    getAdminAuditLog(token, { limit: 30 })
+      .then(d => setAuditLog(d.entries || []))
+      .catch(() => setAuditLog([]));
+  };
 
   const handleSetMaintenance = async () => {
     setMaintenanceSaving(true);
@@ -173,6 +186,7 @@ export default function Admin() {
       toast.success(
         maintenanceEnabled ? 'Maintenance mode ON' : 'Maintenance mode OFF'
       );
+      refreshAuditLog();
     } catch (e) {
       toast.error(e.message || 'Failed');
     } finally {
@@ -194,6 +208,7 @@ export default function Admin() {
       await disableUser(token, userId, disabled);
       toast.success(disabled ? 'User disabled' : 'User enabled');
       load();
+      refreshAuditLog();
     } catch (e) {
       toast.error(e.message || 'Failed');
     }
@@ -204,6 +219,7 @@ export default function Admin() {
       await resetUserSecurity(token, userId);
       toast.success('Security reset');
       load();
+      refreshAuditLog();
     } catch (e) {
       toast.error(e.message || 'Failed');
     }
@@ -214,6 +230,7 @@ export default function Admin() {
       await setAdminUser(token, userId, isAdmin);
       toast.success(isAdmin ? 'Granted admin' : 'Removed admin');
       load();
+      refreshAuditLog();
     } catch (e) {
       toast.error(e.message || 'Failed');
     }
@@ -250,6 +267,7 @@ export default function Admin() {
     setBulkAction(null);
     setSelectedIds(new Set());
     load();
+    refreshAuditLog();
     if (failed) toast.error(`Disabled ${done}, failed ${failed}`);
     else toast.success(`Disabled ${done} user(s)`);
   };
@@ -270,6 +288,7 @@ export default function Admin() {
     setBulkAction(null);
     setSelectedIds(new Set());
     load();
+    refreshAuditLog();
     if (failed) toast.error(`Reset ${done}, failed ${failed}`);
     else toast.success(`Reset security for ${done} user(s)`);
   };
@@ -288,6 +307,7 @@ export default function Admin() {
       setNewUsername('');
       setNewPassword('');
       load();
+      refreshAuditLog();
     } catch (e) {
       toast.error(e.message || 'Failed to create');
     } finally {
@@ -467,6 +487,55 @@ export default function Admin() {
             </button>
           </div>
         </div>
+
+        {/* Audit log */}
+        {auditLog.length > 0 && (
+          <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 mb-6">
+            <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+              Recent admin actions
+            </h3>
+            <div className="overflow-x-auto max-h-48 overflow-y-auto">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700">
+                    <th className="text-left py-2 pr-2">When</th>
+                    <th className="text-left py-2 pr-2">Admin</th>
+                    <th className="text-left py-2 pr-2">Action</th>
+                    <th className="text-left py-2 pr-2">Target</th>
+                    <th className="text-left py-2">Details</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  {auditLog.map(entry => (
+                    <tr key={entry.id}>
+                      <td className="py-1.5 pr-2 text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                        {entry.created_at
+                          ? new Date(entry.created_at).toLocaleString()
+                          : '—'}
+                      </td>
+                      <td className="py-1.5 pr-2 font-medium">
+                        {entry.admin_username || '—'}
+                      </td>
+                      <td className="py-1.5 pr-2">
+                        <span className="capitalize">
+                          {entry.action?.replace(/_/g, ' ') || '—'}
+                        </span>
+                      </td>
+                      <td className="py-1.5 pr-2">
+                        {entry.target_username
+                          ? `${entry.target_username} (${entry.target_user_id})`
+                          : '—'}
+                      </td>
+                      <td className="py-1.5 text-slate-500 dark:text-slate-400 truncate max-w-[150px]">
+                        {entry.details || '—'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         {/* System stats */}
         {stats && (

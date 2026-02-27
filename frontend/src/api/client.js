@@ -224,6 +224,20 @@ export async function adminSetMaintenance(token, { enabled, message }) {
   return data;
 }
 
+/** GET /api/admin/audit-log. Admin only. Returns { entries: [...] }. */
+export async function getAdminAuditLog(token, { limit = 50, offset = 0 } = {}) {
+  const url = new URL(`${BASE}/api/admin/audit-log`);
+  url.searchParams.set('limit', String(limit));
+  url.searchParams.set('offset', String(offset));
+  const res = await apiFetch(url.toString(), {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to load audit log');
+  return data;
+}
+
 /** GET /api/admin/stats. Admin only. Returns aggregate counts. */
 export async function getAdminStats(token) {
   const res = await apiFetch(`${BASE}/api/admin/stats`, {
