@@ -1,0 +1,31 @@
+{
+  "course": {
+    "id": "math425",
+    "course_code": "MATH 425",
+    "course_title": "Statistical Methods",
+    "term": "Fall 2024",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Liliana Pazdan-Siudeja", "email": "lpazdans@uoregon.edu"}
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {"id": "homework_excel", "name": "Homework in Excel", "weight_percent": 22, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
+    {"id": "webwork", "name": "WebWork", "weight_percent": 12, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
+    {"id": "midterms", "name": "Two Midterms", "weight_percent": 44, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final Exam", "weight_percent": 22, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "homework_excel_1", "title": "Homework in Excel", "category_id": "homework_excel", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 22, "points": null, "recurrence": null, "policies": {"late_policy": "Up to one day late without penalty", "late_pass_allowed": null}, "confidence": 0.95, "source_excerpt": "Homework in Excel 22%"},
+    {"id": "webwork_1", "title": "WebWork", "category_id": "webwork", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 12, "points": null, "recurrence": null, "policies": {"late_policy": "2 extra days at 75%", "late_pass_allowed": null}, "confidence": 0.9, "source_excerpt": "WebWork 12%"},
+    {"id": "midterm_1", "title": "Midterm 1", "category_id": "midterms", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 22, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm 1 22%"},
+    {"id": "midterm_2", "title": "Midterm 2", "category_id": "midterms", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 22, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm 2 22%"},
+    {"id": "final_1", "title": "Final Exam", "category_id": "final", "type": "final", "due_datetime": "2024-12-11T10:15:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 22, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final Exam 22%, Dec 11 10:15am"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

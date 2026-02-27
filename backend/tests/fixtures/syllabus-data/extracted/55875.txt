@@ -1,0 +1,150 @@
+M316L Fall 2012 Syllabus
+Unique number: 55875
+Time and Place: MWF, 11a-12n, RLM 6.118
+Textbook: Mathematics for Elementary Teachers with Activity Manual, Beckmann,
+rd
+3 Edition and instructor provided course Explorations
+Website: Accessible from BlackBoard, http://courses.utexas.edu/.
+Instructor: Dr. Zachary Miner
+E-mail: zminer@math.utexas.edu
+Office: RLM 12.144
+Office hours: MWF 12n-1p; TuTh 10:30-11:30a
+Course Description
+This course is an analysis, from an advanced perspective, of the basic concepts and
+methods of geometry, statistics, and probability, including: representation and analy-
+sis of data; discrete probability, random events, and conditional probability; two- and
+three-dimensional geometry; measurement; similarity and congruence; coordinate ge-
+ometry; and transformation. Problem solving will be stressed throughout.
+Prerequisites
+M 316K with a grader of C or better.
+Relationship to other courses
+M316L is the second of a two-course sequence. This course, as the name suggests,
+focuses on geometry, probability, and statistics.
+Students in the primary audience (those working for EC-4 certification) will also
+take a math teaching methods course in the College of Education. M316K/L are not
+math teaching methods courses (please see a note from the mathematics education
+department below*).
+1
+
+Course goals
+• To increase students’ understanding of the mathematics of elementary school in
+order to help them improve their ability to teach mathematics at the elemen-
+tary level. In particular, to help bring students up to the level of mathematics
+understanding outlined in the State Board for Educator Certification (SBEC)
+Standards for Early Childhood-Grade 5 (K-5). These can be downloaded from:
+http://www.tea.state.tx.us/index2.aspx?id=2147499971
+• To have future teachers experience learning in some of the formats in which they
+will be expected to teach: using hands-on activities, in cooperative groups, in
+problem-based situations, and by discovery methods.
+• To have future teachers practice in communicating mathematics. In particular,
+the following SBEC standards will be addressed throughout the course. The
+beginning teacher of mathematics is able to:
+– use questioning strategies to identify, support, monitor, and challenge stu-
+dents’ mathematical thinking;
+– translate mathematical statements among developmentally appropriate lan-
+guage, standard English, mathematical language, and symbolic mathemat-
+ics;
+– provide students with opportunities to demonstrate their understanding of
+mathematics in a variety of ways using a variety of tools; and
+– use the language of mathematics as a precise means of expressing mathe-
+matical ideas.
+Grading
+Your course average will be weighted as follows:
+• Tests - 30%
+• Participation, presentations and in-class work - 30%
+• Homework - 10%
+• Journal - 10%
+• Final exam - 20%
+Final grades will be determined by the following scale: 90-100 A; 80-89 B; 70-79 C;
+60-69 D; 0-59 F.
+2
+
+Late policy
+No late work will be accepted and no exam make-ups will be given without docu-
+mentation justifying an exception (like a doctor’s note or other record of a university-
+excused absence).
+Tests
+There will be two take-home exams, tentatively scheduled for 9/21 and 11/23, and one
+in-class exam, tentatively scheduled for 10/19.
+Participation
+We will spend the majority of our class time working on problems and explorations.
+You are expected be in class every day, participate in all class activities, contribute
+to the discussion, and present problems to the class. You will usually be working in
+groups, and I may collect the work that you do. The instructor reserves the right to
+deduct points for excessive absences or if you consistently choose not to participate.
+Homework
+These will be problems assigned each Friday, due at the beginning of class on the
+following Friday. These problems may end up being presented in class, so keep that in
+mind while preparing your written solutions. Your goal is for your solution to be clearly
+understood by your audience, so work towards clear, easily understood solutions.
+Journal
+Aspartofyourcourseworkforthisclass, youarerequiredtokeepaclass-relatedjournal.
+The journal will serve several purposes, including: encouraging you to reflect on your
+problem solving behavior and other topics related to mathematics, giving you practice
+writing about mathematics, providing feedback to me, and providing another means
+for me to give feedback to you.
+You are expected to make journal entries at least twice a week, with each entry
+being at least one half of a handwritten, standard sized page, or the equivalent word
+processed. Feel free to write more than half a page per entry if you have more to say.
+Please date each entry and keep them in chronological order.
+Periodically I will ask you to write on a specific topic. If I have not made a journal
+assignment, the choice will be up to you. Possibilities include:
+• Your reactions (thoughts, and feelings if you wish) to topics discussed in class.
+• Analysis of how you go about solving problems (e.g., what strategies you most
+often use), and how you might do so better.
+3
+
+• Insights you have had into various mathematical concepts.
+• Comparing and contrasting how you and other students go about solving prob-
+lems.
+• Comparing and contrasting different solutions to the same problem.
+• Howyouhaveusedideasandstrategiesdiscussedinthisclassinyourotherclasses
+or other situations and problems in your life, or how these relate to what we’ve
+discussed in class.
+• How you might incorporate ideas in this class in your other classes.
+• How you might use what you learned in solving one problem in solving another.
+• Suggesting generalizations of problems we have discussed in class or in the home-
+work.
+• Describing problems you have made up, and why, when, and how they might be
+good problems.
+You should not use your journal to record what went on in class (except brief
+accounts to introduce your own reactions to this) or to write up solutions to problems.
+You are expected to write in your journal outside class. If you wish to take class notes,
+you should keep these in a separate notebook or folder.
+I will collect, read, and make comments on your journal every other week. Your
+journal grade will depend on the thoughtfulness that went into your writing, and not
+on the correctness of the mathematical content of your journal. Journals will be due
+every other Monday.
+*A note from the mathematics education department
+As part of your preparation to become elementary teachers, you will be taking three
+courses dealing with mathematics. The first two of those courses M 316K and M 316L
+you will take in the Mathematics Department. They will help you learn in depth the
+content you’re going to teach and some of the content beyond what you’re going to
+teach. The third course EDC 370E you’ll take in the Department of Curriculum and
+Instruction. It will help you learn how to teach math to elementary-aged children.
+The mathematics you’ll learn in M 316K and L is critical to success in EDC 370E
+and later in the classroom. You will work on deepening your understanding of concepts,
+solving and explaining problems, justifying ideas, and, in general, developing a produc-
+tive mathematical disposition. When you get to EDC 370E, you will then work on how
+to help children learn math, with attention to the same kinds of things you learned
+about in your math courses concepts, problem solving, justification, and confidence.
+In this final course, we will integrate what you’ve learned about content with what you
+need to know about pedagogy.
+Good luck as you begin your journey to becoming a teacher.
+4
+
+Students With Disabilities
+The University of Texas at Austin provides upon request appropriate academic accom-
+modations for qualified students with disabilities. For more information, contact the
+Office of the Dean of Students at 471-6259, 471-4641 TTY.
+Dropping the Course
+A student may not drop a course after the fourth class day except for good cause (e.g.,
+health or serious personal problems, or other demonstrated need). A student seeking
+to drop a class after the fourth class day should go to the Office of the Dean/Student
+Division for necessary approvals.
+UT Policy On Scholastic Dishonesty
+Studentswhoviolateuniversityrulesonscholasticdishonestyaresubjecttodisciplinary
+penalties, including the possibility of failure in the course and/or dismissal from the
+university. Since such dishonesty harms the individual, all students, and the integrity
+of the university, policies on scholastic dishonesty will be strictly enforced.
+5

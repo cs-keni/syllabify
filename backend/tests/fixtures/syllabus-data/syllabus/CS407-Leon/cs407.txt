@@ -1,0 +1,230 @@
+Course SyllabusAlternative formats
+Jump to Today
+Introduction to Course and Instructor
+Course Description
+Preparation for careers and internships in Computer and Information Science.  Topics will include resume preparation, portfolio presentation, job search strategies, career fairs, and interview preparation.  The Career/Internship seminar also hosts recruiters and participates in Career Center and other recruiting events.
+
+This seminar is offered every term during the academic year.  All Computer Science majors are welcome to attend Career/Internship seminar meetings.  Upper-division students may enroll in this 407 one time for two credits.  Students can pair CS 407 Career/Internship seminar credits with CS 404 Internship credits for a total of four upper-division elective credits.
+
+Seminar meetings
+M 3:30-4:50 - 220 DES
+
+Instructor Information and Office Hours
+Eric D. Wills, Ph.D.
+
+Email: eric@cs.uoregon.edu
+
+Group office hours: MF 12-1, W 2-3 (in person)
+
+156 Deschutes
+
+1:1 office hours: W 4-5 (on Zoom)
+
+https://uoregon.zoom.us/j/97193072178?pwd=TQx92gPbN2oL5hGd4Raibads4YqRsl.1Links to an external site.
+
+Meeting ID: 971 9307 2178
+Passcode: 414234
+
+Course Objectives
+Upon successful completion of the course, students will be able to:
+
+Understand the importance of internships in career preparedness.
+Comprehend the breadth of potential career paths in Computer Science.
+Produce a polished tech resume.
+Employ productive job-search strategies.
+Answer common soft-skills interview questions.
+Solve programming problems typical in interviews.
+Complete a programming project appropriate for a tech portfolio.
+Develop a personal website.
+Make constructive use of Career Center services.
+Estimated Student Workload
+Each student will:
+
+attend all seminar meetings live.
+submit all milestones.
+complete a portfilio project.
+Workload expectations are 6 hours per week (407), 8 hours per week (507)
+
+Activity
+
+Total hours
+
+Remarks
+
+Attend seminars
+
+15
+
+In-person attendance is required
+
+Milestones
+
+10
+
+Submissions are required for all milestones.
+
+Portfolio Project
+
+35 (407)
+
+55 (507)
+
+Completion of a personal/group portfolio project of your choosing.
+
+Total
+
+60 (407)
+
+80 (507)
+
+ 
+
+Course Policies
+Course Materials
+(Optional) Cracking the Coding Interview: 189 Programming Questions and Solutions 6th Edition by Gayle Laakmann McDowell (Links to an external site.)
+Message Board
+Please post questions related to course content on Piazza:
+
+https://piazza.com/uoregon/fall2025/cs407507Links to an external site.
+
+Grading Policies
+Grading will be based on the following criteria:
+
+To pass this seminar, students are expected to submit all required deliverables and attend all seminar meetings in person.  Attendance will be taken during the first 5 minutes of each seminar meeting.  Missing more than one seminar meeting (after week 1) due to unexcused absence will result in failure of the seminar.  Absences will only be excused in accordance with the University Course Attendance and Engagement policy.  Please contact me to arrange a makeup assignment If you absolutely need to miss more than one seminar meeting (after week 1) due to unexcused absences (including illness).
+
+AI Policy
+Students may use GenAI tools in this class to help with course work and assignments. Helpful uses include brainstorming ideas, creating outlines, editing, and so forth.  Although open use of GenAI is allowed in this class, be advised that GenAI suggestions or content can be inaccurate, incomplete or otherwise problematic; using GenAI can impact negatively the quality of your work and your grades.
+
+Classroom Community Expectations
+All members of the class (both students and instructor) can expect to:
+
+Participate and Contribute:  All students are expected to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others.   While all students should participate, participation is not just talking, and a range of participation activities support learning. Participation might look like speaking aloud in the full class and in small groups as well as submitting questions prior to class or engaging with the message board.  We will establish more specific participation guidelines and criteria for contributions in our first weeks of the term.
+
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. We may establish more specific guidelines and protocols to ensure inclusion and equity for all members of our learning community.
+
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don’t hesitate to contact me to ask for assistance or offer suggestions that might help us learn better.
+
+Schedule
+Date
+
+Topic/Speaker
+
+Deliverable
+
+9/29 - 10/3	
+Introduction
+
+
+Project proposal (due Friday 10/10)
+10/6 - 10/10	
+Job Search
+
+10/13 - 10/17	
+Tech Resumes
+
+CS Resume Handout (Career Center)
+
+Resume (due Friday 10/24)
+10/20 - 10/24	
+
+No Seminar Monday
+
+Career Week
+
+Fall Career & Internship Expo - October 23 - 12-4pm EMU Ballroom
+
+10/27 - 10/31	
+
+SheerIDLinks to an external site.
+
+Project milestone (due Friday 11/7)
+11/3 - 11/7	
+ZyngaLinks to an external site.
+
+11/10 - 11/14	
+Interviews
+
+Personal website (due Friday 11/21)
+11/17 - 11/21	
+Negotiation
+
+Intern Panel!
+
+11/24 - 11/28	
+ConductorOneLinks to an external site.
+
+Project retrospective (due Friday 12/5)
+12/1 - 12/5	
+AMA
+
+Project presentations
+
+12/8 - 12/12	No final exam	
+Related Links
+UO:
+
+SCDS Jobs & Internships database
+CS Internships
+CS Student Groups
+UO Career Center
+UO Handshake
+TAO:
+
+Technology Association of OregonLinks to an external site.
+TechFetchLinks to an external site. (Technology Association of Oregon job search)
+Tech Oregon CareersLinks to an external site.
+Free matching services:
+
+LinkedinLinks to an external site.
+IndeedLinks to an external site.
+RippleMatchLinks to an external site.
+WayUpLinks to an external site.
+NSF REU SearchLinks to an external site.
+ACMLinks to an external site.
+WellfoundLinks to an external site.
+CSTA CareersLinks to an external site.
+Job and salary research:
+
+Glass DoorLinks to an external site.
+ONET OnlineLinks to an external site.
+PayScaleLinks to an external site.
+QualityInfoLinks to an external site. (Oregon only)
+Programming practice:
+
+HackerrankLinks to an external site.
+LeetCodeLinks to an external site.
+Technical interview practice:
+
+PrampLinks to an external site.
+Eugene game development:
+
+BitforestLinks to an external site. (Eugene Game Developers)
+Eugene Game Developers Facebook pageLinks to an external site.
+Meetups:
+
+BitforestLinks to an external site.
+Open EugeneLinks to an external site.
+Eugene Oregon ProgrammersLinks to an external site.
+Eugene/Springfield StartupsLinks to an external site.
+Misc:
+
+CS Career Questions (reddit)Links to an external site.
+Eugene Tech SwitchboardLinks to an external site.
+Portland Startups SwitchboardLinks to an external site.
+Silicon FloristLinks to an external site.
+Portland Tech JobsLinks to an external site.
+Course Summary:
+Course Summary
+Date	Details	Due
+Mon Oct 6, 2025	Quiz Oct 6, 2025 Attendance	due by 3:45pm
+Fri Oct 10, 2025	Assignment Project Proposal	due by 11:59pm
+Mon Oct 13, 2025	Quiz Oct 13, 2025 Attendance	due by 3:40pm
+Fri Oct 24, 2025	Assignment Resume	due by 11:59pm
+Mon Oct 27, 2025	Quiz Oct 27, 2025 Attendance	due by 3:40pm
+Mon Nov 3, 2025	Quiz Nov 3, 2025 Attendance	due by 3:40pm
+Fri Nov 7, 2025	Assignment Project Milestone	due by 11:59pm
+Mon Nov 10, 2025	Quiz Nov 10, 2025 Attendance	due by 3:40pm
+Mon Nov 17, 2025	Quiz Nov 17, 2025 Attendance	due by 3:40pm
+Fri Nov 21, 2025	Assignment Personal Website	due by 11:59pm
+Mon Nov 24, 2025	Quiz Nov 24, 2025 Attendance	due by 3:40pm
+Fri Dec 5, 2025	Assignment Project Retrospective	due by 11:59pm

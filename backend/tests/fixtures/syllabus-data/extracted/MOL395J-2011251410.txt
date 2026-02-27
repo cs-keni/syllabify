@@ -1,0 +1,51 @@
+51410/51170/53035 MOL/BIO/CH 395J MOLECULAR BIOLOGY
+TEXTBOOK: Molecular Biology, 4th Edition, by Robert F. Weaver
+McGraw-Hill Higher Education; ISBN-13 9780073319940
+ Additional reading materials will be assigned.
+Time: Tuesday/Thursday 9:30-11:00 AM, Burdine 108
+Instructors: Dr. Ian Molineux, Jan. 18 - Mar 10; molineux@mail.utexas.edu
+Office Hours: Thu, 11.30am-1.00pm, NMS 1.210
+Dr. Rick Russell, Mar 22 - May 5; rick_russell@mail.utexas.edu
+Office Hours: Fri, 1-2:30 PM, MBB 2.212AA
+Website: http://www.sbs.utexas.edu/395j/
+All exams count equally towards the final course grade. Individual exams will not be assigned a
+letter grade. A single comprehensive make-up exam will be offered only for students who can
+provide documentation of illness or other non-academic emergency. Cumulative scores will be
+curved to arrive at the final grade. There are no predetermined cut-off points and no
+predetermined letter grade quotas. Plus and minus letter grades will be used.
+Students with disabilities may request academic accommodations from the Division of Diversity
+and Community Engagement, Services for Students with Disabilities, 471-6259. Approval
+letters must be provided to an Instructor before the first exam.
+
+TENTATIVE SCHEDULE (Exam dates are fixed)
+Jan 18 DNA/RNA Structure
+Jan 20 DNA replication
+Jan 25 DNA replication
+Jan 27 DNA Repair
+Feb 1 Chromatin Structure
+Feb 3 DNA Repair
+Feb 8 DNA Recombination
+Feb 10 Exam 1 (Jan 18-Feb 8 lectures)
+Feb 15 DNA Recombination
+Feb 17 Transcription mechanisms
+Feb 22 Transcription mechanisms
+Feb 24 Transcription mechanisms
+March 1 Prokaryotic transcription regulation/RNA turnover
+March 3 Operons and Regulons
+March 8 Operons and Regulons
+March 10 Exam 2 (Feb 15-March 8 lectures)
+Spring Break: March 15-19
+March 23 Eukaryotic transcription machinery
+March 25 Eukaryotic transcriptional regulation, chromatin remodeling
+March 30 RNA processing: Capping, 3´-end formation, RNA editing
+April 1 Pre-mRNA splicing mechanisms, alternative splicing
+April 6 Catalytic RNAs: Self-splicing introns and ribozymes
+April 8 RNA transport and localization
+April 13 Exam 3 (March 9-April 8 lectures)
+April 15 Ribosome structure and assembly
+April 20 Translation: Initiation and control
+April 22 Translation: Elongation and termination
+April 27 Eukaryotic RNA turnover
+April 29 Functions of ncRNA in gene expression: siRNA, miRNA and others
+May 4 Frontiers: identifying and characterizing new ncRNAs
+May 6 Exam 4 (April 15-May 4 lectures)

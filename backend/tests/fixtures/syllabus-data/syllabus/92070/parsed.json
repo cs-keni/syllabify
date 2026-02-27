@@ -1,0 +1,178 @@
+{
+  "course": {
+    "id": "92070",
+    "course_code": "M 408M",
+    "course_title": "Multivariable Calculus",
+    "term": "Summer 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Kathy Davis",
+        "email": "davis@math.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "11:30",
+        "end_time": "12:50",
+        "timezone": "America/Chicago",
+        "location": "CPE 2.214",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "11:30",
+        "end_time": "12:50",
+        "timezone": "America/Chicago",
+        "location": "CPE 2.214",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "TU",
+        "start_time": "11:30",
+        "end_time": "12:20",
+        "timezone": "America/Chicago",
+        "location": "CPE 2.214",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "TH",
+        "start_time": "11:30",
+        "end_time": "12:20",
+        "timezone": "America/Chicago",
+        "location": "CPE 2.214",
+        "type": "lecture"
+      }
+    ],
+    "location": "CPE 2.214"
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 0,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 20,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 60,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 0,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Practice only, posted Th"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Twice weekly TTh, lowest dropped"
+    },
+    {
+      "id": "exams_1",
+      "title": "Exams",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Three exams 60%, none dropped"
+    },
+    {
+      "id": "final_1",
+      "title": "Final",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2012-08-11T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final Aug 11 20%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

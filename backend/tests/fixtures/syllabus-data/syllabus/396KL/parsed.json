@@ -1,0 +1,108 @@
+{
+  "course": {
+    "id": "396kl",
+    "course_code": "PHY 396L",
+    "course_title": "Quantum Field Theory II",
+    "term": "Spring 2017",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Vadim Kaplunovsky",
+        "email": "vadim@physics.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "15:30",
+        "end_time": "17:30",
+        "timezone": "America/Chicago",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "15:30",
+        "end_time": "17:30",
+        "timezone": "America/Chicago",
+        "location": null,
+        "type": "lecture"
+      }
+    ],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "midterm",
+      "name": "Mid-term test",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "End-term test",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "midterm_1",
+      "title": "Mid-term test",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Mid-term late March, due a week later"
+    },
+    {
+      "id": "final_1",
+      "title": "End-term test",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2017-05-11T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final given May 4, due May 11"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

@@ -1,0 +1,67 @@
+CS350C - Spring 2015
+Lectures: TTh 3:30-5pm, GDC 5.302
+Piazza: piazza.com/utexas/spring2015/cs350c
+Teaching staff:
+* Ahmed Gheith (gheith@)
+* office hours: TTh 2pm - 3:30pm, GDC 5.320
+All e-mails @cs.utexas.edu
+Objective
+Help you develop a deeper understanding of high performance processor
+architecture (software view) and micro-architecture (internal organization).
+In order to achieve that we will:
+* review the fundamentals of digital design and introduce you to the Verilog
+hardware design language
+* use that knowledge to design a simple processor
+* iterate over our architecture and micro-architecture in order to enhance its
+performance; learning about:
+* RISC vs. CISC
+* Pipelining
+* Superscalar
+* Out-of-order
+* Branch-prediction
+* Caches
+The bulk of the work will be done in simulation but you’ll also have the
+opportunity to synthesize your design on an FPGA board and see it run if
+you’re interested.
+Evaluation
+
+* 2 in-class exams: 40% (Thursday 3/12, Thursday 5/7)
+* Design milestones (~ 12): 50%
+* Class participation: 10%
+Grade cutoff guidance: A-/A >= 90%, B-/B/B+ >= 80%, C-/C/C+ >= 70%,
+D-/D/D+ >= 60%
+Project submission
+Projects will be assigned, tracked, and submitted using a system based on
+the GIT revision control system. I will teach you enough git basics to get
+you going but you’re encouraged to learn about git if you’re not already
+familiar with it. Here are some online links:
+https://www.codeschool.com/courses/try-git
+https://www.atlassian.com/git/tutorial
+http://git-scm.com/book/en/Getting-Started
+Late policy
+All assignments are due at 11:59pm central time on the due date. An
+assignment is considered submitted once it has been pushed to your git
+repository on the server.
+Late assignments will be graded for 50% of the maximum score. You have
+till the last day of class to submit late assignments.
+Textbook
+David Harris and Sarah Harris, “Digital Design and Computer
+Architecture” (Second Edition).
+Originality of submitted work: you are required to cite any sources you used in
+your work (discussions with colleagues, articles, open source projects, google
+search results, etc). All violations or your inability to explain your work will raise a
+red flag and will be viewed as suspected plagiarism.
+
+Ask lots of questions and have lots of conversations: Lectures are more
+useful when they’re interactive. I encourage you to ask questions and ask for
+clarifications but please refrain from side conversations. One conversation at a
+time.
+University Code of Conduct: The core values of the University of Texas at
+Austin are learning, discovery, freedom, leadership, individual opportunity, and
+responsibility. Each member of the University is expected to uphold these values
+through integrity, honesty, trust, fairness, and respect toward peers and
+community.
+Students with disabilities may request appropriate academic accommodations
+from the Division of Diversity and Community Engagement, Services for
+Students with Disabilities, 512-471-6259, http://www.utexas.edu/diversity/ddce/
+ssd

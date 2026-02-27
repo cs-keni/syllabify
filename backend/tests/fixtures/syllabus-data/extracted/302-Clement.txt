@@ -1,0 +1,121 @@
+COMPUTER FLUENCY
+Jump to Today
+Computer Science 302: Computer Fluency -­-­ Syllabus for Spring 2015
+Teaching Staff
+Who Location Office Hours Email
+Nathan Clement, GDC Basement TA stations M 2-­4pm;; W 9-­10am nathanlclement@gmail.com
+Instructor (mailto:nathanlclement@gmail.com)
+Other times by
+appointment
+Xeuyu Mao, TA GDC Basement TA stations 1.302, Desk TTh 2:30-­3:30 pm
+maoxueyu@gmail.com (mailto:maoxueyu@gmail.com)
+1
+Vivian Nguyen, TA GDC Basement TA stations 1.302 MW 11-­12:30 pm nguyenv@utexas.edu (mailto:nguyenv@utexas.edu)
+Walid Owais, TA GDC Basement TA stations 1.302 T 3:30-­5pm;; W 2-­4pm walidowais@gmail.com (mailto:walidowais@gmail.com)
+(mailto:nguyenv@utexas.edu)
+Class Times and Locations
+Class is held MW 1-­1:50 PAI 3.02
+Laboratory sections are held each Friday, at various times and locations:
+9-­10a, GDC 4.304 (section 50440)
+10-­11a, GDC 4.304 (section 50445)
+11a-­12p, GDC 4.304 (section 50450)
+12-­1p, JES A307A (section 50455)
+1-­2p, GDC 2.210 (section 50460)
+2-­3p, SAC 5.102 (section 50465)
+Course Description
+The study of computer science is all about determining solutions to difficult problems and conveying them effectively to a computer – a machine that at times can
+seem incredibly powerful, and at other times frustratingly incapable. This course will focus on the design of algorithms: precise instructions for solving a problem.
+Throughout the semester, you'll learn how to create algorithms, how to determine if they're good, and how to communicate them to and test them on a computer. The
+class will also explore some of the most challenging algorithms, such as the ones that control the inner workings of a computer and the ones that drive the Internet.
+Finally, we will discuss some of the impacts of computers on people and societies.
+This course carries the Quantitative Reasoning flag. Quantitative Reasoning courses are designed to equip you with skills that are necessary for understanding the
+types of quantitative arguments you will regularly encounter in your adult and professional life. You should therefore expect a substantial portion of your grade to
+come from your use of quantitative skills to analyze real-­world problems. The goal of this class is to help you develop the skills necessary to use computers to help
+you in your own career, whatever this might be.
+Textbook
+The class does not use a textbook, but some students might prefer to have one. If you’re in that group, I recommend this book: An Invitation to Computer Science
+(http://books.google.com/books/about/Invitation_to_Computer_Science.html?id=BEhlUfdMNucC) by Schneider and Gersting. It's fairly expensive, but can provide
+some great additional resources if you want them. The middle section of the course is an introduction to Python. For that reason, I have listed the book Python
+Programming for the absolute beginner (http://books.google.com/books?id=-­WULAAAAQBAJ) as an additional optional book. It is also optional.
+Discussion Sections
+Discussion sections will be held on Fridays, and attendance is required. Please attend the section in which you are registered. Attending a different lab is risky
+because space is limited and priority will be given to registered students. You should want to go to the discussion sections because they are beneficial for you, but to
+ensure that attendance doesn't drop, a 6-­point quiz will be administered at the beginning of class each week: 3 points just for taking it, and 3 points for correctness.
+You will be allowed to drop your lowest 5 quiz scores, but this includes illness, family emergencies, and school-­excused absences, so please plan accordingly.
+Homework Assignments
+Homework assignments are assigned every week. You may feel that you're spending a lot of time on them, given the small amount they contribute to your grade.
+However, be aware that the exams will draw heavily from the homeworks;; doing well on them will help you do well on the exams. In addition, I will suggest that you
+work on these assignments with a partner because there is value in explaining material and having it explained to you;; however, make sure you're not just copying,
+as you will not have a partner on the exams.
+Assignments must be turned in by the deadline, which will be specified on each one. Late submissions will not be accepted. However, your lowest grade will be
+omitted from the calculation of final grades. These assignments might take longer than expected, so please (please, please, please) start early. The TA's and I will be
+
+much more likely to help you if you come talk to us 3 days before the assignment is due;; we might not be able to meet or answer emails 2 hours before the due date.
+Respect Murphy's rule and plan for your bus to run late, your personal computer to crash the afternoon of the due date, etc.
+Exams
+There will be three exams during the semester. Dates for exams will be announced as the semester starts. There is no final, and the last exam will be held on the last
+day of class.
+Makeup exams will only be offered for ill health, family emergency, or official UT conflicts. Having three tests on the same day is not an official UT conflict. Please
+contact me ahead of time if you feel you need a makeup exam.
+Schedule
+We plan to discuss these topics:
+1. Computer Science: The Study of Algorithms -­ algorithm discovery and design -­ algorithm efficiency
+2. Computer programming -­ Python fundamentals -­ program design
+3. Computer Hardware -­ binary numbers and arithmetic -­ gates and circuits -­ computer organization
+4. Computer Networks: the Internet and the World Wide Web
+5. The Future of Computing -­ artificial intelligence -­ social impacts
+Grading
+Final Grades will be assigned based on the following:
+1. 3 exams, each contributing 23% of the final grade
+2. Homework assignments contributing 25% of the final grade
+3. Discussion section quizzes contributing 6% of the final grade
+The grading scale will be the following. If a curve is needed, it will be applied at the discretion of the professor.
+A 93-­100
+A-­ 90-­92.9
+B+ 87-­89.9
+B 84-­86.9
+B-­ 80-­83.9
+C+77-­79.9
+C 74-­76.9
+C-­ 70-­73.9
+D+67-­69.9
+D 64-­66.9
+D-­ 60-­63.9
+F Below 60
+Staying in Touch
+Class information will be posted frequently on UT's Canvas system http://courses.utexas.edu (http://courses.utexas.edu/) . You are responsible for visiting that
+site at least every two days. It is also very helpful to post and contribute to answers on Piazza: https://piazza.com/utexas/fall2015/cs302/home
+(https://piazza.com/class/idjc2ft25412w8?cid=4) . Also please note that, while it is possible for you to post to Piazza anonymously (and I encourage you to do so), the
+TAs and I will place priority on answering questions that are not asked anonymously.
+Policy on Academic Honesty
+All assignments and projects must be done individually, except when group work has been approved by the instructor in advance. Cheating, as defined by the policy
+(http://www.cs.utexas.edu/undergraduate-­program/code-­conduct) of the UT/CS department, will be dealt with harshly.
+Date Details
+Fri May 8, 2015 Course Survey (https://utexas.instructure.com/courses/1144059/assignments/3638151) 5pm
+Fri May 15, 2015 Quiz 13 (https://utexas.instructure.com/courses/1144059/assignments/3638166) 11:59pm
+Mon May 18, 2015 Assignment 9 (https://utexas.instructure.com/courses/1144059/assignments/3638150) 11:59pm
+Mon May 25, 2015 Assignment 8 (https://utexas.instructure.com/courses/1144059/assignments/3638149) 4pm
+Mon Jun 1, 2015 Assignment 7 (https://utexas.instructure.com/courses/1144059/assignments/3638148) 4pm
+Thu Jun 18, 2015
+
+Assignment 6 (https://utexas.instructure.com/courses/1144059/assignments/3638146) 11:59pm
+Thu Jun 25, 2015 Assignment 5 (https://utexas.instructure.com/courses/1144059/assignments/3638145) 11:59pm
+Thu Jul 9, 2015 Assignment 4 (https://utexas.instructure.com/courses/1144059/assignments/3638144) 11:59pm
+Thu Jul 30, 2015 Assignment 3 (https://utexas.instructure.com/courses/1144059/assignments/3638142) 11:59pm
+Thu Aug 6, 2015 Assignment 2 (https://utexas.instructure.com/courses/1144059/assignments/3638141) 11:59pm
+Fri Aug 14, 2015 Quiz 1 (https://utexas.instructure.com/courses/1144059/assignments/3638153) 11:59pm
+Thu Sep 10, 2015 Assignment 1 (https://utexas.instructure.com/courses/1144059/assignments/3638140) 11:59pm
+First Midterm (https://utexas.instructure.com/courses/1144059/assignments/3638143)
+Quiz 10 (https://utexas.instructure.com/courses/1144059/assignments/3638162)
+Quiz 11 (https://utexas.instructure.com/courses/1144059/assignments/3638163)
+Quiz 12 (https://utexas.instructure.com/courses/1144059/assignments/3638164)
+Quiz 2 (https://utexas.instructure.com/courses/1144059/assignments/3638154)
+Quiz 3 (https://utexas.instructure.com/courses/1144059/assignments/3638155)
+Quiz 4 (https://utexas.instructure.com/courses/1144059/assignments/3638156)
+Quiz 5 (https://utexas.instructure.com/courses/1144059/assignments/3638157)
+Quiz 6 (https://utexas.instructure.com/courses/1144059/assignments/3638158)
+Quiz 7 (https://utexas.instructure.com/courses/1144059/assignments/3638159)
+Quiz 8 (https://utexas.instructure.com/courses/1144059/assignments/3638160)
+Quiz 9 (https://utexas.instructure.com/courses/1144059/assignments/3638161)
+Second Midterm (https://utexas.instructure.com/courses/1144059/assignments/3638147)
+Third Midterm (https://utexas.instructure.com/courses/1144059/assignments/3638152)

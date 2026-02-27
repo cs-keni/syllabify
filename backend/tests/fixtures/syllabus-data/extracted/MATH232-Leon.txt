@@ -1,0 +1,90 @@
+Math 232
+Instructor: Ka Fai Wong
+Summer 2023
+E-mail: kwong9@uoregon.edu
+Office Hours: M 2pm-4pm, T 2pm-4pm
+Office: 12 University Hall
+Course Description
+ThiscoursebuildsonthefoundationalmathematicalideasfromMath231,whichincludedlogic,
+languageofsetsandfunctions,mathematicalproofsandsomebasicnumbertheoryrelatedtothe
+Euclidean Algorithm. In Math 232, we will consolidate these ideas and add also the important
+method of proof by induction and the idea of recursive definitions. These go hand-in hand with
+recursive algorithms which are common in computer programming. Math 232 also develops im-
+portant new concepts and tools, including linear recurrence relations, some of the combinatorial
+mathematics arising from graphs and trees, and optimization algorithms involving networks of
+various sorts.
+Textbook
+Rosen, Discrete Mathematics and Applications, 7th or 8th edition. This course will cover some
+parts of the Chapters 5, 8, 10, 11. (For details on topics covered, see below).
+Calculators
+A scientific calculator will save you time doing simple computations. You will only be allowed
+to use one of the following calculators on quizzes and exams: Casio fx-260, Casio fx-300MS (or
+Plus), Casio fx-300ES (or Plus), TI-30X (a, S, or IIS), TI-34.
+Prerequisites/Corequisites
+Prerequisites: Math 231
+1
+
+Course Objectives
+Successful students should:
+1. (CO1)consolidatetheaccurateusageofthelanguageofmathematicsinitiatedinMath231;
+2. (CO 2) become familiar with the method of proof by induction;
+3. (CO 3) gain more proof-writing experience and see some more significant proofs; in the
+various applications;
+4. (CO 4) be able to solve linear recurrence relations;
+5. (CO 5) understand some of the mathematics of networks, graphs, planar graphs and trees;
+6. (CO 6) apply some optimization algorithms performed on graphs and networks.
+Topics covered
+1. the basic template for an induction proof, lots of examples proving identities seen in Math
+231 such as summation formulae, inequalities and more involving the idea of divisibility
+2. thebinomialtheoremrevisited,andprovednowbyinductionusingtherecursivedefinition
+of the binomial coefficient
+3. proof of the Fundamental Theorem of Arithmetic from Section 4.3.
+4. the basic method for solving homogeneous linear recurrence relations
+5. the definitions of a graph, multigraph, digraph, relevant examples of graphs
+6. Neighbors, degrees, special graphs including K and K , matchings and Hall’s Marriage
+n m,n
+Theorem
+7. graph isomorphisms
+8. Euler and Hamilton circuits
+9. planar graphs, Euler’s theorem, non-planarity of K and K , statement of Kuratowski’s
+5 3,3
+theorem
+10. Brief discussion of the famous Four Color Theorem
+11. Basic terminology of trees and forests
+12. ordered rooted trees and some of their applications
+13. connection between binary rooted trees and Catalan numbers
+14. Dijkstra’s shortest path algorithm
+15. the traveling salesman problem
+16. one of Prim’s or Kruskal’s algorithm for finding minimal spanning trees
+2/3
+
+Assessments
+1. Classwork(15%): There will be problem/discuss session in the second half of each lecture
+(except Fridays). You will work on a problem set based on the lecture. You can discuss it
+with your peers and/or me, but you will need to write up the solutions on your own and
+hand them in by the end of lecture. Grading on classwork is based on completion rather
+than correctness, meaning you’ll get full credit if you complete (probably some of) it.
+2. Written homework (15%): There will be weekly written homework, due on Fridays at
+11:59am.
+3. Quizzes(20%): There will be quizzes which take place in the second half of the lecture on
+Fridays in weeks 1,2 and 3. Your best two will count toward your grade. (i.e. it’s OK if you
+do bad or miss one of them.)
+4. Final exam(50%): Of course, there will be a final exam on Friday in week 4.
+Tentative weekly schedule
+Week Topics covered assessments
+1 5.1-5.2, 8.1-8.2 written homework, quiz 1
+2 10.1-10.3, 10.5, 10.7 written homework, quiz 2
+3 11.1-11.3 written homework, quiz 3
+4 10.7, 11.5, some additional topics if time permits written homework, Final exam
+Course Policies
+Attendance
+Attendanceisnotstrictlyrequired,butdefinitelyrecommended. Also,youwon’tbeabletocompleteandhandinthe
+classworkifyoudon’tshowup.
+Late assignments / absence in quizzes/exams
+Lateassignmentswillnotbeaccepted. Makingupaquizisnotpossible. Forthefinalexam,ifthereisavalidreason
+thatyouwillhavetomissanexam,letmeknowinadvanceandwe’lltrytofigureoutwhatwecandotomakeitup.
+Academic Integrity and Honesty
+Studentsarerequiredtocomplywiththeuniversitypolicyonacademicintegrity. Wehavezerotoleranceforcheating.
+Nevertheless, collaborative discussion on assignments with your classmates and writing solutions up on your own
+doesnotcountcheatingandisencouraged.
+3/3

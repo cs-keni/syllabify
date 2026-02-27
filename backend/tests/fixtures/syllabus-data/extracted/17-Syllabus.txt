@@ -1,0 +1,66 @@
+PHY 392K: Solid State Physics I, spring 2017
+(tentative)
+Unique #: 57060
+T-Th 3:30-5:00 p.m. in RLM 5.120
+Instructor: Prof. Alex Demkov TA:
+Office: RLM 13.206 Office:
+Phone: 471-8560 Phone:
+e-mail: demkov@physics.utexas.edu e-mail:
+Office hours: Monday 2-4 p.m., and by Office hours:
+appointment
+Reference Books:
+ M.P. Marder, “Condensed matter physics”, Wiley, 2000.
+ O. Madelung, “Introduction to solid-state theory”, Springer, 1981.
+ C. Kittel, “Introduction to Solid State Physics” Wiley, any edition.
+ N. Ashcroft & D. Mermin, “Solid State Physics”, Clarendon Press, Oxford 1995.
+ J.M. Ziman, “Principles of the theory of solids”, Cambridge U. Press, 1999.
+ W. A. Harrison, “Electronic Structure and the Properties of Solids”, Dover, 1989.
+Class website: http://www.ph.utexas.edu/classes/demkov/phy392K/
+Syllabus:
+The class will be hard. A solid grasp of Quantum mechanics, E&M and Stat. mech.
+is expected. Homework assignments will be tedious and will often require some
+computing. It is possible to fail this class. Best of luck.
+Part I
+1. Remedial Atomic and Molecular Physics
+2. Hydrogen Atom
+3. Hydrogen Molecule; Born Oppenheimer approximation
+4. Spectral problem, total energy: Heitler-London and Hartree-Fock theories
+5. Harmonic approximation; Transformation to normal coordinates
+6. Crystal state
+7. Bravais lattice, Lattice with a basis, Crystal classes, Space Groups
+8. Mathematics of periodicity, Periodic Boundary Conditions; Bloch theorem
+9. Reciprocal lattice
+10. Vibrations in solids
+11. Dynamical matrix, dispersion relations
+12. Simple nearest neighbor chain, density of vibrational modes
+13. General monoatomic chain, speed of sound, diatomic chain
+14. Square lattice with 2nd NN interactions, 3D
+
+15. Specific heat (Dulong-Petit)
+16. Quantum description, phonons
+17. Specific heat (Einstein and Debye), more on the density of modes
+18. Experimental techniques: Neutron scattering, elastic, inelastic, Einstein model,
+Debye-Waller factor.
+Part II
+19. Electron in a periodic potential (single electron picture)
+20. Bloch waves, lattice sums, periodic boundary conditions
+21. Kronig-Penney Model
+22. Empty Lattice, simple classification of solids according to the band theory
+23. Nearly free electrons, band structure, band gasp, Brilloin zone, etc.
+24. Philips-Kleinman pseudopotential
+25. Cohen-Bergstresser empirical pseudopotential
+26. Tight binding and LCAO
+27. Basis functions, overlap, Bloch waves
+28. Electronic structure, band population, density of states
+29. Lattice with the basis, the origin of band gaps
+30. kp Theory
+31. Effective mass, two band model
+32. Electronic structure of Si, minimal sp3 basis, Chadi-Cohen Hamiltonian
+33. Band structure of semiconductors, spin-orbit interaction
+34. Experimental techniques: ARPES
+ 6 homework assignments
+ February 21, Midterm I
+ April 6, Midterm II
+ *No class on April 20th, make-up classes TBD*
+ May XX, X:00-Y:00 Final
+ Grading: homework 40%, two mid-terms 20% each, final 20%

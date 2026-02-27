@@ -1,0 +1,28 @@
+{
+  "course": {
+    "id": "ring17",
+    "course_code": "PHY 387K",
+    "course_title": "Electromagnetic Theory",
+    "term": "Spring 2017",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Prof. Richard Fitzpatrick", "email": "rfitzp1632@gmail.com"}
+    ],
+    "meeting_times": [],
+    "location": "RLM 11.324"
+  },
+  "assessment_categories": [
+    {"id": "homework", "name": "Homework", "weight_percent": 56, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm", "name": "Midterm Exam", "weight_percent": 14, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final Exam", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "homework_1", "title": "Homework", "category_id": "homework", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 56, "points": null, "recurrence": null, "policies": {"late_policy": "Late homework will not be accepted without valid excuse", "late_pass_allowed": false}, "confidence": 0.95, "source_excerpt": "Homework 8 x 7% = 56%"},
+    {"id": "midterm_1", "title": "Midterm Exam", "category_id": "midterm", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 14, "points": null, "recurrence": null, "policies": {"late_policy": null, "late_pass_allowed": null}, "confidence": 0.95, "source_excerpt": "Midterm 14%"},
+    {"id": "final_1", "title": "Final Exam", "category_id": "final", "type": "final", "due_datetime": "2017-12-12", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 30, "points": null, "recurrence": null, "policies": {"late_policy": null, "late_pass_allowed": null}, "confidence": 0.95, "source_excerpt": "Final Exam 30%, December 12, 7pm-10pm"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "pdf", "schema_version": "1.0"}
+}

@@ -1,0 +1,33 @@
+{
+  "course": {
+    "id": "cs210",
+    "course_code": "CS 210",
+    "course_title": "Computer Science I",
+    "term": "Fall 2023",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Michal Young", "email": null}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "TU", "start_time": "10:00", "end_time": "11:20", "timezone": "America/Los_Angeles", "location": "Pacific 123", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "TH", "start_time": "10:00", "end_time": "11:20", "timezone": "America/Los_Angeles", "location": "Pacific 123", "type": "lecture"}
+    ],
+    "location": "Pacific 123"
+  },
+  "assessment_categories": [
+    {"id": "projects", "name": "Projects", "weight_percent": 15, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
+    {"id": "mini-exams", "name": "Mini-exams", "weight_percent": 45, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
+    {"id": "final_exam", "name": "Final exam", "weight_percent": 30, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "code_demo", "name": "Code demo", "weight_percent": 10, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "projects_1", "title": "Projects", "category_id": "projects", "type": "project", "due_datetime": null, "all_day": true, "timezone": "America/Los_Angeles", "weight_percent": 15, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": ["MO"], "until": null, "count": null}, "policies": {"late_policy": "one late project excused", "late_pass_allowed": true}, "confidence": 0.95, "source_excerpt": "Projects 15%  (one score dropped, one late project excused"},
+    {"id": "mini-exam_1", "title": "Mini-exam 1", "category_id": "mini-exams", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": null, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Thursdays week 4, 6, 8.  Mini-exams are taken in class"},
+    {"id": "final_exam_1", "title": "Final exam", "category_id": "final_exam", "type": "final", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 30, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final exam 30%"},
+    {"id": "code_demo_1", "title": "Code demo", "category_id": "code_demo", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Code demo 10%"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": 1, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

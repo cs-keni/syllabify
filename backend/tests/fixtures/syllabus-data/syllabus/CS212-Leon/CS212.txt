@@ -1,0 +1,291 @@
+Course SyllabusAlternative formats
+Instructor and Course Information
+
+Name	Role	Email
+Phil Colbert	Instructor	pcolbert@uoregon.edu
+Meghanto Majumder	GE Teaching Assistant (TA)	meghanto@uoregon.edu
+Grace Mclewe	GE Teaching Assistant (TA)	gmcle@uoregon.edu
+Note: your TA Lab Discussion Leader is your first point of contact for most issues.
+
+Course	CS 212: Computer Science III
+Prereq	CS 211
+Lecture	TR 10-11:20 am 129 McKenzie Hall (MCK)
+Lab	Labs begin week 1. All labs will be held in B26 Klamath Hall (refer to map). The "B" means basement.
+Course Description
+
+Basic concepts and practices of computer science. Topics include algorithmic problem solving, levels of abstraction, object-oriented design and programming, software organization, analysis of algorithm and data structures. This is a sequence course, following onto CS 210 and CS 211.
+
+This is a projects-driven class. The projects will help prepare you for the rest of the major, and also for professional employment. You are asked to put a lot of time into this course, but the payoff will be significant.
+
+The projects in this class will be hard work. It is difficult to quote exactly how much time, since there is variation in background and programming skill. Students with less developed programming skills will find this class to be a considerable effort, but also that they will have significant improvement by the end of the course.
+
+There will be 3 categories of projects, and each project will contain multiple sub-parts. In total, we will have about 2 projects per week.
+
+Project 1x: Learning Unix
+Project 2x: Learning C
+Project 3x: Data Structures
+Course Objectives
+
+The high-level objectives of the course are to develop proficiency in working in Linux, programming in the C language, and constructing and using basic data structures. 
+
+Demonstrate facility using the default Linux shell (bash) including command invocation, IO redirection, file system navigation, environment variables, pipes and multiprocessing, and compression and file packaging
+Describe what occurs at each step of the edit-compile-link-execute (ECLE) cycle of program development
+Demonstrate the ability to program moderate-sized programs using the C programming language, and using the gcc compiler
+Demonstrate the ability to use gdb and valgrind to find and correct programmatic and memory errors in C programs
+Deconstruct the interface specification for an abstract data type
+Program one or more implementations of an abstract data type interface specification
+Be able to determine from inspection the "Big-O" complexity of a piece of code
+Be able to measure running time for a particular program within the shell and by inserting source code instrumentation
+Demonstrate the ability to create a stack, queue, linked list, deque, priority queue, and map using the C programming language
+Demonstrate the ability to use a stack, queue, linked list, deque, priority queue, or map to solve a problem
+Course Policies
+
+Course Modality
+This is an in-person course, and you are expected to attend every lecture and lab in person.  
+
+In lecture, role will not be taken.  Instead, there will be a Canvas quiz almost every lecture, and these quizzes count towards your exam grade.  Missing these quizzes at a high rate will significantly affect your grade.
+
+See the course Attendance Policy about missing lectures, quizzes, labs, and exams.
+
+Lab attendance is optional, but highly recommended.
+
+Technical Requirements
+Canvas
+
+We will use Canvas as our hub for this course, including assignments, lectures (slides and Zoom recordings), and announcements. 
+
+CampusWire Discussion Board
+
+We will be using a product called Campuswire as a Q&A and discussion board rather than the discussion board included within Canvas. Use this link to join Campuswire: https://campuswire.com/p/G21055AA8Links to an external site. (use code 6632 if requested).
+
+Course Class Virtual Machine (VM)
+
+Every student will need to be able to run the class virtual machine (VM), which requires owning a computer.  Students may bring a laptop to class to take the quiz, although as an alternative, the quiz will be presented using the projector and you can fill out a piece of paper during class and submit quiz answers.
+
+Course Deadlines
+
+This class will have approximately 18 projects, and it is critical that you keep track of these projects and submit them in a timely way. Projects may be submitted multiple times before the deadline for full credit. Any project may be submitted multiple times after the original deadline for up to 48 hours for half credit.
+
+Communicating with Instructional Staff
+
+How the instructor team will communicate with you:
+
+-- The TAs and I will also frequently communicate with the class via Canvas announcements. 
+-- For communication with individual students, we will use your uoregon.edu email addresses, and we expect that you check that email with some regularity (at least once per day).
+-- Grade feedback will come through comments on Canvas.
+
+What about when you want to communicate with the instructors?  Since there are over one hundred students in this course, the TAs will necessarily play a critical role in responding to many issues.  This matrix shows who to communicate with for different situations.  In all cases, you should do this contact via email.
+
+Type of Issue
+
+Who to Contact
+
+Grade disputes
+
+Projects/labs: Lab Discussion Leader/TA
+Exams/quizzes: Instructor
+
+“I need help” - in-person
+
+1st: Lab Discussion Leader/TA
+2nd: Learning assistant
+3rd: Instructor
+
+“I need help” – discussion board
+
+Campuswire – monitored by instructor, TAs, and LAs
+
+AEC accommodation for quizzes / tests
+
+Course Instructor
+
+Personal matters that you feel should be discussed with instructor
+
+Course Instructor
+
+We have a 4-hour policy for response time for discussion board postings posted between 9-5, although response times may be sooner.  Email response times will vary.  The 4-hour policy does not cover weekends.
+
+Our class will communicate through our Canvas site. Announcements and emails are archived there, automatically forwarded to your UO email, and can even reach you by text. Check and adjust your settings under Account > Notifications.  
+
+When giving feedback on assignments, I do so in Canvas, and turnaround time for feedback is 72 hours (not counting weekends). 
+
+The course may also use a discussion board, and information about the discussion board will be shared as part of the syllabus.
+
+Class Materials
+
+We will use the textbook written by Joe Sventek, which is available for download here: sventek_book.pdf Download sventek_book.pdf.  Please note that this textbook is only for personal use and you may not post it to the Internet for any reason.  To use the book, you must complete the Textbook Agreement assignment.
+
+Canvas Submissions
+
+Any requested student submissions will be submitted using Canvas.
+
+Absences
+
+There will be a daily quiz, and you must be present to take this quiz.  As a result, missing many classes will affect your grade. Explicitly, if you miss a quiz, it is a zero. You need to be there while a quiz is administered (a zero if you arrive late / leave early).  A number of the lowest quiz scores may be dropped automatically by Canvas, and is subject to change by the instructor.
+
+If you miss the Final exam period, you may take the Final afterwards for half-credit. Exceptions for full credit will be granted in appropriate emergency and unusual situations. If you miss the Midterm with an excused absence, then your Final will count extra. 
+
+This means we do not have “excused” or “unexcused” absences except—as is the case for all UO classes—in the cases of religious observances, specific AEC accommodations, military deployment, and University-sponsored events with signed documentation presented as early in the term as possible but at least a week ahead of the planned absence or need for accommodation.    
+
+Difficult or complex situations that may impact attendance occur for many of us during a term. This policy means that absences are available both for students who do want to reach out about their experiences and students who do not.  
+
+If you are feeling ill, please stay home. The automatic dropping of a specific number of the lowest daily quiz scores accounts for missing some classes.
+
+Your success is genuinely important to me. If challenges come up for you this term around attendance please contact me as soon as you can. Together we can identify what resources or strategies might be available to support you and your learning. 
+
+Student Workload and Time Use
+
+This is a 4-credit hour course, so you should expect to complete 120 hours of work for the course—an average of about 12 hours each week (this includes time in-class).
+
+In-class meetings (lecture and lab): 4 hours
+Pre-class reading: 1 hour
+Projects: 4-6 hours
+Office hours and discussion: 1 hour
+I encourage you to work ahead, especially with the reading, and the projects!
+
+Course Deadlines and Late Work
+
+Any course assignment deadlines will be posted in Canvas. You are expected to complete any assignments by the posted deadlines.
+
+Grading
+
+Below is a breakdown of class components that compose the final course grade. Canvas will be used to automatically calculate the final grade.
+
+Daily quizzes: 10%
+Projects: 20%
+Project 1x: 10% (2% of overall grade)
+Project 2x: 50% (10% of overall grade)
+Project 3x: 40% (8% of overall grade)
+Exams: 70%
+Midterm: 30%
+Final: 40%
+Grading rubric:
+
+The percentages of each component of the course are designed to ensure demonstration of learning the material. Projects are designed to ensure you learn the material and prepare for the exams. You will mainly demonstrate your expertise in the course materials during the exams.
+
+A: Excellent performance. Very well prepared to continue on in the major. Solid grasp of the concepts and approaches introduced in CS 212.
+B: Solid performance. You have shown a generally good grasp of the concepts and approaches introduced in CS 212.
+C: Sufficient performance to move on, but your grasp of the concepts and approaches will require improvement if you choose to continue in the major.
+D: Your grasp of concepts and approaches, and/or programming skills, are not yet sufficient to continue in the major.
+F: Little or no demonstrated grasp of concepts and approaches introduced in CS 212, and/or failure to carry out much of the required work.
+Academic Integrity
+
+Academic honesty is expected, and cases of suspected dishonesty will be handled according to university policy: “academic misconduct … affects our entire university community … it devalues the reputation of our institution, its faculty, its students, and the degrees we offer. Moreover, academic misconduct is particularly unfair for the students who do their work with integrity and honor. All incidences of suspected academic misconduct must be reported to the Office of Student Conduct and Community Standards.”  
+
+Cheating means any act of deception by which a student misrepresents or misleadingly demonstrates that the student has mastered information on an academic exercise that the student has not mastered (see UO Student Conduct Code).
+
+Academic misconduct (e.g., plagiarism, copying code, cheating on exams) is a serious violation of the UO student conduct code. Consequences can be both severe and permanent, including but not limited to a failing grade in the class, and a permanent note in your student record. 
+
+Sharing code with another student is cheating
+Sharing code for old assignments with another student is cheating
+Using previous solutions on the internet is cheating
+Hiring someone to do your code for you is cheating
+Using AI to solve the problems for you is cheating
+There may be other types of cheating that aren’t listed here. If you think you are in a gray area, then ask!!
+What is allowed?:
+
+Discussing your code with others (highly encouraged)
+If you are the helper, you may look at the helpee’s code
+BUT: If you are the helpee, you may not look at the helper’s code
+If the course instructor believes a student has been involved with cheating, he will refer the case immediately to the Dean of Students.  If the Dean of Students concurs that cheating has occurred, then that student will receive an F in the course immediately.  Please note that providing help is cheating and a student providing help will also get an F.
+
+Generative Artificial Intelligence Use
+
+You are not restricted in using any AI tool for this course, and in fact are encouraged to use such tools, as your future employment will most likely also utilize AI. However, while a future job may allow un-restricted usage, you are taking this academic course to learn the material, and must abide by the UO student code of ethics, and the requirement that all work submitted must represent your own work. Any submissions (projects and quizzes) that are not your own work violate these requirements. This course has zero tolerance for cheating, and anyone suspected of cheating will be asked to discuss their submission, and if we have reason to suspect you did cheat, will receive an F in the course, and be referred to the Dean of Students.
+
+You may ask what is acceptable AI usage? AI is amazing, when accurate, in assisting in learning a topic. AI can generate self-directed tutorials, with examples, and can interactively assist in the learning process. You are encouraged to use AI as your learning assistant!
+
+AI can also be used to produce solutions to actual projects and quiz questions. Such usage is a clear violation of the student code of ethics and the requirements for this course. When trying to solve one of the course projects, you can use AI to assist you, but the code you submit must be your own. How can you use AI to help with a specific project? 
+
+Each project will focus on different coding elements, so you can ask AI to produce tutorials and examples that help you learn how to use those coding elements. Additionally, you could ask AI to help you with general coding practices and principles, such as how to solve a coding problem, what is an algorithm, how to develop an algorithm, and how to debug a problem in your code. 
+
+Project questions have been submitted to AI for testing purposes, so we are aware of likely coding solutions. Also, AI does not always produce a correct answer, or an answer that is appropriate for the actual project. Specific projects are testing your knowledge of specific coding elements, and may not represent the optimal or standard solution that a more experienced software engineer might code for that problem. Submitting solutions that include coding elements beyond the scope of the project, and even the course, are clear indicators of potential cheating.
+
+Finally, I would recommend you consider a couple of key questions:
+
+Why are you taking this course?
+What do you hope to get out of this course?
+Even if you are not interested in the course topic, how might your willingness to substitute the work of others for your own efforts impact you in the short term, and in your future?
+I hope you'll accept the challenge to work through the course material, struggle through the projects, demonstrate your knowledge and hard work on the quizzes, and garner the satisfaction of overcoming what may have been a difficult course for you! AI is definitely in your future, but using AI in conjunction with knowledge and experience is the correct application of such amazing tools!
+
+Personal Computing Devices
+
+Your are welcome to bring your personal computer or appropriate computing device to class; however, during class please do not distract yourself and other students by engaging in social media, online chats, games, sports, etc.
+
+Classroom Community Expectations
+
+All members of the class (both students and instructor) can expect to: 
+
+Participate and Contribute: All students are expected to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others.  
+
+While all students should participate, participation is not limited to talking, and a range of participation activities support learning. Participation could include speaking aloud in the full class and in small groups, submitting questions prior to class, or engaging with any discussion board posts. 
+
+We will establish more specific participation guidelines and criteria for contributions in our first weeks of the term.      
+
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. We may establish more specific guidelines and protocols to ensure inclusion and equity for all members of our learning community.      
+
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don’t hesitate to contact me to ask for assistance or offer suggestions that might help us learn better.  Guidelines for using course discussion tool (if included): 
+
+Use subject lines that clearly communicate the content of your post.    
+Write concisely, and be aware that humor or sarcasm doesn’t always translate in writing.    
+Be supportive and considerate when replying to others’ posts. This means avoiding use of jargon or inappropriate language, and it means disagreeing with respect and providing clear rationale or evidence to support your different view.    
+Keep focused on the topic and reference readings and other class materials to support your points (as applicable).    
+Try to use correct spelling and grammar and proofread your submissions. After submitting, use the edit feature to make corrections and resubmit (don’t create a new or duplicate post that corrects your error).    
+Contribute and interact often!    
+University Policies
+
+Access and Accommodations
+
+The University of Oregon and I are dedicated to fostering inclusive, equitable, and accessible learning environments for all students. The Accessible Education Center (AEC) assists students with disabilities in reducing barriers in the educational experience. You may be eligible for accommodations for a variety of disabilities – apparent disabilities, such as a mobility or physical disability, or non apparent disabilities, such as chronic illnesses or psychological disabilities. If you have or think you have a disability and experience academic barriers, please contact the Accessible Education Center (Location: 360 Oregon Hall; 541-346-1155; uoaec@uoregon.edu) to discuss appropriate accommodations or support. The details of your disability will be kept confidential with the AEC and you are not expected to share this information with others. However, I invite you to discuss any approved accommodations or access needs at any time with me.
+
+Accommodation for Religious Observances
+
+The University of Oregon respects the right of all students to observe their religious holidays, and will make reasonable accommodations, upon request, for these observances. If you need to be absent from a class period this term because of a religious obligation or observance, please fill out the Student Religious Accommodation Request fillable PDF form and send it to me within the first weeks of the course so we can make arrangements in advance. 
+
+Your Well-Being
+
+Life at college can be very complicated. Students often feel overwhelmed or stressed, experience anxiety or depression, struggle with relationships, or just need help navigating challenges in their life. If you're facing such challenges, you don't need to handle them on your own--there's help and support on campus.  
+
+As your instructor if I believe you may need additional support, I will express my concerns, the reasons for them, and refer you to resources that might be helpful. It is not my intention to know the details of what might be bothering you, but simply to let you know I care and that help is available. Getting help is a courageous thing to do—for yourself and those you care about. 
+
+University Health Services helps students cope with difficult emotions and life stressors. If you need general resources on coping with stress or want to talk with another student who has been in the same place as you, visit the Duck Nest (located in the EMU on the ground floor) and get help from one of the specially trained Peer Wellness Advocates.  
+
+University Counseling Services (UCS) has a team of dedicated staff members to support you with your concerns, many of whom can provide identity-based support. All clinical services are free and confidential. Find out more at counseling.uoregon.edu or by calling 541-346-3227 (anytime UCS is closed, the After-Hours Support and Crisis Line is available by calling this same number). 
+
+Basic Needs
+
+Being able to meet your basic needs is foundational to your success as a student at the University of Oregon. If you are having difficulty affording food, don’t have a stable, safe place to live, or are struggling to meet another need, visit the UO Basic Needs Resource page for information on how to get support. They have information food, housing, healthcare, childcare, transportation, technology, finances (including emergency funds), and legal support. 
+
+If your need is urgent, please contact the Care and Advocacy Program by calling 541-346-3216, filling out the Community Care and Support formLinks to an external site., or by scheduling an appointmentLinks to an external site. with an advocate. 
+
+Respect for Diversity
+
+You can expect to be treated with respect in this course. Both students and your instructor(s) enter with many identities, backgrounds, and beliefs. Students of all racial identities, ethnicities, genders, gender identities, gender expressions, national origins, religious affiliations, sexual orientations, citizenship statuses, ability and other visible and non-visible differences belong in and contribute to this class and this discipline. All students are expected to contribute to a respectful, welcoming and inclusive environment for every other member of the class.  
+
+Class rosters are provided to instructors with students’ legal names. Please let me know if the name or pronouns I have for you are not accurate. It is important to me to address you properly. 
+
+Please let me know if aspects of the instruction, course design, or class activities undermine these principles in any way. For additional assistance and resources, you may also consider contacting the Division of Equity and Inclusion through their website or by phone (at 541-346-3175), or the Center for Multicultural Academic Excellence through their website or by phone (at 541-346-3479).
+
+Academic Integrity
+
+The University Student Conduct Code defines academic misconduct, which includes using unauthorized help on assignments and examinations, the use of sources without acknowledgment, and recording class without “the express written permission of the instructor(s).” Academic misconduct is prohibited at UO. I will report all suspected misconduct to the Office of Student Conduct and Community Standards. If the Office finds a student has committed misconduct, consequences can include failure of the relevant assignment or exam, or of the course.
+
+While unauthorized help and use of sources without citation is prohibited, learning together and citing sources is crucial! Each assignment and assessment will have a note about whether and how you might work with others so that you can clearly act with academic integrity. 
+
+If at any point in the term you are unsure about whether a behavior aligns with academic integrity in our course, please contact me. I view student questions about academic integrity as a desire to act with integrity, so I welcome your questions.
+
+Reporting Obligations
+
+I am a designated reporter. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex- or gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of Students Office at 541-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123 to request information and resources. Students are not required to participate in an investigation to receive support, including requesting academic supportive measures. Additional resources are available at investigations.uoregon.edu/how-get-support.
+
+I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.
+
+Pregnancy Modifications. Pregnant and parenting students are eligible for academic and work modifications related to pregnancy, childbirth, loss of pregnancy, termination of pregnancy, lactation, and related medical conditions. To request pregnancy-related modifications, students should complete the Request for Pregnancy Modifications formLinks to an external site. on the OICRC website. OICRC coordinates academic and other modifications for pregnant and parenting students to ensure students can continue to access their education and university programs and activities.
+
+Academic Disruption Due to Campus Emergency
+
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by email, and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and/or access alternative assignments. Students are also expected to continue coursework as outlined in this syllabus or other instructions on Canvas. 
+
+Inclement Weather
+
+It is generally expected that class will meet unless the University is officially closed for inclement weather. If it becomes necessary to cancel class while the University remains open, this will be announced on Canvas and by email. Updates on inclement weather and closure are also communicated as described on the Inclement Weather webpage. 

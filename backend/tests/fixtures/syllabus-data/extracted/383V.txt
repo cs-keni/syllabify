@@ -1,0 +1,211 @@
+EE 383V Quantum Electro-Optics (Fall 2024)
+Date/Time/Location: MW / 10:30-11:45 AM / ECJ 1.306
+Instructor: Dan Wasserman
+EER 3.874
+MER 1.606E
+x1-9818
+dw@utexas.edu
+Office Hours:
+In-Person, Wednesday 12:00-1:00 PM, EER 3.874
+Zoom, Thursday 12:30-1:30PM, https://utexas.zoom.us/j/99631375009
+By appointment (Usually Zoom)
+Teaching Assistant: Nope
+Description: The field of Quantum Electro-Optics (or Nanophotonics) encompasses the set of
+devices, structures, and materials whose electronic and optical properties cannot be understood
+using the bulk properties of the constituent materials, but instead depend strongly on both size and
+geometry. Nanophotonics is an emerging contemporary area of research with a wide range of new
+applications. Understanding the optical properties of nanometer scale structures of semiconductors,
+metals, and composites will be crucial for future optoelectronic devices and technology designed to
+couple with, complement, or possibly even replace, present and future nanoelectronic devices.
+Separated from any electronic components, nano-scale or subwavelength photonic structures offer
+new possibilities for sensing, imaging, waveguiding, and many other applications. This course will
+examine the quantum mechanical interaction between light and semiconductors, metals, and
+composites; including cavity electrodynamics, polarition cavity condensation, sub-wavelength
+structures, metamaterials, plasmonics, and applications of the above. Presentations by students are
+included to develop oral communication skills as well as to incorporate leading-edge research into
+the course.
+Prerequisites: Some exposure to quantum mechanics, semiconductor physics and devices.
+Text: Class notes and journal papers
+Supplementary: The Physics of Low-Dimensional Semiconductors, Davies (Cambridge 1998)
+The Physics of Photonics Devices, Chuang
+Optoelectronics, Rosencher
+Fundamentals of Photonics, Saleh and Teich
+The Physics of Semiconductors, M. Grundmann (Springer 2006)
+Semiconductor Optics, C. Klingshirn (Springer, 2005)
+Introduction to Nanophotonics, S. V. Gaponenko (Cambridge 2010)
+Optical Processes in Semiconductors, J. Pankove (Dover 1971)
+“Physics of Light and Optics” http://optics.byu.edu/textbook.aspx
+Grading: Homework/Attend. 30%/5% Due ~1 week after assigned
+Midterm Exam 35% In class
+Final Project 30% Presentation & questions
+
+Presentation: Each student will give an in-class presentation focused on a cutting-edge research
+topic in quantum electro-optics or, alternatively, a numerical program (developed by the student)
+used for advanced simulation or calculation of a quantum electro-optical phenomenon.
+Presentations will be 15 minutes long, including 2-3 minutes for questions following the
+presentation. Presentations will be graded on technical content, oral communication and visual
+presentation skills, critical thinking, as well as the presenter’s ability to answer questions and discuss
+the presentation topic and its place in the larger context of the field. It is expected that the
+presentation (or program) will focus critically on a sub-field outside of the students’ current field
+of research.
+Course Administration
+Lectures: Lecture will consist of ppt slides as well as whiteboard/ppt annotations made during the
+lecture. The basic ppt slides will be posted online on Canvas, but for detailed notes or annotations
+to the slides, students are expected to attend lecture. Though there will not be an attendance roll
+call, in a small class such as this participation and attendance throughout the semester will be noted.
+Attendance will account for 5% of the final grade. If a student misses a lecture for any reason, they
+will be expected to use the on-line notes to bring themselves up to speed. They may also ask
+classmates to share notes taken in lecture.
+The classroom will be enabled with automatic recording technology. This means that lectures will
+be recorded and automatically posted to Canvas. This will all occur automatically and there is no
+guarantee that it will work for every lecture. The best way to ensure you are able to view the lectures
+is to attend in person.
+Homework: Homework will be turned in before class on the day that they are due. In response to
+previous classes’ feedback, I have tried to reduce the total number of HW assignments, giving
+students more time for each assignment. In general, the HW will cover topics covered in the lectures
+up to and including the Wednesday lecture before the Monday (or Wednesday) of the HW due date.
+I have Office Hours on Wednesday (in person) and Thursday (Zoom) to provide any help you might
+need. All homework assignments will be posted to Canvas and their due dates listed on Canvas.
+No late homework will be accepted. In extreme circumstances, with a letter from Health Services
+and/or the appropriate administrative official, a homework can be dropped, but only with course
+instructor approval.
+Homework will primarily be a mix of analytical, conceptual, and numerical problems. Students
+may work in groups to understand the homework problems and to work out approaches to solving
+them. However, the homework turned in should represent the individual student’s own work, and
+cannot be copied from another student. Copied/reproduced homework constitutes a violation of the
+honor code, and will be treated as such.
+Analytical Problems: Solutions must be legible, and must indicate the approach taken to solve the
+problem, as well as each step used in the approach. It is the students’ responsibility to make clear
+to the grader how the problem was solved and what the solution to the problem is. Illegible, or
+poorly annotated/described solutions will receive no credit. For clearly presented, well thought-out
+solutions, partial credit will be granted even if the solution is not correct.
+Conceptual Problems: Conceptual problems will ask for the student to explain in words and/or
+equations, a physical phenomenon or concept from the course. Answers are expected to be in clear
+
+and concise English, and free from grammatical and typographical errors. Students are expected to
+use their own words, but are free to cite from the literature, as long as all references are clearly
+noted. Students may also be asked to respond to questions regarding state-of-the-art concepts or
+research, which will require use of the literature.
+Numerical problems: Numerical problems are to be performed in Matlab. You should have free
+access to Matlab through the University. For those of you not familiar with Matlab, do not despair!
+Initial numerical problems will be mathematically and conceptually simply and will give you a
+chance to understand the basic operation and functioning of the software. Later numerical problems
+will be more complex, both conceptually and mathematically. All numerical homework programs
+(*.m files) will be turned in electronically on Canvas. Outputs (plots, graphs, tables, etc.) should be
+clearly labeled and turned with the written HW. A basic example Matlab program is available on
+the course Canvas website. This program calculates the normal incidence reflection from a
+dielectric surface as a function of wavelength and plots the results. Your program files should be
+named using the problem name and your initials (i.e. “DW_Reflection.m”). The first two lines of
+the script should have the HW, problem name, your full name, your UT EID, and a brief description
+of the program, as shown in the example script. All numerical homework problems should be
+clearly and concisely annotated. The grader should be able to clearly see the program inputs (and
+should be able to change these) and should be able to press the execute button and see the program
+outputs.
+The analytical and conceptual problems will be handed in as hard-copies, with outputs from the
+numerical problems, clearly labelled, attached to the conceptual/analytical solutions. The code
+associated with the numerical components will uploaded to Canvas.
+Exams: There will be one midterm exam for this course. There used to be two midterm exams, but
+previous feedback indicating that i) the course workload was high and ii) that homework seemed to
+be the most valuable part of the class led me to try removing an exam. The midterm exam will be
+given at approximately the mid-point of the semester, after we have covered the foundational
+material necessary for understanding Nanophotonics. The exam will be in class, and will cover all
+of the course material up to the date of the exam. Make-up exams will not be given.
+Course Learning Outcomes:
+This is mandated by our State Legislature. Interestingly, there are exactly 0 members of our state
+legislature that understand quantum mechanics, optics, quantum optics, semiconductor band
+structure, or pretty much any other topic we will cover. I would be willing to place a rather large
+bet that the percentage of State Legislators that can perform a simple integral is in the single digits.
+Nevertheless, students should come away from this course with:
+- A conceptual and quantitative understanding of light, and the various different ways we can
+describe and analyze optical signals and modes.
+- A conceptual and quantitative understanding of matter, specifically semiconductors, metals,
+dielectrics, and 2D materials. Understanding of band structure, distribution statistics,
+density of states, and charge transport.
+- Conceptual and quantitative understanding of light-matter interaction, from simple classical
+‘toy’ models all the way to second quantization.
+- Current cutting-edge topics in Nanophotonics and Quantum Electro-Optics
+- The ability to set up and run simple numerical approaches to understand and simulate
+fundamental topics in Quantum electro-Optics.
+
+Course Topical Outline.
+A full course calendar will be available on the Canvas website.
+Foundations
+I. Light (Lectures 1-3)
+a. Ray Optics
+b. Wave Optics
+c. Electromagnetics, Maxwell’s Equations
+d. Photon Optics
+II. Matter (Lecture 4)
+a. Basic description of atoms and crystals, free and bound electrons
+b. Semiconductors, metals, and insulators: band structure
+i. Kronig-Penney Model
+ii. Band diagrams
+iii. Effective mass
+c. Density of states and distribution functions, doping.
+d. Quantum confinement
+III. Phonons (Lecture 5)
+a. Classical oscillator
+b. 1-atom chain
+c. diatomic atom chain
+d. Quantum harmonic oscillator
+e. Phonon Statistics
+IV. Light-Matter Interaction (Lecture 6-12)
+a. Bulk Optical Properties of Matter
+i. Toy models of refractive index/optical permittivity
+ii. Reflection/refraction
+iii. Kramers-Kronig relations
+b. Optical transitions
+i. Einstein Coefficients
+ii. Classical Picture of Absorption
+iii. Optical transitions in real materials
+iv. Optical transitions in semiconductors – semiclassical
+v. Optical transitions in semiconductors – dipole moments
+vi. Rabi Oscillations
+vii. Second quantization and spontaneous emission
+c. Polaritons
+d. Non-linear Effects
+i. Raman scattering (quantum/classical)
+ii. SHG, SFG, DFG, 2PA
+V. Optical and Electronic Confinement (Lectures 13-17)
+a. Quantum Confinement
+b. Optical Transitions in Quantum Confined Structures
+c. Optical Confinement
+d. Combining Quantum and Optical Confinement (lasers)
+Exam I (In Class)
+VI. Optical scattering (Lecture 17)
+
+a. Thomson, Rayleigh, & Mie Scattering
+b. Bragg-mirrors
+c. Photonic Crystals
+d. Photonic crystal defects
+VII. Sub-wavelength Optics (Lecture 18)
+a. Gratings (reflection and diffraction)
+b. The diffraction limit
+c. Beating the diffraction limit
+VIII. Metallic Optics (Lectures 19-20)
+a. Perfect electrical conductor waveguides
+b. Noble metal optics
+c. Propagating Surface Plasmons
+i. Plasmonic waveguides
+ii. Nano-apertures, aperture arrays
+d. Localized surface plasmons
+i. nano- spheres, -rods, -shells
+ii. Surface enhanced Raman scattering
+IX. Metamaterials & Metasurfaces (Lecture 21)
+a. Negative refraction and negative index
+b. Optical transformations
+X. 2D Materials (Lecture 23)
+a. Band structure
+b. Optical properties
+c. 2D Plasmonics
+d. 2D Nanophotonics
+XI. Nanoscale light matter interaction (Lecture 24)
+a. Purcell Effect
+b. Fano Effect
+c. Nano-emitters and detectors
+d. Nano-scale energy transfer
+XII. Special Topics (Time Permitting)
+a. Topological Photonics
+b. Time Crystals
+c. Floquet Engineering
+XIII. In-Class presentations

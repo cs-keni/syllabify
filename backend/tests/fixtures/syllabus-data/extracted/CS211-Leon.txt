@@ -1,0 +1,295 @@
+CS 211 – Computer Science II
+Winter 2024 – CRN: 31305
+SYLLABUS
+General Course Information
+Prerequisites CS 210 or equivalent. CS 211 assumes familiarity with Python programming.
+Tuesday and Thursday, 10:00 - 11:20.
+Lecture
+101 Living Learning Center South (https://classrooms.uoregon.edu/101LLC).
+Lab Sessions
+CS 211 is the second course in the three-term “Introduction to Computer Science”
+Description series at the University of Oregon. The course focuses on object-oriented
+programming and its application to problem-solving.
+Major Topics
+• Object Oriented Programming
+• Classes and objects
+• Subclasses and inheritance
+• Information hiding
+• Recursion and objects
+• Development of larger projects
+Objectives
+CS 211 builds on the computational problem-solving and Python programming skills developed in CS 210
+and introduces object-oriented programming techniques.
+After successfully completing CS 211, you should be able to:
+• Use classes and objects in an object-oriented programming language, including polymorphism and
+inheritance.
+• Develop an operational understanding and idiomatic problem-solving tactics in object-oriented
+programming. You will read and write program source code in an object-oriented style, including:
+o Using polymorphism and dynamic dispatch to simplify program logic.
+o Using dynamic dispatch to create listener/notifier connections between program modules.
+o Using abstract classes and methods to organize related concrete subclasses and methods, with
+inheritance and overriding.
+o Constructing recursive object-oriented data structures, with recursive algorithms factored into
+base and inductive cases by subclass.
+• Decompose a moderately complex problem specification into parts that can be solved and developed
+piece by piece, testing your solution at each stage in its implementation.
+• Write software that communicates intent to human readers and correctly expresses intended instructions
+1
+
+for the computer.
+• Reason about asymptotic performance (the relation of time and space requirements to problem size) to
+devise programs with acceptable performance on moderate to large problems. (You will learn more
+sophisticated reasoning about asymptotic performance in CS 212, CS 313, and CS 315.)
+Acquired Skills
+• Effectively use an IDE in the development and testing of moderate-sized Python programs.
+• Understand, develop, and implement Object-Oriented programs in Python.
+• Develop recursive data structures (objects) and algorithms.
+• Read, write, revise, document, test, and debug code.
+Teaching Team
+Juan Flores (Instructor) Linnea Palmstrom (GE)
+he/him/his she/her/hers
+Office: 158 Deschutes Hall Office: 205 Deschutes Hall
+E-mail: jflore10@uoregon.edu E-mail: lpalm@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/6152747514 Zoom: https://uoregon.zoom.us/my/lpalmstrom
+Mohammad Hasani
+Aliza Lisan (GE)
+she/her/hers
+he/him/his
+Office: 270 Deschutes Hall Office: 235 Deschutes Hall
+E-mail: alisan@uoregon.edu E-mail: mahasanis@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/4074361949 Zoom: https://uoregon.zoom.us/j/3728877823
+Luis Guzman-Cornejo (LA) Isabella Cortez (LA)
+he/him/his she/her/hers
+E-mail: E-mail:
+lguzman2@uoregon.edu icortez6@uoregon.edu
+Zoom:
+https://uoregon.zoom.us/j/4918925946
+Zoom:
+https://uoregon.zoom.us/j/4582379659
+Melanie Wiegand (LA) Joseph Macalinao (LA)
+she/her/hers he/him/his
+E-mail: mwiegan6@uoregon.edu E-mail: jmacalin@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/7393881788 Zoom: https://uoregon.zoom.us/j/3695179315
+Isabella Norwood-Paulus (LA) Carson Hellman (LA)
+she/her he/him/his
+E-mail: iin@uoregon.edu E-mail: chellman@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/2975011114 Zoom: https://uoregon.zoom.us/j/4323047235
+Jose Renteria
+(Class Encore Leader)
+he/him/his
+E-mail: jrenter3@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/8701603353
+2
+
+Course Materials (Required)
+Development Environment. We use or later in this course. I recommend
+Python version 3.10.
+using the VSCode IDE.
+Introduction to Computer Science II. Free online book by Professor Michal Young (https://uo-
+cs-oer.github.io/CS211-text/intro.html). You can expect to read 10-20 pages from the textbook and project
+documentation each week.
+Coding Rooms. We will use a tool – https://codingrooms.com - to code together in lectures and
+programming projects. Join CS 211 S 24 in coding rooms using the join link
+(https://app.codingrooms.com/app/?joinCode=C-NenzHBV) or join code (C-NenzHBV) and use this link to
+submit the $30.00 payment as soon as possible (https://buy.stripe.com/aEUdTR3i0g57as0cNA).
+iClicker. I will use quizzes as a proxy for taking roll. To respond to those quizzes, Download the iClicker
+app (https://apps.apple.com/us/app/iclicker-student/id899690067). The join link for this course is
+(https://join.iclicker.com/SUGH). Do not buy a physical iClicker - you will not need it for this course!!!
+Attendance
+This course abides by the University of Oregon course attendance and engagement policy
+(https://provost.uoregon.edu/course-attendance-and-engagement-policy).
+• If I get a note from the Accessible Education Center (AEC - https://aec.uoregon.edu/request-
+accommodations) stating that you may need to miss class, I will provide the requested accommodations.
+Please communicate with AEC immediately since I will not grant any accessibility accommodations not
+coming from AEC (as per their suggestion.)
+• Absence required for religious observance (https://provost.uoregon.edu/religious-observance-
+accommodations-policy) will be excused, but you need to submit a form
+(https://registrar.uoregon.edu/sites/registrar1.uoregon.edu/files/pdf/form-religious-accommodation-
+request.pdf) before, not after, your absence (and preferably by the second week in the term).
+• University-sponsored events are considered verifiable, legitimate reasons for participating students to
+miss class. Students are responsible for providing documentation signed by a university employee
+verifying their participation in the activity and listing the dates they might miss class. Students must
+send this notification during week one of the term.
+• Except for the legitimate and verifiable reasons for absences referenced above, I will not excuse
+absences since there is no equitable way to confirm the veracity of student-provided reasons or
+documentation outside the university context.
+• Suppose you encounter an emergency that will cause you to miss more than the allowed absences. In
+that case, your options are (a) withdrawing from this course, (b) an incomplete, provided you satisfy the
+UO incompletes policy (https://provost.uoregon.edu/grades-incompletes-policy), or (c) contacting the
+Dean of Students to request an emergency academic notification (https://dos.uoregon.edu/dos-faq).
+I will use brief quizzes as a proxy for taking roll. To respond to those quizzes, you must purchase an iClicker
+at the UO Duckstore (https://www.uoduckstore.com/Iclicker-2_142928048). If you already bought an iClicker
+for other courses, you can use that one.
+I will give these quizzes regularly throughout the term. Attendance will count for 5% of the course grade.
+Following the lectures is the only way to provide timely interaction with the course instructor. There will be
+no lectures in hybrid instruction mode or parallel Zoom meetings for lectures or lab sessions. This course will
+3
+
+not provide any recordings of lectures or lab sessions.
+Grading
+We will use cumulative grading – you accumulate points as you complete assignments, exams, and other
+requirements. The table below shows the point values of each component.
+Dropped Weight
+Component # Events
+Events (%)
+Exams (in person) 2 0 50
+Projects 9 2 30
+Mini-exams (online) 4 1 10
+Code demo 1 0 5
+Attendance - - 5
+Total 100
+Mini-projects and labs are related to the following project. In coding rooms, you will find separate
+workspaces for Projects, Labs, and Mini-projects. Make sure you upload your work to its respective
+workspace. The weights for the projects, labs, and mini-projects to compute the project grade are:
+Lab - 10%
+Mini-project - 5%
+Project - 85%
+The weeks we don't have a mini-project,
+Lab - 10%
+Project - 90%
+Canvas will automatically drop the two lowest-grade projects and the lowest-grade mini-exam
+(independently). Exam grades will not be dropped.
+Canvas will round the final score and compute the letter grade from your final score according to the
+following table.
+There is no grade curving in this course.
+4
+
+Here is an example of the grade calculation procedure; the following image shows a grade simulator, with its
+components explained below.
+The cells with an orange background mean dropped grades; their respective averages are computed with the
+remaining grades. The blue cells indicate weights. The final grade is the sum of the averages multiplied by
+their weights.
+CS majors, minors, and DSCI majors must take CS 211 graded; others may take it graded or P/N.
+Late Submission and Makeup Work
+No assignments can be turned in late or made up in this course. Canvas will drop two projects and one mini-
+exam. Note that dropping a project includes dropping its related lab and mini-project grades.
+Course Communication
+E-mail
+Use E-mail for grade clarifications and personal questions.
+Canvas
+Do not use Canvas Messaging for any course communication. Canvas' messaging system is impractical.
+Make sure you understand that Canvas is not E-mail.
+Campus Wire
+This course will use the Campus Wire platform for online peer-to-peer communications. Participation is
+optional (not required), although you are encouraged to use this online tool. You may also reply to your peers’
+questions. When a student answers a question, anyone in the staff team can reinforce, complement, or correct
+the previous answer. Instructors may (but are not required or expected to) answer questions on Campus Wire.
+Do not Post Code. Students will undoubtedly need help with specific code. You may post 1-2 lines of code
+with a particular question; however, do not post code blocks to Campus Wire.
+You can enroll in the CS 211 S 24 Course Campus Wire Server by using the following link
+(https://campuswire.com/p/GFBCB993F). The code is 0465.
+5
+
+You may also reply to your peers’ questions. When a student answers a question, anyone in the staff team can
+reinforce, complement, or correct the previous answer.
+Do not Post Code
+Students always need help with specific code. You may post 1-2 lines of code with a particular question;
+however, do not post code blocks to Campus Wire unless you post privately (not to your peers).
+Netiquette Policy
+Please use appropriate online etiquette to post or respond to any electronic communication. This course does
+not tolerate inappropriate forum postings. Below are specific online Netiquette guidelines:
+• Never post personal information about another person.
+• You may disagree with someone but never insult another person or use any profanity, including Internet
+abbreviations known to represent profanity.
+• Do not repeatedly post the same content (also known as scrolling).
+• Post only material relevant to this course.
+• Avoid posting content in ALL CAPS. Avoid emphasis in response to other posters that indicate
+derision.
+• Try to follow the Golden Rule: treat others as you would like to be treated.
+Academic Integrity Policy
+The CS 211 Academic Integrity Policy is as follows:
+1. Do not share any program code with other students.
+2. Do not submit the work of others, including any code found online, as your own work.
+3. Be prepared to explain any program code you submit.
+The instructor and the University expect academic honesty; they will handle suspected dishonesty according
+to university policy: "academic misconduct … affects our entire university community … it devalues the
+reputation of our institution, its faculty, its students, and the degrees we offer. Moreover, academic
+misconduct is particularly unfair to the students who do their work with integrity and honor. All suspected
+academic misconduct incidents must be reported to the Office of Student Conduct and Community
+Standards."
+All work you submit for this course toward completion of course requirements must be your original work
+done specifically for this course and without substantive assistance from others, including artificial
+intelligence systems (e.g., ChatGPT). Work you have completed for previous courses or are developing for
+other courses this term should not be submitted for this course. Please note that we may use AI or plagiarism
+detection tools to ensure all work is human-created and original. Please also carefully read the academic
+integrity policy concerning plagiarism.
+Cheating means any deception by which a student misrepresents or misleadingly demonstrates that the student
+has mastered information on an academic exercise that the student has not learned. See UO Student Conduct
+Code – https://policies.uoregon.edu/vol-3-administration-student-affairs/ch-1-conduct/student-conduct-code.
+The work you submit must be the result of your engagement with the process of computational problem-
+solving. When you turn in the solution to an assignment with your name on it, you state that you are its
+author. Academic misconduct (e.g., plagiarism, copying code, cheating on exams) is a severe violation of the
+UO student conduct code, and its consequences can be severe and permanent. Students who cheat in CS 211
+will fail the class.
+6
+
+"Ignorantia juris non excusat" – Ignorance of the law is no excuse. A student unaware of important course
+information may not escape liability for not meeting deadlines or expectations merely by being unaware of
+their content.
+You must credit all online sources you used as references by including a single comment in your code with
+the source URL. Referencing online material does not mean you may duplicate the online material.
+AI Use
+Throughout this term, you must report all interactions with AI tools for course credit. If you use any AI tool to
+produce (partial) solutions for projects, you must:
+• Include comments around the code segment produced by AI tools.
+• In the comments, include the tool you use, your prompts, the AI’s responses, how you used the
+response, exploratory use of the tools, and reflections on your experience.
+• Be ready to answer questions about the solutions you provide. Failure to do so will result in no points
+for that assignment.
+Through such documentation and reflection, you will contribute to a knowledge base of best practices and
+help others learn from your experiences.
+Tips for CS 211 Students
+• Come to lectures and participate. Lectures provide a detailed introduction to new material and
+examples relevant to the current or upcoming assignments and exams. Do the assigned reading before
+lectures. Participation in lectures and laboratories is the reason why you are paying tuition.
+• Monitor your grades in Canvas using the Grades Menu Option. Notify your instructor of problems
+or discrepancies without delay. You must deal with any grading issues by e-mail.
+• Come to office hours. Office hours allow you to get one-on-one help, ask questions, and seek general
+advice. Work smart and ask for help (sooner rather than later).
+• Complete all assignments and submit them on time. Missing projects will have a significant effect on
+your final grade. Do not fall behind; start projects early. You will always get partial credit for partial
+solutions.
+• Inform the instructor ASAP if you are having difficulties. Options often exist early in the course that
+simply do not exist later.
+• E-mail Forwarding. Canvas sends you all the course notifications to your UO e-mail address. You can
+automatically have your UO e-mail forwarded to your primary e-mail account.
+Universal Learning Environment
+The University of Oregon, the CS department, and I are all working to create inclusive learning environments.
+Notify me if aspects of this course's instruction or design hinder your participation.
+Students with a UO disability notification letter should meet with me as early as possible. You may get
+information about Support and Services for Students with Disabilities by seeing the Accessible Education
+Center (http://aec.uoregon.edu/).
+7
+
+Inclement Weather
+Class is generally expected to meet unless the University is officially closed for inclement weather. If it
+becomes necessary to cancel class while the University remains open, this will be announced on Canvas and
+by e-mail. Updates on inclement weather and closure are also communicated in other ways described here:
+https://hr.uoregon.edu/about-hr/campus-notifications/inclement-weather/inclement-weather-
+immediate-updates.
+Reporting Discrimination, Harassment, or Violence
+Students experiencing sex or gender-based discrimination, harassment, or violence should call the 24-7
+hotline at 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of
+prohibited discrimination or harassment may contact the Dean of Students Office at 541-346-3216 or the non-
+confidential Title IX Coordinator/OICRC at 541-346-3123. Additional resources are available at
+investigations.uoregon.edu/how-get-support.
+Mental Health and Wellness
+Life at college can be very complicated. Students often feel overwhelmed or stressed, experience anxiety or
+depression, struggle with relationships, or need help navigating challenges. If you face such challenges, you
+don't need to handle them alone – there's help and support on campus.
+As your instructor, if I believe you may need additional support, I will express my concerns and the reasons
+for them and refer you to resources that might be helpful. My only intention is to let you know I care and that
+help is available. Getting help is a courageous thing to do.
+University Health Services helps students cope with difficult emotions and life stressors. If you need general
+resources on coping with stress or want to talk with another student who has been in the same place as you,
+visit the Duck Nest (located in the EMU on the ground floor) – get help from one of the specially trained Peer
+Wellness Advocates. Find out more at health.uoregon.edu/ducknest.
+University Counseling Services (UCS) has a team of dedicated staff members to support you with your
+concerns, many of whom can provide identity-based support. All clinical services are free and confidential.
+Find out more at counseling.uoregon.edu or by calling 541-346-3227 (After-Hours Support and Crisis Line).
+Basic Needs
+If you are facing difficulties affording groceries to eat every day or lack a safe and stable place to live, contact
+the Dean of Students Office (346-3216, 164 Oregon Hall) for support. Visit
+https://blogs.uoregon.edu/basicneeds/food/; this site provides resources for food, housing, healthcare,
+childcare, transportation, technology, finances, and legal support.
+8

@@ -1,0 +1,165 @@
+{
+  "course": {
+    "id": "scm445-sevak",
+    "course_code": "SCM 445",
+    "course_title": "Supply Chain Management",
+    "term": "Spring 2025",
+    "timezone": "America/New_York",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Piyal Sarkar",
+        "email": "pbs5628@psu.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "14:30",
+        "end_time": "15:45",
+        "timezone": "America/New_York",
+        "location": "Olmsted E330",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "14:30",
+        "end_time": "15:45",
+        "timezone": "America/New_York",
+        "location": "Olmsted E330",
+        "type": "lecture"
+      }
+    ],
+    "location": "Olmsted E330"
+  },
+  "assessment_categories": [
+    {
+      "id": "exam",
+      "name": "Exam",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "project",
+      "name": "Project",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "participation",
+      "name": "Class Participation",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "assignments",
+      "name": "Assignments",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Midterm Exam",
+      "category_id": "exam",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Mid-term examination"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "exam",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final examination"
+    },
+    {
+      "id": "project_1",
+      "title": "Project",
+      "category_id": "project",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Project 20%"
+    },
+    {
+      "id": "participation_1",
+      "title": "Class Participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Class Participation 10%"
+    },
+    {
+      "id": "assignments_1",
+      "title": "Assignments",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10 points per day late"
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Assignments 30%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

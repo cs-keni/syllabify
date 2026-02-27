@@ -1,0 +1,156 @@
+{
+  "course": {
+    "id": "cs407-leon",
+    "course_code": "CS 407",
+    "course_title": "Career/Internship Seminar",
+    "term": "Fall 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Eric D. Wills",
+        "email": "eric@cs.uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "15:30",
+        "end_time": "16:50",
+        "timezone": "America/Los_Angeles",
+        "location": "220 DES",
+        "type": "lecture"
+      }
+    ],
+    "location": "220 DES"
+  },
+  "assessment_categories": [
+    {
+      "id": "deliverables",
+      "name": "Deliverables",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "project_proposal",
+      "title": "Project Proposal",
+      "category_id": "deliverables",
+      "type": "assignment",
+      "due_datetime": "2025-10-10",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Project proposal due Friday 10/10"
+    },
+    {
+      "id": "resume",
+      "title": "Resume",
+      "category_id": "deliverables",
+      "type": "assignment",
+      "due_datetime": "2025-10-24",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Resume due Friday 10/24"
+    },
+    {
+      "id": "project_milestone",
+      "title": "Project Milestone",
+      "category_id": "deliverables",
+      "type": "assignment",
+      "due_datetime": "2025-11-07",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Project milestone due Friday 11/7"
+    },
+    {
+      "id": "personal_website",
+      "title": "Personal Website",
+      "category_id": "deliverables",
+      "type": "assignment",
+      "due_datetime": "2025-11-21",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Personal website due Friday 11/21"
+    },
+    {
+      "id": "project_retrospective",
+      "title": "Project Retrospective",
+      "category_id": "deliverables",
+      "type": "assignment",
+      "due_datetime": "2025-12-05",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Project retrospective due Friday 12/5"
+    },
+    {
+      "id": "attendance",
+      "title": "Attendance",
+      "category_id": "deliverables",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "MO"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Missing more than 1 (after week 1) results in failure",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Attendance required; >1 unexcused absence = fail"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

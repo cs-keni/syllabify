@@ -1,0 +1,303 @@
+CIS 210 – Computer Science I
+Winter 2024 – CRN: 21582
+SYLLABUS
+General Course Information
+Math 112 is a prerequisite for this course – no exceptions. In addition, we expect
+Prerequisites students to have prior experience with a high-level programming language such as
+Python, C, C++, JavaScript, or Java.
+Tu, Th. 10:00 - 11:20
+180 Prince Lucien Campbell Hall (PLC)
+Lecture
+https://map.uoregon.edu/db24342b9
+https://classrooms.uoregon.edu/180plc
+Linnea: T 16:00-16:50, T 17:00-17:50
+Frimpong: W 11:00-11:50, W 12:00-12:50
+Labs
+Jayce Leonard: T 12:00-12:50, T 13:00-13:50
+Location: B026 Klamath Hall.
+Basic concepts and practices of computer science. Topics include algorithmic
+problem solving, levels of abstraction, object-oriented design and programming,
+Description
+software organization, and analysis of algorithms and data structures. This course is
+part of a sequence with CS 211 and CS 212.
+Major Topics
+• Introduction to Computer Science and Python
+• Programming style and functions
+• Conditionals, loops, strings
+• Testing and Debugging
+• Collections, mutable data types, data analysis
+• File processing, data mining, binary search
+• Intro to user-defined classes
+Expected Learning Outcomes
+• Understand, develop, and implement algorithms for computational problem solving
+• Use structured design and testing methods to develop and implement programs
+• Demonstrate robust mental models of data representation and code execution
+• Demonstrate a good understanding of a high-level programming language (Python)
+• Introduce/implement sampling of the classic computer science problem domains and
+algorithms
+Acquired Skills
+• Effectively use an IDE in the development and testing of moderate-sized Python programs
+• Understand, develop, and implement algorithms for computational problem solving
+• Read, write, revise, document, test, and debug code
+1
+
+Teaching Team
+Juan Flores (Instructor) Frimpong Osei (GE)
+he/him/his he/him/his
+Office: 158 Deschutes Hall Office: 239 Deschutes Hall
+E-mail: jflore10@uoregon.edu E-mail: fosei@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/6152747514 Zoom: https://uoregon.zoom.us/j/8159412495
+Linnea Palmstrom (GE) Jayce Leonard (GE)
+she/her he/him
+Office: 205 Deschutes Hall Office: 226 Deschutes Hall
+E-mail: lpalm@uoregon.edu E-mail: jayce@uoregon.edu
+Zoom: https://uoregon.zoom.us/my/lpalmstrom Zoom: https://uoregon.zoom.us/my/jcleo
+Erin Stone (LA) Luis Guzman-Cornejo (LA)
+she/her/hers he/him/his
+E-mail: E-mail:
+estone3@uoregon.edu lguzman2@uoregon.edu
+Zoom: Zoom:
+https://uoregon.zoom.us/j/tba https://uoregon.zoom.us/j/4918925946
+Isabella Cortez (LA) Haoyang Tan (LA)
+she/her/hers he/him/his
+E-mail: E-mail:
+icortez6@uoregon.edu haoyangt@uoregon.edu
+Zoom:
+https://uoregon.zoom.us/j/4582379659
+Zoom:
+https://uoregon.zoom.us/j/4991381515
+Melanie Wiegand (LA) Isabella Norwood-Paulus (LA)
+she/her/hers she/her
+E-mail: E-mail:
+mwiegan6@uoregon.edu iin@uoregon.edu
+Zoom:
+https://uoregon.zoom.us/j/7393881788
+Zoom:
+https://uoregon.zoom.us/j/2975011114
+Carson Hellman (LA) Joseph Macalinao (LA)
+he/him/his he/him/his
+E-mail: chellman@uoregon.edu E-mail: jmacalin@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/4323047235 Zoom: https://uoregon.zoom.us/j/3695179315
+Jose Renteria Avery Meyers
+(Class Encore Leader) (Class Encore Leader)
+he/him/his pronouns
+E-mail: jrenter3@uoregon.edu E-mail: ameyers5@uoregon.edu
+Zoom: https://uoregon.zoom.us/j/8701603353 Zoom: https://uoregon.zoom.us/j/tba
+GEs and LAs will host their office hours at the Price Commons Science Library, Room B004.
+Course Materials
+(Required) Python Programming in Context, 3rd ed., Miller and Ranum. Jones and
+Bartlett Learning, 2021. You can obtain a hard copy or electronic version using multiple methods.
+Note that you will also use this book for part of CIS211. You may acquire it through Duck Store or
+Amazon.
+(Required) Coding Rooms. Besides Canvas, we will use Coding Rooms
+(CR for short) for submitting and grading projects and labs. This tool allows us
+to code during office hours and for programming projects. Join CIS 210 W 24
+in coding rooms using the join link
+(https://app.codingrooms.com/app/?joinCode=C-aHG3G3Y) or join code (C-
+aHG3G3Y) and submit the $30 payment as soon as possible at
+2
+
+https://buy.stripe.com/aEUcPN5q8g578jSeVG. Register and pay with your school email address.
+(Required) iClicker. I will use quizzes as a proxy for taking roll. To respond to those quizzes,
+Download the iClicker app (https://apps.apple.com/us/app/iclicker-student/id899690067). The join
+link for this course is (https://join.iclicker.com/SUGH). Do not buy a physical iClicker - you will not
+need it for this course!!!
+Attendance
+I will follow the new course attendance and engagement policy (https://provost.uoregon.edu/course-
+attendance-and-engagement-policy). The gist is that it is not up to the instructor's judgment whether
+the absence is "excused" or "unexcused."
+• If you have a letter from the Accessible Education Center (AEC -
+https://aec.uoregon.edu/request-accommodations) stating that you may need to miss class, I
+will exempt you from the attendance requirement. If you anticipate needing this
+accommodation (or other accommodations), please get a start with AEC immediately and
+inform me as soon as possible.
+• Absence required for religious observance (https://provost.uoregon.edu/religious-
+observance-accommodations-policy) will be excused, but you need to submit a form
+(https://registrar.uoregon.edu/sites/registrar1.uoregon.edu/files/pdf/form-religious-
+accommodation-request.pdf) before, not after, your absence (and preferably by the second
+week in the term).
+• Suppose you encounter an emergency that will cause you to miss more than the allowances.
+In that case, your options are (a) withdrawing from this course, (b) an incomplete, but only
+if it would satisfy UO incompletes policy (https://provost.uoregon.edu/grades-incompletes-
+policy), or (c) contacting the Dean of Students to request an emergency academic
+notification (https://dos.uoregon.edu/dos-faq).
+• Attendance will count for 5% of the total course grade. Read iClicker in Course Materials
+above. I will give iClicker quizzes regularly throughout the term, but not every lecture.
+Following the lectures is the only way to provide timely interaction with the course instructor.
+There will be no lectures in hybrid instruction mode or parallel Zoom meetings for lectures or lab
+sessions. This course will not provide any recordings of lectures or lab sessions.
+Grading
+CIS majors, minors, and DSCI majors must take CIS 210 graded; others may take it graded or P/N.
+In this course, you accumulate points as you complete assignments, exams, and other required
+activities. The table below shows the point values of each component.
+3
+
+Dropped
+Component Events %
+Events
+Online Exams 2 0 20
+In-person Exams 2 0 40
+Programming projects 10 2 20
+Labs 10 2 10
+Code demo 1 0 5
+Attendance - - 5
+Total 100
+Canvas will automatically drop the lowest grade from Projects and Labs (independently). To calculate
+your letter grade, grades will be rounded but not curved. Then, the letter grade will be computed from
+your final score according to the following table.
+Here is an example of the grade calculation procedure; the following image shows a grade simulator,
+with its components explained below.
+• Online exams are averaged – (80 + 85.00)/2 = 82.50
+• Exams are averaged – (80 + 90.00)/2 = 85.00
+• Code Demo and Attendance grades are based on a scale of 100
+• Projects – The lowest two project grades (10, 50) will not be considered; the project’s
+average is (0+95+100+100+80+90+85)/7 = 90.00
+• Labs – Canvas will not consider the lowest two lab grades (50, 10), so the project’s average is
+(90+90+70+100+95+90+90)/7 = 89.29
+• The final grade after rounding is 82.50 * 0.20 + 85.00 * 0.4 + 85 * 0.05 + 70.00 * 0.05 + 0.90
+* 0.02 + 89.29 * 0.10 = 85.00
+• The course letter grade will be B
+4
+
+Tips for CS 210 Students
+• Come to lectures and participate. Lectures provide a detailed introduction to new material
+and examples relevant to the current or upcoming assignments and exams. Do the assigned
+reading before lectures. Participation in lectures and laboratories is the reason why you are
+paying tuition.
+• Monitor your grades in Canvas using the Grades Menu Option. Notify your instructor
+of problems or discrepancies without delay. You must deal with any grading issues by e-
+mail.
+• Come to office hours. Office hours allow you to get one-on-one help, ask questions, and
+seek general advice. Work smart and ask for help (sooner rather than later).
+• Complete all assignments and submit them on time. Missing projects will have a
+significant effect on your final grade. Do not fall behind; start projects early. You will
+always get partial credit for partial solutions.
+• Inform the instructor ASAP if you are having difficulties. There are often options early
+in the course that simply do not exist later.
+• E-mail Forwarding. Canvas sends you all of the course notifications to your UO e-mail
+address. You can have your UO e-mail automatically forwarded to your primary e-mail
+account.
+Course Communication
+E-mail
+Use E-mail for grading clarifications and personal questions.
+Canvas
+Do not use Canvas Messaging for any course communication. Canvas' messaging system is
+impractical from the instructor's point of view. Make sure you understand that Canvas is not E-mail.
+Discord Campus Wire
+Join Campus Wire, CW, for peer-to-peer communication:
+• Course Name: CS 210: Computer Science I
+• Invite Link: https://campuswire.com/p/GA0CBDA09 (code: 3986)
+Please select the appropriate CW channel for your posts:
+• Announcements – This channel is for official announcements only. Let me know if you
+want to post an announcement, and I will post it.
+• General – Used to post comments, collaboration invitations to your peers, share an exciting
+website, tutorial, book, video, etc.
+• Office hours – Post all OH-related announcements (from the teaching team) and questions
+here.
+• Use E-mail for questions about grading clarifications and personal questions.
+You may also reply to your peers’ questions. When a student answers a question, anyone in the staff
+team can reinforce, complement, or correct the previous answer.
+5
+
+Do not Post Code
+Students will undoubtedly need help with specific code. You may post 1-2 lines of code with a
+particular question; however, do not post code blocks to Discord unless you post privately to the
+instructor or TAs.
+Netiquette Policy
+Please use appropriate online etiquette to post or respond to any electronic communication. This
+course does not tolerate inappropriate forum postings. Below are specific online Netiquette
+guidelines:
+• Never post personal information about another person.
+• You may disagree with someone but never insult another person or use profanity, including
+Internet abbreviations known to represent profanity.
+• Do not repeatedly post the same content (also known as scrolling).
+• Post only material relevant to this course.
+• Avoid posting content in ALL CAPS. Avoid emphasis in response to other posters that
+indicate derision.
+• Try to follow the Golden Rule: treat others as you would like to be treated.
+Academic Integrity Policy
+The CS 210 Academic Integrity Policy is as follows:
+1. Do not share programs/code with other students.
+2. Do not submit the work of others, including any code found online, as your own work.
+3. Be prepared to explain any program code you submit.
+The instructor and the University expect academic honesty; they will handle suspected dishonesty
+according to university policy: "academic misconduct … affects our entire university community …
+it devalues the reputation of our institution, its faculty, its students, and the degrees we offer.
+Moreover, academic misconduct is particularly unfair to the students who do their work with
+integrity and honor. All suspected academic misconduct incidents must be reported to the Office of
+Student Conduct and Community Standards."
+You must credit all online sources you used as references by including a single comment in your
+code with the source URL. Referencing online material does not mean you may duplicate the online
+material.
+You must produce the code you submit for labs and projects. Using ChatGPT or other Generative
+Artificial Intelligence tools to create such code is not considered your work. In any case, be
+prepared to answer questions about the code you submit.
+Cheating means any deception by which a student misrepresents or misleadingly demonstrates that
+the student has mastered information on an academic exercise that the student has not learned. See
+UO Student Conduct Code – https://policies.uoregon.edu/vol-3-administration-student-affairs/ch-1-
+conduct/student-conduct-code. The work you submit must be the result of your engagement with the
+process of computational problem-solving. When you turn in the solution to an assignment with
+your name on it, you state that you are its author. Academic misconduct (e.g., plagiarism, copying
+code, cheating on exams) is a severe violation of the UO student conduct code, and its
+consequences can be severe and permanent. Students who cheat in CS 210 will fail the class.
+6
+
+"Ignorantia juris non excusat" – Ignorance of the law is no excuse. A student unaware of important
+course information may not escape liability for not meeting deadlines or expectations merely by
+being unaware of their content.
+Universal Learning Environment
+The University of Oregon, the CS department, and I are all working to create inclusive learning
+environments. Notify me if aspects of this course's instruction or design hinder your participation.
+Students with a UO disability notification letter should meet with me as early as possible. For
+Support and Services for Students with Disabilities, see the Accessible Education Center
+(http://aec.uoregon.edu/).
+University COVID Policies
+Read and follow the University of Oregon COVID regulations (https://coronavirus.uoregon.edu/).
+Inclement Weather
+Class is generally expected to meet unless the University is officially closed for inclement weather. If
+it becomes necessary to cancel class while the University remains open, this will be announced on
+Canvas and by E-mail. Updates on inclement weather and closure are also communicated in other
+ways described here: https://hr.uoregon.edu/about-hr/campus-notifications/inclement-
+weather/inclement-weather-immediate-updates.
+Reporting Discrimination, Harassment, or Violence
+Students experiencing sex or gender-based discrimination, harassment, or violence should call the 24-7
+hotline at 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of
+prohibited discrimination or harassment may contact the Dean of Students Office at 5411-346-3216 or
+the non-confidential Title IX Coordinator/OICRC at 541-346-3123. Additional resources are available
+at investigations.uoregon.edu/how-get-support.
+Mental Health and Wellness
+Life at college can be very complicated. Students often feel overwhelmed or stressed, experience
+anxiety or depression, struggle with relationships, or just need help navigating challenges. If you're
+facing such challenges, you don't need to handle them alone--there's help and support on campus.
+As your instructor, if I believe you may need additional support, I will express my concerns and the
+reasons for them and refer you to resources that might be helpful. I do not intend to know the details
+of what might be bothering you, but simply to let you know I care and that help is available. Getting
+help is a courageous thing to do—for yourself and those you care about.
+7
+
+University Health Services helps students cope with difficult emotions and life stressors. If you
+need general resources on coping with stress or want to talk with another student who has been in
+the same place as you, visit the Duck Nest (located in the EMU on the ground floor) and get help
+from one of the specially trained Peer Wellness Advocates. Find out more at
+health.uoregon.edu/ducknest.
+University Counseling Services (UCS) has a team of dedicated staff members to support you with
+your concerns, many of whom can provide identity-based support. All clinical services are free and
+confidential. Find out more at counseling.uoregon.edu or by calling 541-346-3227 (anytime UCS is
+closed, the After-Hours Support and Crisis Line is available by calling this same number).
+Basic Needs
+Any student who has difficulty affording groceries or accessing sufficient food to eat every day or who
+lacks a safe and stable place to live and believes this may affect their performance in the course is
+urged to contact the Dean of Students Office (346-3216, 164 Oregon Hall) for support. This UO
+webpage includes resources for food, housing, healthcare, childcare, transportation, technology,
+finances, and legal support: https://blogs.uoregon.edu/basicneeds/food/.
+Accommodations for Religious Observances
+The University makes reasonable accommodations, upon request, for students who are unable to attend
+a class for religious obligations or observance reasons, in accordance with the university
+discrimination policy, which says, “Any student who, because of religious beliefs, is unable to attend
+classes on a particular day shall be excused from attendance requirements and any examination or
+other assignment on that day. The student shall make up the examination or other assignment missed
+because of the absence.” To request accommodations for this course for religious observance, visit the
+Office of the Registrar's website https://registrar.uoregon.edu/calendars/religious-observances and
+complete and submit to the instructor the “Student Religious Accommodation Request” form prior to
+the end of the second week of the term.
+8

@@ -1,0 +1,194 @@
+FIRST-DAY HANDOUT. PRINT THIS AND RETAIN THIS SHEET FOR FUTURE REFERENCE.
+Fall 2012 Instructor: E. Schultz
+M316 #55830 Office: RLM 13.146
+MWF 10-11 a.m. Phone: 232-6188 Email: schultz@math.utexas.edu
+UTC 3.112 Office Hours: MWF 1:00 –1:50 p.m.
+Statistics Lab: Caris Longoria Email: caris.longoria@gmail.com
+TEXTBOOK: StatsPortal: The Basic Practice of Statistics (6th edition) David S. Moore + looseleaf of
+the text. StatsPortal contains an e-Book and many other resources which are required for this course. You
+may purchase your StatsPortal access card + looseleaf at the bookstore. The ISBN is 1-4641-1125-1.
+During class lecture, I will address questions from textbook assignments and you will work problems
+dealing with the new material so be sure to bring your printed textbook to class. Once you have purchased
+your StatsPortal access card, you will need to activate it as follows:
+StatsPortal: To sign up for your course, you should do the following
+1. Go to http://courses.bfwpub.com/bps6e.php (Mac users need to use Firefox)
+2. Click on the link “REGISTER AN ACTIVATION CODE”
+3. You will be prompted to follow the on-screen instructions to find your course.
+4. You will enter the activation code that came with your StatsPortal purchase. If you
+purchased a hard back book with an access card, use the access card to activate
+StatsPortal. You will be asked to enter your email address, choose a password, and
+then you will be ready to go!
+We will cover Chapters 1-24; Chapters 7, 17, and 22 are reviews. You are expected to read each chapter
+carefully; pay close attention to examples, items in bold print, items in boxes, etc. You should read the
+chapter before I lecture on it (See Lecture Schedule on Blackboard). In addition to reading assignments,
+there will be written assignments from the textbook and assignments on StatsPortal. You will need to bring
+a 2 variable statistical calculator, looseleaf textbook, and clean sheets of paper to class daily. Please be
+advised that the material covered in roughly the second half of this course is more difficult than the
+material in the earlier chapters. A lecture schedule can be found on page 4 of this First Day Handout; the
+schedule describes the major topics covered during each of your classes.
+Helpful information and websites:
+1. You should read Pages xxi-xxiv “For Students” for descriptions of many learning resources
+available to you through StatsPortal, including Statistical videos, Stat Tutor, Leaning Curve,
+interactive statistical applets, interactive exercises, software manuals, online-quizzes, and data sets.
+2. https://courses.utexas.edu (Blackboard) Assignments, the syllabus, lecture schedule,
+review materials and many other important documents can be found at this site.
+3. https://quest.cns.utexas.edu Scores on midterms will be available on Quest.
+3. http://courses.bfwpub.com/bps6e.php StatsPortal
+4. www.whfreeman.com quick access to Applets from prior editions of the text.
+CALCULATOR: You will need a basic, non-graphing, 2-variable statistical calculator (e.g. TI-30XIIS,
+TI-35X, or Casio fx-300 MS). Be sure you know how to use your calculator by practicing outside class.
+Always bring your calculator to class as you will need it for work we do in class. When using your
+calculator, avoid repeated rounding off as this will cause your final result to be incorrect; you should round
+only at the last step. Using the memory can be helpful and improve accuracy and efficiency. You will be
+allowed to use only this basic calculator during midterms and the final exam. TI-83, Ti-85, etc calculators
+will not be used during tests or quizzes or the final exam.
+TECHNOLOGY: “Using Technology” sections are found throughout our book; each displays and comments on
+output from TI83Plus, Minitab, Excel and CrunchIt! You will have some assigned problems where you will use
+software; there are quick links to software with many of the problems in your e-book. You must be very familiar with
+output from these various types of software. You will not be permitted to use software during midterms nor during the
+
+final exam; however, you will be expected to interpret software output presented on your midterms and final exam as
+well as classwork.
+ATTENDANCE: There is a strong negative association between the number of days missed by a student and that
+student’s average at the end of the course. There is no direct penalty for missing class. However, if you are absent or
+arrive late, you miss instruction, announcements, classwork, and quizzes which cannot be made up. The most
+effective way to learn the material is to do all reading assignments before class, attend every class, be actively engaged
+in the class, participate in class activities, fill in your class notes promptly, and do the assignment as soon as possible
+after the lecture. If you must miss class, you should get the notes from a classmate.
+Class Participation: This is a large class and I will do my best to make it run smoothly. I will solicit your help in
+many ways such as passing out activities, collecting papers, erasing the chalkboard at the end of class, etc. You can also
+help in the following ways: Always come to class prepared and on time. If you are late unavoidably, please come in
+as quietly as possible and sit down quickly. The configuration of our classroom makes late arrivals extremely
+disruptive to other students. If you have a question that is pertinent to the majority of the class, please, please ask (e.g.
+Would you please speak more loudly? Did you intend that to be sigma or s? I got a different answer., etc) You are
+encouraged to help each other during class but please be sure such conversations are about statistics and keep it fairly
+soft so other people are not disrupted. Personal questions should be addressed during my office hours; no
+appointment is needed. ALL CELL PHONES AND OTHER ELECTRONIC DEVICES MUST BE TURNED
+COMPLETELY OFF DURING CLASS AND EXAMS.
+TESTS: (300 points) There will be 3 midterms, each worth 100 points, during your regular class time. There will not
+be any makeup or rescheduled tests for any reason. Tentative test dates are
+Sept 28 (Chapters 1-5, 8-9) Oct 19 (Chapters 10-12, 14, 15) Nov 19(Chapters 13,16, 18-21, 24)
+The best preparation for your midterms is practice with the problems in your textbook. The problems on your tests
+closely resemble those in your book. This math course, unlike most, requires more reading and interpreting so study
+the examples in your text and those done during class. Each midterm may have a multiple choice section and a
+problem section. Prior to each midterm, during class I will give information concerning the format of the midterm.
+If you must miss a test for illness or family emergency, let me know prior to the test. Some verification of the illness or
+emergency will be required. If you miss a test due to a valid reason (as determined by me), the points missed on the
+test will be made up on the final exam. You can do this for no more than one test. Tests will be returned in class,
+usually the next class. Any questions concerning the grading must be addressed within a week after papers are returned
+in class. ** I will arrange outside class time, to go over the test. Everyone is invited to come; if you scored below 70%
+you should make the appropriate arrangements to come. I keep grades in Excel format; as a courtesy to my students, I
+also will make test scores available online.
+DAILY WORK (75 points). Daily work includes textbook assignments, class activities, class quizzes, and
+assignments on StatsPortal. Textbook assignments are due at the beginning of class on the due date and
+cannot be accepted late for any reason. Papers should be ready for turn in when you come to class (stapled,
+name on front, properly folded, etc). Work must be shown in a clear, organized manner and must support
+your answer. Circle answers, when appropriate; use a ruler when making graphs. Due to time constraints,
+only selected problems on a textbook assignment will be scored and there will be some assignments that are
+not collected at all. Each graded textbook assignment is worth 10 points. Similarly, each class quiz, class
+activity and StatsPortal assignment will be worth 10 points. Learning Curve and video assignments will be
+scored as a 10 or a 0. Please be attentive to due dates for online assignments; they will be listed on
+StatsPortal. Textbook assignments may be turned in early by putting then under my office door. The date
+I receive such papers will be written at the top of that assignment. Class work and quizzes cannot be made
+up so you must plan to attend all classes.
+At the end of the semester, scores on daily work will be averaged and weighted 75 points towards the semester grade.
+It is your responsibility to pick up scored daily work from my office during office hours. You would be wise to keep all
+daily work in a binder for test preparation and also because some of the problems will be referenced again in future
+chapters.
+FINAL EXAM (150 points) December 15, 9-noon
+The final exam will be comprehensive. Location to be announced.
+Course Grade: [Daily weighted+ Midterm#1+Midterm#2+Midterm#3+Final Exam]/525
+A 90-100%; B 80-89.9%; C 70-79.9%; D 60-60.9%; F < 60%
+**Any curve will be determined after the final exam. Use of plus/minuses will be at my discretion.
+
+Further information and notes:
+A. This course carries the Quantitative Reasoning flag. QR courses are designed to equip you with skills that are necessary for
+understanding the types of quantitative arguments you will regularly encounter in your adult and professional life. You should,
+therefore, expect a substantial portion of your grade to come from your use of quantitative skills to analyze real-world problems.
+B. My major goals for your class are to teach you the basic ideas of descriptive and inferential statistics, point out the many areas in
+which an understanding of statistics is relevant, help you to think for yourself, stimulate you intellectually, and allow you to express
+your ideas freely.
+C. The University of Texas provides appropriate academic accommodations for qualified students with disabilities. For more
+information, contact the Office of the Dean of Students at 471-6259, 471-6441 TTY. If you qualify under the University’s Learning
+Disability Policy, your letter from the Dean will take effect after it is presented to your instructor
+D. Please do not bring any food or drink into our classroom.
+E. I want you to be an active participant in your class. In most cases when I ask a question, I really am trying to get you to think more
+deeply and come up with a response. I do not want anyone to be reluctant to respond for fear of giving a wrong answer. A great deal
+of learning can occur even from a wrong answer. I reserve the right to award bonus daily points to students who present problems to
+the class.
+F. You should read each chapter carefully before we start discussing it in class (See Lecture Schedule). Be sure you understand the
+problems within each chapter section as well as those at the end of each chapter. You may need to do more problems than just those
+assigned to thoroughly understand the material, particularly the language, of this course. I strongly encourage you to watch for
+newspaper or other reports involving statistics and read them with a critical eye.
+G. Prerequisite and degree relevance: A minimal score of 30% on the ALEKS placement exam or C- or better in any precalculus or
+calculus course. This course may not be counted toward the major requirement for the Bachelor of Arts with a major in mathematics
+or toward the Bachelor Science in Mathematics. Only one of the following may be counted: Mathematics 316, 306K (Topic 1:
+Applications of Probability Theory), 362K, Statistics and Scientific Computation 303, 304, 305, 306.
+H. If you find a topic is confusing, please seek help immediately. If you have any other concerns or frustrations, please discuss these
+with me or Chris.
+I. Please always print your name and EID on any papers submitted. If you must email, always tell me your entire name and your EID.
+Before emailing, check to see if the information which you need is contained in the First Day Handout or in class notes.
+J. There are many computer resources available to you. There is an undergraduate computer lab in RLM 7.122 and is open to all
+students enrolled in math courses. You may sign up for an individual account in the lab using your UT EID.
+K. I do not have office hours on test days due to other responsibilities.
+Important dates:
+Sept 4 Tuesday Last day of the official add/drop period; after this date, changes in
+registration require the approval of the department chair and usually the student’s
+dean. (See General Information, chapter 4, for details.)
+Last day undergraduate students may register and pay tuition without the approval of
+the registrar.
+Sept 14 Friday Twelfth class day; this is the date the official enrollment count is
+taken. Last day an undergraduate student may add a class except for rare and
+extenuating circumstances. Last day to drop a class for a possible refund.
+Nov 6 Tuesday Last day an undergraduate student may, with the dean’s approval,
+withdraw from the University or drop a class except for urgent and substantiated,
+nonacademic reasons.
+Last day an undergraduate student may change registration in a class to or from a
+pass/fail basis.
+
+M316 Fall 2012 Tentative Lecture Schedule (Textbook: The Basic Practice of Statistics, 6thh edition, David S. Moore)
+DATE CHAPTER TOPIC
+Aug 29 Chap 1 Picturing distributions with graphs
+Aug 31 Chap 1 and 2 Describing distributions with numbers
+Sept 3 Labor Day
+Sept 5 Chap 2 Graphs and descriptions of graphs
+Sept 7 Chap 3 Density curves, normal density curve
+Sept 10 Chap 3 Density curves, normal density curve
+Sept 12 Chap 4 Scatterplots and Correlation
+Sept 14 Chap 5 Linear scatterplots/ regression
+Sept 17 Chap 5 Linear scatterplots, regression
+Sept 19 Chap 8 Producing data: Sampling
+Sept 21 Chap 8, Ch 9 Producing data: Sampling; producing data: experiments
+Sept 24 Chap 9 Producing data: Experiments
+Sept 26 REVIEW Bring all assignments to class and list of questions
+Sept 28 Test #1 Chapters 1-5, 8-9
+Oct 1 Chap 10(read),Chap 11 Basic probability; Sampling distributions including Central Limit Theorem
+Oct 3 Chap 11 Sampling distributions including Central Limit Theorem
+Oct 5 Chap 12 General probability rules including conditional probability
+Oct 8 Chap 14 Confidence Intervals: The basics (z- procedure)
+Oct 10 Chap 14 Confidence Intervals: The basics (z-procedure)
+Oct 12 Chap 15 Tests of Significance: The basics (z-procedure)
+Oct 15 Chap 15 Tests of Significance: The basics (z-procedure)
+Oct 17 Review Bring all assignments to class and a list of questions
+Oct 19 Test #2 Chapters 10-12, 14, 15
+Oct 22 Chap 16 Thinking about inference; power, Type I and II error
+Oct 24 Chap 16 Thinking about inference; power, Type I and II error
+Oct 26 Chap 13 Binomial Random variables; distributions
+Oct 29 Chap 18 Inference about a population mean, t-procedure
+Oct 31 Chap 19 Two-Sample problems
+Nov 2 Chap 19 Inference about 2 population means
+Nov 5 Chap 20 Inference about 1 population proportion
+Nov 7 Chap 20 Inference about 1 population proportion
+Nov 9 Chap 21 Inference about 2 population proportions
+Nov 12 Chap 21, Chap 24 Inference about 2 population proportions; regression model
+Nov 14 Chap 24 Inference for Regression/regression model
+Nov 16 REVIEW Bring all assignments to class and a list of questions
+Nov 19 TEST #3 Chapters 13,16, 18-21, 24
+Nov 21 Chap 24 Inference for Regression/ software
+Nov 23 Thanksgiving
+Nov 26 Chap 6 Two-Way tables; Simpson’s Paradox
+Nov 28 Chap 6 Two-Way tables; Simpson’s Paradox
+Nov 30 Chap 22 Chi Square Test for independence
+Dec 3 Chap 22 Chi Square Test for independence
+Dec 5 Class work/review
+Dec 7 Class work/Review

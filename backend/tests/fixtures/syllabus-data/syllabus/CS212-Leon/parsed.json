@@ -1,0 +1,191 @@
+{
+  "course": {
+    "id": "cs212-leon",
+    "course_code": "CS 212",
+    "course_title": "Computer Science III",
+    "term": null,
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Phil Colbert",
+        "email": "pcolbert@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Los_Angeles",
+        "location": "129 MCK",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Los_Angeles",
+        "location": "129 MCK",
+        "type": "lecture"
+      }
+    ],
+    "location": "129 MCK"
+  },
+  "assessment_categories": [
+    {
+      "id": "quizzes",
+      "name": "Daily quizzes",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 70,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "quizzes_1",
+      "title": "Daily quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Lowest quiz scores dropped automatically",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Daily quizzes: 10%"
+    },
+    {
+      "id": "project_1x",
+      "title": "Project 1x: Learning Unix",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 2,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Up to 48 hours for half credit",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Project 1x: 2% of overall grade"
+    },
+    {
+      "id": "project_2x",
+      "title": "Project 2x: Learning C",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Up to 48 hours for half credit",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Project 2x: 10% of overall grade"
+    },
+    {
+      "id": "project_3x",
+      "title": "Project 3x: Data Structures",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 8,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Up to 48 hours for half credit",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Project 3x: 8% of overall grade"
+    },
+    {
+      "id": "midterm",
+      "title": "Midterm",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm: 30%"
+    },
+    {
+      "id": "final",
+      "title": "Final",
+      "category_id": "exams",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Half credit if missed",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Final: 40%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

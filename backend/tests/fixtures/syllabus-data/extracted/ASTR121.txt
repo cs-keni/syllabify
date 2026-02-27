@@ -1,0 +1,465 @@
+University of Oregon
+Department of Physics
+Winter Term 2024
+ASTR 121, CRN 20802
+ASTR 121 - The Solar System
+Essential Information
+● Instructor Contact Info
+○ Name & pronouns: Dr. Andrea Goering (she/her) - call me Andrea or Dr. Goering
+○ Email: ayocom@uoregon.edu
+○ Office Hours: Mondays 4-5pm in Price Science Commons B040. Drop in to do
+homework with peers or ask questions from class! Graduate Teaching Assistant office
+hours and locations are on page 10.
+○ For a 15-minute one-on-one, book me at: https://calendly.com/andrea-goering
+● Class Time & Location: MWF 3:00 pm - 3:50 pm, Willamette 100
+● Final Exam Time & Location: Tuesday, March 19, 2:45 pm - 4:45 pm, Willamette 100
+● Course Materials
+● Textbook: Astronomy 2e, by Fraknoi, Morrison, Wolff, et al., free online.
+● Assignments: Our Canvas Page: https://canvas.uoregon.edu/courses/226097
+Hello and Welcome!
+Hello and welcome to ASTR 121! I’m excited for you to join me this term. I grew up in Colorado and
+studied Engineering Physics at the Colorado School of Mines, where I began my teaching journey as
+an undergraduate teaching assistant. I came to the UO to pursue a PhD in physics, studying optical
+materials for solar applications. Along my journey, I found that teaching captured my curiosity more
+than my projects in the lab. I’m so grateful to teach you one of my favorite topics: astronomy!
+Course Description
+ASTR 121 traces our evolving knowledge of the Solar System. We will explore how developments in
+technology (naked eye observations, telescopes, robotic space probes) have repeatedly changed our
+understanding about what the Solar System contains and how it formed. We will also move beyond our
+solar system to see how research on exoplanets (planets around other stars) is reshaping our
+understanding of what solar systems can look like. You will learn not only about how the scientific
+process works, but also reflect on how science and technology impact society. Finally, you will reflect
+on how our knowledge of other worlds can help us to understand and cherish our own.
+I do not assume extensive prior knowledge of science or math. We’ll teach you to apply the quantitative
+reasoning you’ll need. Your chances of success in this course are high if you ask a lot of questions
+starting with "why," "how" and "what if" - because curiosity fuels science.
+This course is designated as a Natural Science Core Education course. At UO, Core Education is
+designed to provide a broad, interdisciplinary education that helps students think critically and
+creatively, communicate clearly, and reflect ethically. In this class, you will practice:
+● Critical Thinking through In-Class Activities, Homework, and Think & Explain Questions, and
+● Written Communication through Think & Explain Questions and our Project.
+ASTR 121, Winter 2024: Syllabus - 1
+
+Course Objectives
+By the end of the course, you will be able to…
+● Experience science as a process and a skill:
+○ Formulate questions based on your curiosity, then build and refine your mental models
+(hypotheses) in an iterative process that mirrors the practice of astronomy.
+○ Support arguments and draw conclusions by interpreting data, figures, graphs, and
+images, and applying physical principles, quantitative reasoning, and logical thinking.
+○ Express and reflect upon your mental models during class using various representations
+(words, images, diagrams, and even gestures) in order to collaborate in knowledge-
+building with your peers (mirroring how scientists learn as a community).
+● Build an awareness of astronomy as an evolving discipline:
+○ Communicate about astronomy topics in writing or multimedia formats to an audience of
+your peers, with care taken to center quality sources of evidence and to craft your
+message according to the context, audience, and purpose of your projects.
+○ Hone an awareness of open questions in astronomy, which will help you to better
+appreciate, analyze, and critique the astronomy you encounter in news media, social
+media, and popular culture.
+● Build an understanding of Earth as a planet:
+○ Describe how humans “read the sky” and use observational evidence to conclude that
+the Earth is not at the center of the Solar System.
+○ Explain phenomena such as seasons, moon phases, ocean tides, and eclipses.
+○ Describe what processes shape Earth’s crust, atmosphere, and climate.
+○ Discuss the social, historical, and cultural context and impacts of astronomy.
+● Build an understanding of Solar System Science and Exploration:
+○ Describe the basic characteristics (size, structure, composition, surface features) and
+motions of objects in the solar system.
+○ Compare and contrast solar system objects (planets, moons, rings, and more) to
+analyze how physical laws and chance encounters guided their development.
+○ Describe how the solar system formed and evolved over time.
+○ Explain how we find planets around other stars (exoplanets), and summarize the new
+findings and questions which have arisen from the burst of research in this field.
+○ Discuss our place in space and the prospects for life elsewhere in the Universe.
+I’m not a science major. Why should I take an astronomy course?
+I think it’s important for students pursuing a variety of goals to learn astronomy, because:
+● Astronomy builds skills employers want, including scientific and quantitative reasoning.
+● You will learn strategies for independent learning and study that will serve you well in other
+classes, and in your journey of lifelong learning.
+● Astronomy is part of our history and life. Learning astronomy is inspiring and contributes to a
+sense of purpose and belonging in our world - a sense of being an “Earthling.”
+Where can I find detailed learning goals that I can use to study?
+● In our study guide, lecture slides, and Canvas assignment descriptions.
+ASTR 121, Winter 2024: Syllabus - 2
+
+Andrea’s Teaching Philosophy
+Research shows that people learn best through active learning, in which learners are active
+participants rather than passive observers. Our course design provides structured learning
+opportunities before, during, and after class to help you engage your brain and monitor your own
+understanding as you build your knowledge about astronomy.
+Each learning opportunity plays a different role, thus they all contribute to your grade, with flexibility
+built-in and tailored to each mode. If you find that any element of this course design presents a barrier
+to you or that you would benefit from different types of learning opportunities, please let me know.
+Learning Opportunities and Assessments
+Class Preparation: You are expected to read the daily textbook sections and watch the recommended
+videos. While prep is ungraded, class will be most effective for everyone if you are familiar with key
+terms before class. A “shallow” read before class and “deep” read after class can be highly productive.
+In-Class Activities: We will work together on interactive activities on Canvas during class to guide you
+through new ideas, so please bring a device. You have unlimited attempts so that you can learn from
+your mistakes. Due after class, but activities never close, so you can practice with them repeatedly.
+Focus on understanding and ask lots of questions during class!
+Homework: Homework will flex your critical thinking skills and guide you to apply new ideas.
+Homework will be challenging. You will have two attempts and should strive to build understanding as
+you make mistakes and try again. Please, work together! However, don’t just swap answers: you’ll
+learn more if you ask for explanations and explain what you understand to others. I invite you to office
+hours to find study partners, ask questions, and get some coaching.
+Due Mondays at midnight, grace period through Tuesday at noon; deadline is firm because feedback
+(correct answers and occasional video explainers) will be delivered just after the grace period. I will
+offer makeup homeworks approximately every two weeks, and your lowest score will be dropped.
+Collaborative Quizzes: Short quizzes will help you calibrate your understanding. You will have two
+attempts; only the highest score will count toward your grade. Attempt one is to be done before class,
+on your own. You will be able to see your score, but not which questions you got right or wrong. For
+attempt two, you will have the chance to discuss your thinking with others in class (this process mirrors
+the practice of science). We will review quizzes in class immediately after they are due.
+Quizzes are open-book and open-note, but you should strive to attempt quizzes without these aids to
+maximize your learning. You have an opportunity to retake quizzes within one week. Retakes will be
+modified slightly, and you will have only one attempt.
+Think & Explain Questions:
+We will ask you to explain your reasoning on selected topics via a written or video explanation. You
+may work together to craft your explanations, but the work you submit should be your own (and you
+should cite any sources you use). About 3 of these will be dropped, out of 8 or 9 total offerings.
+ASTR 121, Winter 2024: Syllabus - 3
+
+Weekly Reflections: You’ll reflect on your learning, how you’re doing overall, and how we conduct the
+course. This is your chance to give me feedback - use it! Due Mondays at midnight.
+Study Guide: Our study guide (on Canvas) will include effective study practices, learning goals, and
+links to weekly study guides, which you can use to guide your reading or to study throughout the term. I
+will coach you on effective study techniques after our first quiz,
+Project: You will create two short projects to explore your curiosity and demonstrate your learning
+expressively. You can work solo, or in groups of 2-4, and will have an opportunity for peer review
+before grading occurs. Due during weeks 5 and 10. Topics include:
+● Scientist Spotlight: Learn more about astronomers past and present.
+● AstroBites: Summarize new research results in astronomy. I will keep a forum open where I
+will share relevant recent astronomy discoveries relevant to our weekly topics. You’re also
+invited to also post astronomy you find in the news each week! If you’re interested in a project
+analyzing real-life data as an alternative to the AstroBites assignment, let me know by the end
+of week 5.
+Final Exam: The final exam covers everything in the course. It will be done individually and proctored
+in class during our university-scheduled final exam time. If you miss the final due to an emergency or
+illness, you must request an incomplete grade and schedule a makeup exam next term. Absolutely no
+early exams will be permitted for any reason. Making travel plans without consulting the final exam
+schedule does not constitute an emergency. Please put the final on your calendar now!
+Final exam questions will be in a format similar to homework and quiz questions. You will be expected
+to apply ideas in some novel (and fun) ways, but mostly the final will test your understanding of core
+concepts. You should strive to be as prepared as possible for a final exam that asks you to think
+critically, analyze evidence, and apply your conceptual understanding.
+You’re allowed an 8.5 x 11 inch reference sheet with information on both front and back sides for the
+final exam. After each quiz, I will invite you to share your reference sheet for that unit for extra credit.
+The final exam weighting has been carefully considered to contribute a meaningful amount to your final
+grade, but avoiding the unnecessary stress of a truly high-stakes final. The final exam is unlikely to
+raise or lower your grade by more than a letter grade, but it is likely to lower or raise your grade by an
+amount dependent on how your final exam score compares to your pre-final grade. This can catch
+students off guard, because if you enter the final with a 90%, you might expect to ace the final as well.
+However, remember that you have multiple attempts for almost all assignments except for the final. So,
+the best way to earn your goal grade in the class is to engage completely in all learning opportunities,
+ask lots of questions, and reality-check your understanding of our learning goals regularly throughout
+the term (strategies for this are described in the study guide).
+Extra Credit
+I offer extra credit opportunities throughout the term. Each one will be worth 0.5%. I will offer more than
+4 opportunities, but your total extra credit cannot exceed a total of 2% (though you’re welcome to
+complete additional opportunities just because you find them useful!). I cannot offer individuals any
+opportunities that I do not offer to everyone, and I will not offer any extra credit after the final exam.
+ASTR 121, Winter 2024: Syllabus - 4
+
+Time Estimates and Grade Weighting
+Out-of-class
+Frequency & Percent time per
+Assignment Grading Policy Due Date of Grade week
+Pre-Class
+Preparation Daily, ungraded Before Class 0% 2 - 3 hours
+~ Daily Due after class, but no ~ 30 minutes
+In-Class Activities 20% dropped cutoff date. 10% (to review)
+~ Weekly
+Due Mondays at midnight.
+2 attempts, plus 2 - 3 hours
+retakes Grace period through (including
+Homework 1 dropped Tuesday at noon. 30% office hours)
+Due Mondays at midnight.
+5 graded, with
+Think & Explain revise & resubmit Grace period through
+Questions opportunities Tuesday at noon. 10% ~ 20 minutes
+Weekly
+Reflections Weekly, ungraded Due Mondays midnight. 0% ~ 15 minutes
+Weeks 3, 6, 8, 10 Due on quiz days 15min
+after class begins. Do 1st
+2 attempts attempt before class.
+initially, plus Open one class day
+Quizzes retakes before due. 25% ~ 30 minutes
+Due Week 9 Monday at
+Project Week 9 midnight. 5% < 30 minutes
+In person during final
+Final Exam Finals Week exam time. 20% -
+Time estimate: The total out-of-class time is about 8-12 hours per week (the time above, plus about 2-
+4 hours per week of individual or group study, possibly in the Drop-In Help Center, in Price Science
+Commons B010). Study wisely: spread out your study time and use the study guide (on Canvas).
+Grade scale: A: 90%, B: 80%, C: 70%, D: 60%. I use plus/minus: plus for grades ending in 7, 8, or 9
+and minus for grades ending in 0, 1, and 2. I round all final grades up to the nearest whole number.
+Since zero grades are mathematically unfair, I give a grade of 50% for missing work, with the exception
+of the project and final exam.
+Curving: I do not curve course grades, because curving can drive an unhealthy competitive culture,
+while in our classroom, we value collaboration and growth. It is also unnecessary, because I believe
+each of you is capable of succeeding within this course structure. Sometimes I will curve final grades by
+a small amount if the final exam questions do not probe your understanding in the way I intended.
+Historically, this has resulted in about a 1-2% increase on the final grade, but this is not guaranteed.
+ASTR 121, Winter 2024: Syllabus - 5
+
+Course Policies and Classroom Expectations
+Classroom Expectations for Participation
+This class involves a high level of interaction during class to harness the power of learning together. All
+students are expected to participate by sharing ideas (even when they might be wrong!) and listening
+as others share theirs. I understand that our class can spark exciting conversations; however, for the
+sake of maintaining a quality learning environment for others, please stop your conversations at my
+signal. I recognize that some students may not be comfortable with interactivity (for instance,
+neurodivergent students or students who are learning English). I encourage you to find ways to
+participate in class that are comfortable for you, but also to take risks and expand your comfort zone!
+Respect for Diversity
+You should expect to be welcomed, included, treated with respect, and supported by me and your
+peers. Students of all racial identities, ethnicities, genders, gender identities, gender expressions,
+national origins, religious affiliations, sexual orientations, citizenship statuses, ability and other visible
+and non-visible differences belong in and contribute to this class and this discipline. Please let me know
+if aspects of the instruction, course design, or class activities and content undermine these principles in
+any way. To learn about cultivating inclusive experiences, or to voice a concern, check out the Division
+of Equity and Inclusion and the Center for Multicultural Academic Excellence.
+Communication
+I will communicate with the class through Canvas announcements, Canvas messages, and email.
+Please make sure to check your Canvas messages and email regularly. I check my own email about
+twice daily; you can expect a response within one business day. I will send at least one announcement
+each week to remind you of the week’s due dates.
+To ask questions about…
+● Course content: come to office hours! Office hours are free help sessions - come ask
+questions and work together! You can also ask (and answer!) questions on our Course Content
+Forum. I cannot efficiently answer content questions by email, but can address common themes
+as they emerge on the forum.
+● Personal concerns: email me, or book a time to chat privately.
+● Procedural questions about assignments (such as due dates) or course policy: Please
+post your question on the FAQ Forum. Someone may have already asked (and answered) it!
+The goal is to save us all time wasted in email back-and-forth. For instance, if I make a mistake,
+sometimes I receive (and then must respond to) a flurry of emails; I would much prefer one FAQ
+Forum post which I can address and follow up with an announcement. Thank you in advance!
+● Technical challenges with Canvas: contact the UO Service Portal.
+I will use Canvas announcements to communicate any course changes made in the event of a campus
+emergency, inclement weather, or illness/emergencies of my own. Usually, students will be expected to
+continue coursework as outlined on Canvas. Subscribe to UO Alerts for announcements on campus-
+wide emergencies or closures.
+ASTR 121, Winter 2024: Syllabus - 6
+
+Attendance and Absences
+There is no grade penalty for absences; however, attendance is important because we will develop our
+knowledge through in-class activities and peer interactions during class. A Zoom option will not be
+offered and class will not be recorded; however, recordings from past years will be offered to everyone
+in case of illness or just for review. If you do miss class, you are responsible for completing in-class
+activities, and are encouraged to attend office hours to discuss key ideas and ask questions.
+I will ask you to complete daily attendance logs to record whether you were in class or not and to reflect
+on what you’ve learned. The logs will provide us both with information on your attendance patterns. You
+can earn extra credit by reflecting on your attendance twice throughout the term.
+Late Work and Universal Flexibility
+Weekly work in this course is due Mondays at midnight (with the exception of Quizzes, which are due
+during class time). Activities never close, but the homework grace period ends Tuesday at noon. Grace
+periods are firm end points, to allow for timely feedback.
+Our late work policy is reason-neutral (doesn’t apply differently based on the reason for work being
+late) and automatic (grace periods are automatically applied and I will drop the lowest activities and
+homework during week 7 to assist with decisions about withdrawing). I have built flexibility into the
+course through drops and retakes tailored to each learning opportunity. I hope that this combination of
+structure and flexibility supports your learning. Unfortunately, I cannot offer additional flexibility.
+However, you’re still welcome to email me if you miss an assignment and are unsure of your next
+steps. There are exceptions for AEC accommodations and religious observances. If you will miss an
+assignment due to a religious observance, please send me the observance form by the end of week 2.
+Accessibility Practices
+I strive to enable accessible learning for every student by using Universal Design practices, including:
+● Captioning:
+○ I use presentation software for auto-captioning. It is imperfect, but hopefully helpful.
+○ All video content shown during class will be either captioned, or narrated by me.
+● Recording: Anyone is welcome to record class. Please confirm consent before recording peers.
+● Lengthy Reading: I will provide the page lengths of reading assignments on Canvas.
+● Slides Prior to Class: Slides will be provided on Canvas, typically at least 1 day prior to class.
+● Cold Calling: I will not cold-call students, but I will often invite volunteers to share their thinking.
+● Spelling and Grammar: There will never be a grade penalty for spelling or grammar errors.
+● Note sheet for exams: A note sheet will be allowed for everyone (typed or handwritten).
+● Registered accommodations through the Accessible Education Center (AEC):
+○ Flexibility is not possible for homework, since correct answers are posted immediately
+after the grace period. However, the retake option should support your needs.
+○ Flexibility is possible For Think & Explains and the Project. To request flexibility, please
+email me as soon as is reasonable (and copy your Access Advisor).
+○ In-class writing will never have a time limit, as in-class activities never close.
+○ Extended time does not apply to quizzes, since both attempts are untimed.
+○ Extended time and reduced distraction environments for the final exam are offered
+through the AEC. Schedule your exam time by the Friday of week 8.
+ASTR 121, Winter 2024: Syllabus - 7
+
+University Resources
+One Stop Resources
+A guide to university resources can be found at https://onestop.uoregon.edu/
+Basic Needs
+Being able to meet your basic needs is foundational to your success as a student. If you are having
+difficulty affording food, don’t have a stable, safe place to live, or are struggling to meet another need,
+visit the UO Basic Needs Resource page (https://blogs.uoregon.edu/basicneeds) for information on
+support for food, housing, healthcare, childcare, transportation, technology, finances, and legal support.
+Physical Health and Mental Health Resources
+Physical and mental health resources are available through the University Health Center. Students with
+COVID symptoms should consult UO’s COVID-19 Safety Resources, and isolate and rest. I appreciate
+when students wear a mask when they have a cold, and will do so myself.
+Mental health is a critical factor to your overall well being. Students often feel overwhelmed or stressed,
+experience anxiety or depression, or just need help navigating challenges in their life. It’s healthy to
+seek support. Resources include University Counseling Services and the EMU Duck Nest.
+Technology Access
+You will need to access Canvas during class time. If you do not have access to a suitable device,
+please look into long-term Technology Checkout for Students or Laptop Checkout at the libraries.
+Tutoring and Academic Engagement
+Learning how to learn is a key theme in our course. The Tutoring and Academic Engagement center
+offers free tutoring services and resources on healthy learning routines.
+Asking for Help
+You are always welcome to speak with me about challenges you are experiencing inside or outside of
+the class. If you experience problems causing chronic absences or late work, please let me know so
+that I can help connect you with resources. I will proactively communicate with you throughout the term
+if I am worried about you, and may refer you to the Care and Advocacy Program if needed.
+Academic Integrity
+The University Student Conduct Code defines academic misconduct, which includes unauthorized help
+on assignments and examinations, using sources without acknowledgement, and publishing class
+materials without permission (on Chegg, for instance). I will report suspected misconduct.
+Consequences of misconduct can include failure of the relevant assignment, or of the course.
+I want you to learn together, and find and cite sources properly! Each assignment will outline whether
+and how and whether you might work with others so you can clearly act with academic integrity. Info
+about plagiarism: https://researchguides.uoregon.edu/citing-plagiarism
+How we use artificial intelligence (ChatGPT, Bing AI, etc) is changing rapidly. Here’s the bottom line:
+● These tools are not valid sources of factual information (and are often wrong); do not cite them.
+● Don’t let AI do your writing (or thinking) for you - develop these skills yourself!
+● These tools sometimes generate embarrassingly wrong answers to astro questions.
+ASTR 121, Winter 2024: Syllabus - 8
+
+Reporting Discrimination, Violence, and Sexual Violence
+I am a mandatory reporter of child abuse and an assisting employee for discrimination or violence
+reporting. As an Assisting Employee, I will direct students who disclose prohibited discrimination and
+harassment, including sexual harassment or violence, to resources that can help. I will only report
+information to the university administration if the student requesting assistance asks me to report
+(unless someone is in imminent risk of serious harm or a minor).
+Students who have experienced sexual assault, relationship violence, sex or gender-based bullying,
+stalking, and/or sexual harassment may seek resources and help at safe.uoregon.edu or call the 24-7
+hotline 541-346-SAFE [7244]. Students experiencing all forms of discrimination or harassment may find
+support through the Title IX office or the Dean of Students: investigations.uoregon.edu/how-get-support
+Important Academic Policies and Dates
+Incomplete Grades
+Incomplete grade requests can be made if an unexpected situation happens near the end of the term
+which prevents you from completing a minor but essential course requirement. Requests for an
+incomplete grade must be initiated by the student, and will only be considered for extenuating
+circumstances after the last day to drop (the end of week 7). Emergencies or illness preventing you
+from taking the final are the most likely reasons for an incomplete; however, if there is another reason
+you think qualifies, please email me and we’ll figure it out together.
+For the purposes of interpreting UO’s incomplete policy, satisfactory progress is defined as an overall
+pre-final exam grade above 60%. If that threshold is not met, you should proactively communicate with
+me to seek help. I will also reach out directly if I have concerns about your engagement or progress.
+Petitions and Emergency Academic Notification
+While students do have petition options after the term if they were unable to make changes during the
+term, you should make an effort to address your situation during the term if possible.
+If you experience extraordinary circumstances causing extensive lack of engagement, it may be
+appropriate to engage in the Dean of Students’ Emergency Academic Notification process.
+Winter 2023 Dates & Deadlines
+● Week 1 Saturday: January 13 is the last day to adjust registration without a 'W’
+● Week 2 Monday: January 15 is the last day to add a class via DuckWeb.
+● Week 2 Monday: Martin Luther King, Jr holiday (no class).
+● Week 4: Midway Student Experience Survey: Open Monday 8:00 am - Friday 6:00 pm
+● Week 7 Sunday: February 25 is the last day to withdraw or change grade options.
+● Week 8 Friday: Schedule final exam with AEC to use testing accommodations. I cannot provide
+a reduced-distraction environment on my own, and cannot guarantee extra time in the lecture
+hall, so schedule your exam through AEC to use these accommodations.
+● Weeks 9-10: The End-of-Term Student Experience survey: Open Wednesday, Week 9 at 8:00
+am through Monday, Finals Week at 6:00 am
+● Finals week Friday: March 22, at 5pm, is the last day/time to request an Incomplete.
+ASTR 121, Winter 2024: Syllabus - 9
+
+Office Hour Schedule
+Myself and our GTAs hold office hours for this class during the following times. Physics graduate
+students also staff the free Drop-In Help Center, PSC B010. That schedule will be shared on Canvas.
+Abbreviations: PSC is the Price Science Commons. WIL is Willamette Hall.
+Our GTAs are: Natalie Velez, Fulton McKinney, and Philip Andrago.
+Monday Tuesday Wednesday Thursday Friday
+9-10
+10-11 Natalie,
+PSC B010
+11-12 Philip, Zoom Fulton,
+PSC B010
+12-1
+1-2 Philip
+PSC B010
+2-3
+3-4 Class Class Class
+4-5 Andrea & Fulton,
+Natalie, KLA 171A
+PSC B040
+5-6
+Weekly Routine
+The following routine is just a suggestion. Consider sketching out your own class routine in a planner!
+Before Monday Before Wednesday Before Friday
+Monday Wednesday Friday
+To Do Read for Class & Read for Class & Read for Class &
+Monday Activity Wednesday Activity Friday Activity /
+Quiz
+Note Office Review & Begin Attempt
+Homework Hours Study Homework Quiz Continue
+Questions Homework
+HW Due
+Quiz Due
+ASTR 121, Winter 2024: Syllabus - 10
+
+Course Schedule
+Wk Monday Wednesday Friday
+Reading the Sky
+● Read 1.6
+1
+Welcome to ASTR 121! ● Read 2.2, 2.4 Cycles of the Sun
+1/8 -
+● Read: Syllabus ● Optional: 2.1, 2.3 ● Read 4.1 - 4.4
+1/12
+● Watch Intro to Astronomy ● Watch Cycles in the Sky
+● Watch Scientific Revolution
+2 Moon Cycles: Phase and Eclipses
+No Class Moon Cycles: Tides
+1/15 - ● Read 4.5, 4.7
+January 15 (MLK Day) ● Read 4.6
+1/19 ● Watch Moon Phases
+3 Planetary Motion Solar System Origins Study Strategies &
+1/22 - ● Read 3.1 - 3.4 ● Read 7.1 - 7.4 Metacognition Workshop
+1/26 ● Watch Gravity ● Watch Intro to Solar System Quiz 1: Weeks 1-2
+4 Planet Earth
+Earth’s Climate Terrestrial Planet Atmospheres
+1/29 - ● Read 8.1 - 8.2, 8.5
+● Read 8.3 - 8.4 Project Introduction
+2/2 ● Watch The Earth
+Origin of the Moon
+5 The Moon & Mercury
+Comparative Planetology ● Read 9.4
+2/5 - ● Read 9.1 - 9.3, 9.5
+● Read CH 9 Thinking Ahead ● Watch The Moon
+2/9 ● Watch Mercury
+Quiz 2: Weeks 3-4
+6 Venus Mars Contrasting Worlds
+2/12 - ● Read 10.1 - 10.3 ● Read 10.4 - 10.5 ● Read 10.6
+2/16 ● Watch Venus ● Watch Mars Grade Example Projects
+7 Giant Planets I Giant Planets II
+Quiz 3: Weeks 5-6
+2/19 - ● Read 11.1 - 11.2 ● Read 11.3
+Project Time and Q&A
+2/23 ● Watch Jupiter ● Watch Uranus and Neptune
+Planetary Rings
+8 Moons of the Outer Worlds
+● Read 12.5
+2/26 - ● Read 12.1 - 12.3 Project Peer Review
+● Watch Saturn
+3/1 ● Watch Jupiter’s Moons
+Project Draft Due
+Asteroids & Comets KBOs, Pluto & Charon Meteors
+9
+● Read 13.1 - 13.3 ● Read 13.4, 12.4 ● Read 14.1 - 14.2
+3/4 -
+● Watch Asteroids ● Watch The Oort Cloud ● Watch Meteors
+3/8
+● Watch Comets Project Due Quiz 4: Weeks 7-8
+Solar System Formation
+10 Exoplanets & Life
+● Read 14.3, 14.5 Final Review
+3/11 - ● Read 14.4, CH 30
+● Watch Why is the Solar Quiz 5: Weeks 9-10
+3/15 ● Watch Exoplanets
+System Flat?
+Final Exam: Tuesday, March 19, 2:45 pm - 4:45 pm
+ASTR 121, Winter 2024: Syllabus - 11

@@ -1,0 +1,177 @@
+Course SyllabusAlternative formats
+Jump to Today
+Instructor:
+
+Professor David Levin 
+Fenton 310
+email: dlevin@uoregon.edu
+
+ 
+
+OFFICE HOURS: MW 2:30-3:30
+
+Prerequisites: MATH 252
+
+Time and Location: 
+
+MTWF	1:00pm - 1:50pm	Esslinger 107
+Important Note:
+
+Students who already have credit for MATH 462 cannot get credit for MATH 343.
+
+Students who take 343 and 462 concurrently cannot get credit for 343.
+
+Students who have credit for 343 can later take 462 and get credit, but the two courses cannot both be used to satisfy the "four upper-division course" requirement for the Math Major.
+
+Text: Statistics for the Sciences, Buntinas and Funk.   Available at the DuckStore.
+
+Course Content:
+
+We will do a selection of topics from chapters 1-10, time permitting. 
+
+
+Learning Outcomes:
+
+By the end of the course, the successful student will have knowledge of the basic tools of statistics and of probability theory necessary to understand basic models and tests commonly used in parametric statistics.
+
+In particular, the student will be expected to understand the use of random variable and their mass/density functions and distribution functions, as well as typical types of random variables used in statistics, for instance: Bernoulli, binomial, uniform, exponential and Gaussian random variables. Additionally, the student will be expected to know certain quantities attached to random variables, for instance mean, variance and percentiles, their probabilistic interpretation, and how to estimate these quantities from data.
+
+The statistical content of the course will revolve mostly around modeling and hypothesis testing. The successful student will have an understanding of what types of standard random variables are applicable in various situations/models, and in some instances what assumptions/simplifications are necessary to model certain situations by a particular type of random variable. The student will be able to form hypotheses from simple data, and know various methods (tests) to confirm/reject a hypothesis within a certain confidence interval under various assumptions on the data. The student should come away with an understanding of how these methods will scale to actual data sets which may arise in the sciences or other disciplines.
+
+Canvas:
+
+Homework assignments will be posted on Canvas.  You are responsible for any announcements on Canvas, such as assignment due dates and other important course related information.    Please be sure that your Canvas settings are current and set to an email address that you read daily.  
+
+If you contact me with a question, I will try to respond within one business day. 
+
+Grading:
+
+Course grade determined by:
+
+• Homework 30%
+
+• Midterm Exam 30%
+
+• Final exam 40%
+
+Scale:  90-100% A, 80-89% B, 70-79% C, 60-69% D, 0-59% F.   Adjustments may be made to grades at the end of the term.
+
+Homework:
+
+Assignments will be posted on Canvas and completed assignments must be uploaded into Canvas.   Homework is due every Wednesday at 11:59PM, unless otherwise specified.    Homework should be in ONE FILE, legible, complete and self-contained.  You should work out answers on scratch paper, and then write up in grammatically correct and logical format an intelligible answer.  An answer without an explanation is not acceptable.  No late or make-up homework will be accepted (unless arranged 48 hours before the due date with me).Exams:
+
+Midterm Exam :
+
+Wednesday of Week 5.   In the case the midterm is missed, the final will count for 70% of your course grade.
+
+Final Exam:
+
+As specified by the Registrar, Wednesday 14:45
+Wednesday, March 20.  The final exam is a part of the regular quarter, and you are expected to be present.  If you cannot attend the final exam due to a conflicting obligation, please do not take the course.
+
+The use of cellular phones, or any device that communicates with the outside world is strictly forbidden during exams.
+
+ 
+
+Accessibility:
+
+For those of you who are currently registered with Accessible Education Center for a documented disability, please present your paperwork to me during the first week of the term so that we can design a plan for you. Those of you with a disability (or who might) but are not registered with AEC should contact them as soon as possible. It is much more likely that measures can be taken to provide adequate special accommodation if the organization is done through AEC. I have attempted to provide documents that are accessible. Please let me know if you need additional accommodations.
+
+Student Conduct:
+
+I plan to treat every student with respect and, as such, expect my students to show respect for me and for the class as a whole. Violations of the student conduct code result in the incident being included on your student conduct record and can result in a failing grade on any course work related to the violation or a failing grade in the course. The University of Oregon requires all instances of cheating be reported, no matter how small.
+
+Cheating includes, but is not limited to:
+
+Looking at another student’s exam during a test
+Copying the work of another person (student or otherwise) and submitting it as your own.
+Using any materials except those explicitly approved during a test-taking situation.
+Resubmitting graded work that was altered after being returned.
+
+For a list of other descriptions of cheating, see the Student Conduct Code, http://dos.uoregon.edu/con.
+
+The University Student Conduct Code defines academic misconduct, which includes unauthorized help on assignments and examinations and the use of sources without acknowledgment. Academic misconduct is prohibited at UO. Consequences of a reported misconduct to the Office of Student Conduct and Community Standards can include failure of the course.
+Suggestions for Successful Study:
+
+Don’t get behind in your homework, reading, etc.
+Participate in class, ask questions, and make use of my office hours.
+Make friends with your classmates -- you can find out for instance what material was covered when you missed the class or discuss homework problems with them.  Read ahead in the book. Even reading the first few pages of each lesson will help the material sink in quicker during lecture and allow you to ask meaningful questions.
+Keep all your old homework assignments, midterms, and quizzes -- most probably, you will find them useful when you are studying for future tests.
+
+Important Dates:
+
+Please see http://registrar.uoregon.edu/calendars.html for details.
+
+Community Standards:
+
+The University of Oregon community is dedicated to the advancement of knowledge and the development of integrity. In order to thrive and excel, this community must preserve the freedom of thought and expression of all its members. The University of Oregon has a long and illustrious history in the area of academic freedom and freedom of speech. A culture of respect that honors the rights, safety, dignity and worth of every individual is essential to preserve such freedom. We affirm our respect for the rights and well-being of all members.
+
+Expected Classroom Behavior:
+
+Students are expected to behave respectfully toward each other and toward the instructor during class time. This includes re- fraining from using cell phones during lectures, unless allowed for instructional purposes by your instructor.
+
+Attendance:
+
+Attendance is not required but it is strongly encouraged, as it gives you a chance to ask questions and clarify any potential confusion.
+
+Academic Disruption:
+
+In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and/or access alternative assignments. Students are also expected to continue coursework as outlined in this syllabus or other instructions on Canvas.
+
+Staying Safe in Classes:
+
+As the University of Oregon continues in-person in- struction, instructors and students play a key role in keeping our community healthy and safe.
+
+
+Prevention: The best way to prevent illness is to avoid being exposed to the virus. There are some general precautions the CDC recommends to prevent the spread of respiratory diseases.
+
+Stay up to date on your COVID-19 vaccines.
+
+Wear a face covering that covers both your mouth and nose when indoors around others.
+
+Wash your hands often with soap and water for at least 20 seconds.
+
+Avoid touching your eyes, nose, and mouth.
+
+Stay home if you are sick. Do not go to work or class.
+
+Cover your cough or sneeze with a tissue, then throw the tissue in the trash.
+
+Clean and disinfect frequently touched objects and surfaces.
+
+Support:
+
+The following resources are available to you as a student.
+
+University Health Services or call (541) 346-2770
+
+University Counseling Center or call (541) 346-3277 or (541) 346-3227 (after hours)
+
+Academic Advising or call (541) 346-3211
+
+Dean of Students or call (541)-346-3216
+
+Accommodation for Religious Observances:
+
+The university makes reasonable accommodations, upon request, for students who are unable to attend a class for religious obligations or observance reasons, in accordance with the university discrimination policy which says any student who, because of religious beliefs, is unable to attend classes on a particular day shall be excused from attendance requirements and from any examination or other assignment on that day. The student shall make up the examination or other assignment missed because of the absence. To request accommodations for this course for religious observance, visit the Office of the Registrar’s website (https://registrar.uoregon.edu/calendars/religious-observances) and complete and submit to the instructor the Student Religious Accommodation Request form prior to the end of the second week of the term.
+
+Basic Needs:
+
+Any student who has difficulty affording groceries or accessing sufficient food to eat every day, or who lacks a safe and stable place to live and believes this may affect their performance in the course is urged to contact the Dean of Students Office (346-3216, 164 Oregon Hall) for support.
+
+This UO webpage includes resources for food, housing, healthcare, childcare, transportation, technology, finances, and legal support: https://blogs.uoregon.edu/basicneeds/food/
+
+Title IX:
+
+I am an assisting employee. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex or gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit http://safe.uoregon.edu for help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of Students Office at 5411-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123. Additional resources are available at http://investigations.uoregon.edu/how-get-support. I am also a mandatory reporter of child abuse. 
+
+Diversity and Inclusion:
+
+The University of Oregon community values diversity and seeks to foster equity and inclusion in a welcoming, safe, and respectful community. In this course, well uphold these principles by encouraging the exploration, engagement, and expression of distinct perspectives and diverse identities. We will value each class members experiences and contributions and communi- cate disagreements respectfully. Please notify me if you feel aspects of the course undermine these principles in any way.
+
+Other information:
+
+In case of inclement weather, please check Canvas for further instructions. In general, the university does not close for snow, etc. If it is not safe for you to come to campus, please be sure to email me right away.
+
+As the university community adjusts to teaching and learning in the context
+of the COVID-19 pandemic, course requirements, deadlines, and grading percentages are subject to change, i.e. the syllabus might be changed/updated.

@@ -1,0 +1,114 @@
+Differential Calculus
+Summer2012
+Instructor: Zachary Miner
+Office: RLM 11.106
+E-mail: zminer@math.utexas.edu
+Office Hours: TuTh 3-5pm (subject to change).
+Teaching Assistant: Gil Moss
+Office: RLM 9.132
+E-mail: gmoss@math.utexas.edu
+Office Hours: TuTh 12n-3pm (subject to change).
+Teaching Assistant: Phil Vucin
+Office: RLM 12.146
+E-mail: pvucin@math.utexas.edu
+Office Hours: MWF 12:15-2:15pm (subject to change).
+Course Websites
+This course will have two websites:
+• Blackboard, accessible from http://courses.utexas.edu/, and
+• Quest, accessible from http://quest.cns.utexas.edu/.
+Textbook
+Calculus, Early Transcendentals (Seventh Edition) by James Stewart
+Course Overview
+M408K is one of two first-year calculus courses. It is directed at students in the natural and social
+sciences and at engineering students. In comparison with M408C, it covers fewer chapters of the text.
+Success in this course will depend on your willingness to engage with mathematics in ways more
+meaningful than rote memorization. The structure of each class will change depending on the subject.
+On some days, there will be lecture; on some days the majority of class time will be spent in groups
+solving problems and discussing questions posed for and by the class. My hope for this class is that
+we actually have a meaningful time learning, discussing, and making sense of calculus together. My
+goal is not to produce passive learners who memorize well.
+On many occasions, you will be asked to solve problems that your teachers have not already solved
+for you. The reasoning for this is simple: (a) we want you to think; and (b) real-life problems are not
+already solved for you! We understand that this is harder, and you should understand it going in.
+The syllabus for M 408K includes most of the basic topics in the theory of functions of a real variable:
+algebraic,trigonometric,logarithmicandexponentialfunctionsandtheirlimits,continuity,derivatives,
+maxima and minima, as well as definite integrals and the Fundamental Theorem of Calculus.
+1
+
+Prerequisites
+The prerequisite for the class is the “minimum required score” on the ALEKS exam. If you do not
+meet this prerequisite, you will be dropped from the course in the first week of school.
+Grade Distribution
+Participation, 10%
+Homework, 10%
+Quizzes, 20%
+Midterm Exams, 30%
+Final Exam, 30%
+The plus/minus option for grading will be used in this class.
+Ifacertaingradeisimportanttoyou,whetheritbeaC-oranA,Irecommendyouworkforthatgrade
+BEFORE the final exam! The grade you get is the grade you earn. It is your responsibility to earn
+the grade you want or need. The help we can provide with regard to your grade is more effective the
+sooneritisrequested. Nothingcanbedonetoimproveyourgradeonceyouhavetakenthefinalexam.
+Homeworks, Quizzes, and Exams
+Homework: Online homework will be assigned from each section of the text using the UT online
+homeworkservice,Quest; allanswersandgradeswillbereturnedonlinealsousingQuest. Assignments
+will be posted before the material is covered during lecture and will be due at 9:59pm on the night
+before the next lecture.
+Homework is all submitted online, so the issue of late homework does not exist for our class. (If you’d
+like, you can interpret the previous sentence as ‘No late homework’.)
+Quizzes: Ineachdiscussionsection, therewillbeashortquizonthematerialcoveredinthehomework
+and lectures. Calculators are not allowed during quizzes.
+Exams: Calculators are not allowed during exams. Some of the questions on each exam will be
+multiple choice, like problems on the QUEST homework system, and some will require that you show
+your work. These exams will be given during discussion. There will be no makeup exams.
+The lowest exam grade will be dropped. The lowest quiz grade will be dropped. The two lowest
+homework grades will be dropped.
+Note on Participation
+This portion of your grade is based on your attempt at learning the material, your contribution to a
+healthy learning environment in the classroom, and your willingness to discuss and to make changes
+in your learning habits once mistakes are made. For instance, if your grade is low, I will discuss your
+situation with you and together we will come up with possible changes you can make. If you make
+no changes at all, then not only will your next exam grade be low, but your participation grade will
+suffer, too. My objective here is that you learn from your mistakes! Often, we don’t improve until we
+make a mistake.
+2
+
+Students with Disabilities
+UT provides upon request appropriate academic accommodations for qualified students with disabili-
+ties. For more information, contact the Office of the Dean of Students at 471- 6259, 471-6441 TTY.
+Tutoring - Sanger and Math Department
+The Sanger Learning Center offers tutoring services to precalculus students. This includes “Drop-In
+Tutoring”: a free, walk-in study environment supported by mathematics tutors. Additionally, they
+offer appointment tutoring: one-on-one tutoring sessions for a charge of around $13.50 per hour. For
+more information, see: http://lifelearning.utexas.edu/. Please note that while Sanger is a useful re-
+source, the tutors there are not as familiar with our presentation and expectations as we are. (If
+Sanger does not suit you, the math department keeps a list of math graduate students who also tutor,
+but whose rates vary.)
+Tentative Course Schedule
+• Review: Inverses, exponentials, and logarithms.
+– Friday, June 1. Sections 1.5,1.6.
+• Limits and derivatives.
+– Monday, June 4. Sections 2.1,2.2.
+– Wednesday, June 6. Sections 2.3,2.5.
+– Friday, June 8. Sections 2.6,2.7.
+– Monday, June 11. Sections 2.8,3.1.
+– Tuesday, June 12. Exam 1.
+• Derivatives.
+– Wednesday, June 13. Sections 3.2,3.3.
+– Friday, June 15. Sections 3.4,3.5.
+– Monday, June 18. Sections 3.6,3.9.
+– Wedneday, June 20. Sections 3.10,4.1.
+– Thursday, June 21. Exam 2.
+• Applications of differentiation.
+– Friday, June 22. Sections 4.2,4.3.
+– Monday, June 25. Sections 4.4,4.5.
+– Wednesday, June 27. Sections 4.7,4.9.
+– Thursday, June 28. Exam 3.
+• Integrals and the Fundamental Theorem of Calculus.
+– Friday, June 29. Sections 5.1,5.2.
+– Monday, July 2. Section 5.3.
+– Friday, July 6. Final Exam.
+One more thing . . .
+I am committed to doing everything I can to help you make the most of this course. If you have
+questions, comments, or suggestions regarding our class, please do not hesitate to contact me.
+3

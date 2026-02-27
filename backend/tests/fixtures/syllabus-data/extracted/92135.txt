@@ -1,0 +1,96 @@
+Mathematics 328K Summer term 2012 Unique #92135
+Instructor: Professor Jeffrey Vaaler
+Office: RLM 9.126
+Office Phone: 471-7125
+e-mail address: vaaler@math.utexas.edu (read daily)
+Office hours: Monday from 1:00 pm to 2:00 pm,
+and Thursday from 3:00 pm to 4:00 pm
+Class meetings: MTuWThF from 10:00 am to 11:15 am in RLM 6.114
+First class day: Thursday, May 31
+Last class day: Thursday, July 5
+Text: Kenneth H. Rosen, Elementary Number Theory, Sixth Edition, Addison Wesley
+Longman, (2011).
+Prerequisites: Students are assumed to have had either M341 or M325K, with a grade
+of at least C.
+Homework: Homework assignments will be due on most Tuesdays and Fridays, as indi-
+cated on page 3. But notice that the last homework assignment is due on Thursday,
+July 5.
+Late homework will not be accepted.
+Exam dates: There will be one 75 minute exam in class on Friday, June 22. There will
+be a final exam (as scheduled in the UT course schedule) on Friday, July 6, from 9:00
+am until noon.
+Exam format: The exam on June 22, will have six questions. The exam questions will
+be similar to the homework problems.
+The final exam on July 6, will have twelve questions. The questions will be similar
+to the homework problems assigned during the course.
+Term grade: The homework scores will determine 25% of your grade. The exam on June
+22 will account for 25% of your grade, and the final exam will account for 50% of your
+grade. Your final grade will then be determined as follows:
+92 – 100 points: A, 90 – 91 points: A-,
+88 – 89 points: B+, 82 – 87 points: B, 80 – 81 points: B-,
+78 – 79 points: C+, 67 – 77 points: C, 65 – 66 points: C-,
+63 – 64 points: D+, 52 – 62 points: D, 50 – 51 points: D-,
+less than 50 points: F.
+Notes: Should it be necessary to miss an exam due to illness or a death in your
+family, please notify me by e-mail as soon as possible.
+“The University of Texas at Austin provides upon request appropriate academic ac-
+commodations for qualified students with disabilities. For more information, contact the
+Office of the Dean of Students at 471-6259, 471-4641 TTY.”
+
+Mathematics 328K Summer term 2012 Unique #92135
+Approximate schedule of lectures:
+The following is an approximate schedule of the sections from the text Elementary
+Number Theory, Sixth Edition, by K. H. Rosen, that will be covered by lectures in class.
+The subject matter of the course is esentially the subject matter of the sections of the text
+listed here.
+May 31: Sections 1.1, 1.2
+June 1: Section 1.3, Appendix B
+June 4: Section 1.4, 1.5
+June 5: Section 3.1
+June 6: Sections 3.2, 3.3
+June 7: Section 3.4, 3.5
+June 8: Section 3.7
+June 11: Sections 4.1, 4.2
+June 12: Section 4.3
+June 13: Section 4.4
+June 14: Sections 4.4
+June 15: Section 6.1
+June 18: Sections 6.1
+June 19: Section 6.3
+June 20: Section 6.3
+June 21: Review
+June 22: Midterm Exam in class
+June 25: Sections 7.1, 7.2
+June 26: Section 7.4, 9.1
+June 27: Sections 9.1, 9.2
+June 28: Section 9.2, 9.3
+June 29: Section 9.3, 9.4
+July 2: Section 11.1, 11.2
+July 3: Section 11.1, 11.2
+July 4: Holiday–class does not meet
+July 5: Review
+July 6: Final Exam from 9:00 am to noon.
+
+Mathematics 328K Summer term 2012 Unique #92135
+Schedule of homework assignments:
+The following homework problems should be handed in by the end of class on the
+dates indicated. All homework assignments are from the text Elementary Number Theory,
+Sixth edition, by K. H. Rosen.
+Due on June 5: Section 1.2 #22; section 1.3 #6, #8; section 1.4 #10;
+section 1.5 #34, #38.
+Due on June 8: Section 3.1 #8; section 3.3 #10, #14, #24, #26;
+section 3.4 #2.
+Due on June 12: Section 3.4 #4; section 3.5 #10, #32, #40, #42, #56.
+Due on June 15: Section 3.5 #66, #70; section 3.7 #2, #20, #24;
+section 4.1 #4.
+Due on June 19: Section 4.1 #12, #24, #30; section 4.2 #6, #18;
+section 4.3 #4.
+Due on June 22: Section 4.3 #10, #14; section 4.4 #2, #4, #6, #8.
+Due on June 26: Section 6.1 #20, #22, #34; section 6.3 #6, #10;
+section 7.1 #22.
+Due on June 29: Section 7.1 #32, #40, #42; section 7.2 #12, #22;
+section 7.4 #22.
+Due on July 3: Section 9.1 #10, #16, #18; section 9.2 #8, #16;
+section 9.3 #4.
+Due on July 5: Section 9.4 #2, #4, #10; section 11.1 #14, #48;
+section 11.2 #2.

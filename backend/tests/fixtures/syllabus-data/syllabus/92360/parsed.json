@@ -1,0 +1,161 @@
+{
+  "course": {
+    "id": "92360",
+    "course_code": "M 341",
+    "course_title": "Linear Algebra and Matrix Theory",
+    "term": "Summer 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Amir Mohammadi",
+        "email": "amir@math.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 6.124",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 6.124",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "WE",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 6.124",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 6.124",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-5",
+        "day_of_week": "FR",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 6.124",
+        "type": "lecture"
+      }
+    ],
+    "location": "RLM 6.124"
+  },
+  "assessment_categories": [
+    {
+      "id": "homework_quizzes",
+      "name": "Homework and Quizzes",
+      "weight_percent": 35,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "Midterm",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 35,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_quizzes_1",
+      "title": "Homework and Quizzes",
+      "category_id": "homework_quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 35,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Lowest quiz dropped, no makeup",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "8 quizzes, lowest dropped 35%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": "2012-07-27T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No makeup",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Midterm July 27 30%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2012-08-13T09:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 35,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final Aug 13 9am-12pm 35%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

@@ -1,0 +1,163 @@
+CS 341 Automata Theory
+Elaine Rich
+Fall 2014
+Classes:
+Final Exam Final Exam
+Unique Time Room
+Time Location
+T,TH 9:30 – Wed, Dec. 10,
+53040 GDC 1.304
+11:00 9:00 - noon
+Goals:
+See the class website: http://www.cs.utexas.edu/users/ear/cs341/
+Prerequisites:
+Computer Science 429 or 429H with a grade of at least C-.
+Textbook:
+I have written a text book for this class. It is: Automata, Computability and
+Complexity: Theory and Applications, Prentice-Hall, 2008. It should be available
+at the Coop or online from Amazon or Barnes and Noble. One option is to
+purchase the electronic version of the book. But you’ll notice (below) that all the
+exams in this class are open book. Obviously computers aren’t allowed during
+the exam. So, if you decide to buy the ebook, make sure that you have a
+way to borrow a hardcopy for the three exams.
+There is a website that goes along with the book. It is organized into pages that
+correspond to the chapters of the book. On those pages, you will find links to
+many other useful sites.
+If you would like another book as a supplementary text, I recommend
+Introduction to the Theory of Computation, Michael Sipser. Brooks/Cole, 1996.
+Staff
+Office
+Office
+Hours
+T, W
+Elaine GDC
+ear@cs.utexas.edu 11:00 -
+Rich 5.810
+noon
+Sultan GDC
+sulakul@gmail.com TBD
+Kulakhmetov basement
+
+GDC
+TBD
+basement
+Prerequisites
+To do well in this class, you need to know some logic and have some experience
+proving things. You need some background in the design and analysis of
+algorithms, including simple ones involving graphs. And you need at least a
+couple of semesters of programming experience. Here are the official
+prerequisites: The following coursework with a grade of at least C- in each:
+Computer Science 311, 311H, 313H or 313K; Computer Science 314, 314H,
+315, or 315H; Computer Science 310, 310H, 429, or 429H; 331, 331H, 341,
+341H, 357 or 357H; and Mathematics 408C, 408K, or 408N. If you think you have
+the background but not the prerequisites, come talk to me.
+Regular Monday study sessions
+On MONDAY evenings, there will be somewhat organized study sessions. We’ll
+start in about the third week of the semester. They’ll be from 6:00 to 8:00 in GDC
+6.302, except that on Monday, March 25, we will meet in GDC 2.502.
+These sessions will be run by students who have taken CS 341 in the past and
+actually liked it. If you're having any difficulty at all working on the problems on
+your own, make sure to come to these sessions. Also, you can come to find a
+guaranteed study group.
+Grading
+I think we all wish that we could have courses without grades. You hate worrying
+about grades. I hate having to assign grades. But grades are essential to insuring
+that your degree has the value it deserves. So we have to have a grading system
+and that system has to have three essential properties:
+ It has to motivate everyone to learn as much as possible.
+ It has to be fair to everyone in the class.
+ It has to be a true measure of how much each student knows about the
+class material.
+For this class, I will assign grades using the following formula:
+ Midterm Exams: 38%
+ Final Exam: 35%
+ Homeworks: 15%
+ Take home quizzes: 7%
+ Class participation, effort, and, in exceptional cases, substantial
+improvement over the course of the semester: 5%
+
+If you believe that we have made a mistake in grading any of your work, you
+have a week from the time it was returned to submit to us a written description of
+the problem. After that week, no grading issues will be revisited.
+Exams
+There will be two midterm exams and a final. All exams are open book, meaning
+you may bring the textbook (or one other book) to the exam. But you may not
+bring other things (e.g., homework answers, old exams). Obviously computers
+aren’t allowed during the exam. So, if you decide to buy the ebook, make
+sure that you have a way to borrow a hardcopy for the three exams.
+The two midterm exams will be given on TUESDAY EVENINGS. Students with a
+conflict at this time should inform the instructor at least two weeks before the
+exam. Arrangements for a makeup the following Wednesday morning will be
+made. The exam schedule is as follows:
+Date Time R oom
+Midterm 1 Tuesday, Oct. 7 7:00 - 9:00 pm TBD
+Midterm 2 Tuesday, Nov. 2 7:00 - 9:00 pm TBD
+Final Wednesday, Dec. 10 9 :00 – noon
+Homeworks
+The only way to learn the material in this class is to practice. It's like learning to
+play the piano. You can't learn much just by watching someone else. You
+actually have to do it yourself. You should plan to spend at least five hours every
+week working problems.
+Most weeks there will be a homework assignment that you will be asked to turn in.
+The homework assignments will be posted on Piazza. Homeworks are due in
+class on the date specified. Homework answers will be posted on Piazza.
+Homeworks will not be accepted once the answers have been published. If you
+cannot make it to class, you may submit your homework early, either at an earlier
+class or to me in my office. Electronic submissions are a problem for several
+reasons. Therefore we have established the following policy for them: Everyone
+gets one free electronic submission. We will only accept additional electronic
+submissions in cases of emergency. Note that out of town job interviews and
+things of that sort are not emergencies. In those cases, plan ahead.
+Most (probably all) of the homework assignments will contain some problems
+marked with an asterisk. Those problems are optional. They won’t be graded.
+We provide them so that you can get additional practice. Solutions to them will
+be included with the other homework solutions.
+
+See the class policy on academic integrity for the rules on working with other
+people on homework assignments. The rules described there will be strictly
+enforced. If you copy answers from anyone (and this includes copying my
+answers as handed out in previous semesters), you will fail the class.
+Class Attendance and Quizzes
+Most of the material that will be covered in class is in the book. However, we will
+use the class time to clarify issues and to work additional problems. It is
+important that you come.
+To encourage class attendance, there will be take-home quizzes handed out
+during class. There will be about 10 of them during the semester. To get a copy
+of the quiz, you must be in class. None will be handed out later, nor will they be
+available on the web. You may not make copies of the quiz; only originals will be
+accepted. Quizzes must be handed in at the class following the one at which they
+were handed out. Each student must hand in his or her own quiz. No make ups
+will be allowed. We will drop one quiz score so you can miss one without any
+penalty.
+Piazza
+Piazza is a free online gathering place where students can ask, answer, and
+explore 24/7. Read more at www.piazza.com. We will use Piazza for important
+class announcements. In addition, you can use it to post questions and get
+answers both from other students and from the instructors. Once registration has
+settled down, we will enroll everyone in the class Piazza forum.
+Canvas
+We will use Canvas to record grades. You can access it at
+http://canvas.utexas.edu/.
+Students with Disabilities
+Any student with a documented disability (physical or cognitive) who requires
+academic accommodations should contact the Division of Diversity and
+Community Engagement, Services for Students with Disabilities at 471-6259
+(voice) or 471-4641 (TTY for users who are deaf or hard of hearing) or
+http://www.utexas.edu/diversity/ddce/ssd/ as soon as possible to request an
+official letter outlining authorized accommodations.
+Academic Integrity and the UT Student Honor Code
+
+UT’s Student Honor Code states: "As a student of The University of Texas at
+Austin, I shall abide by the core values of the University and uphold academic
+integrity." You can watch an excellent video about the honor code here.
+You should read carefully the class policy on academic integrity. Cheating of any
+form will not be tolerated and will result in a failing grade in the class.
+Religious Holidays
+By UT Austin policy, you must notify me of your pending absence at least fourteen
+days prior to the date of observance of a religious holy day. If you must miss a
+class, an examination, or an assignment in order to observe a religious holy day,
+you will be given an opportunity to complete the missed work within a reasonable
+time after the absence.
+Additional Class Policies
+You should read CS Department Code of Conduct. The policies described there
+will be followed in this class.

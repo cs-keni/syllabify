@@ -1,0 +1,23 @@
+Quantum Mechanics I
+Lecturer: Allan MacDonald
+e-mail: macd@physics.utexas.edu
+Phone: (512) 897-0410
+Office: RLM13.328
+Office Hours: after class, Weds 5P-6:30P,
+or contact Michele (mlandfield@austin.utexas.edu) to schedule
+Reference Material:
+Lectures on Quantum Mechanics / S. Weinberg
+Quantum Mechanics / E. Merzbacher
+Modern Quantum Mechanics / J.J. Sakarai
+Grader: Not yet assigned
+COURSE OUTLINE:
+• Postulates of the Quantum Theory
+• Simple Applications in One Dimension
+• The simple Harmonic Oscillator and Generalizations
+• Symmetries in Quantum Mechanics
+• Angular Momentum and the Hydrogen Atom
+• Spin Hamiltonians
+• Quantum Information and Quantum Computers
+Evaluation: Homework: 6 Assignments 50%
+Final Exam 50%
+1

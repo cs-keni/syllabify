@@ -1,0 +1,148 @@
+{
+  "course": {
+    "id": "cs410-leon",
+    "course_code": "CS 410/510",
+    "course_title": "Entrepreneurship in CS",
+    "term": "Winter 2026",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Phil Colbert",
+        "email": "pcolbert@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "WE",
+        "start_time": "16:00",
+        "end_time": "17:20",
+        "timezone": "America/Los_Angeles",
+        "location": "140 TYKE",
+        "type": "lecture"
+      }
+    ],
+    "location": "140 TYKE"
+  },
+  "assessment_categories": [
+    {
+      "id": "engineering",
+      "name": "Engineering Deliverables",
+      "weight_percent": 60,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "professional",
+      "name": "Professional Practice & Participation",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "reflection",
+      "name": "Reflection & Responsible AI Use",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "peer_eval",
+      "name": "Peer Evaluations",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "team_deliverables",
+      "title": "Team Engineering Deliverables",
+      "category_id": "engineering",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "2 missed individual obligations without penalty",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Engineering Deliverables 60% (team)"
+    },
+    {
+      "id": "professional_1",
+      "title": "Professional Practice & Participation",
+      "category_id": "professional",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Professional Practice 20%"
+    },
+    {
+      "id": "reflection_1",
+      "title": "Reflection & AI Usage Log",
+      "category_id": "reflection",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Reflection & Responsible AI Use 15%"
+    },
+    {
+      "id": "peer_eval_1",
+      "title": "Peer & Self-Evaluation",
+      "category_id": "peer_eval",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Peer Evaluations 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 2,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "course": {
+    "id": "ba285t",
+    "course_code": "BA 285T",
+    "course_title": "Financial Management",
+    "term": "Fall 2022",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Warren J. Hahn",
+        "email": "joe.hahn@mccombs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "08:00",
+        "end_time": "09:50",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "08:00",
+        "end_time": "09:50",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "MO",
+        "start_time": "10:10",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "WE",
+        "start_time": "10:10",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-5",
+        "day_of_week": "TU",
+        "start_time": "10:10",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-6",
+        "day_of_week": "TH",
+        "start_time": "10:10",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-7",
+        "day_of_week": "TU",
+        "start_time": "08:00",
+        "end_time": "09:50",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-8",
+        "day_of_week": "TH",
+        "start_time": "08:00",
+        "end_time": "09:50",
+        "timezone": "America/Chicago",
+        "location": "RRH 4.416",
+        "type": "lecture"
+      }
+    ],
+    "location": "RRH 4.416"
+  },
+  "assessment_categories": [
+    {
+      "id": "final_exam",
+      "name": "Final Exam",
+      "weight_percent": 60,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "final_exam_1",
+      "title": "Final Exam",
+      "category_id": "final_exam",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final Exam 60%"
+    },
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Late submissions will not be accepted",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Six homework assignments 40%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

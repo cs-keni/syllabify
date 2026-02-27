@@ -1,0 +1,108 @@
+{
+  "course": {
+    "id": "ba364-sevak",
+    "course_code": "BA 364Y",
+    "course_title": "International Business and Society",
+    "term": null,
+    "timezone": "America/New_York",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Dr. William Kline",
+        "email": null
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "participation",
+      "name": "Participation in Discussion Forums",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "current_events",
+      "name": "Current Events Memo",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "term_paper",
+      "name": "Term Paper",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "participation_1",
+      "title": "Participation in Discussion Forums",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Participation in Discussion Forums 25%"
+    },
+    {
+      "id": "current_events_1",
+      "title": "Current Events Memo",
+      "category_id": "current_events",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Current Events Memo 25%"
+    },
+    {
+      "id": "term_paper_1",
+      "title": "Term Paper",
+      "category_id": "term_paper",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "At least one grade deduction for late"
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Term Paper 50%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

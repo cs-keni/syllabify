@@ -1,0 +1,105 @@
+CS109: Competitive Programming https://www.cs.utexas.edu/users/downing/cs109/
+CS109: Competitive Programming
+Fall 2015: 50480
+Home (index.html) Books (Books.html) Exercises (Exercises.html) Grading (Grading.html)
+This is a course on competitive programming using C++, Java, and Python.
+Estimates of the required effort to do well are:
+1 hour per week of studying
+3 hours per week of programming
+1,000 lines of code
+There's also a companion UTCS club to the class: UTCS Competitive Programming Club
+(https://www.cs.utexas.edu/users/utpc/).
+Getting Started
+1. Sign into Canvas (https://utexas.instructure.com/courses/1144054/) and confirm that you're registered for
+the course and can see your grades. It's imperative that you check your grades on a regular basis.
+2. Sign into Piazza (https://piazza.com/utexas/fall2015/cs109/). The assistants and I will not respond to e-mail
+unless it's of a personal nature. All questions must be asked on Piazza.
+3. Sign into Top Hat (https://app.tophat.com/e/109772/). Attendance and quizzes will be managed by Top
+Hat. It costs either $24/term or $36/year (https://tophat.com/pricing/).
+4. Get a Codeforces account (http://codeforces.com).
+5. Get g++ 4.8 (c++ 11) (https://gcc.gnu.org/gcc-4.8/) installed on your machine. The CS network has:
+% g++ --version
+g++ (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4
+6. Get python3 (https://www.python.org) installed on your machine. The CS network has:
+% python3 --version
+Python 3.4.0
+7. Perhaps get the optional book:
+Competitive Programming (http://www.comp.nus.edu.sg/~stevenha/myteaching
+/competitive_programming/cp1.pdf)
+1 of 4 9/3/15, 2:49 PM
+
+CS109: Competitive Programming https://www.cs.utexas.edu/users/downing/cs109/
+Lectures
+Unique Days Time Place
+50480 F 3pm GDC 4.304 (http://www.utexas.edu/maps/main/buildings/gdc.html)
+Student Instructors
+Name Days Time Place
+Arnav Sastry W 3:30-4:30pm GDC 3.302 (http://www.utexas.edu
+arnavsastry@gmail.com /maps/main/buildings/gdc.html)
+(mailto:arnavsastry@gmail.com)
+Jaime Rivera Th 3:30-4:30pm
+jaime@cs.utexas.edu
+(mailto:jaime@cs.utexas.edu)
+Faculty Mentors
+Name Place
+Glenn Downing (https://www.cs.utexas.edu/users GDC 6.308 (http://www.utexas.edu/maps/main
+/downing/) /buildings/gdc.html)
+downing@cs.utexas.edu
+(mailto:downing@cs.utexas.edu)
+Shyamal Mitra (http://cs.utexas.edu/users/mitra/) GDC 6.320 (http://www.utexas.edu/maps/main
+mitra@cs.utexas.edu (mailto:mitra@cs.utexas.edu) /buildings/gdc.html)
+Special Needs
+Any student with a documented disability who requires academic accommodations should contact Services for
+Students with Disabilities at 471-6259 (voice) or 1-866-329-3986 (Video Phone) as soon as possible to request an
+official letter (https://utexas.qualtrics.com/SE/?SID=SV_8pEFQipZiaQ77St) outlining authorized accommodations.
+You must provide this letter to me by the 12th class day. Project deadlines will not be extended for special-needs
+students.
+2 of 4 9/3/15, 2:49 PM
+
+CS109: Competitive Programming https://www.cs.utexas.edu/users/downing/cs109/
+Incompletes
+To be eligible for an incomplete you must have a letter grade of C or better and a written, verifiable excuse for
+missing the last test. This is a necessary but insufficient condition for receiving an incomplete.
+Academic Integrity
+Students who violate University rules on academic dishonesty are subject to disciplinary penalties, including the
+possibility of failure in the course and/or dismissal from the University. Since such dishonesty harms the individual,
+all students, and the integrity of the University, policies on academic dishonesty will be strictly enforced. For further
+information please visit the Student Judicial Services Web site: Student Judicial Services
+(http://deanofstudents.utexas.edu/sjs/).
+Programming assignments will be compared using Moss (http://theory.stanford.edu/~aiken/moss/). You may
+design ideas with your fellow students. You may not share code in any way with your fellow students.
+The penalty for academic dishonesty will be a course grade of F and a referral of the case to the Dean of Students
+(http://deanofstudents.utexas.edu). Further penalties, including suspension or expulsion from the university may be
+imposed by that office.
+3 of 4 9/3/15, 2:49 PM
+
+CS109: Competitive Programming https://www.cs.utexas.edu/users/downing/cs109/
+Tweets FFoollllooww
+Computer Science, UT 15 Jul
+@UTCompSci
+Risto says the robots kill-all-humans scenario is a “very, very unlikely course of events.”
+ow.ly/PFgbOow.ly/i/bQnmG
+Show Summary
+Computer Science, UT 22 Jun
+@UTCompSci
+Want to win a trip to CppCon? Enter @Bloomberg's weekly coding competition - it starts
+today! ow.ly/ODt8t
+Show Summary
+Computer Science, UT 19 Jun
+@UTCompSci
+Miss Dr. Peter Stone talking about robot soccer on @foxaustin Good Day Austin? Check out
+the video! ow.ly/Oy7Hr
+Expand
+Computer Science, UT 19 Jun
+@UTCompSci
+Grab that bowl of cereal and cup of coffee and tune in to watch Peter Stone on Fox 7's
+Good Day Austin at 9:15AM. #robotsoccer#austinvilla
+Expand
+Computer Science, UT 18 Jun
+@UTCompSci
+What are you doing at 9:15 AM tomorrow? Watching Peter Stone on Good Morning Austin?
+Me too! #artificialintelligence#robotsoccer@foxaustin
+Expand
+Computer Science, UT 2 Jun
+Tweet to @UTCompSci
+4 of 4 9/3/15, 2:49 PM

@@ -1,0 +1,231 @@
+http://www.cs.utexas.edu/~mitra/csSpring2015/cs303/syllabus.html
+Department of Computer Science
+University of Texas at Austin
+CS 303E - Elements of Computers and Programming (Fall 2014)
+Section: 51630, MWF 11:00 AM - 12:00 PM, GDC 2.216
+Section: 51635, MWF 2:00 PM - 3:00 PM, GDC 2.216
+Instructor: Dr. Shyamal Mitra
+Office Hours: MWF 4:00 PM - 5:00 PM
+Location: GDC 6.202 or GDC 6.320
+E-mail: mitra@cs.utexas.edu
+Student Assistants
+Name E-mail Address Role
+Ghufran Baig ghufran@cs.utexas.edu TA
+Jian He jianhe@cs.utexas.edu TA
+Siddharth
+siddkumar95@gmail.com Proctor
+Kumar
+Jingshi Sun hanzi@utexas.edu TA
+Ye Zhang yezhang1989@gmail.com TA
+Office Hours
+Day Time Location Assistants
+12 PM - 2 GDC
+Mon Jingshi & Ye
+PM 2.902
+GDC
+Tue 3 PM - 5 PM Jian & Siddharth
+2.902
+GDC
+Wed 3 PM - 5 PM Ghufran & Ye
+2.902
+GDC
+Thurs 3 PM - 5 PM Jian & Siddharth
+2.902
+GDC Ghufran &
+Fri 3 PM - 5 PM
+2.902 Jingshi
+Required Text: Introduction to Programming using Python
+Author: Y. Daniel Liang
+Publisher: Pearson
+ISBN: 978-0-13-274718-9
+Supplementary Material: iClicker
+1 of 6 9/3/15, 2:37 PM
+
+http://www.cs.utexas.edu/~mitra/csSpring2015/cs303/syllabus.html
+Scope of the Course
+Computing is an integral part of all natural sciences and engineering disciplines. All other disciplines
+require some familiarity with computers. This course is designed to teach the fundamentals of
+computing and programming to students who wish to minor in Computer Science. In this course we will
+cover basic computer architecture and software components. We will learn to program in a high level
+language (Python). We will learn problem solving techniques for numerical and scientific problems. We
+will study the syntax and special features of Python, develop our own algorithms, and translate them to
+computer code. No prior programming experience is required but familiarity with personal computers
+will help significantly.
+We will be following the book quite closely. Supplemental notes will be available on the web. This
+course will be a tutorial introduction to programming. Unlike the traditional lecture format, our classes
+will be a venue for solving problems, writing programs, and exchanging ideas. Your attendance to the
+classes is mandatory. If you are not there for any lecture you need to send me an e-mail
+(mitra@cs.utexas.edu) explaining why.
+iClicker
+Purchase an iClicker from the University Co-op or the iClicker web site.
+Register your iClicker. You must re-register your iClicker even if you already registered in a
+previous semester.
+You must register your iClicker by providing the following information:
+your first name
+your last name
+your UT EID (student ID)
+your iClicker's serial number under the bar code on the back of the device
+Make sure you bring your working, registered iClicker to every lecture.
+Assignments
+You may choose to use your own computer to work on these assignments. If you work on your home
+computer, you will have to download and install Python 3 ( www.python.org ) on your home machine.
+There is a graphical development environment (IDLE) that comes with Python that you can also install.
+However, we prefer that you write your programs in a simple text editor (like Notepad or TextEdit) and
+run your programs on the command line.
+The only way to learn programming is to program. Doing the programming assignments is crucial to
+performing well in class. I strongly recommend that you write programs over and above what is assigned
+to you. Assignments will be given almost every week. Each assignment will have a clearly stated due
+date and time. Assignments start out being easy but get harder over the semester. If you are having
+considerable difficulty with Assignments 2 and/or 3, please see me immediately.
+The assignments will require a substantial time commitment over several days (an average of 8 hours
+per week should be expected). Be sure to budget sufficient time to complete assignments before the
+deadline.
+Turn in your assignments on time. This permits grading to start promptly after the submission deadline
+so that assignments maybe returned promptly. If you do not finish an assignment by the deadline you
+2 of 6 9/3/15, 2:37 PM
+
+http://www.cs.utexas.edu/~mitra/csSpring2015/cs303/syllabus.html
+have a maximum of two days to turn your assignment in. However, there is a penalty of 10 points (out of
+a 100 points) per day. Your assignment is one day late until the midnight of the day after it is due, two
+days late from then until midnight of the second day. You must let the student assistants know if you
+submit your assignment late. If you still have not finished your assignment after two days, see me and
+discuss your particular situation. We may still accept your assignment (with a late penalty) if you have a
+compelling case.
+Specific grading criteria vary on each assignment. However, in general, programs that do not run
+correctly on the CS Lab configuration will receive no more than 80% of the possible points. Other point
+deductions are given for such things as: incorrect results, missing features, bad solution logic, etc. No
+matter what configuration of software that you have on your home computer, the assignment that is
+turned in must run successfully on the CS Lab configuration in order to be graded. Here is the general
+grading critera for programming assignments.
+Always make a backup copy of the Python 3 source code (i.e. the .py file) on a removable secondary
+storage device (e.g. a flash drive). This will be necessary in cases where your program gets lost, is
+corrupted, or if there is some dispute over what was turned in when.
+For assigned programs, the source code (.py file) must be turned in. The source code must be a text file
+that can be run through a Python 3 interpreter. Word processing files (those created with Microsoft
+Word, for example, and ending with .doc extension ) will not be accepted.
+If you want us to debug your program, come to us during our office hours with your laptop and we will
+go through the program with you. Do NOT just e-mail the program to us for debugging. We will not
+respond to e-mails that have full length programs that have to be debugged.
+Grade Dispute: You have one week from the date the assignment grade is posted to dispute your grade.
+The student assistants will be grading the assignments. Send the student assistants an e-mail and see if
+you can resolve your differences. If you cannot resolve your differences, you may send me an e-mail
+explaining the situation. We will not entertain any grade disputes after one week.
+Assignment Identification: All assignments must be submitted with the proper header, containing your
+name (as registered), your unique section number, and the assignment number at the top of the
+assignment. The format for the header will be specified in the assignment. That specification will
+over-ride any other header specification.
+In addition, because assignments are submitted as files to Canvas, they must have the correct file name,
+which will be specified in the assignment handout. The file name is case sensitive. You must also ensure
+that you turn in the assignment to the correct unique section folder - that is, the section you are currently
+registered in. Lost assignments are typically caused by turning in an incorrect file name and/or turning a
+file into the wrong section folder. Assignments, which omit the header or are incorrect in any one or
+more of these requirements, will have the grade reduced by 5% of the maximum grade.
+Tutorial Exercises
+There will be tutorial exercises on Live Lab that will be assigned. Instructions on how to access Live
+Lab will be posted on the class website. We will also be working on the exercises posted on Coding Bat.
+Please create an account on Coding Bat , when we tell you to. Use your first name and middle name as
+the first name and your last name with any suffix for the last name on the registration form. Once your
+3 of 6 9/3/15, 2:37 PM
+
+http://www.cs.utexas.edu/~mitra/csSpring2015/cs303/syllabus.html
+account is created, share your account with UTCS303ESP15@yahoo.com.
+Quizzes
+We will be having quizzes regularly throughout the semester. The quizzes will be administered at the
+beginning of class using iClickers. The quizzes will start after the end of the add / drop period, i.e. after
+23 Jan 2015. There are no make-up quizzes. We will drop your lowest two quiz grades. If you miss
+more than 6 quizzes you will forfeit all of the quiz points.
+Tests
+There will be three tests and no final examination. The three tests will be during class periods.
+Test 1: Mon, 23 Feb 2015
+Test 2: Mon, 06 Apr 2015
+Test 3: Fri, 08 May 2015
+Make-up tests will be given only for the following reasons. In all cases you must provide some form of
+documentation.
+Ill health
+Family emergency
+Official UT conflict
+Having three tests on the same day is not official UT conflict! For each test you may bring a
+non-programmable calculator.
+Questions concerning test grades should be given to me in writing along with your test within the next
+class day that the test is handed back. We will not entertain any disputes after that time.
+Grades
+Your performance in this class will be evaluated using your scores for quizzes, tutorial exercises,
+programming assignments, and three tests. The weights of each of these components are listed below.
+There are no extra credit projects or assignments to improve your grade.
+Quizzes: 10%
+Tutorial Exercises: 15%
+Programming Assignments: 30%
+Three Tests (15% each): 45%
+All scores will be entered on Canvas. Check your scores regularly on Canvas to make sure that we have
+entered them correctly. Remember the average score as shown on Canvas is not correct. It is not
+weighted with weights as shown above.
+Study Groups
+Please organize yourselves into study groups of ~5 students who will meet once a week to discuss the
+course. Typically, you will review the lectures, do the reading, and attempt the homework independently
+4 of 6 9/3/15, 2:37 PM
+
+http://www.cs.utexas.edu/~mitra/csSpring2015/cs303/syllabus.html
+before your weekly meeting with your study group. Studying for tests together is permitted and
+encouraged. You may discuss solutions to problems in simple English but cannot exchange code for any
+assignment. If you are unsure about how to work together with your friend in a legal, helpful manner, do
+come and talk with us. Remember, it is always ok to "work together" with your professor or TA!
+We will be using Piazza for general discussion of class related questions rather than the discussion board
+on Canvas. Please do not post solutions to any problems on Piazza.
+Academic Misconduct Policy
+While you are free to discuss the course material with your classmates and are encouraged to form study
+groups for the exams, collaboration on homework or programming assignment is not permitted unless
+that assignment has been designated as a pair programming assignment.
+Helping a friend understand the intent of a homework or programming assignment specification is
+permitted. Students who are not pair programmers and who work together too closely (e.g. design their
+solution together) should be aware that this is a form of cheating called COLLUSION and is subject to
+academic penalties. Penalties for academic misconduct include a failing grade in this course.
+The homework, programs, and exams must be the work of students turning them in. University policy
+(see Dean of Students' policies on academic integrity) will be followed strictly. We will be running a
+sophisticated program on all submitted assignments to detect plagiarism. If we do detect any cases of
+academic dishonesty, we will assign a grade of F to all students involved and refer the cases to the Dean
+of Students.
+Acts that exceed the bounds defined by the approved collaboration practices will be considered cheating.
+Such acts include:
+Copying solutions, code, or programs from someone else or giving someone else your solutions,
+code, or programs
+Participation in a discussion group that develops a solution that everyone copies
+Posting your code to homework problems on Piazza or Facebook.
+Copying code from the internet (e.g. from Piazza or Facebook or other internet sites)
+Employing someone to write the solutions for you on homework assignment problems.
+We urge everyone in the class to take appropriate measures for protecting one's work. You should protect
+your files, homework solution sheets, etc. as deemed reasonable.
+Your Responsibilities in This Class
+Your performance in this class will be determined by you! It will require a strong dedication to
+learning the material and may require a substantial time commitment to complete the
+programming assignments.
+You are expected to show up on time for class and stay for the whole lecture.
+You are required to have your cell phones off and out of sight at all times during the lecture. You
+may not make or receive calls on your cell phone or send or receive text messages during lectures.
+You may not use a laptop in class.
+You are responsible for all material posted to the web site and sent as email. Ignorance of such
+material is no excuse.
+5 of 6 9/3/15, 2:37 PM
+
+http://www.cs.utexas.edu/~mitra/csSpring2015/cs303/syllabus.html
+You are responsible for all material presented in the lectures. Note that lectures will include some
+material that is not available elsewhere.
+You are responsible for turning in your own work on all assignments. Unauthorized collusion is
+not allowed and constitutes a violation of the university's policies on academic integrity. See
+above guidelines for more information on what is or is not allowed.
+You are responsible for protecting your work from being copied by others.
+Your conduct in class should be conducive towards a positive learning environment for your class
+mates as well as your self.
+Course Time Table
+21 Jan 2015: First Day of Class
+23 Jan 2015: Last day of official add / drop
+04 Feb 2015: 12th class day, official enrollment count is taken
+06 Apr 2015: Last day a student may change registration to or from pass/fail basis.
+08 May 2015: Classes end
+General Policies
+If you are absent from class or examination for the observance of a religious holy day you may turn in
+your assignment or take the examination on an alternate date provided you have given me written notice
+fourteen days prior to the class absence. For religious holy days that fall within the first two weeks of
+class notice must be given on the first class day.
+Students with disabilities who need special accommodations should contact the Services for Students
+with Disabilities (SSD) Office (471-6259 or 471-4641 TTY).
+6 of 6 9/3/15, 2:37 PM

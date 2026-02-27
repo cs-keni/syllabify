@@ -1,0 +1,130 @@
+7/18/24, 9:30 AM opt3-dist.html
+EE 382 N Vijay K. Garg
+Instructor: Prof. Vijay K. Garg ; Phone: (512) 705-7689 ; e-mail: garg AT ece.utexas.edu;
+URL: http://www.ece.utexas.edu/~garg
+Prerequisites: Programming experience, Graduate standing
+Textbook :
+Elements of Distributed Computing by Vijay K. Garg, Wiley & Sons, 2002. The textbook will be
+supplemented with a set of papers .
+Course Contents: This will be an introductory graduate level course in distributed systems. It will expose
+students to theoretical as well as practical aspects of designing such systems. The course assumes that the student
+has some familiarity with programming. There is no final exam but there will be three tests during the course.
+The following topics will be covered in the course:
+Number Topics Course Material
+Introduction, posets, Happened-Before, lattices, Clocks (physical, logical,
+1 C1-5, [L78]
+vector, chain)
+Mutex Algorithms: Lamport, Ricart-Agrawala, Drinking Philosophers,
+2 C6-8
+Quorums
+C9, C10, C18, [CL],
+3 Snapshot algorithms, Leader election, Spanning tree,
+[GG], [GHS]
+Randomization, Chernoff's bound, Distributed Trigger Counting, Maximal
+4 [CCGS11], [Luby86]
+Independent Set
+Global Predicates (linear, relational), Birkhoff's Theorem, Slicer, [IG06], [MG02], C11-14,
+5
+termination detection C21
+6 Causal and Total Message Order, Synchronizers, Self-stabilization C16, C17, C21, C23
+7 Common Knowledge, FLP, Consensus in synchronous systems, Paxos, C24-26,
+Byzantine Agreement, Weighted Byzantine, Accurate Byzantine,
+8 [GB11], [GBB11]
+Approximate Agreement, Practical Byzantine,
+9 Basic Linear Codes, Reed-Solomon, Fusion based Fault-Tolerance [G10], [GB11]
+10 Failure Detectors, Publish-Subscription Systems C28, [PubSub03]
+11 Map-Reduce, Google File System [DG04], [GGL03],
+12 Multidimensional Agreement [VG 13]
+13 Lattice Agreement [ZHG 18, ZG 20]
+14 Term Project Presentations
+15 Term Project Presentations, Survey
+Grading: 30 % Assignments, 15 % Test 1, 15 % Test 2, 20 % Test 3, 15% Term paper, 5% Class presentation
+---------------- Course Independent Information -----------------------------
+Video Streaming and Recording
+Video streaming and recording of class activities are reserved only for students and TAs in this class for
+educational purposes and are protected by FERPA laws if any students are identifiable in the video. Video
+streams and recordings should not be shared outside the class in any form. Students violating this university
+policy could face misconduct proceedings.
+file:///Users/gargvk/Dropbox/courses/f24-dist/htmls/opt3-dist.html 1/3
+
+7/18/24, 9:30 AM opt3-dist.html
+Regrade Requests
+Request for regrading an assignment or Test must be made in writing within one week of the graded assignment
+or test being made available to students in the class.
+Q Drop Policy
+If you would like to drop a class after the 12th class day, you'll need to execute a Q drop before the Q-drop
+deadline, which typically occurs near the middle of the semester. Under Texas law, you are only allowed six Q
+drops while you are in college at any public Texas institution. For more information,
+see http://www.utexas.edu/ugs/csacc/academic/adddrop/qdrop.
+Religious Holy Days
+A student who misses classes or other required activities, including examinations, for the observance of a
+religious holy day should inform the instructor as far in advance of the absence as possible so that arrangements
+can be made to complete an assignment within a reasonable period after the absence. A reasonable
+accommodation does not include substantial modification to academic standards, or adjustments of requirements
+essential to any program of instruction. Students and instructors who have questions or concerns about academic
+accommodations for religious observance or religious beliefs may contact the Office for Inclusion and Equity.
+The University does not maintain a list of religious holy days.
+Disabilities statement: "The University of Texas at Austin provides upon request, appropriate academic
+accommodations for qualified students with disabilities. For more information, contact the Division of Diversity
+and Community Engagement, Services for Students with Disabilities, at (512) 471-6259, 471-4641
+TTY,http://www.utexas.edu/diversity/ddce/ssd."
+COVID-19 Pandemic
+The COVID-19 pandemic has been disrupting our health and well-being for several months. More than 1.5% of
+the US population has tested positive, including friends and family in some cases. Its cumulative effect has taken
+a serious toll on our physical and mental health. Many of our friends and family have lost their jobs or been
+furloughed. Many of us are living in an environment that may not have a quiet place to study or adequate
+Internet access. Please let me know if you face difficulties this semester in accessing course resources or
+completing work. The University provides student emergency assistance through Texas One Stop (US
+citizens), Texas Global (International), Student Emergency Fund (All Students).
+COVID-19 Guidance
+To help keep everyone at UT and in our community safe, it is critical that all students report COVID-19
+symptoms and testing, regardless of test results, to University Health Services, and faculty and staff report to
+the HealthPoint Occupational Health Program (OHP) as soon as possible. Please see this link to understand what
+needs to be reported. In addition, to help understand what to do if a fellow student in the class (or the instructor
+or TA) tests positive for COVID, see University Health Services.
+Title IX Reporting
+Title IX is a federal law that protects against sex and gender-based discrimination, sexual harassment, sexual
+assault, sexual misconduct, dating/domestic violence and stalking at federally funded educational institutions.
+UT Austin is committed to fostering a learning and working environment free from discrimination in all its forms
+where all students, faculty, and staff can learn, work, and thrive. When sexual misconduct occurs in our
+community, the university can:
+1. Intervene to prevent harmful behavior from continuing or escalating.
+file:///Users/gargvk/Dropbox/courses/f24-dist/htmls/opt3-dist.html 2/3
+
+7/18/24, 9:30 AM opt3-dist.html
+2. Provide support and remedies to students and employees who have experienced harm or have become
+involved in a Title IX investigation.
+3. Investigate and discipline violations of the university's relevant policies.
+Faculty members and certain staff members are considered ``Responsible Employees'' or ``Mandatory
+Reporters,'' which means that they are required to report violations of Title IX to the Title IX Coordinator at UT
+Austin. I am a Responsible Employee and must report any Title IX related incidents that are disclosed in
+writing, discussion, or one-on-one. Before talking with me, or with any faculty or staff member about a Title IX
+related incident, be sure to ask whether they are a responsible employee. If you want to speak with someone for
+support or remedies without making an official report to the university, email advocate@austin.utexas.edu. For
+more info about reporting options and resources, visit https://titleix.utexas.edu/campus-resources or contact the
+Title IX Office at titleix@austin.utexas.edu.
+Personal Pronoun Use
+Professional courtesy and sensitivity are especially important with respect to individuals and topics dealing with
+differences of race, culture, religion, politics, sexual orientation, gender, gender expression, gender variance, and
+nationalities. Class rosters are provided to the instructor with the student's legal name, unless they have added a
+``preferred name'' with the Gender and Sexuality Center. Canvas provides an opportunity to select a pronoun
+preference. I will gladly honor your request to address you by a name that is different from what is on the roster,
+and by the gender pronouns you use (she/he/they/ze, etc).
+Mental Health Counseling
+College can be stressful and sometimes we need a little help. Luckily, we have a wealth of resources and
+dedicated people ready to assist you, and treatment does work. The Counseling and Mental Health Center
+(CMHC) provides counseling, psychiatric, consultation, and prevention services that facilitate student academic
+and life goals and enhance their personal growth and well-being. CMHC counselors are available Monday-
+Friday 8am-5pm by phone (512-471-3515) and Zoom videoconference. They are no longer available for in-
+person meetings due to social spacing and other precautions to reduce exposure to the coronavirus.
+Alternatively, you can talk to Ms. Jeni Wade, LCSW right here in the College of Engineering. Ms. Wade is
+our Care Counselor and she can be reached at 512-471-8396.
+If you are experiencing a mental health crisis (e.g. depression or anxiety), please call the Mental Health Center
+Crisis line at 512-471-CALL(2255). Call even if you aren't sure you're in a full-blown crisis, but sincerely need
+help. Staff are there to help you.
+Land Acknowledgment
+I would like to acknowledge that we are meeting on Indigenous land. Moreover, I would like to acknowledge
+and pay our respects to the Carrizo & Comecrudo, Coahuiltecan, Caddo, Tonkawa, Comanche, Lipan Apache,
+Alabama-Coushatta, Kickapoo, Tigua Pueblo, and all the American Indian and Indigenous Peoples and
+communities who have been or have become a part of these lands and territories in Texas, here on Turtle Island.
+file:///Users/gargvk/Dropbox/courses/f24-dist/htmls/opt3-dist.html 3/3

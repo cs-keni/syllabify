@@ -1,0 +1,172 @@
+{
+  "course": {
+    "id": "math341-leon",
+    "course_code": "MATH 341",
+    "course_title": "Elementary Linear Algebra",
+    "term": "Summer 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Zhe Xu",
+        "email": "zhxu@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "11:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "WE",
+        "start_time": "10:00",
+        "end_time": "11:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      },
+      {
+        "id": "mt-5",
+        "day_of_week": "FR",
+        "start_time": "10:00",
+        "end_time": "11:50",
+        "timezone": "America/Los_Angeles",
+        "location": null,
+        "type": "lecture"
+      }
+    ],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Daily homework",
+      "weight_percent": 15,
+      "drop_lowest": 4,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "participation",
+      "name": "Participation",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "weekly_exam",
+      "name": "Weekly Exam",
+      "weight_percent": 80,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Daily homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": {
+        "frequency": "daily",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "10% per day",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Daily homework 15%, lowest 4 dropped"
+    },
+    {
+      "id": "participation_1",
+      "title": "Participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Participation 5%"
+    },
+    {
+      "id": "weekly_exam_1",
+      "title": "Weekly Exam",
+      "category_id": "weekly_exam",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 80,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "FR"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Missed weight transferred to final",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Weekly tests Fridays 80%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

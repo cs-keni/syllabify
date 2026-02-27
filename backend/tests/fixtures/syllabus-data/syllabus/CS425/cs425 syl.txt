@@ -1,0 +1,230 @@
+Course SyllabusAlternative formats
+Instructor:
+
+Zena M. Ariola
+
+Office: Room 305, Deschutes Hall
+
+Contacts: email: ariola@uoregon.edu - tel: 541-346-4448
+
+GE:
+
+William Qiu
+
+Office: Room 229, Deschutes Hall
+
+Contacts: williamq@uoregon.edu
+
+ 
+
+Lectures and Discussions:
+
+Lectures:
+
+                 Wednesdays 4:00 - 5:20 PM, McKenzie 221. 
+
+                 Fridays 4:00 - 5:20 PM, McKenzie 221
+
+Discussion: 
+
+                 Monday 8:30 - 9:50 AM, McKenzie 221
+
+ 
+
+Piazza:
+
+You can sign up to the class Piazza using this link:
+
+https://piazza.com/uoregon/spring2025/cis425
+
+ 
+
+ 
+
+Office hours: We will hold office hours at these times:
+
+Schedule-2.png
+
+Main Instructor (Zena)'s hours: 
+
+Wednesday    2:00 pm - 3:00 pm,   Room 305, Deschutes Hall 
+
+If a large number of students attend office hours, I will arrange for a bigger room. If no one shows up for office hours, I will hold them by appointment only. If you are in Deschutes, feel free to knock on my door to check if I am available.
+
+GE (William)'s hours:
+
+Tuesday          11:30 am - 1:30 pm,   Room 229, Deschutes Hall 
+
+Friday             2:00 pm - 3:45 pm,   Room 229, Deschutes Hall 
+
+LA(Luke)'s hours:
+
+Monday          2:00 pm - 4:00 pm,  Room: TBD
+
+Wednesday    10:00 am - 12:00 pm,  Room: TBD
+
+Thursday         2:00 pm - 4:00 pm,  Room: TBD
+
+ 
+
+If you have questions but these times do not work for you, please contact us by email with your questions, and if needed we can set up another meeting.
+
+Grading policy :
+
+Midterm 1     30%   April 23rd  (Week 4 Wednesday
+
+Midterm 2     30%   May 16th (Week 7 Friday) 
+
+Final               40%   Wednesday, Jun 11th, 2025, 2:45 p.m
+
+The time of the midterms might change depending on how much material is covered. 
+
+The exams, for now, are scheduled during regular lecture time, however, this can change depending on the progress of the course. If an exam indeed takes place during lecture time,  the instructor might decide to dedicate the Friday discussion session to a regular lecture.
+
+We will post weekly assignments, which will not be graded, and therefore you will not receive any points. Solutions to the assignments will not be posted online but will be presented during the discussion session on Friday. Even though there are no points for the homework, we strongly urge you to do the assignment and compare your solution with the one presented during the discussion session and office hours. In case your solution differs and you are not sure of the correctness of your solution, please send us your solution together with an explanation of why you think your solution is correct. 
+
+A comment from a previous student: I also just wanted to let you know that I really enjoyed how you structured 425. It's really nice knowing what to expect going into the exams, and I have to say this is probably the first class where I've had hardly any stress going into an exam. I knew exactly what to expect based off of the assignments which really helped.
+
+The exams will be open notes, but you will not be able to use any electronic devices such as laptops or cell phones, earphones. 
+
+ 
+
+Grading rubric:
+
+A Excellent. Solid grasp of the concepts and approaches introduced in the course
+
+B Very good. Good grasp of the concepts and approaches introduced in the course
+
+C Acceptable. Sufficient grasp of the concepts and approaches introduced in the course
+
+D No Pass (Earn UO credit). Insufficient grasp of the concepts and approaches introduced in the course
+
+F No Pass (No credit). Little or no demonstrated grasp of the concepts and approaches introduced in the course
+
+ 
+
+Grading scale:
+
+A	A+      98.67-100.00	A           93.34-98.66	A-            90.00-93.33
+B	B+      86.67-89.99	B           83.34-86.66	B-            80.00-83.33
+C	C+      76.67-79.99	C           73.34-76.66	C-            70.00-73.33
+D	D+      66.67-69.99	D           63.34-66.66	D-            60.00-63.33
+F	F           0.00-59.99		
+ 
+
+Text: We will cover material from the book Concepts in Programming Languages by Prof. John Mitchell. The book is available at the  libraryLinks to an external site.
+
+On the syllabus page, you will find pointers to the material discussed each week.
+
+Course Objectives: The main goal of the course is to introduce you to the different aspects of programming languages, including their features, type systems, programming style, and implementation. We will consider several programming languages: ML, Haskell, Racket, JavaScript, and Prolog. You will not become an expert programmer in the languages taught in this class. However, you will gain the necessary skills to understand the impact of language features on both the implementation and the abstractions they provide. We will cover different programming paradigms: imperative, functional, and logic programming. Each paradigm provides a different way to solve a problem. Note that this is not a survey course!
+
+Languages: You will learn the basic of these languages:
+
+ML (a statically typed, mostly functional language)
+Racket (a dynamically typed, mostly functional language)
+JavaScript (a dynamically typed, multi-paradigm language) 
+Haskell (a statically typed, pure functional language)
+Prolog (a logic programming language)
+ 
+
+There are thousands of languages not on this list, many programming styles not represented, and many language constructs and concepts that it would be great to study.
+
+Learning Outcomes: On completion, you will have a thorough understanding of the following topics:
+
+Compilation vs Interpretation: advantages and disadvantages in terms of speed of execution and memory space.
+Syntax vs Semantics: what are the legal expressions and what do expressions mean.
+Concepts:
+Parse trees and Abstract syntax trees
+Lexical analyzer
+Parser
+Operational Semantics
+Imperative programming (Cobol, Fortran, C, Pascal, Ada, Ruby, Phyton): This is the closest model to
+the machine architecture.
+Concepts:
+Side-effects
+Types (static and dynamic, weak and strong)
+Scope (static and dynamic)
+Parameter passing techniques (call-by-value, call-by-reference, call-by-value-result, call-by-name)
+Aliasing
+Block-structured languages
+Run-time structures ( Stacks vs heap)
+Garbage collection
+Functional programming (Racket, ML, Haskell): Based on mathematics which gives a theoretical foundation.
+Concepts:
+Strict vs non-strict functions
+Higher-order functions
+Currying
+Lazy vs eager evaluation
+Innermost vs outermost evaluation
+Type inference
+Type checking
+Overloading
+Coercion
+Polymorphism
+Type classes
+Pattern matching
+Monadic approach to effects
+Programming with infinite structures
+Deductive programming (Prolog) : Based on the concept of a relation.
+Concepts:
+Facts and Rules
+Search
+Unification - logic variable
+Control mechanisms.
+Concepts:
+Exceptions
+Control operators such as callcc in Racket
+Continuation passing style transformations
+Implementing a language.
+Concepts:
+Define the abstract syntax using data type declarations.
+Define the static semantics using the type system of the metalanguage.
+Define the operational semantics using the operational semantics of the metalanguage.
+Experiment with different scoping mechanisms and parameter-passing techniques.
+ 
+
+University Policies
+
+These policies are (mostly) standard across University of Oregon courses. 
+
+Barriers and Accommodations: Our goal is a fully inclusive class, accessible to everyone. If you encounter or anticipate barriers to full participation and fair evaluation for any reason, please communicate your needs to the instructor so that we can find suitable accommodation. You are also encouraged to contact the Accessible Education Center at 360 Oregon Hall at 541-346-1155 or uoaec@uoregon.edu. It is particularly important that you inform the instructor in the first week of the quarter if you require accommodation. Delayed notification of such a requirement may make it impossible to provide accommodation.
+
+The Dean of Students office has resources to help with basic needs (food, housing, etc), and additional resources are listed at https://blogs.uoregon.edu/basicneeds/food
+
+Accommodations for Religious Observances: The university makes reasonable accommodations, upon request, for students who are unable to attend a class for religious obligations or observance reasons, in accordance with the university discrimination policy which says ``Any student who, because of religious beliefs, is unable to attend classes on a particular day shall be excused from attendance requirements and from any examination or other assignment on that day. The student shall make up the examination or other assignment missed because of the absence." To request accommodations for this course for religious observance, visit the Office of the Registrar's website and complete and submit to the instructor this form prior to the end of the second week of the term.
+
+Academic Integrity: The University Student Conduct Code (available at conduct.uoregon.edu) defines academic misconduct. Students are prohibited from committing or attempting to commit any act that constitutes academic misconduct. Students should properly acknowledge and document all sources of information (e.g., quotations, paraphrases, ideas) and use only the sources and resources authorized by the instructor. If there is any question about whether an act constitutes academic misconduct, it is the student's obligation to clarify the question with the instructor before committing to attempting to commit the act. Academic honesty is expected and cases of suspected dishonesty will be handled according to university policy. In particular, copying someone else’s work (including material found on the web) will not be tolerated.
+
+Academic Disruption due to Campus Emergency: In the event of a campus emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements. Students are encouraged to continue the readings and other assignments outlined in this syllabus or subsequent versions.
+
+In the event that the instructor of this course has to quarantine, this course may be taught online during that time.
+
+Inclement Weather: It is generally expected that class will meet unless the University is officially closed for inclement weather. If it becomes necessary to cancel class while the University remains open, this will be announced on Canvas. Updates on inclement weather and closure are also communicated as described on the Inclement Weather webpage.
+
+Prohibited Discrimination and Harassment Reporting: I am a designated reporter. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing any form of prohibited discrimination or harassment, including sex or gender-based violence, may seek information and resources at safe.uoregon.edu, or investigations.uoregon.edu or contact the non-confidential Title IX office/Office of Civil Rights Compliance (541-346-3123), or Dean of Students offices (541-346-3216), or call the 24-7 hotline 541-346-SAFE for help. I am also a mandatory reporter for child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect
+
+
+Absences: This is a face-to-face course, and therefore attendance is important. Excessive absences make it impossible to learn well and succeed in the course. We know our UO community will still be navigating COVID-19, and some students will need to isolate and rest if they get COVID. Students with COVID are encouraged to seek guidance and resources at  UO's COVID-19 Safety
+
+Universal Learning Environment: The University of Oregon is working to create inclusive learning environments. Please notify me if there are aspects of instruction or design of this course that result in barriers to your participation.(Students with a UO disability notification letter should please meet with me at their earliest convenience during the first two weeks of the term. You may also wish to contact Disability Services in 164 Oregon Hallat 346-1155. For information about Support and Services for Students with Disabilities, see the DisabilityServices web page
+
+Student Experience Surveys: The midway and end-of-term Student Experience Surveys are important opportunities to provide feedback about your learning experiences. I value this feedback and am continually improving the course with students’ responses in mind. The key parts of the survey are the open-ended questions where you share concrete, actionable feedback and about the teaching practices that stand out to you. Thank you for your thoughtful reflections!
+
+Classroom Behaviors: 
+
+All members of the class (both students and instructor) can expect to:
+
+Participate and Contribute: All students are encouraged to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others.
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. 
+Help Everyone Learn: Part of learning together is learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don't hesitate to contact me to ask for assistance or offer suggestions that might help us learn better. 
+Guidelines for using Canvas or Discord Discussion:
+
+ Use subject lines that clearly communicate the content of your post   
+  Write concisely, and be aware that humor or sarcasm doesn't always translate in writing.   
+ Be supportive and considerate when replying to others' posts. This means avoiding the use of jargon or inappropriate language, and it means disagreeing with respect and providing clear rationale or evidence to support your different views.   
+ Keep focused on the topic, reference readings, and other class materials to support your points (as applicable).   
+Try to use correct spelling and grammar and proofread your submissions. After submitting, use the edit feature to make corrections and resubmit (don't create a new or duplicate post that corrects your error).   
+Contribute and interact often!   
+ 
+
+ 

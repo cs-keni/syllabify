@@ -6,10 +6,19 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
-ignore = []
+ignore = ["E501"]  # Line too long — syllabus_parser has many long regex lines
+
+[tool.ruff.lint.per-file-ignores]
+# Parser modules have long regex, inline logic — not our code to reformat
+"app/services/syllabus_parser/*.py" = ["E501", "E701", "E702", "F841"]
+# Script files have long output strings and print statements
+"scripts/*.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+markers = [
+    "ground_truth: marks tests that compare parser output to fixture ground truth (skipped in CI)",
+]

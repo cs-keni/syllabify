@@ -1,0 +1,239 @@
+Introduction to Biology I Summer 2011
+INTRODUCTION TO BIOLOGY I
+BIO 311C
+Uniques: 89815, 89820
+Class meetings: 10 to 11.20 am in PAI 2.48
+Lecturer: Dr. Anita Latham
+Office: PAI 1.22B
+Office Hours: Tue and Wed 11.30 am to 1 pm (or by appointment)
+Contact: anitalatham@mail.utexas.edu
+The best way to contact us outside of class time and office hours is by email.
+Course description: 311C is designed for majors in biological sciences, and for others if
+required by their departmental programs. This course covers major concepts in biological
+chemistry, cellular organization, metabolism, cell cycle, gene expression, gene regulation,
+recombinant DNA and stem cells.
+Prerequisites: You must have already completed with a grade of at least a C or be registered for
+CH 301 or equivalent chemistry course. If you do not meet this requirement, you will be
+automatically dropped from this class.
+Required Textbook: Biology by NA Campbell and JB Reece. Benjamin Cummings, 8th edition.
+The book comes with an online access to www.masteringbio.com which has very helpful
+animations and quizzes in the Study Area. If you purchase a used textbook, then you will have to
+separately purchase masteringbio online access. This online access is recommended although not
+required for this course.
+Prior knowledge and skills required for BIO 311C
+To be academically competitive in this course, a student should be able to do the following
+prior to the start of the course:
+1. Be able to explain a simple biological process clearly.
+2. Read a descriptive paragraph in a science textbook, and identify the major points.
+3. Be able to identify what a question is asking and to answer a question clearly and to the point.
+4. Read a college course syllabus and identify and locate the course resources that are provided
+by instructors, textbook, and online resources, and be able to plan what activities you need to add
+in order to be successful in the course.
+5. Utilize basic math and algebra functions to solve calculations, including calculations involving
+fractions, exponents, and scientific notation. Add, subtract, multiply, and divide simple numbers
+without using a calculator.
+
+6. Without using a calculator, determine the log of 100 and the log of 0.001.
+10 10
+7. Determine information from a graph, and construct a graph from given data.
+8. Be familiar with measurement scales. Tell the process by which numbers are converted from
+one unit of measurement to another; for example, how to convert meters to inches or cm3 to liters.
+Be able to estimate.
+9. From linear dimensions, calculate the volume of a sphere or the volume of a cube. Calculate
+density from a given mass and volume.
+10. Distinguish between elements, compounds, homogeneous mixtures, and heterogeneous
+mixtures. Describe the differences between solid, liquid, and gas samples of a pure substance.
+11. Understand the basic organization of the periodic table. Use the table to determine atomic
+mass and atomic number, find elements with similar properties based on location within the table.
+12. Identify the parts of an atom and the number of protons and electrons in atoms and ions.
+Determine the number of valence electrons in the elements H, C, N and O, which are important in
+biological molecules.
+13. Define isotope.
+14. On the basis of relative electronegativities of elements, predict whether a compound is
+covalent or ionic. Predict polarity of covalent bonds within molecules.
+15. Calculate the molar mass of a compound from information in the periodic table. Calculate
+molarity given moles (or mass) and volume.
+16. Define pH and explain the difference between two solutions, one with pH 2 and the other with
+pH 5.
+17. Define kinetic energy and potential energy, and give examples of both.
+18. State the first and second law of thermodynamics.
+19. Describe the cell theory, and distinguish between the two major types of cells.
+Objectives for this course: The emphasis of this course is to be able to remember and
+understand the details and be able to understand it well to be able to apply to new
+situations. Some general objectives are given below:
+1. Dynamic hierarchical organization of life, compartmentalization: organelles,
+enzyme pathway and membrane localization, molecular turnover; diffusion, water
+balance, surface area
+2. Chemical bonds: their significance within macromolecules and in the interactions
+among molecules
+
+3. Specific recognition, communication, response: Specificity of protein binding,
+receptor proteins, signal transduction systems, cell-cell communication, cellular
+response to signals.
+4. Energy transformation: free-energy changes in organisms; energy-coupled
+processes in cellular respiration and photosynthesis; ATP-ADP cycles, energy
+flow in ecosystems
+5. Enzyme regulation: feedback control, activators and inhibitors of enzyme
+function.
+6. Heredity: continuity of genetic information: transmission to the next generation,
+mutation; differential gene expression, gene structure and genomics
+7. Structure-function relationship at all levels: protein, membrane, cell, organ.
+Relationship between structure and function is a product of evolution by natural
+selection. Evolution is the process that explains both the unity and diversity of
+life.
+8. Processes of science: Science building & using models; observations &
+experiments; asking questions. Our knowledge of the biological world is
+predicated upon the ongoing process of hypothesis and experimentation
+Lecture presentation slides: Material will be presented in class in the form of power point
+slides. Selected slides will be uploaded on Blackboard at http://courses.utexas.edu under “Course
+documents” and students can access this class using their UT EID. Students will need to take
+additional notes in class in order to supplement information on slides.
+Classroom courtesy: Please help us all concentrate on learning biology in the classroom: be on
+time to class, turn all cell phones to off, stay off the internet, avoid leaving early, and minimize
+distracting conversation. Thank you - your classmates and I will appreciate it.
+Class attendance: is required and class participation encouraged! Attendance will be taken after
+the first day of class, and will be used to assess student’s performance in the course. We have
+found a strong correlation between a student’s overall performance and attendance. A student
+during class found to be engaged in non-class related activities (talking, reading the newspaper,
+surfing the web etc) may be marked as absent from class.
+Portions of the material relevant to exams will be emphasized during class; such information may
+not be present in slide presentations, hence it is in the student’s best interest to attend class
+regularly. If you must miss a lecture, review the slides, do the required reading and check with at
+least one other classmate who attended the lecture for any additional notes. After you have done
+this, you may also make arrangements with your lecturer or T.A. to review the material you
+missed.
+iClicker: We will be using the iClicker – a type of classroom response/assessment system to help
+with the learning and teaching process. Please purchase the iClicker at the Co-op. You can
+register it at www.iclicker.com using the number provided at the back of the iClicker (for Clicker
+ID) as well as your UT EID (for student ID). Bring your iClicker to class every day. Most classes
+
+will have questions that will require you use the iClicker. It is your responsibility, to make sure
+that the batteries are functional and that the iClicker is in proper working order. Participation in
+iClicker questions in class will earn you up to 2% extra credit. You may miss up to 3 classes
+and still receive full credit. We will start counting iClickers from Monday, June 6.
+Discussion sections: will be conducted by the T.A. She will review major concepts covered in
+class. Each student is expected to attend a discussion section assigned to him or her by the unique
+number. Practice worksheets and Quizzes will be given in some discussion sections. Quizzes may
+be in the form of multiple choice and/or short answers. You are allowed to make up ONE missed
+quiz at the convenience of the T.A.
+Discussion sections startthe week of June 6
+Please attend the discussion you are registered for based on your unique number.
+Homework: Homework assignments will be posted on Bb every Friday. Bring your
+COMPLETED homework to discussion section for submission. Questions regarding homework
+should be addressed in discussion sections. Further details will be provided by the TA in
+discussion.
+Announcements: Important announcements by the lecturer or the T.A. may be made during
+class/discussion. It is the student’s responsibility to be aware of these announcements. Some last
+minute changes in schedule may be posted on Blackboard. Students are encouraged to regularly
+check Blackboard and email for these postings.
+Read the assigned material in the textbook: The powerpoints for each week will be posted on
+Blackboard. Reading assignments from the text will also be indicated on the powerpoint slides.
+Read the assigned text pages and go over the powerpoints before coming to class. There may be
+material in the text which was not covered in lecture and for which you are responsible, so make
+sure to take notes in class. Additionally, the combination of listening to a lecture, reviewing the
+slides and your notes, and reading the text will make it easier for you to understand and remember
+the material. Practice Self quizzes at the end of each chapter will provide a good review of the
+concepts and help students tackle both memory based as well as application questions on the
+exam.
+Exams: There will be TWO in-class midterm exams and one comprehensive final exam. The
+exams cannot be missed or turned in late unless permission is granted in advance for
+extraordinary, documented circumstances. For such students make up exams can be scheduled at
+an “earlier” date but ONLY with PRIOR approval. Student I.D.s will be checked at exams.
+Exams will include some memory based as well as some thinking/application based questions.
+Students may not leave the room during an exam. If you need to leave the room, please hand in
+the exam first. Make sure all books, backpacks are placed at the side of the room and cell
+phones/pagers turned off. Make sure to come to all the exams on time. No late comers will be
+allowed to take the exam especially if a student has already taken the exam and left the exam
+room.
+Once exams are graded and returned, students will get up to three days to evaluate the exam for
+any errors in grading/adding up points. After which NO regrade requests will be entertained.
+Exams written in pencil will not be eligible for regrading.
+
+Final grade based upon:
+(1) Discussion section Quizzes, Activities: contribute to 15% of the final grade (60 points total).
+Further information will be provided by T.A. in discussion.
+(2) Home work worksheets: Weekly home work will be assigned which will contribute to 5% of
+the final grade (up to 20 points completion and submission grade)
+(3) Two midterm exams each worth 100 points. You can earn a maximum of 200 points - for
+50% of your final grade (i.e. 25% per exam)
+(4) Comprehensive final exam worth 120 points - for 30% of your final grade.
+(5) Extra Credit for using iClicker: up to 2%
+Grading: We will be adopting the plus/minus grading system this semester. Your grade will be
+based on the following rubric:
+Grade Percent
+A 93.50-100
+A- 90.00-93.49
+B+ 86.50-89.99
+B 83.50-86.49
+B- 80.00-83.49
+C+ 76.50-79.99
+C 73.50-76.49
+C- 70.00-73.49
+D+ 66.50-69.99
+D 63.50-66.49
+D- 60.00-63.49
+F 59.99 and below
+The grade categories MAY be slightly modified to reflect the overall performance of the
+class, but this is not a guarantee. This will only be decided at the end of the semester. DO
+NOT COUNT ON A CURVE OR CATEGORY ADJUSTMENT TO RAISE YOUR
+GRADE.
+Helpful hints to do well in this class:
+1) Make sure to read the assigned chapters ahead of time as well as after the lecture.
+2) Come to class regularly, on time and pack only after the bell rings or lecture ends.
+3) When not clear, ask questions! You can ask questions in class, after class or in
+discussion.
+4) Do not hesitate to come to office hours for further help with concepts.
+5) FORM STUDY GROUPS! The best way to understand concepts is to explain these to
+your friends. If you need help forming study groups consult with T.A.
+6) Do not doze off or sleep during class! Stay alert by taking notes and participating in class
+
+7) Turn off cell phones/pagers.
+8) Do not read newspapers or surf the web during class
+9) Read to understand, remember key terms, and learn how to apply course information
+10) A Study guide will be provided prior to each exam. Use these as a guide to learn and
+understand concepts to study for exams.
+11) After each exam, analyze results to see how you can improve in the next exam
+12) Make sure to talk to the instructor or the T.A. as soon as you have trouble with the
+course. DO NOT wait until the last minute to get assistance!
+Policy on scholastic dishonesty: Students who violate University rules on scholastic dishonesty
+are subject to disciplinary penalties, including the possibility of failure in the course and/or
+dismissal from the university. Since such dishonesty harms the individual, all students, and the
+integrity of the university, policies on scholastic dishonesty will be strictly enforced.
+Students with disabilities: In order to receive academic accommodations, students must present
+a letter from the Services for Students with Disabilities (SSD) area of the Office of the Dean of
+Students as soon as possible. Please inform Dr. Latham in writing at the beginning of the course
+or as soon as possible if you need special accommodations for the exams.
+Accommodations for religious Holy days: As per university policy, accommodations will be
+made for religious holy days. The student must make the instructor aware in writing of a
+religious-related absence at least fourteen days prior to class absence (especially if it conflicts
+with an exam) or first class day for religious holy days that fall within the first two weeks of the
+semester.
+TENTATIVE SCHEDULE
+Refer to powerpoints for relevant reading from each chapter
+June 2 Chemical bonds, water and environment (Chapters 2, 3)
+3 Organic compounds, Carbohydrates (Chapters 4, 5)
+6 Lipids and Amino acids (Chapter 5)
+7 Proteins and nucleic acids (Chapter 5)
+8 Chem evol and Prok cells, Organiza of cells (Chaps: 25, 27, 6)
+9 DNA structure and replication (Chapter 6)
+10 Transcription
+13 Translation and mutations
+14 Organization of cells (Chapter 6)
+15 Review for Exam 1
+16 Exam 1
+17 Organization of cells (Chapter 6)
+20 Membranes (Chapter 7)
+21 Cell signaling and signal transduction (Chapter 11)
+22 Gene regulation (Chapter 18)
+23 Gene regulation (Chapter 18)
+24 Energy (Chapter 8)
+27 Respiration (Chapter 9)
+28 Respiration (Chapter 9)
+
+29 Review
+30 Exam 2
+July 1 Photosynthesis (Chapter 10)
+5 Cell cycle and regulation (Chapter 12)
+6 Cloning
+7 Final exam review
+COMPREHENSIVE FINAL EXAM: July 9, 9 am to noon (Tentative)

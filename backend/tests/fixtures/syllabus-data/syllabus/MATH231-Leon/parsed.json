@@ -1,0 +1,185 @@
+{
+  "course": {
+    "id": "math231",
+    "course_code": "MATH 231",
+    "course_title": "Elementary Discrete Mathematics I",
+    "term": "Fall 2022",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Jonathan Brundan",
+        "email": "brundan@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "08:30",
+        "end_time": "09:50",
+        "timezone": "America/Los_Angeles",
+        "location": "LLCS 101",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "08:30",
+        "end_time": "09:50",
+        "timezone": "America/Los_Angeles",
+        "location": "LLCS 101",
+        "type": "lecture"
+      }
+    ],
+    "location": "LLCS 101"
+  },
+  "assessment_categories": [
+    {
+      "id": "weblog",
+      "name": "WeBWork Homework",
+      "weight_percent": 24,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "written_hw",
+      "name": "Written Homework",
+      "weight_percent": 24,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterms",
+      "name": "Midterms",
+      "weight_percent": 18,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 34,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "weblog_1",
+      "title": "WeBWork Homework",
+      "category_id": "weblog",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 24,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "TH"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "No late accepted",
+        "late_pass_allowed": false
+      },
+      "confidence": 0.95,
+      "source_excerpt": "WeBWork 24%, due Thursdays 11:59pm"
+    },
+    {
+      "id": "written_hw_1",
+      "title": "Written Homework",
+      "category_id": "written_hw",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 24,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "TH"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "24hr extension by request before deadline; first free, then 50% penalty; no work after 24hr late",
+        "late_pass_allowed": true
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Written 24%, drop lowest, due Thursdays 11:59pm"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Written Midterm",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": "2022-10-26",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 8,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Written midterm Week 5 (Oct 26-27) in discussion sections"
+    },
+    {
+      "id": "midterm_2",
+      "title": "Online Quiz Midterm",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": "2022-11-12",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "50 min online quiz noon Nov 11 to midnight Nov 12"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2022-12-07T10:15:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 34,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Wednesday December 7, 10:15-12:15 in LLCS 101"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 1,
+    "extension_days": 24
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

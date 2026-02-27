@@ -1,0 +1,402 @@
+CS 314 (Winter 2025; 21817) Computer Organization
+Jump to Today
+Introduction to Course and Instructor
+Course Description
+Introduction to computer organization and instruction-set architecture - digital logic design, binary arithmetic, design of central processing unit and memory, machine-level programming.  In addition to machine-level programming, this course will provide an introduction to the C programming language in the context of bitwise operations, memory management, pointers to memory, and translation between C and the x86-64 instruction set architecture.
+
+Lectures
+MWF 12-12:50 - 229 MCK
+
+Streamed via Zoom (after attendance code is given - does not count as live attendance):
+
+https://uoregon.zoom.us/j/95663227167?pwd=nmQbTCJQaFNjpkMoHwscoaNozrT7K1.1Links to an external site.
+
+Meeting ID: 956 6322 7167
+Passcode: 111570
+
+Lectures are recorded and made available (via Panopto) for subsequent viewing.
+
+Labs
+M 1-1:50, 2-2:50; T 9-9:50 - B026 KLA
+
+Streamed via Zoom (after attendance code is given - does not count as live attendance):
+
+https://uoregon.zoom.us/j/6643471789?pwd=TE90RGovYjBUM0ozSlFpZGRzVSs5dz09Links to an external site.
+
+Meeting ID: 664 347 1789
+Passcode: 232683
+
+Labs are recorded and made available (via Panopto) for subsequent viewing.
+
+Instructor Information and Office Hours
+Eric D. Wills, Ph.D.
+
+Email: eric@cs.uoregon.edu
+
+Group office hours: MW 11-12, F 1-2
+
+156 Deschutes
+
+1:1 office hours: T 4-5
+
+https://uoregon.zoom.us/j/95663227167?pwd=nmQbTCJQaFNjpkMoHwscoaNozrT7K1.1Links to an external site.
+
+Meeting ID: 956 6322 7167
+Passcode: 111570
+
+Graduate Teaching Assistants
+Andrew Teske
+
+Email: ateske@uoregon.edu
+
+Group office hours: T 12-2, W 10-11
+
+235 Deschutes
+
+Remote office hours: F 3-5
+
+https://uoregon.zoom.us/j/6643471789?pwd=TE90RGovYjBUM0ozSlFpZGRzVSs5dz09Links to an external site.
+
+Meeting ID: 664 347 1789
+Passcode: 232683
+
+Undergraduate Learning Assistants
+Nabil Abdel-Rahman
+
+Email: nabka@uoregon.edu
+
+Group office hours: T 2:30-4:30, F 10-11 (and by appointment)
+
+100 Deschutes
+
+Overall Goal
+To significantly improve programming and debugging skills by developing a deep understanding around every line of code that we read or write.
+
+Acquired Skills
+Upon successful completion of the course, students will have acquired the following essential skills:
+
+be able to use bitwise operations to efficiently solve problems in C.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+be able to implement a basic direct-mapped caching solution.
+Key verbs: solve, write, debug, optimize, implement
+
+Course Objectives
+Each student will:
+
+Expected Learning Outcome	Acquired Skills
+Proficiently use bitwise operators to solve problems efficiently in C.
+be able to use bitwise operations to efficiently solve problems in C.
+Demonstrate knowledge of unsigned, signed, and floating-point number encodings and binary, decimal, and hexadecimal representations.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Demonstrate usage of a typical instruction set architecture and understand the relationship between C code and data-transfer, arithmetic, and control instructions.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Demonstrate usage of the call stack, including call/return instructions, argument passing, local scope, and register conventions.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Demonstrate knowledge of stack vs heap allocation, array and struct data types.
+be able to write iterative and recursive algorithms in C and assembly language.
+be able to debug C code using gdb, debug assembly code using an interactive assembler/debugger.
+Comprehend the basic functionality of a modern pipelined microprocessor.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+Demonstrate how various optimization techniques affect assembly code and therefore program performance.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+Understand the modern memory hierarchy, including caching, and how it affects performance.
+be able to optimize C code with respect to instruction counts, unpredictable branches, and memory-access patterns.
+be able to implement a basic direct-mapped caching solution.
+Estimated Student Workload
+Each student will:
+
+read assigned readings in the required textbook;
+attend the live lectures;
+attend a weekly lab session, led by one of the graduate teaching assistants, at which you will be introduced to tools and techniques to help you be proficient in developing your projects;
+submit solutions for 8 programming projects - these are individual efforts, and must represent your own work;
+sit and submit the midterm and the final.
+Workload expectations are 12 hours per week.
+
+Activity
+
+Total hours
+
+Remarks
+
+Attend lecture
+View recorded lectures
+
+30
+
+Lecture attendance is required.  Each lecture is recorded and made available for subsequent viewing.
+
+Assigned readings
+
+15
+
+Do the assigned readings BEFORE it is covered in lecture.
+
+Attend labs
+
+10
+
+Lab attendance is required.
+
+Develop and submit projects
+
+50
+
+Start projects early; take advantage of plentiful office hours; use message board to solicit additional assistance.
+
+Revision
+
+15
+
+Studying for midterm and final exams.
+
+Total
+
+120
+
+ 
+
+Course Policies
+Course Materials
+(Required) Computer Systems: A Programmer's Perspective, 3rd Edition by David R. O'Hallaron Randal E. BryantLinks to an external site.
+Message Board
+Please post questions related to course content on Piazza:
+
+https://piazza.com/uoregon/winter2025/cs314Links to an external site.
+
+Grading Policies
+Grading will be based on the following criteria:
+
+10%
+
+Attendance quizzes (in person) - on Canvas - can not be made up - lowest 5 scores dropped - individual submission -  collaboration encouraged
+
+15%
+
+Labs - submitted to Canvas - late policy applies (not available to be made up until 5 days after last lab) - lowest score dropped - individual submission - collaboration encouraged
+
+25%
+
+Assignments - submitted to Canvas - late policy applies - lowest score dropped - individual submission - collaboration and peer review encouraged
+
+25%
+
+Midterm exam - in person - individual submission - individual work only - page of notes (only) allowed
+
+25%
+
+Final exam - in person - individual submission - individual work only - 2 pages of notes (only) allowed
+
+It is the sole responsibility of the student to verify that submissions have been successfully uploaded prior to the due date. To verify a submission, revisit the submission page for the assignment to view your uploaded files.
+
+Grading Criteria
+A
+
+Excellent performance. Very well prepared to continue on in the major. Solid grasp of the concepts and approaches introduced in CS 314
+
+B
+
+Solid performance. You have shown a generally good grasp of the concepts and approaches introduced in CS 314.
+
+C
+
+Acceptable performance, but your grasp of the concepts and approaches will require improvement if you choose to continue in the CS major.
+
+D
+
+Your grasp of concepts and approaches, and/or programming skills, are not yet sufficient to continue in the CS major.
+
+F
+
+Little or no demonstrated grasp of concepts and approaches introduced in CS 314, and/or failure to carry out much of the required work.
+
+Grading Scale
+  A  	 A+ >= 97.00*	 A 93.00 - 96.99 	 A- 90.00 - 92.99
+  B  	 B+ 87.00 - 89.99 	 B 83.00 - 86.99	 B- 80.00 - 82.99
+  C  	 C+ 77.00 - 79.99 	 C 73.00 - 76.99	 C- 70.00 - 72.99
+  D  	 D+ 67.00 - 69.99 	 D 63.00 - 66.99	 D- 60.00 - 62.99
+  F  	 F 0.00 - 59.99 	 	 
+*Eligibility for 'A+' grades will be based on exam scores; only students with exam scores in the top 5% of the course will be considered.
+
+Absences
+In-class lecture attendance will be tracked via attendance quizzes (lowest 5 scores dropped).  Absences will only be excused in accordance with the University Course Attendance and Engagement policy.  Accommodations for prolonged absences may be arranged with the Accessible Education Center (AEC).
+
+Late Work
+Assignments and labs will be automatically penalized 10% of the maximum score for each day after the Canvas due date, up to a maximum penalty of 50%.  For assignments, a 24-hour grace period will be extended between the posted due date and the Canvas due date.  Late penalties will only be waived in accordance with the University Course Attendance and Engagement policy.  Accommodations for flexibility on assignment deadlines may be arranged with the Accessible Education Center (AEC).  Late submissions will not be accepted after the final exam.
+
+As stated above, it is the sole responsibility of the student to verify that submissions have been successfully uploaded prior to the due date.  Incomplete submissions, for any reason, will be subject to the late penalty.
+
+Missed Exams
+Exams can only be rescheduled in accordance with the University Course Attendance and Engagement policy or with respect to Accessible Education Center (AEC) accommodations.
+
+It is against university policy to administer final exams before the posted date/time.
+
+Classroom Community Expectations
+All members of the class (both students and instructor) can expect to:
+
+Participate and Contribute:  All students are expected to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others.   While all students should participate, participation is not just talking, and a range of participation activities support learning. Participation might look like speaking aloud in the full class and in small groups as well as submitting questions prior to class or engaging with the message board.  We will establish more specific participation guidelines and criteria for contributions in our first weeks of the term.
+
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. We may establish more specific guidelines and protocols to ensure inclusion and equity for all members of our learning community.
+
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don’t hesitate to contact me to ask for assistance or offer suggestions that might help us learn better.
+
+Schedule
+Date
+
+Lectures
+
+Reading
+
+Modules
+
+1/6 - 1/10	
+Great Realities in Computing
+
+Representing and Manipulating Information - Bitwise Ops, Integers
+
+2.1
+F: 2.1.7
+Week 1-2
+1/13 - 1/17	
+Representing and Manipulating Information - Floating Point
+
+2.2-2.4.2
+M: 2.2.3
+W: 2.4.1
+F: 2.4.2
+1/20 - 1/24	
+No Class Monday
+
+Machine-Level Representation of Programs - History, Data Transfer
+
+No Class Friday
+
+3.1-3.2
+W: 3.2.1
+Week 3
+1/27 - 1/31	
+Machine-Level Representation of Programs - Arithmetic, Control, Procedures
+
+3.4-3.6
+M 3.4.1
+W: 3.5.1 
+F: 3.6.1
+Week 4
+2/3 - 2/7	
+Machine-Level Representation of Programs - Data Structures, Memory Layout
+
+3.7-3.10
+M: 3.7.2 
+W: 3.7.5 
+F: 3.8.1
+Week 5
+2/10 - 2/14	
+Midterm review
+
+Midterm (Wednesday in person)
+
+Processor Architecture - Y86-64 ISA, Logic Circuits
+
+4.1
+F: 4.1.2
+Week 6-7
+2/17 - 2/21	
+Processor Architecture - Y86-64 Processor
+
+4.2-4.3
+M: 4.2.1
+W: 4.3.1 
+F: 4.3.3
+2/24 - 2/28	
+Optimizing Program Performance - Limitation of Optimizing Compilers
+
+Optimizing Program Performance - Modern Processors, Loop Unrolling, Branch Prediction
+
+5.1-5.11
+M: 5.1
+W: 5.2 
+F: 5.8
+Week 8
+3/3 - 3/7	
+The Memory Hierarchy - Memory Technologies, Locality
+
+The Memory Hierarchy - Caching in the Memory Hierarchy
+
+No class Friday
+
+6.1-6.3
+M: 6.1.4 
+W: 6.3.1
+Week 9
+
+3/10 - 3/14	
+The Memory Hierarchy - Direct-Mapped Caches, Set-Associative Caches
+
+Final review
+
+6.4-6.6
+M: 6.4.2
+W: 6.4.3
+
+Week 10
+3/17 - 3/21	Final exam (Wednesday, March 19, 10:15 a.m)	 	 
+Related Links
+Textbook companion siteLinks to an external site.
+C for Python programmersLinks to an external site.
+Unix Programming Tools GuideLinks to an external site.
+gdb tutorialLinks to an external site.
+Binary to Decimal converterLinks to an external site.
+IEEE-754 converterLinks to an external site.
+logic.ly free demoLinks to an external site.
+Y86-64 simulatorLinks to an external site.
+Y86 Syntax Highlighter for VSCodeLinks to an external site.
+VirtualBox (for x86-64 machines)Links to an external site.
+UTM (for ARM machines)Links to an external site.
+GodboltLinks to an external site. (use x86-64 gcc 8.3 with -Wall -O1 -masm=att arguments)
+OnlineGDBLinks to an external site.
+University Policies
+Reporting Obligations
+I am a designated reporter. For information about my reporting obligations as an employee, please see Employee Reporting Obligations on the Office of Investigations and Civil Rights Compliance (OICRC) website. Students experiencing sex or gender-based discrimination, harassment or violence should call the 24-7 hotline 541-346-SAFE [7244] or visit safe.uoregon.edu for help. Students experiencing all forms of prohibited discrimination or harassment may contact the Dean of Students Office at 5411-346-3216 or the non-confidential Title IX Coordinator/OICRC at 541-346-3123 to request information and resources. Students are not required to participate in an investigation to receive support, including requesting academic supportive measures. Additional resources are available at investigations.uoregon.edu/how-get-support.I am also a mandatory reporter of child abuse. Please find more information at Mandatory Reporting of Child Abuse and Neglect.See https://investigations.uoregon.edu/suggested-syllabus-language for recommended syllabus language that is more complete.
+
+Access and Accommodations
+The University of Oregon and I are dedicated to fostering inclusive, equitable, and accessible learning environments for all students. The Accessible Education Center (AEC) assists students with disabilities in reducing barriers in the educational experience. You may be eligible for accommodations for a variety of disabilities – apparent disabilities, such as a mobility or physical disability, or non-apparent disabilities, such as chronic illnesses or psychological disabilities. If you have or think you have a disability and experience academic barriers, please contact the Accessible Education Center (Location: 360 Oregon Hall; 541-346-1155; uoaec@uoregon.edu) to discuss appropriate accommodations or support. The details of your disability will be kept confidential with the AEC and you are not expected to share this information with others. However, I invite you to discuss any approved accommodations or access needs at any time with me.
+
+Accommodation for Religious Observances
+The university makes reasonable accommodations, upon request, for students who are unable to attend a class for religious obligations or observance reasons, in accordance with the university discrimination policy which says “Any student who, because of religious beliefs, is unable to attend classes on a particular day shall be excused from attendance requirements and from any examination or other assignment on that day. The student shall make up the examination or other assignment missed because of the absence.” To request accommodations for this course for religious observance, visit the Office of the Registrar's website (https://registrar.uoregon.edu/calendars/religious-observances) and complete and submit to the instructor the “Student Religious Accommodation Request” form prior to the end of the second week of the term.
+
+Accommodation for Military and Federal Agency Deployment
+A student that is a member of the military, a member of the commissioned corps of the National Oceanic and Atmospheric Administration or a member of the Public Health Service of the United States Department of Health and Human Services detailed by proper authority for duty with the Army or Navy and who is ordered to federal or state active duty, or called to unit training, assembly or annual training, regardless of the length of duty or training, and who presents verification of active duty/reserve component training, has the following rights:
+
+The student may drop or withdraw from courses, with refund, even after published deadlines; or 
+Receive a grade of incomplete and, upon release from active duty/reservist training, complete the course in accordance with the University of Oregon’s practice for completion of incomplete courses; or 
+Continue and complete the course for credit subject to the conditions in section 4 of this policy (see link below).
+If this applies to you, please let me know as early in the term as possible so that we can explore appropriate accommodations. The complete policy can be found here: Military and Federal Agency Deployment Accommodation Rights
+
+Pregnancy Modifications
+Pregnant and parenting students are eligible for academic and work modifications related to pregnancy, childbirth, loss of pregnancy, termination of pregnancy, lactation, and related medical conditions. To request pregnancy-related modifications, students should complete the Request for Pregnancy Modifications formLinks to an external site. on the OICRC website. OICRC coordinates academic and other modifications for pregnant and parenting students to ensure students can continue to access their education and university programs and activities.
+
+Academic Misconduct
+The University Student Conduct Code (available at conduct.uoregon.edu) defines academic misconduct. Students are prohibited from committing or attempting to commit any act that constitutes academic misconduct. By way of example, students should not give or receive (or attempt to give or receive) unauthorized help on assignments or examinations without express permission from the instructor. Students should properly acknowledge and document all sources of information (e.g. quotations, paraphrases, ideas) and use only the sources and resources authorized by the instructor. If there is any question about whether an act constitutes academic misconduct, it is the students’ obligation to clarify the question with the instructor before committing or attempting to commit the act. Additional information about a common form of academic misconduct, plagiarism, is available at https://researchguides.uoregon.edu/citing-plagiarism.
+
+Academic Disruption due to Campus Event or Emergency
+In the event of a campus event or emergency that disrupts academic activities, course requirements, deadlines, and grading percentages are subject to change. Information about changes in this course will be communicated as soon as possible by email, and on Canvas. If we are not able to meet face-to-face, students should immediately log onto Canvas and read any announcements and/or access alternative assignments. Students are also expected to continue coursework as outlined in this syllabus or other instructions on Canvas.
+
+Inclement Weather
+It is generally expected that class will meet unless the University is officially closed for inclement weather. If it becomes necessary to cancel class while the University remains open, this will be announced on Canvas and by email. Updates on inclement weather and closure are also communicated in other ways described here: https://hr.uoregon.edu/content/inclement-weather-immediate-updates.
+
+Mental Health and Wellness 
+Life at college can be very complicated. Students often feel overwhelmed or stressed, experience anxiety or depression, struggle with relationships, or just need help navigating challenges in their life. If you're facing such challenges, you don't need to handle them on your own--there's help and support on campus. 
+
+As your instructor if I believe you may need additional support, I will express my concerns, the reasons for them, and refer you to resources that might be helpful. It is not my intention to know the details of what might be bothering you, but simply to let you know I care and that help is available. Getting help is a courageous thing to do—for yourself and those you care about.
+
+University Health Services help students cope with difficult emotions and life stressors. If you need general resources on coping with stress or want to talk with another student who has been in the same place as you, visit the Duck Nest (located in the EMU on the ground floor) and get help from one of the specially trained Peer Wellness Advocates. Find out more at health.uoregon.edu/ducknest. 
+
+University Counseling Services (UCS) has a team of dedicated staff members to support you with your concerns, many of whom can provide identity-based support. All clinical services are free and confidential. Find out more at counseling.uoregon.edu or by calling 541-346-3227 (anytime UCS is closed, the After-Hours Support and Crisis Line is available by calling this same number).
+
+Basic Needs
+Any student who has difficulty affording groceries or accessing sufficient food to eat every day, or who lacks a safe and stable place to live and believes this may affect their performance in the course is urged to contact the Dean of Students Office (346-3216, 164 Oregon Hall) for support.
+
+This UO webpage includes resources for food, housing, healthcare, childcare, transportation, technology, finances, and legal support: https://blogs.uoregon.edu/basicneeds/food

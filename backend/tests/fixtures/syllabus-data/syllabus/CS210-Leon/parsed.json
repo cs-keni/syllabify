@@ -1,0 +1,218 @@
+{
+  "course": {
+    "id": "cs210-leon",
+    "course_code": "CIS 210",
+    "course_title": "Computer Science I",
+    "term": "Winter 2024",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Juan Flores",
+        "email": "jflore10@uoregon.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Los_Angeles",
+        "location": "180 PLC",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Los_Angeles",
+        "location": "180 PLC",
+        "type": "lecture"
+      }
+    ],
+    "location": "180 PLC"
+  },
+  "assessment_categories": [
+    {
+      "id": "online_exams",
+      "name": "Online Exams",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "inperson_exams",
+      "name": "In-person Exams",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "projects",
+      "name": "Programming projects",
+      "weight_percent": 20,
+      "drop_lowest": 2,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "labs",
+      "name": "Labs",
+      "weight_percent": 10,
+      "drop_lowest": 2,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "code_demo",
+      "name": "Code demo",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "attendance",
+      "name": "Attendance",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "online_exams_1",
+      "title": "Online Exams",
+      "category_id": "online_exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Online Exams 2, 20%"
+    },
+    {
+      "id": "inperson_exams_1",
+      "title": "In-person Exams",
+      "category_id": "inperson_exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "In-person Exams 2, 40%"
+    },
+    {
+      "id": "projects_1",
+      "title": "Programming projects",
+      "category_id": "projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Lowest 2 dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Projects 10, drop 2, 20%"
+    },
+    {
+      "id": "labs_1",
+      "title": "Labs",
+      "category_id": "labs",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Lowest 2 dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Labs 10, drop 2, 10%"
+    },
+    {
+      "id": "code_demo_1",
+      "title": "Code demo",
+      "category_id": "code_demo",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Code demo 5%"
+    },
+    {
+      "id": "attendance_1",
+      "title": "Attendance",
+      "category_id": "attendance",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Attendance 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

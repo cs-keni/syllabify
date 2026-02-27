@@ -1,0 +1,124 @@
+ECE 396N – Semiconductor nanostructures
+Fall 2024
+Instructor: Prof. Emanuel Tutuc; Office: EER 3.890, MER 2.606E; E-mail:
+etutuc@mail.utexas.edu.
+Class hours: MW 1:30pm – 3:00pm, ECJ 1.306
+Office hours: W 3:30 pm – 5 pm, EER 3.890.
+Teaching Assistant: TBD
+Description:
+Advances in technology and fabrication of semiconductor structures have led
+to devices with size smaller that the electron mean free path. This course
+covers the theoretical framework for understanding the electronic properties of
+low-dimensional semiconductor structures, electron transport in quantum
+confined devices, such as semiconductor heterostructures, quantum wires and
+quantum dots.
+Objectives:
+ Review a number of key nanoscale, quantum confined electronic
+devices.
+ Understand the electronic properties of nanostructures.
+ Understand the device physics of semiconductor nanotransistors.
+Prerequisites:
+Quantum mechanics and solid state physics (undergraduate level) are strongly
+recommended.
+COURSE FORMAT FOR FALL 2022:
+This course will be offered face-to-face for Fall 2024. Regular class meetings
+(MW 1:30 PM - 3:00 PM) will be conducted in ECJ 1.306. The instructor regularly
+scheduled office hours (W 3:30PM - 5:00PM) will be conducted in EER 3.890.
+Tentative course topics:
+ Review of quantum mechanics and solid state physics concepts (5
+lectures)
+ Bloch’s theorem, tight binding model, application to graphene band
+structure (2 lectures)
+ One dimensional transport, conductance quantization (2 lecture)
+ Diffuse and ballistic transport, diffusive to ballistic crossover (2 lectures)
+ Two dimensional systems: band engineering, doping modulation (2
+lectures)
+ Metal-insulator-semiconductor structure, triangular quantum well, 2D
+electron gas, capacitance (2 lectures)
+
+ Characterization of the MOS interface, capacitance – voltage
+characteristics, experimental methods to determine the density of
+interface traps (3 lectures)
+ Physics of the nanotransistor, quantum capacitance, electrical
+characteristics of the ballistic transistor (3 lectures)
+ Energy levels in carbon nanotubes, carbon nanotube transistors (2
+lectures)
+ Quantum dots, single electron transistor, Coulomb blockade (2 lectures)
+Recommended references:
+ The physics of low-dimensional semiconductors, by John H. Davies
+ Quantum transport: Atom to transistor, by S. Datta
+Grading:
+30% Homework, 30% Midterm, 40% Final.
+Homework questions will be assigned throughout the class term, and will be
+due one to two weeks after being assigned.
+Late homework will be accepted at instructor’s discretion. Discussion of
+homework questions is encouraged. Please be sure to
+submit your own independent homework solution.
+Midterm exam date: TBD.
+The final exam dates are set by the registrar’s office, and made public four
+weeks before the semester ends http://registrar.utexas.edu/students/exams/.
+This course counts toward the Graduate Portfolio in Nanomanufacturing
+(https://nascent.utexas.edu/nanomanufacturing-portfolio-program)
+Course notes:
+Course notes will be provided for most lectures. The web-based course
+management system “Canvas”, available at https://canvas.utexas.edu/ will be
+used to post course notes, homework assignments and solutions.
+College Drop/Add Policy:
+An engineering student must have Dean’s approval to add/drop after the fourth
+class day of the semester.
+Academic dishonesty:
+Plagiarism or any form of academic dishonesty (cheating includes, but is not
+limited to, copying another student's work, bringing notes into a test and
+copying material directly from a book, article or web site without including
+appropriate references, falsifying data, doing someone's work) is a violation of
+University rules and may return a grade of zero for each assignment in which
+it is detected or may incur even steeper penalties. For University policies see:
+http://registrar.utexas.edu/catalogs/gi09-10/ch01/index.html
+
+Class Web sites and student privacy:
+Web-based, password-protected class sites are associated with all academic
+courses taught at The University. Syllabi, handouts, assignments and other
+resources are types of information that may be available within these sites. Site
+activities could include exchanging e-mail, engaging in class discussions and
+chats, and exchanging files. In addition electronic class rosters will be a
+component of the sites. Students do not want their names included in these
+electronic class rosters must restrict their directory information in the Office of
+the Registrar, Main Building, Room 1.
+Students with Disabilities:
+The University of Texas at Austin provides upon request appropriate academic
+accommodations for qualified students with disabilities. For more information,
+contact the Division of Diversity and Community Engagement, Services for
+Students with Disabilities at 471-6259
+(http://www.utexas.edu/diversity/ddce/ssd/).
+Accommodations for religious holidays:
+Section 51.911 of the Texas Education Code addresses absence by students
+for observance of religious holidays. Section 51.911 states that a student shall
+be excused from attending classes or other required activities, including
+examinations, for the observance of a religious holy day, including travel for
+that purpose. A student whose absence is excused under this subsection may
+not be penalized for that absence and shall be allowed to take an examination
+or complete an assignment from which the student is excused within a
+reasonable time after the absence. University policy requires students to notify
+each of their instructors as far in advance of the absence as possible so that
+arrangements can be made. By UT Austin policy, you must notify the instructor
+of your pending absence at least fourteen days prior to the date of observance
+of a religious holiday.
+Recommendations regarding emergency evacuation from the Office of Campus
+Safety and Security (http://www.utexas.edu/safety/):
+- Occupants of buildings on The University of Texas at Austin campus are
+required to evacuate buildings when a fire alarm is activated. Alarm activation
+or announcement requires exiting and assembling outside.
+- Familiarize yourself with all exit doors of each classroom and building you
+may occupy. Remember that the nearest exit door may not be the one you
+used when entering the building.
+- Students requiring assistance in evacuation shall inform their instructor in
+writing during the first week of class.
+- In the event of an evacuation, follow the instruction of faculty or class
+instructors; exit in an orderly fashion and assemble outside.
+
+- Do not re-enter a building unless given instructions by the following: Austin
+Fire Department, The University of Texas at Austin Police Department, or Fire
+Prevention Services office.
+- Behavior Concerns Advice Line (BCAL): 512-232-5050
+- Link to information regarding emergency evacuation routes and emergency
+procedures can be found at: www.utexas.edu/emergency

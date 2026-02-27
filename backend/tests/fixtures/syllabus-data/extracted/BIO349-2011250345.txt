@@ -1,0 +1,249 @@
+Biology 349: Developmental Biology
+Semester: Spring, 2011
+Professor: Steven Vokes
+Office hours: Wed 9-10am, Fri 9-10am (and by appointment)
+Location: MBB 1.318BA
+Phone: 232-8359
+Email: svokes@mail.utexas.edu
+Textbook: “Developmental Biology”, S.F. Gilbert, 9th edition
+Lectures: M/W/F, 1-2PM, WEL 2.312
+Discussion Sections: Discussion sections are conducted by the Teaching Assistant. You are not
+required to attend a discussion section, and you are welcome to attend any of the listed discussions.
+Wed 8-9AM, BIO 301
+Wed10-11AM, BIO 301
+Wed 12-1PM, RLM 5.114
+Course Web site: There is a Blackboard website at http://courses.utexas.edu. You will need your
+UT EID to access this site. On this site will be posted class announcements, the
+course syllabus, and lecture outlines. We will also use the discussion section of
+the site for answering questions. Email will be used as a means of
+communication with students. The student email notification policy can be found
+at http://www.utexas.edu/its/policies/emailnotify.php.
+Overview
+Biology 349 is a one-semester course covering the principles underlying animal development,
+focusing on embryonic development. The main objectives of this course are to:
+• Describe the overall framework and structural features of embryonic development.
+• Explore some of the experimental paradigms and model systems most widely used in
+the analysis of biological development.
+• Enable you to read papers, to think critically about the primary data underlying
+experiments and to analyze and interpret the results. You should be able to propose
+experiments based on techniques we have learned that allow you to answer scientific
+questions.
+• Examine the cellular and molecular mechanisms that allow the embryonic cells to
+acquire their unique developmental instructions, and the way in which those
+instructions determine the subset of genes that a cell will express.
+In this course I will discuss developmental concepts, making use of examples from whichever
+experimental system(s) have proven most useful for studying each step in the process. We will
+therefore consider embryonic development in a diverse array of species, including some vertebrate
+animals (e.g. frog, mouse, bird, fish) and some invertebrate animals (e.g. fruitfly, sea urchin,
+nematode).
+I am a faculty member in the Section of Molecular Cellular & Developmental Biology and a member of
+the Institute for Cellular and Molecular Biology. My research laboratory focuses directly on
+understanding how limbs develop (for more information see http://www.sbs.utexas.edu/vokes_lab/).
+As a developmental biologist, I love this material, and I want you to learn it and to enjoy learning it. If
+you have suggestions or questions, or if you want more information on a specific topic that interests
+
+you, or if you are struggling with the material, or even if you just want to understand it better, then
+come talk to me.
+Course Organization
+BIO349 will consist of three 50 minutes lectures per week accompanied by readings (see below) from
+“Developmental Biology”, S.F. Gilbert, 9th edition. You are encouraged to raise your hand at any time
+with questions and comments to ensure that you understand the material. In the interest of covering
+all the ground, I may on occasion defer answering more specific questions until after class or in office
+hours. I will post preliminary Power point images on the Blackboard web site before the lecture. The
+images actually used in the lecture will be posted after the lecture. There will be occasional additional
+handouts that will be posted on Blackboard and distributed in class. There are likely to be changes in
+reading assignments during the course, and these will be posted on Blackboard.
+The lectures are supplemented by Discussion Sections in which the teaching assistant will answer
+questions and provide help with study questions. Attendance is optional. There are three BIO349
+Discussion Sections scheduled per week (see pg. 1), and you may attend any or all of them.
+Feedback is an important part of any kind of learning. Without feedback on how well you understand
+the material, it is more difficult for you to make significant progress. During this course you will give
+me feedback on your learning in informal and formal ways, such as questions, suggestions, and
+exams. I want you to let me know when something we discuss is not clear. This kind of
+communication will enable me to provide additional information when needed or to explain a concept
+in different terms.
+Prerequisites
+To enroll, students must have received a grade of "C" or better in BIO325 or 325H (Genetics).
+Upper-division courses in cell and molecular biology are advantageous but not required. Though not
+a formal pre-requisite, a solid understanding of cell and molecular biology is essential for successful
+completion of this course. Upper division courses in cell and molecular biology are particularly useful.
+Examinations
+There will be four scheduled in-semester examinations and a final exam (comprehensive), worth
+100 points apiece. Each in-semester exam will specifically cover the material presented since the last
+exam, although the later three mid-term examinations will also assume knowledge of general topics
+that have been emphasized throughout the course. Exams will consist of both multiple-choice and
+short answer/problem/short essay questions and will follow an identical format except for Exam #4
+which will have a higher percentage of multiple choice questions. The final grade will be determined
+by adding your four best exam scores (this includes the final). If you have taken all four exams during
+the semester and are happy with your grade, you do not need to take the final exam.
+Any material covered in class, in the posted notes, or in the readings accompanying the lectures may
+be examined. Please note that the lecture handouts on Blackboard will not include additional material
+mentioned in class or presented on the board during lectures. Students who miss class are
+responsible for obtaining these notes from one of their classmates.
+Please bring to the exams both a pencil (for multiple choice bubble sheets) and a pen (for essays), as
+well as your photo ID. All written sections must be answered in pen. If you accidentally write in
+pencil, your exam will still be graded but it will not be returned to you. You will be free to look at it
+during TA office hours but it cannot leave the office. Do not bring a calculator, take out cell phones,
+your textbook or your notebooks during the exams. It is your responsibility to arrive at the exam on
+time. Students who arrive late will not be given additional time.
+
+Failing to take a scheduled examination will result in a score of 0 unless there is documented
+evidence of circumstances appropriate to an absence and beyond your control. Acceptable reasons
+for absence from an exam include:
+• Illness - you should have a physician's note indicating that you were not in physical condition to
+take the exam at the scheduled time. A note from a family member is insufficient.
+• Death or grave illness in your immediate family.
+• Significant scheduling conflicts such as medical/grad school interviews or athletic participation in
+NCAA sporting events. Voluntary activities such as running in a marathon do not excuse you from
+an exam.
+This documentation, which is generally issued by the Dean’s office, must be presented within one
+week of the missed exam. In the event of a missed exam for which appropriate documentation of
+absence has been provided, the final grade will be the sum of the other 4 exams. The only
+circumstance for which make-up exams will be given is one in which two exams have been missed,
+both documented, and for acceptable reasons beyond your reasonable control (see above). Under
+those circumstances, I will administer a make-up exam (worth 100 pts, 25% of the grade). In the
+event that a student requires a make-up exam to be administered, the form of the exam (written
+versus oral, or a combination of the two) will be at the discretion of Dr. Vokes.
+Grading
+This course will use plus/minus grading. Final letter grades will be determined by the cumulative
+points on your four best exams, and will be based on the following grade scale.
+Grades
+A = 360 pts or higher (90+%)
+A-= 340-359 (85-89.75%)
+B+= 320-339 (80-84.75%)
+B = 300-319 pts (75-79.75%)
+B-= 280-299 (70-74.75%)
+C+=268-279 (67-69.75%)
+C = 252-267 pts (63-66.75%)
+C-=240-251 (60-62.75%)
+D+=228-239 (57-59.75%)
+D = 212-227 pts (53-56.75%)
+D-=200-211 (50-52.75%)
+F = 199 pts or fewer (<50%)
+In the event that the overall class average for all exams totals less than 280 (70%) for students
+having taken all five exams, after excluding grades below 50% I will raise all students point totals
+equivalently by the number of points that will bring the average to 280 (70%).
+Please note that following the assignment of a final grade, under no circumstances will I
+negotiate a grade assignment with a student whose point total falls (even closely) below a
+cutoff. i.e., if you intend to achieve an A in this class, your total points at the end of the course
+must be 360 or higher. In order to achieve a B, your cumulative points total will need to be 300
+or higher.
+We make every attempt to grade all students by fair and uniform criteria. Exams will not be regraded
+except for cases in which there was a clear mistake in the original grading or in the addition of points.
+
+Regrade requests must be submitted to the me within 2 weeks of the date when the exam was
+handed back to the class. If you pick up your graded exam later than 2 weeks after the date at which
+the exam was returned in class, you will not be eligible for a regrade. In the event that a regrade is
+requested, the exam must be accompanied by a separate sheet of paper giving the number of the
+question(s) to be regraded, and a written explanation as to why the original answer deserved more
+points than were awarded. For multiple part questions, the entire question will be regraded. The
+regrade request should not be written on the exam itself, nor should any other alterations have been
+made. The instructor will reserve the right to regrade the entire exam in the event of a regrade
+request.
+Academic dishonesty
+We adhere to the core principles of the university honor code. Academic dishonesty of any sort will
+not be tolerated in my class. I will prosecute - to the fullest extent allowed by the university - anyone
+who is caught cheating in my class. With particular relevance to this course, this will include anyone
+who is caught cheating on an exam or who is caught altering a graded exam in an attempt to obtain
+additional credit. To protect against dishonest practices, we may photocopy selected portions of all
+graded exams before they are returned to the class. Please review the University’s policy on
+academic dishonesty at http://deanofstudents.utexas.edu/sjs/acadint.php.
+Classroom etiquette
+Please avoid any behavior that could disrupt the learning environment of others. Please turn off your
+cell phones (or set them to vibrate) when you are at class. Students are expected to follow the
+“Standards of Conduct” outlined by the University: http://deanofstudents.utexas.edu/sjs/conduct.php.
+Graduate student enrollment
+BIO349 is intended as an upper-division undergraduate course, but may also be appropriate for
+graduate students who have not had formal instruction in this area. Graduate students will take the
+same exams as undergraduates, and be graded similarly. For graduate students the exam grades
+will account for 75% of the final grade. A term paper, the topic of which will be discussed with Dr.
+Vokes, will account for 25% of the final grade. Graduate students interested in taking this course
+should speak to Dr. Vokes about how to register appropriately for the course.
+Religious observances
+I have attempted to schedule the exams to avoid conflicts with those religious holy days of which I am
+aware. If you have a conflict with a religious holy day and would like accommodation, you must bring
+it to my attention during the first two weeks of class.
+Special needs
+The policy of UT Austin is to provide appropriate accommodations for students with disabilities. To
+receive such accommodations, students must present me with a letter prepared by the Division of
+Diversity and Community Engagement, Services for Students with Disabilities (471-6259). This letter
+must be given to Dr. Vokes at least one week prior to the first exam, or during the first week of
+classes if accommodations are required for the lectures.
+Services for Students with Disabilities: http://www.utexas.edu/diversity/ddce/ssd/
+Accommodation Letter: http://www.utexas.edu/diversity/ddce/ssd/accommodation_ltr_request.php
+
+Suggestions on how to succeed in BIO349
+• This is an upper division college science course, and you are not likely to get a good grade if you
+do not attend lectures.
+• Final letter grades will be determined solely by exam scores. There will be no opportunities for
+'extra-credit' ... it will not be possible to make up for poor exam performance after the fact. If you
+find that there are things that you do not understand, ask questions in class, go to discussion
+sections and ask questions, go to office hours and ask questions, or post the question on the
+Discussion Board section of Blackboard (Dr. Vokes will check this daily).
+• Everyone learns differently, and you should try to find a learning/studying strategy that works for
+you. My general advice is that you should make an effort to take good notes in class, then study
+for exams by first going back over the lecture notes (the notes you take in class and the ones I
+post) and reviewing the main topics from each lecture. Pay special attention to the study questions
+that are provided each week. Rather than simply memorizing the answers, you need to
+understand the underlying concepts and how to apply them to new scenarios. If concepts aren’t
+clear, go to the discussion sections and ask questions or go to the office hours and ask
+questions.
+• It is my expectation that you not only learn important facts but that you can use that knowledge to
+solve questions pertaining to developmental biology. Therefore, on your exams you will be asked
+to apply the knowledge that you’ve gained in the lectures.
+Lecture List: This is a tentative lecture schedule. Lecture topics, dates and assigned readings
+are subject to change. All handouts and papers will be posted on Blackboard.
+DATE TOPIC READING
+Part 1: A blueprint for building an organism
+Jan 19 Intro to Developmental Biology 37-47
+Jan 21 Developmental diversity - Endless forms most beautiful 14-17
+Jan 24 Fertilization I - Activating germ cells 121-155
+Jan 26 Fertilization II - The making of a zygote 121-155
+Jan 28 Early Development I – Cell cleavage 160-163 & Handout
+Jan 31 Early Development II – Regulating development 164-178
+Feb 2 Early Development III – Regulating development 192-199
+Feb 4 Invertebrate patterning I - Front or back (the dorsal-ventral axis) 203-233
+Feb 7 Invertebrate patterning II - Heads or tails (the anterior-posterior axis) 203-233
+Feb 9 Invertebrate patterning III - Hox genes and domain specification 234-237
+Feb 11 Exam 1
+Part 2: The early body plan
+Feb 14 Early vertebrate patterning I - Making mesoderm 241-244
+Feb 16 Early vertebrate patterning II - Gastrulation 241-267
+Feb 18 Early vertebrate patterning III – Generating positional identity 311-319
+Feb 21 Neural development I 334-343
+Feb 23 Neural development II 343-345 & Paper
+Feb 25 Neural crest cells - the fourth germ layer 373-383
+Feb 28 Craniofacial formation 383-392
+Mar 2 Neuronal pathfinding 392-404
+Mar 4 Somite formation I - Making muscles 413-416; 420-428
+Mar 7 Somite formation II - The somite clock 417-419
+Mar 9 Somite formation III 417-419
+Mar 11 Exam 2
+
+Mar 14-19 SPRING BREAK
+Part 3: Organogensis
+Mar 21 Heart development 445-456
+Mar 23 Vascular development 456-465
+Mar 25 Kidney development 434-442
+Mar 28 Limb development I 485-495
+Mar 30 Limb development II 495-504
+Apr 1 Limb development III – Bone formation 428-431
+Apr 4 Limb development IV – Comparative evolution None
+Apr 6 Endoderm I – Specification, the lung and liver None
+Apr 8 Endoderm II - Pancreatic development None
+Apr 11 Endoderm III – Regenerating Beta cells Paper
+Apr 13 Exam 3
+Part 4: Applications for Developmental Biology
+Apr 15 Regenerative biology I – The humble Planarians Handout
+Apr 18 Regenerative biology II – Limb development 561-566
+Apr 20 Regenerative biology III Class discussion of paper (read ahead!) Paper
+Apr 22 Regenerative biology IV Heart development None
+Apr 25 Sex determination I - How germ cells find their way 592-594;
+Apr 27 Sex determination II - Molecular strategies 511-534
+Apr 29 Programming and reprogramming the nucleus I - Cloning embryos Handout
+May 2 Programming and reprogramming the nucleus II - Life after ES cells Handout (as above)
+May 4 TBD
+May 6 Exam 4
+FINAL EXAM: MAY 16th 9:00-12:00 noon Location TBD*
+*UT Final exam locations will be posted at approximately three weeks prior to the end of the semester at:
+https://utdirect.utexas.edu/registrar/exam_schedule.WBX

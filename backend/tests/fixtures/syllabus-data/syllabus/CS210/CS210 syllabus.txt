@@ -1,0 +1,146 @@
+Course SyllabusAlternative formats
+Welcome to CS 210, Computer Science I, the first course of the Computer Science and MACS majors, and a core course for DSCI majors.  Students in other majors are also welcome.
+
+The objective of this course is to introduce the basic concepts and practices of computer science.  We will cover fundamental approaches to computational problem solving (software development) and introduce other computer science topics. These are the foundation for further study of computer science, whether in the CS major or for developing and applying computational methods in other disciplines. 
+
+We will explore computational concepts  using the Python programming language.
+
+Pre-requisites
+Math 112 or math placement exam score for Math 251 or Math 231.  Strictly enforced.
+
+Students are expected to have prior experience with a high level programming language such as Python, JavaScript, or Java.  It is not possible for us to enforce this as a pre-requisite, but CS 210 moves very quickly, and students who have no programming experience are likely to have trouble keeping up.   Note that CS 122 is one way to obtain basic programming experience in Python programming, and CS 122 is offered in the same time slot as CS 210.   If you aren't sure, try to assess your readiness for CS 210 in the first week.  
+
+Objectives
+Learning outcomes
+Upon successful completion of the course, students will be able to:
+
+understand, develop, and implement algorithms for computational problem solving;
+design, develop, and test  computer programs in a disciplined, systematic manner; 
+demonstrate robust mental models of data representation and code execution;
+demonstrate good understanding of a high level programming language;
+implement a sampling of classic computer science problem domains and algorithms
+Acquired skills
+Students will also acquire skills that will be useful in further study or application of the knowledge gained in CS 210: 
+
+use IDLE, a simple development environment,  to develop and test  moderate-sized Python programs;
+translate algorithm descriptions to working Python code;
+write code and documentation that complies with explicit coding standards (PEP8 and additional course standards)
+write executable test cases in a standard form
+effectively diagnose program bugs by interpreting test outcomes and systematically gathering other diagnostic information
+Instructional Team
+Course instructor:  Michal Young
+Professor Young directs the course, delivers lectures, holds help hours, designs projects, designs and grades exams, and is responsible for policy decisions in CS 210.  
+
+Office hours:  We hold extensive help hours.  For matters that are not appropriately handled in a group setting, contact Prof. Young for an individual meeting, via Zoom or in person. 
+
+Communications:  
+
+Graduate teaching assistants (GE-T):  
+
+Our GE-Ts will hold scheduled labs, grade projects, conduct code reviews, hold help hours, and aid in overall class management.  
+
+Undergraduate learning assistants (LAs):  
+
+Learning assistants hold help hours, assist GE-Ts in scheduled labs, and participate with the instructor and GE-Ts in course management. 
+
+Class Encore Leaders:  
+
+Class Encore leaders are advanced undergraduate students who lead additional study sessions with materials designed to help you succeed in CS 210.  Class Encore is a free service offered by the Tutoring and Academic Engagement Center.  You will have an opportunity to sign up for Class Encore in week 2. 
+
+We are a team.  The instructor, GE-Ts,  LAs, and Class Encore leaders meet weekly to discuss how the course is going,  problems of any kind including whatever students struggles we have observed, and ways to improve the course.  We welcome your thoughts about what is working and not working, and whatever obstacles you may encounter.  Talk to any of us.  This is a tough course, but our objective is to help you master this challenging material.  
+
+Schedule
+Lecture 10-11:20  Tu, Thu in Pacific 123. 
+Attendance and participation are required, but if you are unable to attend due to illness or exigency, you may watch a recording of the day's lecture before answering the daily lecture quiz. 
+
+Labs Tuesday and Wednesday, all between Tuesday lecture and Thursday lecture.
+Attendance and participation are required. 
+
+We will schedule extensive help hours, in person in the Price Science Commons CS Tutorial Room in the basement of the science library, and by Zoom.  Help hours will be staffed by the instructor, GE-Ts, and LAs.  
+
+A project will be due every week from week 2 through week 10, usually Monday at 8pm (not midnight!).  The weekly schedule of projects will be available through Canvas. 
+
+Reading
+We will use a free, online textLinks to an external site..  In addition, each weekly project includes a HOWTO document that must be read carefully.  Expect to read the equivalent of about 20 pages per week, and expect to read much of it more than once. 
+
+Grading
+Computer science, MACS, and DSCI majors must take CS 210 for a grade.  Others may take CS 210 graded or P/N. 
+
+Rubric
+A	Excellent performance in all parts of the class. Very well prepared to continue in computer science coursework.
+B	Solid performance. You have shown a generally good grasp of the material, and should be able to apply it in more advanced classes.
+C	Acceptable performance, but you will need to do better to be successful as a CIS or DSCI major.
+D	Your demonstrated grasp of concepts and approaches and/or your programming skills, are not yet sufficient to make use of what you learned.
+F	Little or no demonstrated grasp of concepts and approaches introduced in this class, and/or failure to carry out much of the required work.
+Weights
+Note: These are 2022 weights and levels.  I expect to revise them for Fall 2023. 
+
+Projects 15%  (one score dropped, one late project excused to allow for illness and other exigencies)
+Mini-exams 45%   (best 2 scores of 3 exams, allowing for one absence or bad day)
+Thursdays week 4, 6, 8.  Mini-exams are taken in class, on paper.
+Final exam 30%
+Code demo 10%. 
+Lab and lecture attendance is mandatory. If you miss more than 20% of either, or are habitually tardy, your grade may be reduced by up to a full letter grade.
+Grade Scale
+Note: These 2022 levels will be revised for Fall 2023. 
+
+A student may generally count on a weighted average score of 94% or better earning an A or A- and a weighted average score of 84% or better earning a B or B-. Actual thresholds are based on the proficiency rubric above, and are sometimes somewhat lower, for example if exams were particularly difficult.
+
+One project score is dropped from the average.  One of the first four mini-exams (but not the final exam) is dropped from your exam average.
+
+Project rubrics 
+A rubric will be provided for each project.  In general, you can expect approximately the following criteria, with some adjustments depending on characteristics of a project (based on 100 points possible): 
+
+20 Made an effort. Turned in something that is substantially more than the starter code. This is an all-or-nothing criterion.
+20 Running code. It may fail all the test cases, but it is syntactically valid Python code that can execute the provided test cases without crashing. This is an all-or-nothing criterion.
+40 Functionally correct.
+40 Full marks: Correctly executes all the provided test cases and additional "hidden" test cases.
+30 Imperfect but close; may fail a couple of test cases.
+20 Substantial missing or incorrect features cause multiple test cases to fail.
+0-10 May pass a few test cases for parts of the project, but the project functionality is substantially incomplete or incorrect.
+10 Follows CS 210 coding standardsLinks to an external site.. Many violations of the coding standards can be automatically checked.
+10 Fluency. In judgment of grader, this code is readable, clear, concise, and adequately documented ... the kind of code we'd be happy to work on. This may include judgements that go beyond minimal satisfaction of the coding standards and include qualities such as brevity, good choice of variable names, etc.  (Expectations for fluency will rise through the term, as we expect you are not very fluent initially.) 
+Policies
+We have divided policies into two parts.  Policies that are "generic" to University of Oregon (likely similar in all your classes) are spelled out in a separate page on standard UO policies and just summarized here.  Policies that are specific to CS 210 are spelled out here. 
+
+UO Policies in CS 210
+These policies are (mostly) standard across University of Oregon courses.  See the policy addendum page for details. 
+
+Academic Disruption:  Check Canvas, and stay safe.   
+Protect your classmates from COVID.  If you might be contagious, stay home and let us know! 
+We follow UO policies regarding academic misconduct and take it very seriously.  (See details below about policies regarding sharing code and helping classmates.) 
+We want to remove barriers to your full participation.   The Accessible Education Center on campus can help.  Let us know of other barriers you encounter, so we can work with you to find ways to overcome them. 
+The Dean of Students office has resources to help with basic needs (food, housing, etc), and additional resources are listed at https://blogs.uoregon.edu/basicneeds/food/. 
+We're mostly here rain-or-shine, but not if it is dangerous. If I need to cancel class, I'll do my best to send email through Canvas. 
+University Health Services and University Counseling Services can help with mental health.   I am not a mental health professional, but I am happy to help you find the services you need, to the best of my ability.  If you are in crisis right now, call 541-346-3227 for support. 
+If religious observation will prevent you from attending class, you will be excused provided you have informed me by week 2 of class.  There's a form for that. 
+Discrimination and retaliation:  I have certain reporting responsibilities as an "assisting employee".  If you tell me about encountering discrimination or retaliation, I will offer support resources, but I won't automatically report it without your permission unless I think you are someone else is in danger.    But aside from reporting, let me know if there are ways I can help or intervene! 
+Incompletes:  University of Oregon policy is that an incomplete can be assigned when  "the quality of work is satisfactory, but some minor yet essential requirement has not been completed, for reasons acceptable to the instructor".   Talk to me as early as possible if you think an incomplete might be necessary and appropriate. 
+Policies specific to CS 210
+Absence and Excused Work
+Attendance (preferably in person) will be measured by successful completion of attendance quizzes in Canvas.  You may miss up to 20% without penalty.  More than 20% will result in a penalty of up to a full grade. 
+
+The 20% allowance of absence without penalty, one dropped project score, and one dropped mini-exam score, is intended to be enough for most students who may encounter illness, accidents, etc.   You do not need to provide any documentation to "excuse" these absences, although I appreciate advance notice when it is practical to provide it.  UO policy governs excused absence for religious observation, school-sponsored events, or accommodation for disability, and the Dean of Students may be petitioned in exceptional circumstances.   It will not be up to me to decide which justifications to accept, and there will be no pressure on you to share with me personal information that you prefer to keep private.  This is spelled out in a little more detail on this page regarding attendance policy.
+
+Language
+University of Oregon is an international university.  Students and faculty have a wide variety of first languages.   That's a good thing. Communicating effectively in an international environment is part of becoming a educated person.
+
+The language of CIS 211 is International English.  When a German speaker, a Danish speaker, a Chinese speaker, and a Czech speaker sit around a table negotiating an important agreement, International English is the language they use to communicate. If an American joins that table, he or she communicates in International English, not American English.
+
+Whether your first language is American English, another version of English, or another language, we will do our best to communicate clearly with you. If you do not understand us the first time, please ask us to repeat; we will do the same if we don't understand you the first time. You should likewise do your best to communicate in International English with instructors and other students, and make an effort to understand and be understood in a community of people with many different language backgrounds.
+
+While we are not overly formal, you should communicate in a professional manner. Texting abbreviations are not appropriate.
+
+Collaboration and Academic Honesty
+Academic honesty policies can be complicated in a project-oriented computer science course, because collaboration is a normal and important part of software development and learning.   I have developed the following guidelines to encourage constructive collaboration, while still ensuring that I am able to evaluate an individual student's mastery of the material. 
+
+All work turned in must be the student's own, from the current term. Copying any other work, including work or sample solutions from prior terms, will not be tolerated. If any part of a project is based on samples obtained outside class resources (e.g., sample code from Stack Overflow), the source must be cited.
+
+Some specific kinds of collaboration are permitted.
+
+In person collaboration: You may discuss approaches to solving a problem without a computer, e.g., sitting around a table or at a whiteboard with nobody in the group using a computer. (This is the clearest way I know to distinguish between discussing design and approach, which is permitted, and sharing details of coding, which is not.)
+Remote version: Zoom chats (or Slack, or Discord, etc.) with up to two study partners is permitted for discussing approaches and for helping each other test and debug code. You may share screen to display small portions of code, but you may not transmit source code in a chat window, email, or any other medium that supports cut-and-paste.
+You may also discuss approaches to the problem in the open lab in Price Science Commons during open lab times. In the context of open lab hours (only) you may ask a classmate to look at your code to help debug it or to suggest an approach that does involve details of coding.
+Consider AI helpers (ChatGPT and the like) like student collaborators.  Find constructive ways to use them to help you learn how to solve a problem in a project (but not an exam).  Make sure you understand such "assisted" solutions, then demonstrate to yourself and to me that you have understood by setting aside the solution and writing it again by yourself. 
+Remote version: Open lab hours with a learning assistant, teaching assistant, or professor present will be considered to be equivalent to Klamath Hall labs. In that context it is ok to share screens, and in fact I encourage you to "look over the shoulder" of hour classmates who are sharing their screens to solve problems in lab hours.
+Collaboration must be credited in comments in your code. Collaboration that is not explicitly credited is plagiarism.You are also responsible for protecting your work. That is, you must take reasonable precautions to prevent your work from being copied.

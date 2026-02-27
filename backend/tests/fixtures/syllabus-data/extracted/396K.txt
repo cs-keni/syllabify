@@ -1,0 +1,163 @@
+Introduction to Quantum Field Theory
+The Introduction to Quantum Field Theory is a two-semester course. Content-wise, this is a continious 29-
+week long course, but for administrative purposes it is split in two:
+PHY 396 K -- Quantum Field Theory I, usually taught in the Fall, and
+PHY 396 L -- Quantum Field Theory II, usually taught in the Spring.
+Physics-wise, the split is rather arbitrary, so students seriously interested in the Quantum Field Theory should
+take both halves of the course.
+Unfortunately, the UT Physics Department is unable to offer the QFT II class every year, so the students who
+took QFT I (396 K) last Fall (2015) will have to wait for the Spring of 2017 for the QFT II (396 L) course.
+This document is the syllabus for the whole course as taught in the academic years 2015/16/17 (that is, 396K
+taught in Fall 2015 and again in Fall 2016, and 396L taught in Spring 2017) by Dr. Vadim Kaplunovsky.
+Note that future offering of the Quantum Field Theory course may vary.
+Prerequisite Knowledge
+The formal pre-requisites for the QFT (I) class is graduate standing and the PHY 389 K class (graduate
+Quantum Mechanics (I)). However, what I care about is your knowledge rather than your status or grades. If
+you have the pre-requisite knowledge — however you have learned it — I'll sign the paperwork to let you
+into my class even if you are an undergraduate student.
+Understanding Quantum Field Theory requires serious knowledge of quantum mechanics at graduate or
+advanced undergraduate level. Besides the QM basics — like knowing how to solve the hydrogen atom —
+you must be familiar with the multi-oscillator systems, the rotational symmetry and the angular momenta as
+its generators, the identical particles, the perturbation theory, and the basics of scattering theory. For the UT
+undergraduate students, you should complete the undergraduate QM sequence of 373 + 362K + 362L classes
+before taking the QFT class. For students who have learned their QM elsewhere, you need either 120 hours of
+undergraduate QM classes (not counting the inroductory Modern Physics class), or basic undergraduate QM
+followed by a gradute-level QM class. In any case, read J. J. Sakirai's book Modern Quantum Mechanics in
+the summer; if you understand everything in it, you are ready for my QFT class, but if the book looks all
+Japanese to you, you should beef up your Quanum Mechanics before taking Quantum Field Theory.
+Besides QM, you would need good undergraduate-level knowledge of Classical Mechanics (the Lagrangian,
+the Hamiltonian, the canonical variables, etc.), Classical Electrodynamics (the vector potential A, the gauge
+transforms, the EM stress-energy tensor, etc.), and basic special relativity (the Lorentz transforms, the 4–
+vectors, and the tensors). Make sure you are familiar with both 3D and 4D index notations, so expressions
+μν
+like F F do not confuse you or slow you down. You do not need general relativity for the QFT classes. In
+μν
+terms of the UT undergraduate classes, the 336 + 352K + 352L classes should give you adequate background.
+The undegraduate-level Statistical Mechanics would be very useful for the second semester of QFT (396L),
+but you would not need it for the first semester (396K).
+Finally, on the Math side, you would need basic complex analysis, especially the contour integrals and how to
+
+take them. You are also advised to learn a bit of continuous group theory, but this is not a pre-requisite. In
+class, I shall explain the basics of continuous groups, their generators, and the representations from scratch,
+but it would help if you already know something when I do.
+Course Content (QFT I and QFT II combined)
+Bosonic Fields:
+Classical field theory; relativistic fields; identical bosons and quantum fields; Klein-Gordon propagator
+and relativistic causality; quantum electromagnetic fields and photons.
+Fermionic fields:
+Lorentz symmetry and spinor fields; Dirac equation and its solutions; second quantization of fermions
+and particle-hole formalism; quantum Dirac field; Weyl and Majorana spinor fields.
+Symmetries in QFT:
+Continuous symmetries and conserved currents; spontaneous symmetry breaking and Goldstone
+bosons; local (gauge) symmetry and QED; Higgs mechanism and superconductivity; non-abelian
+gauge symmetries and the Yang-Mills theory; discrete symmetries.
+Interacting Fields and Feynman Rules:
+Perturbation theory; correlation functions and Feynman diagrams; S-matrix and cross-sections;
+Feynman rules for the QED, QCD, and other important firld theories.
+Quantum Electrodynamics:
+Some elementary processes; radiative corrections; infrared and ultraviolet divergencies;
+renormalization of fields and of the electric charge; Ward identities.
+Functional Methods:
+Path integrals in quantum mechanics; "path" integrals for classical fields and functional quantization;
+functional quantization of QED; QFT and statistical mechanics; quantum symmetries and conservation
+laws.
+Renormalization Theory:
+Systematics of renormalization; `integration out' and the Wilsonian renormalization; `running' of the
+coupling constants and the renormalization group.
+Non-Abelian Gauge Theories:
+Non-abelian gauge symmetries and the Yang-Mills theory; interactions of gauge bosons and Feynman
+rules; Fadde'ev-Popov ghosts and BRST; renormalization of the YM theories and the asymptotic
+freedom; chiral gauge symmetries; the Standard Model; confinement and other non-perturbative
+effects.
+In the first semester (the 396 K class) I shall cover the bosonic and the fermionic fields, the symmetries
+(including the Higgs mechanism and the non-abelian gauge symmetries at the semi-classical level), the
+perturbation theory and the Feynman graphs, and the elementary processes in QED. The remaining subjects
+will be covered in the second semester (the 396 L class).
+Textbooks
+The primary textbook for this course (both semesters) is An Introduction to Quantum Field Theory by
+Michael Peskin and Daniel Schroeder. To a large extent, the course is based on this book and should follow it
+fairly closely, but don't expect a 100% match.
+Since both the course and the main textbook are introductory in nature, many questions would be left an-
+answered. The best reference book for finding the answers is The Quantum Theory of Fields by Steven
+Weinberg. The first two volumes of this three-volume series are based on a two-year course Dr. Weinberg
+
+used to teach here at UT — but of course they also contains much additional material. To a first
+approximation, Dr. Weinberg's book teaches you everything you ever wanted to know about QFT and more
+— which is unfortunately way too much for a one-year intoductory course. (Weinberg's volume 3 is about
+supersymmetry, a fascinating subject I sometimes teach, but I won't cover it in this class.)
+I have told the campus bookstore that I use Peskin's book as a textbook for both 396 K and 396 L (Fall 2015,
+Fall 2016, and Spring 2017), Weinberg's vol.1 as a supplementary texbook for the 396 K (Fall 2015 and Fall
+2016) and vol.2 as a supplementary textbook for the 396 L (Spring 2017). I hope the store have stocked the
+books accordingly, but you should buy them while the supply lasts.
+Homeworks and Grades
+The homeworks are absolutely essential for understanding the course material. Often, due to the time
+pressure, I will explain the general theory in class and leave the examples for the homework assignment. It is
+extremely important for you to work them out by yourselves; otherwise, you might think you understand the
+class material but you would not! Be warned: The homeworks will be very hard.
+I shall post homework assignments each week on page
+http://bolvan.ph.utexas.edu/~vadim/Classes/2016f/homeworks.html (for the Fall 2016 and Spring 2017
+classes). The solutions will be linked to the same page after the due date of each assignment.
+The homeworks are assigned on the honor system: I shall not collect or grade the homeworks, but you should
+endeavor to finish them on time and check each other's solutions.
+The solutions to previous years' homeworks — often quite similar to this year's — are available on the web,
+even on my own web server. On the honor system, I will keep them available at all times. But you should do
+your best to do the homework yourself, and only then read the solutions I post.
+There will be separate final grades for each semester. Each grade is based on two take-home tests, one in the
+middle of the semester, the other at the end; the mid-term test contributes half of the grade and the end-term
+test the other half. There will be no in-class final exams.
+Fall 2016 mid-term exam will be given to students On October 25 and due on November 1.
+Fall 2016 final exam will be given to students on December 1 (last class) and due on December 8.
+Spring 2017 mid-term exam will be given to students in late March and due a week later.
+Spring 2017 final exam will be given to students on May 4 (last class) and due on May 11.
+Lectures (Fall 2016 and Spring 2017)
+Regular Lectures
+Four hours a week, both semesters.
+Fall 2015 semester:
+Tuesdays and Thursdays, 3:30 to 5:30, in room RLM 5.114.
+No lecture on August 25 (first week's Thursday): I'll be out of town.
+First lecture on August 30 (Tuesday)
+Spring 2017 semester:
+Tuesdays and Thursdays, 3:30 to 5:30, room TBA.
+All missed lectures will be made-up.
+
+Make-up and Supplementary Lectures
+Besides the regular lectures, I shall give a few supplementary lectures about subjects that are somewhat
+ouside the main focus of the course but are interesting for their own sake, such as magnetic monopoles or
+superconductivity. The students are strongly encoraged to attend the supplementary lectures, but there is no
+penalty for missing them. The issues covered by supplementary lectures will not be necessary to understand
+the regular lectures and will not appear on exams.
+The schedule for the make-up and supplementary lectures will be worked out in the first week of each
+semester and posted right here. Expect 5 to 7 lectures each semester, roughly a leacture evry two or three
+weeks.
+Fall 2016 semester:
+The supplementary lectures will be on Wednesdays, from 1 to 2 PM, in room RLM 9.222 (the
+brown bag room).
+Tentatively, the lectures will be on 9/14, 9/28, 10/12, 10/19, 11/9, 11/16, 11/30.
+Lecture on 9/14: Seeing classical motion in QM and classical fields in QFT.
+Lecture on 9/28: Field theory of superfluidity.
+Lecture on 10/12: More Superfluidity.
+Lecture on 10/19: Spinor fields in different spacetime dimensions.
+Lecture on 11/9: Resonances and unstable particles.
+Lecture on 11/16: Spin-statistics theorem.
+Lecture on 11/30: Superconductivity.
+Spring 2017 semester:
+TBA
+Lecture Log
+For students' convenience, I shall keep a log of lectures and their subjects on a separate web page
+http://bolvan.ph.utexas.edu/~vadim/Classes/2016f/lecturelog.html (for the Fall 2016 and Spring 2017
+classes). Since the pace of the course may change according to the students' understanding, I will not make a
+complete schedule at the beginning of the class. Instead, I will simply log every lecture after I give it. This
+way, if you miss a lecture, you will know what you should read in the textbook and other students' notes.
+Office
+Office Location: RLM 9.314A.
+Office hours: Wednesdays 2:30 to 3:30 and Thursdays 2 to 3.
+At other times, the students are welcome whenever I'm in my office and not too busy. The best times to
+look for me are late afternoons and early evening hours.
+E-mail: vadim@physics.utexas.edu.
+Please use email for simple homework questions or administrivia. Complicated physics questions
+should be asked in person.
+Office phone: (512) 471-4918.
+Last Modified: December 8, 2016.
+Vadim Kaplunovsky
+
+vadim@physics.utexas.edu

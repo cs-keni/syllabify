@@ -1,0 +1,95 @@
+CS373: Software Engineering https://www.cs.utexas.edu/users/downing/cs373/index.html
+CS373: Spring 2015
+Software Engineering
+About
+Books
+Evaluations
+Git
+Grading
+Groups
+Schedule
+Topics
+View the Project on GitHub gpdowning/cs373
+This is a course on software engineering using Python, Java, Javascript, HTML, CSS,
+SQL, and Django.
+Estimates of the required effort to do well are:
+3 hours per week of studying
+21 hours per week of programming
+3,000 lines of Python code
+Lectures
+Unique Days Time Place
+51995 10am CLA 0.130
+MWF
+52000 1pm GDC 4.302
+Instructors
+Type Name Days Time Place
+1 of 4 1/29/15, 11:17 AM
+
+CS373: Software Engineering https://www.cs.utexas.edu/users/downing/cs373/index.html
+Glenn Downing MF 12-12:50pm
+Lecturer downing@cs.utexas.edu GDC 6.308
+@gpdowning F 2-2:50pm
+William Xie
+TA M 4-5pm GDC 6.408F
+wxie@cs.utexas.edu
+Mikkel Kim
+W 5-6pm
+wjsekfghks@gmail.com
+Proctors GDC 3.302
+Thanh Nguyen
+T 5-6pm
+thanhnguyencs@utexas.edu
+Resources
+Extreme Programming Installed
+Books Database Design with UML and SQL
+Refactoring
+Tools git
+Canvas
+Websites GitHub
+Piazza
+Prerequisites
+The following coursework with a grade of at least C- in each: Computer Science 311,
+311H, 313H, or 313K; Computer Science 307, 314, 314H, 315, or 315H; Computer
+Science 310, 310H, 429, or 429H; and Mathematics 408C, 408K, or 408N.
+Writing Flag
+This course carries the Writing Flag. Writing Flag courses are designed to give students
+experience with writing in an academic discipline. In this class, you can expect to write
+regularly during the semester, complete substantial writing projects, and receive
+feedback from your instructor to help you improve your writing. You will also have the
+opportunity to revise one or more assignments, and you may be asked to read and
+2 of 4 1/29/15, 11:17 AM
+
+CS373: Software Engineering https://www.cs.utexas.edu/users/downing/cs373/index.html
+discuss your peers' work. You should therefore expect a substantial portion of your
+grade to come from your written work. Writing Flag classes meet the Core
+Communications objectives of Critical Thinking, Communication, Teamwork, and
+Personal Responsibility, established by the Texas Higher Education Coordinating Board.
+Special Needs
+Any student with a documented disability who requires academic accommodations
+should contact Services for Students with Disabilities at 471-6259 (voice) or
+1-866-329-3986 (Video Phone) as soon as possible to request an official letter outlining
+authorized accommodations.
+You must provide this letter to me by the 12th class day. Project deadlines will not be
+extended for special-needs students.
+Incompletes
+To be eligible for an incomplete you must have a letter grade of C or better and a written,
+verifiable excuse for missing the last test. This is a necessary but insufficient condition
+for receiving an incomplete.
+Academic Integrity
+Students who violate University rules on academic dishonesty are subject to disciplinary
+penalties, including the possibility of failure in the course and/or dismissal from the
+University. Since such dishonesty harms the individual, all students, and the integrity of
+the University, policies on academic dishonesty will be strictly enforced. For further
+information please visit the Student Judicial Services Web site: Student Judicial
+Services.
+Programming assignments will be compared using Moss. You may share design ideas
+with your fellow students. You may not share code in any way with your fellow students.
+The penalty for academic dishonesty will be a course grade of F and a referral of the case
+to the Dean of Students. Further penalties, including suspension or expulsion from the
+university may be imposed by that office.
+3 of 4 1/29/15, 11:17 AM
+
+CS373: Software Engineering https://www.cs.utexas.edu/users/downing/cs373/index.html
+This project is maintained by gpdowning
+Hosted on GitHub Pages — Theme by orderedlist
+4 of 4 1/29/15, 11:17 AM

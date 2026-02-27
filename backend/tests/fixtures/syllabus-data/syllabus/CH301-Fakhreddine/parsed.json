@@ -1,0 +1,197 @@
+{
+  "course": {
+    "id": "ch301-fakhreddine",
+    "course_code": "CH 301",
+    "course_title": "General Chemistry",
+    "term": "Fall 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Fatima Fakhreddine",
+        "email": "fatima.fakhreddine@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "11:00",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 2.312",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "11:00",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 2.312",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "11:00",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 2.312",
+        "type": "lecture"
+      }
+    ],
+    "location": "WEL 2.312"
+  },
+  "assessment_categories": [
+    {
+      "id": "quizzes",
+      "name": "Quizzes/Attendance",
+      "weight_percent": 10,
+      "drop_lowest": 2,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "Hour Exams",
+      "weight_percent": 60,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes/Attendance",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Drop 2 lowest; no make-up",
+        "late_pass_allowed": 2
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Mondays; drop 2 lowest"
+    },
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2012-09-20T19:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": 200,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Best 3 of 4 count; no makeup",
+        "late_pass_allowed": 1
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Sep 20 7-8:30pm"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2012-10-11T19:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": 200,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Oct 11 7-8:30pm"
+    },
+    {
+      "id": "exam_3",
+      "title": "Exam 3",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2012-11-08T19:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": 200,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Nov 8 7-8:30pm"
+    },
+    {
+      "id": "exam_4",
+      "title": "Exam 4",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2012-12-06T19:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": 200,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Dec 6 7-8:30pm"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2012-12-12T14:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 30,
+      "points": 300,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Exemption if 190+ avg on exams and 80%+ quiz",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Dec 12 2-5pm"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 2,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

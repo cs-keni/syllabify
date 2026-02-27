@@ -13,15 +13,17 @@
 
 /* Theme-ready: light and dark mode via .dark class on html */
 :root {
+  --radius-card: 12px;
+  --radius-button: 8px;
   --color-surface: #fafafa;
   --color-surface-elevated: #ffffff;
   --color-surface-muted: #f5f5f5;
   --color-ink: #374151;
   --color-ink-muted: #6b7280;
   --color-ink-subtle: #9ca3af;
-  --color-accent: #0d9488;
-  --color-accent-hover: #0f766e;
-  --color-accent-muted: #ccfbf1;
+  --color-accent: #0f8a4c;
+  --color-accent-hover: #094728;
+  --color-accent-muted: #f5c30f;
   --color-border: #e5e7eb;
   --color-border-subtle: #f3f4f6;
 }
@@ -30,14 +32,43 @@
   --color-surface: #111827;
   --color-surface-elevated: #1f2937;
   --color-surface-muted: #374151;
-  --color-ink: #f9fafb;
+  --color-ink: #0f8a4c;
   --color-ink-muted: #d1d5db;
   --color-ink-subtle: #9ca3af;
-  --color-accent: #14b8a6;
-  --color-accent-hover: #2dd4bf;
-  --color-accent-muted: #134e4a;
+  --color-accent: #f5c30f;
+  --color-accent-hover: #0f8a4c;
+  --color-accent-muted: #094728;
   --color-border: #374151;
   --color-border-subtle: #1f2937;
+}
+
+/* Admin control panel - distinct slate/indigo aesthetic vs client green */
+.admin-shell {
+  @apply flex flex-col gap-0 -mx-4 sm:-mx-6 lg:-mx-8 -mt-6 sm:-mt-8;
+}
+.admin-header {
+  @apply bg-slate-800 dark:bg-slate-900 rounded-t-xl px-4 sm:px-6 py-4;
+}
+.admin-header-inner {
+  @apply flex flex-wrap items-center justify-between gap-4;
+}
+.admin-title {
+  @apply block text-white font-semibold text-lg;
+}
+.admin-subtitle {
+  @apply block text-white/70 text-sm font-normal mt-0.5;
+}
+.admin-body {
+  @apply flex-1 bg-slate-50 dark:bg-slate-950/50 rounded-b-xl border border-t-0 border-slate-200 dark:border-slate-700 px-4 sm:px-6 py-6;
+}
+
+/* Hide scrollbar but keep scroll (for nav tabs on mobile) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Respect reduced motion preference */

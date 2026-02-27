@@ -1,0 +1,162 @@
+{
+  "course": {
+    "id": "cs322-leon",
+    "course_code": "CIS 322",
+    "course_title": "Introduction to Software Engineering",
+    "term": "Fall 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Staff",
+        "email": null
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "14:00",
+        "end_time": "15:20",
+        "timezone": "America/Los_Angeles",
+        "location": "112 ESL",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "14:00",
+        "end_time": "15:20",
+        "timezone": "America/Los_Angeles",
+        "location": "112 ESL",
+        "type": "lecture"
+      }
+    ],
+    "location": "112 ESL"
+  },
+  "assessment_categories": [
+    {
+      "id": "mini_projects",
+      "name": "Mini Projects",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "Midterm exam",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final exam",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "mvp",
+      "name": "Build your MVP",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "projects_1",
+      "title": "Mini Projects (0-6)",
+      "category_id": "mini_projects",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": {
+        "frequency": "weekly",
+        "interval": 1,
+        "by_day": [
+          "SU"
+        ],
+        "until": null,
+        "count": null
+      },
+      "policies": {
+        "late_policy": "Lowest score dropped; due Sundays 6:00am",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Mini Projects 50%, lowest dropped"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm exam",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": "2025-11-04T14:05:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Midterm 11/04/2025 at 2:05pm-3:05pm"
+    },
+    {
+      "id": "final_1",
+      "title": "Final exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2025-12-08T12:30:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.95,
+      "source_excerpt": "Final 12/08/2025 at 12:30pm-1:30pm"
+    },
+    {
+      "id": "mvp_1",
+      "title": "Build your MVP!",
+      "category_id": "mvp",
+      "type": "project",
+      "due_datetime": "2025-12-03",
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Lowest assignment dropped",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.95,
+      "source_excerpt": "Build your MVP! 10%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "txt",
+    "schema_version": "1.0"
+  }
+}

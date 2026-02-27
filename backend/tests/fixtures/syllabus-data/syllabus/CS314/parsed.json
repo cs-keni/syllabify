@@ -1,0 +1,36 @@
+{
+  "course": {
+    "id": "cs314",
+    "course_code": "CS 314",
+    "course_title": "Computer Organization",
+    "term": "Winter 2025",
+    "timezone": "America/Los_Angeles",
+    "instructors": [
+      {"id": "inst-0", "name": "Eric D. Wills", "email": "eric@cs.uoregon.edu"}
+    ],
+    "meeting_times": [
+      {"id": "mt-1", "day_of_week": "MO", "start_time": "12:00", "end_time": "12:50", "timezone": "America/Los_Angeles", "location": "229 MCK", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "WE", "start_time": "12:00", "end_time": "12:50", "timezone": "America/Los_Angeles", "location": "229 MCK", "type": "lecture"},
+      {"id": "mt-3", "day_of_week": "FR", "start_time": "12:00", "end_time": "12:50", "timezone": "America/Los_Angeles", "location": "229 MCK", "type": "lecture"}
+    ],
+    "location": "229 MCK"
+  },
+  "assessment_categories": [
+    {"id": "attendance_quizzes", "name": "Attendance quizzes", "weight_percent": 10, "drop_lowest": 5, "subcategories": [], "grading_bucket": null},
+    {"id": "labs", "name": "Labs", "weight_percent": 15, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
+    {"id": "assignments", "name": "Assignments", "weight_percent": 25, "drop_lowest": 1, "subcategories": [], "grading_bucket": null},
+    {"id": "midterm", "name": "Midterm exam", "weight_percent": 25, "drop_lowest": null, "subcategories": [], "grading_bucket": null},
+    {"id": "final", "name": "Final exam", "weight_percent": 25, "drop_lowest": null, "subcategories": [], "grading_bucket": null}
+  ],
+  "assessments": [
+    {"id": "attendance_quizzes_1", "title": "Attendance quizzes", "category_id": "attendance_quizzes", "type": "quiz", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 10, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Attendance quizzes 10%"},
+    {"id": "labs_1", "title": "Labs", "category_id": "labs", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 15, "points": null, "recurrence": {"frequency": "weekly", "interval": 1, "by_day": null, "until": null, "count": null}, "policies": {"late_policy": "10% per day, max 50%", "late_pass_allowed": null}, "confidence": 0.9, "source_excerpt": "Labs 15%"},
+    {"id": "assignments_1", "title": "Assignments", "category_id": "assignments", "type": "assignment", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 25, "points": null, "recurrence": null, "policies": {}, "confidence": 0.9, "source_excerpt": "Assignments 25%"},
+    {"id": "midterm_1", "title": "Midterm exam", "category_id": "midterm", "type": "midterm", "due_datetime": null, "all_day": true, "timezone": null, "weight_percent": 25, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Midterm exam 25%"},
+    {"id": "final_1", "title": "Final exam", "category_id": "final", "type": "final", "due_datetime": "2025-03-19T10:15:00", "all_day": false, "timezone": "America/Los_Angeles", "weight_percent": 25, "points": null, "recurrence": null, "policies": {}, "confidence": 0.95, "source_excerpt": "Final exam 25%"}
+  ],
+  "grading_structure": {"type": "flat", "buckets": []},
+  "late_pass_policy": {"total_allowed": null, "extension_days": null},
+  "schedule": [],
+  "metadata": {"created_at": null, "updated_at": null, "source_type": "txt", "schema_version": "1.0"}
+}

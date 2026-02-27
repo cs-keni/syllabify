@@ -1,0 +1,296 @@
+Course Syllabus
+FIN 357 Business Finance, Spring 2019
+Unique 03270: MW 9:30-11:00, UTC 1.1116
+Unique 03285: MW 11:00-12:30, UTC 1.116
+Unique 03295: MW 2:00-3:30, CBA 4.324
+Unique 03315: MW 3:30-5:00, CBA 4.324
+Section 1. Course Objective
+Welcome to Business Finance! FIN 357 introduces concepts and analytical techniques to
+identify and solve financial management problems. It serves as the basis for all other courses in
+the area of finance and provides basic tools that every business student will need to be
+successful in his or her chosen career.
+Section 2. Contact Information
+Professor: Mary Lou Poloskey
+Office: GSB 5.176E
+Office Hours: Mondays and Wednesdays from 12:30 – 1:30 and 5:00 – 6:00, and by
+appointment
+Email: mary.poloskey@mccombs.utexas.edu
+TAs: Kelsey Wiley
+Feel free to drop in unannounced during our office hours. At other times, email is the best way
+to reach me.
+Section 3. Tools & Materials
+Textbook: We will be using Fundamentals of Corporate Finance, 12th edition, by Ross,
+Westerfield & Jordan, published by McGraw-Hill Education. The loose-leaf
+version of the textbook, combined with the required Connect Access Code, is
+ISBN 9781260700831. It is available at the Co-op. YOU MUST BUY THE VERSION
+BUNDLED WITH CONNECT (Online homework)
+Connect: Connect will be our homework tool. To get started, go to the FIN 357 page on
+Canvas and click on the link called “McGraw-Hill Connect.” Detailed instructions
+are posted in Canvas. For assistance, click on “Help” in the upper-right hand
+corner of the screen, or call (800) 331-5094.
+
+iClicker: We will be using the iClicker Classic remote student response system during class
+each day. You can use new or used iClicker, iClicker+ or iClicker2, all of which are
+available at the Co-op and online. You must register your clicker on Canvas and
+start bringing it to class by the 2nd day of class. To register your clicker on
+Canvas, go to the FIN 357 Canvas page, select “i>Clicker” from the left-hand
+menu bar, and click on “i>clicker Registration.” Enter your clicker number and
+click “Register.”
+If you get a new clicker any time after the 2nd class day, register it on Canvas and
+email me your name, eid, unique number, and clicker number. You will receive
+points for all of the “clicks” sent by your new clicker, effective as of the date that
+your clicker is registered and your email to me has been sent.
+Calculator: You will need a calculator that can perform financial functions (e.g. N, I, PV, PMT
+and FV). The HP 10B II financial calculator is recommended. You will not be
+allowed to use a cell phone or online financial calculator during an exam, nor will
+you be allowed to share your calculator with another student during an exam.
+Email: The General Information Catalog states: "Electronic mail (e-mail), like postal
+mail, is a mechanism for official University communication to students. The
+University will exercise the right to send e-mail communications to all students,
+and the University will expect that e-mail communications will be received and
+read in a timely manner." You can verify and/or update your email address here:
+https://utdirect.utexas.edu/apps/utd/all_my_addresses/
+Periodicals: It is highly recommended that you begin (or continue) the lifelong process of
+remaining abreast of business impacts of current events. Suggested reading
+includes The Wall Street Journal and The Financial Times (both are daily
+newspapers), and The Economist, Business Week, and Fortune magazines.
+Instructions for subscribing at reduced student prices will be posted on Canvas.
+Section 4. Prerequisites
+To remain enrolled in FIN 357, you must have successfully completed STA 309 or 309H, and
+have completed or registered for ACC 312 or 312H, and B A 324 or 324H. Students lacking these
+prerequisite will be dropped. Visit the BBA Program Office, CBA 2.400, for assistance.
+Section 5. Tutoring
+This course is supported by a Peer-Led Undergraduate Studying (PLUS) program, coordinated by
+the Sanger Learning Center. PLUS study groups provide weekly opportunities to collaboratively
+practice skills and apply knowledge you need for success in this course. Attending study groups
+regularly is a great way to ensure that you are keeping up with the material so you don’t fall
+behind. Feel free to attend any study group at any time during the semester; details on times
+and locations will be posted on Canvas and announced in class. More information about PLUS
+can be found at https://www.utexas.edu/ugs/slc/support/plus.
+
+Section 6. Grading
+Your grade in this course will be determined by your performance on the following:
+• Exams: 3 exams @ 25% each 75%
+• Connect Homework: The lowest 2 percentage scores will be dropped 5%
+• Daily iClicker Quizzes: The lowest 5 percentage scores will be dropped 5%
+• Quizzes: The lowest percentage score will be dropped 10%
+• Valuation Exercise: Excel-based case to be completed during class 5%
+Course Total 100%
+The McCombs grading guidelines recommend a GPA range from 3.0 to 3.2 for undergraduate
+business core courses. Historically, the cut-off for each letter grade was as shown below.
+A 93-100% B- 80-82% D+ 67-69%
+A- 90-92% C+ 77-79% D 63-66%
+B+ 87-89% C 73-76% D- 60-62%
+B 83-86% C- 70-72% F 0-59%
+The actual cut-off will depend on overall class performance. In other words, past performance
+is not a guarantee of future results. The University-approved +/- grading system will be
+employed. Make-up or extra work to improve your grade is not possible. Your final letter grade
+will be determined by the criteria set forth above.
+Section 7. Exams
+All students enrolled in FIN 357 will take common exams on the dates noted in the course
+schedule. Exams will begin at 6:30 pm and end at 8:30 pm. Exam locations will be posted on
+Canvas and announced during class. The Finance department has confirmed that our exams do
+not conflict with any other exams on the Dean’s master list of undergraduate evening exams.
+There will be three exams. All material covered in the course, including readings from the text,
+readings from supplementary materials, class discussions, end-of-chapter problems called
+“Connect to Finance,” “Chapter Review and Self-Test Problems,“ “Concept Review and Critical
+Thinking Questions,” and end-of-chapter “Questions and Problems” are subject to examination.
+Each exam will be non-comprehensive; that is, each will cover only the material related to that
+section. However, the material will build on itself as we proceed through the semester.
+After they have been graded, exams can be reviewed in my office, during my office hours.
+Make-up exams are offered for only the following reasons:
+• A conflict with another UT course,
+• Participation in a University-sponsored event,
+• A conflict with a University-recognized religious holy day,
+• A medical event (such as illness or injury) documented by Student Emergency Services.
+
+If you have any circumstance other than a medical emergency that will necessitate taking a
+make-up exam this semester, you must request permission and provide documentation no later
+than Monday, February 4th. Make-up exams will occur on the following dates:
+• Make-up Exam 1: Friday, February 22nd
+• Make-up Exam 2: Friday, April 5th
+• Make-up Exam 3: Friday, May 10th
+Section 8. Homework and Additional Online Preparation
+Homework: At the end of each chapter of your text, there are a plethora of practice
+problems. Several of the computational “Questions and Problems” have been
+assigned as required homework in Connect. The assignments are graded, but you
+can use the “Check My Work” function before you submit. Your 2 lowest
+assignment grades will be dropped.
+Homework is due in Connect by 11:59 pm (one minute before midnight) on the
+due date. Due dates are provided in the Course Schedule at the end of this
+syllabus, as well as in Connect. Homework is usually due on a Sunday, with the
+exception of CH 24, which is due on a Tuesday. After their due dates, the
+homework problems will become available to re-work for additional practice.
+LearnSmart: Connect also provides access to an adaptive learning tool called LearnSmart. This
+tool is an excellent way to approach your first reading of each chapter. More
+information about LearnSmart will be provided during class. Your LearnSmart
+results will not be graded.
+Prep Courses: If you are concerned about your Excel skills, or your memories of Accounting or
+Statistics are hazy, take advantage of the preparatory courses in Connect.
+Section 9. iClicker Quizzes
+There will be a pop quiz each day during class. You will submit your answers using your iClicker.
+You will earn 2 points for each correct answer you submit, or 1 point for each incorrect answer.
+If you do not submit an answer, you will earn 0 points. Your 5 lowest grades will be dropped.
+You are not allowed to share a clicker with, or borrow a clicker from anyone currently enrolled
+in any section of FIN 357 that I teach. Allowing another student in this course to use your
+clicker, or using the clicker of another student in this course, or simply having more than one
+clicker in your possession is a violation of the University’s rules regarding academic integrity. A
+minimum penalty of a full course grade deduction (e.g. from B- to C-) will be assessed against
+any student who violates these rules. Student Judicial Services may assess additional penalties,
+up to and including expulsion from the University.
+Section 10. Quizzes
+Three multiple choice quizzes will be given on the dates listed on the schedule. Each will cover
+multiple chapters and be given during the first 25 minutes of class. There are no make-ups, but
+
+the lowest of the 3 quiz grades will be dropped. Extra credit may be awarded on random days
+for students displaying a name tent for the entire class period.
+Section 11. Valuation Exercise
+Near the end of the semester, you will be provided with the opportunity to demonstrate your
+understanding of many FIN 357 concepts via an integrative valuation exercise. This exercise
+must be completed during class, using Excel. You must have a computer with you during class to
+complete the exercise. If necessary, you can rent a computer from the Media Services desk on
+the 3rd floor of McCombs. For practice using your Excel skills, refer to the prep course on
+Connect and/or Lynda.com. If you are absent on the day of the in-class valuation exercise and
+your absence is not substantiated by Student Emergency Services, you may, at my convenience,
+be given a new case to complete in my office. The highest possible score for a make-up case is
+50%. Details will be announced during class.
+Section 12. Religious Holy Days
+Many religious and cultural holidays take place during the spring semester. Be sure to submit
+your homework early to avoid any conflicts. By UT Austin policy, you must notify me of your
+pending absence at least fourteen days prior to the date of observance of a religious holy day. If
+you must miss a class, an examination, a work assignment, or a project in order to observe a
+religious holy day, and you have provided proper advance notice, you will be given an
+opportunity to complete the missed work within a reasonable time before or after the absence.
+Section 13. Students with Disabilities
+Students with disabilities may request appropriate academic accommodations from the
+Division of Diversity and Community Engagement, Services for Students with Disabilities (SSD),
+512-471-6259, http://diversity.utexas.edu/disability/. If you are eligible for academic
+accommodations you must present your SSD letter during my office hours, at least two weeks
+before you wish to employ the accommodation. Deadlines to request SSD accommodations are
+below:
+• Exam 1: Monday, February 4th
+• Exam 2: Monday, March 11th
+• Exam 3: Wednesday, April 24th
+Section 14. Academic Integrity
+The McCombs School of Business has no tolerance for acts of scholastic dishonesty. The
+responsibilities of both students and faculty with regard to scholastic dishonesty are described
+in detail in the Policy Statement on Scholastic Dishonesty for the McCombs School of Business.
+By teaching this course, I have agreed to observe the faculty responsibilities described in that
+document. By enrolling in this class, you have agreed to observe the student responsibilities
+
+described in that document. If the application of that Policy Statement to this class and its
+assignments is unclear in any way, it is your responsibility to ask me for clarification. Students
+who violate University rules on scholastic dishonesty are subject to disciplinary penalties,
+including the possibility of failure in the course and/or dismissal from the University. Since
+dishonesty harms the individual, all students, and the integrity of the University, policies on
+scholastic dishonesty will be strictly enforced. Refer to the Student Judicial Services website or
+the General Information Catalog to access the official University policies and procedures on
+scholastic dishonesty as well as further elaboration on what constitutes scholastic dishonesty.
+Section 15. Campus Safety
+“Please note the following information from the Office of Campus Safety and Security, 512-471-
+5767, http://www.utexas.edu/safety:
+• If an alarm is activated, we are required to exit the building. Please follow my instructions.
+• Familiarize yourself with all exit doors. Remember that the nearest exit door may not be the
+one you used when entering the building.
+• Students requiring assistance in evacuation should inform me via email immediately.
+• Do not re-enter a building unless given instructions to do so by the Austin Fire Department,
+or the University of Texas at Austin Police Department or Fire Prevention Services.
+• Concerns? Call the Behavior Concerns Advice Line (BCAL) at 512-232-5050.
+• Further information regarding emergency evacuation routes and emergency procedures can
+be found at: http://www.utexas.edu/emergency.”
+
+Section 16. Course Schedule
+Day Date Topic and/or Activity Reading Homework Problems
+Introduction to FIN 357 Syllabus
+Wed 23
+Introduction to Corporate Finance Chapter 1 None
+y
+r a 1, 1E, 2, 3, 3E, 4, 4E, 5, 11,
+u Mon 28 Financial Statements, Taxes and Cash Flow Chapter 2
+n 12, 15, 16, 17, 21, 22
+a
+J
+3, 4, 5, 5E, 7, 7E, 9, 10, 11,
+Wed 30 Working with Financial Statements Chapter 3
+11E, 13, 26, 27, 29
+Sun 3 Homework Due on Connect: CH 2 & CH 3
+Long-Term Planning and Growth Chapter 4 4, 5, 6, 6E, 7, 7E, 8, 9, 12, 13,
+Mon 4 Deadline to request Exam 1 SSD accommodations 13E, 24
+Deadline to request any make-up exam (1, 2 or 3)
+1, 2, 2E, 3, 4, 4E, 5, 5E, 8, 11,
+Wed 6 The Time Value of Money QUIZ 1 Chapter 5
+13, 18, 20
+Sun 10 Homework Due on Connect: CH 4 & CH 5
+y 1, 3, 6, 7, 8, 12, 12E, 17, 20,
+r a Mon 11 Discounted Cash Flow Valuation Chapter 6
+u 20E, 21, 24, 24E, 36, 37, 53
+r
+b
+e Wed 13 Discounted Cash Flow Valuation, continued
+F
+Sun 17 Homework Due on Connect: CH 6
+Mon 18 Exam 1: 6:30 to 8:30 pm. Location TBA.
+1, 2, 6, 7, 9, 10, 10E, 12, 13,
+Wed 20 Interest Rates and Bond Valuation Chapter 7
+19, 20, 20E, 21, 22, 22E
+Mon 25 Interest Rates and Bond Valuation, continued
+1, 4, 5, 5E, 8, 8E, 12, 15, 15E,
+Wed 27 Stock Valuation Chapter 8
+18, 20, 31, 32
+Sun 3 Homework Due on Connect: CH 7 & CH 8
+3, 7, 9, 10, 10E, 11, 11E, 15,
+Mon 4 Net Present Value & Other Investment Rules Chapter 9
+15E, 16, 17, 26
+1, 2, 4, 6, 7, 7E, 9, 9E, 10, 11,
+Wed 6 Making Capital Investment Decisions QUIZ 2 Chapter 10
+14, 16, 16E, 19, 21, 23
+Sun 10 Homework Due on Connect: CH 9
+Making Capital Investment Decisions, continued
+Mon 11
+Deadline to request Exam 2 SSD accommodations
+h
+c r Wed 13 Project Analysis and Evaluation Chapter 11 1, 3, 5, 9, 11, 20 (No E)
+a
+M
+Sun 17 Homework Due on Connect: CH 10
+Mon 18 Spring Break: No Class Meeting
+Wed 20 Spring Break: No Class Meeting
+Sun 24 Homework Due on Connect: CH 11
+1, 2, 2E, 4, 5, 6, 7, 7E, 9, 10,
+Mon 25 Lessons from Capital Market History Chapter 12
+15, 16, 16E
+Wed 27 Lessons from Capital Market History, continued
+Sun 31 Homework Due on Connect: CH 12
+Mon 1 Exam 2: 6:30 to 8:30 pm. Location TBA.
+
+Day Date Topic and/or Activity Reading Homework Problems
+1, 1E, 2, 3, 6, 9, 11, 13, 13E,
+Wed 3 Return, Risk and the Security Market Line Chapter 13
+14, 14E, 17
+Return, Risk and the Security Market Line, cont’d
+Mon 8
+Last day to Q-drop a course
+1, 2, 2E, 5, 7, 7E, 8, 9, 10, 12,
+Wed 10 Cost of Capital Chapter 14
+13, 15, 15E, 16
+Sun 14 Homework Due on Connect: CH 13
+lir
+Mon 15 Cost of Capital, continued
+p
+A
+Wed 17 Raising Capital QUIZ 3 Chapter 15 None
+Sun 21 Homework Due on Connect: CH 14
+Mon 22 Financial Leverage and Capital Structure Policy Chapter 16 1, 3, 4, 5, 12, 13, 14, 15, 17
+Financial Leverage and Capital Structure , cont’d
+Wed 24
+Deadline to request Exam 3 SSD accommodations
+Sun 28 Homework Due on Connect: CH 16
+Mon 29 In-Class Valuation Exercise
+Chapter 17 1, 2, 3, 4, 5, 6
+Wed 1 Dividends and Payout Policy
+y
+Sun 5 Homework Due on Connect: CH 17
+a
+M Mon 6 Options (24.1, 24.2 through page 798) Chapter 24 2
+Tue 7 Homework Due on Connect: CH 24
+Wed 8 Exam 3: 6:30 to 8:30 pm. Location TBA.

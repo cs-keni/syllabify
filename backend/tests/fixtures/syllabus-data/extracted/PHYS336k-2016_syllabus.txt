@@ -1,0 +1,96 @@
+Physics 336k, Classical Dynamics, Spring 2016
+Section: Unique #55895, Meets MWF, 2-3 PM, RLM 7.104
+Pre-requisites: Math 427L or 364K, Physics 315, and Physics 115L
+Instructor: Dan Heinzen; Office: RLM 10.324; Phone: 471-3960;
+e-mail: heinzen@physics.utexas.edu ; Office Hours: Th 2-3, or by appointment.
+Grader: TBA Grader Office Hour: TBA
+Text: John R. Taylor, Classical Mechanics (University Science Books, 2005).
+Canvas: Lecture notes, recitation section notes, handouts, homework solutions, and grades will be
+posted on Canvas.
+Homework: Assigned approximately once per week. You may work together on the homework.
+However, each student must hand in his or her own solution, and must contribute substantially to
+the solution of any problem he or she hands in. Some homework assignments may require
+numerical solutions, which you will need to provide using Excel, Mathematica, or some other
+programming environment. Homework assignments will all be worth the same point value even
+though their difficulty level and length will vary. Homework will be accepted one lecture late with a
+penalty of 10%. No homework will be accepted after that, except as discussed below. Your lowest
+homework grade will be dropped in the calculation of your final course grade.
+If the workload on the grader is excessive due to the large enrollment of this course, we may need to
+base homework grades on partial grading of assignments.
+Recitation sessions: Recitation sessions will be scheduled on an as-needed basis. These will be used to
+review material, do additional practice problems, and/or as homework help sessions. Attendance at
+these sections is optional.
+Tests: There will be three in-class tests. Your lowest test score will be dropped in the calculation of the
+final grade.
+Final: There will be a comprehensive final exam during the scheduled exam time for this class.
+Make-up tests and homework: You may not skip tests or hand in late homework without [(i) a
+legitimate reason (illness, family emergency, etc.) (ii) appropriate documentation (e.g. doctor’s
+note), and (iii) advance permission from me, if it is reasonably possible for you to make such a
+request] OR [because of observance of a religious holy day (see below)]. If you satisfy all three of
+requirements (i)-(iii) or the religious exception, you will be allowed to turn in the homework late, or
+take a make-up test. Otherwise your score for that homework or test will be zero.
+
+Course grade: Homework 24%, Highest two test scores 20% each, and Final Exam 36%. Course
+grades will be determined strictly from your calculated weighted average score using the above
+weight factors. If differences between the average scores of tests are large, I may scale the scores to
+make their averages more similar. I do not use fixed grade breakpoints. I will provide some
+guidance during the semester of approximate grade breakpoints. You will not be able to earn a
+grade based only on your Final Exam score.
+Disabilities: Students with disabilities may request appropriate academic accommodations from the
+Division of Diversity and Community Engagement, Services for Students with Disabilities, 512-
+471-6259, http://www.utexas.edu/diversity/ddce/ssd/
+Religious observance: Students are entitled to a make-up exam or to turn in late work if this is
+needed for observance of a religious holy day. Students who want to exercise this right must
+inform me of the observance 14 days in advance.
+University Honor Code: The core values of the University of Texas at Austin are learning,
+discovery, freedom, leadership, individual opportunity, and responsibility. Each member of the
+University is expected to uphold these values through integrity, honesty, trust, fairness, and
+respect toward peers and community.
+Test schedule:
+Test 1: Mon., Feb. 22
+Test 2: Weds., Mar. 30
+Test 3: Fri., Apr. 29
+
+Course Outline
+Tentative. Content and schedule may be revised as course proceeds.
+Date(s) Activity Topic
+Jan. 20-25 Newton's laws, projectiles. (Taylor, chapters 1-2)
+Jan. 27 HW 1 due
+Jan. 27-Feb. 1 Motion of charged particles. Momentum and angular momentum.
+(Taylor, chapters 2-3)
+Feb. 3 HW 2 due
+Feb. 3-8 Energy (Taylor chapter 4)
+Feb. 10 HW 3 due
+Feb. 10-15
+Feb. 17 HW 4 due Driven and damped oscillations, Fourier series (Taylor chapter 5)
+Feb. 22 In-class test 1
+Feb. 17, 19, 24 Calculus of variations, Lagrange's equations (Taylor chapters 6-7)
+Feb. 26 HW 5 due
+Feb. 26-29, Mar. Lagrange's equations, cont'd. (Taylor chapter 7)
+2
+Mar. 4 HW 6 due
+Mar 4-9 Two-body central force problems. Non-inertial frames.
+(Taylor chapter 8-9)
+Mar. 11 HW 7 due
+Mar. 14-18 Spring Break
+Mar. 11-23 Rotating frames. Centrifugal and Coriolis Force. (Taylor Chapter
+9)
+Mar. 25 HW 8 due
+Mar. 30 In-class test 2
+Mar. 25, 28 Rotations of rigid bodies. (Taylor chapter 10)
+Apr. 1
+Apr. 4 Last drop day Last day to drop class with Dean’s approval except for “urgent and
+substantiated non-academic reasons”
+Apr. 4 HW 9 due
+Apr. 4-8 Coupled oscillations and normal modes (Taylor chapter 11)
+Apr. 11 HW 10 due
+Apr. 11-15 Hamiltonian mechanics (Taylor chapter 13)
+Apr. 18 HW 11 due
+Apr. 18-22 Nonlinear dynamics (Taylor chapter 12)
+Apr. 25 HW 12 due
+Apr. 29 In-class Test 3
+Apr. 25, 27, Nonlinear dynamics, cont'd. (Taylor chapter 12)
+May 2
+May 4 HW 13 due
+May 6 Last Class Day
+May 11-17 Final Exams

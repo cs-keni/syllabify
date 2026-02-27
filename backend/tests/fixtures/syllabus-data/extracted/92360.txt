@@ -1,0 +1,58 @@
+M s341 (92360)
+Linear Algebra and Matrix Theory
+Instructor: Amir Mohammadi
+Office: RLM 12.160
+Phone: 471-8186
+Email: amir@math.utexas.edu
+Lectures: MTWThF 10:00-11:30 a.m., RLM 6.124
+Office Hours: M 11:30 am.-12:30 pm., Th 11:30 am.-1:00 pm.
+Text: Andrilli and Hecker, Elementary Linear Algebra, 4th edition.
+Prerequisite and degree relevance: The prerequisite is one of M408D, M408M or the equiv-
+alent, with a grade of at least C-, or consent of instructor. (Credit may not be received for both
+M341andM340L.Majorswitha“math”advisingcodemustregisterforthisratherthanforM340L;
+majors without a “math” advising code must register for M340L. Math majors must make a grade
+of at least C in M341.)
+Course description: This course has three purposes: an overview of elementary linear algebra,
+introduction to proofs and developing proof skills and finally an introduction to mathematical ab-
+straction and provide a necessary prerequisite for a number of upper division courses.
+We will try to cover the first five chapters of the text, but some of the sections and some of the
+material within some sections will be omitted. See below for a list of topics covered in the class.
+Homework and Quizzes (35% of final grade):
+Every week by Friday a list of homework will be posted on on “Blackboard Learn” under “Assign-
+ments.”. These will not be collected. Instead there will be eight quizzes on July 13, 17, 20, 24, 31,
+andAugust3, 7, 9. Thequestionsonthequizzeswillbechosenfromthesetofhomeworkprovided
+up to then. In computing the final grade your lowest grades in the quizzes will be dropped.
+Note however that there will be no makeup for the quizzes.
+Exams (65% of final grade):
+There will be two exams in this class. One midterm and a final exam. The midterm exam will be
+givenduringthenormallectureperiod,inthenormalroom. TheFinalExamwillbeaccumulative.
+• Midterm (30%): Friday, July 27th,
+1
+
+You should carefully examine the exam date above, since being available for this exam is a
+requirement for this course. There will be no make up exam.
+• Final Exam (35%): Monday, August 13, 9:00-12:00 noon
+It is implicit in your registration for this class that, barring some unforeseen calamity,
+you affirm to be present to take the final examination at this time.
+Range of letter grades: A, A-, B+, B, B-, C+, C, C-, D+, D, D-, F.
+Questions and Complains: Ifyouneedhelporyouhaveaconcernaboutthecourse, youshould
+contact the Instructor during the office hours and in rare cases when you cannot attend the office
+hours, you can arrange an appointment via e-mail.
+If you have a question about the grading of exams or homework, you must submit a written
+explanation within a week of the time the grade is posted. Note that all your grades will be posted
+on blackboard.
+You can also get help from the Learning Skills Center in Jester. They provide a variety of material
+to assist students.
+Students with Disabilities:
+Upon request, the University of Texas at Austin provides appropriate academic accommodations
+for qualified students with disabilities. For more information, contact the Office of the Dean of
+Students at 471-6259 or 471-6441 TTY.
+Academic dishonesty will not be tolerated and will result in a penalty of failure in the
+course.
+Tentative schedule:
+• Week 1 (7/9 to 7/ 13): Chapter 1
+• Week 2 (7/16 to 7/20): Chapter 2
+• Week 3 (7/23 to 7/27): Chapter 3
+• Week 4 (7/30 to 8/3): Chapter 4
+• Week 5 (8/6 to 8/10): Chapter 4, sections 5.1, 5.2 and 5.3
+2

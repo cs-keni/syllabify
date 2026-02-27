@@ -1,0 +1,159 @@
+ECE 411 – Circuit Theory
+Fall 2024
+Instructor: Sensen Li, EER 4.684, sensen.li@austin.utexas.edu
+TA: Song Hang Chai, songhangc@utexas.edu
+UGA: Eric Goode, ericgoode@utexas.edu,
+Neeraj Anantha, neerajanantha@utexas.edu
+More TBA
+Lecture Hour: 9:30-11:00am TTH, Room: ETC 2.136
+Lab Hour: 1:00-3:00pm (17015), 4:00-6:00pm (17020), 7:00-9:00pm (17025), Room: EER 1.512
+Office Hours: 11:00-noon or by appointment, Location: EER 4.864
+TA/UGA Office Hours: Office hours and location(s) will be posted on Canvas.
+Course Description: This course provides a systematic, in-depth treatment of the design and
+analysis of (mostly) linear electric circuits and their associated circuit components. Topics covered
+will include the following: capacitance and inductance; RC, RL, and RLC circuits; operational
+amplifiers and op-amp circuits; sinusoidal steady-state analysis and phasors; an introduction to
+solid-state electronic devices; frequency response and Bode plots; passive and active filter circuits;
+frequency-domain analysis; Laplace transforms and applications to circuit analysis; Fourier series
+and transforms; two-port networks. Laboratory exercises are a key component of the course.
+Prerequisite: Completion of ECE 302 (Dodabalapur) or ECE 302H (Hanson) during Fall 2022
+with a grade of at least C−. Credit with a grade of at least C− or concurrent registration in M 427J
+or M 427K, and in PHY 303L and 105N.
+Required Text: F. T. Ulaby, M. M. Maharbiz, & C. M. Furse, Circuit Analysis and Design
+(Michigan Publishing, 2018) [same as Circuits (National Technology & Science Press, Third
+Edition, 2016) by the same authors].
+Supplementary References: C. K. Alexander and M. N. O. Sadiku, Fundamentals of Electric
+Circuits, 4th Edition (McGraw Hill, 2009). P. Horowitz and W. Hill, The Art of Electronics, 3rd
+Edition (Cambridge University Press, 2015). J. W. Nilsson and S. A. Riedel, Electric Circuits, 9th
+Edition (Prentice Hall, 2011). A. V. Oppenheim, A. S. Willsky, and S. Hamid Nawab, Signals and
+Systems, 2nd Edition (Pearson, 1997).
+
+Grading:
+Homework 10%
+Laboratory 10%
+Semester Exams 50% (2 exams during semester, 25% each)
+Final Exam 30%
+Your final course grade will be determined using these course components and weightings. Per
+University policy, you must notify me of your pending absence at least fourteen days prior to the
+date of observance of a religious holy day. If you must miss a class, an examination, a work
+assignment, or a project in order to observe a religious holy day, you will be given an opportunity
+to complete the missed work within a reasonable time after the absence. Class attendance is not
+considered explicitly in computation of your course grade, but is strongly recommended as an
+important part of your learning process. Each course component will be graded on a curve, rather
+than an absolute scale, for translation of numerical to letter grades. This will almost certainly result
+in your receiving a higher letter grade than if the traditional absolute scale were employed. Final
+grades will be assigned using +/- grade increments.
+Notes on exam grading: For exam problems, reasoning and analysis are typically as or more
+important than the final answer. You should explain your reasoning clearly and show all work. Be
+sure to erase or cross out any work you do not want to be considered in grading. If you demonstrate
+mastery of the key concepts required to solve a problem, you will receive substantial credit even
+if the final answer is not completely correct. Conversely, a correct final answer without explanation
+or justification will typically receive very limited credit. Any requests for exam regrades must be
+made in writing with an explanation of the issue in question, and within one week of your receiving
+your original graded exam. If an exam regrade is requested, the entire exam may be regraded and
+your total score may increase or decrease.
+Drop Policy: All adds and drops should be discussed with your academic advisor. The last day to
+drop this course without permission from the Dean and the department advisor is the twelfth class
+day. After this day, drops are not approved unless students can demonstrate “good cause”, i.e.
+health or personal problems that did not exist at the end of the official add and drop period.
+Academic performance, such as making poor exam grades, is not a valid reason to drop. University
+add/drop policies and information may be found at the UT Austin Registrar’s web site:
+https://registrar.utexas.edu/students/registration/after/add-drop.
+Policy on Collaboration: Discussion of course material and homework problems is permitted (and
+encouraged!). However, each student should work through the homework problems (and write up
+their solutions) independently. For additional details please see the section of this syllabus on
+Policy on Academic Integrity.
+
+Course Policy on Academic Integrity:
+Ethics and integrity in both academic and professional affairs should be part of your
+education at UT Austin. Academic integrity is a serious matter and will be treated as such in ECE
+411. My hope is that this will be beneficial to your education both technically and in a much
+broader sense.
+While I am confident that the large majority of students will naturally adhere to the university’s
+guidelines and regulations regarding academic integrity, I provide below an explicit statement of
+course policy in this regard.
+Homework: ECE 411 course policy is that discussion of course material, including homework
+problems, is allowed and indeed encouraged. However, each student should work through assigned
+homework problems and write up their solutions independently. Problem-solving is an extremely
+useful skill in itself, and in addition is the only really effective way to learn the material!
+Specifically, each student is responsible for working out and writing up their own solutions to each
+homework assignment. Discussion of the course material and problems is encouraged, but
+practices such as allowing a classmate to copy your homework solutions, or a group working out
+a problem solution together which everyone then copies down and turns in, are forbidden. Use of
+problem solutions obtained from other students, over the web, etc. is forbidden. Students violating
+course policy on homework will receive a warning possibly followed by a grading penalty and
+further disciplinary action, in accordance with university policy.
+Examinations: In general you will be allowed to use a calculator, writing implements and erasers,
+and the exam question/answer sheets during exams. Any other allowed materials will be specified
+in advance of each exam. Students who are caught using unauthorized materials during an exam,
+copying from a classmate on exams, continuing to work on an exam after time has been called, or
+violating exam or course rules in some other manner are likely, at a minimum, to receive a score
+of zero on that exam and may be subject to further disciplinary action, again in accordance with
+university policy.
+For further information: Additional information concerning UT Austin’s policy on conduct and
+academic integrity is posted on the UT Austin web site at
+http://deanofstudents.utexas.edu/conduct/.
+Laboratory: The laboratory sessions for this class are in-person only, and occur once per week
+for two hours at the times indicated for your unique number. Although there are lab sessions
+scheduled every week, there are only six labs scheduled for the semester. For weeks during which
+you don’t have labs scheduled, the TA(s) will conduct recitation/review sessions. These are,
+
+essentially, review and problem-solving sessions that will help you solidify your understanding of
+the material covered in the course, and also an opportunity for you to ask questions about either
+the labs or the material covered in our regular classes.
+The instructors for the laboratory component of the class are the TAs/UGAs. All lab issues,
+including lab grading, should be discussed with your TA/UGA. Participation in all lab sessions is
+required except for documented illness or religious observance approved in advance. Per
+University policy, you must notify me of your pending absence at least fourteen days prior to the
+date of observance of a religious holy day.
+Laboratory sessions will start the week of 01/09/2024. The laboratory manual is available on
+Canvas as a pdf file.
+Accommodation for Religious Observances: By UT Austin policy, you must notify me of your
+pending absence at least fourteen days prior to the date of observance of a religious holy day. If
+you must miss a class, an examination, a work assignment, or a project in order to observe religious
+holy day, you will be given an opportunity to complete the missed work within a reasonable time
+after the absence. If there is uncertainty regarding the precise date of a religious observance due to
+lunar cycles, etc., you still must inform me at least 14 days prior to the earliest possible date of the
+observance and provide the probable range of dates for the observance.
+Students with Disabilities: The University of Texas at Austin provides upon request appropriate
+academic accommodations for qualified students with disabilities. For more information, contact
+the Office of Services for Students with Disabilities (SSD). Additional information on this subject
+is posted on the UT Austin web site at https://diversity.utexas.edu/disability/. If you feel you may
+be entitled to accommodation under these policies, please consult with the appropriate offices early
+in the semester. Evaluation and approval take time, and typical adjustments cannot be applied
+retroactively.
+Sources of Help: Like most engineering, science, and math courses, ECE 411 builds knowledge
+in a rapid step-by-step process throughout the semester. Each step assumes you have mastered the
+prior material. If you fall behind by even a few days, it can be difficult to catch up. If you do not
+understand something, ask questions in class, come to office hours, and/or take advantage of the
+other sources of help that are available. Get help quickly; do not wait! UT also provides resources
+to help you with nonacademic issues. A search of the UT website is often a good place to start.
+The best way to get help from the instructor is during office hours. If you are not able to make it
+to my scheduled office hours, I am often available at my office on the EER 4.864. If you would
+like to meet outside scheduled office hours, it is generally best to arrange a time and location with
+me in advance. Email is typically the best way to reach me. Please mention ECE 411 in the subject
+of any email.
+
+The ECE Undergraduate Student Advising Office in EER is the best place to start if you have
+issues related to advising, registration, add/drop, or issues with the UT bureaucracy in general.
+The Engineering Student Services and Advising (ESSA) Office in ESS can assist with many issues.
+Their web page is http://www.engr.utexas.edu/academics/undergraduate-education/academic-
+advising.
+Emergency Preparedness and Classroom Evacuation Instructions: Every member of the
+university community must take appropriate and deliberate action when an emergency strikes a
+building, a portion of the campus, or entire campus community. Emergency preparedness means
+we are all ready to act for our own safety and the safety of others during a crisis. It takes an effort
+by all of us to create and sustain an effective emergency preparedness system. Information on
+emergency preparedness is posted on the class Canvas site. In addition, specific instructions
+provided to us on classroom evacuations is included just below for your reference.
+Classroom Evacuation for Students: All occupants of university buildings are required to
+evacuate a building when a fire alarm and/ or an official announcement is made indicating a
+potentially dangerous situation within the building.
+Familiarize yourself with all exit doors of each classroom and building you may occupy.
+Remember that the nearest exit door may not be the one you used when entering the building.
+If you require assistance in evacuation, inform your instructor in writing during the first week of
+class.
+For evacuation in your classroom or building:
+1. Follow the instructions of faculty and teaching staff.
+2. Exit in an orderly fashion and assemble outside.
+3. Do not re-enter a building unless given instructions by emergency personnel.

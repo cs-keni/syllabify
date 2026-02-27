@@ -1,0 +1,269 @@
+Course SyllabusAlternative formats
+
+Course Information
+CS 410/510  - Entrepreneurship in CS - 4 credits
+
+CS 410 (26674), CS 510 (26675)
+
+W 4-5:20, 140 TYKE, in-person
+
+Welcome! In this course, you will work in a team to build a real software product in a startup-style engineering environment. Over the term, your team will iteratively develop software from an early prototype into a usable product, using professional tools and workflows.
+
+The focus of the course is on writing and integrating code, making technical tradeoffs, and demonstrating working software. Entrepreneurial ideas are included only to help you understand how engineering decisions are shaped by real-world constraints.
+
+Prerequisite: CS 330 or by instructor approval.
+
+Instructor
+Name: Phil Colbert (please call me Phil!) (he/him)
+
+Office Hours/location: Tues/Thurs 3:30-5 PSC outside B004A
+
+Email: pcolbert@uoregon.edu
+
+How to contact: During office hours, in-class, Canvas Inbox, or directly via email.
+
+TA/Mentor
+Name: Marvin Chan
+
+Office Hours/location: TBA
+
+Email: marvc@uoregon.edu
+
+Mentor
+Name: Hank Childs
+
+Office Hours/location: TBA
+
+Email: hank@uoregon.edu
+
+Course Outcomes
+By the end of this course, you will be able to:
+
+Design and implement a functional software system as part of a team, progressing from prototype to a usable product.
+Apply Scrum-inspired development practices, including sprint planning, backlog management, reviews, and retrospectives.
+Collaborate effectively in a startup-style engineering team, fulfilling role-based responsibilities while contributing to shared development work.
+Translate a problem context into actionable development tasks, expressed through backlogs, code changes, and pull requests.
+Demonstrate working software through clear, honest technical demos that reflect the actual state of the system.
+Integrate and refine software components to improve stability, usability, and clarity for external users.
+Document software systems clearly and accurately, including setup instructions, usage guidance, and known limitations.
+Evaluate and improve team processes through sprint retrospectives and peer feedback.
+Use AI tools responsibly and transparently to support software development tasks, while maintaining human accountability for code and decisions.
+Reflect on engineering decisions and development practices, articulating lessons learned and future improvements.
+Each of these outcomes is directly observable through your assignments, demos, peer evaluations, and reflections.
+
+Graduate-Level Expectations (CS 510)
+CS 410 and CS 510 students participate in the same team-based projects and course activities. However, students enrolled at the 500 level are held to additional expectations appropriate to graduate study.
+
+Graduate students (CS 510) are expected to:
+
+Demonstrate deeper technical understanding and analysis
+Take on greater responsibility for technical decision-making, integration, or mentorship within their team
+Provide more advanced reflection on engineering tradeoffs, system design, and AI usage
+In particular, CS 510 students complete an expanded final engineering reflection that includes analysis of technical decisions and alternatives. These expectations ensure that CS 510 credit reflects graduate-level rigor while preserving a shared studio experience.
+
+Grading Policy
+Grades in this course are based on a combination of team-based engineering work, individual professional practice, reflection, and peer feedback.
+
+The primary emphasis of the course is on building and demonstrating working software in a team-based, startup-style environment.
+
+Team deliverables are graded at the team level, but individual grades may be adjusted based on contribution, participation, and peer feedback.
+
+Grading Breakdown
+Engineering Deliverables (Team/Individual): 60%
+Professional Practice & Participation (Individual): 20%
+Reflection & Responsible AI Use (Individual): 15%
+Peer Evaluations (Completion-Based): 5%
+Team and Individual Assessment
+Most major deliverables in this course are completed as a team. While team submissions receive a shared baseline grade, individual grades may be adjusted based on:
+
+Participation and engagement
+Fulfillment of role responsibilities
+Peer evaluation patterns
+Instructor/mentor observation
+This approach reflects professional software development environments, where outcomes are shared but contributions matter.
+
+Reason-Neutral Flexibility
+The course allows a limited number of reason-neutral absences without penalty, applied to individual responsibilities rather than team deliverables. Occasional absences will not negatively affect a student’s grade; however, repeated absences or disengagement that impact team functioning may affect participation or professional practice assessment.
+
+Letter Grades
+Final course grades are assigned based on the percentage of total points earned (no curve), according to the following scale:
+
+93–100%: A*
+90–92%: A−
+87–89%: B+
+83–86%: B
+80–82%: B−
+77–79%: C+
+73–76%: C
+70–72%: C−
+67–69%: D+
+63–66%: D
+60–62%: D−
+Below 60%: F
+The instructor reserves the right to adjust grades in rare cases to ensure fairness and consistency across teams.
+
+*A+ grades are awarded by instructor discretion following CS guidelines that indicate a student has excelled in all course topics.
+
+Attendance and Absences Policies
+This course follows the university’s reason-neutral absence policy. Students may miss a limited number of course activities or deadlines without penalty and without providing documentation or explanation.
+
+Because this is a team-based, project-driven course, flexibility is implemented in a way that supports both individual needs and team success.
+
+Individual Flexibility
+Each student is allowed:
+
+Up to two missed individual obligations during the term without penalty.
+Examples include:
+
+Missing a weekly group update contribution
+Missing a weekly group mentor session
+Missing a peer evaluation submission
+Missing a check-in or reflection component tied to individual participation
+No explanation or documentation is required.
+
+Team Deliverables
+Team deliverables (e.g., sprint demos, product builds, beta releases, final demo) cannot be skipped or dropped, as they represent shared work and learning outcomes.
+
+However:
+
+If a student is absent during a team deliverable week, the team may proceed without them.
+The absent student is responsible for coordinating with their team to contribute before or after the absence when possible.
+A limited number of individual absences will not automatically penalize the student if the team deliverable is completed.
+Expectations During Absences
+Students are expected to:
+
+Communicate absences to their team as early as reasonably possible
+Avoid repeated absences during critical demo or delivery weeks
+Resume participation promptly after an absence
+Peer evaluations and instructor observations may be used to distinguish between occasional absences and ongoing disengagement.
+
+Excessive or Repeated Absences
+While the course allows reason-neutral flexibility, repeated absences that significantly impact team functioning may result in:
+
+Instructor intervention
+Adjusted expectations
+Impact on participation or professional practice assessment
+This determination is based on patterns of behavior, not on reasons for absence.
+
+Materials and Activities
+All course materials are provided on Canvas. Course activities consist of weekly class meeting, project team meeting(s), and mentor meeting(s).
+
+Classroom Behavior
+Participate and Contribute: All students are expected to participate by sharing ideas and contributing to the learning environment. This entails preparing, following instructions, and engaging respectfully and thoughtfully with others. 
+
+Expect and Respect Diversity: All classes at the University of Oregon welcome and respect diverse experiences, perspectives, and approaches. What is not welcome are behaviors or contributions that undermine, demean, or marginalize others based on race, ethnicity, gender, sex, age, sexual orientation, religion, ability, or socioeconomic status. We will value differences and communicate disagreements with respect. We may establish more specific guidelines and protocols to ensure inclusion and equity for all members of our learning community.    
+
+Help Everyone Learn: Part of how we learn together is by learning from one another. To do this effectively, we need to be patient with each other, identify ways we can assist others, and be open-minded to receiving help and feedback from others. Don’t hesitate to contact me to ask for assistance or offer suggestions that might help us learn better. 
+
+Ethics and Professional Responsibility
+This course approaches ethics as part of professional engineering responsibility. Students will consider risk, impact, and accountability when designing software systems, particularly in startup and entrepreneurial contexts. Ethical reflection will be integrated into studio work, including MVP definition, design reviews, and AI assisted development. Responsibility for all code and decisions remains with the development team.
+
+Generative AI Use Policy
+Purpose
+Generative AI tools are part of modern software development practice. In this course, AI may be used as a development aid, not a replacement for human understanding, decision-making, or accountability.
+
+This policy is designed to model responsible, professional AI use, consistent with industry expectations and the learning goals of this course.
+
+In this course, responsible AI use also includes ethical responsibility. Students are expected to consider the potential impact of AI-assisted decisions on users, data, and systems, and to recognize risks that may not be immediately visible in code output or test results.
+
+Permitted Uses
+Students may use generative AI tools (e.g., code assistants, chat-based AI, design tools) to support tasks such as:
+
+Brainstorming approaches or design ideas
+Generating or refactoring code as a starting point
+Debugging or understanding error messages
+Drafting or improving documentation
+Exploring alternative implementations or tradeoffs
+Using AI in these ways is allowed and expected, provided the requirements below are met.
+
+Required Practices
+All meaningful AI use must follow these rules:
+
+Human Responsibility
+Students are responsible for understanding, testing, and verifying all AI-assisted work. Submitting AI-generated output without comprehension or review is not acceptable.
+
+Transparency
+Significant AI use must be documented in the project repository (e.g., /docs/ai-usage-log.md) and summarized in the final AI reflection.
+
+Verification
+AI output must be validated through testing, review, or refactoring. AI suggestions should never be accepted blindly.
+
+Alignment with Course Goals
+AI use should support learning, development, and collaboration. Using AI to bypass engagement with the engineering work undermines the purpose of the course.
+
+Ethical Awareness
+Students must consider how AI-assisted decisions may affect users, data, or system behavior beyond immediate functionality. Teams are expected to identify potential risks, misuse, bias, or unintended consequences introduced through AI-generated suggestions, even when those suggestions appear technically correct.
+Prohibited Uses
+The following uses are not permitted:
+
+Submitting AI-generated code or content without review or understanding
+Representing AI-generated work as entirely human-produced
+Using AI to complete work while disengaging from team responsibilities
+Fabricating or falsifying AI usage logs
+Ignoring or dismissing known risks or potential harm introduced through AI-assisted design or implementation
+Violations of this policy may be treated as academic integrity issues.
+
+Where AI Use Is Documented
+Primary log: Project repository (e.g., /docs/ai-usage-log.md)
+Final submission: A brief AI reflection submitted to Canvas in Week 10
+This mirrors professional engineering practice, where AI use is documented alongside the code it affects.
+
+Team Context
+Because this is a team-based course:
+
+Teams should communicate openly about AI usage
+AI tools should not be used to obscure individual contributions
+Peer evaluations may reflect responsible or irresponsible AI use as part of professional practice
+Teams share responsibility for identifying and addressing ethical risks associated with AI use, including those related to misuse, bias, or unintended impact
+Instructor Use of AI
+Generative AI tools were also used in the development of this course as a design and drafting aid. All course materials, policies, and assessments were reviewed, edited, and finalized by the instructor. This transparency models the same responsible AI practices expected of students.
+
+Student Workload & Time Commitment
+This is a 4-credit course. In accordance with university guidelines, students should expect to spend approximately 12 hours per week on course-related work, for a total of approximately 120 hours over the term.
+
+This time includes:
+
+Scheduled class meetings
+Weekly team meetings
+Weekly mentor meetings
+Individual development work (coding, testing, debugging)
+Preparation for demos and reviews
+Documentation and reflection
+Use and review of AI-assisted development tools
+Because this is a studio-style, project-based course, weekly workload may vary. Some weeks will emphasize planning or review, while others will require more sustained development time. Students are expected to manage their time proactively and coordinate with their teams to meet course expectations.
+
+Graduate student adjustment: For graduate students a 4-credit course weekly expectation is 16 hours/week.
+
+University Policies
+Please see the University Course Policies link included with each Canvas course.
+
+ 
+
+Course Summary:
+Course Summary
+Date	Details	Due
+Wed Jan 7, 2026	Discussion Topic Week 1 Discussion - Individual Problem Space	due by 4pm
+Sun Jan 11, 2026	Assignment Team Charter & Repository Setup (Team)	due by 11:59pm
+Discussion Topic Week 1 Discussion - Team Problem Space Overview	due by 11:59pm
+Assignment Week 1 Team Update	due by 11:59pm
+Sun Jan 18, 2026	Assignment Week 2 Team Update	due by 11:59pm
+Quiz Peer & Self-Evaluation - Week 2	due by 11:59pm
+Assignment Prototype Plan & Backlog (Team)	due by 11:59pm
+Discussion Topic Week 2 Discussion - Team Problem Refinement (Developer Perspective)	due by 11:59pm
+Sun Jan 25, 2026	Assignment Week 3 Team Update	due by 11:59pm
+Sun Feb 1, 2026	Assignment Week 4 Team Update	due by 11:59pm
+Assignment Prototype Sprint Review & Demo (Team)	due by 11:59pm
+Sun Feb 8, 2026	Assignment Week 5 Team Update	due by 11:59pm
+Assignment Mid-Sprint Engineering Reflection & AI Usage Log (Individual - Undergraduate)	due by 11:59pm
+Quiz Peer & Self-Evaluation - Week 5	due by 11:59pm
+Sun Feb 15, 2026	Assignment Week 6 Team Update	due by 11:59pm
+Assignment Alpha Product Build (Team)	due by 11:59pm
+Sun Feb 22, 2026	Assignment Week 7 Team Update	due by 11:59pm
+Assignment Sprint 2 Technical Review & Demo (Team)	due by 11:59pm
+Sun Mar 1, 2026	Assignment Week 8 Team Update	due by 11:59pm
+Assignment Beta Release & Documentation (Team)	due by 11:59pm
+Quiz Peer & Self-Evaluation - Week 8	due by 11:59pm
+Sun Mar 8, 2026	Assignment Week 9 Team Update	due by 11:59pm
+Sun Mar 15, 2026	Assignment Final Engineering Reflection & AI Usage Log (Individual - Undergraduate)	due by 11:59pm
+Assignment Final Product Demo (Team)	due by 11:59pm
+Quiz Peer & Self-Evaluation - Week 10	due by 11:59pm
