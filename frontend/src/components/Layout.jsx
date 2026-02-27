@@ -220,7 +220,7 @@ export default function Layout() {
             </NavLink>
             <div
               ref={navContainerRef}
-              className="relative order-3 flex basis-full items-center gap-1 overflow-x-auto pb-1 md:order-2 md:basis-auto md:pb-0"
+              className="relative order-3 flex basis-full items-center gap-1 overflow-x-auto scrollbar-hide pb-1 md:order-2 md:basis-auto md:pb-0"
             >
               {mounted && (
                 <div
