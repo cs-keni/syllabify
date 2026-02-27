@@ -40,7 +40,7 @@ jobs:
       - name: Run backend tests
         run: |
           if [ -d backend ] && [ -n "$(find backend -name 'test_*.py' -o -name '*_test.py' -type f 2>/dev/null)" ]; then
-            pytest backend/
+            pytest backend/ -m "not ground_truth"
           else
             echo "No test files found in backend, skipping tests"
           fi

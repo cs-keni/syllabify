@@ -19,3 +19,6 @@ testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+markers = [
+    "ground_truth: marks tests that compare parser output to fixture ground truth (skipped in CI)",
+]

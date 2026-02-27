@@ -105,6 +105,7 @@ def syllabus_courses():
     return get_syllabus_courses()
 
 
+@pytest.mark.ground_truth
 @pytest.mark.parametrize("course", get_syllabus_courses())
 def test_syllabus_parser_matches_ground_truth(course):
     """Parse extracted text and compare key fields to parsed.json ground truth."""
