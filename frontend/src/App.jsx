@@ -138,7 +138,7 @@ export default function App() {
                   background: 'var(--color-surface-elevated)',
                   color: 'var(--color-ink)',
                   border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-card)',
+                  borderRadius: '12px',
                 },
                 success: {
                   iconTheme: {

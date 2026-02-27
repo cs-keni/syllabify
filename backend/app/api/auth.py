@@ -208,6 +208,16 @@ def login():
 
         user_id = row["id"]
         security_setup_done = bool(row.get("security_setup_done"))
+        is_admin = bool(row.get("is_admin")) if row.get("is_admin") is not None else False
+        # Also check ADMIN_USERNAMES env for admin designation
+        env_admins = (
+            os.environ.get("ADMIN_USERNAMES", "").strip().lower().split(",")
+            if os.environ.get("ADMIN_USERNAMES")
+            else []
+        )
+        is_admin_user = is_admin or (
+            row.get("username", "").strip().lower() in env_admins
+        )
         token = token_for_user(user_id, row["username"])
         token_str = token if isinstance(token, str) else token.decode("utf-8")
         return jsonify(
@@ -215,6 +225,7 @@ def login():
                 "token": token_str,
                 "username": row["username"],
                 "security_setup_done": security_setup_done,
+                "is_admin": is_admin_user,
             }
         )
     finally:

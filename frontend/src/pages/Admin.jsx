@@ -190,40 +190,6 @@ export default function Admin() {
       .catch(() => {});
   }, [token]);
 
-  useEffect(() => {
-    const onKey = e => {
-      if (
-        ['INPUT', 'TEXTAREA', 'SELECT'].includes(
-          document.activeElement?.tagName
-        )
-      ) {
-        return;
-      }
-      if (e.key === 'Escape') {
-        if (selectedIds.size > 0) setSelectedIds(new Set());
-        else if (showDeleteConfirm) setShowDeleteConfirm(null);
-        else if (showCreate) setShowCreate(false);
-        return;
-      }
-      if (selectedIds.size > 0) {
-        if (e.key === 'd' || e.key === 'D') {
-          e.preventDefault();
-          if (selectedUsers.some(u => u.id !== user?.id && !u.is_disabled)) {
-            handleBulkDisable();
-          }
-          return;
-        }
-        if (e.key === 'r' || e.key === 'R') {
-          e.preventDefault();
-          handleBulkResetSecurity();
-          return;
-        }
-      }
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [selectedIds, selectedUsers, user?.id, showDeleteConfirm, showCreate]);
-
   const refreshAuditLog = () => {
     if (!token) return;
     getAdminAuditLog(token, { limit: 30 })
@@ -363,6 +329,40 @@ export default function Admin() {
     if (failed) toast.error(`Reset ${done}, failed ${failed}`);
     else toast.success(`Reset security for ${done} user(s)`);
   };
+
+  useEffect(() => {
+    const onKey = e => {
+      if (
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(
+          document.activeElement?.tagName
+        )
+      ) {
+        return;
+      }
+      if (e.key === 'Escape') {
+        if (selectedIds.size > 0) setSelectedIds(new Set());
+        else if (showDeleteConfirm) setShowDeleteConfirm(null);
+        else if (showCreate) setShowCreate(false);
+        return;
+      }
+      if (selectedIds.size > 0) {
+        if (e.key === 'd' || e.key === 'D') {
+          e.preventDefault();
+          if (selectedUsers.some(u => u.id !== user?.id && !u.is_disabled)) {
+            handleBulkDisable();
+          }
+          return;
+        }
+        if (e.key === 'r' || e.key === 'R') {
+          e.preventDefault();
+          handleBulkResetSecurity();
+          return;
+        }
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [selectedIds, selectedUsers, user?.id, showDeleteConfirm, showCreate]);
 
   const handleDeleteUser = async () => {
     if (!showDeleteConfirm || deleteConfirmInput !== 'DELETE') return;

@@ -13,6 +13,8 @@
 
 /* Theme-ready: light and dark mode via .dark class on html */
 :root {
+  --radius-card: 12px;
+  --radius-button: 8px;
   --color-surface: #fafafa;
   --color-surface-elevated: #ffffff;
   --color-surface-muted: #f5f5f5;
