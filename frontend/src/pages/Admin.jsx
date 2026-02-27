@@ -190,6 +190,40 @@ export default function Admin() {
       .catch(() => {});
   }, [token]);
 
+  useEffect(() => {
+    const onKey = e => {
+      if (
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(
+          document.activeElement?.tagName
+        )
+      ) {
+        return;
+      }
+      if (e.key === 'Escape') {
+        if (selectedIds.size > 0) setSelectedIds(new Set());
+        else if (showDeleteConfirm) setShowDeleteConfirm(null);
+        else if (showCreate) setShowCreate(false);
+        return;
+      }
+      if (selectedIds.size > 0) {
+        if (e.key === 'd' || e.key === 'D') {
+          e.preventDefault();
+          if (selectedUsers.some(u => u.id !== user?.id && !u.is_disabled)) {
+            handleBulkDisable();
+          }
+          return;
+        }
+        if (e.key === 'r' || e.key === 'R') {
+          e.preventDefault();
+          handleBulkResetSecurity();
+          return;
+        }
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [selectedIds, selectedUsers, user?.id, showDeleteConfirm, showCreate]);
+
   const refreshAuditLog = () => {
     if (!token) return;
     getAdminAuditLog(token, { limit: 30 })
@@ -769,6 +803,20 @@ export default function Admin() {
           <div className="flex flex-wrap items-center gap-3 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
             <span className="text-sm text-slate-600 dark:text-slate-400">
               {selectedIds.size} selected
+            </span>
+            <span className="text-xs text-slate-500 dark:text-slate-500">
+              <kbd className="rounded px-1.5 py-0.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 font-mono">
+                d
+              </kbd>{' '}
+              disable{' '}
+              <kbd className="rounded px-1.5 py-0.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 font-mono">
+                r
+              </kbd>{' '}
+              reset security{' '}
+              <kbd className="rounded px-1.5 py-0.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 font-mono">
+                Esc
+              </kbd>{' '}
+              clear
             </span>
             <button
               type="button"

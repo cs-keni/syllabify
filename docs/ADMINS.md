@@ -2,7 +2,7 @@
 
 What admins can do today, and ideas for future admin features.
 
-**Status: In progress.** Current + **High Priority** + **Medium** (bulk, user creation, maintenance, audit log) + **Lower** (export, system stats, disable registration, announcement banner, delete user, admin notes) are **complete**. Remaining Lower items (impersonate, rate limit, feature flags) are **not yet implemented**. Use checkboxes below to track: `[x]` = done, `[ ]` = todo.
+**Status: In progress.** Current + **High Priority** + **Medium** (bulk, user creation, maintenance, audit log) + **Lower** (export, system stats, disable registration, announcement banner, delete user, admin notes, quick actions) are **complete**. Remaining Lower items (impersonate, rate limit, feature flags) are **not yet implemented**. Use checkboxes below to track: `[x]` = done, `[ ]` = todo.
 
 ---
 
@@ -66,6 +66,7 @@ Prioritized by impact and effort. Add new ideas here as we discover them. `[x]` 
 | [x] | **Announcement banner** | Site-wide banner from admin (e.g. downtime notice) | Low |
 | [x] | **Delete user** | Permanently remove user and all data; require typing DELETE to confirm | Medium |
 | [x] | **Admin notes on user** | Freeform note per user (e.g. "Contacted about duplicate"); only admins see | Low |
+| [x] | **Quick actions** | Keyboard shortcuts: `d` disable, `r` reset security on selected users; `?` show help | Low |
 | [ ] | **Impersonate user** | Admin logs in as another user to debug issues (with clear UI indicator) | High (security-sensitive) |
 | [ ] | **Rate limit / abuse view** | See failed login attempts, flag suspicious activity | High |
 | [ ] | **Feature flags** | Toggle features per user or globally (e.g. beta parser, new schedule UI) | High |
