@@ -1,0 +1,141 @@
+{
+  "course": {
+    "id": "ba284f-_fall_2024_02090",
+    "course_code": "BA 284F",
+    "course_title": "Financial Reporting",
+    "term": "Fall 2024",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Urooj Khan",
+        "email": null
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "quizzes",
+      "name": "Pre-MBA Accounting Courseware Quizzes",
+      "weight_percent": 2,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final_exam",
+      "name": "Final Examination",
+      "weight_percent": 53,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework",
+      "name": "Homework Problem Set",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final_project",
+      "name": "Final Project",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "quizzes_1",
+      "title": "Pre-MBA Accounting Courseware Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": "2024-08-19T23:59:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 2,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Completion by 11:59 PM Monday Aug 19"
+    },
+    {
+      "id": "final_exam_1",
+      "title": "Final Examination",
+      "category_id": "final_exam",
+      "type": "final",
+      "due_datetime": "2024-12-08T23:59:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 53,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Take-home final, due 11:59 PM Sunday Dec 8"
+    },
+    {
+      "id": "homework_1",
+      "title": "Homework Problem Set",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Two homework sets 20%"
+    },
+    {
+      "id": "final_project_1",
+      "title": "Final Project",
+      "category_id": "final_project",
+      "type": "project",
+      "due_datetime": "2024-11-24T23:59:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Due 11:59 PM Sunday Nov 24"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

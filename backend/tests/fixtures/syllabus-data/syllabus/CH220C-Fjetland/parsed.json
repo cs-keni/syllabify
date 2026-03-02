@@ -1,0 +1,115 @@
+{
+  "course": {
+    "id": "ch220c-fjetland",
+    "course_code": "CH 220C",
+    "course_title": "Organic Chemistry Laboratory",
+    "term": "Fall 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Fjetland",
+        "email": null
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "lab_reports",
+      "name": "Lab Reports",
+      "weight_percent": 70,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "prelab_quizzes",
+      "name": "Pre-Lab Quizzes",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "lab_notebook",
+      "name": "Lab Notebook",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "lab_reports_1",
+      "title": "Lab Reports",
+      "category_id": "lab_reports",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 70,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "50% credit up to 1 week late; after 1 week no credit",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "Final Reports at start of wet lab"
+    },
+    {
+      "id": "prelab_1",
+      "title": "Pre-Lab Quizzes",
+      "category_id": "prelab_quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No make-up quizzes",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "First 5 min of wet lab"
+    },
+    {
+      "id": "notebook_1",
+      "title": "Lab Notebook",
+      "category_id": "lab_notebook",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "Turned in end of semester"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

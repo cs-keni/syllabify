@@ -1,0 +1,99 @@
+Carbon and 2D Devices
+EE 396N (17915)
+Fall 2024 (MW 1:30 – 3:00 pm, ECJ 1.316)
+Course Mode: Mostly in-person. Some lectures will be delivered by pre-recorded videos or
+online by guest lectures.
+Instructor:
+Professor Deji Akinwande (deji@ece.utexas.edu)
+Office Hours: MW 3:00 – 4:00 pm, in EER 4.886 (occasionally on zoom).
+Other times: By appointment in EER or MRC.
+(½) TA: Further info during class.
+Description:
+Over the past decade, there has been an intense interest in all things made of carbon particularly
+applications employing carbon nanotubes and graphene. This course will introduce the science
+and technology of carbon nanomaterials and their electronic, optical, and sensor properties. The
+course will begin with a basic review of quantum mechanics and elementary theory of solids, and
+progress to contemporary topics including carbon synthesis, sensor devices, energy devices,
+interconnects, transistors, and circuit applications of carbon nanomaterials. In addition, beyond
+carbon two-dimensional materials and devices will be discussed, such as MoS and TMDs.
+2
+Learning Outcomes:
+By the end of the course, students will be able to derive the electronic structure of graphene and
+related materials, understand electronic and quantum transport, and critically evaluate the pros
+and cons of publications on the material properties and applications of 2D materials.
+“This course also counts toward the Graduate Portfolio in Nanomanufacturing
+(https://nascent.utexas.edu/nanomanufacturing-portfolio-program )”
+Prerequisites:
+EE339 Solid State Electron Devices, EE438 Electronic Circuits, and either PHY373 Modern
+Physics, Quantum Mechanics or EE396V Principles of Electronic Materials or instructor
+consent.
+
+Tentative course topics:
+• History of carbon, carbon fibers, carbon nanotubes, graphene and nanoelectronics
+• Brief review of quantum mechanics and solid state physics in reduced dimensions
+• Graphene nanomaterials and band structure
+• Carbon nanotubes and band structure
+• Electrical properties of carbon nanomaterials
+• Carbon nanomaterial devices and transistors
+• “Beyond graphene” 2D atomic sheets, e.g. MoS , h-BN, silicene etc
+2
+• Optical, energy and sensor applications of carbon and 2D nanomaterials
+• Fabrication and characterization techniques of 2D materials
+Textbooks
+Main textbook
+• Carbon Nanotube and Graphene Device Physics by H.-S. Philip Wong and Deji Akinwande,
+Cambridge University Press, January 2011.
+(http://ebooks.cambridge.org/ebook.jsf?bid=CBO9780511778124)
+Suggest references include
+• Graphene, by Mikhail Katsnelson, Cambridge University Press, 2012.
+• Current literature articles
+• Wikipedia and other web-based resources
+Grading
+30% Homework, 30% Midterm Project, 30% Final Project, 10% Class Participation
+Add/Drop Policy
+Graduate ECE students have the first 12 days of the semester to add and drop graduate ECE
+courses. Dropping a course after the 12th day of the semester must be approved by the Graduate
+ECE advisor and Dean of the Graduate school, among others.
+Academic Honesty
+Discussion of homework questions is encouraged. However, please submit your own
+independent homework solutions. Plagiarism of any form of academic misconduct (including but
+not limited to, copying another student’s work, copying material directly from a book, article or
+web site without proper acknowledgement, falsifying data, doing someone else’s work) is a
+violation of University rules and will result in disciplinary actions.
+
+Students with Disabilities
+The University of Texas at Austin provides upon request appropriate academic adjustments for
+qualified students with disabilities. For more information, contact the Office of the Dean
+Students at 471-6259, 471-4241, TDD, or the College of Engineering Director of Students with
+disabilities at 471-4382
+Counseling and Mental Health
+Do your best to maintain a healthy lifestyle this semester by eating well, exercising, avoiding
+drugs and alcohol, getting enough sleep and taking some time to relax. This will help you
+achieve your goals and cope with stress. Keep screen time and social media usage to a
+minimum to avoid its negative effect on mental health.
+All of us benefit from support during times of struggle. You are not alone. There are many
+helpful resources available on campus and an important part of the college experience is learning
+how to ask for help. Asking for support sooner rather than later is often helpful.
+If you or anyone you know experiences any academic stress, difficult life events, or feelings like
+anxiety or depression, we strongly encourage you to seek support.
+http://www.cmhc.utexas.edu/individualcounseling.html
+Title IX Reporting
+Title IX is a federal law that protects against sex and gender-based discrimination, sexual
+harassment, sexual assault, sexual misconduct, dating/domestic violence and stalking at federally
+funded educational institutions. UT Austin is committed to fostering a learning and working
+environment free from discrimination in all its forms where all students, faculty, and staff can
+learn, work, and thrive. When sexual misconduct occurs in our community, the university can:
+Intervene to prevent harmful behavior from continuing or escalating.
+• Provide support and remedies to students and employees who have experienced harm or have
+become involved in a Title IX investigation.
+• Investigate and discipline violations of the university's relevant policies.
+Faculty members and certain staff members are considered ``Responsible Employees'' or
+``Mandatory Reporters,'' which means that they are required to report violations of Title IX to the
+Title IX Coordinator at UT Austin. I am a Responsible Employee and must report any Title IX
+
+related incidents that are disclosed in writing, discussion, or one-on-one. Before talking with me,
+or with any faculty or staff member about a Title IX related incident, be sure to ask whether they
+are a responsible employee. If you want to speak with someone for support or remedies without
+making an official report to the university, email advocate@austin.utexas.edu. For more info
+about reporting options and resources, visit https://titleix.utexas.edu/campus-resources or contact
+the Title IX Office at titleix@austin.utexas.edu.

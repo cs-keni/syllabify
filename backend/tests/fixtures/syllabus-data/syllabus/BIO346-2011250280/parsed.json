@@ -1,0 +1,115 @@
+{
+  "course": {
+    "id": "bio346-2011250280",
+    "course_code": "BIO 346",
+    "course_title": "Human Biology",
+    "term": "Spring 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Klaus Kalthoff",
+        "email": "kkalthoff@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [],
+    "location": null
+  },
+  "assessment_categories": [
+    {
+      "id": "midterm_1",
+      "name": "First Midterm Exam",
+      "weight_percent": 33,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm_2",
+      "name": "Second Midterm Exam",
+      "weight_percent": 33,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 34,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "midterm_1_1",
+      "title": "First Midterm Exam",
+      "category_id": "midterm_1",
+      "type": "midterm",
+      "due_datetime": "2011-02-17T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 33,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Feb 17"
+    },
+    {
+      "id": "midterm_2_1",
+      "title": "Second Midterm Exam",
+      "category_id": "midterm_2",
+      "type": "midterm",
+      "due_datetime": "2011-03-31T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 33,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Mar 31"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2011-05-14T19:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 34,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Sat May 14 7-10pm"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

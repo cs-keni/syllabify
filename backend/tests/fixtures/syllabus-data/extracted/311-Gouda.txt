@@ -1,0 +1,48 @@
+Mohamed G. Gouda's Website http://www.cs.utexas.edu/~gouda/
+Mohamed G. Gouda
+Mike A. Myers Centennial
+Professor of Computer Sciences
+Mohamed G. Gouda CS 311
+Spring 2015 Syllabus
+This course discusses the Foundations of Computer Science.
+1. Boolean Formulas:
+Definitions, Equivalence, Satisfiability, Normal Forms
+2. Predicates:
+Definitions, Quantifiers, Equivalence, Nested Quantifiers
+3. Proof Styles:
+Guessing, Case Analysis, Direct Inference, Indirect Inference,
+By-Contradiction, Two-Sided Inference, Using Proven Predicates,
+Induction
+4. Graphs:
+Definitions, Handshake Theorem, Coloring, Connectivity,
+Bi-Partite Graphs, Trees, Planar Graphs
+5. Sets:
+Definitions, Operations on Sets, Set Laws
+6. Functions:
+Definitions, Injective, Surjective, and Bijective Functions,
+Inverse Functions, Function Composition
+7. Recurrences:
+Definitions, Solving Recurrence Equations
+8. Big Notations:
+Big-O Notation, Big-Omega Notation, Big-Theta Notation
+9. Program Annotation:
+Hoare's Triples, Loop Invariants, Well-Foundedness
+Textbook:
+Kenneth Rosen, Discrete Mathematics and Its Applications, Seventh Edition,
+McGraw Hill, 2012
+Instructor:
+Name: Mohamed G Gouda
+Email: gouda AT cs DOT utexas DOT edu
+Website: http://www.cs.utexas.edu/~gouda
+Office: GDC 6.824
+Office Hours: 2 to 3 pm on Wednsdays
+Cell Phone: 512-554-2465 (after 9 am and before 9 pm)
+Grades:
+10 points on attending exercise sections
+30 points on three homeworks (10 points on each homework)
+60 points on three midterms (20 points on each midterm)
+Important Dates:
+University of Texas Last modified on 6/10/04
+This Website is best viewed at 1024 X 768
+Department of Computer Sciences Designed by Ashwin Bhadri
+1 of 1 1/29/15, 11:29 AM

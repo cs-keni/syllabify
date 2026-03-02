@@ -1,0 +1,182 @@
+THE UNIVERSITY OF TEXAS AT AUSTIN
+Department of Biomedical Engineering
+BME 357/381J: Biomedical Imaging Modalities
+Spring 2023: 15310/15345
+Professor: Adam Bush, PhD
+Office room #: BME 5.202J
+Email: adambush@utexas.edu (include “BME 357” in the subject line of correspondence)
+Web Page: Canvas, http://canvas.utexas.edu
+Class Period:
+•
+•
+Monday 4pm-6pm ECJ 1.204 or the BME Learning Resource Center
+Office HTouuerssd: aMy oanndda yT h1u2rpsmd–a y1:p 1m1 aomr b –y 1A2p:3po0ianmtm, eGnLtT. 1.106
+Canvas will be the primary mode of communication for this course. Course notes and additional resources will
+be posted to canvas. Students are expected to use the internet to supplement their learning.
+Textbook: There is no required textbook for this course. We will draw from and reference many sources:
+Medical Imaging Signals and Systems: Prince and Links. 2nd Edition
+Introduction to Medical Imaging: Physics, Engineering and Clinical Applications: Smith and Webb. 1st
+Edition
+Medical Imaging Systems: Macovski
+Magnetic Resonance Imaging: Physical Principles and Sequences Design (2nd Ed), Brown, Haacke et al.
+Downloadable PDF for UT Students: https://onlinelibrary.wiley.com/doi/book/10.1002/9781118633953
+Principles of Magnetic Resonance Imaging, Dwight Nishmura (3rd Ed). Paperback 35$, hardback 42$
+https://www.lulu.com/search?page=1&q=dwight+nishimura&pageSize=10&adult_audience_rating=00
+Physiology textbooks
+Text of Medical Physiology: Guyton and Hall
+Human Physiology An Integrated Approach (8th Ed) Silverthorn.
+Description: Exploration of the fundamental imaging modalities in “modern” radiology. In particular, we will
+introduce basic engineering, physics and physiological and clinical uses of X-ray radiography, computed
+tomography (CT), ultrasound (US), optical imaging, and magnetic resonance imaging (MRI). We will use
+homework, projects and hands imaging to reinforce and assess learning.
+Course Objectives
+• Students will learn the physics of image formation in medical imaging
+• Students will learn the main instrumentation used in medical imaging
+• Students will learn the mathematics of image reconstruction
+• Students will learn how to assess image quality in medical imaging
+• Students will learn how to use, model and analyze medical imaging systems, images and data
+
+Student Outcomes
+• 1. an ability to identify, formulate, and solve complex engineering problems by applying principles of
+engineering, science, and mathematics
+• 2. an ability to apply engineering design to produce solutions that meet specific needs with consideration
+of public health, safety, and welfare, as well as global, cultural, societal, environmental, and economic
+factors
+• 3. an ability to communicate effectively with a range of audiences
+• 5. an ability to function effectively on a team whose members together provide leadership, create a
+collaborative and inclusive environment, establish goals, plan tasks, and meet objectives
+• 6. an ability to develop and conduct appropriate experimentation, analyze and interpret data, and use
+engineering judgement to draw conclusions 7. an ability to acquire and apply new knowledge as needed,
+using appropriate learning strategies
+Program Criteria (PC):
+A) Applying principles of engineering, biology, human physiology, chemistry, calculus-based physics,
+mathematics (through differential equations) and statistics;
+B) Solving bio/biomedical engineering problems, including those associated with the interaction between
+living and non-living systems;
+C) Analyzing, modeling, designing, and realizing bio/biomedical engineering devices, systems,
+components, or processes; and
+D) Making measurements on and interpreting data from living systems.
+Prerequisites: BME 251 (Biomedical Image, Signal, and Transport Process Laboratory) and BME 348
+(Modeling of Biomedical Engineering Systems). This is an elective course.
+Grading and Evaluation:
+Letter Grades: A = 93-100; A- = 90-92; B+ = 87-89; B = 83-86; B- = 80-82; C+ = 77-79; C = 73-76; C- = 70-
+72; D+ = 67-69; D = 63-66; D- = 60-62; F = 0-59
+You will be scored against the rubric, NOT against each other. Should the median of the class grades be less
+than 80% at the end of the term, the final grades may be curved as the instructor sees fit.
+Category Final Grade Percentage
+Class Participation 25%
+Exam 1 25%
+Monday Assignments and Homework 50%
+Exam 2 25%
+Dropped Score:
+The lowest category score will be dropped from your final grade score. Should your lowest score be in the
+homework and Monday assignments category, it will only contribute 25% to your final grade.
+
+Class Participation: Class participation will be assessed via participation during in class question and answer
+periods using the Kahoot platform. Full credit will be awarded for participation.
+Monday Assignments and Homework: Weekly assignments will be posted prior to 4pm on Monday and due the
+following Monday by 11:59pm CST. Longer assignments will be occasionally assigned and will be weighted in
+the category grade based on their assigned duration. For instance, a two week assignment is worth twice as
+much as a one week assignment. You are free to work together to solve the assigned homework problems,
+however, the work appearing on your submitted homework assignment must be your own. Some topics will
+require MATLAB based simulation, image processing or use of image systems and supplies only available
+during the Monday class period. Plan accordingly. Late assignments will be penalized -25% per day.
+COVID and Sickness Policy: Students are encouraged not to attend class while ill. Notify Dr. Bush as soon as
+possible. Illness must be reported BEFORE a missed class period for class participation to be excused. Any
+missed class participation and homework assignments during an excused illness will not be counted against
+your final participation or homework grade.
+Tentative Course Schedule
+Week Lecture Dates Material covered Book Chapter(s)
+26-Aug Monday Syllabus, Intro, Imaging History Notes
+27-Aug Tuesday Image Characterization Notes, Webb CH1
+29-Aug Thursday X-ray Physics Notes, Prince CH4
+2-Sep Monday NO Class: Labor Day
+3-Sep Tuesday X-ray Physics 2 Notes, Prince CH4,5
+5-Sep Thursday X-ray Projection: Filters and Formation Notes, Prince CH5
+9-Sep Monday Monday Assignment: Inverse Square
+10-Sep Tuesday CT Intro Notes, Prince CH6
+12-Sep Thursday Fourier Notes
+16-Sep Monday CT Reconstruction/Visit MicroCT
+17-Sep Tuesday CT: Reconstruction Notes, Prince CH6
+19-Sep Thursday CT: Reconstruction Notes, Prince CH6
+23-Sep Monday CT Reconstruction/Visit MicroCT
+24-Sep Tuesday CT: Applications Notes
+26-Sep Thursday CT: Applications Notes
+30-Sep Monday CT Reconstruction/Visit MicroCT
+1-Oct Tuesday US: Physics and Waves Notes, Webb CH4
+3-Oct Thursday US: Physics/System Notes, Webb CH4
+7-Oct Monday Ultrasound: Attenuation/Bubbles
+8-Oct Tuesday US: Physics/System Notes, Webb CH4
+10-Oct Thursday US: Doppler Cardiac Notes, Webb CH4
+14-Oct Monday Ultrasound: Kidney, Heart
+15-Oct Tuesday US: Doppler Cardiac Notes, Webb CH4
+17-Oct Thursday US: Focused Ultrasound/ Neuro Modulation
+21-Oct Monday Ultrasound: Kidney, Heart
+22-Oct Tuesday Special Topics/Review
+24-Oct Thursday Exam 1: Part 1
+28-Oct Monday Exam 1: Part 2
+29-Oct Tuesday MRI: System Notes, Prince CH12,13
+31-Oct Thursday MRI: Bloch/Signal Notes, Prince CH12,13
+
+Bloch Simulator
+4-Nov Monday
+5-Nov Tuesday MRI: Image Formation, Contrast Notes, Prince CH12,13
+7-Nov Thursday MRI: Pulse Sequences Notes, Prince CH12,13
+Scanner
+11-Nov Monday
+12-Nov Tuesday MRI: Pulse Sequences Notes, Prince CH12,13
+14-Nov Thursday MRI: BOLD, Oximetry Notes
+Scanner
+18-Nov Monday
+19-Nov Tuesday MRI: Diffusion, Perfusion Notes
+21-Nov Thursday MRI: Perfusion, Flow Notes
+25-Nov Monday Fall Break
+26-Nov Tuesday Fall Break
+28-Nov Thursday Fall Break
+2-Dec Monday Special Topics
+3-Dec Tuesday Special Topics
+5-Dec Thursday Special Topics
+9-Dec Monday Last Day of Class
+Final Exam
+Day: TBD Exam 2
+Possible TBD topics: Fat/Water, Spectroscopy, CEST, Pediatric Imaging, In-Class presentations…
+Disclaimer
+Instructor reserves the right to modify course policies, the course schedule, and assignment point values and due
+dates.
+Drop Policy:
+The last day to drop this course without permission from the Dean is the 4th class day. After this day, drops are
+approved only in the case of health or personal problems. An engineering student should make an appointment
+with his/her departmental advisor to discuss adding or dropping any course if the change will alter the classes
+that were originally approved by the departmental advisor. If the add or drop requires the approval of the Dean,
+then the student will need to schedule an appointment with an Academic Advisor in the Office of Student
+Affairs to discuss the request. Additional information can be found at:
+http://www.engr.utexas.edu/current/policies/pol_add-drop-wdraw.cfm
+Academic Dishonesty:
+Cheating will be dealt with in the harshest possibly way, according to the policies established by the office of
+the Dean of Students.
+Class Recordings:
+Class recordings are reserved only for students in this class for educational purposes and are protected under
+FERPA. The recordings should not be shared outside the class in any form. Violation of this restriction by a
+student could lead to Student Misconduct proceedings.
+
+Regrade Policy:
+If you want your Exam regraded, you must approach me within 1 week of getting your homework/project score
+back.
+Religious Holy Days:
+A student who misses classes or other required activities, including examinations, for the observance
+of a religious holy day should inform the instructor at least 14 days in advance of the absence so that
+arrangements can be made to complete an assignment within a reasonable period after the absence.
+Students who have questions or concerns may contact the Office for Inclusion and Equity
+Students with disability:
+The University of Texas at Austin provides, upon request, appropriate academic accommodations for qualified
+students with disabilities. For more information, contact Services for Students with Disabilities at 512-471-6259
+or ssd@austin.utexas.edu.
+Classroom Evacuation for Students:
+All occupants of university buildings are required to evacuate a building when a fire alarm and/ or an official
+announcement is made indicating a potentially dangerous situation within the building. Familiarize yourself
+with all exit doors of each classroom and building you may occupy. Re- member that the nearest exit door may
+not be the one you used when entering the building. If you require assistance in evacuation, inform your
+instructor in writing during the first week of class. For evacuation in your classroom or building:
+1. Follow the instructions of faculty and teaching staff.
+2. Exit in an orderly fashion and assemble outside.
+3. Do not re-enter a building unless given instructions by emergency personnel.

@@ -1,0 +1,49 @@
+CS 345 Programming Languages http://www.cs.utexas.edu/~wcook/Courses/345/index.htm
+CS 345 Programming Languages (SPRING 2015)
+Home
+Course CS345 Spring 205
+Information Time: MW 9:30-11:00am
+Syllabus
+Location: GDC 5.302
+Unique: 51915
+Schedule
+Web: http://www.cs.utexas.edu/~wcook/Courses/345
+Staff Instructor: William Cook Teaching Assistant:Vineet Keshari
+Email: wcook@cs.utexas.edu Email: vkeshari@cs.utexas.edu
+Phone: (512) 471-9555 Office Hours:
+Office: GDC 5.824 Monday 11AM-12PM
+Office Hours: Thursday 1PM-2PM
+Tuesday 11-12am Office Hours Location:
+Wednesday 1-2pm TA station #5, GDC basement
+(or by appointment)
+Overview Survey of significant concepts underlying modern programming languages, including syntax, seman
+assignment, procedures, pointers, encapsulation, classes, and inheritance, with some discussion of im
+paradigms, such as sequential, concurrent, object-oriented, functional, and logic programming. Illus
+Prerequisites The following courses, with a grade of at least C in each: Computer Sciences 310(H), 336(H), and M
+and earned a grade of 'C' or better in each, then you will be automatically dropped from this course.
+not satisfy the prerequisites. If you have taken this course before, you must have departmental permi
+Textbook Anatomy of Programming Languages
+A new book I'm writing for this class!
+Office Hours Normal office hours are posted on the web site; temporary changes may be announced in class and p
+in person, by telephone, or via e-mail. Feel free to send questions via email to the instructor or the T
+hours, or at most 48. Questions and responses that may benefit the entire class will be posted to the c
+Lectures and It is to your advantage to attend every lecture. Lecture presentations will be placed on the course we
+Reading date listed on the schedule, so that you will have a better understanding of the lecture.
+Homework Homework assignments will be given in class and posted on the web site. Homeworks are generally
+work on the homework exercises with other students, and a team of up to four students may hand in
+homework: list all your names at the top. Problems such as printer failures and late buses are routine
+homework deadlines. To avoid problems, get an early start on your homework and allow for Murphy
+The graders have been instructed that in grading homework papers and test answers, the burden of p
+prove an answer wrong, but the student's job to convince the grader that it's correct. In some exercis
+others, a solution's grade will be influenced strongly by its simplicity and clarity.
+ProgrammingThere will be a several programming assignments in Haskell assigned during the course.
+Assignments
+Exams Books and notes are excluded from tests and examinations.
+Midterm exam 03/11/14
+Final exam TBD
+Grading The grades will be based on the standard academic scale: A: 90-100; B: 80-89; C: 70-79; D: 60-69;
+the grades, but will not increase them. Grades will be posted on eGradebook which can be accessed
+Percentage Notes
+Assignments 50% Individual work
+Quizes 5%
+1 of 1 2/4/15, 10:34 AM

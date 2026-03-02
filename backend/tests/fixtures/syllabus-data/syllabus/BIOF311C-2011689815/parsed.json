@@ -1,0 +1,205 @@
+{
+  "course": {
+    "id": "biof311c-2011689815",
+    "course_code": "BIO 311C",
+    "course_title": "Introduction to Biology I",
+    "term": "Summer 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Anita Latham",
+        "email": "anitalatham@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Chicago",
+        "location": "PAI 2.48",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Chicago",
+        "location": "PAI 2.48",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "WE",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Chicago",
+        "location": "PAI 2.48",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Chicago",
+        "location": "PAI 2.48",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-5",
+        "day_of_week": "FR",
+        "start_time": "10:00",
+        "end_time": "11:20",
+        "timezone": "America/Chicago",
+        "location": "PAI 2.48",
+        "type": "lecture"
+      }
+    ],
+    "location": "PAI 2.48"
+  },
+  "assessment_categories": [
+    {
+      "id": "discussion",
+      "name": "Discussion Quizzes and Activities",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterms",
+      "name": "Midterm Exams",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "discussion_1",
+      "title": "Discussion Quizzes and Activities",
+      "category_id": "discussion",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": 60,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "One quiz make-up allowed",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "15% 60 pts"
+    },
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": 20,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Weekly homework 5%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm 1",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "100 pts"
+    },
+    {
+      "id": "midterm_2",
+      "title": "Midterm 2",
+      "category_id": "midterms",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "100 pts"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": 120,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Comprehensive 120 pts"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "course": {
+    "id": "371p-downing",
+    "course_code": "CS 371P",
+    "course_title": "Object-Oriented Programming",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Glenn Downing",
+        "email": "downing@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "11:00",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "JGB 2.218",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "11:00",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "JGB 2.218",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "11:00",
+        "end_time": "12:00",
+        "timezone": "America/Chicago",
+        "location": "JGB 2.218",
+        "type": "lecture"
+      }
+    ],
+    "location": "JGB 2.218"
+  },
+  "assessment_categories": [
+    {
+      "id": "assignments",
+      "name": "Programming Assignments",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "assignments_1",
+      "title": "Programming Assignments",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": null,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.8,
+      "source_excerpt": "See Grading page on course site"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

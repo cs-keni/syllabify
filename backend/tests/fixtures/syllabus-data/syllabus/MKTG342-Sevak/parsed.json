@@ -4,7 +4,7 @@
     "course_code": "MKTG 342",
     "course_title": "Marketing Research",
     "term": "Fall 2023",
-    "timezone": "America/Los_Angeles",
+    "timezone": "America/New_York",
     "instructors": [
       {
         "id": "inst-0",
@@ -18,7 +18,7 @@
         "day_of_week": "TU",
         "start_time": "13:35",
         "end_time": "14:50",
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "location": "E-330 Olmsted",
         "type": "lecture"
       },
@@ -27,7 +27,7 @@
         "day_of_week": "TH",
         "start_time": "13:35",
         "end_time": "14:50",
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "location": "E-330 Olmsted",
         "type": "lecture"
       }

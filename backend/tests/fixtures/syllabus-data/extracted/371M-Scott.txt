@@ -1,0 +1,174 @@
+Syllabus - Computer Science 371M - Mobile Computing
+The University of Texas at Austin · Spring 2015
+Objectives: An introduction to mobile computing with a strong emphasis on application
+development for the Android operating system. Students will complete a major project with the
+goal of releasing an app on the Android Market place. Topics will include the Android
+development environment, user interfaces, audio, persistence, SQLite databases, location,
+sensors, and graphics.
+Prerequisite: The following coursework with a grade of at least C- in each: Computer Science
+311, 311H, 313H, or 313K; Computer Science 307, 314, 314H, 315, or 315H; Computer Science
+310, 310H, 429, or 429H; Mathematics 408C, 408K, or 408N; and credit with a grade of at least
+C- or registration for Computer Science 439 or 439H.
+Lecture: 51990 MWF 2 - 3 pm, GDC 1.304
+Instructor, Mike Scott, email: scottm@cs.utexas.edu office: GDC 6.304 .
+Office Hours: Monday and Wednesday 3 - 4:30 pm, Fridays 8:30 - 9:30 am. If you cannot make
+these hours email me to request an appointment.
+Office hours are held in the 3rd floor computer lab in the Gates CS complex.
+Teaching Assistant:
+Joel Iventosch, lab hours: TBD
+
+Textbook (Strongly Recommended):
+(cid:120) The Busy Coder's Guide to Android Development, by Mark Murphy,
+http://commonsware.com/Android/, previous versions available at this site for free.
+OR
+(cid:120) Android Programming: The Big Nerd Ranch Guide (Big Nerd Ranch Guides)
+ISBN: 978-0321804334 / 1st ed.
+Publisher: Big Nerd Ranch Guides
+Recommended Books: (at most one of these)
+(cid:120) Android for Programmers: An App-Driven Approach, Paul Deitel, Harvey Deitel,
+Abbey Deitel, and Michael Morgano, ISBN-13: 978-0132121361
+(cid:120) The Android Developer's Cookbook: Building Applications with the Android SDK:
+Building Applications with the Android SDK, James Steele and Nelson To, ISBN-
+13: 978-0321741233 (first of second edition okay)
+Website: http://www.cs.utexas.edu/~scottm/cs371m. Course materials and announcements are
+available there.
+Computing Facilities:
+(cid:120) UTCS Microlabs. PCs and Linux machines are available for assignments in the CS
+Department microcomputer lab located on the 1st and 3rd floors of GDC, Dell Hall
+(north wing). You are free to work on your own computer if you wish.
+Android Device: You are NOT required to have an Android Device. Development can be done
+on the Android Emulator. However there is no substitute for testing on a real device. I have
+multiple Android dev phones and tablets available for checkout during lab hours.
+If you do want to purchase an Android device past students have favored the Google 7" Nexus
+tablet.
+Software: Android development is done in Java. The Microlab computers in GDC are set up to
+do Android programming. If you want to work on your own machine you will need the
+following. (all of these are freely available)
+(cid:120) Java. I recommend version 7.
+(cid:120) Android SDK. I recommend downloading APIs levels 10 through the latest (19 as of
+August 2014). Link to instructions on installing the Android SDK.
+(cid:120) Android Studio
+Class Discussion Tool: I have set up a discussion group for the class on Piazza.
+
+(cid:120) Go to the Piazza web site and join the CS371M Mobile Computing for The University of
+Texas at Austin.
+(cid:120) I will post class announcements and information to the discussion group.
+Schedule: A schedule of lecture topics, reading assignments, and assignment distribution and
+due dates is available online, via the class web page,
+www.cs.utexas.edu/~scottm/cs/schedule.htm. The schedule lists topics and readings. The
+schedule is subject to change.
+Assignments and Projects (Listed by Due Date)
+Topic Due Date Points
+Attendance
+Throughout
+1 points per regular lecture, 5 points per 50
+Term
+guest lecture
+Tutorial 1 Fri 1/30 25
+Assignent 1 - App Reviews Wed 2/4 50
+Tutorial 2 Fri 2/6 50
+Tutorial 3 Fri 2/13 50
+Assignment 2 - App Proposals - Written,
+Mon 2/16 125
+Posters due on assigned poster day.
+Tutorial 4 Fri 2/20 50
+Tutorial 5 Fri 2/27 50
+Tutorial 6 Fri 3/6 50
+Assignment 3 - App Paper Prototype /
+Fri 3/13 50
+Mock Up
+Assignment 4 - Alpha Release Fri 4/3 100
+Assignment 5 - Alpha Release
+Wed 4/15 75
+Evaluations
+Assignment 6 - How To Page Wed 4/29 50
+Beta App Wed 5/6
+In class demos:
+Assignment 7 - Beta Release and Beta
+5/1 - 5/8 200
+Demo
+Digital Demo Day:
+Finals week
+Assignment 8 - Web Ad Fri 5/8 50
+(cid:120) Final grades are based on 1000 points. 1025 points available. 25 points of slack.
+(cid:120) The final letter grades will be assigned based on your total points. The grading systems
+consists of 1000 points. The grade cutoffs are: <600 = F, 600 - 699 = D, 700 - 799 = C,
+800 - 899 = B, >= 900 = A. Plusses and minuses (+ and -) will be assigned to scores
+within 25 points of the cut offs. So for example total points 875 to 899 earn a B+ and
+total points 900 to 924 earn an A-.
+
+(cid:120) Assignments will be available on the class web site or Canvas.
+(cid:120) If you are dissatisfied with a grade you receive on an assignment or test, you must
+submit your complaint via email, along with supporting evidence or arguments, to me or
+the TA within one week of the date the teaching staff first attempted to return the
+assignment or test to you.
+(cid:120) Late work or work in the wrong format is not accepted and will receive a grade of 0.
+Academic Honesty: Taken from the CS department Code of Conduct.
+"The University and the Department are committed to preserving the reputation of your degree.
+It means a lot to you. In order to guarantee that every degree means what it says it means, we
+must enforce a strict policy that guarantees that the work that you turn in is your own and that the
+grades you receive measure your personal achievements in your classes:
+Every piece of work that you turn in with your name on it must be yours and yours alone unless
+explicitly allowed by an instructor in a particular class. Specifically, unless otherwise authorized
+by an instructor:
+(cid:120) Students may not discuss their work with anyone except the instructor and other members
+of the instructional staff (instructor, TA, lab proctor or partner on a pair assignment).
+(cid:120) Students may not acquire from any source (e.g., another student or an internet site) a
+partial or complete solution to a problem or project that has been assigned.
+You are responsible for complying with this policy in two ways:
+1. You must not turn in work that is not yours, except as expressly permitted by the
+instructor of each course.
+2. You must not enable someone else to turn in work that is not theirs. Do not share your
+work with anyone else. Make sure that you adequately protect all your files. Even after
+you have finished a class, do not share your work or published answers with the students
+who come after you. They need to do their work on their own.
+The penalty for academic dishonesty will be a course grade of F and a referral of the case to the
+Dean of Students. Further penalties, including suspension or expulsion from the university may
+be imposed by that office.
+One final word: This policy is not intended to discourage students from learning from each other,
+nor is it unmindful of the fact that most significant work in computer science and in the
+computing industry is done by teams of people working together. But, because of our need to
+assign individual grades, we are forced to impose an otherwise artificial requirement for
+individual work. In some classes, it is possible to allow and even encourage collaboration in
+ways that do not interfere with the instructor's ability to assign grades. In these cases, your
+instructor will make clear to you exactly what kinds of collaboration are allowed for that class."
+
+For CS371M I expect you to complete the tutorials on your using the provided code when
+given.
+For your projects I expect you to do significant work on your own.
+You can use class examples and examples from the web, but these must be documented.
+To be clear, a significant amount of work on your project must be your own, but it is okay
+to incorporate code samples and 3rd party libraries.
+For more information on Scholastic Dishonesty see the University Policy on Scholastic
+Dishonesty
+Important Dates for Changing Academic Status and Dropping the Course: Refer to the
+Registrar's academic calendar for the deadlines for changes in academic status. Highlights are:
+(cid:120) Friday, January 23: Last day of the official add/drop period; after this date, changes in
+registration require the approval of the department chair and usually the student’s dean.
+(cid:120) Wednesday, February 4: (12th class day) Last day to drop for a possible refund. Last day
+to add a course.
+(cid:120) Monday, April 6: Last day an undergraduate student may, with the dean’s approval,
+withdraw from the University or drop a class (Q drop) except for urgent and
+substantiated, nonacademic reasons. Last day a student may change registration in a class
+to or from the pass/fail or credit/no credit basis.
+(cid:120) After Monday, April 6, students must go to the academic advisors in their college Dean's
+office if they wish to drop or withdraw from the class.
+(cid:120) To be eligible for an incomplete (UT uses the symbol X to indicate incompletes) you
+must have a letter grade of C- or better and a written, verifiable excuse for missing the
+last test. This is a necessary but insufficient condition for receiving an incomplete.
+Students experiencing significant nonacademic problems (extended health problems or family
+emergencies) should contact the CNS Dean’s Office (WCH 1.106, (512) 471-4536) or the Dean
+of Student’s Office (http://deanofstudents.utexas.edu/emergencyresources.php) for assistance.
+See the College of Natural Science Guidelines and Procedures page for more information.
+(http://cns.utexas.edu/advising/guidelines-procedures)
+Religious Holidays: By UT Austin policy, you must notify me of your pending absence at least
+fourteen days prior to the date of observance of a religious holy day. If you must miss a class, an
+examination, a work assignment, or a project in order to observe a religious holy day, you will be
+given an opportunity to complete the missed work within a reasonable time after the absence.
+
+Students with Disabilities: students with disabilities may request appropriate academic
+accommodations from the Division of Diversity and Community Engagement, Services for
+Students with Disabilities, 471-6259, www.utexas.edu/diversity/ddce/ssd/.
+Many thanks to Professor Frank McCown of Harding University and Professor David Janzen of
+Cal Poly - San Luis Obispo for sharing their Android app development materials with me.
+To the CS 371M home page

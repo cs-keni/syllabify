@@ -1,0 +1,151 @@
+CELL BIOLOGY (BIO s320)
+SUMMER 2011
+________________________________________________________________
+LECTURE M, T, W, TH, F 10:00 - 11:30 AM (RLM 7.104)
+Unique #
+DISCUSSION 90380 M, W 1:00 - 2:00 PM (WEL 3.260)
+90385 M, W 2:00 - 3:00 PM (WEL 3.260)
+________________________________________________________________
+Instructor: Dr. Inder M. Saxena
+Office: BIO 12F
+Office hours: M, W 11:30 AM – 1:00 PM (or by appointment)
+E-mail: ims1030@mail.utexas.edu
+________________________________________________________________
+Text Book
+Molecular Biology of the Cell (Fifth Edition, 2008) B. Alberts, A. Johnson, J.
+Lewis, M. Raff, K. Roberts, and P. Walter. Garland Science.
+Problems and Solutions
+Molecular Biology of the Cell Fifth Edition
+The Problems Book (2008) J. Wilson and T. Hunt. Garland Science.
+Course web site
+http://www.pai.utexas.edu/faculty/isaxena/BIO320
+________________________________________________________________
+PREREQUISITE: BIO 325 or BIO 325H WITH A GRADE OF AT LEAST C.
+Course objectives
+The objective of this course is to provide an overview of cell structure and
+function at the molecular level and discuss specific cellular processes including
+cell communication, cell cycle, programmed cell death, and cancer. The course
+will focus on developing an understanding of the nature and function of a large
+number of proteins and methods used for their analyses.
+Course organization
+The course is divided into 3 parts, and upon completion of each part there will be
+an exam.
+Discussion meetings
+Every student is expected to attend and participate in the discussion sessions.
+Students should bring questions from the lecture, or any relevant material that
+they may have come across in their readings, to these meetings and use these
+for discussion with other students. Apart from student questions, a work sheet
+will be posted on Blackboard for every discussion session and students will work
+on the questions provided in the work sheet in groups of 3-4 students each.
+
+Answers to these questions should come from a discussion within the group and
+where necessary the TA will help in guiding the students to the correct answer. It
+is expected that in these meetings students will learn to analyze problems before
+attempting to work on them. In many cases these skills are best acquired by
+watching other students work on the given problems. Discussion meetings will
+also be used for discussion of assigned research articles. Attendance in the
+discussion meetings will account for 6.25% of the final grade (25 points).
+Attendance
+No attendance will be taken during the lecture meetings. Attendance will be
+taken for the discussion meetings and will count for a maximum of 25 points (of a
+total of 400 points at the end of the semester).
+Examinations
+Three exams and 3 quizzes will be conducted during the lecture period this
+semester. The maximum time given will be 1 hour, 15 minutes for the exams
+and 20 minutes for the quizzes. All the exams and quizzes will be used in
+determining the final grade. There will be no final exam during the final exam
+period.
+Each exam will cover only the material that has been covered in class before the
+exam date as listed in the syllabus. Material covered in an exam will not be
+included in the subsequent exam(s). Quizzes will include only the material
+covered in the previous two lectures. Exams and quizzes will have short-answer
+questions, problems, multiple choice questions, fill-in-the blanks, mix-and-match,
+and figures. A sample exam will be posted on Blackboard.
+Make-up examination will be given only if a student is unable to take any one of
+the first two exams, and is able to provide a valid reason and documentation for
+absence from the exam. The make-up examination will include material from the
+first two exams and it will be given before the last class day. No make-up will be
+given for a missed quiz.
+Breakdown of points Total points 400 percent of total points
+Exam 1 100 points 25%
+Exam 2 100 points 25%
+Exam 3 100 points 25%
+3 quizzes (25 points each) 75 points 18.75%
+Discussion attendance 25 points 6.25%
+Grading system
+The Plus/Minus grading system will be followed based on the number of points
+scored out of 400.
+Grade Percent ___________
+A 93% and above
+A- 90% to <93%
+B+ 86% to <90%
+2
+
+B 83% to < 86%
+B- 80% to < 83%
+C+ 76% to < 80%
+C 73% to < 76%
+C- 70% to < 73%
+D+ 66% to < 70%
+D 63% to < 66%
+D- 60% to < 63%
+F less than 60%
+Lecture, exam, and quiz schedule
+________________________________________________________________
+Dates Lecture topics, exams, and quizzes Chapter(s)
+________________________________________________________________
+July 11 – July 20 Introduction
+Birth of the first cell to variety of cells 1
+Structural and functional features of cells 1
+Proteins – structure and function; techniques 3, 6, 8
+Tools for study of cells 9
+Biological membranes – structure 10
+July 15 (Fri) Quiz 1
+July 21 (Thu) Exam 1
+July 22 – Aug 2 Membrane transport 11
+Cell compartments – protein targeting
+and vesicular transport 12, 13
+Cell signaling 15
+Cytoskeleton 16
+July 27 (Wed) Quiz 2
+Aug 3 (Wed) Exam 2
+Aug 4 – Aug 11 Cell cycle 17
+Cell death 18
+Extracellular matrix 19
+Cancer 20
+Aug 8 (Mon) Quiz 3
+Aug 12 (Fri) Exam 3
+________________________________________________________________
+3
+
+The University of Texas Honor Code
+The core values of The University of Texas at Austin are learning, discovery,
+freedom, leadership, individual opportunity, and responsibility. Each member of
+the university is expected to uphold these values through integrity, honesty, trust,
+fairness, and respect toward peers and community.
+Documented Disability Statement
+The University of Texas at Austin provides upon request appropriate academic
+accommodations for qualified students with disabilities. For more information,
+contact Services for Students with Disabilities at 471-6259 (voice) or 232-2937
+(video phone) or http://www.utexas.edu/diversity/ddce/ssd
+A few words about the lecture and discussion meetings
+A lecture class or a discussion session is a group activity and to make the most
+of this activity, consider the following points:
+Every student has the right to learn as well as the responsibility not to deprive
+others of their right to learn. Every student is accountable for his or her actions.
+In order for you to get the most out of this course, please consider the following:
+a. Attend all scheduled classes and discussion sessions and arrive on time.
+b. Please do not schedule other engagements during the class or discussion
+time.
+c. If you have trouble hearing the lecture or media presentation because of
+distractions around you, quietly ask those responsible for the distraction to
+stop.
+d. Please let me know immediately if you have any problem which is preventing
+you from performing satisfactorily in this class.
+Feedback
+Feedback is an important part of any learning. During this course I will be asking
+you to give me feedback on your learning in informal as well as formal ways such
+as assignments or exams. Please let me know when something we discuss is
+not clear. It will enable me to provide additional information when needed or to
+explain a concept in different terms.
+4

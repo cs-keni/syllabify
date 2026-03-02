@@ -1,0 +1,201 @@
+ANIMAL COMMUNICATION BIO 438L
+Unique Numbers 50190, 50195 (SPRING 2011)
+Instructor: Dr. Michael Ryan, PAT 107, 471 -5078, mryan@mail.utexas.edu
+Office Hours: Dr. Ryan: By appointment
+Amanda Lea : Friday, times to be announced
+Course Synopsis: The objective of the course it to understand animal communication.
+To do so, we must become familiar with its physical principles, sensory and
+morphological mechanisms, behavioral function, and evolution. The emphasis is on
+integrating information from different areas of biology to make this understanding as
+general as possible.
+The first half of the course will address the general principles of communication
+in each sensory modality, while the second half will address various topics concerning
+the behavior, ecology, and evolution of communication systems. The laboratory
+exercises will emphasize quantitative analysis of signals and experimental studies of
+animal communication. The laboratory schedule is below.
+Lectures: Tuesday, Thursday 11:00-12:30 PM, RLM 6.112
+Labs: Monday or Wednesday 8:00-11:00, Brackenridge Field Lab rm 114 .
+UT shuttle (LA route) leaves Whitis and 21st St, by the fountain on the UT campus , at
+7:36 AM and arrives at 7:55 AM at BFL. The laboratory will end at 10:30, in time to
+catch the 10:35 shuttle, which leaves from in front of BFL, to reach campus by 10:55.
+Shuttle to BFL: http://www.utexas.edu/parking/transportation/shuttle/index.html
+Textbook (recommended): Principles of Animal Communication. J.W. Bradbury & S. L.
+Vehrencamp, Sinauer and Associates, Sunderland MA (~$93). There is a new edition of
+this book being published in May 2011. Therefore, the publisher is not s elling any copies
+of the available edition. There are, however, used numerous copies available on
+Amazon.com, as low as $64. A copy is on reserve in the Life Sciences Library (MAI ).
+I-Clickers: I-clickers will be used during the lecture portion of the class. These will be
+used for short quizzes (graded), and for assessing understanding of the lecture material in
+real-time (ungraded). I-clickers can be purchased from the Unive rsity Co-op. There are
+used I-clickers available for lower cost. P lease be sure that you purchase the “I-clicker”,
+and no t one of the other, available interactive devices. You must register your I -clicker in
+Blackboard.
+Grading: Half of the grade is based on the lecture portion of the course and half on the
+lab. There are two lecture exams, dates are given below. The lecture portion of your
+grade is grade is derive d equally for the two exams and from the in-class quizzes and
+
+participation. The final exam is an oral exam. The requirements for the lab and the
+independent project are detailed below. The various short lab assignments are worth a
+combined 20% of the final grade and the independent project is worth 30% of the final
+grade (more details on the independent project below) .
+Points are deducted for any assignments handed in late.
+Absences: If a student misses the exam they must contact the instructor or TA within 24
+hours of the exam and provide of note from a medical doctor in order to take a makeup
+exam. If a st udent anticipates missing a lab, they can switch to the other lab for that week
+only with prior permission from the TA. If a stud ent has a medical excuse (and note) for
+missing a lab, every attempt will be made to have the student make up that lab.
+Class Web Site: We will use Blackboard. Lectures will be presented in power point
+format and made available on the web. Laboratory material, including the lab exercises,
+problem sets, etc., will also be on the web site. You must register your I -clicker in
+Blackboard.
+Lecture Schedule
+Most of the topics addressed will also be covered in the textbook. The textbook,
+however, goes into far more detail and covers more topics than possible in a one semester
+undergraduate course. For each lecture, I will assign the relative pages to be read in the
+textbook and I will distribute an outline of that day’s lecture.
+Week Dates Topic
+1 1/18, 1/20 Introduction, Properties of Sound [sound tutorial]
+2 1/25, 1/27 Signal Transmission/Degradation, Signal Contrast
+3 2/1, 2/3 Properties of Light
+4 2/8, 2/10 Sound Production, Hearing
+5 2/15, 2/17 Visual Signal Production, Vision
+6 2/22, 2/24 Information Theory & Bayesian Updating
+7 3/1, 3/3 Exam, Song learning
+8 3/8, 310 Communicating with Kin, Bee-Human Dance-Language
+3/15 – 3/17 Spring Break
+9 3/22, 3/24 Eavesdroppers, Communication Networks
+10 3/29, 3/31 Communicating to Predators, Reference & Langu age
+11 4/5, 4/7 Hormones & Communication
+12 4/12, 4/14 Signal Evolution, Signal Evolution
+13 4/19, 4/21 Signal Coevolution, Neural Networks
+14 4/26, 4/28 Signal Honesty, Human Mate Preferences
+15 5/3, 5/5 Reserved for Ca tching Up!!
+Final Exam Week Final Exam
+2
+
+Animal Communication Lab
+Place and Time: The lab meets on Monday/Wednesday from 8-11 AM. The labs will be
+at Brackenridge Field Station (BFL), located at 2907 Lake Austin Blvd. Lab will end by
+10:30 AM to allow you to take the UT Shuttle to be back on campus by 10:55 AM.
+Sound Tutorial: There is a Sound Tutorial which is both on the computers at BFL and on
+the class website where it can be downloaded. You are required to work through this
+tutorial in week 1, in lieu of lab that week. This tutorial will aid both in the first few labs
+and in the l ectures on acoustic properties of sound.
+Sound Ruler: This is the program we use to analyze sounds. It is on the lab computers
+and it can be downloaded free of charge from http://soundruler.sourceforge.net/main/.
+Also in lieu of lab in week 1, you should download Sound Ruler from its web site and the
+Sound Analysis lab from the website. This lab describes the basic use of Sound Ruler.
+You should be familiar with the operati on of Sound Ruler before the lab for week 2.
+Field trips: There will be several field trips in addition to the weekly labs. Students will
+receive extra credit for attending. These on scheduled on an ad hoc basis due to
+constraints of weather.
+Introduction: The goal of lab in the first half of the semester is to provide a general
+overview of some of the tools use in studies on animal communication. The last half of
+the semester is devoted to independent projects. Small groups of students ( usually 2) will
+develop projects with the help of the professor and the TA. Students should be
+considering potential projects as we are learning different techniques in the first half of
+the lab. Although the labs are biased towards acoustic and visual communication, projects
+working with other sensory modalities or techniques are welcome.
+Attendance at all lab sessions is required, and switching between sessions (Monday
+/Wednesday) without previous approval is not allowed. If a student misses a lab they must
+contact the TA and provide a note from a medical doctor. (The same is true for exams.)
+Students that have missed a lab with a valid excuse will do the lab on their own if
+possible or a makeup assignment where the lab is not possible . Attendance during the
+presentations of independent projects is obligatory, and everybody must stay to hear all
+the presentations.
+The la b manuals will be available o n Blackboard. You should read the appropriate
+section of the manual before each class in order to know what materials to br ing, and to
+be familiar with objectives of that day.
+You will need an EID account for using the computers during the lab. You were assigned
+one of these accounts when you entered UT, be sure that you remember your username
+3
+
+and password. If you need help with the information of your account contact the
+Biological Sciences Computer Support Facility at help@bscsf.utexas.edu
+Equipment Check-Out Procedure: Send an email to the TA specifying what you need,
+and when you want to use it. The TA will email you back and telling you when you can
+get the equipment. Since the equipment is stored at the lab in BFL it is best to get
+equipment while you are out there or lab. The equipment is limited and some can be in
+short supply, especially by the end of the semester. So plan ahead and reserve the
+equipment in advance if you need to use it on specific days. Check out time will depend
+on how many people are working with it.
+Independent project : The project should be on animal communication. In general, we
+discourage projects on pets and humans (as well as pet humans). Your independent
+project is your opportunity to expand your interest in particular aspects of the class. The
+projects will be developed individually or in small groups (no more than 2 students).
+With the help of the professor and the TA you will build a research plan achievable
+during the second half of the semester. Students may not use the independent study for
+another course. Graduate students may not c onduct independent studies that will be part
+of their thesis project.
+Grade: Lab reports sum up to the 20% of the final grade.
+Your independent project is 30% of your final grade for the class. The grade for your
+project includes your performance on the presentations (3) and your final paper (see
+below).
+Attendance during the presentations of independent projects is obligatory, and everybody
+must stay for all presentations.
+For the presentations, you will use Power Point.
+Proposal Topic: You should discuss your idea of a proposal with the TA and/or the
+professor. The TA must approve your topic for the proposal and you must give her a
+short written explanation of your idea (< 1 p) by week 7 (Mon: Feb 28/Wed: March 2).
+Save the written proposal topic as it will need to be handed i n with the final project.
+We strongly suggest you begin thinking about the project immediately and do not wait
+until the last week to the proposal topic approved. Anyone wishing to work with vertebrates
+must get permission as early as possible and adhere to animal care (IACUC) policies.
+Project proposal: Week 9, March 21/23. Power Point presentation, 10 min max. Give an
+introduction to the topic you chose for your project, present your question, and explain
+why this is a relevant study in animal communication. The background information you
+give should be relevant to frame your question and/or predictions. T hen, state the
+methodology that you will use. Be specific, give details about your protocol and include
+4
+
+the sample size that you are planning to achieve. Save the power point presentation as it
+will need to be handed it with the final project.
+Preliminary results: Week 12, April 11/13. Presentation, 10 min max. A full introduction
+is not necessary for this presentation , just briefly remind us of your question and your
+methods. At this point you need to present sufficient data to demonstrate that the projec t
+is tractable. If you are having problems with the project (i.e. the animals you were
+planning to study are not as responsive as you thought they would be), mention these
+difficulties and also try to suggest solutions. If your project is proving intractab le, meet
+with the TA or professor before the presentation about changing the project, and present
+the proposal of your new project instead of the preliminary results. Save the power point
+presentation as it will need to be handed it with the final project.
+Final Presentation: Week 15, May 2/4. Presentation: a 15 min max power point
+presentation and a paper is due the day of your presentation. Give a full presentation of
+your project including introduction, methods, results and discussion.
+For the final project you must submit the following : (i) the written paper ; (ii) On a CD:
+(a) the proposal topic document, (b) the written paper (thus you submit both a hard copy
+and a digital copy of the final paper ), and (c) the three power point presentations: project
+proposal, preliminary results and final presentation.
+Some hints for your presentations:
+Do not present big tables with small letter. Try to present your data in graphs.
+Include pictures, diagrams and sounds that can help you explain your point.
+Try to avoid slides with full text in small letter. Summarize your ideas in short
+phrases that the audience can easily follow.
+Relate your findings to the general introduction you presented in the initial
+proposal.
+Laboratory Schedule
+Week Dates Topic Assignment
+1 1/17, 1/19 No lab meeting, Download (i) Complete Sound Tutorial
+Sound Tutorial & (ii) Learn how to use
+& Sound Ruler w/ SoundRuler
+instructions for using it
+2 1/24, 1/26 Sound Recording &
+Analysis
+3 1/31, 2/2 Sound Degradation Lab report due from week 2
+4 2/7, 2/9 Cardinal Playbacks Lab report due from week 3
+5 2/14, 2/16 Visual Contrast Lab report due from week 4
+6 2/21, 2/23 Spectrophotometer Lab report due from week 5
+5
+
+7 2/28, 3/2 Fish Olfactory Signals Lab report due from week 6
+Project Topic Proposal Due
+8 3/7, 3/9 “Catch- up Lab ”
+3/14 – 3/18 Spring Break
+9 3/21, 3/23 Independent project proposal (presentation)
+10 3/28, 3/30 Work on Independ ent Projects
+11 4/4, 4/6 Work on Independ ent Projects
+12 4/11, 4/13 Preliminary results - Independent project (presentation)
+13 4/18, 4/20 Work on Independ ent Projects
+14 4/25, 4/27 Work on Independ ent Projects
+15 5/2, 5/4 Independent Project Final (paper and presentation)
+6

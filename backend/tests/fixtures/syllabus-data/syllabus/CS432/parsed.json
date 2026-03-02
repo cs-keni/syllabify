@@ -9,10 +9,10 @@
       {"id": "inst-0", "name": "Prof. Jun Li", "email": "lijun@cs.uoregon.edu"}
     ],
     "meeting_times": [
-      {"id": "mt-1", "day_of_week": "TU", "start_time": "08:30", "end_time": "09:50", "timezone": "America/Los_Angeles", "location": "Lillis 112", "type": "lecture"},
-      {"id": "mt-2", "day_of_week": "TH", "start_time": "08:30", "end_time": "09:50", "timezone": "America/Los_Angeles", "location": "Lillis 112", "type": "lecture"}
+      {"id": "mt-1", "day_of_week": "TU", "start_time": "08:30", "end_time": "09:50", "timezone": "America/Los_Angeles", "location": "112 LIL", "type": "lecture"},
+      {"id": "mt-2", "day_of_week": "TH", "start_time": "08:30", "end_time": "09:50", "timezone": "America/Los_Angeles", "location": "112 LIL", "type": "lecture"}
     ],
-    "location": "Lillis 112"
+    "location": "112 LIL"
   },
   "assessment_categories": [
     {"id": "participation", "name": "Class participation", "weight_percent": 5, "drop_lowest": null, "subcategories": [], "grading_bucket": null},

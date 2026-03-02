@@ -1,0 +1,117 @@
+{
+  "course": {
+    "id": "371m-scott",
+    "course_code": "CS 371M",
+    "course_title": "Mobile Computing",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Mike Scott",
+        "email": "scottm@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "14:00",
+        "end_time": "15:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 1.304",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "14:00",
+        "end_time": "15:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 1.304",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "14:00",
+        "end_time": "15:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 1.304",
+        "type": "lecture"
+      }
+    ],
+    "location": "GDC 1.304"
+  },
+  "assessment_categories": [
+    {
+      "id": "assignments",
+      "name": "Assignments and Projects",
+      "weight_percent": 90,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "attendance",
+      "name": "Attendance",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "assignments_1",
+      "title": "Assignments and Projects",
+      "category_id": "assignments",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 90,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Not accepted; grade of 0",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "1000 points base, 1025 available"
+    },
+    {
+      "id": "attendance_1",
+      "title": "Attendance",
+      "category_id": "attendance",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "1 pt per lecture, 5 per guest lecture"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

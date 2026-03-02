@@ -1,0 +1,49 @@
+Spring 2017 PHY 375 S
+INTRODUCTORY SOLID STATE PHYSICS
+Unique number: 56960
+Meets: MWF 9:00a in RLM 5.120
+Instructor: Prof. Alex de Lozanne
+Office: RLM 13.204
+Office Hours: Wed 12:30-2:30 pm (or make appointment via email: delozanne@physics.utexas.edu)
+Grader: TBA Office Hours: TBA
+COURSE REQUIREMENTS:
+Homework 15% of grade
+Three midterms 20%/ea
+Final Exam 25%
+MIDTERMS: In class, Fridays, February 10, March 10, April 7
+FINAL: Thursday, May 11, 2:00-5:00 pm
+You can bring one book to any exam, no notes.
+HOMEWORK IS DUE AT THE BEGINNING OF CLASS.
+Course Prerequisites: Undergraduate statistical mechanics and quantum mechanics (PHY 369 and PHY 373).
+Equivalent basic knowledge of thermal physics and quantum mechanics may be substituted.
+Administrative Issues: Kelly McCoy, ugaffairs@physics.utexas.edu, Undergraduate Office, RLM 5.216, 471‐8856
+Special Accommodations: The University provides upon request appropriate academic accommodations for
+qualified students with disabilities. For more information, contact the Office of the Dean of Students at 471‐6259,
+471‐6441 TTY.
+COURSE CONTENTS: (Following the text)
+Chapter 1 Crystal Structure
+" 2 Wave diffraction and the reciprocal lattice
+" 3 Crystal binding and elastic constants
+" 4 Phonons I : Crystal vibrations
+" 5 Phonons II : Thermal Properties
+" 6 Free electron Fermi gas
+" 7 Energy Bands
+" 8 Semiconductor crystals
+" 9 Fermi surfaces and metals
+Time permitting we will cover (in any order, depending on student interest):
+Ch 10-15 Superconductivity, Magnetism, Plasmonics
+TEXT: Introduction to Solid State Physics by Charles Kittel, 7-th edition (QC
+176 K5 1996). Other editions can be used.
+OTHER BOOKS: On reserve at PMA library (ask for deLozanne's class at the front desk).
+
+Solid State Physics, by Harald Ibach & Hans Lüth , Third or Fourth Ed.
+QC176 I2313 2009 PMA (ISBN: 354043870X / 3-540-43870-X)
+Elementary Solid State Physics: Principles and Applications, by M. Ali Omar / Reading,
+Mass. / 1975
+QC 176 O38 1975 Physics-Math-Astronomy Library
+Introductory Solid State Physics by H.P. Myers QC 176 M94 1990 Physics-Math-
+Astronomy Lib Reserves
+Solid State Physics by Ashcroft and Mermin. (QC 176 A83) (ADVANCED)
+Condensed Matter Physics by Michael Marder
+QC 173.454 M37 2000 Physics-Math-Astronomy Lib Reserves (ADVANCED)
+Introduction to Solid State Physics by Charles Kittel, 8-th edition (QC 176 K5 2005).

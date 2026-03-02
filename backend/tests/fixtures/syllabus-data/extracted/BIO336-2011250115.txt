@@ -1,0 +1,162 @@
+default file:///Users/jonhuibregtse/Desktop/Bio%20336:391M/Q%20Bio%2...
+Bio 336/391M - TUMOR BIOLOGY (Spring '11)
+Last updated: Jan. 28, 2011
+Instructor:
+Dr. Jon Huibregtse, Ph. D.
+Professor, Molecular Genetics and Microbiology & Institute for Cellular
+and Molecular Biology
+Office: Molecular Biology Building (MBB) 2.312
+Phone: 232-7700
+e-mail: huibreg@mail.utexas.edu
+General Info:
+MWF, 12:00 - 1:00
+Burdine Hall, Room 108
+Bio 336 - unique number 50115
+Bio 391M - unique number 51120
+Office Hours:
+Tuesdays, 9:00 - 10:30
+Fridays, 10:30 - 12:00
+Final Exam: Thursday, May 12, 9:00-12:00 noon
+Prerequisites for Bio 336 (for undergraduates):
+Biology 325 (Genetics), and either Biology 330 (Animal Virology) or 360K
+(Immunology), all with a grade of at least C.
+Assigned Readings:
+Readings will be assigned for each lecture and will consist primarily of
+review papers taken from a variety of scientific journals (e.g., Cell,
+Science, Nature, Nature Cancer Reviews, Oncogene, Seminars in
+Cancer Biology).
+All assigned reading will be freely available on the internet and links to
+the readings and/or PDF files will be posted on this site. Some readings
+will be from on-line textbooks, including Cancer Medicine.
+While there is no required textbook, you are strongly encouraged to seek
+out relevant texts as needed.
+A very good recent textbook is Robert Weinberg's The Biology of
+Cancer.
+1 of 9 2/1/11 8:48 AM
+
+default file:///Users/jonhuibregtse/Desktop/Bio%20336:391M/Q%20Bio%2...
+Some on-line textbooks that are very useful include:
+Molecular Biology of the Cell (Alberts)
+The Cell (Geoffrey Cooper)
+Molecular Cell Biology (Lodish)
+Retroviruses (Coffin, et al.)
+Any good biochemistry text, such as Biochemistry (Stryer)
+Any good genetics text such as Modern Genetic Analysis or
+Introduction to Genetic Analysis
+All of these are available to you fee of charge at BOOKS at
+PubMed
+Exams, Grading, Attendance: Grades will be based on three in-class exams and
+a final exam (dates below). Final grade distributions will be adjusted (i.e., "curved")
+based on overall class performance; grades for undergraduate (Bio 336) and
+graduate (Bio 391M) sections will be determined separately. Attendance may be
+taken periodically during the course and greater than three unexcused absences
+may result in final grade penalty at the discretion of the instructor.
+Exam 1: 100 points Feb. 16, in class.
+Exam2: 100 points Mar. 23, in class.
+Exam 3: 100 points Apr. 11, in class.
+Final Exam: 200 points May 12, 9-12 am.
+Total: 500 points*
+Half of the final (100 points) will be from the last quarter of the class (the
+material between the third exam and the end of the course), and half will
+be cumulative over the entire course.
+*In addition, up to three unannounced quizes may be given during the
+semester. These will count for a maximum of 20 points each beyond
+the 500 exam points.
+Spring 2011 academic calendar from the Registrar's office: Important
+dates
+Course schedule:
+1 W, Jan. 19 Brief Course Overview
+Intro: Powerpoint PDF
+Reading: Hanahan and Weinberg (Cell Vol. 100, 57-70, January, 2000) The
+2 of 9 2/1/11 8:48 AM
+
+default file:///Users/jonhuibregtse/Desktop/Bio%20336:391M/Q%20Bio%2...
+Hallmarks of Cancer
+2 F, Jan. 21 Introduction to Cancer Pathology
+Lecture 2: Powerpoint PDF
+Reading: In Cancer Medicine, Chapter 29: Principles of Cancer Pathology,
+read the following sections:
+° Principles of cancer pathology
+° Solid tumor structure and tumor stroma generation
+° Role of the surgical pathologist in the diagnosis and management of
+the patient
+° Role of the cytopathologist
+°Summary and Conclusions
+WebPath Neoplasia Images: Neoplasia Index
+Additional reading (not required):
+Under the Microscope: doctors, lawyers, and melanocytic neoplasms
+pdf
+Molecular Mechanism of Cancer Pain. Nature Reviews Cancer pdf
+Can Dogs Smell Cancer? link
+3 M, Jan. 24 Cancer Pathology, continued. We may start the next topic....
+Lecture 3: Powerpoint PDF
+Reading: Read the following sub-sections in Cancer Medicine: Invasion and
+Metastasis
+· Tumor-Host and Tumor-Stromal Interactions
+· Adhesion
+· Proteolysis
+· Tumor Cell Migration
+· Angiogenesis
+· Metastasis as a Therapeutic Target
+Dissemination and growth of cancer cells in metastatic sites. Nature Reviews
+Cancer 2002.
+4 W, Jan. 26: Tumor Invasion and Metastasis.
+5 F, Jan. 28: Tumor Invasion and Metastasis, continued.
+3 of 9 2/1/11 8:48 AM
+
+default file:///Users/jonhuibregtse/Desktop/Bio%20336:391M/Q%20Bio%2...
+Sentinel lymph node mapping videos: 1 2 3
+6 M, Jan. 31: Stem Cells and Cancer.
+Lecture 4 (stem cells): Powerpoint PDF
+Reading:
+Stem cells, cancer, and cancer stem cells. Reya, et al. Nature Cancer
+Rev. 2001
+Cancer Stem Cells Jordan, et al. New England Journal of Medicine,
+2006
+A human colon cancer cell capable of initiating tumor growth in
+immunodeficient mice OʼBrien, et al. Nature, Jan. 4, 2007.
+7 W, Feb. 2: Stem Cells and Cancer, continued.
+8 F, Feb. 4: Carcinogens and Cancer Epidemiology
+9 M, Feb. 7: Cancer Epidemiology, continued.
+10 W., Feb. 9: Cancer Treatment and Pharmacology; Multidrug Resistance
+11 F., Feb. 11: Cancer Treatment and Pharmacology; Multidrug Resistance, cont.
+12 M, Feb. 14: The Discovery of Oncogenes
+13 W., Feb. 16: Exam 1 - in class
+14 F., Feb. 18: Discovery of Oncogenes, continued.
+15 M., Feb. 21: Retroviruses and Cancer; HTLV-1, and Introduction to the
+Ubiquitin Proteolysis System
+16 W., Feb. 23: ....continued
+17 F., Feb. 25: Src - The Protein; Introduction to Receptor Tyrosine Kinases
+18 M., Feb. 28: Polyoma Middle T and Receptor Tyrosine Kinases
+19 W., Mar. 2: Oncogenic Receptor Tyrosine Kinases
+20 F., Mar. 4: The Ras Oncoprotein
+21 M., Mar. 7: Ras, continued.
+22 W., Mar. 9: Tumor suppressors
+4 of 9 2/1/11 8:48 AM
+
+default file:///Users/jonhuibregtse/Desktop/Bio%20336:391M/Q%20Bio%2...
+23 F., Mar. 11: Tumor suppressors and introduction to Retinoblastoma
+-------------------------------- Mar. 14-18 Spring Break --------------------
+24 M., Mar. 21: Rb, continued
+25 W., Mar. 23: EXAM 2, in class
+26 F., Apr. 25: Rb, continued.
+27 M., Mar. 28: p53 part 1
+28 W., Mar. 30: Human papillomaviruses and cervical cancer
+29 F., Apr. 1: ....continued
+30 M., Apr. 4: Apoptosis
+31 W., Apr. 6: ....continued
+32 F., Apr. 8:
+33 M., Apr. 11: EXAM 3 - in class
+34 W., Apr. 13: Immortality and telomeres
+35 F., Apr. 15: ....continued
+36 M., Apr. 18: Angiongenesis and von Hippel-Lindau disease
+37 W., Apr. 20: Genetic Instability and DNA repair pathways in Cancer
+38 F., Apr. 22: Genetic Instability and DNA repair pathways in Cancer
+39 M., Apr. 25: Micro RNAs and cancer
+40 W., Apr. 27: Molecular Profiling of tumors
+41 F., Apr. 29: Molecular Profiling of tumors
+42 M., May 2: Emerging topics
+43 W., May 4: Emerging topics
+44 F., May 6:
+============================================================
+5 of 9 2/1/11 8:48 AM

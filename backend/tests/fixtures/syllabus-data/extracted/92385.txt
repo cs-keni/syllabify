@@ -1,0 +1,38 @@
+M361K #92385
+COURSE: Introduction to Real Analysis, M361K #92385, Summer 2012
+------ MTWThF 10-11:30am class attendande is mandatory!
+PREREQUISITES: Two of M341,328K,325K with a grade of at least C. Except ...
+-------------
+TEXT: R. Bartle, D.R. Sherbert, "Introduction to Real Analysis", 4th ed
+---- and the notes posted here
+SYLLABUS: sets, functions, Mathematical induction (approx 2 days)
+-------- real numbers, sup, inf, completeness, open sets (approx 2 days)
+sequences, limits, subsequences, Cauchy seq (approx 4 days)
+limit of functions, limit theorems, extensions (approx 3 days)
+continuous functions, uniform cont, inverses (approx 4 days)
+differentiation, mean value thm, Taylor thm (approx 4 days)
+Riemann integral, integration, fundamental thm (approx 4 days)
+INSTRUCTOR: Hans Koch, Office Hours Mon and Thu 12:30-2:30, RLM 12.152
+---------- | 93 -100 A
+| 89 - 92 A-
+GRADING: Letter grades (A,A-,B+,...,D-,F) will be given for | 85 - 88 B+
+------- each exam, but number grades (100,99,..,2,1,0) will | 81 - 84 B
+be kept for averaging. The course grade is obtained | 77 - 80 B-
+by averaging the number grades of the 3 exams and of | 73 - 76 C+
+the homework. | 69 - 72 C
+| 65 - 68 C-
+HOMEWORK will be assigned every Tue and Fri, and collected | 61 - 64 D+
+-------- in class the following Fri and Tue, respectively. | 57 - 60 D
+One homework score can be dropped, and the others | 53 - 56 D-
+contribute 10% to the class grade. | 0 - 52 F
+EXAMS: Two 70 minute in-class (Exam 1, Exam 2) | Exam 1 (Fri Jul 20) 30%
+----- and a 3 hour final (Exam 3, 9-12 noon) | Exam 2 (Tue Jul 31) 30%
+Exams 2,3 cover approx 80% new and 20% | Exam 3 (Mon Aug 13) 30%
+old material. Make-up exams are given | Homework 10%
+only if a student missed an exam and can '-------------------------
+document a valid reason (an accident, illness, or legal obligation,
+whose timing was not known during the official add/drop period),
+or if granted by the instructor during the official add/drop period.
+MORE INFO: See the class web page http://www.ma.utexas.edu/users/koch/M361K/
+---------
+http://www.ma.utexas.edu/users/koch/M361K/handout.html[6/11/12 8:23:10 AM]

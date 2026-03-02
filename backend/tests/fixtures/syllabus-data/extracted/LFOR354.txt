@@ -1,0 +1,86 @@
+CH 354 - Physical Chemistry
+Instructor: Prof. John F. Stanton (Welch 3.208A, 1-5903)
+Office Hours: TTh 3:00-4:45 PM (or by appointment)
+Teaching Assistant: Andrew Ritchie
+Office Hours: TBA
+Textbook: None
+Course Schedule
+Week Dates Material
+Fundamental Quantum Mechanics
+I Jan 17†,19 Boot Camp
+II Jan 24,26 Boot Camp and Historical Background
+III Jan 31†‡, Feb 2 Postulates of Quantum Mechanics
+IV Feb 9,11 Solvable Problems I
+V Feb 14†‡,16∗ Solvable Problems II
+VI Feb 21,23 Solvable Problems III
+VII Feb 28†‡, Mar 1 Overview of Approximation Methods
+VIII Mar 6,8 Application of Approximation Methods to Model Problems
+Applications of Quantum Mechanics
+IX Mar 20†‡,22∗ The Hydrogen and Helium Atoms
+X Mar 27,29 “Complex” Atoms and Hartree-Fock Theory
+XI Apr 3†‡,5 What is a Molecule? and the Born-Oppenheimer Picture
+XII Apr 10,12 Introduction to Spectroscopy
+XIII Apr 17†‡,19∗ Spectroscopy of Diatomics I
+XIV Apr 24,26 Spectroscopy of Diatomics II
+XV May 1‡,3 Something Special
+† - Homework assignments will be passed out.
+‡ - Homework assignments will be collected.
+∗ - Hour examination will be administered.
+
+Scope of Material
+CH 354 covers the subject of quantum mechanics from a chemist’s point of view. The
+course will begin with a “review” of concepts from mathematics (trigonometry and calculus,
+primarily)thatareseenagainandagaininthiscourse,followedbyahistoricaloverviewofthe
+subject,coveringphysicsfromthetimeofNewtontothedawnofthenewageatthebeginning
+ofthe20th century. Thisisfollowedbyanoutlineoftheframeworkofquantummechanicsand
+its application to model systems for which the Schr¨odinger equation can be solved exactly.
+In chemistry, however, all systems of interest involve mathematically intractable Schro¨dinger
+equationsandapproximationsarethenameofthegame. Therestofthecoursedealswiththe
+fundamental principles that underlie atoms and molecules: the existence of discrete energy
+levels, their qualitative interpretation, and the ability of electromagnetic radiation (photons)
+to induce transitions between these levelsi and the connection between quantum mechanics
+and thermodynamics. I will warn you now that this course (particularly the early part of it)
+involves some rather serious and involved mathematics. If you were overwhelmed with the
+math encountered in CH 353, you might seriously consider re-evaluating your decision to
+take this course. Also, this course is not a requirement for any degree at UT, so anyone who
+is in this class is here by choice. It’s tough, but worth it for those who expend the effort.
+Homework
+Homework problems will be assigned every other Tuesday throughout the semester and are
+due at the beginning of class two weeks later. Assignments turned in later than 5:00 PM
+on the specified Tuesday will not be accepted. If you anticipate that it will not be possible
+to arrive by that time, there are two options: 1) get a friend to turn it in for you; 2) slide
+your homework under my office door sometime BEFORE 5:00 PM on Tuesday afternoon.
+Please show all work on the sheets provided in the homework packet. If there is not enough
+room underneath the problem statement to write down your calculations and/or reasoning
+along with the solution, you should attach extra pages to the assignment packet, order them
+properly and then restaple it before submission. For those of you who want challenging and
+sometimes algebraically brutal problems, I will not disappoint.
+Examinations
+There will be three open-book, open-note examinations administered during the usual class
+time, and the course will conclude with a comprehensive final examination. I expect you
+to be responsible and avoid scheduling conflicts that interfere with exams. Take note of the
+exam dates now and plan things such as medical school interviews accordingly. I rarely
+give make-up exams, and do so only for very good reasons (medical emergencies, death of a
+relative, religious holidays etc.).
+
+The Dean Sez...
+The Dean’s office has requested that the following information be included in the syllabus:
+• Please notify me of any modification/adaptation you may require to accommodate a
+disability-related need. You will be requested to provide documentation to the Dean of
+Students’ Office, in order that the most appropriate accomodations can be determined. Spe-
+cialized services are available on campus through Services for Students with Disabilities.
+• Students unable to take examinations that are given on a religious holiday must notify the
+instructor (me) at least fourteen days in advance.
+Grading Policy
+The basis for grades in CH 354 will be performance on the hour exams, the final exam and
+the homework assignments. Only the five highest of seven homework scores will be counted.
+The distribution of points is given below. In general, the basis for grade assignment is the
+class median; those of you scoring above the median receive a grade of A or B; those scoring
+below receive a C, D or F. While I generally do not give a lot of A’s, it works both ways:
+only the truly determined student can get an F in this class.
+Homework 200
+Hour Exam I 200
+Hour Exam II 200
+Hour Exam III 200
+Final Exam 200
+Total 1000

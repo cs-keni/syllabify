@@ -1,0 +1,222 @@
+Syllabus for Algorithms and Complexity, Spring 2015 https://utexas.instructure.com/courses/1128153/assignments/syllabus
+Course Syllabus Jump to Today
+CS 331:Algorithms and Complexity
+Unique Numbers: 51825, 51830, 51835, 51840
+Spring 2015
+1 Course Overview
+1.1 Prerequisites
+The following coursework with a grade of at least C- in each course: CS 311 or 311H, 314 or 314H, 429 or 429H; M 408C or 408N; SSC 321 or M
+362K; and a pre-req or co-req of M 340L or SSC 329C.
+1.2 Textbook
+Algorithm Design by Kleinberg and Tardos (Addison-Wesley, 2006). Other materials will be made available through Canvas.
+1.3 Course Outline
+The following major topics will be covered.
+Analysis of algorithms
+Graph algorithms
+Greedy algorithms
+Divide-and-conquer
+Dynamic programming
+Network flow
+NP-completeness
+Undecidability
+Approximation algorithms
+Randomized algorithms
+See the schedule for a detailed lecture plan.
+1.4 Note on Quantitative Reasoning (QR) flag
+This course carries the Quantitative Reasoning flag. Quantitative Reasoning courses are designed to equip you with skills that are necessary for
+understanding the types of quantitative arguments you will regularly encounter in your adult and professional life. You should therefore expect a
+substantial portion of your grade to come from your use of quantitative skills to analyze real-world problems.
+1.5 Lecture Time and Location
+Sections 51825, 51830: MW 12.30-2:00 pm UTC 4.132
+Sections 51835, 51840: MW 2.00-3:30 pm CLA 0.102
+1.6 Discussion Section Times and Locations
+Section 51825: Friday 10-11 am CMA 3.114 (led by George)
+Section 51830: Friday 12-1 pm GDC 4.302 (led by George)
+Section 51835: Friday 1-2 pm CBA 4.348 (led by Siddhesh)
+Section 51840: Friday 2-3 pm CBA 4.348 (led by Siddhesh)
+1 of 5 2/2/15, 1:16 PM
+
+Syllabus for Algorithms and Complexity, Spring 2015 https://utexas.instructure.com/courses/1128153/assignments/syllabus
+2 Instructors, Office hours, and Discussion
+2.1 Instructor
+Muhibur Rasheed
+Office hours- Tuesday 12-2pm, Wednesday 3.30-5pm (at GDC 4.404)
+Contact: muhibur at utexas dot edu
+2.2 TeachingAssistants
+Siddhesh Chaubal
+Office hours: Tuesday 2-3pm, Wednesday 5-6pm (at the CS TA stations in the GDC basement)
+Contact: siddhesh at utexas dot edu
+Xue Chen
+Office hours: Monday 5.30-6.30pm, Tuesday and Thursday 9-10am (at the CS TA stations in the GDC basement)
+Contact: xchen at cs dot utexas dot edu
+Chi-Kit (George) Lam
+Office hours: Tuesday and Wednesday 11am-12pm (at the CS TA station 4 in the GDC basement)
+Contact: geocklam at cs dot utexas dot edu
+2.3 Proctors
+Paul Bae
+Office hours: Monday 3-5pm, Tuesday 3.30-5.30pm, Friday 5-6pm (Third floor lab)
+Contact: pbae at utexas dot edu
+Ge Gao
+Office hours: Tuesday 4-6pm, Thursday 4-6pm, Friday 3-5pm (Third floor lab)
+Contact: gegao1118 at utexas dot edu
+NOTE: Most questions should be submitted to Piazza rather than by sending an email to the instructors
+2.4 Feedback
+Throughout the semester, please feel free to provide feedback to the instructor regarding any aspect of the course.
+2.5 Piazza
+Sign up for the piazza discussion board for this class using this link (http://piazza.com/utexas/spring2015/cs331)
+Participation in Piazza is highly encouraged. You can discuss any topics, including the assignments. The only restriction is that you should not post
+any part of your solution for assignment related posts. If it is necessary to post part of your solution to clarify a question or get feedback, then make
+the post private and only visible to the instructors. The instructors will decide whether the post will be made public.
+Make sure that you use the proper tag for your question.
+Essentially, we have a large class and also a large instructional team. Different TA/proctors will be most familiar with different things and will
+respond to posts on piazza accordingly, and they will look at the tags to identify the posts that requires their attention.
+So to ensure that you get the best or most relevant answer, use the correct tag.
+Some examples
+say you are in section 51835 and you need clarification on a solution discussed in a discussion section, then use the discussion_51835 tag.
+That way the TA who led the section will answer that question.
+If you have a question about the lecture, or a quiz- then use the corresponding tags.
+For topic related questions like- 'Can someone explain why Disjktra's algorithm might fail if there are negative weights in the graph?'- use
+the 'course_material' tag.
+For course organization, schedule related questions- use 'general' or 'logistics' tags.
+2 of 5 2/2/15, 1:16 PM
+
+Syllabus for Algorithms and Complexity, Spring 2015 https://utexas.instructure.com/courses/1128153/assignments/syllabus
+Use your best judgment
+To promote student participation, bonus points will be awarded for good contributions. Instructors will monitor all questions and answers and
+endorse good questions (well-posed questions that would help other students), good notes (well-written explanation of some topic, links to useful
+videos/tutorials etc), and good responses (which correctly and clearly respond to a non-trivial question posted by another student).
+Every 4 good question, response and/or note will earn 1 bonus raw point.
+A student can get up to 5 bonus raw points in the entire semester.
+3 Evaluation
+3.1 Overall breakdown
+Raw score will be computed as follows
+Tests = 45
+Assignments = 40
+Quizzes = 15
+Letter grades
+◦ The mapping from overall raw scores to letter grades will depend somewhat on the overall performance of the class. The nominal A/A- cutoff is
+90; A-/B+ is 85; B+/B is 80; B/B- is 75; B-/C+ is 70; C+/C is 65; C/C- is 60; C-/D is 55. These nominal cutoffs will not be increased; for example,
+a student achieving a raw score of 90 is guaranteed to receive an A in the course. However, these cutoffs might be lowered if necessary in order to
+improve the grade distribution.
+3.2 Assignments
+There will be ten assignments. Each assignment will contribute 4 points to the overall raw
+score.
+Typically there will be 4 problems to solve in each assignment.
+High level point breakdown will be given in the question.
+The assignments will be due at 11:59pm every Wednesday. Each assignment will be posted on Canvas 1 week prior to their due date.The
+assignments must be submitted as a pdf, doc or txt file using canvas' assignments page.Late submissions will not be accepted.
+Assignments can be done in pairs. In fact we encourage you to work in pairs. Discussing problems, possible solutions, proofs and disproofs can
+greatly enhance your understanding.
+Suggested solutions will be posted on canvas the day after the assignment is due.
+Scores will be uploaded to canvas within 5-10 days. Note that it is a large class and a single TA will be responsible for grading around 100
+assignments. And given the varied nature of answers that can be expected in algorithms, grading requires extra attention and care. So, 5-10 days is a
+very quick turnaround.
+You shall be able to access the feedback through canvas. The TAs will try their best to mention why some points were taken off, why your proof or
+algorithm does not work etc on the assignment. It is quite possible that the feedback may sometimes be too short or hard to understand. Feel free to
+contact the corresponding TA during office hours or via email (NOT piazza) .
+After the scores are posted, detailed grading rubric along with some common mistakes will be posted on the assignment page by the grader. If you
+notice any errors in the grading, or need more clarifications, then contact the corresponding TA during his/her office hours, or contact via email. DO
+NOT respond on piazza.
+You must raise any grading issues within 7 days from the day the graded assignments are handed back in class.
+3.3 Tests
+There will be three midterms each worth 15 points.
+◦ See the class schedule for the dates of each test.
+Each of the tests will have two segments.
+◦ Segment 1: in-class exam.
+▪ Worth 10 points
+▪ Closed book and closed notes. You are only allowed to bring one page of notes (both
+sides may be used).
+3 of 5 2/2/15, 1:16 PM
+
+Syllabus for Algorithms and Complexity, Spring 2015 https://utexas.instructure.com/courses/1128153/assignments/syllabus
+▪ Will consist of many short questions. These questions will test how much you
+understood the topics covered in class, and whether you can apply and/or expand upon
+those. Expect small proofs, why/why not type questions, reductions etc.
+▪ Please try to arrive in class a few minutes early on the test dates; this will allow us to
+start the test right at the beginning of the class period.
+Segment 2: take-home exam
+▪ Worth 5 points.
+▪ Will be posted on canvas on the day of the in-class exam. These are due by 11:59pm two days after the in-class exam.
+▪ This segment will consist of longer problems, more akin to the assignment problems.
+▪ You must solve the problems on your own without consulting anyone (even the student you are paired with for the assignments), or the
+internet.
+See academic honesty policy at the end of the syllabus. You are also not allowed to discuss these on piazza. However, you are free to see the
+book, the notes and other course materials.
+You might notice that segment 2 is graded more strictly than segment 1. The reason is that in the in-class exam, you are under time pressure and
+hence the grader will be a little bit accommodating if you make small errors.
+Solutions to the tests will not be posted. These will be discussed during the next discussion section.
+Exams will be graded and returned in 5-10 days. If you have any concerns about the exam scores, contact the instructor during office hours or by
+email.
+Please note that no make-up tests will be given in this course. If a student has a legitimate and properly documented excuse for missing one of the
+tests, the missing test score will be estimated as the average of the other two test scores. More complicated scenarios, e.g., where a student misses
+two tests for legitimate reasons, will be treated on a case-by-case basis. In the event of a non-excused absence, a score of zero will be assigned.
+3.4 Quizzes
+There will be a quiz for almost every lecture.
+Quiz questions will be posted 1-2 days before class. Each quiz will be based on topics covered on the previous class and to help prepare for the next
+class.
+During class, we shall go over the questions. Multiple possible answers will be displayed and you shall have to select the correct answer using
+iClickers. There will be no participation points.
+The quizzes will be administered using clickers. Bringing a iClicker to class is a requirement.
+The worst 20% of your quizzes will be dropped. Then, the scores of the remaining quizzes will be normalized, added, and finally scaled to get the
+raw score out of 15.
+◦ For example, say we have quizzes on 5 different days and you got 3/4, 1/2, 3/3, 2/3 and 1/4 questions correct on those quizzes. Your normalized
+scores for these are 0.75/1.0, 0.5/1.0, 1.0/1.0, 0.67/1.0, and 0.25/1.0 respectively. The worst 1 (0.25/1.0) will be dropped. So, you would get 2.92/4.0
+in total, which would get scaled to 10.95/15.0.
+4 How to do well
+The topics we cover in this course is going to be at the core of your skills no matter which career path you choose after graduation. So, the focus should
+be on learning as much as you can, rather than on looking for the shortest/easiest way to achieve a certain grade you are okay with. Having said that here
+is a bunch of things you need to understand and remember if you want to do well in this course, both in terms of your knowledge and your grades.
+This is a dense course. I mean dense, not just voluminous. Most topics in this course involve some level of abstraction, and mathematical formalism
+which make it difficult, and sometimes nearly impossible to understand an algorithm, a proof, a paragraph, or even a single sentence without
+re-reading it many times, breaking it down, trying out some examples, drawing figures etc.
+Bottom line is you must be prepared to spend a lot of time on every single topic. If a topic spans 10 pages on the book, be prepared to spend at least
+2-4 hours for this. Typically you would need between 6-8 hours of study per week to keep up with the topics.
+On any topic, do not simply read (and understand) the prescribed solution. Think deeper. Why does it work? Can something else also work?
+Would that be faster/slower? Would a solution work for all cases? If not, then how can one handle such cases? Did we not see a similar problem
+in another chapter? Are there some subtle differences? Why are we designing another algorithm for the same problem? Why did the book use
+proof by induction here? Let's see if I can prove it by contradiction instead....
+These types of deeper thinking and questioning will help you absorb the topic and also prepare you for the quizzes and the tests.
+Start the assignments as soon as you can. The assignments in mainly there to let you apply or extend what you learn in class. They are never going
+4 of 5 2/2/15, 1:16 PM
+
+Syllabus for Algorithms and Complexity, Spring 2015 https://utexas.instructure.com/courses/1128153/assignments/syllabus
+to be just simple regurgitation of known facts. Sometimes, even understanding the problem/question can be a challenge. So, read the problems and
+discuss with your partner as soon as the assignment is posted (Wednesday+Thursday). Ask questions to get clarifications on the problems during the
+discussion section (Friday). Maybe get some hints during the sections, or during office hours. Then spend some time during the weekend to actually
+find solutions, discuss ideas on piazza etc. Bring your solutions to the office hours to get them vetted and finally write them up cleanly and precisely.
+Overall, I believe you would need to spend 5-6 hours on an assignment.
+Make the best of the lectures
+Before coming to class, take a quick skim through of the topics that are going to be covered. You do not need to understand everything at this
+point, but you should be aware of the general content.
+During class, take notes and also see how it relates to the book. Which part of the topic did the instructor emphasize more? did the instructor
+discuss a slightly different proof? ...
+Ask questions during class.
+Make the best of the discussion sections
+Discussion sections will be mainly focused on getting clarifications on assignment problems and discussing textbook problems.
+Make sure that you have carefully read the homework problems before coming to the discussion and ask as many questions as required to
+remove any lingering confusions.
+Spend a little bit of time to read the textbook problems and maybe try to think of possible solutions to a few, specially ones that seem related to
+homework problems. You can ask questions about those and get solution hints during the section.
+Note that there are many problems to discuss, and very little time. So the TA will probably only be able to provide the high level idea during
+these sections.
+Make the best of the office hours
+◦ With such a large class, the only possible personalized discussion you can have is going to be during office hours. Make a list of topics/ideas that
+are a little unclear and go over those, discuss/review your answers/proofs to improve your reasoning skills, and your ability to write precisely.
+Participate on piazza
+5 Other Notices
+Academic Honesty Policy
+See the following departmental document.
+http://www.cs.utexas.edu/undergraduate-program/code-conduct/
+as well as the University Honor Code
+http://catalog.utexas.edu/general-information/the-university/#universitycodeofconduct
+Students with Disabilities
+Students with disabilities may request appropriate academic accommodations from the Division of Diversity and Community Engagement, Services for
+Students with Disabilities, 512-471-6259, http://www.utexas.edu/diversity/ddce/ssd/
+Notice Regarding Accommodations for Religious Holidays
+By UT Austin policy, you must notify me of your pending absence at least 14 days prior to the date of observance of a religious holy day. If you must
+miss a class, an examination, a work assignment, or a project in order to observe a religious holy day, you will be given an opportunity to complete the
+missed work within a reasonable time after the absence. See special note above regarding exams.
+6 Schedule
+* Disregard the times mentioned in the schedule below. Check out the times and places listed at the top of the syllabus.
+Date Details
+5 of 5 2/2/15, 1:16 PM

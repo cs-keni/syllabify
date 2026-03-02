@@ -3,9 +3,9 @@
     "id": "dsci101",
     "course_code": "DSCI 101",
     "course_title": "Foundations of Data Science I",
-    "term": null,
+    "term": "Fall 2025",
     "timezone": "America/Los_Angeles",
-    "instructors": [],
+    "instructors": [{"id": "inst-0", "name": "Caitlin Smith", "email": "csmith29@uoregon.edu"}],
     "meeting_times": [
       {
         "id": "mt-1",
@@ -47,9 +47,17 @@
       "grading_bucket": null
     },
     {
+      "id": "lab_assignments",
+      "name": "Lab Assignments",
+      "weight_percent": 24,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
       "id": "homework",
       "name": "Homework",
-      "weight_percent": null,
+      "weight_percent": 35,
       "drop_lowest": null,
       "subcategories": [],
       "grading_bucket": null
@@ -57,7 +65,23 @@
     {
       "id": "projects",
       "name": "Projects",
-      "weight_percent": null,
+      "weight_percent": 14,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 7,
       "drop_lowest": null,
       "subcategories": [],
       "grading_bucket": null
@@ -95,7 +119,7 @@
       "due_datetime": null,
       "all_day": true,
       "timezone": null,
-      "weight_percent": null,
+      "weight_percent": 35,
       "points": null,
       "recurrence": null,
       "policies": {
@@ -103,7 +127,7 @@
         "late_pass_allowed": null
       },
       "confidence": 0.9,
-      "source_excerpt": "Homework assignments"
+      "source_excerpt": "Homework 35%"
     },
     {
       "id": "projects_1",
@@ -113,12 +137,42 @@
       "due_datetime": null,
       "all_day": true,
       "timezone": null,
-      "weight_percent": null,
+      "weight_percent": 14,
       "points": null,
       "recurrence": null,
       "policies": {},
       "confidence": 0.9,
-      "source_excerpt": "Projects"
+      "source_excerpt": "Projects 14%"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Quizzes 15%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 7,
+      "points": null,
+      "recurrence": null,
+      "policies": {},
+      "confidence": 0.9,
+      "source_excerpt": "Final Exam 7%"
     }
   ],
   "grading_structure": {

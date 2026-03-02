@@ -1,0 +1,136 @@
+M408M
+M C
+ultivariable alCulus
+Prof info Professor: Kathy Davis Phone: 471-0128
+office: RLM 9.138 office hours: MW 1-2:30
+email: davis@math.utexas.edu
+Web site: http://www.ma.utexas.edu/users/davis/408M
+ta info ta's: See page 2
+GradinG homeWork 0% Practice Problems only; posted Th.
+Quizzes 20% Twice Weekly, TTh. Lowest dropped.
+No cheat sheets.
+Exams 60% Three exams, not cumulative. None dropped.
+Cheat sheets OK. See p3 for dates
+Final 20% Not cumulative. See p3 for dates. Be There.
+Make-Ups Documented illness or pre-arranged abscence.
+Cheat Sheets One 8.5 by 11 sheet; anything you want on it.
+For Exams & Final, not Quizzes.
+Grades 89.6-100 A
+88.6-89.5 A-
+79.6-88.5 B
+78.6-79.5 B-
+69.6-79.5 C
+68.6-69.5 C-
+59.6-68.5 D
+NOTE: No A+, B+, C+ grades
+class meets MW 11:30-12:50 CPE 2.214; TTh 11:30-12:20 CPE 2.214
+text Stewart, Calculus, Early Transcendentals, Seventh Edition
+toPics Chaps 10, 12-15 . Detailed syllabus :
+http://www.ma.utexas.edu/academics/courses/syllabi/M408M.php
+Goals & PrereQs Goals: This course emphasizes computational ability and geometric
+understanding in calculus. It isn't a theorem/proof class, but it is the
+advanced class and it does move fast. Class notes are v.important.
+Prereq: one of: M408C, M408KL, M408NS
+other The University of Texas provides appropriate academic accommodations
+for qualified students with disabilities. For more information,contact the
+Office of the Dean of Students at 471-6259, 471-6441 TTY. If you plan
+on using accomodations, you need to notify your Instructors early in the
+semster.
+
+final exam date
+August 11
+Plan ahead - no early finals.
+exam dates
+E1 Thurs June 28
+E2 Thurs July 12
+E3 Thurs August 2
+comPutinG your Grade
+before final: a =[ (20*(Quiz Average) + ..6*(Exam Average)]/.8
+after final: b = .8*a+ .2*Final
+Your average determines your grade: no special deals, no retakes, no curves. Thus, you're able to
+compute how you're doing at any time in the course.
+reGrades
+From our standpoint, a regrade is to correct errors. You should ask for a regrade to correct things that
+you feel we missed, or graded unfairly.
+I will never lower your grade.
+the rules
+1) Mark the questions you want me to look at, and give the exam to the TA or me.
+2) Don't ask 'look at everything I missed to give me extra points'
+3) Ask for the regrade within about a four days after you get it back.
+4) I'll bring the regraded paper to class with me, usually the next class day
+Sachiko: Maria-sama ga Miteru
+
+ta info
+Your TA, your TA session, and all your exam and quiz times are determined by the unique number
+you are assigned. If you switch sections, your material will not be graded. Exceptions can be granted
+by your TA (eg, I work then; I overslept...).
+uniQue 92070 tth 1-2:30 ens 116
+ta: mr. monin Phone: tba
+office: tba office hours: TBA
+email: pmonin-at-math-dot-utexas-dot-edu
+uniQue 92080 tth 2:30-4 rlm 5.122
+ta: mr rauh Phone: 512 475-9521
+office: rlM 12.132 office hours: TBA
+email: nrauh-at-math-dot-utexas-dot-edu
+a note about studyinG
+I taught this course Spring 2012. I did a really mean thing on exam three: I put on it a problem I had
+worked in class and told everyone was important. About 80% of the class had no idea how to even
+start the problem.
+I did a really mean thing on the final: it was only two questions long, and I put on it two problems I
+had worked in class. About 80% of the class had no idea how to even start the problems.
+Is there a point to this story? You decide.
+Cast & Crew of El Cazador de la Bruja.
+Clockwise from top:
+Ricardo (bounty hunter);
+Ellis (bruja; wanted for murder)
+Nadie (bounty hunter)
+Lirio (Ricardo's adopted child cf Lone Wolf)
+Blue-Eyes (bruja, special ops)
+
+6/11/12 M First Class Day; 10.1
+6/12/12 T 10.1, 10.2
+6/13/12 W 10.3
+6/14/12 Th 10.3, 10.4; Quiz
+6/15/12 F
+6/18/12 M 10.4, 10.5
+6/19/12 T Quiz; 12.1, 12.2
+6/20/12 W 12.3
+6/21/12 Th Quiz; 12.4
+6/22/12 F
+6/25/12 M 12.4, 12.5
+6/26/12 T Quiz; 12.5
+6/27/12 W 12.5
+6/28/12 Th Exam1; 12.6
+6/29/12 F
+7/2/12 M 13.1
+7/3/12 T 13.2
+7/4/12 W No Class
+7/5/12 Th 14.1
+7/6/12 F
+7/9/12 M 14.2, 14.3
+7/10/12 T 14.3
+7/11/12 W 14.3, 14.4
+7/12/12 Th Exam 2; 14.5
+7/13/12 F
+7/16/12 M 14.5, 14.6
+7/17/12 T Quiz; 14.6
+7/18/12 W 14.6
+7/19/12 Th Quiz; 14.7
+7/20/12 F
+7/23/12 M 14.7
+7/24/12 T 14.8
+7/25/12 W 14.8
+7/26/12 Th Quiz; 14.8
+7/27/12 F
+7/30/12 M Quiz; 15.1, 15.2
+7/31/12 T 15.3
+8/1/12 W 15.3
+8/2/12 Th Exam 3 15.3
+8/3/12 F
+8/6/12 M 15.4
+8/7/12 T 15.6
+8/8/12 W 15.10
+8/9/12 Th Last Class Day, 15.10
+8/10/12 F
+8/11/12 S Final Exam 408M
+8/13/12 M Final Exam 408C

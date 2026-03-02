@@ -1,0 +1,152 @@
+{
+  "course": {
+    "id": "429h-gheith",
+    "course_code": "CS 429H",
+    "course_title": "Computer Architecture",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Ahmed Gheith",
+        "email": "gheith@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "17:00",
+        "end_time": "19:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 5.302",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "17:00",
+        "end_time": "19:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 5.302",
+        "type": "lecture"
+      }
+    ],
+    "location": "GDC 5.302"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "In-class exams",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "programming",
+      "name": "Programming assignments",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 20,
+      "drop_lowest": 2,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2015-03-12T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "2 exams 40% (3/12, 5/7)"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2015-05-07T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "2 exams 40%"
+    },
+    {
+      "id": "programming_1",
+      "title": "Programming assignments",
+      "category_id": "programming",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "50% of max if late",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "~12 programming assignments 40%"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "~10 quizzes, drop lowest 2, 20%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

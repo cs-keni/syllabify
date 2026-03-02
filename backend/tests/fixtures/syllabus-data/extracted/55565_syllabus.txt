@@ -1,0 +1,361 @@
+Physics 301 Unique number 55565
+Fall 2017, Monday, Wednesday, Friday from 11am-12pm, in Painter 2.48
+Instructor: Professor Vernita Gordon, gordon@chaos.utexas.edu, office RLM 14.206. Office Hours
+Thursday 1pm-2pm, Friday 1pm-2pm, or by appointment. Email me to request an appointment.
+Graduate Teaching Assistant: Layla Bakhtiari, labpuddle@gmail.com. Office hours Tuesdays 1:30pm-
+3:30pm.
+This course is calculus-based mechanics for science majors, including physics
+majors. There are other introductory mechanics courses for engineering
+students, pre-medical students, and to meet the general education science
+requirement. Some of these are calculus-based and some are not. Please double-
+check your major’s requirements to see if this class is required, or if there is
+another course you should take that would be better-fit to your major.
+This course will be taught using an interactive approach, called Peer Instruction.
+You should not to expect material to be introduced in a classroom lecture. I will
+spend very little time on lecture and you are expected to study the material
+ahead of time, by reading the textbook and/or watching online lectures. I use this
+teaching method because my own measurements and a great deal of peer-
+reviewed, published education research show that student in Peer Instruction
+courses learn more than do students in lecture courses. For your success, it is
+important that you commit to doing your part, namely preparing for class ahead
+of time and actively, inquisitively participating in classroom discussions.
+Recitation Sessions: Recitation sessions are an opportunity for you to deepen
+your understanding of concepts, to see example problems worked, and to work
+on your homework with your classmates in an environment where a TA and LA
+are also present to help you with questions. Recitation sessions will be held
+weekly. The times for recitation sections will be set using a Doodle poll of the
+class. If you have not gotten a link to this poll, please tell the instructor or TA
+immediately.
+Pick at least one recitation section and commit to weekly participation. This is
+one of the most important things you can do to get a good grade.
+
+Suggestions for how to study for this class (Please read these sections carefully!):
+Before coming to class, read the assigned material. Daily reading is indicated in
+the schedule at the end of this document. Work through the checkup questions
+at the end of each section as you read though. Once you’ve gotten an answer you
+think is right, check it against the answer at the end of the chapter. It is important
+to understand the reasoning behind the answer, and not just be satisfied with
+getting the “right” answer through erroneous reasoning. Take the online checkup
+quiz on the textbook’s website. Make note of what concepts are giving you
+difficulty. Review the Examples from the textbook. These provide concrete
+illustrations of the concepts discussed, starting from simple examples and going
+to more complex. Work through the online concept tutorials that are indicated
+in the margins of your textbook.
+In class, participate actively in the in-class discussion. Don’t be satisfied just with
+getting the “right” answer. Having correct reasoning and correct use of the
+concepts is much more important than getting the “right” answer. Discuss
+reasoning and concepts with your neighbors even if you all got the same initial
+answer.
+Before the test, work through the checkup questions again. Take the online
+checkup quiz on the textbook’s website again. Review the notes you took in
+class. Work through the online tutorials on concepts that are giving you trouble.
+If a concept or concepts is giving you trouble, come talk with the instructor, the
+TA, or a LA. Don’t wait until just before the test – seek out help as soon as you
+realize that you’re not understanding a concept properly. You can come talk with
+us during office hours, during recitation sections, or you can make an
+appointment to see Prof. Gordon outside office hours. Her email address is
+gordon@chaos.utexas.edu.
+Some additional study resources that you can use:
+Conceptual Physics, by Hewitt. There are copies in the UT library.
+
+The MIT OpenCourseWare version of this course has Learning Activites that
+include Self-Assessments you can use to check your understanding of the
+concepts. http://ocw.mit.edu/courses/physics/8-01sc-physics-i-classical-
+mechanics-fall-2010/Syllabus/
+There are online Java applets, called “Physlets,” that can act as tutorials or
+simulations for problems in physics. Some of these can help you learn concepts
+because you can watch how things happen. There are many sites of these online.
+A good place to start is
+http://webphysics.davidson.edu/physletprob/ch8_problems/default.html
+There are interactive, research-based simulations of many of the concepts we will
+study online: phet.colorado.edu.
+You can have Quest create custom reviews for you.
+How to know how well you understand concepts:
+Try tackling problems on your own. Then ask yourself, explicitly, what do I need
+to know to solve this? What are the things I do know? Articulate more
+specifically than just “I need to know how to solve this problem.”
+Go over the midterm or homework and discuss or write about where you went
+wrong. Use your own words to describe where you got stuck and what a strategy
+would be for you to get un-stuck and solve the problem. You can do this with
+other students, and/or during office hours with the instructor, TA, or LA.
+For the midterm or homework questions that gave you trouble, try doing them
+again from copies that don’t have answers or explanations. Can you do these
+problems now? Can you make up similar problems of your own? Can you figure
+out how to test the same concepts or problem-solving ideas with different
+problems? Make up your own problems and then discuss them with other
+students or the instructor/TA/LAs. If you disagree about what concept(s) a
+problem tests, talk about this and find what is different between the problems
+and what is similar.
+
+Grading: Plus/minus grading will not be used. Course grades will be determined from assignments and
+exams as follows: 10% homework, 60% midterm exams, 20% final exam, and 10% in-class iClicker
+quizzes. Exams will cover material from both the classroom “peer instruction” time and the assigned
+textbook reading indicated in the schedule below. Half of the iClicker quiz score will come from
+participation, and will therefore measure attendance. The lowest homework score will be dropped. The
+lowest two iClicker quiz scores will be dropped. The lowest midterm score will be dropped. The final
+exam is required.
+At any point in the semester, you can calculate your grade as follows:
+Current average =
+0.1(𝐻𝑜𝑚𝑒𝑤𝑜𝑟𝑘 𝑎𝑣𝑒𝑟𝑎𝑔𝑒)+0.3(𝐻𝑖𝑔ℎ𝑒𝑠𝑡 𝑚𝑖𝑑𝑡𝑒𝑟𝑚)+).3(𝑠𝑒𝑐𝑜𝑛𝑑−ℎ𝑖𝑔ℎ𝑒𝑠𝑡 𝑚𝑖𝑑𝑡𝑒𝑟𝑚)+0.1(𝑖𝐶𝑙𝑖𝑐𝑘𝑒𝑟 𝑎𝑣𝑒𝑟𝑎𝑔𝑒)+0.2(𝐹𝑖𝑛𝑎𝑙 𝑒𝑥𝑎𝑚 𝑎𝑣𝑒𝑟𝑎𝑔𝑒)
+0.2 𝑖𝑓 𝑛𝑜 𝑒𝑥𝑎𝑚𝑠 ℎ𝑎𝑣𝑒 𝑏𝑒𝑒𝑛 𝑡𝑎𝑘𝑒𝑛,0.5 𝑖𝑓 𝑜𝑛𝑒 𝑚𝑖𝑑𝑡𝑒𝑟𝑚 ℎ𝑎𝑠 𝑏𝑒𝑒𝑛 𝑡𝑎𝑘𝑒𝑛,0.8 𝑖𝑓 𝑡𝑤𝑜 𝑜𝑟 𝑡ℎ𝑟𝑒𝑒 𝑚𝑖𝑑𝑡𝑒𝑟𝑚𝑠 ℎ𝑎𝑣𝑒 𝑏𝑒𝑒𝑛 𝑡𝑎𝑘𝑒𝑛,1 𝑎𝑓𝑡𝑒𝑟 𝑡ℎ𝑒 𝑓𝑖𝑛𝑎𝑙
+Math Refreshers: The Sanger Learning Center offers math refresher courses early in the semester.
+They are free for UT students, and you can register here:
+https://utdirect.utexas.edu/apps/ugs/my/events/. The calculus refresher is 9/5 – 9/7, 6-7:30pm. The
+trigonometry refresher is 9/11 – 9/13, 6-7:30 pm. There is a 2-day algebra refresher 9/5 – 9/6 , 6-8 pm.
+There is a 3-day algebra refresher 9/5 – 9/7, 6-7:30 pm.
+The Sanger Learning Center also offers other courses on better studying, time management, and test-
+taking.
+Honor Code: The core values of the University of Texas at Austin are learning, discovery, freedom,
+leadership, individual opportunity, and responsibility. Each member of the University is expected to
+uphold these values through integrity, honesty, trust, fairness, and respect toward peers and
+community.
+Academic dishonesty: Academic dishonesty includes, but is not limited to, copying answers on exams
+or homework, having another person do homework, exams, or iClicker quizzes for you, or bringing non-
+allowed aids to exams. Collusion in another’s academic dishonesty is itself academically dishonest.
+Generally speaking, academic dishonesty is any activity that misrepresents another person’s work as
+one’s own, or that is intended to circumvent the intended purpose of evaluation tools like exams,
+homework, and iClicker quizzes. Don’t do this. Cases of suspected academic dishonesty will be reported
+to the Office of the Dean of Students.
+Quest: You will do your homework in Quest. Homework will be assigned and graded through the online
+QUEST system: http://cns.utexas.edu/quest/support/student. If you make random guesses on
+homework assignments, your grade will on average be zero. Therefore, there are negative grades on
+QUEST homework assignments. See the description of grading on the QUEST website. There will be no
+negative grades on quizzes or exams. Quest also has some other quirks, including non-standard
+handling of significant figures. Please read the introduction to Quest and the instructions on how to
+enter answers carefully before beginning work. You don’t want to lose points because of a Quest quirk.
+
+Paying for Quest: This course makes use of the web-based Quest content delivery and homework
+server system maintained by the College of Natural Sciences. This homework service will require a $25
+charge per student for its use, which goes toward the maintenance and operation of the resource.
+Please go to http://quest.cns.utexas.edu to log in to the Quest system for this class. After the 12th day
+of class, when you log into Quest you will be asked to pay via credit card on a secure payment site. You
+have the option to wait up to 30 days to pay while still continuing to use Quest for your assignments. If
+you are taking more than one course using Quest, you will not be charged more than $50/semester.
+Quest provides mandatory instructional material for this course, just as is your textbook, etc. For
+payment questions, email quest.billing@cns.utexas.edu.
+iClickers: iClickers are required for this course. They may be purchased new or used. Do not register
+your clicker on the iClicker website. Please register your iClicker remote in Canvas to participate in
+in-class activities. Simply go to this class in Canvas, click the iClicker link in the menu, and enter
+the remote ID that can be found on the back. iClicker registration in Canvas is required for course
+enrollment. If you use your iClicker without registering, you will not get credit for your clicker response.
+Textbook: Physics for Engineers and Scientists, 3rd Edition, Volume 1, by Ohanian and Markert. An
+electronic version is available. Used copies are often available, in a bookstore or online. This textbook is
+required. There is a website for the textbook with supplementary learning aids:
+http://books.wwnorton.com/books/detail-students.aspx?ID=4591
+Online Resource: M.I.T. has an open course on classical mechanics (Physics I):
+http://ocw.mit.edu/courses/physics. Khan Academy has tutorials in much of the material covered in
+this course (although not at a calculus-based level): https://www.khanacademy.org/science/physics
+Email and Canvas: The instructor will sometimes communicate with the class through email, Quest,
+and/or Canvas. These are official communications and may include information that could affect your
+grade in the course. You are responsible for checking email at the address the University has on file for
+you. You should do this at least daily. You are responsible for checking Canvas and Quest at least daily.
+Pre-requisites: High school physics or consent of the undergraduate advisor; Mathematics 408C, or
+408K and current enrollment in or credit for 408L.
+Failing to satisfy Pre- and Co-requisites: Students who do not meet the pre- and co-requisites will get
+an email on the first and fifth class days telling them to come into the Physics department to resolve the
+problem. Failing to satisfy pre- and co-requisites can result in students being automatically dropped
+from the course.
+Class Seating and Materials: Please leave rows 3, 6, and 9 empty. Please sit in groups of three or four
+so that you can work together. Always bring paper that you can write on and pen or paper to write
+with. On some days, you will turn in short response papers at the end of class.
+Tardiness and early departures: Tardiness and early departures are disruptive and distracting. Please
+be seated before the bell rings and remain for the entire class. If there is an urgent reason why you
+
+must leave early or come late, please sit on the aisle in a seat near the back, to minimize disruption to
+your classmates, and please make sure the door closes softly for the same reason.
+Cell phones and other electronic devices: Cell phones should always be silenced in the classroom. If
+there is an urgent or emergency call that cannot wait until after class, please exit the classroom and
+close the door before answering your phone. Please re-enter the classroom after the call in the way
+described above to minimize disruption to your classmates. Laptop and tablet computers should be
+silent in the classroom and should be used courteously. Cell phones, computers, graphing calculators,
+and other electronic devices with potential for facilitating cheating are not allowed during exams.
+Scientific calculators are allowed during exams.
+Students with disabilities: Students with disabilities may request appropriate academic
+accommodations from the Division of Diversity and Community Engagement, Services for Students with
+Disabilities, 512-471-6259, http://www.utexas.edu/diversity/ddce/ssd. Students who need special
+accommodation must notify the instructor no later than the 12th day of class.
+Religious holidays: If you will miss class because of a religious holy day, you must notify the instructor
+of your pending absence at least fourteen days prior to the date of observance of a religious holy day
+and no later than the 12th day of class. If you must miss a class, an examination, a work assignment, or a
+project in order to observe a religious holy day, you will be given an opportunity to complete the missed
+work within a reasonable time after the absence.
+Group study sessions: You are encouraged to organize a group study session. You may ask a Learning
+Assistant to lead such a section. You can reserve a Group Study Room in PCL library by going to the
+Library web site (www.lib.utexas.edu). Under the column “for students” click on “Reserve a Group
+Study Room”. These rooms accommodate 6 or 12 people.
+Working together on homework: You are encouraged to discuss problems with your classmates and
+teach each other concepts and ways of approaching problems. However, each student must do his or
+her own work when turning in homework answers on QUEST. Copying another student’s work or having
+another student do the work for you is academic dishonesty.
+UT Learning Center: The UT Learning Center in Jester has a variety of individual and group tutoring
+services. The Learning Center also offers sessions on how to study physics.
+Free Coaching: The Physics Department provides graduate student coaches to assist students in PHY
+301 and other introductory courses. This coaching is available on a one-to-one basis. Coaching tables
+are in the area by the elevators on the 5th floor of RLM. Since the RLM elevator does not stop on the 5th
+floor, take the stairs or escalator one flight up from the ground floor (4th floor) to the coaching area on
+the 5th floor. Coaching hours will be posted by the tables.
+Residential Halls Study Groups: There are free study groups that meet at the study tables in the
+freshmen dorms, Jester and Kinsolving. More information is available at
+http://cns.utexas.edu/community/resident-hall-study-groups
+
+Private tutors: The Physics undergraduate adminstrator in RLM 5.116 can put you in touch with private
+tutors. Rates and other arrangements are made directly between tutors and students.
+Homework: Each homework assignment will have the same weight toward your final grade. Homework
+is due at 11pm on its due dates. Late homework assignments will not be accepted. Solutions to
+homework will be available on Quest after its due date.
+Midterm exams: Midterm exams will NOT be held in the usual classroom, but in another room to be
+announced. Midterm exams will be multiple choice and use Scantron sheets. You must bring your UT ID
+and at least two #2 pencils to the midterms. Solutions to midterms will be available on Quest after all
+tests have been graded.
+Adding and Dropping the Course: See the UT Austin Academic Calendar,
+https://registrar.utexas.edu/calendars/17-18. During the first four class days, students may add and
+drop courses using the Registrar’s online service. During class days 5-12, students may drop courses
+online but must get departmental permission to add the course. For this course, you should contact the
+physics department. Some departments may not allow add/drops after the fourth class day. If you wish
+to add a course after the twelfth class day, you must go to the Student Division of the Dean’s Office (1st
+floor of WC Hogg) to provide justification for the proposed change. You must have written permission
+and documentation of class attendance from the instructor and approval from the department.
+Academic Q-drop: See the UT Austin Academic Calendar. If you want to drop this course after the 12th
+class day and before the Q-drop deadline, you must get the forms from the Dean’s Office (WCH 1.106)
+or your departmental advising center and ask the instructor to sign the drop form.
+Nonacademic Q-drop: Students who have substantiated nonacademic reasons, as determined by the
+Dean’s Office, may be able to drop a course. Students with significant nonacademic problems, such as
+extended health difficulties or family emergencies, are encouraged to contact the Dean’s Office. The
+course instructor cannot give permission for a nonacademic Q-drop.
+One-time Drop: Once in his/her undergraduate career, a student who has completed at least two long
+semesters at UTAustin can drop a class or all classes in a semester at any point until the last class day. A
+student may drop a class only if he or she has an average grade of D+ or below in the class at the time of
+the request and if there are no pending investigations of scholastic dishonesty for the course in
+question. More information is available here: http://www.utexas.edu/faculty/council/2010-
+2011/legislation/EPC_OTE.html
+Quantitative Reasoning Flag: This course carries the Quantitative Reasoning flag. Quantitative
+Reasoning courses are designed to equip you with skills that are necessary for understanding the types
+of quantitative arguments you will regularly encounter in your adult and professional life. You should
+therefore expect a substantial portion of your grade to come from your use of quantitative skills to
+analyze real-world problems.
+
+Safety in Emergency Situations: Occupants of buildings on The University of Texas at Austin campus are
+required to evacuate buildings when a fire alarm is activated. Alarm activation or announcement
+requires exiting and assembling outside. Familiarize yourself with all exit doors of each classroom and
+building you may occupy. Remember that the nearest exit door may not be the one you used when
+entering the building. Students requiring assistance in evacuation shall inform their instructor in writing
+during the first week of class. In the event of an evacuation, follow the instruction of faculty or class
+instructors. Do not re-enter a building unless given instructions by the following: Austin Fire
+Department, The University of Texas at Austin Police Department, or Fire Prevention Services office. If
+you have concerns about the behavior of a member of the campus community, you may call the
+Behavior Concerns Advice Line (BCAL): 512-232-5050. Link to information regarding emergency
+evacuation routes and emergency procedures can be found at: www.utexas.edu/emergency
+Finding buildings at UT: For this course, you need to be able to find buildings for recitation sections,
+office hours, midterms, and the final exam, as well as the classroom. There is an online map of campus
+buildings: http://www.utexas.edu/maps/index.html
+Please see the next page for the
+course schedule.
+
+Lecture, Homework, and Exam Schedule:
+You are responsible for material in the assigned reading, regardless of whether it is discussed in class.
+You are responsible for material discussed in class, regardless of whether it is in the assigned reading.
+*Professor Gordon’s planned absences are indicated by asterisks and italics.
+Date Topic Reading in Textbook HW Due
+8/30 Wed Introduction Chapter 1
+9/1 Fri Speed, velocity, and 2.1-2.4 HW 0901 due 11pm
+acceleration
+9/4 Mon Labor Day holiday No class
+9/6 Wed Motion with constant 2.5-2.7
+acceleration; integrating
+equations of motion
+9/8 Fri Vectors; vector addition and 3.1-3.3 HW 0908 due 11pm
+subtraction
+9/11 Mon Position vector; components of 3.3-3.4
+a vector; Vector multiplication
+9/13 Wed Velocity and acceleration: 4.1-4.2
+components and vectors
+9/15 Fri Motion with constant 4.3-4.4 HW 0915 due 11pm
+acceleration; Projectiles
+9/18 Mon Uniform circular motion 4.5
+9/20 Wed Relativity of motion and 4.6
+addition of velocities
+9/22 Fri Newton’s First and Second 5.1-5.3 HW 0922 due 11pm
+Laws; combination of forces
+9/25 Mon Weight, contact, and normal 5.4-5.6
+forces; Newton’s Third Law;
+motion with constant force
+9/27 Wed Friction; Hooke’s law 6.1-6.2
+9/29 Fri Force for uniform circular 6.3-6.4 HW 0929 due 11pm
+motion; fundamental forces
+10/2 Mon Work 7.1-7.2
+10/4 Wed Kinetic energy; gravitational 7.3-7.4
+potential energy
+10/6 Fri Potential energy 8.1-8.2 HW 1006 due 11pm
+10/9 Mon Forms of energy; power 8.3-8.5
+10/11 Review for Midterm Exam #1 Chapters 1-7 Midterm from 7-9pm
+Wed Location TBA
+10/13 Fri Gravitation and orbits 9.1-9.6 HW 1013 due 11pm
+10/16 Energy in orbital motion 9.5
+Mon
+10/18 Momentum 10.1
+Wed
+*10/20 Center of mass 10.2 HW 1020 due 11pm
+Fri*
+
+10/23 Motion of the center of mass; 10.3-10.4
+Mon energy of a system of particles
+10/25 Impulse; elastic collisions in 1D 11.1-11.2
+Wed
+10/27 Fri Inelastic collisions; 2D and 3D 11.3-11.4 HW 1027 due 11pm
+collisions
+10/30 Rotational kinematics 12.1-12.4
+Mon
+11/1 Wed Kinetic energy of rotation; 12.5
+moment of inertia
+11/3 Fri Rotational motion 13.1-13.2 HW 1103 due 11pm
+11/6 Mon Review for Midterm Exam #2 Chapters 1-11 Midterm from 7-9pm
+Location TBA
+11/8 Wed Conservation of angular 13.3-13.4
+momentum; vector nature of
+torque and angular momentum
+11/10 Fri Static equilibrium 14.1-14.2 HW 1110 due 11pm
+11/13 Levers, pulleys, and elasticity of 14.3-14.4
+Mon materials
+11/15 Simple harmonic motion; the 15.1-15.2
+Wed simple harmonic oscillator
+11/17 Fri Energy in oscillations; the 15.3-15.4 HW 1117 due 11pm
+simple pendulum
+11/20 Damped oscillations and forced 15.5
+Mon oscillations
+11/22, 24 Thanksgiving Holidays No class
+11/17 Forced oscillations; waves 16.1-16.2
+Mon
+11/29 Superposition; standing waves 16.3-16.4
+Wed
+12/1 Fri Sound; intensity and speed of 17.1-17.3 HW 1201 due 11pm
+sound
+12/4 Mon Doppler Effect; diffraction of 17.4-17.5
+sound
+12/6 Wed Fluids at rest 18.1-18.4
+*12/8 Fri* Review for Midterm Exam #3 Chapters 1-16 Midterm from 7-9pm
+Location TBA
+12/11 Pressure, buoyancy, and fluids 18.5-18.6
+Mon in motion; Fluid Dynamics
+12/13 No class HW 1213 due 11pm
+Wed note Wed. due date
+TBA Review for Final Exam Chapters 1-18
+Final Exam Location to be announced – Check the
+Registrar’s Website about four weeks
+before the semester ends
+
+Old exams are available on Canvas. These give you an idea of how my exams are constructed (a mix of
+conceptual and computational problems) and show you what I think is an appropriate level of difficulty
+for an exam. Your midterm exams will be about 30 questions long. Your final exam will be about 40
+questions long.
+How to do well in this class: You should expect to spend, at a minimum, three hours studying outside of
+class for every hour you spend in lecture. Read the material to be covered in class before coming to
+class, and a second time afterwards. Some iClicker questions will concern material the reading that has
+not yet been covered in lecture. Review your lecture notes after each lecture. Make written notes of
+things that you do not understand from the reading and lectures, and come talk with the instructor, the
+TA, a LA, or a physics graduate student coach about the things you do not understand. Start working on
+your homework as soon as possible. The homework assignments are difficult and they will take
+substantial time to do. As soon as you have obtained an answer to a problem, submit it – don’t wait
+until you have solved other problems. On Quest, you are allowed multiple tries for missed questions,
+but less credit is possible after each wrong answer. This course moves rapidly, and students who fall
+behind are often not able to catch up. Test your understanding by answering questions and working
+problems from the textbook in addition to the assigned homework.

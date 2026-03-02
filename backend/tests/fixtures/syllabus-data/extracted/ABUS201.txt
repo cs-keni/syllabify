@@ -1,0 +1,147 @@
+Introduction to Cognitive Science
+­ Fall 2014 ­
+[NOTE: The official version of this document is always the one posted on the Canvas site for the
+class. However, you will be notified if there is any change.]
+I. Basic Information
+Course Time: Tue/Thu 9:30­11:00AM
+Classroom: MEZ 1.216
+Unique: 43969
+Instructors David Beaver Zenzi M. Griffin
+Position Full Professor, Depts. of Full Professor, Depts. of Psychology,
+Linguistics and Philosophy Linguistics, Communication Science
+and Disorders
+Office CLA 4.708 SEA 5.214
+Email dib@utexas.edu zgriffin@utexas.edu
+Web https://webspace.utexas.edu/dib9 www.psy.utexas.edu/griffin
+7/
+Office Hours M & W 11­12:30 & by appt Th 1:00­3:00, TBA, & by appt
+II. Course Description
+This course is a graduate level introduction to the study of intelligence, mind and brain from an
+interdisciplinary perspective. We will study contemporary views of how the mind works, the
+nature of reason, and how thought processes are reflected in the language we use. Central to
+the course will be the modern computational theory of mind, the embodiment of that theory in a
+few pounds of grey meat, and what we know about how that lump of meat processes language,
+thinks thoughts, and develops consciousness. A wide range of topics will be covered (with
+levels of depth partly based on class interest):
+● Artificial intelligence and the Turing Test
+● Cognition as a solution to a search problem
+● Human decision making
+● Pragmatic reasoning
+● Logic and reasoning
+● Paradox and the limits of reason
+
+● The Halting Problem and Godel Incompleteness
+● Basic neuroscience
+● Psycholinguistics
+● Visual perception
+● Human and Machine learning
+● Human Memory Systems
+● Consciousness
+These topics are central to the interdisciplinary field of Cognitive Science, an area in which UT
+boasts enormous strength. Although there are no specific course prerequisites, you will be
+expected to think, read, and write about topics that involve a very broad range of disciplines and
+methodologies. Thus you will need to be flexible. You will read discursive philosophical material,
+historical accounts, and descriptions of experiments in psychology and neuroscience, but you
+will also need to be comfortable learning about relatively formal methods, for example involving
+basic statistics, probability theory and theory of computation. However, it must be emphasized
+that you do not need to know any of this in advance, you just need to be completely fearless.
+III. Readings and Assignments
+Readings will consist of primary papers from the literature and short overview articles. They will
+normally be made available as pdf files on Canvas. There is no course textbook. Readings for
+each week will be posted on Canvas by Tuesday of the previous week.
+Students will submit work for grading in three forms. First, they will complete a short
+commentary on readings each week. Weekly commentaries will be graded on a
+satisfactory/unsatisfactory basis, and will be used primarily to drive class discussion.
+Discussion board posts for each week’s reading(s) will be due at noon each Monday. Second,
+there will be six assignments due every second week. Assignments will be due by electronic
+submission on Canvas by the start of class on Thursday every second week. And, third, a short
+paper will be due at the end of the semester. Students will receive instructions on this paper in
+week 10, and will be expected to select a topic by the end of week 11.
+Grade breakdown:
+Weekly Discussion Posts 30%
+Bi­weekly assignments 30%
+Long paper 25%
+Attendance 5%
+Classroom interaction 10%
+
+IV. Preliminary week by week schedule for 2013
+1 Thu Aug 28 History of Reason + student intros
+2 Tue Sep 2 Overview of Cognitive Science phases + student intros
+Thu Sep 5 Turing Test & AI + student intros
+3 Tue Sep 9 Cognition as a solution to a search problem (+ student intros?)
+Thu Sep 11 Cognition as a solution to a search problem
+4 Tue Sep 16 Human decision making
+Thu Sep 18 Experimental design
+5 Tue Sep 23 Human decision making
+Thu Sep 25 Basic neuroscience
+6 Tue Sep 30 Neuro skepticism
+Thu Oct 2 Reasoning & Paradox
+7 Tue Oct 7 Reasoning & Paradox
+Thu Oct 9 The Halting Problem and Godel Incompleteness
+8 Tue Oct 14 Visual perception
+Thu Oct 16 Visual perception
+9 Tue Oct 21 Declarative & Procedural memory
+Thu Oct 23 Declarative & Procedural memory
+10 Tue Oct 28 Human and Machine learning
+Thu Oct 30 Connectionist models
+11 Tue Nov 4 Statistical learning & word segmentation
+Thu Nov 6 Learning & representation (dynamical systems)
+12 Tue Nov 11 Psycholinguistics/comprehension
+Thu Nov 13 Distributed cognition
+13 Tue Nov 18 Game theory
+Thu Nov 20 Nativism, Empiricism... and cultural relativism?
+14 Tue Nov 25 Consciousness
+Th Nov 27 Thanksgiving
+15 Tue Dec 2 Consciousness
+Thu Dec 4 Wrap up
+
+V. Academic Integrity
+University of Texas Honor Code
+The core values of The University of Texas at Austin are learning, discovery, freedom, leadership,
+individual opportunity, and responsibility. Each member of the university is expected to uphold these values
+through integrity, honesty, trust, fairness, and respect toward peers and community.
+Each student in this course is expected to abide by the University of Texas Honor Code. Any work
+submitted by a student in this course for academic credit will be the student's own work.
+You are encouraged to study together and to discuss information and concepts covered in lecture and the
+sections with other students. You can give "consulting" help to or receive "consulting" help from such
+students. However, this permissible cooperation should never involve one student having possession of a
+copy of all or part of work done by someone else, in the form of an e­mail, an e­mail attachment file, a
+diskette, or a hard copy.
+VI. Other University Notices and Policies
+Use of E­mail for Official Correspondence to Students
+All students should become familiar with the University's official e­mail student notification policy. It is the
+student's responsibility to keep the University informed as to changes in his or her e­mail address.
+Students are expected to check e­mail on a frequent and regular basis in order to stay current with
+University­related communications, recognizing that certain communications may be time­critical. It is
+recommended that e­mail be checked daily, but at a minimum, twice per week. The complete text of this
+policy and instructions for updating your e­mail address are available at
+http://www.utexas.edu/its/policies/emailnotify.html.
+Documented Disability Statement
+Any student with a documented disability who requires academic accommodations should contact Services
+for Students with Disabilities (SSD) at (512) 471­6259 (voice) or 1­866­329­3986 (video phone). Faculty are
+not required to provide accommodations without an official accommodation letter from SSD. (Note: Details
+of a student’s disability are confidential. The instructor and TAs will not ask questions related to a
+student’s condition or diagnosis when receiving an official accommodation letter.)
+● Please notify me as quickly as possible if the material being presented in class is not accessible
+(e.g., instructional videos need captioning, course packets are not readable for proper alternative
+text conversion, etc.).
+● Contact Services for Students with Disabilities at 471­6259 (voice) or 1­866­329­3986 (video phone)
+or reference SSD’s website for more disability­related information:
+http://www.utexas.edu/diversity/ddce/ssd/for_cstudents.php
+Behavior Concerns Advice Line (BCAL)
+
+If you are worried about someone who is acting differently, you may use the Behavior Concerns Advice
+Line to discuss by phone your concerns about another individual’s behavior. This service is provided
+through a partnership among the Office of the Dean of Students, the Counseling and Mental Health Center
+(CMHC), the Employee Assistance Program (EAP), and The University of Texas Police Department
+(UTPD). Call 512­232­5050 or visit http://www.utexas.edu/safety/bcal.
+Emergency Evacuation Policy
+Occupants of buildings on the UT Austin campus are required to evacuate and assemble outside when a
+fire alarm is activated or an announcement is made. Please be aware of the following policies regarding
+evacuation:
+§ Familiarize yourself with all exit doors of the classroom and the building. Remember that the nearest exit
+door may not be the one you used when you entered the building.
+§ If you require assistance to evacuate, inform me in writing during the first week of class.
+§ In the event of an evacuation, follow my instructions or those of class instructors.
+Do not re­enter a building unless you’re given instructions by the Austin Fire Department, the UT Austin
+Police Department, or the Fire Prevention Services office.

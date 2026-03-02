@@ -1,0 +1,99 @@
+CS 356: Schedule And Announcements Page http://www.cs.utexas.edu/~erozner/cs356/schedule.html
+Schedule for CS 356: Computer Networks
+This is a tentative schedule provided to give an idea of the topics covered and the amount of
+emphasis placed on each topic. The content may be adjusted during the course of the
+semester.
+Check the Canvas system for grades and additional content.
+Date Reading Topic Assignment
+Chapter
+Class 1: Jan. 20 Intro
+1
+Chapter
+Class 2: Jan. 22 Intro
+1
+Chapter
+Class 3: Jan. 27 Intro Homework 1: Due Feb 3
+1
+Chapter
+Class 4: Jan. 29 Application Layer
+2
+Chapter
+Class 5: Feb. 3 Application Layer Wireshark Lab: Due Feb 10
+2
+Chapter
+Class 6: Feb. 5 Application Layer
+2
+Chapter
+Class 7: Feb. 10 Application Layer Homework 2: Due Feb. 17
+2
+Chapter
+Class 8: Feb. 12 Transport Layer Programming Assignment 1: Due Feb. 26
+3
+Chapter
+Class 9: Feb. 17 Transport Layer
+3
+Chapter
+Class 10: Feb. 19 Transport Layer
+3
+Chapter
+Class 11: Feb. 24 Transport Layer
+3
+Chapter
+Class 12: Feb. 26 Transport Layer
+3
+Chapter
+Class 13: March 3 Transport Layer Homework 3: Due March 10
+3
+Class 14: March 5 Midterm 1
+Class 15: March Chapter Programming Assignment 2: Due March
+Network Layer
+10 4 31
+Class 16: March Chapter
+Network Layer Wireshark Lab 2: Due March 26
+12 4
+Break: March 17
+Break: March 19
+Class 17: March Chapter
+Network Layer
+24 4
+Class 18: March Chapter
+Network Layer
+26 4
+1 of 2 2/9/15, 1:58 PM
+
+CS 356: Schedule And Announcements Page http://www.cs.utexas.edu/~erozner/cs356/schedule.html
+Class 19: March Chapter
+Network Layer Homework 4: Due April 7
+31 4
+Chapter
+Class 20: April 2 Link Layer Programming Assignment 3: Due April 16
+5
+Chapter
+Class 21: April 7 Link Layer
+5
+Chapter
+Class 22: April 9 Link Layer
+5
+Chapter
+Class 23: April 14 Link Layer Homework 5: Due April 21
+5
+Chapter
+Class 24: April 16 Wireless Networking Programming Assignment 4: Due April 30
+6
+Chapter
+Class 25: April 21 Wireless Networking
+6
+Chapter
+Class 26: April 23 Security
+8
+Chapter
+Class 27: April 28 Security
+8
+Chapter Multimedia
+Class 28: April 30
+7 Networking
+Datacenter
+Class 29: May 5
+Networking
+Class 30: May 7 Midterm 2
+2 of 2 2/9/15, 1:58 PM

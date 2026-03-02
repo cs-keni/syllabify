@@ -1,0 +1,134 @@
+{
+  "course": {
+    "id": "363d-ravikumar",
+    "course_code": "CS 363D",
+    "course_title": "Statistical Learning and Data Mining",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Pradeep Ravikumar",
+        "email": "pradeepr@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "15:30",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 1.316",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "15:30",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "WEL 1.316",
+        "type": "lecture"
+      }
+    ],
+    "location": "WEL 1.316"
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 60,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "Midterm",
+      "weight_percent": 15,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "6 Homeworks 60%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": "2015-03-11T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Midterm March 11 15%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final 25%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 2,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

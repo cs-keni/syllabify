@@ -1,0 +1,106 @@
+Immunology Laboratory
+Bio 160L
+Summer 2011
+MW 1:00-5:00 #90460
+BME 2.310
+Instructor: Dr. Emin Ulug
+ulug@mail.utexas.edu
+NMS 3.306, 471-0876
+Office hours: M, W 11:30-12:30 or by appointment
+Course description:
+This class is designed to introduce students to the practical aspects of Immunology.
+Exercises are relevant to both research and clinical investigation. Prerequisites include
+BIO360 or current enrollment in BIO360.
+Grading:
+Lab reports and problems 50%
+(labs 6 and 9 count double!)
+Exams (2) 40%
+Technique (incl. pop quizzes) 10%
+Required Items:
+Students will need to purchase a lab manual (“Exercises in Immunology,” available at
+Speedway Printing in Dobie Mall) and a wax or permanent marker (i.e. Sharpie). Lab
+coats will be provided, but students can use their own if they prefer.
+General policies:
+Lab protocols must be read before class. Unannounced (pop) quizzes can be given at
+any time at the discretion of the TA or instructor.
+Please do not disturb the TAs or the instructor at home or when they are conducting their
+research. Also, avoid asking questions just prior to the day’s exercise. Instead, direct
+your questions during the discussion period or during office hours.
+It is not possible to make up labs. If you are unable to attend the lab, be sure to get the
+raw data from another student in the class and turn it in on time. Late reports will be
+penalized severely: 1 day: -20%; 2-7 days: -50%; > 7 days: no credit.
+Lab reports are graded as individual efforts. Plagiarism or cheating on reports (or exams)
+is not tolerated and will be reported to Student Judicial Services.
+This lab facility is used for agents that require Biosafety level-2 (BSL-2) containment.
+Appropriate microbiological practices must be observed at all times in the laboratory.
+
+Immunology Laboratory
+Schedule of Exercises, Summer 2011
+Date Laboratory Reference
+July 11 Techniques Lab & Dilutions Introduction to tissue pp 6-14,
+culture, pipetting, dilutions, and microscopy. Note: Appendix 1,4
+dilution problems count as a report grade & are due July 13!
+July 13 Lab 1 Blood cell morphology pp 15-23,
+Appendix 2
+July 18 Lab 2 T cell rosettes pp 24-29,
+Appendix 3
+July 20 Lab 3 Mouse work & In vitro phagocytosis (demo) pp 30-37,
+Appendix 4
+July 22 Feed LPS-treated culture
+July 25 Harvest ConA culture,
+Lab 4 Fluorescent staining of B-cell culture pp. 38-43,
+Appendix 3
+July 27 Lab 5 ELISA pp 44-50,
+Appendix 5
+Aug. 1 Midterm Exam
+Lab 6 part 1 IgG purification: precipitation with sodium pp 51-55
+sulfate and dialysis
+Aug. 3 Lab 6 part 2 Ion-exchange chromatography; quantitation pp 56-60
+of protein by the Buiret assay
+Lab 7 Immunoelectrophoresis pp 61-63
+Aug. 8 Lab 8 Immunodiffusion pp 64-68
+Lab 9 part 1 Immunoblot analysis of HIV proteins pp 69-75
+(SDS-PAGE,transfer)
+Aug. 10 Lab 9 part 2 Develop HIV Western blot pp 69-76
+Complete immunoelectrophoresis lab
+Aug. 15? Final exam (time & date to be confirmed)
+2
+
+Immunology Lab Rules
+Students (and instructors) must practice safe laboratory technique in this lab at all times. This
+laboratory facility is used for the study of pathogenic organisms. Agents used in this room
+can cause infections in humans or domesticated/laboratory animals. Human blood used in
+this laboratory is considered a Class II biohazard and must be handled with appropriate safety
+precautions. Finally, animal cell cultures also represent potential hazards since they may
+harbor endogenous viruses. Anyone who has tested positive for HIV (or is otherwise
+immunocompromised) must discuss the matter with the instructor.
+The following general safety practices must be observed at all times in this facility:
+1. No eating, drinking, smoking, gum chewing, or applying of cosmetics is permitted in the
+laboratory. Also, avoid touching eyes, nose, mouth, or face when working in the lab.
+2. Unauthorized persons, especially children and infants, are not permitted in the lab.
+3. Do not enter the lab when another class is meeting. The schedule is posted on the door.
+4. Keep your workspace clear and uncluttered. Store coats, backpacks, and unneeded
+items in the hall lockers or at the front of the room.
+5. Avoid mouth pipetting entirely. Use automatic pipettor pumps or bulbs instead.
+6. Hands should be washed before and after working in the laboratory.
+7. When used, gloves should be worn only for specific tasks. Do not touch doorknobs or
+other common surfaces with contaminated gloves. Dispose of contaminated gloves in the
+appropriate waste bin. Remember to wash hands after removing gloves!
+8. Laboratory coats or smocks should be worn while in the lab. They can be stored in the
+hall lockers. Do not wear them outside the lab, especially when eating or smoking. Lab
+coats should be disinfected (autoclaved) before leaving the facility. Also, avoid wearing of
+open shoes or sandals in the laboratory.
+9. Clearly identify materials by labeling with the user's name and contents, but please don’t
+write on glassware with permanent marking pens.
+10. Dispose of contaminated items in the appropriate bins. All materials contaminated with
+infectious materials must be discarded in the Biohazard waste containers, so they can be
+sterilized prior to disposal. DO NOT discard these materials in the sink or trash cans!
+Special waste containers are also used for disposal of broken glassware, radioactive
+compounds, organic solvents, and needles (“sharps”). Note that needles (with or without
+syringes) should be placed directly in the sharps container without recapping or
+disassembling!
+11. Keep your workstation clean. Always wipe your work surface with disinfectant before and
+after use. Discard your waste before leaving the laboratory.
+12. Never take biological samples out of the laboratory.
+Remember: technique accounts for 10% of your grade!
+3

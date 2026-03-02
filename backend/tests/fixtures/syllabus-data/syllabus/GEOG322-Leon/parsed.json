@@ -84,7 +84,7 @@
       "title": "Exam 1",
       "category_id": "exams",
       "type": "midterm",
-      "due_datetime": "2024-05-08",
+      "due_datetime": "2024-05-06",
       "all_day": true,
       "timezone": null,
       "weight_percent": 20,
@@ -92,7 +92,7 @@
       "recurrence": null,
       "policies": {},
       "confidence": 0.95,
-      "source_excerpt": "Exam 1 May 8"
+      "source_excerpt": "Exam 1 May 6"
     },
     {
       "id": "final_1",

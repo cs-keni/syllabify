@@ -1,0 +1,41 @@
+CS350F Operating Systems (Unique #51940)
+Professor Aloysius K. Mok
+Spring 2015
+TTh 2:00-3:30 p.m., UTC 3.124
+Class website: http://www.cs.utexas.edu/˜mok/cs350F/Spring15
+Prerequisite
+The following coursework with a grade of at least C- in each: Computer Science
+307, 314, 314H, 315, or 315H; and Computer Science 439 or 439H. The prerequisites
+will be strictly enforced.
+Synopsis
+This course covers the principles and selected advanced topics in operating systems
+Topics
+Basic theory and selected advanced topics in operating system design including
+process management and scheduling, virtual memory, file systems, I/O organization, fault
+tolerance, protection and security.
+Textbook(s):
+"Modern Operating Systems" 3rd Edition, by Andrew Tanenbaum, Prentice Hall
+2001 ISDN 0-13-600663-9
+Organization
+Grades will be determined by homework/programming assignments (36%), two
+examinations (60%) and in-class participation/presentation (4%). There will be tenta-
+tively 4 programming assignments plus 5 homework assignments.
+My office hours are Tuesdays and Thursdays 3:30-4:30 p.m. My office is in GCD
+6.512. My office phone number is 471-9542. Your TA is Mr. Quan Leng. TA office
+hours will be announced.
+The class webpage is at http://www.cs.utexas.edu/˜mok/cs350H/Spring15
+We shall use the UT Canvason-line system for class communication.
+Academic Honesty Policy
+The following guideline to students has been recommended to the computer science
+faculty and will apply to this class: "The University and the Department are committed to
+preserving the reputation of your degree. It means a lot to you. In order to guarantee that
+ev ery degree means what it says it means, we must enforce a strict policy on academic
+honesty: Every piece of work that you turn in with your name on it must be yours and
+yours alone. No co-working is allowed on any test, project, or homework assignment
+unless explicitly allowed by an instructor in a particular class. You are responsible for
+enforcing this policy in two ways: 1) You must not turn in work that is not yours, except
+as expressly permitted by the instructor of each course. 2) You must not enable someone
+else to turn in work that is not theirs. Do not share your work with anyone else. Make
+sure that you adequately protect all your files. Even after you have finished a class, do not
+share your work or published answers with the students who come after you. They need
+to do their work on their own."

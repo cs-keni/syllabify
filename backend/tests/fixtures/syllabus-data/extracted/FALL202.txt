@@ -1,0 +1,239 @@
+EE 385J, Brain-Computer Interaction
+Fall 2024
+Hours: Monday & Wednesday, 15h00-16h30. GLT 1.106
+Canvas Site: https://utexas.instructure.com/courses/1394829
+Instructor: Prof. José del R. Millán
+Office: EER 7.822
+Phone: (512) 2328111
+email: jose.millan@austin.utexas.edu
+Office hours: 16h30-17h30, Monday & Wednesday; or by appointment.
+Teaching Assistant, Office, Hours: Deland Liu, TBD.
+Prerequisites: Graduate standing. Knowledge of Pattern Recognition/Machine Learning; Signal
+Processing; Matlab Programming (or any other equivalent Programming Language).
+Course Description: This course examines how to provide a direct interaction between the
+human neural system and machines aiming to augment human capabilities, especially of
+disabled people. It provides an introduction to the human brain functional organization. It
+describes different brain signals that can be recorded for a brain-computer interface along
+with the interaction paradigms where they can be decoded and exploited. Emphasis is on
+electroencephalogram (EEG) signals, which is the most common source for brain-computer
+interfaces and the kind of signals used for the homework and projects. It also covers the
+design principles of complex brain-controlled devices beyond recording brain signals,
+enhancing their signal-to-noise ratio, and decoding subjects' intents and cognitive states.
+Text: (1) Lecture Notes, taken from a variety of sources, available on the Canvas website.
+(2) There is no mandatory textbook for the course. However, these two books provide
+supplementary material:
+Wolpaw J. and Wolpaw E.W. (eds.) (2012). Brain-Computer Interfaces: Principles and
+Practice. Oxford University Press.
+Ramsey N.F. and Millán J.d.R. (eds.) (2020). Brain-Computer Interfaces. Handbook of
+Clinical Neurology Series. San Diego: Elsevier.
+Grading Scheme: Homework 25% + Paper Presentation: 15% + Term Project 60%.
+Each item will be graded in the scale 1-10.
+Attendance at all classes is expected, but not part of the grade.
+Late submissions will not be accepted except by consent of instructor.
+Homework: 3 individual exercises across the course based on data from BCI experiments.
+Discussion of homework questions amongst students is encouraged. However,
+copying another’s work is cheating. Academic integrity is paramount and cheating
+will not be tolerated (see below).
+Term Project: teams of 3 students will perform their own BCI experiments involving all
+team members over a few experimental sessions. Some lecture slots (2-4) during the
+course will be devoted to discussing progress and problems on the projects.
+Timing: presentation, 15 min; Q&A, 10 min.
+Grading: written report (35%); oral presentation to the whole class (25%).
+
+Report must contain a statement of work done by each team member, indicating each
+member’s contribution (i.e., topics and percentage of total effort).
+Paper Presentation: same teams of 3 students will present a paper to the whole class (from
+a set of 2-3 topics) and critique another team’s presentation on another paper of the
+same topic.
+Timing: presentation, 15 min; critique, 5 min; discussion, 5 min.
+Grading: presentation, 10%; critique, 5 %.
+Letter Grades: In this course, plus and minus letter grades will be assigned.
+Topical Outline
+1. Overview of a Brain-Computer Interface
+2. Short Tutorials on EEG Signal Processing & Machine Learning
+3. Basic Human Brain Functional Organization
+4. EEG & Inverse Methods
+5. EEG-based BCI Paradigms
+6. Multiunit Recordings, Local Field Potentials, Electrocorticogram
+7. Cognitive Signals for Brain-Computer Interaction
+8. Brain-Computer Interaction: Beyond Decoding
+9. Term Projects: Oral Presentations
+Learning Outcomes: By the end of the course, students will be able to
+1. Students will be able to work effectively with peers to achieve common goals by
+collaborating on projects and sharing their opinions.
+2. Students will be able to demonstrate proactive inquiry and exploration by asking
+thoughtful questions and seeking out additional information beyond the material
+covered in the class.
+3. Students will be able to exhibit analytical thinking by breaking down complex
+problems into smaller components, evaluating evidence objectively, and drawing well-
+reasoned conclusions.
+4. Students will be able to analyze critically scientific literature by identifying strengths
+and shortcomings of existing methods.
+5. Students will be able to manage a team project by prioritizing tasks effectively, set
+realistic goals, and meet deadlines.
+6. Students will be able to effectively communicate their work by reporting experiments,
+hypotheses, methods, and analyses succinctly in oral and written form.
+7. Students will be able to demonstrate good experimental practice by conducting human
+experiments and recording participants’ EEG.
+8. Students will be able to demonstrate proficiency in deploying digital signal processing
+and machine learning methods by applying them to analyze EEG data.
+9. Students will be able to interpret and analyze experimental data effectively by applying
+appropriate statistical methods, generating meaningful graphs, and drawing well-
+founded conclusions that contribute to a comprehensive understanding of the
+phenomena under investigation.
+Grade Disputes or Corrections: If you discover an error in a grade assigned to you, you must
+submit your complaint, along with supporting evidence or arguments, to me (or to your TA
+or grader) within one week of the date that I (or your TA or grader) first attempted to return
+
+the assignment results to you. Complaints about grades received after the one-week
+deadline will be considered only if there are extraordinary circumstances for missing the
+deadline. Assignments submitted for re-grading will be completely re-graded.
+Academic Integrity: Plagiarism or any form of academic dishonesty (cheating includes, but is
+not limited to, copying another student's work, stealing another student’s homework,
+bringing notes into a test and copying material directly from a book, article or web site
+without including appropriate references, falsifying data, doing someone’s work) is a
+violation of University rules and may return a grade of zero for each assignment in which it
+is detected or may incur even steeper penalties. For more information and University
+policies please see: http://deanofstudents.utexas.edu/conduct/academicintegrity.php
+Sharing of Course Materials is Prohibited: No materials used in this class, including, but not
+limited to, lecture hand-outs, videos, assessments (quizzes, exams, papers, projects,
+homework assignments), in-class materials, review sheets, and additional problem sets,
+may be shared online or with anyone outside of the class unless you have my explicit,
+written permission. Unauthorized sharing of materials promotes cheating. It is a violation
+of the University’s Student Honor Code and an act of academic dishonesty. I am well
+aware of the sites used for sharing materials, and any materials found online that are
+associated with you, or any suspected unauthorized sharing of materials, will be reported to
+Student Conduct and Academic Integrity in the Office of the Dean of Students. These
+reports can result in sanctions, including failure in the course.
+Class Recordings: Class recordings are reserved only for students in this class for educational
+purposes and are protected under FERPA. The recordings should not be shared outside the
+class in any form. Violation of this restriction by a student could lead to Student
+Misconduct proceedings.
+Learning and Growth: Throughout the course, your learning and growth in theory and practice
+of the engineering profession are important to me. We all need accommodations because
+we all learn differently, and the current pandemic makes accommodations all the more
+important. If there are aspects of this course that prevent you from learning or exclude you,
+please let me know as soon as possible. Together we will develop strategies to meet your
+needs and course requirements. I also encourage you to reach out to the resources available
+through UT. Many are on this syllabus. I am happy to connect you with a person or Center
+if you would like.
+Artificial Intelligence: The creation of artificial intelligence tools for widespread use is an
+exciting innovation. These tools have both appropriate and inappropriate uses in classwork.
+The use of artificial intelligence tools (such as ChatGPT) in this class is permitted for
+students who wish to use them, provided the content generated by AI is properly cited. AI
+writing tools should be used with caution and proper citation, as the use of AI should be
+properly attributed. Failing to properly cite AI even where permitted, shall constitute a
+violation of UT Austin’s Institutional Rules on academic integrity. If you are considering
+the use of AI writing tools but are unsure if you are allowed or the extent to which they
+may be utilized appropriately, please ask.
+Student Rights and Responsibilities:
+• You have a right to a learning environment that supports mental and physical wellness.
+• You have a right to respect.
+
+• You have a right to be assessed and graded fairly.
+• You have a right to freedom of opinion and expression.
+• You have a right to privacy and confidentiality.
+• You have a right to meaningful and equal participation, to self-organize groups to
+improve your learning environment.
+• You have a right to learn in an environment that is welcoming to all people. No student
+shall be isolated, excluded or diminished in any way.
+With these rights come responsibilities:
+• You are responsible for taking care of yourself, managing your time, and
+communicating with the teaching team and others if things start to feel out of control or
+overwhelming.
+• You are responsible for acting in a way that is worthy of respect and always respectful
+of others.
+• Your experience with this course is directly related to the quality of the energy that you
+bring to it, and your energy shapes the quality of your peers' experiences.
+• You are responsible for creating an inclusive environment and for speaking up when
+someone is excluded.
+• You are responsible for holding yourself accountable to these standards, holding each
+other to these standards, and holding the teaching team accountable as well.
+Personal Pronoun Use: Professional courtesy and sensitivity are especially important with
+respect to individuals and topics dealing with differences of race, culture, religion, politics,
+sexual orientation, gender, gender expression, gender variance, and nationalities. Class
+rosters are provided to the instructor with the student's legal name, unless they have added
+a ``preferred name'' with the Gender and Sexuality Center. Canvas provides an opportunity
+to select a pronoun preference. I will gladly honor your request to address you by a name
+that is different from what is on the roster, and by the gender pronouns you use
+(she/he/they/ze, etc).
+Official Correspondence: The University of Texas at Austin considers e-mail as an official
+mode of university correspondence: https://cio.utexas.edu/policies/university-electronic-
+mail-student-notification-policy. You are responsible for following course-related
+information on the Canvas site for the course.
+Students with Disabilities: The University of Texas at Austin provides upon request appropriate
+academic accommodations for qualified students with disabilities. For more information,
+contact the Services for Students with Disabilities at 512-471-6259 or email
+ssd@austin.utexas.edu or check the website at http://ddce.utexas.edu/disability.
+Religious Holidays: By University policy, students must notify instructor of pending absence at
+least fourteen days prior to the date of observance of a religious holy day. If a student must
+miss a class, an examination, a work assignment, or a project in order to observe a religious
+holy day, the student will be given an opportunity to complete the missed work within a
+reasonable time after the absence.
+Absence for Military Service: In accordance with section 51.9111 of the Texas Education
+Code, a student is excused from attending classes or engaging in other required activities,
+including exams, if he or she is called to active military service of a reasonably brief
+duration. The maximum time for which the student may be excused has been defined by
+
+the Texas Higher Education Coordinating Board as ``no more than 25 percent of the total
+number of class meetings or the contact hour equivalent (not including the final
+examination period) for the specific course or courses in which the student is currently
+enrolled at the beginning of the period of active military service.'' The student will be
+allowed a reasonable time after the absence to complete assignments and take exams.
+Mental Health Counseling: College can be stressful and sometimes we need a little help.
+Luckily, we have a wealth of resources and dedicated people ready to assist you, and
+treatment does work. The Counseling and Mental Health Center (CMHC) provides
+counseling, psychiatric, consultation, and prevention services that facilitate student
+academic and life goals and enhance their personal growth and well-being. CMHC
+counselors are available Monday-Friday 8am-5pm by phone (512-471-3515) and Zoom
+videoconference. They are no longer available for in-person meetings due to social spacing
+and other precautions to reduce exposure to the coronavirus.
+Alternatively, you can talk to Ms. Jeni Wade, LCSW right here in the College of
+Engineering. Ms. Wade is our Care Counselor and she can be reached at 512-471-8396.
+If you are experiencing a mental health crisis (e.g. depression or anxiety), please call the
+Mental Health Center Crisis line at 512-471-CALL(2255). Call even if you aren't sure
+you're in a full-blown crisis, but sincerely need help. Staff are there to help you.
+A wonderful resource is the MindBody Lab, a self-paced environment designed to help UT
+students explore various resources for improving their emotional and physical health. The
+Lab currently features audio and video instruction on a variety of topics, including sleep
+issues; food and body image; health and well-being; relaxation and meditation. Most of the
+material is experiential, enabling students to follow along and practice the skills as they are
+being discussed. MindBody Labs are located in SSB 5th floor, SAC 2.106 and NUR
+3.156D.
+Safety Information: If you have concerns about the safety or behavior of students, TAs,
+Professors, or others, call the Behavorial Concerns Advice Line at 512-232-5050. Your call
+can be anonymous. If something doesn't feel right, it probably isn't. Trust your instincts and
+share your concerns.
+Occupants of buildings are required to evacuate buildings when a fire alarm is activated.
+Alarm activation or announcement requires exiting and assembling outside.
+For more information, please see http://www.utexas.edu/safety.
+Title IX Reporting: Title IX is a federal law that protects against sex and gender-based
+discrimination, sexual harassment, sexual assault, sexual misconduct, dating/domestic
+violence and stalking at federally funded educational institutions. UT Austin is committed
+to fostering a learning and working environment free from discrimination in all its forms
+where all students, faculty, and staff can learn, work, and thrive. When sexual misconduct
+occurs in our community, the university can:
+1. Intervene to prevent harmful behavior from continuing or escalating.
+2. Provide support and remedies to students and employees who have experienced harm
+or have become involved in a Title IX investigation.
+3. Investigate and discipline violations of the university's relevant policies.
+
+Faculty members and certain staff members are considered ``Responsible Employees'' or
+``Mandatory Reporters,'' which means that they are required to report violations of Title IX
+to the Title IX Coordinator at UT Austin. Before talking with me, or with any faculty or
+staff member about a Title IX related incident, be sure to ask whether they are a
+responsible employee. If you want to speak with someone for support or remedies without
+making an official report to the university, email advocate@austin.utexas.edu. For more
+info about reporting options and resources, visit https://titleix.utexas.edu/campus-resources
+or contact the Title IX Office at titleix@austin.utexas.edu.
+Land Acknowledgment: I would like to acknowledge that we are meeting on the Indigenous
+lands of Turtle Island, the ancestral name for what now is called North America. Moreover,
+I would like to acknowledge the Alabama-Coushatta, Caddo, Carrizo/Comecrudo,
+Coahuiltecan, Comanche, Kickapoo, Lipan Apache, Tonkawa and Ysleta Del Sur Pueblo,
+and all the American Indian and Indigenous Peoples and communities who have been or
+have become a part of these lands and territories in Texas.
+References: This course syllabus uses wording suggested by Prof. Brian Evans, Prof. Mary
+Steinhardt and the Faculty Innovation Center (https://facultyinnovate.utexas.edu/effective-
+syllabus) at UT Austin. The above Land Acknowledgment was drafted by a faculty
+Committee on Land Acknowledgment and passed by the UT Austin Faculty Council on
+September 21, 2020.

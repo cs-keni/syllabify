@@ -1,0 +1,282 @@
+BA-285T Financial Management
+Fall 2022
+CLASS MEETS:
+MBA I (Unique #02370): MW 8:00am-9:50am in RRH 4.416
+MBA II (Unique #02385): MW 10:10am-12:00pm in RRH 4.416
+MBA III (Unique #02400): TTH 10:10am-12:00pm in RRH 4.416
+MBA IV (Unique #02405): TTH 8:00am-9:50pm in RRH 4.416
+Instructor: Warren J. (Joe) Hahn
+Office: RRH 2.350 (in MBA Program Office)
+Office hours: Tuesdays and Wednesdays from 3:00-5:00pm (location tbd) or by appointment.
+Email: joe.hahn@mccombs.utexas.edu
+Phone: 512-232-6703 (office), 737-247-8528 (cell)
+TA:
+William Campbell (William.Campbell@mba.utexas.edu)
+Sneha Arvind Lakhiani (SnehaArvind.Lakhiani@mba.utexas.edu)
+Office hours: Mondays and Thursdays from 3:00-5:00PM via Zoom
+Course Description
+Financial management provides a foundation of financial economics covering selected topics in corporate
+finance and asset pricing. The course’s objective is to provide a theoretical framework for considering finance
+problems and issues and to apply these concepts in practice. Topics covered include the structure and objective
+of the firm, and the methods firm managers use to evaluate and choose the best value-adding projects for the
+firm. Through lectures and homework assignments, students learn time value of money tools and calculations,
+applications of time value tools to the basic valuation of stocks and bonds, capital budgeting rules and capital
+budgeting practice in measuring project value (NPV and IRR) and an overview of capital markets and the price
+of risky capital.
+LEADERSHIP AND THIS COURSE
+The Texas MBA program is designed to develop influential business leaders. The MBA Program has identified
+four fundamental and broad pillars of leadership: knowledge and understanding, communication and
+collaboration, responsibility and integrity, and a worldview of business and society.
+
+In this course, you will enhance your knowledge and understanding of financial management. Through class
+discussion, informal study groups, and formal group projects you will enhance your communication and
+collaboration skills. You will learn how managers should organize their financial transactions effectively and
+with integrity. Finally, financial markets are globally integrated and we will discuss examples involving
+international companies, giving you a global perspective on financial management.
+HOW WILL I LEARN?
+The teaching approach used through the course will be to introduce the fundamental concepts (the “what”),
+followed by demonstration and practice with the accompanying analytical techniques (the “how”). The latter of
+these two aspects will require some familiarity with accounting, mathematical, and statistical tools, and will
+often be implemented in Microsoft Excel, as is common in business practice.
+HOW TO SUCCEED IN THIS COURSE:
+The two primary determinants of success in this course are active participation in class and good performance
+on the homework assignments.
+Course Requirements
+REQUIRED MATERIALS
+Jonathan Berk and Peter DeMarzo: Corporate Finance. Fifth Edition. Pearson, Addison Wesley.
+You can purchase the e-text version of the textbook (ISBN-13: 978-0-13-499946-3) for $69.99 (six months) or
+for $99.99 (lifetime) from the publisher: https://www.vitalsource.com/products/corporate-finance-jonathan-
+berk-peter-demarzo-v9780134999463. You can access this version on your laptops, tablets, or smart phones
+through Bookshelf (VitalSource). Alternatively, you can also rent the book from the campus bookstore (ISBN
+978-0-13-518380-9), which will be a little more expensive than the e-text version. You will be given the option to
+purchase the book at the end of the semester. You should purchase the fifth edition, since it is most up-to-date
+and captures the current tax code. You should not purchase “Corporate Finance: The Core” or “Fundamentals of
+Corporate Finance” by the same authors. These books are abbreviated versions of the textbook and do not cover
+all the necessary material.
+Lecture Notes to Financial Management: Will be posted in the Files section of Canvas for each lecture.
+I also recommend that you follow the Wall Street Journal, Financial Times, New York Times, The Economist, or
+other financial press for context on current events. Info for access and/or student subscriptions can be found
+here and general info on business school library resources is available on the Business Research Center website.
+Our business school librarian, Loretta Wallace (l.wallace@austin.utexas.edu) can help with general questions.
+
+REQUIRED DEVICES
+Required Devices
+Either 1) a laptop computer (PC or Mac) with a current version of Microsoft Excel or 2) a financial calculator. A
+laptop computer with Excel is by far the better of these two options, but if you prefer to use a calculator, it
+should have features that allow you to easily compute present values (PV) and internal rates of return (IRR). The
+HP 10bII+ is a good example of this type of calculator, but if you already have an alternative financial calculator,
+such as the TI BA II Plus, you can use that instead.
+CLASSROOM EXPECTATIONS
+McCombs Classroom Professionalism Policy. The highest professional standards are expected of all
+members of the McCombs community. The collective class reputation and the value of the Texas MBA
+experience hinges on this. You should treat the Texas MBA classroom as you would a corporate boardroom.
+Faculty are expected to be professional and prepared to deliver value for each and every class session. Students
+are expected to be professional in all respects. The Texas MBA classroom experience is enhanced when:
+• Students arrive on time. On time arrival ensures that classes are able to start and finish at the scheduled
+time. On time arrival shows respect for both fellow students and faculty and it enhances learning by
+reducing avoidable distractions.
+• Students display their name cards. This permits fellow students and faculty to learn names, enhancing
+opportunities for community building and evaluation of in-class contributions.
+• Students are fully prepared for each class. Much of the learning in the Texas MBA program takes place
+during classroom discussions. When students are not prepared, they cannot contribute to the overall
+learning process. This affects not only the individual, but their peers who count on them, as well.
+• Students respect the views and opinions of their colleagues. Disagreement and debate are encouraged.
+Intolerance for the views of others is unacceptable.
+• Students do not confuse the classroom for the cafeteria. Recognizing that schedules are hectic throughout
+the day, energy bars and similar snacks are permitted.
+• Students minimize unscheduled personal breaks. The learning environment improves when disruptions
+are limited.
+• Students attend the class section to which they are registered. Learning is enhanced when class sizes are
+optimized. Limits are set to ensure a quality experience and safety.
+• Technology is used to enhance the class experience. When students are surfing the web, responding to e-
+mail, instant messaging each other, and otherwise not devoting their full attention to the topic at hand
+they are doing themselves and their peers a major disservice. Those around them face additional
+distraction. Fellow students cannot benefit from the insights of the students who are not engaged. Faculty
+office hours are spent going over class material with students who chose not to pay attention, rather than
+truly adding value by helping students who want a better understanding of the material or want to explore
+
+the issues in more depth. Students with real needs may not be able to obtain adequate help if faculty time
+is spent repeating what was said in class. There are often cases where learning is enhanced by the use of
+technology in class. Faculty will let you know when it is appropriate.
+• Phones and wireless devices are turned off. We’ve all heard the annoying ringing in the middle of a
+meeting. Not only is it not professional, it cuts off the flow of discussion when the search for the offender
+begins. When a true need to communicate with someone outside of class exists (e.g., for some medical
+need) please inform the professor prior to class.
+GRADING FOR THIS COURSE
+Your grade in the course will be determined as follows:
+Project Weight
+Final Exam 60%
+Homework 40%
+This course uses the target distribution as a guideline for establishing final grades:
+Grade GPA Proportion
+A 4.0 25%
+A- 3.67 20%
+B+ 3.33 15%
+B 3.0 35%
+B- or below 2.67 or below 5%
+Group Homework Assignments
+There will be six homework assignments during the course. The assignments will be distributed the week prior to
+the due date and need to be submitted electronically through Canvas by the dates and times indicated on the
+assignments. Late submissions will not be accepted, and all homework assignments must be completed (i.e., no
+drops). You will work in your assigned study groups and the group composition needs to be identical for all the
+homeworks.
+Final Exam
+The final exam is scheduled for Monday, October 3rd from 9:00AM-12:00PM. The exact time and
+location/format of the exam will be announced in class as we approach the end of the semester. Please contact me
+prior to the exam if you need to miss the exam due to religious holidays or other justified reasons. The final exam
+will be based primarily on material covered in class.
+MyFinanceLab
+MyFinanceLab is an optional tool that is bundled with the Berk/DeMarzo textbook. It gives you additional
+opportunities to review and practice the class material. To register for our class, please see the instructions posted
+in Canvas.
+
+COURSE OUTLINE AND TENTATIVE SCHEDULE:
+Meeting Day Date Topic Berk-DeMarzo Chapter
+1 Tu/W Aug 16/17 I. Financial Management 1, 4
+II. Time Value of Money
+2 Th/Fri Aug 18/19 II. Time Value of Money (cont’d) 4
+3 M/Tu Aug 22/23 II. Time Value of Money (cont’d) 4, 5
+III. Interest Rates
+4 W/Th Aug 24/25 IV. Bond Markets and Bond Valuation 6, 24
+Homework 1 Due
+5 M/Tu Aug 29/30 IV. Bond Markets and Bond Valuation (cont’d) 6, 24, 23
+V. Equity Markets
+6 W/Th Aug 31/Sep 1 VI. Equity Valuation 9
+Homework 2 Due
+7 Tu/W Sep 6/7 VI. Equity Valuation (cont’d) 9
+8 Th/Fri Sep 8/9 VII. Portfolio Theory I 10
+Homework 3 Due
+9 M/Tu Sep 12/13 VII. Portfolio Theory I 11
+10 W/Th Sep 14/15 VIII. Portfolio Theory II 12
+Homework 4 Due
+11 M/Tu Sep 19/20 IX. CAPM and Cost of Capital 12
+12 W/Th Sep 21/22 X. Investment Decision Rules 7
+Homework 5 Due
+13 M/Tu Sep 26/27 XI. Capital Budgeting 8, 18
+14 W/Th Sep 28/29 XII. Capital Structure 14, 15, 16
+Homework 6 Due
+
+Policies
+CLASSROOM POLICIES
+STATEMENT ON LEARNING SUCCESS
+Your success in this class is important to me and I recognize that all students do not learn in exactly the same
+way. If there are aspects of this course that prevent you from learning or exclude you, please let me know as soon
+as possible. Together we’ll develop strategies to meet both your needs and the requirements of the course. I also
+encourage you to reach out to the student resources available through UT. Many are listed on this syllabus, but I
+am happy to connect you with a person or Center if you would like.
+SHARING OF COURSE MATERIALS IS PROHIBITED
+Sharing of Course Materials is Prohibited: No materials used in this class, including, but not limited to, lecture
+hand-outs, videos, assessments (quizzes, exams, papers, projects, homework assignments), in-class materials,
+review sheets, and additional problem sets, may be shared online or with anyone outside of the class unless you
+have my explicit, written permission. Unauthorized sharing of materials promotes cheating. It is a violation of
+the University’s Student Honor Code and an act of academic dishonesty. We are aware of the sites used for
+sharing materials, and any materials found online that are associated with you, or any suspected unauthorized
+sharing of materials, will be reported to Student Conduct and Academic Integrity in the Office of the Dean of
+Students. These reports can result in sanctions, including failure in the course.
+FERPA AND CLASS RECORDINGS
+Any class recordings are reserved only for students in this class for educational purposes and are protected
+under FERPA. The recordings should not be shared outside the class in any form. Violation of this restriction by
+a student could lead to Student Misconduct proceedings.
+STUDENT RIGHTS & RESPONSIBILITIES
+• You have a right to a learning environment that supports mental and physical wellness.
+• You have a right to respect.
+• You have a right to be assessed and graded fairly.
+• You have a right to freedom of opinion and expression.
+• You have a right to privacy and confidentiality.
+• You have a right to meaningful and equal participation, to self-organize groups to improve your learning
+environment.
+• You have a right to learn in an environment that is welcoming to all people. No student shall be isolated,
+excluded or diminished in any way.
+
+With these rights come responsibilities:
+• You are responsible for taking care of yourself, managing your time, and communicating with the
+teaching team and with others if things start to feel out of control or overwhelming.
+• You are responsible for acting in a way that is worthy of respect and always respectful of others. • Your
+experience with this course is directly related to the quality of the energy that you bring to it, and your
+energy shapes the quality of your peers’ experiences.
+• You are responsible for creating an inclusive environment and for speaking up when someone is
+excluded.
+• You are responsible for holding yourself accountable to these standards, holding each other to these
+standards, and holding the teaching team accountable as well.
+DIVERSITY AND INCLUSION
+It is my intent that students from all diverse backgrounds and perspectives be well served by this course, that
+students’ learning needs be addressed and that the diversity that students bring to this class can be comfortably
+expressed and be viewed as a resource, strength and benefit to all students. Please come to me at any time with
+any concerns. You can also reach out to our Graduate DE&I coordinator, Zerina Hamulic, to discuss any
+concerns (Zerina.Hamulic@mccombs.utexas.edu).
+PERSONAL PRONOUN PREFERENCE
+Professional courtesy and sensitivity are especially important with respect to individuals and topics dealing with
+differences of race, culture, religion, politics, sexual orientation, gender, gender variance, and nationalities. Class
+rosters are provided to the instructor with the student’s legal name. I will gladly honor your request to address
+you by a name different than what appears on the roster, and by the gender pronouns you use. Please advise me
+of this preference early in the semester so that I may make appropriate changes to my records.
+UNIVERSITY POLICIES
+ACADEMIC INTEGRITY
+Each student in the course is expected to abide by the University of Texas Honor Code: “As a student of The
+University of Texas at Austin, I shall abide by the core values of the University and uphold academic integrity.”
+Plagiarism is taken very seriously at UT. Therefore, if you use words or ideas that are not your own (or
+that you have used in previous class), you must cite your sources. Otherwise you will be guilty of plagiarism and
+subject to academic disciplinary action, including failure of the course. You are responsible for understanding
+UT’s Academic Honesty and the University Honor Code which can be found at the following web address:
+https://deanofstudents.utexas.edu/conduct/standardsofconduct.php
+
+UNIVERSITY RESOURCES FOR STUDENTS
+Your success in this class is important to me. We will all need accommodations because we all learn differently.
+If there are aspects of this course that prevent you from learning or exclude you, please let me know as soon as
+possible. Together we’ll develop strategies to meet both your needs and the requirements of the course. There
+are also a range of resources on campus:
+SERVICES FOR STUDENTS WITH DISABILITIES
+This class respects and welcomes students of all backgrounds, identities, and abilities. If there are circumstances
+that make our learning environment and activities difficult, if you have medical information that you need to
+share with me, or if you need specific arrangements in case the building needs to be evacuated, please let me
+know. I am committed to creating an effective learning environment for all students, but I can only do so if you
+discuss your needs with me as early as possible. I promise to maintain the confidentiality of these discussions. If
+appropriate, also contact Services for Students with Disabilities, 512-471-6259 (voice) or 1-866-329- 3986 (video
+phone). https://diversity.utexas.edu/disability/
+COUNSELING AND MENTAL HEALTH CENTER
+Do your best to maintain a healthy lifestyle this semester by eating well, exercising, avoiding drugs and alcohol,
+getting enough sleep and taking some time to relax. This will help you achieve your goals and cope with stress.
+All of us benefit from support during times of struggle. You are not alone. There are many helpful resources
+available on campus and an important part of the college experience is learning how to ask for help. Asking for
+support sooner rather than later is often helpful.
+If you or anyone you know experiences any academic stress, difficult life events, or feelings like anxiety or
+depression, we strongly encourage you to seek support. cmhc.utexas.edu/individualcounseling.html
+STUDENT EMERGENCY SERVICES:
+If at any time you experience an emergency that necessitates your absence from a class requirement (e.g.,
+attendance, assignment submission, or exam), please report your circumstances and absence via the Student
+Emergency Services website: deanofstudents.utexas.edu/emergency
+IMPORTANT SAFETY INFORMATION
+If you have concerns about the safety or behavior of fellow students, TAs or Professors, call BCAL (the Behavior
+Concerns Advice Line): 512-232-5050. Your call can be anonymous. If something doesn’t feel right – it
+probably isn’t. Trust your instincts and share your concerns.
+
+TITLE IX REPORTING
+Title IX is a federal law that protects against sex and gender-based discrimination, sexual harassment, sexual
+assault, sexual misconduct, dating/domestic violence and stalking at federally funded educational institutions.
+UT Austin is committed to fostering a learning and working environment free from discrimination in all its
+forms. When sexual misconduct occurs in our community, the university can:
+1. Intervene to prevent harmful behavior from continuing or escalating.
+2. Provide support and remedies to students and employees who have experienced harm or have become
+involved in a Title IX investigation.
+3. Investigate and discipline violations of the university’s relevant policies.
+Faculty members and certain staff members are considered “Responsible Employees” or “Mandatory Reporters,”
+which means that they are required to report violations of Title IX to the Title IX Coordinator. I am a
+Responsible Employee and must report any Title IX related incidents that are disclosed in writing,
+discussion, or one-on-one. Before talking with me, or with any faculty or staff member about a Title IX related
+incident, be sure to ask whether they are a responsible employee. If you want to speak with someone for support
+or remedies without making an official report to the university, email advocate@austin.utexas.edu For more
+information about reporting options and resources, visit titleix.utexas.edu or contact the Title IX Office at
+titleix@austin.utexas.edu.
+The following recommendations regarding emergency evacuation from the Office of Campus Safety and
+Security, 512-471-5767, https://safety.utexas.edu/.
+Occupants of buildings on The University of Texas at Austin campus are required to evacuate buildings when a
+fire alarm is activated. Alarm activation or announcement requires exiting and assembling outside.
+• Familiarize yourself with all exit doors of each classroom and building you may occupy. Remember that
+the nearest exit door may not be the one you used when entering the building.
+• Students requiring assistance in evacuation shall inform their instructor in writing during the first week
+of class.
+• In the event of an evacuation, follow the instruction of faculty or class instructors. Do not re-enter a
+building unless given instructions by the following: Austin Fire Department, The University of Texas at
+Austin Police Department, or Fire Prevention Services office.
+• Link to information regarding emergency evacuation routes and emergency procedures can be found at:
+emergency.utexas.edu

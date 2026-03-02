@@ -3,7 +3,7 @@
     "id": "math343",
     "course_code": "MATH 343",
     "course_title": "Introduction to Statistics",
-    "term": null,
+    "term": "Winter 2024",
     "timezone": "America/Los_Angeles",
     "instructors": [
       {
@@ -125,9 +125,9 @@
       "title": "Final exam",
       "category_id": "final",
       "type": "final",
-      "due_datetime": null,
-      "all_day": true,
-      "timezone": null,
+      "due_datetime": "2024-03-20T14:45:00",
+      "all_day": false,
+      "timezone": "America/Los_Angeles",
       "weight_percent": 40,
       "points": null,
       "recurrence": null,

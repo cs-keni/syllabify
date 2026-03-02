@@ -3,10 +3,10 @@
     "id": "cs315",
     "course_code": "CS 315",
     "course_title": "Intermediate Algorithms",
-    "term": null,
+    "term": "Winter 2025",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      {"id": "inst-0", "name": "Thanh H. Nguyen", "email": null}
+      {"id": "inst-0", "name": "Thanh H. Nguyen", "email": "thanhhng@cs.uoregon.edu"}
     ],
     "meeting_times": [
       {"id": "mt-1", "day_of_week": "TU", "start_time": "14:00", "end_time": "15:20", "timezone": "America/Los_Angeles", "location": "145 STB", "type": "lecture"},

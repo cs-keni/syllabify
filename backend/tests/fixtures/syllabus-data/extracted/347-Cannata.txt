@@ -1,0 +1,228 @@
+CS347 http://www.cs.utexas.edu/~cannata/dbms/
+Homepage
+Syllabus
+Honesty
+Code of Conduct
+MW 400 to 530p GDC 2.216
+Course 51925
+cs347 data management
+Dr. Philip Cannata
+Exercises & Homework
+Book Exercises:
+Use the following schemas for the exercises in the Book
+ap_schema for SQL Homework
+ap Data Model
+ex_schema for SQL Homework
+ex Data Model
+om_schema for SQL Homework
+om Data Model
+Download a zip file with the solutions to all of the exercise at this link.
+---------------------------------------------
+Homework:
+SQL HW Guidelines
+The My Guitar Shop Schema for the SQL Homework is at this link.
+A picture of the My Guiitar Shop Logical Model is at this link.
+The My Guitar Shop Data Model is at this link.
+Homework 1 - Solutions
+Chapter 3 of the book, which is needed for this homework, is online at link.
+AVG 9.1
+A 121
+B 11
+C 0
+D 2
+F 5
+Homework 2 - Due February 3
+AVG 0
+A 0
+B 0
+C 0
+D 0
+F 0
+1 of 7 2/4/15, 10:37 AM
+
+CS347 http://www.cs.utexas.edu/~cannata/dbms/
+Quizzes
+Quiz 1 - Solutions
+AVG 7.9
+A 17
+B 62
+C 50
+D 6
+F 4
+Exams
+Midterm Exam - March 11, 2015
+Final Exam - TBD
+Project
+Initial Project Reviews - April 1-3, 2015
+Project Requirements and Suggestions
+Register Your Project
+Review Schedule
+FInal Project Reviews - April 27 - 30, 2015
+Project Requirements and Suggestions
+Project Grading Rubric
+Review Schedule
+Documents Tutorial
+Selected Project Presentations
+Requested URLs
+Welcome to CS347!
+Instructor: Dr. Philip Cannata, phil.cannata@oracle.com, office hours: MW 3:00 - 3:45 in GDC
+5.402.
+TA: Yuepeng Wang, ypwang@cs.utexas.edu, office hours: TTH 2-3pm @ GDC 1.302 TA station Desk 3
+TA: Cheng Fu, chengfu16@gmail.com, office hours: TTH 1-2pm @ GDC 1.302 TA station Desk 3
+Canvas link.
+We will be using Piazza.
+Make sure you are registered with piazza for this course and be sure to check and read your piazza email several times a
+2 of 7 2/4/15, 10:37 AM
+
+CS347 http://www.cs.utexas.edu/~cannata/dbms/
+day because this will be the primary means of communication outside of class time.
+Oracle scott/tiger database.
+Cut and paste from this link into SQLDeveloper to load the emp and dept tables into your Oracle user account.
+SQL from Class.
+Types of Joins:
+Inner Joins - the following 3 are essentially the same except for syntax:
+select * from emp e, dept d where e.deptno = d.deptno
+select * from emp e join dept d on e.deptno = d.deptno
+select * from emp e inner join dept d on e.deptno = d.deptno
+Outer Joins:
+select * from emp e right outer join dept d on e.deptno = d.deptno
+select * from emp e left outer join dept d on e.deptno = d.deptno
+select * from emp e full outer join dept d on e.deptno = d.deptno
+Self Join
+SELECT e1.*, 'Manager is: ' || e2.ename
+FROM EMP e1 left outer join EMP e2
+on e2.empno = e1.mgr
+See also http://stackoverflow.com/questions/38549/difference-between-inner-and-outer-joins for more
+details.
+Group By:
+select job, round(avg(sal), 2) from emp
+where sal > 2000
+group by job
+having round(avg(sal), 2) > 3000
+Views:
+create view emp_v1 as select ename, job, mgr from emp
+select * from emp_v1
+Interesting Queries:
+3 of 7 2/4/15, 10:37 AM
+
+CS347 http://www.cs.utexas.edu/~cannata/dbms/
+select e.*, nvl(sal * comm, 0) from emp e
+select t.*, (select dname from dept where deptno = 10) job, "Num" * "Percent" as nump
+from (select 10 "Num", 0.7 "Percent" from dual) t
+where "Num" = (select deptno from dept where dname = 'ACCOUNTING')
+Oracle DBMS Architecture.
+This is the Database Management System (DBMS) Architecture that we will be studying in this course. See the following for a detailed
+discussion of the Oracle Architecture
+1. See Lesson 1 of "Oracle Admin I Vol 1 D62541.pdf"
+2. Oracle Architecture Overview
+3. Oracle Instance Architecture
+4. Oracle Architecture
+5. Oracle DBMS Concepts
+Click here for a larger view.
+4 of 7 2/4/15, 10:37 AM
+
+CS347 http://www.cs.utexas.edu/~cannata/dbms/
+Data Management Salaries.
+Click here to see the full report. This image comes from page 7 of the report.
+Class Notes
+[optional items]
+January 21- Welcome and Introduction
+1. Class Notes - Intro to Data Management Class
+2. [SQLDeveloper - see Appendix E SQL Fundamentals Vol. I]
+3. [SQL Fundamentals Vol. I]
+4. [SQL Fundamentals Vol. II]
+5. [Oracle SQL Certification - exam discounts available, ask Dr. Cannata]
+January 26, 28, and February 2 - Data Modeling
+1. Class Notes - Data Models and Data Modeling
+2. [Data Modeling using Barker Notation]
+3. [Hierarchical Data Models in Relation DDatabases.]
+4. [See also "Unit III - Developing a Logical Data Model" in "Oracle Data Modeling and Relational Database Design
+Volume I • Student Guide"]
+5. Generated DDL file should be passed through 2 parsers to generate 2 more DDL files:
+1. Here's how to do it.
+2. parser1
+3. parser2
+5 of 7 2/4/15, 10:37 AM
+
+CS347 http://www.cs.utexas.edu/~cannata/dbms/
+4. [Unix/Linux Tutorial]
+6. Class Organization App.zip
+February 4, 9, 11 - Building a Simple APEX Application
+Click here for an export of my APEX Airline App. that you can import into your
+APEX workspace.
+More advanced tutorials
+1. Tutorial 1
+2. Tutorial 2
+February 16 - Oracle Architecture - see documents in the middle column of this page.
+February 18, 23 - Transactions and Concurrency Control
+1. Class Notes
+2. [See Lessons 9 and 10 of "Oracle Admin I Vol 1 D62541.pdf"]
+3. Class Notes 2
+4. An Overview of the Mechanisms of Oracle RDBMS Transactions and Logs
+February 25 - Relational Algebra and Query Optimization Part 1
+1. Class Notes
+2. The following schema is used in the class notes,
+1. Sporting Goods Data Model
+2. Sporting Goods Schema
+3. [Reading Execution Plans]
+March 2, 4 - B-Tree Indexing
+1. Class Notes
+March 9 - Midterm Exam Reivew
+1. Class Notes
+March 11 - Mid-term Exam
+1. Solutions
+March 16 - Spring Break
+March 18 - Spring Break
+March 23 - Current and Future Data Management - Part 1
+Click here for a larger view.
+1. Class Notes - Triple-Store (Graph) Databases
+2. [Making Sense of Graph DBMSs]
+3. [MongoDB]
+4. [MongoDB presentations and Videos]
+5. [Summary of Graph DBMSs]
+March 25 - Project Discussion
+March 30 - Current and Future Data Management Part 2
+Click here for a larger view.
+1. A Short Course on Next Generation DBMSs, 1988
+2. [A little warning about Hadoop]
+3. Hammer and McLeod SDM Paper
+4. SIM
+6 of 7 2/4/15, 10:37 AM
+
+CS347 http://www.cs.utexas.edu/~cannata/dbms/
+5. My 1991 predictions
+April 1-3 - Initial Project Reviews
+April 6, 8, 13 - Normalization
+1. Normalization Class Notes
+2. Sample Normalization Quiz
+3. [Murach pages 300 - 310]
+4. [Godel's Proof]
+5. [Godel without tears]
+April 15, 20, 22 - Query Optimization Part 2
+The following 3 bullet items were copied from October 6th above, which was
+Query Optimization Part 1
+1. Class Notes - in these classes, we will discuss pages 5, 7, 8, 9, 10, 12, 13, and 16 in detail
+2. The following schema is used in the class notes,
+1. Sporting Goods Data Model
+2. Sporting Goods Schema
+3. Reading Execution Plans
+4. [Query Optimization Concepts]
+Do alter session set OPTIMIZER_FEATURES_ENABLE = '11.2.0.1' for the
+following:
+1. [Execution Plans_ Part 1 Finding plans]
+2. [ExecutionPlans Part 2_ Things to see]
+3. Execution Plans Part 3_ “The Rule”
+4. [Execution Plans Part 4_ Precision and Timing]
+5. [Execution Plans part 5_ First Child Variations]
+6. [Execution Plans Part 6_ Pushed Subqueries]
+7. [Execution Plans Part 7_ Query Blocks and Inline View]s
+8. [Execution Plans Part 8_ Cost, time, etc.]
+9. [Execution Plans Part 9_ Multiplication]
+10. [Execution Plans Part 10_ Guesswork]
+April 27 - 30 - Project Reviews
+May 4 - Selected Project Presentations
+May 6 - Wrap-up
+1. Class Notes
+Last Semester's Selected Projects:
+© 2009 All Rights Reserved • Design by Free CSS Templates.
+7 of 7 2/4/15, 10:37 AM

@@ -1,0 +1,161 @@
+{
+  "course": {
+    "id": "354-fussell",
+    "course_code": "CS 354",
+    "course_title": "Computer Graphics",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Donald S. Fussell",
+        "email": "fussell@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "GSB 2.126",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "GSB 2.126",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "GSB 2.126",
+        "type": "lecture"
+      }
+    ],
+    "location": "GSB 2.126"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework_quizzes",
+      "name": "Homework and quizzes",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "programming",
+      "name": "Programming Assignments",
+      "weight_percent": 60,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Exams 15% each"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 15,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Exams 15% each"
+    },
+    {
+      "id": "homework_quizzes_1",
+      "title": "Homework and quizzes",
+      "category_id": "homework_quizzes",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Homework and quizzes 10%"
+    },
+    {
+      "id": "programming_1",
+      "title": "Programming Assignments",
+      "category_id": "programming",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Programming Assignments 60%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 3,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

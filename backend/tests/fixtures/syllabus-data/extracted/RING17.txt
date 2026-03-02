@@ -1,0 +1,53 @@
+PHYSICS 387K: SPRING 2017
+GENERAL INFORMATION
+Course Number PHY 387K
+Unique Number 57005
+Course Title Electromagnetic Theory
+Instructor Prof. Richard Fitzpatrick
+Instructor Office Phone 471-9439
+Instructor E-Mail rfitzp1632@gmail.com
+Instructor Office Location RLM 11.324
+Instructor Office Hours Tues. 2–5 pm
+Grader TBA
+Main Text J.D. Jackson, Classical Electrodynamics,
+3rd Edition (Wiley, 1999), Chapters 1–9.
+CALCULATION OF FINAL PERCENTAGE SCORE
+Assignment Type Number % per Assignment Total %
+Homework 8 7 56
+Midterm Exam 1 14 14
+Final Exam 1 30 30
+ADDITIONAL INFORMATION
+(cid:127) The course will cover selected topics in the first 9 chapters of
+Jackson.
+1
+
+(cid:127) Students with disabilities may request appropriate academic
+accommodations from the Division of Diversity and Commu-
+nity Engagement, Services for Students with Disabilities, 471-
+6259.
+(cid:127) Students who cannot attend the official office hours should con-
+tact the instructor to arrange a mutually convenient weekly
+meeting time.
+(cid:127) Homeworkassignmentswillbehandedoutinclassontheassign
+date, and also posted on Canvas.
+(cid:127) Homework assignments are due in class on the due date. Late
+homework will not be accepted without a valid excuse (e.g.,
+illness, family emergency).
+(cid:127) Students are free to discuss homework with classmates, but all
+written work must be prepared independently.
+(cid:127) Homework solutions will be handed out in class and posted on
+Canvas.
+(cid:127) All exams are closed book. Students are expected to provide
+their own paper.
+(cid:127) Make up exams will only bepermitted incases of illness, family
+emergency, and time conflict with official university activities.
+(cid:127) Exam solutions will be handed out in class and posted on Can-
+vas.
+(cid:127) All scores will be posted on Canvas.
+(cid:127) Attendance will not be used in the determination of the final
+percentage score.
+(cid:127) A curve may be used in the calculation of the final letter grade.
+(cid:127) Borderline cases will be assigned a grade on the basis of per-
+formance in the comprehensive final exam.
+(cid:127) Plus/minus grades will be assigned in the final letter grade.
+2

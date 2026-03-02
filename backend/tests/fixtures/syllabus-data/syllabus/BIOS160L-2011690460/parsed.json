@@ -1,0 +1,152 @@
+{
+  "course": {
+    "id": "bios160l-2011690460",
+    "course_code": "BIO 160L",
+    "course_title": "Immunology Laboratory",
+    "term": "Summer 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Emin Ulug",
+        "email": "ulug@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "13:00",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "BME 2.310",
+        "type": "lab"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "13:00",
+        "end_time": "17:00",
+        "timezone": "America/Chicago",
+        "location": "BME 2.310",
+        "type": "lab"
+      }
+    ],
+    "location": "BME 2.310"
+  },
+  "assessment_categories": [
+    {
+      "id": "lab_reports",
+      "name": "Lab Reports and Problems",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "technique",
+      "name": "Technique",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "lab_reports_1",
+      "title": "Lab Reports and Problems",
+      "category_id": "lab_reports",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "1 day -20%, 2-7 days -50%, >7 days no credit",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Labs 6 and 9 count double"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm Exam",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-08-01T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Aug 1"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "exams",
+      "type": "final",
+      "due_datetime": "2011-08-15T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Aug 15"
+    },
+    {
+      "id": "technique_1",
+      "title": "Technique",
+      "category_id": "technique",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Incl. pop quizzes"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

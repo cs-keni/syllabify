@@ -1,0 +1,212 @@
+{
+  "course": {
+    "id": "07770-quigley",
+    "course_code": "07770",
+    "course_title": "Mobile News App Design",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Robert Quigley",
+        "email": "robert.quigley@austin.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "12:30",
+        "end_time": "14:00",
+        "timezone": "America/Chicago",
+        "location": "BMC 3.208",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "12:30",
+        "end_time": "14:00",
+        "timezone": "America/Chicago",
+        "location": "BMC 3.208",
+        "type": "lecture"
+      }
+    ],
+    "location": "BMC 3.208"
+  },
+  "assessment_categories": [
+    {
+      "id": "app",
+      "name": "App grade",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "review",
+      "name": "Student review of work",
+      "weight_percent": 24,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "demos",
+      "name": "End-of-sprint demos",
+      "weight_percent": 16,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "blogging",
+      "name": "Blogging",
+      "weight_percent": 14,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "videos",
+      "name": "Videos",
+      "weight_percent": 14,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "social",
+      "name": "Social media",
+      "weight_percent": 7,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "app_1",
+      "title": "App grade",
+      "category_id": "app",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "25 percent: App grade"
+    },
+    {
+      "id": "review_1",
+      "title": "Student review of work",
+      "category_id": "review",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 24,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "24 percent: Student review of work"
+    },
+    {
+      "id": "demos_1",
+      "title": "End-of-sprint demos",
+      "category_id": "demos",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 16,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "16 percent: End-of-sprint demos"
+    },
+    {
+      "id": "blogging_1",
+      "title": "Blogging",
+      "category_id": "blogging",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 14,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "14 percent: Blogging"
+    },
+    {
+      "id": "videos_1",
+      "title": "Videos",
+      "category_id": "videos",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 14,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "14 percent: Videos"
+    },
+    {
+      "id": "social_1",
+      "title": "Social media",
+      "category_id": "social",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 7,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "7 percent: Social media"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

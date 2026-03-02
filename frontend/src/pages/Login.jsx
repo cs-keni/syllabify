@@ -2,16 +2,22 @@
  * Login page. Validates credentials via AuthContext, redirects to Dashboard or SecuritySetup.
  * DISCLAIMER: Project structure may change. Functions may be added or modified.
  */
-import { useState } from 'react';
-import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, Link, Navigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
+import toast from 'react-hot-toast';
 
 /** Login form. Uses AuthContext.login, redirects based on security_setup_done. */
 export default function Login() {
   const { user, securitySetupDone, login } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const expired = searchParams.get('expired');
+  useEffect(() => {
+    if (expired === '1') toast.error('Session expired. Please sign in again.');
+  }, [expired]);
   if (user && securitySetupDone) return <Navigate to="/app" replace />;
   if (user && !securitySetupDone)
     return <Navigate to="/security-setup" replace />;
@@ -131,7 +137,7 @@ export default function Login() {
                 required
                 autoComplete="username"
                 className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
-                placeholder="syllabify-client"
+                placeholder="Enter your username"
               />
             </div>
             <div>
@@ -160,8 +166,13 @@ export default function Login() {
               {submitting ? 'Logging in...' : 'Log in'}
             </button>
             <p className="text-center text-sm text-ink-muted">
-              New? You can create an account later. For now use the dev client
-              to log in.
+              Don&apos;t have an account?{' '}
+              <Link
+                to="/register"
+                className="text-accent hover:underline font-medium"
+              >
+                Sign up
+              </Link>
             </p>
           </form>
         </div>

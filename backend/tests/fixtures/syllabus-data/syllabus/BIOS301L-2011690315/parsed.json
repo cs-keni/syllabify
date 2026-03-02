@@ -1,0 +1,163 @@
+{
+  "course": {
+    "id": "bios301l-2011690315",
+    "course_code": "BIO 301L",
+    "course_title": "Molecules to Organisms",
+    "term": "Summer 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Zaiming Zhao",
+        "email": "zhaozaiming@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "11:30",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TU",
+        "start_time": "11:30",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "WE",
+        "start_time": "11:30",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "TH",
+        "start_time": "11:30",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-5",
+        "day_of_week": "FR",
+        "start_time": "11:30",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.104",
+        "type": "lecture"
+      }
+    ],
+    "location": "RLM 5.104"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 100,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-07-21T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Medical excuse required for makeup",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Jul 21"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-08-02T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Aug 2"
+    },
+    {
+      "id": "exam_3",
+      "title": "Exam 3",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-08-11T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Aug 11"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "exams",
+      "type": "final",
+      "due_datetime": "2011-08-15T14:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Missed final receives F or X",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Aug 15 2-5pm"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

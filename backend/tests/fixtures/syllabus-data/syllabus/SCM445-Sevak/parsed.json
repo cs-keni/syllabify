@@ -4,7 +4,7 @@
     "course_code": "SCM 445",
     "course_title": "Supply Chain Management",
     "term": "Spring 2025",
-    "timezone": "America/Los_Angeles",
+    "timezone": "America/New_York",
     "instructors": [
       {
         "id": "inst-0",
@@ -18,7 +18,7 @@
         "day_of_week": "MO",
         "start_time": "14:30",
         "end_time": "15:45",
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "location": "Olmsted E330",
         "type": "lecture"
       },
@@ -27,7 +27,7 @@
         "day_of_week": "WE",
         "start_time": "14:30",
         "end_time": "15:45",
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "location": "Olmsted E330",
         "type": "lecture"
       }

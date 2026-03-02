@@ -1,0 +1,197 @@
+{
+  "course": {
+    "id": "bios320-2011690380",
+    "course_code": "BIO 320",
+    "course_title": "Cell Biology",
+    "term": "Summer 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Inder M. Saxena",
+        "email": "ims1030@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 7.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TU",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 7.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "WE",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 7.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "TH",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 7.104",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-5",
+        "day_of_week": "FR",
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "timezone": "America/Chicago",
+        "location": "RLM 7.104",
+        "type": "lecture"
+      }
+    ],
+    "location": "RLM 7.104"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 75,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Quizzes",
+      "weight_percent": 19,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "discussion",
+      "name": "Discussion Attendance",
+      "weight_percent": 6,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Make-up only for first two exams with documentation",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "100 pts"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "100 pts"
+    },
+    {
+      "id": "exam_3",
+      "title": "Exam 3",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 25,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "100 pts"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Quizzes",
+      "category_id": "quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 19,
+      "points": 75,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No make-up for missed quiz",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "3 quizzes 25 pts each"
+    },
+    {
+      "id": "discussion_1",
+      "title": "Discussion Attendance",
+      "category_id": "discussion",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 6,
+      "points": 25,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "25 pts"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "bio365r-2011250535",
+    "course_code": "BIO 365R",
+    "course_title": "Vertebrate Physiology",
+    "term": "Spring 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "George D. Bittner",
+        "email": "bittner@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "08:00",
+        "end_time": "09:30",
+        "timezone": "America/Chicago",
+        "location": "PAI 3.02",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "08:00",
+        "end_time": "09:30",
+        "timezone": "America/Chicago",
+        "location": "PAI 3.02",
+        "type": "lecture"
+      }
+    ],
+    "location": "PAI 3.02"
+  },
+  "assessment_categories": [
+    {
+      "id": "midterm",
+      "name": "Midterm Exam",
+      "weight_percent": 25,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes_homework",
+      "name": "Weekly Quizzes and Homework",
+      "weight_percent": 20,
+      "drop_lowest": 2,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "participation",
+      "name": "Class Participation",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "midterm_1",
+      "title": "Midterm",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": "2011-02-22T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 25,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Feb 22 in class"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2011-05-17T09:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "May 17 9am-12 noon comprehensive"
+    },
+    {
+      "id": "quizzes_1",
+      "title": "Weekly Quizzes and Homework",
+      "category_id": "quizzes_homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No make-ups without permission; drop 2 lowest",
+        "late_pass_allowed": 2
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Weekly quizzes Mon, drop 2 lowest"
+    },
+    {
+      "id": "participation_1",
+      "title": "Class Participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Class participation 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": 2,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

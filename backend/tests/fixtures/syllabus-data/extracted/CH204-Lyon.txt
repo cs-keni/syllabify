@@ -1,0 +1,975 @@
+CH 204 – Introduction to Chemical Practice
+Fall 2012
+INSTRUCTOR: Dr. Donna C. Lyon
+OFFICE: WEL 5.234
+PHONE: (512) 471-4504
+E-MAIL: dclyon@cm.utexas.edu
+OFFICE HOURS: Tuesday, Wednesday, Thursday 9:30 - 10:30AM
+COURSE WEB PAGE (Blackboard): http://courses.utexas.edu/
+The course web site has announcements and useful information. It also contains a TA schedule of office
+hours. Although you will have a Blackboard link for your lab section, the course materials will be posted
+under the CH204 Master Class Fall 2012. Your individual TA will communicate with you through your
+section link. To enter Blackboard, use the URL above, enter you EID and password.
+Posted on Blackboard under the course documents link:
+1. The course syllabus
+2. The course calendar (this has all information regarding lectures, quizzes, post-lab assignments
+and lab reports).
+3. Iclicker instructions for taking lecture quizzes.
+4. Supplemental materials (information supplemental to the lab manual that may be beneficial in
+helping lab write-ups and preparation for lecture quizzes).
+5. Lecture PowerPoint slides (the lecture slides will be posted on Blackboard at the end of each
+week).
+6. LabQuest Manual (you will use the LabQuest hand held devices to measure temperature and pH
+throughout the semester).
+7. Dr. Lyon and TA office hours.
+8. Instructions and password for downloading LoggerPro Software for data analysis.
+Please be sure your e-mail address is correct on Blackboard. If your e-mail address is not correct, please
+contact the Blackboard help desk for assistance in correcting it. It is through Blackboard e-mail that your
+TA and Dr. Lyon communicates with you. If you do not receive an e-mail from your TA after the first
+week of labs, you need to check your e-mail address in Blackboard.
+QUEST HOMEWORK SYSTEM: http://quest.cns.utexas.edu/student/
+The Quest homework system will be used to administer and submit answers for post-lab assignments. All
+quizzes will be taken through Quest. The course grades for all assignments will also be available on this
+Website. To access this course in Quest:
+1. Enter your UT EID
+2. Make sure your browser is supported (read the help topics for information concerning your
+browser if you are unable to register in Quest for this course)
+3. When you view "My Courses", if you don't see any courses listed, click "Enroll in new
+course".
+a. Use the course unique number for your lab section and enter this when
+prompted. Dr. Lyon will be notified that you want to register, and you will see a
+status message indicating that your enrollment is pending.
+4. Viewing and submitting your assignment.
+1
+
+a. Choose My Courses to view your course listings, and then choose a course to see
+the assignments associated with that course.
+b. Click on an individual assignment to see the problems and the radial buttons in
+which you are able to submit your answers. Post-lab assignments have many
+different variations, so your assignment will be different from other students in
+your class. All assignments have due dates and cannot be reactivated once the due
+date has passed. The answers for the post-lab assignments will be available after
+the due date has passed for all lab sections.
+5. Located at the top of the assignments page is a toolbar with a” help” link.
+a. Under “help” there are several links to information regarding browser support,
+numbers (how to enter scientific notation), number of answer submissions allowed
+for questions on post-lab assignments, how negative points are determined and
+how to register an iclicker for your course. READ THIS INFORMATION!
+NOTE: This course makes use of the web-based Quest content delivery and homework server system
+maintained by the College of Natural Sciences at The University of Texas at Austin. This homework
+service will require a $25 charge per student for its use, which goes toward the maintenance and operation
+of the resource. Please go to http://quest.cns.utexas.edu to log in to the Quest system for this class. At
+some point during the second or third week, when you log into Quest, you will be asked to pay via credit
+card on a secure payment site. You have the option to wait up to 15 days to pay while still continuing to
+use Quest for your assignments. If you are taking more than one course using Quest, you will not be
+charged more than $50/semester. For payment questions, email quest.fees@cns.utexas.edu.
+PREREQUISITE: Students registered for this course must have taken CH301 or equivalent and CH302 or
+equivalent or must be enrolled in CH302 concurrently with CH204.
+Students, enrolled in CH302, who decide to drop CH302 before or on the final drop date without possible
+academic penalty, must also drop CH204. The concepts associated with many of the lab procedures
+during the second half of the semester are covered in the second semester of general chemistry. If you
+have not remained in CH302 long enough to learn these concepts, you will not have the knowledge to
+understand these later laboratories and you will be lost and perform poorly on the remaining lab reports
+and lecture quizzes.
+TEACHING ASSISTANTS AND TA OFFICE HOURS: There are twenty TAs for this course and
+their office hours will be posted on Blackboard.
+STOREROOM: Eric Wigdahl (WEL 5.131) It is necessary that you submit all late reports to this
+storeroom.
+UNDERGRADUATE CHEMISTRY OFFICE: WEL 2.212 Phone: (512) 471-1567, (512) 471- 4983
+Address all questions regarding registration, add/drop, etc. to this office.
+IMPORTANT DATES DURING THE SPRING SEMESTER:
+CH204 labs begin during the week of September 10- 13. Students will attend the lecture and the
+laboratory for the first time during this week. Each student should bring a combination lock to the lab for
+this first meeting in order to check into their lab equipment drawers.
+2
+
+Friday, September 14, Twelfth class day; the official enrollment count is taken. This is the last day to add
+a class.
+Tuesday, November 6, this is the last day an undergraduate student may drop a class for urgent
+nonacademic reasons.
+November 19-23, Thanksgiving Holiday, there are no lectures or labs this week.
+November 26 – 29, is the last week of lectures and labs. Students will check out of lab during this week.
+December 3 – 6, the last lab report and post-lab is due.
+REQUIRED COURSE MATERIALS AND SUPPLIES
+1. The laboratory manual for this course, CH204 Fall 2012 Lab Manual, is sold exclusively in the
+Duplicating Office in WEL 2.228. Each semester the lab experiments are changed therefore, you
+must buy the lab manual for the fall 2012 semester. The lab manual is needed for the first meeting
+of labs during the week of September 10- 13.
+2. A bound laboratory notebook with duplicate numbered pages (also sold at the Duplicating Office
+in WEL 2.228, at the ACS affiliate group’s desk or at the Co-op). Please buy the top bound
+notebook with 50-pages, not the spiral notebook. Ask for the CH204 lab notebook – it is not
+spiral bound. The lab notebook is needed for the first meeting of labs during the week of
+September 10- 13. If you already purchased the spiral notebook, then you may use it during lab
+this semester, however, you paid more than you needed to spend for a lab notebook and there will
+probably be many unused pages remaining at the end of the semester.
+3. iClicker2: (Please be sure to purchase the newer iClicker 2, not the older version.) This is a radio
+frequency classroom response system. The clickers will be used to collect quiz responses during
+lecture. You should bring your iclicker to every lecture. There are more than one remote
+available for purchase. Please be sure you buy the iClicker2, which is generally less costly than
+the other available remotes. You must register your iClicker2 in Quest, not the iClicker
+Website, to receive quiz scores. If your iclicker is registered in Quest for another chemistry
+course then you are also registered for this course. (Complete instructions for registering your
+iClicker are in this syllabus, posted on Blackboard and are also available on the Quest toolbar
+(help) at the top of “My Courses” page. The iclicker can be purchased at the Co-op. You should
+bring your iClicker to the second lecture meeting (September 17- 20).
+4. Combination lock (also sold at the Duplicating Office in WEL 2.228 and in the storeroom WEL
+5.131, or any hardware or office supply store). The lock is needed for lab check-in on (September
+10-13).
+5. Scientific calculator (programmable or nonprogrammable are acceptable). The scientific
+calculator is needed by the second meeting of labs on (September 17- 20).
+6. USB drive for collecting data. Buy the USB drive with the smallest GB (4-6 GB). USB’s with
+large GB of memory do not work well in the LabQuest data collection instruments. You will need
+your USB drive starting with experiment 1 (September 17- 20).
+3
+
+7. Logger Pro 3 Software to analyze lab data. This software will be provided to you as a free
+download from the Vernier Website on September 10. At the beginning of the semester, a URL
+link and a password will be sent to students through Blackboard e-mail that will allow students to
+access and download the Logger Pro 3 Software into a personal computer. The software will also
+be available on a computer in each lab. The LabQuest experimental data collected by USB will be
+imported into the Logger Pro software for graphing, analysis and printing. Data collected by other
+means than the LabQuest will also be analyzed and printed from Logger Pro.
+WHAT TO EXPECT IN THIS CLASS:
+This is a hands-on course designed to teach you a variety of laboratory skills, including the proper use and
+handling of glassware, the techniques and processes common to many scientific labs, and standard
+methods for recording observations and data. The course consists of a weekly one-hour lecture followed
+by a four-hour lab. Most labs will not require all four hours, but there are a couple of labs that will require
+almost the entire lab period.
+Expect that most lab reports will take several hours to complete. Please do not wait to write your lab
+report until it is too late to access a TA and/or Dr. Lyon for help. (We will not be available during the
+weekends, we have lives as well.)
+TEACHING ASSISTANTS (TA)
+The lab sections are taught by graduate teaching assistants. Your TA will meet with you during the first
+lab to provide you with safety information and to supervise the check in procedure for lab equipment
+drawers. In addition, your TA will stipulate his or her specific guidelines for performing the lab
+procedures and for lab clean-up. Although the policies regarding the lab report are given below, your TA
+may have specific preferences for how information is completed in your lab report write-ups and this
+information will be specified at this initial meeting. Each TA has complete authority over his or her lab
+section and the lab report scores; therefore, it is important that you pay attention to what your TA has to
+say.
+The TA’s are provided with comprehensive grading keys that include point deduction for all lab reports.
+Although, there will be small variations from one TA to another with regard to the exact point deductions
+that will be taken for calculations and discussion questions, the overall GPA of your section as compared
+to the other lab sections are monitored weekly.
+LECTURES
+The lectures each week will cover some of the theoretical background behind that week’s experiment, and
+also provide practical tips for carrying out the experiment. They will often show sample calculations to
+help get you started on the write-up. You are encouraged to take notes during the lectures since some of
+the material covered will not be in the CH302 textbook or in the CH204 lab procedures. If you miss
+lecture, do not e-mail Dr. Lyon to request an overview of what you missed. It is your responsibility to
+find out what you missed from your peers. The lecture slides will be posted on Blackboard at the end of
+each week.
+There will also be quizzes given at the end of every lecture, which will cover the previous week’s
+material, so if you decide to work on your lab report in class instead of paying attention to the lecture, you
+may fail the quiz a week later.
+4
+
+The last lecture and lab occurs during the week of November 26 – 29. The last lab report will be due one
+week later, December 3-6, unless your TA has made arrangements with you to turn in your reports earlier.
+No late reports will be accepted after the last day of classes on Friday, December 7, 2012. The last post-
+lab will also be due the week of December 3-6.
+QUIZZES – DROP ONE
+Quizzes will typically have ten questions and you will have about 25 minutes to complete them. Your
+quiz answers will be submitted by the iClicker and immediately uploaded into Quest. All questions are
+allowed only one response. The quizzes will cover the concepts related to the experiments you performed
+during the prior week in lab. Questions are drawn from the previous week’s lecture, the background
+information preceding each procedure in the lab manual, post-lab problems, the experimental procedures
+and calculations required for the previous week’s lab. There will be a total of 9 quizzes: there will be no
+quiz for experiment 10. At the end of the semester, the lowest quiz grade will be dropped and the
+remainder will count 25% of your grade.
+The iclicker2 will be used in this course for submitting answers to quiz questions. Your iclicker must be
+registered in Quest (not the Iclicker Website). The process of registering is simple:
+1. Enter Quest and select your CH204 unique number.
+2. You are now on the assignments page. Select “My Profile” on the tool bar at the top of the
+assignments page.
+3. Type your iclicker registration number in the box to the right and update. (There are no letters L
+or O in the iclicker registration number.)
+a. The iclicker registration number is located on the back and at the bottom of your iclicker.
+Note: If you cannot read your registration number, you may take it to WEL 2.212. The
+office staff in the Undergraduate office has software that is able to determine your
+iclicker registration number.
+4. Return to the assignments page and write down your box number.
+a. Each student enrolled in CH204 is automatically assigned a box number in Quest. This
+number is located at the top left-hand corner of the assignments page – just above the list
+of assignments.
+b. To activate the box number, you must register your iclicker in ‘my profile’ as described
+above.
+c. You will need to know your box number in order to take a quiz; therefore, write it down
+and bring it to class. Your box number is not provided on the quiz hard copies, you need
+to know this information prior to taking a quiz.
+When a quiz is administered in class, the Quest software will be launched by Dr. Lyon. At this point, a
+series of numbered boxes will appear on the projection screen. Every quiz is unique and has a version
+number code at the top. You must type the 5-letter code into your box number in order for you to have the
+correct quiz version graded (see Iclicker instructions below and on Blackboard). You will then enter
+codes for answers to specific quiz questions into your box number. The questions will be immediately
+graded once a student inputs an answer code and types enter.
+USING THE ICLICKER TO TAKE LECTURE QUIZZES:
+1. Locate your box number; you will see (V?) in the box, indicating that you need to type in your
+code to obtain your version number. The 5-letter code is located at the top of the quiz hard copy.
+E.g. 001/ABCCA – the 001 is the quiz version number and the ABCCA is the 5-letter code.
+5
+
+2. Type in the 5-letter code. You must type slowly for each letter to appear in your box number.
+3. Select enter (E) and the quiz version number should appear in your box (001 from above example
+will appear in your box if you typed ABCCA then Enter). If the version number is incorrect DO
+NOT select enter. Begin typing the 5-letter code again (the box only accepts five letters and you
+may type over what is already there). You may continue to the type until the correct 5-letter code
+appears in your box number. Once the correct version number appears in your box number, select
+enter (E).
+4. The number 1 will appear in your box once you have activated the quiz for your version number.
+That number represents the question number.
+5. The iclicker legend of codes for answer responses is available at the top of every quiz hard copy
+(see iclicker instructions on Blackboard). E.g., if you want to select answer 2 for question one,
+you will type (AB) into your box. The box will show two numbers once you have answered a
+question. The first number is the question number and the second number is your answer choice.
+6. If you are certain that is the answer that you want, select (E) for enter. If the second number that
+appears in your box in not the answer choice you want to submit, then simply type the two-letter
+code again. The box only accepts two-letters once the quiz version number has been activated.
+You can continue to type over the letters until the correct two-letter code appears in your box
+number. You must select (E) to submit the answer.
+7. Once a question answer is submitted, the box will turn blue if the question is correct or the box
+will turn red if the question is incorrect.
+8. To move forward to the next question, type (CD) then (E). To move back one question, type (CC)
+then (E).
+9. You are allowed to answer a quiz question only once. If you type an answer code into your box
+for a question that has already been submitted and graded, the box will turn a greenish-brown –
+indicating the question has been answered.
+10. You cannot change an answer once it has been submitted. Dr. Lyon will not correct an answer in
+Quest because you were careless and did not type in the correct code. Do not hand in your quiz to
+be hand graded if you have submitted answers through iclicker. Regardless of the reasons, Dr.
+Lyon will not grade questions that already have answers submitted in Quest unless you have
+entered the wrong version number.
+11. Note: For every lecture quiz there are one or two version numbers that will not activate. That is,
+you type in the 5-letter code and the correct version number appears but when you select enter,
+V? appears in your box number again. If this happens to you, simply raise your hand and we will
+provide you with another quiz version number.
+COMMON ERRORS MADE DURING LECTURE QUIZZES:
+1. Be sure to toggle through all of your submitted answers before you leave. One of the most
+common errors that students make on quizzes is that a question is left unanswered. If you take a
+couple of minutes before you leave to toggle through all ten questions to be sure you have
+submitted an answer for each question, you will not make this mistake. Use either CD and (E) or
+CC and (E) to toggle through the questions.
+2. The number on the top of your quiz IS NOT your box number; it is your quiz version number.
+You may only find your box number in Quest.
+3. You must select (E) enter to activate your quiz version (after the correct version number appears
+in your box), to submit answers and to move from one question to the other.
+6
+
+4. You must select (CD) then (E) enter to move forward to the next question or (CC) then (E) enter
+to move back one question. If you keep answering the same question over and over then you
+have not selected (CD) then (E).
+It is imperative that you learn the process by which you enter answers by the iclicker; therefore, you
+should read the instructions covering the submission of iclicker answers carefully. These instructions are
+available above and more thoroughly on Blackboard under the “Course Documents” link in the “Course
+Information” folder. It is your responsibility to learn the steps to entering the quiz version number and
+submitting answers. There will be an iclicker legend at the top of all quizzes; therefore, it is not necessary
+to memorize the answer codes. If you accidentally enter the wrong code for an answer, then you will miss
+the question. Dr. Lyon does not change answers in Quest due to student carelessness. Dr. Lyon does not
+accept the premise that the iclicker entered the wrong code (the iclicker is an instrument that relays the
+information entered by the user; it does not have a mind of its own). Dr. Lyon also does not accept that
+Quest scores questions incorrectly.
+Since most of the quizzes require calculations, you should bring a calculator to every lecture. Dr. Lyon
+does not supply calculators for students.
+No make-up quizzes will be offered for students who miss class. If you miss a quiz for any reason,
+that will be the quiz that is dropped. You will receive a zero for any quiz that you have missed that
+exceeds the “one drop” limit.
+Quiz scores are available at 5:00 PM on the day the quiz was taken in class.
+1. The answer keys for the quiz will be activated and available at 8:00AM on the Monday following
+the week of the quiz. Please check your quiz scores as soon as possible after the scores are
+available.
+2. Students who believe their quiz scores are incorrect must contact Dr. Lyon before the answer key
+is activated that following Monday.
+3. Dr. Lyon must have the student’s quiz hard copy with the student’s name, EID, the day of the
+week that the student attends lecture and the answers circled before the answer key is activated on
+Monday.
+4. You may leave your hard copy in the mail slot below Dr. Lyon’s office number, outside WEL
+5.234, if you are unable to see Dr. Lyon before the answer key is activated. E-mail Dr. Lyon to let
+her know the quiz has been left in the office slot.
+5. Students who wait until the answer key is activated to inquire about a quiz score have waited too
+long to report the problem.
+The most common reason that quiz scores are zero or very low is due to the version number entered
+incorrectly. Once the quiz answer key has been activated (the following Monday), the quiz can no longer
+be hand graded; therefore, no consideration will be given to quiz scores after the answer key is available.
+This does not apply to a bad question that needs to be removed from the quiz after the quiz is taken. A
+bad question on the quiz usually requires killing the question for all students. However, on occasion a bad
+question may only affect a few students who happened to receive the quiz version with the bad question;
+it can take a couple weeks to resolve the quiz scores for those students.
+One hand graded quiz will be allowed during the semester. If you forget your iclicker or the batteries die
+in your iclicker or your iclicker stops working during a quiz or you type in the incorrect version number,
+7
+
+you must submit your hard copy quiz to Dr. Lyon or the head TA before you leave class. Dr. Lyon will
+not change answers already submitted into Quest by a student. The one hand graded option is only for
+students who have either entered an incorrect quiz version number, or are unable to submit answers due to
+dead batteries or non-functioning iclicker, or forgot to bring their iclicker to class, or have been given
+permission to take a quiz in another lecture section. If you hand in a quiz to be graded, it can take 24hr. to
+two weeks before Dr. Lyon has time to grade and manually enter your quiz score. Please do not e-mail
+Dr. Lyon regarding hand graded quiz scores unless two weeks have passed. All hand graded quizzes can
+be reclaimed during office hours once the score has been posted in Quest.
+Keep your quiz hard copy if you do not require it to be hand graded. Do not discard any quiz hard
+copies. On rare occasions, it may be necessary that you produce your quiz hard copy in order to receive
+credit for a quiz. If you come late to the quiz and you do not have time to enter your answers then you
+will receive zeros on the questions that you are unable to submit - no quiz will be hand graded for
+students who are late for a quiz. This is important, if your iclicker fails during a quiz you may have the
+questions that were not submitted graded, however, you need to be sure that you have a functioning
+iclicker the following week. Changing the batteries does not always remedy the problem with an iclicker.
+Waiting until a quiz is given in lecture to find out that your iclicker is not working is unacceptable. If you
+change the batteries in your iclicker, go to WEL 2.212 and check to be sure the device is functioning. It is
+possible to borrow an iclicker from someone but you need to register that iclicker in Quest before class in
+order to receive credit for quiz answers. As long as you re-register the iclicker in Quest, you can change
+an iclicker. Dr. Lyon allows only one hand graded quiz, regardless of the reason you were unable to
+submit answers with your iclicker.
+There are 40 lab sections this semester; ten sections each day, Monday –Thursday, five in the morning
+and five in the afternoon. All lab sections occurring on a particular day are compiled into one unique
+number on Quest for uploading iclicker quiz scores and for the convenience of entering scores by the TAs
+and Dr. Lyon. Therefore, if you are registered for a Monday lab, regardless of your unique number you
+will be registered in Quest under a one unique number, which represents all the students registered for the
+Monday morning and afternoon labs. Consequently, if you miss a lecture, you may not attend another
+lecture section and take a quiz with your iclicker. Quest will not recognize you because you are not
+registered for that lecture section. Thus, if you take a quiz in another lecture section you will receive a
+zero for the quiz and Dr. Lyon will not hand grade your quiz once the class is over. Under special
+circumstances Dr. Lyon will allow a student to take a quiz in another lecture section only if the student
+has contacted Dr. Lyon for permission to do so and if it is determined that the student has not had a hand
+graded quiz already. Oversleeping is not a special circumstance!
+POST-LAB ASSIGNMENTS – NO DROPS
+These assignments are available through the Quest homework system each week on the day of your
+lecture class. The assignments cover the concepts presented in the previous week’s lecture, from the
+background information in your lab manual and from the lab’s procedure. The post-lab assignment will be
+available at 8:00AM on the day of your lecture class and will be due one week later at 8:00AM on the day
+of your next lecture class. The first post-lab assignment will be available during the week of September
+17 – 20. The first post-lab will be due one week later (see course calendar on Blackboard).
+DO NOT wait until the last hour or two to submit answers to your post-lab questions. If the Web is not
+available during the last couple of hours before the assignment is due, which almost always happens
+during the semester, and you have not submitted any answers, you will receive a zero for the assignment.
+8
+
+It is also not advisable to wait until the last day to submit answers. If you become ill the day before the
+assignment is due and you have not submitted answers before the due time, you will receive a zero for the
+assignment. Once a post-lab assignment has passed the due day and time, the assignment is locked and
+students cannot submit answers; Dr. Lyon cannot override that function in Quest.
+Post-lab assignments are an excellent study guide for the upcoming lecture quiz. Dr. Lyon carefully
+selects questions, particularly numerical questions, which represent the concepts that were covered in the
+previous lecture and lab. Having someone else provide you with answers to the questions has a two-fold
+penalty. First, it is academic dishonesty and secondly, if you do not know how to answer questions on the
+post-lab then you will certainly miss most of the questions on the lecture quiz.
+Post-lab submissions will not be re-graded! These assignments are graded immediately by the system
+following a student’s submissions. On these assignments, you will have the opportunity to submit an
+answer to a specific question more than once. HOWEVER, each subsequent answer submission will
+cause a deduction in points. More than three (3) answer submissions for a single question usually will
+result in negative points. Please read the student instructions available through the Help link (located
+in the menu at the top of page) in Quest. Pay careful attention to the process of submitting answers,
+e.g. significant figures, scientific notation and the number of possible answers allowed for post-labs
+questions. There will be nine post-lab assignments and none will be dropped at the end of the semester –
+it is necessary that students are evaluated for the concepts associated with all nine labs. Post-lab
+assignments are 5% of the course grade.
+TA EVALUATION – ONE DROP
+An evaluation score of 0 to 10 points each week will be assigned to you by your TA at the end of every
+laboratory period. This score is based on your TA’s evaluation of your lab safety/technique, lab
+preparedness, appropriate dress, ability to work competently, and whether or not you clean up your lab
+space before you leave. One TA evaluation will be dropped. The TA evaluations are 10% of the course
+grade.
+LABORATORY
+The laboratory work is the backbone of the course, and accounts for 60% of your grade. Most of the
+experiments will be performed individually; but a couple will be performed in groups of two or three.
+Working in a team means you will collect the equivalent data as your partner or partners only. You must
+write your lab report by yourself. Your data analysis, calculations and discussion must be yours
+alone. You may not write a lab report as a team, any collaborative work on lab reports will be considered
+as scholastic dishonesty for all individuals involved and will be referred to the Student Judicial services in
+the Dean’s Office.
+Do not hesitate to ask Dr. Lyon or your TA whenever you have questions or are not sure how to perform
+certain tasks. A question can take a couple minutes, but a lab mistake can cost you two hours and a
+deduction in TA Evaluation points.
+Be prepared for lab before you arrive. Complete any pre-lab calculations that are required prior to the
+lab procedure, complete the lab protocol (explained below) and the preliminary lab report. Make sure you
+understand the purpose of the experiment and are familiar with the procedure. If you slowly bumble your
+way through the experiment because you are unprepared, it will be obvious to your TA, who will be
+annoyed because you are wasting his or her time by showing up unprepared, and you will lose points.
+9
+
+LAB REPORTS – ONE DROP
+Lab reports are comprised of two sections: Notebook Copy Pages and Written Discussion. The notebook
+copy pages contain all the information that you recorded in your lab notebook before and after the labs are
+performed. The discussion will be typed written in paragraph form and uploaded electronically into
+SafeAssign in Blackboard by the beginning of your next lab (1PM or 5PM). A copy of your discussion
+will be attached to the back of your notebook copy pages. The lab report should be turned in to your TA
+at the beginning of your lab session the week after you perform the experiment. Always tear out the
+COPY pages from your notebook to turn in the lab report. Never tear out an original page for any reason.
+One lab report will be dropped at the end of the semester.
+Read Carefully: Although one lab report score will be dropped at the end of the semester, it is to your
+advantage to complete all nine labs. If you do not attend a lab or turn in a particular lab report for any
+reason, you will receive a zero for that report and it will be dropped at the end of the semester. However,
+if later in the semester you miss a lab for a documented reason (illness, car accident, etc.); you will
+receive a zero for both absences; one will drop at the end of the semester and the other will be averaged in
+your overall lab report score for the course. You are not allowed to have an unexcused absence and an
+excused absence and have both labs dropped.
+Under very special situations, a student may be allowed to miss two labs and have both labs dropped at
+the end of the semester. Those circumstances are rare and both of the absences must be documented by
+the Office of the Dean of Students. Students must provide documentation from the Office of the Dean of
+Students within two weeks following the missed experiment. Requests, on behalf of students, from the
+Dean’s Office for extended time to turn in lab reports must be made within one week following the due
+date of the lab report. We will not retroactively grade lab reports or add back late penalty points
+after the designated time intervals (given above) have lapsed. We will not accept late reports or
+recommendations from the Dean’s Office after December 7th, regardless of the reasons given for the
+delayed documents.
+You may not miss more than one lab unless you have documentation by The Office of the Dean of
+Students proving you were unable to attend both of those labs. If you miss more than two labs or do
+not hand in more than two lab reports, you should withdraw from the course. You must complete seven
+labs and hand in seven lab reports in order to pass this course regardless of the reasons you had to miss
+more than two labs. Students who are not able to complete at least seven labs (even with documentation)
+will not receive credit for this course. It may be possible under extreme situations to receive an
+incomplete for the course, but the keep in mind that the labs will have to be completed during the next
+semester.
+Summary: One lab report, one TA Evaluation, and one Quiz score is dropped from the assignments
+percentages that determine your final course grade. This policy is in place for students who must miss a
+lab experiment or lecture quiz or both due to circumstances beyond their control; such as, an injury, an
+illness, a religious holiday or a family crisis. As noted above, it is to your advantage to attend all labs and
+lectures in case an unexpected incident causes you to miss a lab.
+LABORATORY NOTEBOOK
+1. Use your lab notebook for the heading, protocol, data collection, observations, and data analysis.
+Everything you turn in for this course except the quizzes, post-labs and discussion will come from
+pages in your lab notebook.
+10
+
+a. Write using real English words and complete sentences.
+b. Always use ink in your notebook. Use a pen that makes good carbonless copies.
+c. Place the protector sheet behind the carbonless page or you will copy through more
+than one page in your lab notebook.
+2. Never tear out original pages from your notebook. Always turn in the COPY pages.
+a. If you make a mistake, cross it out with a single line. If there is any unused space left on
+the page, cross it out with a single diagonal mark.
+b. Write neatly and legibly. If your TA can’t read it, he or she will give you a zero -TA’s
+have a large number of lab reports to grade every week and they can’t waste time
+deciphering your illegible scrawl after you were told in no uncertain terms to write neatly
+and legibly.
+3. At the top of EVERY page of your notebook write down your name, your TA’s name, the date,
+and your section number (unique #).
+4. Always start your laboratory report for every experiment on a new page.
+5. At the end of your written notebook copy pages, write your unknowns when applicable. Be sure
+to label this part of your written report as “Unknown”.
+6. Your laboratory notebook must be signed by your TA before you leave lab. Some TAs require
+that all data is initialed.
+7. There should be no missing pages in your lab notebook. In the past, there has been a student or
+two who complained that their lab notebook had missing pages before the notebook was
+purchased. It is your responsibility to be sure your lab notebook has all of the pages and failure to
+do so will cost you points on a lab report score. If you buy a used notebook with missing pages
+and there enough clean pages remaining (approximately 50) to complete nine lab reports with
+page numbering in numerical order, be sure to let your TA know that your notebook does not
+begin on page one.
+WHAT YOU SHOULD DO BEFORE YOU COME TO LAB:
+It is important that you prepare for each week’s experiment in advance so that you don’t waste time in lab
+or make costly mistakes:
+1. Submit the post-lab answers for the previous lab on Quest by 8:00AM on the day of your
+lecture class.
+2. On a new page in your notebook write:
+a. Your name
+b. Unique #
+c. TA’s name
+d. The date and title of the experiment
+e. Objective of the experiment (written in your own words!)
+3. Write a protocol that you will use to complete the experimental procedure.
+You will be required to prepare a “cookbook” outline of the experimental procedure before you enter
+class. You should have a complete step-by-step outline of the procedure that you will use during the
+experimental process. This does not mean you should write the entire procedure from your lab experiment
+word for word, but rather, the procedure can be written in steps or as a flow chart. However you decide to
+write your protocol, it should contain enough information that you are able to perform the experiment
+without referring to the lab experiment in the lab manual. Be sure to complete the protocol for the correct
+lab procedure.
+11
+
+You will use this protocol to complete your lab procedure; the lab manual will not be allowed at your
+bench during the lab period. The protocol will be written in your lab notebook prior to the lab period and
+initialed by your TA at the beginning of each lab period. If you do not write a lab protocol, you will be
+allowed to complete the lab using your lab manual procedure, however, you will be accessed a 10 point
+penalty on your lab report score for not having a protocol at the beginning of a lab period. We do not
+provide the experimental procedure to you; therefore, if you do not write a protocol, then you need to
+bring the lab manual with you to lab.
+Writing a protocol is not a requirement in order to make your lab experience grueling but on the
+contrary, it is imposed in order to make your lab experience less difficult. The more you are prepared to
+perform the lab, the easier the lab experience will be. As you write the protocol, you may come across
+language or a procedure that is confusing or that you do not understand. Knowing this in advance will
+allow you time to seek help before the lab begins.
+4. Complete the preliminary experimental write-up before coming to class. The preliminary
+experimental write-up is a head start on your lab report. It will save you time and you are less
+likely to make mistakes. Your preliminary experimental write-up should include: (Your TA may
+have specific guidelines concerning how she or he wants the following to be entered in your lab
+notebook.)
+a. The equations for chemical reactions that will be performed.
+b. The blank tables for data collections and blanks for recording any other data collected
+during the experimental process.
+c. The data tables are provided in the lab manual and need to be copied into your lab
+notebook before you come to lab. It is not necessary to copy graph examples provided in
+the manual into your lab notebook.
+d. If you are required to create your own tables, these should be written in your notebook
+prior to lab.
+e. Pre-lab calculations if required should be in your lab notebook before lab begins.
+As you collect data in lab, write it directly into the tables in your lab notebook. Do not record data on
+scraps of paper towel, on your hands, or on disposable plastic weighing boats. At the end of the laboratory
+period, have your TA SIGN YOUR DATA collected during the lab session in your laboratory notebook.
+Do not leave the lab without your TA’s signature in your lab notebook! If you do not have the TA’s
+signature on the copy pages of your lab report, you will receive a zero for the report.
+THE LAB REPORT
+The written lab report is composed of two parts; the notebook copy pages portion and the written
+discussion portion. The lab report has a point value of 100 points.
+1. The notebook copy pages portion of the lab report includes: (50 points)
+a. Name, date, experiment title, TA name, unique number on each page.
+b. The objectives of the experiment (written in your own words).
+c. Lab protocol – step by step procedure.
+d. Experimental write-up (Data and Calculations)
+i. All chemical equations for the chemical reactions that are carried out as part of
+that experiment.
+ii. Pre-lab calculations if required.
+12
+
+iii. Completed tables. (The data you entered during the experimental procedure into
+the copied tables in your lab notebook.)
+e. All data collected during the experiment that was not entered into a table.
+f. All observations made during the experiment. This information should be thorough.
+g. All calculations must be shown with units and answered to the correct number of
+significant figures. (If you have repetitive calculations, e.g. density, you only need to
+write the calculation once for each type of measurement.)
+h. Information used to identify an unknown - if applicable.
+i. Identity of unknown (for labs 4, 5 and 8) – if applicable.
+j. Graphs printed during the lab procedure should be attached to the back of the copy
+pages– if applicable.
+2. The written discussion portion – A discussion will be written for each experiment. (50 points)
+The discussion also must be submitted in SafeAssign on Blackboard. In other words, you need to
+turn in a copy of your written discussion with your notebook copy pages and upload a copy in
+SafeAssign on Blackboard before you come to lab and before you turn in your lab report. You
+cannot receive credit for your discussion if you have not submitted a copy of your discussion
+to SafeAssign.
+a. The discussion part of your lab describes the objectives, results and conclusions of the lab
+experiment you just completed.
+b. It will be typed, 1.5-spaced and submitted electronically through SafeAssign in
+Blackboard before the beginning of the next lab period; by 9AM or 1PM. One copy of
+the discussion will also be printed and attached to the back of your lab report.
+A late penalty of 10% (10 points) per day (excluding weekends and holidays) will be assessed for a late
+lab report. The lab report is late if it is not turned in by the beginning of the lab period. If you do not
+have an attached discussion, the lab report is not complete and will assessed the late penalty of 10 points
+per day until the discussion is made available to your TA. If any portion of your lab notebook copy
+pages or discussion is missing, the lab report is not complete and will be assessed the late penalty of 10
+points per day. Please do not e-mail your TA and request that he or she print a copy of your discussion
+from Blackboard to complete your lab report; that is your responsibility not your TA’s.
+At the end of each lab procedure in the lab manual there are several questions and instructions that will
+guide you through the writing of your discussion. DO NOT write the questions or number your answers
+or paragraphs in your written discussion, but rather, be sure to include the answers to the questions, in
+paragraph form, as you write your discussion. When your TA instructor grades your submitted discussion,
+he or she will look to see if the discussion instructions were followed and the answers to the questions
+were addressed in your writing. Be sure that your answers to the questions include a logical discussion
+based on your observations, data collection and data results. A simple yes to any question is not
+acceptable. This part of the lab report determines your understanding of the concepts associated with the
+results of your experiment. Your writing will also be graded for misspellings and incomplete sentences
+(use spelling and grammar check). The value for each written discussion submitted is 50 points.
+If you do not submit the correct document to the appropriated discussion link on Blackboard, you may
+ask your TA to remove it. Please do so before the due time lapses for the submission of the correct
+document.
+13
+
+Below are the guidelines for the Discussion that will be submitted on Blackboard.
+a. Typed and 1.5 line-spaced.
+b. No script or bold fonts can be used.
+c. The font size cannot be larger than 11.
+d. The font style must be regular; do not use bold or italic styles.
+e. Set one-inch margins for all sides.
+f. Do not use hyphens or apostrophes in the title page. SafeAssign will not upload discussions
+that include these forms of punctuation in the title page.
+g. No more than a two-page discussion can be submitted unless otherwise indicated in the
+discussion portion in the lab manual. Number pages if more than one page is submitted.
+Submitting Written Discussion to SafeAssign:
+a. In Blackboard, select the CH204 link for your specific unique number.
+b. Click on Assignments
+c. Click on SafeAssignment 1 – Experiment 1 Density and Measurement
+d. Open the browser and upload a copy of your discussion. Submit the written assignment and
+select the option to have the assignment scanned if the option is available. Be sure your name,
+EID, section number and experiment number are included on your written report.
+e. If you are unable to upload your document because you are given an error message,
+please contact the Blackboard help desk (512‐475‐9400) – the phone number is also
+available on the main Web page in Blackboard.
+i. Do not e-mail Dr. Lyon to ask for help regarding uploading documents into
+Blackboard, she will be unable to help you.
+ii. Do not contact your section TA, she or he will most likely be unable to help you.
+iii. Do not send a copy of the discussion to your TA or Dr. Lyon to prove that your
+discussion was written in time to submit by the due day and time.
+f. DO NOT wait until the last minute to upload your written discussion into SafeAssign. Give
+yourself time to determine a solution to a problem of uploading a document otherwise you
+will be accessed a penalty if the document is not submitted on time.
+g. You may contact your TA and Dr. Lyon about SafeAssign problems only if you are told by
+the help desk that there is a general problem with SafeAssign program and that you will have
+to wait until the problem is resolved. Once contacted, we will check for uploaded
+assignments and determine the day and time that SafeAssign had discontinued functioning.
+You should continue to try to upload your discussion a few times throughout the day. Usually
+the SafeAssign problems are resolved in a couple of hours. As a rule we will give you another
+24-hr to submit your discussion if there is a general failure of SafeAssign program.
+h. BE CAREFUL to upload your discussion into the correct assignment.
+i. The discussion must be uploaded into SafeAssign on the day of your next lab period – by
+8:00AM or 1:00PM.
+j. Students who receive percentage matches on SafeAssign are not necessarily going to be
+accused of plagiarism. It is common for some of your written discussion to share similarity
+with other students. When a student's written discussion has a 25% or greater percentage
+match with only one or two other students, then there is cause for concern. However, if you
+wrote your discussion entirely on your own, you need not worry if there is a small percentage
+of matching.
+14
+
+3. Unknown – As part of some experiments (4, 5 and 8) you are required to identify an unknown
+compound or calculate the concentration of an unknown solution. These results are reported at the
+end of your lab report, which is turned in one week after finishing the experiment. Every
+unknown is worth 10 points, and will be graded solely on accuracy. A lab report that includes an
+unknown will still have a point value of 100 points (50 points written report and 50 points
+discussion).
+Unknowns are distributed by the TA. YOU WILL BE GIVEN ONLY ONE UNKNOWN.
+All lab assignments are due during the first 5 minutes of lab. Turn in any late papers to the lab stockroom,
+WEL 5.131, as soon as possible. An individual in the stockroom will time-stamp your late report and
+deposit it in the TA’s late report mailbox. Do not wait until the next week to turn in late papers. The
+penalty is assessed daily; therefore, for every 24 hours that you wait to turn in your report the more points
+you will lose on that report. Note, the 10 point penalty for a late report is assessed immediately after the
+first 5 minutes of lab, even if you turn in the report later that day. When another 24 hour period has
+elapsed, you will be assessed another 10 point penalty. Contact your TA regarding concerns regarding a
+late report; do not contact Dr. Lyon regarding such matters.
+4. Laboratory Chemicals – There is not an endless supply of chemicals available for students to
+use during experiments. Therefore, you will be required to take only the mass or volume of a
+chemical that is required by the procedure. You will not be allowed to repeat a procedure because
+you did not follow the protocol correctly.
+5. The LabQuest hand held instruments are expensive and should be handled as instructed in
+the lab manual. Costly damage can occur if students push too hard on the instrument’s screen
+with the stylus. Pulling the pH probe from the soaking bottle without loosening the cap can break
+the probe. Students who mishandle the LabQuest instruments and cause damage will be
+assessed a $50.0 penalty!
+SAFETY
+1. The biggest safety concern we have in lab is that any lab surface may be contaminated with
+chemicals. It’s easy to pick up chemical contamination on your hands without even realizing it,
+and then something as simple as absently rubbing your eye can result in excruciating pain and
+permanent damage to the eye. Always wear goggles in the lab. Besides protecting your eyes from
+broken glass or chemical splashes, wearing goggles also prevents you from absently rubbing an
+eye. Make sure you wash your hands before touching anywhere near your eyes in lab, and always
+wash your hands before you leave lab.
+2. The second biggest safety concern we have in our laboratories is broken glass. Glass breaks
+every week. Small pieces may fly through the air (so always wear goggles) and large pieces fall
+downward (so wear long pants and shoes and socks, not sandals).
+3. On the first day, your TA will show you around the lab and point out various pieces of safety
+equipment, which include a safety shower, eyewash fountain, fire blanket, and fire extinguishers.
+Make sure you know the location of the nearest emergency exits. In the event of an accident, do
+not panic. Call your TA, the instructor, or storeroom personnel immediately for assistance. They
+will help you resolve the situation.
+4. Wear safety goggles provided by the Chemistry Department at all times while you are in the
+laboratory. If you wear glasses, you still need to wear safety goggles (they will fit over your
+15
+
+glasses). If you are observed to have your goggles off twice while you are in lab, your TA will
+kick you out of lab and you will get a 0 for the experimental part of that lab.
+5. Wear appropriate clothing to the laboratory. No shorts or short skirts or sleeveless tops. Pants and
+skirts have to go all the way to the ankle. Arms need to be covered to the elbow. No bare-tummy
+shirts – the lab bench tops are at tummy level, and that’s where many spills end up, so your
+tummy must be covered. Wear shoes that cover your feet completely. Sandals, clogs, and open-
+toe shoes are prohibited. If you want to wear shorts, keep a pair of sweat pants in your lab drawer.
+If you dress inappropriately, you will have to wear a Tyvek bunny suit from the stockroom and
+you will lose points. You will be allowed to wear the Tyvek suit only once without penalty. The
+second time that you show up to lab with inappropriate attire, you will assessed at 10-point
+penalty on the lab report for that lab period.
+6. Keep backpacks off the bench tops and the floor. There is a sectioned wall shelf for storing
+backpacks and coats during lab.
+7. No eating, drinking, or chewing gum is allowed in the laboratory at any time. Never put anything
+in your mouth while in the lab because you may have chemicals on your hands without realizing
+it.
+a. The use of cell phones, smart phones, iPods, MP3 players, lap tops and iPads are not
+allowed in the lab. You may not leave the lab during the lab procedure to talk on your
+mobile phone.
+b. Dispose of all chemical waste into the DESIGNATED WASTE CONTAINERS
+located in the hood. DO NOT place weight boats, paper towels, Kim wipes, nitrile
+gloves or broken glass into the solid waste containers. The solid waste is for solid
+chemicals or metals only. Broken glass must be placed into the containers specifically
+labeled broken glass.
+c. Always wash your hands when you leave the laboratory at the end of the lab period.
+STOREROOM
+The storeroom is room WEL 5.131, located next to the exit in the hallway in the east wing. Any time you
+need a piece of equipment, you will get it from the storeroom. Make sure you sign your name on the
+checkout list when you check out the equipment and cross your name off the list when you return it back
+to the storeroom. Clean any borrowed equipment before you return it. You are financially responsible
+for any equipment checked out to you, including the equipment in your lab drawer.
+All late lab reports should be taken to the storeroom to be time-stamped. The late report will be deposited
+into your TA’s mail slot by one of the storeroom personal.
+If you drop the class after checking in to a drawer, you are required to check out your equipment drawer
+before the end of the semester. If you fail to check out on time, you will be charged a $15 checkout fee in
+addition to the charges for any missing or damaged equipment.
+RESTROOMS
+There is a men’s room in the 4th floor hallway next door to room 4.124 (next to the stairs). The nearest
+women’s restrooms are located on the 3rd and 5th floors.
+GRADING
+The breakdown for your overall course grade is the following: (The lowest quiz, written report/discussion
+and TA evaluation will be dropped.)
+16
+
+Quiz – 25% (drop one)
+Report & Discussion – 60% (drop one)
+Post-labs – 5%
+TA Lab Safety/Technique Evaluation – 10% (drop one)
+The lowest quiz, report/discussion and TA evaluation will be dropped.
+There is no end of semester final exam in this class. There will be no curve, although consideration by be
+given to students whose scores are on the bubble and fall between 0.60 and 0.99. For example, a student
+who has a course score of 89.64% may have his or her grade bumped to an A-. Dr. Lyon will make the
+determination based on quiz scores and improvement of lab report scores.
+The University of Texas has implemented plus/minus grade system that began in the fall 2009 semester.
+The grade breakdown for this system is as follows:
+Grade GPA % Range
+A 4.00 93.00‐100%
+A‐ 3.67 90.00 ≤ 92.99%
+B+ 3.33 87.00 ≤ 89.99%
+B 3.00 82.00 ≤ 86.99%
+B‐ 2.67 79.00 ≤ 81.99%
+C+ 2.33 76.00 ≤ 78.99%
+C 2.00 71.00 ≤ 75.99%
+C‐ 1.67 69.00 ≤ 70.99%
+D+ 1.33 66.00 ≤ 68.99%
+D 1.00 62.00 ≤ 65.99%
+D‐ 0.67 59.00 ≤ 61.00%
+F 0.00 Below 59.00%
+RE-GRADES
+You can request a re-grade of your lab report within TWO WEEKS after you get it back from your TA.
+To be considered for a re-grade, you must submit the original assignment in question accompanied by a
+written specific explanation of why you think you deserve a re-grade. When submitted for re-grade, the
+entire assignment will be reviewed, which can possibly result in a lower grade.
+Re-grade Guidelines:
+1. You can always submit an unknown for a re-grade if you discover that a calculation error led to
+an incorrect result, but you will not be granted a re-grade based on mistakes you made during the
+actual lab procedure itself. So if the problem is in the data itself, you’re stuck with it, but if you
+multiplied instead of dividing, you can show us your mistake and get a re-grade for partial credit.
+2. If you lose points on your written discussion, it may be is possible to receive a re-grade for partial
+or more credit provided your TA is willing to allow to students to rewrite a discussion. The
+discussion re-grades will only be allowed for the first experiment and second experiment. When a
+TA grades a set of lab reports and deducts most or all points for the discussion portion of the lab
+report, he or she will let the lab class know (through e-mail, in lab or as written comments on the
+returned lab report) what information was generally missing and what needs to be improved upon
+when writing a discussion. Students, at that point, will have the feedback necessary to write a
+17
+
+better and more thorough discussion and may be given a second chance. By the third lab report,
+re-grades will no longer be considered for the discussion portion of the lab report.
+3. If you lose points on your written discussion, it may NOT be possible to receive a re-grade for
+partial or more credit if your TA was very lenient when grading the discussion portion of the first
+two experiments. When a TA grades the first two lab reports and deducts very few points for
+obviously poorly written discussion but gives plenty of written feedback, students will have
+obtained the maximum amount of points that would have been available through a re-grade. All
+future written discussions will then be subject to more severe point penalties if improvement has
+not been shown. By the third lab report, re-grades will no longer be considered for the discussion
+portion of the lab report.
+4. If it is obvious to your TA that you did not know how to analyze your data, you will not be
+allowed a re-grade. If you do not know what you are doing when you analyze data on a lab report,
+you need to seek help from a TA or Dr. Lyon before you submit the report to your TA. Office
+hours are available throughout the week. If you need help, get help.
+5. You may not submit your graded lab report for a re-grade because you omitted observations,
+calculations or results in your original notebook copy pages. This information is always required
+in a lab report. If you forget to show your calculations, or observations, or results, it will be costly
+in terms of point deduction. You will not be allowed to go back and write in the missing
+information and submit the report for a re-grade.
+ATTENDANCE POLICY
+1. Laboratory attendance is mandatory. The TA’s will record attendance each week.
+2. There are no make-up labs for this course. However, if you know that you will miss a lab or have
+to miss a lab before the end of the week, it may be possible to make-up the lab during an
+earlier or later lab session during the week of the lab you will miss; however, the reason for
+missing the lab must be documented; e.g. illness (student health services issue doctor visit notes),
+U.T. sponsored events, a fender bender, religious holiday or a family crisis. Neither oversleeping
+nor leaving for a family vacation is a valid reason to miss a lab. Showing up late to a lab will
+result in a zero and you will not be allowed to attend other lab that week. Once the week of a
+particular lab experiment has passed, there is no possible lab make-up (there are no lab make ups
+on Saturdays). Therefore, it is to your advantage to inform Dr. Lyon by e-mail as early as possible
+(like today, right now) if you know you will miss any labs during the semester.
+3. You are allowed to miss ONE laboratory session during the semester for any reason, such as late
+registration, illness, any type of emergency, observance of religious holidays, going out of town
+for any reason, oversleeping, opting to study for another class, etc. The score of zero for this
+missed lab will be dropped. You may not miss more that one lab unless you have documentation
+from Dean of Students Office for both labs missed.
+4. If you miss a week, the report that was due that week will instead be due as soon as possible
+without a penalty. Take your lab report to the stockroom and have it time stamped as soon as it is
+possible. E-mail your TA and inform her or him that you have turned in your lab report. It is to
+your advantage to have your report graded with the class reports, TAs often forget the point
+deductions taken on previously graded reports and it is possible that your report will be graded
+more harshly if it is handed in too late. This free extension is granted once per semester. If you
+miss lab a second time, all late penalties will apply. If you know ahead of time that you will miss
+lab, you can turn your lab report in early to the stockroom.
+5. No make-up quizzes will be given for missed classes. One quiz score is dropped at the end of the
+semester.
+18
+
+6. More than one missed lab will be allowed only under extreme circumstances. Those instances
+will be considered on a case-by-case basis. For scheduled university events that will require you
+to miss more than one lab, you must give at least 14-day advanced notice so that we may arrange
+for you to complete the experiment in an earlier or later lab those weeks. If you will miss more
+than one laboratory session due to observance of religious holidays, it is the policy of UT that the
+student must notify the instructor at least 14 days in advance so that we may arrange for you to
+complete the experiment in an earlier or later lab those weeks.
+7. Any absence after the first one will result in a zero for the lab. You will then have two zeros for
+lab report scores of which only one will be dropped.
+8. If you are more than 30 minutes late to the lab, you will not be permitted into the lab and will
+receive a zero for the missed laboratory.
+9. If you leave the lab early without permission from your TA, you will receive zero credit for the
+laboratory report for the experiment performed on that day.
+10. Do not leave the lab during the lab procedure for any reason unless you have permission from
+your TA.
+11. Do not enter your lab until your TA arrives. This is a safety policy.
+12. We do not have the resources to allow students to redo labs they have already done in order to get
+better data and a higher grade.
+SCHOLASTIC DISHONESTY
+Scholastic dishonesty and plagiarism will not be tolerated. Examples of scholastic dishonesty include
+copying post-lab answers from or providing post-lab answers to another student by any means. Copying
+any or all parts of a report that is somebody else’s work is prohibited; that includes copying information
+from a Website. Providing any parts of a report or discussion to somebody else to copy or by transferring
+your work to someone by any method is considered scholastic dishonesty. Scholastic dishonesty includes
+making up data, changing data, falsifying data, presenting somebody else’s work as your own or altering
+any graded paper and resubmitting it for a re-grade. The carbon copy report that you hand in must be an
+exact copy of the information written in your lab notebook. Any changes that you make on a carbon copy
+that is not made on the original copy must be signed by your TA. You may not discuss quiz material with
+students in other lab sections by any means.
+CH204 students are not allowed to work together on post-labs, reports or discussion write ups. You
+may talk with other students about the material and your understanding of the concepts, but the work you
+turn in must be your own individual effort, not answers that were developed with somebody else or
+answers that were provided by somebody else by any method (in person or electronically). During this
+semester, you will work in teams of two or three on certain experiments. You may collect the same data,
+but you must write your own lab report and submit your own discussion. You may not change your
+answers once you have arrived to lab, all changes must be on the original and carbonless copy of your lab
+report. You must write the discussion in your own words. You may not copy from a peer’s discussion, or
+from a text or lab manual or from information on the Web. Under no circumstances may you discuss your
+unknowns with your peers in your section or any lab section. Under no circumstances may you inquire
+confirmation of your unknown results from your TA.
+If someone has offered you their old lab manual or reports or other papers from CH204, give them back
+today. We take considerable efforts to dissuade students from cheating and to catch them when they do.
+This course is rigged throughout with hidden trip wires designed specifically to catch cheating students,
+and every semester they prove they’re working. All student grades are recorded in duplicate to minimize
+19
+
+the chance of accidental mistakes in the record, and student papers may be photocopied at random or with
+cause at any point throughout the semester. Any student who is found to have cheated will be reported to
+the Student Judicial Services in the Office of the Dean of Students with a recommended grade of F for the
+course.
+Students should be aware that all required discussion assignments will be submitted through a plagiarism-
+detection tool called SafeAssign. SafeAssign is a software resource designed to help students avoid
+plagiarism and improper citation. The software encourages original writing and proper citation
+documentation practices by cross-referencing submitted materials with an archived database of journals,
+archived database of previous CH204 discussion submissions, essays, newspaper articles, books,
+Websites and other published work. In addition, other methods may be used to determine the originality
+of the paper.
+INCOMPLETES
+An incomplete for this course is only considered when a student is unable to complete the course
+requirements due to extreme circumstances. You must have completed at least six of the labs, have at
+least a C average in the course and have compelling documentation for missing the labs before an
+incomplete will be considered. During the next long semester, you will be required to make up any
+missing labs by performing the labs during the weeks they are scheduled to occur; we do not have the
+resources or lab space to conduct make up labs outside of the dates they are scheduled to occur.
+SPECIAL NOTE
+If you require special assistance because of a physical or learning disability please notify Dr. Lyon
+immediately. Arrangements and necessary accommodations will be made in compliance with UT policy
+and the American Disabilities Act. For more information contact Student Dean’s Office (471-6259, 471-
+4641). All notifications and accommodations will be handled with utmost respect and confidentiality. No
+consideration will be given to lab report scores, post-lab scores or quiz scores that were accumulated
+before special assistance documentation is provided to Dr. Lyon.
+Students may not request extended time in the lab during experimental procedures; the lab period cannot
+be lengthened beyond the scheduled four-hour time allotted to complete experimental procedures.
+BRIEF SUMMARIES OF THE EXPERIMENTS WE WILL DO THIS SEMESTER:
+Experiment 1. Density and Measurement
+Are the densities of Coke and Diet Coke different, and if they are, is the difference large enough that
+we can measure it using the equipment we have in lab? You will write and perform procedures for
+determining the density change that does or does not occur when different volumes of water are
+measured at constant temperature. The main purposes of these experiments are to familiarize you with
+the lab glassware, the analytical balance, the statistical analysis you will be using this semester and
+the process of the scientific method. We will also review significant digits and how to report
+experimental error.
+Experiment 2. Enthalpy of Chemical Reactions – Hess’s Law
+In this two-part experiment, you will work with a partner to determine the change of enthalpy of a
+neutralization reaction and determine the enthalpy of formation of magnesium oxide by calorimetry.
+Both parts of the experiment will require you to measure the temperature change of several chemical
+20
+
+reactions with a coffee cup calorimeter, to determine the heat energy given off by the reactions, to
+sum the reactions and determine the change in enthalpy of the reaction by using the principles of
+Hess’s law.
+Experiment 3. Determination of a Chemical Formula and Chemical Nomenclature
+In this experiment, you will use the law of definite proportions to find the chemical formula for a
+hydrated compound containing copper, chlorine, and water molecules locked in the crystal structure
+of the solid compound. You will gently heat a sample of the compound to drive off the water of
+hydration. By measuring the mass of the sample before and after heating you can determine the
+amount of water in the sample. Secondly, you will conduct a chemical reaction with the dried sample,
+which will produce elemental copper. By measuring the mass of copper that forms, you will have the
+necessary information to determine the moles of copper and chlorine in your sample, and you will be
+able to establish the proper chemical formula and to name your compound. Moreover, you will learn
+to write and name formula units for ionic compounds and hydrated ionic compounds.
+Experiment 4. Qualitative Analysis of Group 1 Cations Unknowns
+In this experiment, you will develop a scheme for the qualitative analysis of three cations, using a
+schematic approach. The procedures in the qualitative analysis of this kind involve precipitation
+reactions to sequentially remove cations from a mixture of soluble salts. Along each step of the
+separation, the precipitated cation will be centrifuged and removed from the remaining soluble
+cations. The cations that we will study are Ag+, Pb2+, and Hg 2+. You will separate the three cations
+2
+and on the basis of your observations and you will analyze an unknown solution that contains two or
+all three cations. Additionally, you will learn the solubility rules to determine the solubility of salts.
+Experiment 5. Acid-Base Titration Unknowns
+In this experiment you will make and standardize a solution of NaOH. This standard sodium
+hydroxide solution will used in the titration of a strong acid solution in order to determine the
+concentration of the acid. You will use both an indicator and a pH meter to determine the
+concentration of an unknown acid and you will graph your pH results in Excel. Your unknown will be
+graded on accuracy.
+Experiment 6. The Cycle of Copper Reactions
+During this experiment, you will produce and observe some colorful aqueous copper (II) complexes
+and classify each reaction according to its reaction type. You will begin with a sample of copper
+metal and will carry it through a cycle of reactions where you begin and end with solid copper metal.
+In the final step of your procedure, you will recover, weigh and calculate the percent recovery of your
+original sample of copper.
+Experiment 7. Acid-Base Equilibria
+In Experiment 5 you completed an acid-base titration using a strong base to titrate a strong
+acid to the endpoint. This week your goal is to develop a titration curve for a weak acid,
+CH COOH, with a base of known concentration and from the results of the curve, determine
+3
+the ionization constant (K ) and pK of the weak acid. During the second part of the
+a a
+experiment, you will prepare a buffer composed of acetic acid and sodium acetate and test
+the buffering capacity of the buffer with small amounts of strong acid and strong base.
+21
+
+Experiment 8. Oxidation-Reduction: The Analysis of Household Bleach Unknowns
+This experiment illustrates how redox reactions can be used to quantitatively determine the amount of
+oxidizing agent in liquid hypochlorite bleaches. The sodium hypochlorite in bleach will be used to
+oxidize added excess iodide ion. The percent by mass of oxidizing agent will then be determined
+indirectly by titration of the iodine ion with a standardized thiosulfate solution. During the last half
+of this lab you will begin experiment 9, the synthesis of aspirin.
+Experiment 9. Synthesis and Analysis of Aspirin
+In this experiment, you will synthesize and analyze aspirin (completed in the prior lab). Although
+there is more than one way to synthesize aspirin, we will react acetic anhydride with salicylic acid in
+the presence of phosphoric acid (which acts as a catalyst) to produce acetylsalicylic acid (aspirin).
+The percent yield of your aspirin product will be determined. You will conduct a test of your
+synthesis to determine its relative purity by using a Spectrophotometer to test the absorbance of your
+aspirin after it has been “prepped” with an iron solution to give it color. This lab period will be
+devoted to the analysis of the aspirin product synthesized in the previous lab.
+Experiment 10. Determining the Ksp of Calcium Hydroxide
+Your primary objective in this experiment is to test a saturated solution of calcium hydroxide and use
+your observations and measurements to calculate the K of the compound. You will do this by
+sp
+titrating the prepared Ca(OH) solution with a standard hydrochloric acid solution. By determining
+2
+the molar concentration of dissolved hydroxide ions in the saturated Ca(OH) solution, you will have
+2
+the necessary information to calculate the K .
+sp
+END OF SEMESTER COURSE GRADES
+Over the years, it has been my experience that during the last week or two of labs that some students will
+e-mail with a long explanation concerning his or her performance in the course with an accompanied
+appeal for special consideration. In all my years of teaching, I have never changed a grade because of
+such requests and I will not change my policy this semester.
+The University of Texas requires that grades are assigned according to the student’s performance. In other
+words, you earn your grade as indicated by the policies outlined in this course syllabus. I do not allocate
+grades based on special situations; although I may be sympathetic, I enter grades based on percentage
+cutoffs.
+I have also discovered over the years that numerous students believe that they worked extremely hard to
+do well in the class and are convinced they learned more than their grades reflect. Fair, as defined by
+Webster, “implies the treating of both or all sides alike, without reference to one’s own feelings or
+interests’. To adhere to the definition of fair, it is necessary that the requirements set for this course are
+the same for all students. If you have an extraordinary situation arise during the semester that may hamper
+your performance in the class, you should contact me immediately, or should take the necessary steps
+(inquire in Office of the Dean of Students) to alleviate your student responsibilities; this may be a special
+situation for dropping the course, or a matter of taking an incomplete for course (see rules regarding
+incompletes). Please do not ask that i consider changing your grade because i will not respond to
+such a request.
+I DO NOT GIVE EXTRA CREDIT ASSIGNMENTS, PLEASE DO NOT ASK! At this point in your
+educational pursuits, it is time for you to learn that success is a result of effort, determination and
+22
+
+discipline. To wait until the end of the semester to plead for grades or to solicit extra credit assignments is
+immature and improper. At the university level it is important that you learn to take responsibility for
+your successes and failures, and hopefully, learn from them.
+23

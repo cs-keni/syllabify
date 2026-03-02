@@ -1,0 +1,37 @@
+CS343 Artificial Intelligence: Schedule http://www.cs.utexas.edu/users/risto/cs343/schedule.html
+CS343 Artificial Intelligence Class Schedule
+Date Topic Assignment
+Aug 28 Intro to AI
+CLA 0.102Problem Spaces
+Sep 02 Brute-Force and Heuristic Search Homework 1 (Search) assigned
+Python, OpenNERO
+Sep 09 Heuristics, Search Complexity
+Planning
+Sep 16 No class Homework 1 (Search) due
+Homework 2 (Planning) assigned
+Sep 23 Subgoaling, Abstraction, CSP
+Game Search
+Sep 30 Reinforcement Learning Homework 2 (Planning) due
+Review Homework 3 (Reinforcement Learning) assigned
+Oct 07 Midterm (in class) Practice questions
+Oct 14 Neural Networks
+Symbolic Machine Learning
+Oct 21 Vision Homework 3 (Reinforcement Learning) due
+Robotics Homework 5 (Vision) assigned
+Oct 28 Representation and Reasoning in Logic
+Resolution Theorem Proving
+Nov 04 Knowledge Representation Homework 5 (Vision) due
+Natural Language Processing Homework 4 (NLP) assigned
+Nov 11 Rule-based and Expert Systems
+Reasoning with Uncertainty
+Nov 18 Genetic Algorithms, Neuroevolution Homework 4 (NLP) due
+AI in Video Games Homework 6 (Neuroevolution) assigned
+Nov 25 Subsymbolic AI
+Cognitive Science
+Dec 01 Homework 6 (Neuroevolution) Due
+Dec 02 NERO tournament
+Review; class survey
+Dec ?? Final (TBA) Practice questions
+Tue Sep 9 00:57:09 CDT 2014
+risto@cs.utexas.edu
+1 of 1 9/11/14 9:47 AM

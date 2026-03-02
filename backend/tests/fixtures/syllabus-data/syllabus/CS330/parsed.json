@@ -1,7 +1,7 @@
 {
   "course": {
     "id": "cs330",
-    "course_code": "CS 330",
+    "course_code": "CIS 330",
     "course_title": "C/C++ and Unix",
     "term": "Spring 2025",
     "timezone": "America/Los_Angeles",

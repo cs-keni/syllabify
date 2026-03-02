@@ -1,0 +1,178 @@
+{
+  "course": {
+    "id": "429-dickerson",
+    "course_code": "CS 429",
+    "course_title": "Systems 1: Computer Organization and Architecture",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Robert F. Dickerson",
+        "email": "rfd@cs.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "14:00",
+        "end_time": "16:00",
+        "timezone": "America/Chicago",
+        "location": "GEA 105",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "14:00",
+        "end_time": "16:00",
+        "timezone": "America/Chicago",
+        "location": "GEA 105",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "MO",
+        "start_time": "16:00",
+        "end_time": "18:00",
+        "timezone": "America/Chicago",
+        "location": "GEA 105",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-4",
+        "day_of_week": "WE",
+        "start_time": "16:00",
+        "end_time": "18:00",
+        "timezone": "America/Chicago",
+        "location": "GEA 105",
+        "type": "lecture"
+      }
+    ],
+    "location": "GEA 105"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 50,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "labs",
+      "name": "Laboratory Assignments",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework",
+      "name": "Homeworks",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "participation",
+      "name": "Class participation",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exams_1",
+      "title": "Exams",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 50,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "3 midterms + final 50%"
+    },
+    {
+      "id": "labs_1",
+      "title": "Laboratory Assignments",
+      "category_id": "labs",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 40,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "7 lab assignments 40%"
+    },
+    {
+      "id": "homework_1",
+      "title": "Homeworks",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "4 homework assignments 5%"
+    },
+    {
+      "id": "participation_1",
+      "title": "Class participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "iClicker participation 5%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

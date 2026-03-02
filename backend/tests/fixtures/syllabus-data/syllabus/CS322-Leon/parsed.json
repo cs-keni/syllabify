@@ -1,14 +1,14 @@
 {
   "course": {
-    "id": "cs322",
-    "course_code": "CS 322",
+    "id": "cs322-leon",
+    "course_code": "CIS 322",
     "course_title": "Introduction to Software Engineering",
     "term": "Fall 2025",
     "timezone": "America/Los_Angeles",
     "instructors": [
       {
         "id": "inst-0",
-        "name": null,
+        "name": "Staff",
         "email": null
       }
     ],
@@ -39,7 +39,7 @@
       "id": "mini_projects",
       "name": "Mini Projects",
       "weight_percent": 50,
-      "drop_lowest": 1,
+      "drop_lowest": null,
       "subcategories": [],
       "grading_bucket": null
     },
@@ -100,7 +100,7 @@
       "title": "Midterm exam",
       "category_id": "midterm",
       "type": "midterm",
-      "due_datetime": "2025-11-04T15:05:00",
+      "due_datetime": "2025-11-04T14:05:00",
       "all_day": false,
       "timezone": "America/Los_Angeles",
       "weight_percent": 20,

@@ -1,0 +1,169 @@
+{
+  "course": {
+    "id": "bio365s-2011250655",
+    "course_code": "BIO 365S",
+    "course_title": "Vertebrate Systems Physiology",
+    "term": "Spring 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Jan Machart",
+        "email": "janmachart@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "10:50",
+        "timezone": "America/Chicago",
+        "location": "RLM 4.102",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "10:00",
+        "end_time": "10:50",
+        "timezone": "America/Chicago",
+        "location": "RLM 4.102",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "10:00",
+        "end_time": "10:50",
+        "timezone": "America/Chicago",
+        "location": "RLM 4.102",
+        "type": "lecture"
+      }
+    ],
+    "location": "RLM 4.102"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams 1-4",
+      "weight_percent": 60,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "cps_quizzes",
+      "name": "CPS/Quizzes/Homework",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "mastering",
+      "name": "Mastering A&P Quizzes",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Comprehensive Final",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exams_1",
+      "title": "Exams 1-4",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 60,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "Missed exam: replace with final section grade if excused",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Four exams during semester"
+    },
+    {
+      "id": "cps_1",
+      "title": "CPS/Quizzes/Homework",
+      "category_id": "cps_quizzes",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "CPS wireless, homework, quizzes"
+    },
+    {
+      "id": "mastering_1",
+      "title": "Mastering A&P Quizzes",
+      "category_id": "mastering",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Online Mastering A&P"
+    },
+    {
+      "id": "final_1",
+      "title": "Comprehensive Final",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Required; can replace exam grades"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

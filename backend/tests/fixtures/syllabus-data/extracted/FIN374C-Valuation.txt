@@ -1,0 +1,351 @@
+FIN 374C: VALUATION
+SYLLABUS
+PROFESSOR SURY
+Unique: 03490 | Spring 2019 T, Th | 3:30 – 5:00pm | GSB 2.122
+Welcome to Valuation! This course is a rigorous exploration of the practice of valuation within the
+discipline of corporate finance. It is primarily focused upon the evaluation and financing of major
+investments, acquisitions, and capital expenditures that companies may face. The theory behind these
+decisions will be explored, but practical issues involving the application of the concepts will be emphasized,
+with case studies covering scenario analysis, simulation, and the appropriate use of managerial discretion.
+We will cover a number of current strategies, methods, and techniques used by leading corporate financiers.
+This course section is slanted towards those with an interest in investment banking and consulting (strategic
+finance). To that end, this section incorporates some “real-world” casework that will touch upon valuation
+techniques for cost of capital, financing alternatives, and merger and acquisitions (M&A) applications.
+Key questions that will be addressed include:
+(cid:1) What are the relevant cash flows of an investment?
+(cid:1) What are the risks involved with an investment, and how might a firm mitigate these risks?
+(cid:1) How can an investment be financed, and how much does financing contribute to its value?
+(cid:1) How does an investment affect the firm’s financial statements?
+(cid:1) How will an investment impact the firm’s earnings per share (EPS)?
+(cid:1) Is there flexibility in the way that a project can be implemented, and if so, how does the flexibility
+contribute to value?
+(cid:1) If an investment is delayed, will the opportunity still be available in the future?
+(cid:1) Does an investment exploit the firm’s existing comparative advantages, and does it create new
+comparative advantages that will generate valuable projects in the future?
+This syllabus is subject to modification.
+Prerequisite: FIN 357 or FIN 357H. Students should be comfortable with financial statements, accounting
+identities, and statistics (including random variables and distributions). Working knowledge of Excel is
+assumed.
+Contact Info
+Professor: Michael Sury
+Office: CBA 6.210 Phone: 512.471.4368
+Office Hours: Tuesdays and Thursdays, 1pm to 2pm; and by appointment
+Email: michael.sury@mccombs.utexas.edu
+TAs: Tarun Vaish
+tarun.vaish@mba19.mccombs.utexas.edu
+Feel free to drop in unannounced during our office hours. At other times, email is the best way to reach us.
+However, please note that federal student privacy policy (FERPA) prohibits us from discussing grade-
+related information via telephone or email.
+(continued, next page)
+FALL 2018 FIN 374C
+
+FIN 374C VALUATION SURY
+Required Materials:
+1. Titman, S., and J. Martin, Valuation: The Art & Science of Corporate Investment Decisions, 3rd
+ed., Pearson, 2016
+2. Harvard Business School Case Course-Pak (Sury, FIN 374C – Spring 2019)
+(link will be provided in-class)
+3. @Risk (simulation add-in for MS Excel). Available in labs and for FREE download:
+http://www.mccombs.utexas.edu/Tech/Computer-Services/COE.aspx
+4. Wall Street Journal
+Optional Materials:
+1. Burrough, B., and J. Helyar, Barbarians at the Gate: The Fall of RJR Nabisco, Harper & Row,
+2009. (earlier editions are acceptable).
+It is important to note that—unlike some introductory finance courses—the practice of valuation is both an
+art and a science. In fact, some may argue that it is neither: rather, it should be considered a craft. Initially
+some students experience frustration with the inability to rely solely upon memorized formulas or
+predetermined steps that work in all cases. Indeed, some scenarios may have more than one “correct”
+approach—and more than one potential solution. Good solutions depend upon a number of factors,
+including: a logical and well-reasoned approach, the correct use of techniques appropriate to the approach,
+the accuracy of the attendant calculations, and a thoughtful narrative that ties the “story” together.
+As students accumulate experience in valuation, they often find that the “art” of valuation frees them to
+incorporate a certain level of (appropriate) creativity and innovation in their methods. Indeed it is precisely
+this creativity and innovation that can enable the best financiers to stand out.
+Grading
+Course performance will be evaluated according to the following schedule:
+Homework, 5 x 4% each: 20%
+Case Analyses (teams), 3 x 10% each: 30%
+Midterm: 20%
+Final Exam: 30%
+TOTAL 100%
+HBS Cases: Cases are obtained by accessing the HBS Course-Pak at http://hbsp.harvard.edu. Cases are to
+be completed by working in self-selected teams of 4 students that will remain together for all cases during
+the semester.
+One of the best ways to learn about valuation is by doing valuation. Cases provide you with the opportunity
+to exercise practical applications of the techniques and strategies that are taught in lecture and in the
+textbook. Navigating through cases can take some getting used to, but the pride you will get from struggling
+with—and ultimately tackling—these real-world situations can be extremely satisfying.
+(continued, next page)
+SPRING 2019 - 2 - FIN 374C
+
+FIN 374C VALUATION SURY
+Agenda and Topics
+(a calendar schedule will be supplied on Canvas)
+(cid:1) Course Introduction, Valuation Process
+(cid:1) Valuation Methodologies
+(cid:1) Computing Cash Flow (FCFF, FCFE, CCF)
+(cid:1) Simulation and Scenario Analysis (@Risk)
+(cid:1) Cost of Capital Mechanics
+(cid:1) Estimating Required Rates of Return
+(cid:1) Forecasting Financial Performance
+(cid:1) Valuation with Comparables
+(cid:1) Enterprise Valuation
+(cid:1) Private Placements and Capital Formation
+(cid:1) IPOs
+(cid:1) Leveraged Buyouts (LBO)
+(cid:1) Private Equity
+(cid:1) Valuation Using Market Information
+(cid:1) Real Options
+Important: All instructions, assignments, readings, rubrics and essential information will be on the Canvas
+website at https://utexas.instructure.com. Check this site regularly and use it to ask questions about the
+course schedule.
+Changes to the schedule may be made at my discretion and if circumstances require. It is your responsibility
+to note these changes when announced (although I will do my best to ensure that you receive the changes
+with as much advanced notice as possible).
+CLASS POLICIES
+Statement on Learning Success
+Your success in this class is important to me. We will all need accommodations because we all learn
+differently. If there are aspects of this course that prevent you from learning or exclude you, please let me
+know as soon as possible. Together we’ll develop strategies to meet both your needs and the requirements
+of the course. I also encourage you to reach out to the student resources available through UT. Many are
+listed on this syllabus, but I am happy to connect you with a person or Center if you would like.
+Grading Policies
+The grade cutoffs below will be strictly adhered to. Depending upon the distribution of the raw class
+performance, a curve may be applied. Please do not ask me what the curve will be during the semester, as
+I cannot know it until all the grading elements have been submitted. If possible, I will supply some feedback
+about the class’ general performance throughout the semester.
+A: 94% B+: 87% C+: 77% D: 65% F: <65%
+A-: 90% B: 84% C: 74%
+B-: 80% C-: 70%
+(continued, next page)
+SPRING 2019 - 3 - FIN 374C
+
+FIN 374C VALUATION SURY
+Late work
+All work must be submitted no later than the start of class on the day that it is due, unless otherwise
+instructed. In the business world, and particularly in corporate finance and investment banking, there can
+be substantial penalties for late submissions. Significant business opportunities may be lost by neglecting
+to adhere to schedules, deadlines, and other important dates.
+Absences
+It is important for you to come to class every session. However, things happen. If you must be absent,
+please notify the TA, along with the nature of the absence (e.g., religious holiday, extenuating circumstance,
+emergency, etc.)
+STUDENT RIGHTS AND RESPONSIBILITIES
+• You have a right to a learning environment that supports mental and physical wellness.
+• You have a right to respect.
+• You have a right to be assessed and graded fairly.
+• You have a right to freedom of opinion and expression.
+• You have a right to privacy and confidentiality.
+• You have a right to meaningful and equal participation, to self-organize groups to improve your learning
+environment.
+• You have a right to learn in an environment that is welcoming to all people. No student shall be isolated,
+excluded or diminished in any way.
+With these rights come responsibilities:
+• You are responsible for taking care of yourself, managing your time, and communicating with the teaching
+team and with others if things start to feel out of control or overwhelming.
+• You are responsible for acting in a way that is worthy of respect and always respectful of others. • Your
+experience with this course is directly related to the quality of the energy that you bring to it, and your
+energy shapes the quality of your peers’ experiences.
+• You are responsible for creating an inclusive environment and for speaking up when someone is excluded.
+• You are responsible for holding yourself accountable to these standards, holding each other to these
+standards, and holding the teaching team accountable as well.
+Personal Pronoun Preference
+Professional courtesy and sensitivity are especially important with respect to individuals and topics dealing
+with differences of race, culture, religion, politics, sexual orientation, gender, gender variance, and
+nationalities. Class rosters are provided to the instructor with the student’s legal name. I will gladly honor
+your request to address you by a name different than what appears on the roster, and by the gender pronouns
+you use. Please advise me of this preference early in the semester so that I may make appropriate changes
+to my records.
+(continued, next page)
+SPRING 2019 - 4 - FIN 374C
+
+FIN 374C VALUATION SURY
+UNIVERSITY POLICIES
+Academic Integrity
+Each student in the course is expected to abide by the University of Texas Honor Code: “As a student of
+The University of Texas at Austin, I shall abide by the core values of the University and uphold academic
+integrity.” Plagiarism is taken very seriously at UT. Therefore, if you use words or ideas that are not your
+own (or that you have used in previous class), you must cite your sources. Otherwise you will be guilty of
+plagiarism and subject to academic disciplinary action, including failure of the course. You are responsible
+for understanding UT’s Academic Honesty and the University Honor Code which can be found at
+the following web address:
+http://deanofstudents.utexas.edu/sjs/acint_student.php
+Q Drop Policy
+If you want to drop a class after the 12th class day, you’ll need to execute a Q drop before the Q-drop
+deadline, which typically occurs near the middle of the semester. Under Texas law, you are only allowed
+six Q drops while you are in college at any public Texas institution. For more information, see:
+http://www.utexas.edu/ugs/csacc/academic/adddrop/qdrop
+University Resources for Students
+Your success in this class is important to me. From time to time, we all need accommodations because we
+all learn differently. If there are aspects of this course that prevent you from learning or exclude you, please
+let me know as soon as possible. Together we’ll develop strategies to meet both your needs and the
+requirements of the course. There are also a range of resources on campus:
+Services for Students with Disabilities
+This class respects and welcomes students of all backgrounds, identities, and abilities. If there are
+circumstances that make our learning environment and activities difficult, if you have medical information
+that you need to share with me, or if you need specific arrangements in case the building needs to be
+evacuated, please let me know. I am committed to creating an effective learning environment for all
+students, but I can only do so if you discuss your needs with me as early as possible. I promise to maintain
+the confidentiality of these discussions. If appropriate, also contact Services for Students with Disabilities,
+512-471-6259 (voice) or 1-866-329- 3986 (video phone).
+http://ddce.utexas.edu/disability/about/
+Counseling and Mental Health Center
+Do your best to maintain a healthy lifestyle this semester by eating well, exercising, avoiding drugs and
+alcohol, getting enough sleep and taking some time to relax. This will help you achieve your goals and cope
+with stress.
+All of us benefit from support during times of struggle. You are not alone. There are many helpful resources
+available on campus and an important part of the college experience is learning how to ask for help. Asking
+for support sooner rather than later is often helpful.
+If you or anyone you know experiences any academic stress, difficult life events, or feelings like anxiety or
+depression, we strongly encourage you to seek support.
+http://www.cmhc.utexas.edu/individualcounseling.html
+(continued, next page)
+SPRING 2019 - 5 - FIN 374C
+
+FIN 374C VALUATION SURY
+The Sanger Learning Center
+Did you know that more than one-third of UT undergraduate students use the Sanger Learning Center each
+year to improve their academic performance? All students are welcome to take advantage of Sanger
+Center’s classes and workshops, private learning specialist appointments, peer academic coaching, and
+tutoring for more than 70 courses in 15 different subject areas. For more information, please
+visit: http://www.utexas.edu/ugs/slc or call 512-471-3614 (JES A332).
+Undergraduate Writing Center: http://uwc.utexas.edu/
+Libraries: http://www.lib.utexas.edu/
+ITS: http://www.utexas.edu/its/
+Student Emergency Services: http://deanofstudents.utexas.edu/emergency/
+Important Safety Information:
+If you have concerns about the safety or behavior of fellow students, TAs or Professors, call BCAL (the
+Behavior Concerns Advice Line): 512-232-5050. Your call can be anonymous. If something doesn’t feel
+right – it probably isn’t. Trust your instincts and share your concerns.
+Title IX Reporting
+Title IX is a federal law that protects against sex and gender-based discrimination, sexual harassment,
+sexual assault, sexual misconduct, dating/domestic violence and stalking at federally funded educational
+institutions. UT Austin is committed to fostering a learning and working environment free from
+discrimination in all its forms. When sexual misconduct occurs in our community, the university can:
+1. Intervene to prevent harmful behavior from continuing or escalating.
+2. Provide support and remedies to students and employees who have experienced harm or have become
+involved in a Title IX investigation.
+3. Investigate and discipline violations of the university’s relevant policies.
+Faculty members and certain staff members are considered “Responsible Employees” or “Mandatory
+Reporters,” which means that they are required to report violations of Title IX to the Title IX Coordinator.
+I am a Responsible Employee and must report any Title IX related incidents that are disclosed in
+writing, discussion, or one-on-one. Before talking with me, or with any faculty or staff member about a
+Title IX related incident, be sure to ask whether they are a responsible employee. If you want to speak with
+someone for support or remedies without making an official report to the university, email
+advocate@austin.utexas.edu For more information about reporting options and resources, visit
+titleix.utexas.edu or contact the Title IX Office at titleix@austin.utexas.edu.
+The following recommendations regarding emergency evacuation from the Office of Campus Safety and
+Security, 512-471-5767, http://www.utexas.edu/safety/
+Occupants of buildings on The University of Texas at Austin campus are required to evacuate buildings
+when a fire alarm is activated. Alarm activation or announcement requires exiting and assembling outside.
+• Familiarize yourself with all exit doors of each classroom and building you may occupy. Remember that the
+nearest exit door may not be the one you used when entering the building.
+• Students requiring assistance in evacuation shall inform their instructor in writing during the first week of
+class.
+• In the event of an evacuation, follow the instruction of faculty or class instructors. Do not re-enter a building
+unless given instructions by the following: Austin Fire Department, The University of Texas at Austin Police
+Department, or Fire Prevention Services office.
+• Link to information regarding emergency evacuation routes and emergency procedures can be found at:
+www.utexas.edu/emergency
+SPRING 2019 - 6 - FIN 374C
+
+FIN 374C VALUATION SURY
+About your Instructor
+MICHAEL SURY
+Lecturer in Finance, University of Texas at Austin
+Chairman, Analytic Holdings, LP
+Professor Sury is on the faculty of the Department of Finance at the University of Texas at Austin. He
+previously served as a Finance Lecturer at San Diego State University, a Full-time Dean's Executive
+Professor of Finance at Santa Clara University, and as a Visiting Scholar and Adjunct Professor of
+Economics at the University of California. In these roles, he has taught at the undergraduate and MBA
+levels, including for such courses as Investment Theory, Financial Management, Corporate Finance,
+Applied Portfolio Management, Securities Markets, and Endowment Management. He is the recipient of
+numerous teaching and scholarly accolades, including UT-Austin’s Faculty Honor Roll and Texas Spirit
+Awards, the DePaul University Seiden Award, Santa Clara University's ACE Outstanding Faculty Award,
+and the Leavey School of Business Extraordinary Faculty Award. In addition, he served as principal
+faculty advisor for Santa Clara University’s delegation to the California Venture Capital Investment
+Competition, which won the esteemed Entrepreneur’s Choice Award in 2011.
+Professor Sury is also the Chairman of Analytic Holdings LP. The organization was formed after the sale
+of the investment firm he founded and ran from 2000-2009—a nationally top ranked, multi- billion dollar
+investment adviser to wealthy families and institutional investors. Analytic Holdings conducts research
+and due diligence in the global public and private markets. Since its inception, Professor Sury and his staff
+have evaluated and performed extensive due diligence on over 350 investment managers, 120 private
+deals, and numerous structured products and special situations.
+For more than twenty years, Professor Sury has served as a close, trusted adviser to some of the nation's
+wealthiest family groups, sovereign and government entities, and private organizations, including nearly a
+dozen of the Forbes 400. Professor Sury’s experience in corporate finance and investment management
+spans an unusually broad number of industries; serving as an expert advisor to both substantial
+investors and issuers.
+In the 2000s, Professor Sury organized and led an integrated investment and wealth management firm
+(ranked the #1 US based manager by Wealth Manager Magazine (2006 and 2007), a “Top 10 Financial
+Advisor” by Financial Advisor Magazine (2006), and #2 by Bloomberg Wealth Manager (2005)); and built
+a highly respected global institutional broker dealer organization. Over the years, his professional
+investment R&D teams—comprised of innovative researchers with Ph.D.’s and other advanced degrees
+across financial and technical disciplines—developed critically acclaimed, state-of-the-art techniques and
+strategies for client-optimized portfolio management and diversification.
+In the 1990s, he built and led one of the most successful and fastest growing investment management
+practices as a Vice President at Goldman, Sachs & Co., where he advised a niche group of prominent,
+ultra-wealthy clients representing several billion dollars in investment assets spanning equities, fixed
+income, and alternative investments. During his tenure at Goldman Sachs, Professor Sury also taught
+several classes for new Financial Analysts on topics ranging from portfolio analysis to financial
+accounting.
+Professor Sury is a Founding Member and principal sponsor of SIFIRM—a private organization that has
+supported research initiatives bringing together some of the most innovative scholars, substantial investors,
+and practitioners in financial economics to consult and investigate problems in risk management,
+corporate finance, portfolio optimization, and behavioral finance.
+(continued, next page)
+SPRING 2019 - 7 - FIN 374C
+
+FIN 374C VALUATION SURY
+Professor Sury previously served as an Executive Board Member for the University of California's
+proposed School of Management (Silicon Valley), Chicago’s Arditti Center for Risk Management, the
+Sury Initiative for Global Finance and International Risk Management (SIGFIRM) at UC Santa Cruz, Opal
+Wealth Management Forums, and the UC Santa Cruz Center for International Economics. As an
+internationally recognized expert in the fields of portfolio theory and risk management, Professor Sury is a
+frequently invited speaker, including for agencies of the US Government, Opal Financial Forums, the CFA
+Institute, CIO Summits, Financial Research Associates, Wilson Family Office Summits, QuantInvest,
+Wealth Management Forum, Int’l Private Banking, Terrapinn, and the University of Chicago. His
+audiences typically include leaders of large institutions, pension and endowment funds, and sovereign wealth
+funds.
+Professor Sury’s research on the optimization of traditional and alternative investments is featured in the
+anthology, “Essential Readings in Applied Financial Economics.” In the media, Professor Sury has been
+quoted as an expert source on all three major TV networks (ABC, CBS, NBC), US News & World
+Report, Forbes, Bloomberg World Markets, Wealth Manager Magazine, Reuters, MarketWatch, Fund
+Strategy Magazine, The Dallas Morning News, The Irish Times, Oil & Gas Monitor, Lipper, MindWorks,
+San Jose Business Journal, Crain’s Chicago Business, and Hedgeworld, among others. His economic
+views have also been featured on CNBC and Bloomberg TV; and on talk radio programs on KPRC-AM
+and KLIF-AM. His current research interests include alpha identification and the disintermediation of
+non-value added investment managers, with proprietary techniques and strategies he pioneered in the late
+1990s and early 2000s.
+Prior to graduate school, Professor Sury had previously served in special enforcement and intelligence
+advisory capacities for Federal task forces and local government agencies, including the Organized Crime
+Task Force (Central Texas), and the Santa Clara Co. District Attorney’s Bureau of Investigation (Silicon
+Valley); sensitive security clearance positions. He was also employed in technical positions with
+International Business Machines (IBM), Lockheed Missiles & Space Co. (C3I and SSD), and the MCC
+R&D Consortium. For achievements in these roles, he was awarded a series of honors and media
+mentions, among them the prestigious IBM Austin Excellence Award, the US Air Force Outstanding
+Research Project--Smartex, Lockheed’s Space Systems Division Commendation, Lockheed Missiles
+& Space Co. Award Letter (for efforts as part of the 1987 USAF Air Defense Initiative), and the SCC
+District Attorney’s Letter (for service in helping the newly developed and influential DA’s High Tech &
+Economic Crimes Unit in Silicon Valley—among the first of its kind in the nation). In 2003, Professor
+Sury was featured in Crain's Chicago Business "40 Under 40: Chicago's Rising Stars," for his significant
+professional accomplishments.
+Professor Sury earned his MBA (High Honors) in Finance & Statistics from the University of Chicago’s
+Graduate School of Business. He was awarded his undergraduate degree in Economics (High Honors)
+from the University of California, where he concurrently held teaching assistantships in Macroeconomic
+Theory and Statistical Analysis. Based upon his academic performance, he was inducted into the Phi Beta
+Kappa and Beta Gamma Sigma honor societies. Professor Sury attended the San Jose Police Academy,
+serving as class President; and prior to graduate school, also completed reserve officer training at the South
+Bay/Evergreen Criminal Justice Training Academy, where he was certified by the California Commission
+on Peace Officer Standards & Training.
+On a personal note, Professor Sury enjoys giving back to the community, through such efforts as Junior
+Achievement, Habitat for Humanity, Starlight Children’s Foundation, the South Shore Drill Team, and
+the Los Angeles Police Emerald Society. He has also served on the Board of the MRIC of Children’s
+Memorial Hospital, and the GSB CEO Roundtable. Based in part on his experience in law enforcement
+(criminal investigation), he currently serves on the Santa Clara Sheriff’s Advisory Board and previously
+served on the Executive Committee of the San Jose Police Officer Association’s Major Awards Committee.
+SPRING 2019 - 8 - FIN 374C
+
+FIN 374C VALUATION SURY
+NOTES
+SPRING 2019 - 9 - FIN 374C

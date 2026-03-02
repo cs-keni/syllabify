@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS Courses (
 );
 
 -- Assignments belong to a Course
+-- assignment_type: assignment|midterm|final|quiz|project|participation (for scheduling engine)
 CREATE TABLE IF NOT EXISTS Assignments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     assignment_name VARCHAR(255) NOT NULL,
@@ -46,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Assignments (
     notes VARCHAR(2048),
     start_date DATETIME NOT NULL,
     due_date DATETIME NOT NULL,
---    schedule_id INT NOT NULL,
+    assignment_type VARCHAR(50) NULL,
     course_id INT NOT NULL,
 --    CONSTRAINT fk_assignments_schedule
 --        FOREIGN KEY (schedule_id)

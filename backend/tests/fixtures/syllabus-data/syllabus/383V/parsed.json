@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "383v",
+    "course_code": "EE 383V",
+    "course_title": "Quantum Electro-Optics",
+    "term": "Fall 2024",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Dan Wasserman",
+        "email": "dw@utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "10:30",
+        "end_time": "11:45",
+        "timezone": "America/Chicago",
+        "location": "ECJ 1.306",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "10:30",
+        "end_time": "11:45",
+        "timezone": "America/Chicago",
+        "location": "ECJ 1.306",
+        "type": "lecture"
+      }
+    ],
+    "location": "ECJ 1.306"
+  },
+  "assessment_categories": [
+    {
+      "id": "homework",
+      "name": "Homework",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "attendance",
+      "name": "Attendance",
+      "weight_percent": 5,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "midterm",
+      "name": "Midterm Exam",
+      "weight_percent": 35,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final_project",
+      "name": "Final Project",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "homework_1",
+      "title": "Homework",
+      "category_id": "homework",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "No late homework accepted",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Homework 30% Due ~1 week after assigned"
+    },
+    {
+      "id": "attendance_1",
+      "title": "Attendance",
+      "category_id": "attendance",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 5,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Attendance 5%"
+    },
+    {
+      "id": "midterm_1",
+      "title": "Midterm Exam",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 35,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Midterm Exam 35% In class"
+    },
+    {
+      "id": "final_project_1",
+      "title": "Final Project",
+      "category_id": "final_project",
+      "type": "project",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final Project 30% Presentation and questions"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

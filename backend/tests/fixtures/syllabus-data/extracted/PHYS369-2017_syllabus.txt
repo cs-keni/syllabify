@@ -1,0 +1,130 @@
+Physics 369, Thermodynamics and Statistical Mechanics, Spring 2017
+Section: Unique #56925, Meets MWF, 12-1 PM, RLM 7.104
+Pre-requisite: Credit or registration for Phys. 373. I will enforce this requirement. See me for
+approval if you have taken an equivalent course elsewhere. You must have a good understanding
+of multi-variable calculus and of elementary quantum physics to be properly prepared for this
+course.
+Instructor: Dan Heinzen; Office: RLM 10.324; Phone: 471-3960;
+e-mail: heinzen@physics.utexas.edu ; Office Hours: M 3-4, or by appointment.
+Grader: TBA
+Text: Daniel V. Schroeder, An Introduction to Thermal Physics (Addison-Wesley, 2000), and
+supplementary course notes posted on Canvas.
+Canvas: Lecture notes, recitation section notes, handouts, homework solutions, and grades will be
+posted on Canvas.
+Homework: Assigned approximately once per week. You may work together on the homework.
+However, each student must hand in his or her own solution, and must contribute substantially to
+the solution of any problem he or she hands in. Some homework assignments will require numerical
+solutions, which you will need to provide using Excel, Mathematica, or some other programming
+environment. Homework assignments will all be worth the same point value even though their
+difficulty level and length will vary. Homework will be accepted one lecture late with a penalty of
+10%. No homework will be accepted after that, except as discussed below. Your lowest homework
+grade will be dropped in the calculation of your final course grade.
+If the workload on the grader is excessive due to the large enrollment of this course, we may need to
+base homework grades on partial grading of assignments.
+Recitation sessions: Recitation sessions will be scheduled on an as-needed basis. These will be used to
+review material, do additional practice problems, and/or as homework help sessions. Attendance at
+these sections is optional.
+Classroom response quizzes: We will use a web-based classroom response system to carry out in-class
+quizzes. These will be accessible by laptop or smartphone. You will be awarded 2 points for each
+incorrect response, and 3 points for each correct response. Students who do not have a smartphone
+or laptop will either be provided with one, or allowed to earn credit for these quizzes based on class
+attendance.
+Tests: There will be three in-class tests. Your lowest test score will be dropped in the calculation of the
+final grade.
+Final: There will be a comprehensive final exam during the scheduled exam time for this class.
+
+Make-up tests and homework: You may not skip tests or hand in late homework without [(i) a
+legitimate reason (illness, family emergency, etc.) (ii) appropriate documentation (e.g. doctor’s
+note), and (iii) advance permission from me, if it is reasonably possible for you to make such a
+request] OR [because of observance of a religious holy day (see below)]. If you satisfy all three of
+requirements (i)-(iii) or the religious exception, you will be allowed to turn in the homework late, or
+take a make-up test. Otherwise your score for that homework or test will be zero.
+Course grade: In class quizzes 6%, Homework 24%, Highest two test scores 18% each, and Final
+Exam 34%. Course grades will be determined strictly from your calculated weighted average score
+using the above weight factors. If differences between the average scores of tests are large, I may
+scale the scores to make their averages more similar. I do not use fixed grade breakpoints. I will
+provide some guidance during the semester of approximate grade breakpoints. You will not be able
+to earn a grade based only on your Final Exam score.
+Disabilities: Students with disabilities may request appropriate academic accommodations from the
+Division of Diversity and Community Engagement, Services for Students with Disabilities, 512-
+471-6259, http://diversity.utexas.edu/disability/
+Religious observance: Students are entitled to a make-up exam or to turn in late work if this is
+needed for observance of a religious holy day. Students who want to exercise this right must
+inform me of the observance 14 days in advance.
+University Honor Code: The core values of the University of Texas at Austin are learning,
+discovery, freedom, leadership, individual opportunity, and responsibility. Each member of the
+University is expected to uphold these values through integrity, honesty, trust, fairness, and
+respect toward peers and community.
+Test schedule:
+Test 1: Mon., Feb. 20
+Test 2: Weds., Mar. 29
+Test 3: Fri., April 28
+
+Course Outline
+Tentative. Content and schedule may be revised as course proceeds.
+Date(s) Activity Topic
+Jan. 18-23 Heat and temperature. Thermal expansion. Empirical
+temperature scales. Caloric vs. kinetic theory of heat. Heat
+capacity. Development of atomic theory. Avogadro
+constant. Absolute zero of temperature.
+Jan. 25 HW 1 due
+Jan. 25-30 Ideal gas law. Joule and the “mechanical equivalent of
+heat.” Internal energy. First law of thermodynamics.
+Compression work. Enthalpy. Dulong-Petit rule.
+Equipartition. Ideal gas heat capacity. Adiabatic and
+isothermal compressions of an ideal gas. Compressibility.
+Equations of state.
+Feb. 1 HW 2 due
+Feb. 1-6 Random processes. Distribution functions. Poissonian
+statistics. The random walk. Stirling’s approximation.
+Gaussian distribution. Kinetic theory. Maxwell-Boltzmann
+distribution. Effusion.
+Feb. 8 HW 3 due
+Feb. 8-13 Transport phenomena. Fluctuations. Langevin equation.
+Brownian Motion.
+Feb. 15 HW 4 due
+Feb. 20 In-class test 1
+Feb. 15, 17, 22 Multiplicity function. Examples: two-state system, Einstein
+solid. Thermodynamic limit. Coupled large systems. Ideal
+gas. Entropy.
+Feb. 24 HW 5 due
+Feb. 24 - Second law of thermodynamics. Ideal gas entropy. Entropy
+Mar. 1 of mixing. Gibbs’ paradox.
+Mar. 3 HW 6 due
+Mar. 3-8 Definition of temperature in statistical mechanics. Entropy
+and heat. Third Law. Paramagentism. Mechanical
+equilibrium and pressure. Thermodynamic identity.
+Diffusive equilibrium and chemical potential. Heat engines.
+Carnot cycle. Carnot’s theorem. Refrigerators.
+
+Date Activity Topic
+Mar. 10 HW 7 due
+Mar. 13-17 Spring break
+Mar. 10, 20, SI definition of temperature. Real heat engines and
+22 refrigerators. Free energy. Thermodynamic potentials.
+Electrochemical cells. Thermodynamic equilibrium. Phase
+equilibrium.
+Mar. 24 HW 8 due
+Mar. 29 In-class test 2
+Mar. 24, 27, Phase transitions. Clausius-Clapeyron relation. Van der Waals
+31 model.
+Apr. 3 HW 9 due
+Apr. 3 Last drop day Last day to drop class with Dean’s approval except for
+“urgent and substantiated non-academic reasons”
+Apr. 3-7 Boltzmann factor. Partition function and free energy.
+Statistical mechanics calculations with the canonical
+ensemble. Examples: Paramagnet, rigid rotor, etc. Continuous
+degrees of freedom. Equipartition theorem.
+Apr. 10 HW 10 due
+Apr. 10-14 Plane wave states. Ideal gas. Maxwell-Boltzmann
+Distribution. Resolution of Gibbs’ paradox. Molecular gases.
+Ortho- and para-hydrogen.
+Apr. 17 HW 11 due
+Apr. 17-21 Grand canonical ensemble. Gibbs factor. Fermi and Bose
+statistics. Degenerate Fermi gas.
+Apr. 24 HW 12 due
+Apr. 28 In-class Test 3
+Apr. 26, Blackbody radiation. Debye theory. Bose-Einstein
+May 1, 3 condensation.
+May 5 HW 13 due
+May 5 Last class day

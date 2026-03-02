@@ -1,6 +1,6 @@
 {
   "course": {
-    "id": "math251",
+    "id": "math251-leon",
     "course_code": "MATH 251",
     "course_title": "Calculus",
     "term": "Fall 2022",
@@ -108,7 +108,7 @@
       "due_datetime": "2022-10-25",
       "all_day": true,
       "timezone": null,
-      "weight_percent": null,
+      "weight_percent": 22.5,
       "points": null,
       "recurrence": null,
       "policies": {},
@@ -123,7 +123,7 @@
       "due_datetime": "2022-11-18",
       "all_day": true,
       "timezone": null,
-      "weight_percent": null,
+      "weight_percent": 22.5,
       "points": null,
       "recurrence": null,
       "policies": {},

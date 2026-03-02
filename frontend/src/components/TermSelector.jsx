@@ -86,11 +86,11 @@ export default function TermSelector({ onTermChange }) {
 
   if (terms.length === 0) {
     return (
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3">
         <span className="text-sm text-ink-muted">No terms yet.</span>
         <button
           onClick={() => setShowModal(true)}
-          className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+          className="rounded-button bg-[#0F8A4C] px-3 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] transition-colors"
         >
           + Create First Term
         </button>
@@ -105,12 +105,12 @@ export default function TermSelector({ onTermChange }) {
   }
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3">
       <label className="text-sm font-medium text-ink">Term:</label>
       <select
         value={currentTermId || ''}
         onChange={e => handleChange(e.target.value)}
-        className="rounded-input border border-border bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
+        className="w-full sm:w-auto rounded-input border border-border bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
       >
         {terms.map(term => (
           <option key={term.id} value={term.id}>
@@ -120,13 +120,13 @@ export default function TermSelector({ onTermChange }) {
       </select>
       <button
         onClick={() => setShowModal(true)}
-        className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors"
+        className="rounded-button bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors w-full sm:w-auto"
       >
         + New Term
       </button>
       <button
         onClick={() => setShowManageModal(true)}
-        className="rounded-button border border-border bg-surface px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted transition-colors"
+        className="rounded-button border border-border bg-surface px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted transition-colors w-full sm:w-auto"
       >
         Manage
       </button>

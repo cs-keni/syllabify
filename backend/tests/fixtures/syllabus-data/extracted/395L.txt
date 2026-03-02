@@ -1,0 +1,77 @@
+Statistical Mechanics
+PHY 385L
+Unique Number 56985
+(Spring Semester, 2017)
+Instructor: Prof. Greg Fiete. Office: RLM 7.328; Ph: 232-8084. fiete@physics.utexas.edu
+TA: Mr. Qi Chen
+Classes: MWF 10:00 am-11:00 am, RLM 5.114.
+Office hours: Friday 11:00 am-12:00 noon and by appointment.
+Textbooks: Statistical Physics of Particles (Cambridge), and Statistical Physics of Fields
+(Cambridge), by Mehran Kardar. This is a modern and rigorous treatment of statistical
+mechanics applicable to nearly all branches of physics (and biology).
+References: There are a number of other texts that are also useful references for statistical
+mechanics. They include: Statistical Physics (Butterworth & Heinemann), by Landau and
+Lifshitz; Statistical Mechanics (Pergamon) by Pathria; Statistical Mechanics 2nd Edition (Wiley)
+by Huang.
+Prerequisite: Graduate standing and graduate classical mechanics 385K or consent of
+instructor.
+Course Requirements and Grading Policy:
+*CLASS ATTENDANCE. Class attendance is important to reinforce topics covered in
+the homework and vice-versa.
+*Homework sets (assigned roughly every 2 weeks) to emphasize the most important
+ideas from class.
+*Mid-term exam (In-class, Monday March 27, 2017)
+*Final exam. This is a core course, which requires a final exam that counts for 50% of
+the course grade by department policy.
+The final grade will be based on homework (35%), the midterm (15%),
+and the final (50%). Since this is a core course, the class average will be
+curved to B+ by department policy.
+Material to be covered:
+We will cover nearly all of the text of Statistical Physics of Particles and roughly
+chapters 1-4, 9 of Statistical Physics of Fields. A few additional modern topics may be treated if
+time permits.
+Perspective of instructor:
+Statistical Mechanics is arguably the most widely applicable topic in physics, which has
+extended in modern times to include areas of biology, neuroscience, epidemiology, finance, etc.
+
+Required University Notices and Policies
+University of Texas Honor Code
+The core values of The University of Texas at Austin are learning, discovery, freedom, leadership,
+individual opportunity, and responsibility. Each member of the university is expected to uphold these
+values through integrity, honesty, trust, fairness, and respect toward peers and community.
+Use of E-Mail for Official Correspondence to Students
+Email is recognized as an official mode of university correspondence; therefore, you are responsible for
+reading your email for university and course-related information and announcements. You are
+responsible to keep the university informed about changes to your e-mail address. You should check
+your e-mail regularly and frequently—I recommend daily, but at minimum twice a week—to stay current
+with university-related communications, some of which may be time-critical. You can find UT Austin’s
+policies and instructions for updating your e-mail address at
+http://www.utexas.edu/its/policies/emailnotify.php.
+Documented Disability Statement
+If you require special accommodations, you must obtain a letter that documents your disability from the
+Services for Students with Disabilities area of the Division of Diversity and Community Engagement
+(471-6259 voice or 471-4641 TTY for users who are deaf or hard of hearing). Present the letter to me at
+the beginning of the semester so we can discuss the accommodations you need. No later than five
+business days before an exam, you should remind me of any testing accommodations you will need. For
+more information, visit http://www.utexas.edu/diversity/ddce/ssd/
+Religious Holidays
+By UT Austin policy, you must notify me of your pending absence at least fourteen days prior to the date
+of observance of a religious holy day. If you must miss a class, an examination, a work assignment, or a
+project in order to observe a religious holy day, I will give you an opportunity to complete the missed
+work within a reasonable time after the absence.
+Behavior Concerns Advice Line (BCAL)
+If you are worried about someone who is acting differently, you may use the Behavior Concerns Advice
+Line to discuss by phone your concerns about another individual’s behavior. This service is provided
+through a partnership among the Office of the Dean of Students, the Counseling and Mental Health
+Center (CMHC), the Employee Assistance Program (EAP), and The University of Texas Police
+Department (UTPD). Call 512-232-5050 or visit http://www.utexas.edu/safety/bcal.
+Emergency Evacuation Policy
+Occupants of buildings on the UT Austin campus are required to evacuate and assemble outside when
+a fire alarm is activated or an announcement is made. Please be aware of the following policies
+regarding evacuation:
+Familiarize yourself with all exit doors of the classroom and the building. Remember that the nearest
+exit door may not be the one you used when you entered the building.
+If you require assistance to evacuate, inform me in writing during the first week of class.
+In the event of an evacuation, follow my instructions or those of class instructors.
+Do not re-enter a building unless you’re given instructions by the Austin Fire Department, the UT
+Austin Police Department, or the Fire Prevention Services office.

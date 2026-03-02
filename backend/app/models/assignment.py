@@ -25,6 +25,8 @@ class Assignment(Base):
         DateTime(timezone=True), nullable=False
     )
 
+    assignment_type: Mapped[str | None] = mapped_column(String(50), nullable=True)
+
     course_id: Mapped[int] = mapped_column(ForeignKey("Courses.id"), nullable=False)
 
     course = relationship("Course", back_populates="assignments")

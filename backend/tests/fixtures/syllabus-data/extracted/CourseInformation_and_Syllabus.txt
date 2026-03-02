@@ -1,0 +1,72 @@
+Linear Signals and Systems ECE 313
+COURSE INFORMATION
+Class meets T,Th 3:30 – 5:00 pm ECJ 1.214
+In-class attendance is heavily encouraged. However, if you cannot physically make it, you may
+use Zoom to virtually participate in the lecture.
+Join URL: https://utexas.zoom.us/j/99419793927?pwd=iTfFVtjbLJgii3BD7Pf5Kqa86sEeoH.1
+Meeting ID: 994 1979 3927
+Passcode: 504047
+Prerequisite: Electrical and Computer Engineering 302 (or Electrical Engineering 302), or Electrical
+and Computer Engineering 302H (or Electrical Engineering 302H) with a grade of at least C-;
+Mathematics 427J or 427K with a grade of at least C-; and credit with a grade of at least C- or
+registration for Mathematics 340L.
+Course Description: We will examine representation of signals and systems; system properties;
+convolution; Fourier series/transforms, Laplace/z-transforms; transfer functions and frequency
+response; convolution; stability; and relevant applications. We will also explore computer analysis using
+MATLAB or Python.
+General Syllabus:
+1. Introduction to signals and systems
+2. Linear and time-invariant systems
+3. Fourier series
+4. Fourier transform
+5. Laplace/Z- transform
+Instructor: Prof. Shwetadwip Chowdhury: shwetadwip.chowdhury@utexas.edu
+Teaching Assistant: Yue An: annyue@utexas.edu
+Instructor office hours: (Wednesday 12:00 pm - 1:30 pm) AND (Friday 1:00 pm – 2:30 pm),
+both in EER 5.808
+TA recitation location: EER 0.814C
+TA recitation hours: Friday 10:30am – 11:30am
+Zoom ID: 296 987 1088
+Textbook:
+Michael D. Adams, Signals and Systems 5th ed., (we will NOT be using the 6th edition)
+Link: https://www.ece.uvic.ca/~frodo/sigsysbook/downloads/signals_and_systems-5.0.pdf
+Instructional Youtube videos associated with open-source textbook: link [here]
+Organizational catalog: link [here]
+Homework: Consists mostly of problems from Adam’s book. They are generally due a week after the
+set of lectures covering the relevant content. Homeworks will be submitted in via Gradescope. After
+uploading your homework file, please be sure to use the Select Pages option to assign individual
+pages of your solution to the corresponding problem number. Doing so will help the TA and grader
+to spend more time looking at the content of your everyone’s work and less time looking for the pages
+
+where the answers are located. If you have an issue with how your homework was graded, please
+contact the TA first. If the TA cannot resolve the issue, then you may contact the instructor. Late
+homework is 10% off when turned in one day late, 20% off when two days late, and zero thereafter.
+Homework will not be accepted more than two days late so that solutions can be posted in a timely
+manner.
+If you are unfamiliar with how to select pages on Gradescope, this brief YouTube video may help:
+https://www.youtube.com/watch?v=nksyA0s-Geo
+Gradescope Course Entry Code: KZEJJN
+Grading:
+1. 2 midterm exams. 22% each
+2. Homework problem assignments. 24% total
+3. In-class group problems. 10% total
+4. Final exam (in-person). 22% total
+My goal is to create an environment where students can collaborate and support one another in
+mastering the course material. I want to avoid any perception that grades are competitive, as this can
+hinder cooperation. Therefore, this class will not be graded on a curve. While this might initially
+seem intimidating, please know that partial credit will be generously awarded on homework and exams,
+and there will be no "minus" letter grades in this class. For reference, the average letter grade in this
+class last year was a B. Below is the grading rubric (modified from the one shown on the official UT
+page [here]) that outlines how weighted numeric grades will be converted to letter grades in this class:
+Scholastic Dishonesty:
+UT policy will be followed. This is not intended to tell you that it won't be tolerated (it won't), but to tell
+you what is permissible and what is not.
+Homework: conferring with others is encouraged, but what you submit must be your own work (not
+copied). For the project, one common version is submitted. What you submit must be the team's own
+work, programs, results, etc., or it must be referenced properly. If it's not referenced, and it's not yours,
+
+then it is plagiarism. I do encourage consulting all sources that you can (including your uncle at IBM)
+so long as those sources are acknowledged. Be careful to cite web sources completely as well.
+Exams: Note sheets and programmable calculators are allowed for the exams. Any exchange of
+information (one-way or two-way) outside of you, your note sheet, and your calculator during the exam
+is obviously NOT OK. Prior knowledge of exam questions is also NOT OK.

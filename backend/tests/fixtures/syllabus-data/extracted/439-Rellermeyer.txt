@@ -1,0 +1,43 @@
+CS 439 - Principles of Computer Systems http://www.cs.utexas.edu/users/jrellerm/courses/439/
+CS 439 - Principles of Computer Systems
+COURSE INFORMATION SCHEDULE
+course information
+Classes: TTh 4-6 pm, GDC 2.216
+Instructor: Jan S. Rellermeyer
+Tel 512-286-6780
+Email jrellerm_at_cs.utexas.edu
+Office Hours TTh 2:00-3:30, GDC 5.430
+Discussion Sections: 51880 T 9-11am, GDC 6.202
+51885 W 9-11am, GDC 2.210
+51890 Th 9-11am, GDC 2.210
+51895 F 9-11am, PHR 2.114
+TAs: Wenzhi Cui
+Email cwz920716_at_gmail.com
+Office Hours F 2-4pm GDC 1.302 (TA station, desk 3)
+Egzon Bislimi
+Email theluckynumberthree_at_gmail.com
+Office Hours M 12-2pm GDC 1.302 (TA station, desk 3)
+Overview: An introduction to low-level software abstractions with an emphasis on the connection of these abstractions to underlying computer hardware. Key
+abstractions include threads, dynamic memory allocation, protection, and IO. Requires writing of synchronized multithreaded programs.
+Grading: Homework 10%
+Two Midterm Exams 15% each
+Final Exam 30%
+Labs/Project 30%
+Midterm Exam 1: tentatively 02/24/15
+Midterm Exam 2: tentatively 04/07/15
+Final Exam: TBD (scheduled by the department)
+Textbooks: Thomas Anderson and Mike Dahlin: Operating Systems: Principles and Practice (OSPP)
+Randal E. Bryant and David R. O’Halloran: Computer Systems: A Programmer’s Perspective (CSPP)
+Additional Piazza Page [link]
+Information:
+Top
+schedule
+Date Topic Additional Material Assignment
+Tue 01/20/2015 Introduction and Motivation [slides] [project 1] [system image]
+Thu 01/22/2015 Anatomy of an Operating System [slides] OSPP Chapter 1+2 [homework 1]
+Tue 01/27/2015 Anatomy of an Operating System continued. [J. Liedtke: On µ-Kernel Construction ]
+CSPP Chapter 7.4, OSPP Chapter 2
+Thu 01/29/2015 Processes and Scheduling [slides] OSPP Chapter 7, CSPP Chapter 3 [homework 2]
+Top
+Copyright © 2015 Jan S. Rellermeyer. Design inspired by templates from http://www.freecsstemplates.org
+1 of 1 2/4/15, 10:30 AM

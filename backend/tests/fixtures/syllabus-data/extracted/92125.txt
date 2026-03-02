@@ -1,0 +1,85 @@
+Mw427K Summer 2012
+Unique No. 92125
+Dr. Bart Goddard TA: Charlie Chen
+Office: RLM 13.140 Office: RLM 9.116
+Phone: 232-6185 Phone: 475-9133
+e-mail: goddardb@newsguy.com e-mail: cchen@math.utexas.edu
+Hours: MWR 12:30 to 2:00 or by appointment Hours: TBA
+www.math.utexas.edu/users/goddardb/home
+Rules: Don’t miss class. Don’t be late. Don’t buy plane tickets which conflict with
+exams. Don’t pack up early. Staple homework. Don’t be rude.
+Text: (Required) Elementary DEs and BVPs 9th Ed., Boyce and DiPrima. I think you’ll find the
+student solutions manual (and such things) to be a waste of money.
+Students with disabilities: TheUniversityofTexasatAustinprovides,uponrequest,appropriate
+academicaccommodationsforqualifiedstudentswithdisabilities. Formoreinformation,contactthe
+Office of the Dean of Students at 471-6259, 471-4641 TTY
+Grading: Homework: 10%
+8 Quizzes: 40%
+1 Midterm exam 20%
+Final Exam: 30%
+Total: 100%
+We will be using the +/- grading system: 90% is at least an A, 86.7% is at least an A-, 83.3% is at
+least a B+, 80% is at least a B, etc.
+Exams and Quiz Dates: Nearlychiseledinstone,thedateforthemidtermexamisMondayJuly
+16. QuizzesareeveryThursdayinthediscussionsession. Therewon’tbeaquizonJuly12thbefore
+theMidterm. There are no make-up quizzes. The Finalwill be scheduledbythe Registrar probably
+on August 13 from 9 to 12 a.m. Exams will be closed-book, closed-notes, and no-calculator.
+Homework Assignments on are on the next page and are subject to change. Due dates are an-
+nounced in class and no where else. Late home work will not be accepted, and it hurts to ask.
+Homework is due at the beginning of the discussion session. Staple multiple pages and polish your
+work; we take points off for missing staples and sloppy or disorganized work.
+Overview A differential equation is an equation relating the derivatives of an unknown function
+to each other. The goal of this course is to learn various techniques for finding such unknown
+functions and using these techniques to solve physical problems. After studying first and second-
+orderequations,welookattheLaplacetransformmethodsandthenatpartialdifferentialequations.
+Quantitative Reasoning This course carries the Quantitative Reasoning flag. Quantitative Rea-
+soningcoursesaredesignedtoequipyouwithskillsthatarenecessaryforunderstandingthetypesof
+quantitative arguments you will regularly encounter in your adult and professional life. You should
+therefore expect a substantial portion of your grade to come from your use of quantitative skills to
+analyze real-world problems.
+
+Assignments:
+Work the following problems at the appropriate time, as announced in class. Do not hand in the
+“Warm-up Exercises”. Numbers in parens are 8th edition equivalents. (I think.)
+IPA Section Warm-up Exercises Hand-in Exercises
+1 1.1 3, 4, 11, 23, 29 2, 14, 21, 33
+2 1.2 1, 8, 14 2ac, 7, 9, 12, 16, 18
+3 1.3 2, 4, 9, 17, 25 12, 14, 18, 20
+4 2.1 2, 16, 18 14, 15, 19, 28
+5 2.2 3, 8, 11, 15, 31ab 2, 6, 14, 20, 24, 36ab
+6 2.3 1, 2 20, 23 3, 13, 16, 21, 22
+7 2.4 1, 2, 8 3, 7, 14, 18, 25, 28
+8 2.5 3, 9, 12 8, 10, 13
+9 2.6 3, 6, 13, 25, 27 2, 4, 8, 12, 14, 19, 28
+10 2.7 2, 11a, 12a
+11 2.8 3 4, 7, 14
+12 3.1 3, 5, 7, 10, 11 4, 6, 12, 16, 20
+13 3.2 3, 7, 12, 42(29) 6, 11, 13, 22, 26(25), 43(30)
+14 3.3(3.3/3.4) 2, 3, 9, 35(3.4.39) 5, 8, 12, 17, 20, 23, 36(3.4.40)
+15 3.4(3.5) 5, 6, 14, 23, 24, 27 8, 12, 26, 28, 41
+16 3.5(3.6) 1, 3, 8, 13, 18, 22a 4, 6, 14, 24a
+17 3.6(3.7) 2, 7, 13, 15 5, 6, 10, 16, 17
+18 3.7(3.8) 3, 4 5, 6, 11, 17
+19 3.8(3.9) 2, 3 5, 7, 10
+20 5.1 1, 5, 9, 14, 21, 22 7, 16, 24
+21 5.2 1abd, 3abd, 11abd, 15 5abd, 6abd, 12abd, 18
+22 5.3 1, 3, 6, 11 2, 7, 14
+23 5.4(5.4/5.5) 2, 3, 6, 8(5.5.2, 3, 6, 8), 19(3), 21(5) 4, 5, 13, 16(5.5.4, 5, 13, 16), 22(6), 26(10), 30(14), 33(18)
+24 5.5(5.6) 3, 6, 7 4, 8, 9
+25 6.1 2, 4, 5, 15, 16, 26 6, 8, 9, 18, 19, 27
+26 6.2 1, 3, 7, 11, 12, 29 4, 9, 16, 24, 30, 33
+27 6.3 1, 2, 4, 11(X), 13(7), 15(9) 18(12), 20(14), 21(15), 24(18), 27(21), 33(27), 37(31)
+28 6.4 1, 3 5, 7, 10
+29 6.5 1, 2, 5 3, 7, 9
+30 10.1 1, 2, 3, 14, 16 4, 7, 10, 12, 18, 19
+31 10.2 4, 7, 9, 12 13, 14, 18, 20, 21
+32 10.4 2, 3, 4, 7 5, 14, 15, 17, 18, 25
+33 10.5 1, 2, 3, 5 7, 8, 10, 15, 18
+34 10.7 1, 5 4, 8, 10
+35 7.1 3, 5 4, 15, 23
+36 7.2 2, 4 10, 22, 23
+37 7.3 17(16), 19(18) 14(13), 16(15), 21(20)
+38 7.4 6 5, 7
+39 7.5 1, 2, 3 4, 8, 9, 15
+40 7.6 1, 2, 9 6, 10, 12abc
+41 7.8 1, 2, 7, 9 4, 8, 10

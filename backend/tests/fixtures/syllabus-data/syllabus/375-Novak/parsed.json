@@ -1,0 +1,214 @@
+{
+  "course": {
+    "id": "375-novak",
+    "course_code": "CS 375",
+    "course_title": "Compilers",
+    "term": "Spring 2015",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Gordon S. Novak Jr.",
+        "email": null
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "TU",
+        "start_time": "12:30",
+        "end_time": "14:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 1.304",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "TH",
+        "start_time": "12:30",
+        "end_time": "14:00",
+        "timezone": "America/Chicago",
+        "location": "GDC 1.304",
+        "type": "lecture"
+      }
+    ],
+    "location": "GDC 1.304"
+  },
+  "assessment_categories": [
+    {
+      "id": "midterm",
+      "name": "Midterm Exam",
+      "weight_percent": 20,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final Exam",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "clicker",
+      "name": "Clicker Participation",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "programming",
+      "name": "Programming Assignments",
+      "weight_percent": 40,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "midterm_1",
+      "title": "Midterm Exam",
+      "category_id": "midterm",
+      "type": "midterm",
+      "due_datetime": "2015-03-12T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Midterm March 12 20%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2015-05-18T09:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final May 18 9am-12pm 30%"
+    },
+    {
+      "id": "clicker_1",
+      "title": "Clicker Participation",
+      "category_id": "clicker",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Clicker 10%"
+    },
+    {
+      "id": "lexical_1",
+      "title": "Lexical Analyzer",
+      "category_id": "programming",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 6,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10% per day",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Lexical 6%"
+    },
+    {
+      "id": "lexical_lex_1",
+      "title": "Lexical Analyzer using lex",
+      "category_id": "programming",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 4,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10% per day",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Lex+lex 4%"
+    },
+    {
+      "id": "parser_1",
+      "title": "Parser",
+      "category_id": "programming",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 18,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10% per day",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Parser 18%"
+    },
+    {
+      "id": "codegen_1",
+      "title": "Code Generator",
+      "category_id": "programming",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 12,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": "10% per day",
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Code Generator 12%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

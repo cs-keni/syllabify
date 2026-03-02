@@ -1,0 +1,65 @@
+CS 331 Algorithms and Complexity
+FALL 2014
+Time: TTh 11:00 - 12:30. Place: CAL 100
+Discussion Sections:
+Unique number 52985 Friday 1:00 - 2:00, UTC 1.118
+Unique number 52990 Friday 2:00 - 3:00, UTC 1.118
+Professor: Anna G´al
+e-mail: panni@cs, office: GDC 4.420, phone: 471-9539,
+Office hours: TTh 2:30 - 3:30 or by appointment.
+(Except September 23 and 25.)
+Teaching Assistants: Siddhesh Chaubal and Chi-Kit Lam
+e-mail: siddhesh@cs.utexas.edu, geocklam@cs.utexas.edu
+TA Office hours:
+Chi-Kit Lam M 10:30 - 11:30, GDC 1.302,
+Siddhesh Chaubal W 1:30 - 2:30, GDC 1.302
+Piazza: We will be using Piazza for class discussion. Find our class page at:
+https://piazza.com/utexas/fall2014/cs331gal/home
+Prerequisites: The following coursework with a grade of at least C- in each
+course: CS 311 or 311H, 314 or 314H, 429 or 429H; M 408C or 408N; SSC
+321 or M 362K; and a pre-req or co-req of M 340L or SSC 329C.
+Course description: This course provides a general, undergraduate level
+introduction to algorithms and complexity. The course will cover the most
+important algorithmic techniques, and methods to analyze the performance
+of algorithms. The following major topics will be covered: graph algorithms,
+greedyalgorithms, divide-and-conquer, dynamicprogramming, networkflow,
+NP-completeness, undecidability, approximation algorithms, randomized al-
+gorithms.
+Textbook: “Algorithm Design”, by Jon Kleinberg and Eva Tardos.
+Homework: There will be regular homework. The assignments will be
+paper/pencil exercises.
+Exams: There will be three written tests during the course on September
+23, October 28 and December 4 in class. No make-up exams will be
+given.
+Grading: Homework: 25%, Test 1: 25%, Test 2: 25%, Test 3: 25%.
+
+Course Schedule:
+Aug 28 Introduction
+Sep 2 Running time, examples
+Sep 4 Graph connectivity HW1 out
+Sep 9 Greedy algorithms: scheduling
+Sep 11 Dijkstra’s shortest path algorithm HW1 due
+Sep 16 Minimum spanning tree
+Sep 18 Review
+Sep 23 TEST 1
+Sep 25 Discussion of assignments and test
+Sep 30 Recursion, Divide and Conquer algorithms HW2 out
+Oct 2 Dynamic programming: scheduling
+Oct 7 Subset Sum and Knapsack problems HW2 due
+Oct 9 Bellman-Ford shortest path algorithm HW3 out
+Oct 14 Ford-Fulkerson maximum flow algorithm
+Oct 16 Max-flow min-cut theorem HW3 due
+Oct 21 Bipartite Matching
+Oct 23 Review
+Oct 28 TEST 2
+Oct 30 Intractable problems, the class NP
+Nov 4 Polynomial time reductions, NP completeness HW4 out
+Nov 6 Undecidability
+Nov 11 PSPACE HW4 due
+Nov 13 Approximation algorithm HW5 out
+Nov 18 Approximation algorithms
+Nov 20 Randomized algorithms HW5 due
+Nov 25 Randomized algorithms
+Dec 2 Review
+Dec 4 TEST 3
+2

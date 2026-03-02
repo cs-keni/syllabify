@@ -1,0 +1,585 @@
+GSD 361F (Fall 2014 - unique 38435 =
+CL 323 [33930] =EUS 347 [36680]= PHL 327 [43043])
+Squaring The Vienna Circle
+Katherine Arens
+Department of Germanic Studies
+arens@austin.utexas.edu, ph 512-232-6363
+Office: Burdine 320
+Office hours TTh 9:30-10:30 and by appointment
+Class: TTH 11-12:15, Bur 227
+Description
+This class will combine perspectives from philosophy and the history of philosophy to
+undertake a project in "historical epistemology": it will trace how Logical Positivism/Empiricism, the
+precursor to analytic philosophy, actually came into being out of methodological arguments
+widespread in the late nineteenth century (and which find their echoes in figures as diverse as
+Nietzsche and Heidegger, Wittgenstein, Neurath and Carnap).
+This observation will guide a second strand to the class: how the analytic/continental
+philosophy divide that is present in all the reference books and textbooks came into being, what it
+leaves out, and how to figure out what is left out. In today's dominant account, Anglo-American
+Analytic Philosophy grows out of the tradition of Logical Positivism/Logical Empiricism as it evolved in
+the circles around Wittgenstein in England after the Second World War, and it positions itself over and
+against Continental Philosophy.
+That story, however, is strategic as much as it is true. It depends on how a group of
+philosophers dealt with forced migration and emigration -- victims of Nazi aggression driven out of
+continental Europe and to the US and Great Britain. And in order to find their feet, these émigrés took
+up new projects and redefined their work for new audiences, offering a set of cases of culture transfer -
+- cases where philosophical logics responded directly, if tacitly, to politics and culture. This origin story
+does not figure into today's dominant accounts of the history of philosophy, and this class will offer
+some explanations as to how philosophy defined itself in the latter 20th century by ignoring it.
+No background in philosophy is required for this course, and all readings are available in
+English on the class blackboard site. Background reading on the history of science will ground our
+readings of primary texts, and each student will be responsible for evolving a semester project in
+writing a specific philosopher or project into a new kind of intercultural history of ideas.
+Class Objectives:
+By the end of this class, you will be able to:
+• Explain how a "canon" of "important texts" is a construct that needs to be questioned, and how to do that
+• Learn to read, compare, and evaluate unfamiliar philosophical texts
+• Evaluate and write about popular and scholarly explanations of key philosophers/philosophical texts
+• Structure and write an essay comparing two texts systematically
+• Plan and execute the research and writing of a professionally formatted, scholarly paper (in short format)
+using philosophical texts
+Class Readings will Include (all in excerpts):
+Ludwig Wittgenstein, The Blue and Brown Books
+Nietzsche, On the Genealogy of Morals
+Windelband, History of Philosophy
+Rickert, The Limits of Concept Formation in Natural Science
+Wilhelm Dilthey, The Formation of the Historical World in the Human Sciences
+Husserl, The Idea of Phenomenology
+Cassirer, The Logic of the Cultural Sciences
+Benjamin, Exposés from The Arcades Project
+Viktor Kraft, The Vienna Circle
+Janik/Toulmin, Wittgenstein's Vienna
+Friedrich Stadler, The Vienna Circle
+Feyerabend, Against Method
+Essays by Carnap, Neurath
+
+Assignments:
+• Daily readings, due on the day indicated on the syllabus
+• Three one-page précis (analysis of individual texts) = 3 x 10% of grade =30% of grade
+• Group project (on Part 4 of syllabus) = 10 % of grade
+• Historical epistemology project (5-6 pp. paper) = 25% of grade
+• One semester project, done in stages = 35% of grade.
+
+Syllabus, Fall 2014
+NOTE: Most texts are available as PDFs on the class Canvas site; a few were ordered. See the
+complete bibliography for details. You MUST have an @utexas.edu email to use Canvas.
+Part 0. Preliminaries
+Week 1: 28 August
+Thursday Introduction to the course
+Some Terminological Assistance:
+More credible:
+• http://plato.stanford.edu/entries/vienna-circle/
+• http://plato.stanford.edu/entries/scientific-unity/
+More readable:
+• http://en.wikipedia.org/wiki/Vienna_Circle
+• http://en.wikipedia.org/wiki/Empiricism
+• http://en.wikipedia.org/wiki/Analytic_philosophy
+• http://en.wikipedia.org/wiki/Unity_of_science
+• http://en.wikipedia.org/wiki/Logical_positivism
+• Fuller on Continental philosophy (PDF of HOPOS-list discussion)
+• Solomon on Continental philosophy (PDF)
+NOTE: The Stanford Encyclopedia of Philosophy is considered a credible reference; Wikipedia
+can be spotty, but sometimes has stuff that isn't elsewhere. Get into the habit of looking up
+terminology as you read, and especially of looking up biographies, which are generally solid
+enough in Wikipedia.
+Week 2: 2, 4 September
+Tuesday The Problem of Historical Epistemologies: The Class Method
+Bachelard, Formation of the Scientific Mind, "Foreword," Chapters 1, 2, & 3, p. 17-80
+(esp. 1-32)
+OPTIONAL: Jürgen Renn, "Historical Epistemology and the Advancement of Science." Preprint
+16. Berlin: Max Planck Institute for the History of Science, 1996. Passim (= "read
+around in").
+•AMUSING OPTION:
+Philip Kitcher: "Epistemology without History is Blind" (PDF)
+Thursday The Two Cultures of Philosophy: Continental and Analytic
+Critchley, Continental Philosophy: A Very Short Introduction, Chapter 3: "Spectacles
+and Eyes to See With"
+PART 1: NINETEENTH-CENTURY AND EARLY TWENTIETH-CENTURY ROOTS
+Week 3: 9, 11 September
+Tuesday The "Linguistic Turn": First Iteration
+Nietzsche: On the Genealogy of Morals, all (esp. "Day One," 449-492)
+Thursday The New Philosophy of Science
+Mach, Analysis of the Sensations, 1-45
+Précis 1 due: One chapter/section of either Mach or Nietzsche
+Week 4: 16, 18 September
+Tuesday The Psychology of Idealism
+Dilthey, The Formation of the Historical World, esp. 101-142
+Thursday Academic Philosophy: From the Perspective of the Philosophy of Science
+Windelband, History of Philosophy, Part VII: The Philosophy of the Nineteenth
+Century, 623-681
+
+Week 5: 23, 25 September
+Tuesday Rickert, The Limits of Concept Formation, 1 -110 esp. 1-60.
+PART 2: THE FIRST HEIRS: MOVING TOWARD THE VIENNA CIRCLE
+Thursday Read one of the following:
+Husserl. The Crisis of European Sciences, Intro -23
+Husserl, The Idea of Phenomenology, all
+Week 6: 30 September, 2 October
+Tuesday Benjamin, Exposés from the Arcades Project
+Thursday Cassirer, The Logic of the Cultural Sciences, 1-86 (esp. 1-55)
+Précis 2 due: Any essay
+Week 7: 7, 9 October
+PART 3: ORIGIN MYTHS
+Tuesday Four Versions of the Vienna Circle: A Case Study
+Richardson. "Introduction," Cambridge Companion, 1-12
+Kraft, The Vienna Circle, all (passim)
+Thursday Stadler, The Vienna Circle, 1-68 and charts
+Stadler, "The Vienna Circle: Context, Profile, and Development"
+Week 8: 14, 16 October
+Tuesday No organized class: instructor will be in office; use this time to organize your group
+work on the Wittgenstein texts
+PART 4: Wittgenstein: Reality and Myth
+Thursday Wittgenstein I
+Wittgenstein, The Blue and Brown Books, "Blue Book," 1-74; ""Brown Book," 77-122
+Précis 3 due: Any essay
+Week 9: 21, 23 October
+Tuesday Two Scholarly Wittgensteins
+Grayling, Wittgenstein: A Very Short Introduction
+Stern, "Wittgenstein, the Vienna Circle, and Physicalism," Cambridge Companion,
+301-331
+Thursday Presentations of Class WIki Pages: Four Mythical Wittgensteins
+Janik/Toulmin, Wittgenstein's Vienna
+Waugh, The House of Wittgenstein
+Edmonds and Eidinow, Wittgenstein's Poker
+Monk, Wittgenstein: The Duty of Genius
+••GROUP PROJECT DUE ON WIKI PAGE: Please read all groups' postings before
+class starts, so that we can discuss the Wittgenstein industry.
+Week 10: 28, 30 October
+Tuesday Class Presentations (continued from Tuesday, if necessary)
+Class Topic: intro to library research in philosophy (preparation for final paper)
+
+Thursday Wittgenstein II
+Wittgenstein, Excerpts from Tractatus Logico-Philosophicus, in Wittgenstein Reader,
+1-31
+Week 11: 4, 6 November
+Tuesday Wittgenstein, "Thinking," in Wittgenstein Reader, 111-125
+Heidegger, "What Calls for Thinking?," in Basic Writings, 341-367
+An amusing aside (optional): Critchley, Continental Philosophy, Chapter 6: "A Case
+Study in Misunderstanding: Heidegger and Carnap "
+PART 5: The Vienna Circle
+Thursday The Origin Myth, and Seminal Texts
+Hahn, Neurath, Carnap. "The Scientific Conception of the World" (AKA the "Vienna
+Circle manifesto")
+Galison, "Constructing Modernism," in Giere, Origins of Logical Empiricism, 17-44
+••CONSULTATION ON FINAL PAPER DUE: topic specification
+Week 12: 11, 13 November
+Tuesday Carnap, "Empiricism, Science, and Ontology."
+Online at: <http://www.ditext.com/carnap/carnap.html>
+Thursday Neurath, Bohr, Dewey, Russell, Carnap, Morris, "Encyclopedia and Unified Science,"
+Foundations, Vol 1, 1-75 (especially Neurath)
+••SHORT ESSAY PAPER DUE
+Week 13: 18, 20 November
+Tuesday Frege, "On Sense and Reference"
+Online at: <http://en.wikisource.org/wiki/On_Sense_and_Reference>
+Thursday Popper, The Logic of Scientific Discovery, 1-34
+Week 14: 25 November (Thanksgiving = 27 November)
+Tuesday Feyerabend, Against Method, Introductions - 53
+••BIBLIOGRAPHY DUE
+Week 15: 3, 5 May
+Tuesday Neurath, "Foundations of the Social Sciences," Foundations, Vol. 2, 1-51
+PART 6: ARCHE-TELOS
+Thursday From Where, to Where: Assessments of Scholarly Myths
+Uebel, "On the Austrian Roots of Logical Empiricism," in Parrini, 67-93.
+Richardson. "Logical Empiricism, American Pragmatism, and the Fate of Scientific
+Philosophy in North America," in Hardcastle, 1-24
+FINAL PAPER DUE AT OFFICIAL UNIVERSITY FINAL EXAM DATE:
+Saturday, December 13, 9:00-12:00 noon =
+Paper due at NOON to Arens' office
+
+ASSIGNMENTS:
+• Three one-page précis (analysis of individual texts) = 3 x 10% of grade =30% of grade.
+Instructions appended.
+• Group project (on materials for Part 4 of syllabus) = 10 % of grade
+Janik/Toulmin, Wittgenstein's Vienna (intellectual history, situating ideas)
+Waugh, The House of Wittgenstein (political biography)
+Edmonds and Eidinow, Wittgenstein's Poker (group bio & intellectual history)
+Monk, Wittgenstein: The Duty of Genius (biography and work)
+This is a group project using a wiki page off the Class Canvas site. The class will break into four groups,
+each of which is responsible for presenting one of the four books on Wittgenstein listed above.
+That presentation will be a critical book review that does a resume´ of the book's contents (in no
+more than 500 words, total), and then assesses its point of view and effectiveness. The book
+groups should divvy up the chapters for commentary, with each individual writing the summary of
+separate parts (with necessary quotations and citations, and the author of each subsection); a
+group meeting will probably be necessary to finish the task -- the introduction and conclusion of the
+presentation, which should be joint work. October 14 class is devoted to some of this
+organizational time.
+The project will be graded liberally to account for the dynamics of group work. Any project with a readable
+account of the contents and nan assessment of its point of view and possible effectiveness for its
+readership will get full credit; missing pieces, unintelligible work, plagiarized work, vague or
+incomplete work will lose points.
+• Short Essay: Historical epistemology project = 25% of grade
+This project is a short (5-6-page) paper done according to the format below, and addressing one of
+the following two topics:
+Topic 1: Hahn, Neurath, Carnap. "The Scientific Conception of the World" (AKA the "Vienna Circle
+manifesto") compared with Galison, "Constructing Modernism." The goal of this
+comparison is to assess the "Vienna Circle Manifesto" from the optic offered by Galison,
+who makes the case for the meaning of Aufbau/Construction from the essay's title in
+historical context. Is Galison's work useful to understanding the Manifesto?
+Topic 2: Wittgenstein, "Thinking," in Wittgenstein Reader, 111-125, compared with Heidegger,
+"What Calls for Thinking?," in Basic Writings, 341-367. The goal of this comparison is a
+technical comparison of what "thinking" means in the two essays. What does the use of
+the term tell us about each thinker?
+The paper you will write is an essay: a well-constructed argument about two texts, with little or no
+research involved. Thus you need to start with a clear thesis statement and
+introductory paragraph (indicating the overall direction of your argument and how you will
+argue it), in proper format. Be sure you do more than summarize your points at the end -
+- make sure you conclude about where your argument takes you.
+FORMAT
+• Double spaced, 1 inch margins all round.
+• 11 or 12-point type, Arial, Geneva, Times or Times New Roman
+• Your name and a page number on EVERY PAGE (top right or bottom center or right --
+use "header" or "footer"). Pages must be stapled together.
+• All citations (footnotes or endnotes, and bibliography) must be in Chicago Style. Is this a
+mystery? See < http://www.lib.utexas.edu/students/citing/index.html > for general
+information or < http://www.lib.utexas.edu/noodlebib/ > to use Noodlebib. That means
+you have some decisions about the relation of notes to in-text citations and to the
+bibliography.
+
+• One semester project, done in stages = 35% of grade.
+This project is a formal research paper (12-15 pp. in length, in Chicago style) on a topic of your
+choice related to the Vienna Circle and its context. Due at the official exam time, as
+indicated on the syllabus. The work will be done in phases:
+1) consultation with professor on topic (in person or by email) = 5% of grade
+2) bibliography of 6-10 items on the topic, with a description of how you found the items (i.e.
+what professional databases you used in searching them out. No more than 2 of the
+items may be on-line- only or reference sources (e.g. Stanford Encyclopedia of
+Philosophy); you are expected to use legitimate secondary literature (principally articles
+in professional journals) = 10 % of grade
+3) Finished paper = 20% of grade (further grading rubric to be distributed)
+
+Introduction to the Précis
+There is a difference between a text's facts and the strategy used to present those facts. A "précis" (`pray-
+see) reflects this difference. It is designed to reflect the structure of an argument based on textual information and to
+structure the presentation of data from the texts concerned in ways that support that argument. As such, it offers more
+than just a set of notes on the text's contents or an argument; it represents the argument strategy, both verbally and
+visually.
+A précis is usually one typed page long. It starts by reflecting the logic of a text to be addressed (with "text"
+being an object in any medium --film, novel, essay -- or a situation/performance). It ends with your assessment of the
+effectiveness/appropriateness/correctness/usefulness of that logic, in a paragraph that argues that assessment with
+specific reference to the précis' set-up and development. That is, the first sections of the précis are not intended to be
+creative or original, but are rather focused on how to represent the text's argument logic by assembling facts drawn
+from it, while the final sections must move beyond that assemblage into your own evaluation of how/why that argument
+will or won't work.
+No matter what type (analytic or synthetic [see below], a précis has four sections:
+1) A statement about the FOCUS of the information you are assembling to represent the argument of a text or
+situation. This initial statement describes the main issue that characterizes a text or situation (an analytic
+précis) or presents the argument being made using the textual materials (a synthetic précis). This statement
+will not focus on the plot or on text details, but rather it expresses the global "what is this arrangement of
+material about? What will I read about, if it's about a text; what kind of argument is being structured, if it's
+making a new case by combining the information in two texts or situations?"
+• **You write a concise statement (1-2 sentences) that expresses that focus. Likely alternatives: issues
+or problems, representative concerns of a group, or beliefs, institutions/systems, or events and their
+characteristics or repercussions (E.G.: "This film takes up the case of X and shows why it's a problem
+to Y or in context Z.")
+What not to do: Do not include journalistic commentary, or examples, or evaluations.
+2) A statement of the LOGIC according to which the text or argument organizes the information to be presented
+(to anticipate section 3) and of the GOAL or INTENT of that presentation.
+• **You write a sentence describing the logic pattern that will be used to establish and label the chart
+below.. Typical verbs indicating such logic: compare, contrast, link causally, cause, follow from . .
+. (E.g.: the author correlates x and y; the film represents x by showing y; by comparing male and
+female roles . . . ).
+• **You write an additional short sentence or clause describing why the information is set up that
+way (its goal or intent). Typical cues: in order to, because that correlation will show . . . , in order
+to convince X of Y, in order to argue X
+3) A DATA CHART (OR MATRIX) WITH HEADINGS that organize text data in comprehensible patterns,
+presented in two parallel columns of notes and comments.
+The two columns correlate with each other, left to right, as the two terms in a logical statement
+(standing in a distinct logic pattern: topic x and comment y about x. Examples of correlations might be "x
+causes/effects/produces y," "x contrasts/compares with y," "x correlates with y in some way other than
+compare/contrast" ["x is part of y in this way", "is restricted by", "is characterized by", "hopes to achieve",
+"impacts," "x does y for the reasons stated above" etc.).' This correlation should reflect the logic statement
+from the section above.
+Each column has approximately three examples (one in each cell or box), often with words explicitly
+drawn from the text (and with in-text bibliographic citations); each column contains information of the same
+type. Each row contains one proposition.
+*** You draw and label a chart with two headers, with at least three examples in each, and each
+with a proper in-text citation (page reference, etc.),
+HEADER X HEADER Y
+
+4) A PARAGRAPH (ca. 3 sentences) indicating the ASSESSMENT OR IMPLICATIONS OF or CONCLUSIONS
+ABOUT the information pattern. This is not a description of the information pattern or focus, but rather an
+extension of the covert statement implied by the information and pattern. That is, what is this text/précis
+good for, especially as seen from the outside? In setting the argument up this way, what is being hidden,
+asserted, or brushed aside? What is new or old-fashioned about the correlations made? Who would profit
+most by this arrangement? Why is this analysis Important?
+**********************************************************************************************
+WHAT A PRÉCIS LOOKS LIKE ON A PAGE
+**********************************************************************************************
+HEADER: your name, etc. (box not needed)
+( Tteexxtt Identification (complete bibliographic citation) (box not needed)
+FOCUS: one to two sentences (box not needed)
+LOGIC: one to two sentences (box not needed)
+Header for Column X Header for Column Y
+Example 1 (with source citation and exact Correlate to Example 1 (contrast,
+quotation if possible) comparison, impact . . . )
+Example 2 Correlate 2
+Example 3 Correlate 3
+ASSESSMENT / IMPLICATION: (one coherent paragraph) (box not needed)
+GRADING: Each section (focus, logic, matrix, assessment) gets up to 3 points for execution, and an additional 3
+points is given for consistency (do all the sections follow from and build on each other, as part of a developing
+analysis?), for a total of 15 points for the assignment as a whole.
+Grading Rubric for Each Section
+0 = missing, vapid/general (with few or no specific references to a text or situation)
+1= partially present, with some defects in execution or some missing or underdeveloped parts of the section
+2 = all necessary parts of the section are present and adequately executed
+3 = section well-developed and/or well-stated; section exceeds minimum requirements for precision and execution
+CONVERSIONS: 15 points = A; 12 points = B; 9 points = C; 7 points and below = F
+Analytic, Synthetic, and Interpretive Précis:
+Three Different Arguments from (Text) Data
+An analytic précis aims at recreating the focus, strategy/goal (intent), and information of one particular text.
+You, as the analyst of the text, track the text's logical structure and message, intruding on it only during a final
+evaluation (in the Assessment, after the Matrix). Your job is first to represent (in three sections) the claims made by a
+
+particular text as the text itself argues (that is, by tracking its own logic structure and data-gathering strategies, not just
+its message). After that, you have to assess the success or failures of that argument type and data corpus, especially
+with respect to (outside) contexts in which those claims are valid, dangerous, useful, etc. Who would profit from this
+argument, or be harmed by it, and thus would be interested in it?
+A synthetic précis sets up a comparison/contrast between two (or more) texts. Its focus is the/an issue shared
+by the two texts; its two columns of data must be strictly parallel, as necessarily reflects a compare/contrast logic.
+However, it is up to you, the analyst, to specify (in the 2 parts of the logic statement) on which grounds and to what end
+the comparison will be carried out. The information pattern will be drawn from two texts, often with one framed in each
+column, with each row offering parallel points. The Assessment of this synthetic logic is again provided by you in the last
+section of your précis, responding to "why do this comparison?"
+An interpretive précis uses one text (or point of view or established argument) to read another. That is, you
+take up the point of view of one text, and "read" the other as it would lead you to do. In the Assessment paragraph, you
+step out of the chosen POV or role-play, and evaluate what the lead POV actually accomplished. Setting up an
+interpretive précis places a still higher burden on you as analyst than does the synthetic précis: you must specify the
+focus (the interpretive issue that the précis will address, drawn from the lead text), and then the goal or purpose that will
+be realized by applying that lead to another text -- all choices made before you start assembling the chart of data from
+the two texts. The chart logic may well be an "issue/example" logic, with the issues drawn systematically from the lead
+text (first column) and then applied to examples from the text to be interpreted (second column). The interpretation you
+are setting up will not be particularly successful if the lead text is not represented fairly and systematically. The
+Assessment of this précis type is often directed at explaining why you bothered to set up this interpretation this way --
+what it is good for.
+How do I turn a précis into an essay, and what kinds of essays are they?
+An analytic précis turns into something like a good book review or proposal evaluation -- the introduction
+introduces the central issue and the rhetorical tactic that the source text (issue, or party) uses, together with the writer's
+goal in bothering to explain these. The body of the paper fleshes out how the text's logic structures the argument, and
+presents interim evaluations that set up the overall evaluation that is your essay's conclusion.
+A synthetic précis sets up a paper that presents and resolves a conflict or choice in the favor of the first or
+second party, justifies a preference, or shows how the two positions are totally compatible (despite their seeming
+differences). The introduction for its essay version states the basis for the comparison and the strategy through which
+the comparison will be documented. The essay growing out of it will end by assessing why and stating how this
+comparison is illustrative or important. The body of the paper must contain a balanced presentation of comparable points
+(each comparison introduced in terms of the more general overview encompassed in the paper's introduction). The
+conclusion assesses and argues which side wins -- which needs/problems are more properly addressed in the
+information presented; the Assessment may include a critique of each text's adequacy to the task.
+An interpretive précis applies a point of view to a text and so is the ground for an essay or OP/ED piece,
+offering a systematic consideration of an issue or problem. The essay introduction states which systematic POV will be
+applied to what issue (yours or one drawn from another text or situation), why that point of view was chosen as the lead
+text of the argument, how and to what other text the point of view will be applied (strategy/goal of the evaluation), what
+data will be addressed, and what the goal of the particular interpretation will be (why it's worthwhile to set this analysis
+up this way). The body of the paper must contain a running dialogue between the POV and the textual information
+presented to bolster the argument being made; even if an essay based on the writer's own POV, the paper is not just a
+reaction, it is an argument, concluding with reflections assessing the limitations of the argument made.
+COMPLETE BIBLIOGRAPHY
+BOOKS ORDERED (BIBLIOGRAPHIC INFORMATION BELOW):
+Required:
+Simon Critchley. Continental Philosophy: A Very Short Introduction. Oxford:
+Oxford UP, 2001. ISBN 0192853597. (PDF on class website)
+You have a class project on your choice of ONE of the four following,
+which are NOT available as pdfs:
+
+• David Edmonds and John Eidinow. Wittgenstein's Poker; ISBN
+0060936649
+• Alexander Waugh, The House of Wittgenstein; ISBN 978-0307278722
+• Allan Janik and Stephen Toulmin, Wittgenstein's Vienna; ISBN 978-
+1566631327
+• Ray Monk. Wittgenstein: The Duty of Genius. New York: Free Press,
+1990; ISBN 0140159959
+Recommended:
+Richardson & Uebel, eds. Cambridge Companion to Logical Empiricism; ISBN
+978-0521796286 (required sections as PDF on class website)
+BOOKS ON ELECTRONIC RESERVE ONLINE
+(CLASS EXCERPTS; EXCEPTIONS AS ABOVE)
+Gaston Bachelard. The Formation of the Scientific Mind: A Contribution to a Psychoanalysis of Objective Knowledge.
+Trans. Mary McAllester Jones. Manchester: Clinamen Press, 2002.
+Rudolf Carnap. "Empiricism, Science, and Ontology." Revue Internationale de Philosophie 4 (1950): 20-40. Reprinted
+in the Supplement to Meaning and Necessity: A Study in Semantics and Modal Logic, enlarged edition
+(University of Chicago Press, 1956). Online at: <http://www.ditext.com/carnap/carnap.html> (no pdf).
+Ernst Cassirer. The Logic of the Cultural Sciences. Trans. S. G. Lofts. New Haven: Yale UP, 2000.
+Simon Critchley. Continental Philosophy: A Very Short Introduction. Oxford: Oxford UP, 2001.
+Wilhelm Dilthey. The Formation of the Historical World in the Human Sciences. Selected Works, Vol. III. Trans. Rudolf
+A, Makkreel and John Scanlon. Princeton, NJ: Princeton UP, 2002.
+••NO PDF: David Edmonds and John Eidinow. Wittgenstein's Poker: The Story of a Ten-Minute Argument Between
+Two Great Philosophers. New York: Ecco/HarperCollins, 2007.
+Paul Feyerabend. Against Method. 3rd ed. London: Verso, 1993 (orig. 1975).
+Gottlob Frege. "On Sense and Reference." 1892. Online at:
+<http://en.wikisource.org/wiki/On_Sense_and_Reference>
+Fuller, Steven. Exchange on Continental Philosophy, HOPOS-list, August 2014.
+Peter Galison. "Constructing Modernism: The Cultural Location of Aufbau." In: Ronald N. Giere and Alan W.
+Richardson, eds. Origins of Logical Empiricism. Minnesota Studies in the Philosophy of Science, XVI.
+Minneapolis: U of Minnesota, 1996. 17-44.
+A. C. Grayling. Wittgenstein: A Very Short Introduction. Oxford. Oxford UP, 2001 [orig. 1988].
+Hans Hahn, Otto Neurath, Rudolf Carnap. "The Scientific Conception of the World: The Vienna Circle." IN: Sahotra
+Sarkar, ed. Science and Philosophy in the Twentieth Century: Basic Works of Logical Empiricism. New
+York: Garland Publishing, 1996. 321-340.
+Martin Heidegger. "What Calls for Thinking?" Basic Writings. Ed. David Farrell Krell. New York: Harper & Row,
+1977. 342-367.
+Edmund Husserl. The Crisis of European Sciences and Transcendental Phenomenology: An Introduction to
+Phenomenological Philosophy. Trans. David Carr. Evanston, IL: Northwestern UP, 1970.
+
+Edmund Husserl. The Idea of Phenomenology. Trans. William P. Alston and George Nakhnikian. Hague: Martinus
+Nijhoff, 1964.
+••NO PDF: Allan Janik and Stephen Toulmin. Wittgenstein's Vienna. Chicago: Ivan R. Dee, 1996 [orig. 1973].
+Kitcher, Philip. "Epistemology without History is Blind." Erkenntnis, 75 (2011). 505-524.
+Victor Kraft. The Vienna Circle: The Origins of Neo-Positivism (A Chapter in the History of Recent Philosophy).
+Trans. Arthur Pap. New York: Philosophical Library, 1953.
+Ernst Mach. The Analysis of Sensations, and the Relation of the Physical to the Psychical. Trans. C. M. Williams.
+Chicago: Open Court Publishing Co., 1914.
+••NO PDF: Ray Monk. Wittgenstein: The Duty of Genius. New York: Free Press, 1990 UT ON RESERVE
+Otto Neurath. Foundations of the Social Sciences. IN: Otto Neurath, Rudolf Carnap, and Charles Morris, eds.
+Foundations of the Unity of Science: Toward an International Encyclopedia of Unified Science. Vol. 2, Nos.
+1-9. Chicago: U of Chicago P, 1970. 1-51.
+Otto Neurath, Niels Bohr, John Dewey, Bertrand Russell, Rudolf Carnap, Charles Morris. Encyclopedia and Unified
+Science. IN: Otto Neurath, Rudolf Carnap, and Charles Morris, eds. Foundations of the Unity of Science:
+Toward an International Encyclopedia of Unified Science. Vol. 1, Nos. 1-10. Chicago: U of Chicago P, 1955.
+vii-xii, 1-75
+Friederich Nietzsche. Genealogy of Morals. Basic Writings of Nietzsche. Ed. and trans., Walter Kaufmann. New York:
+Modern Library, 1966. 449-599.
+Karl Popper. The Logic of Scientific Discovery. London: Routledge, 1992 [1935 in German].
+Jürgen Renn, "Historical Epistemology and the Advancement of Science." Preprint 16. Berlin: Max Planck Institute for
+the History of Science, 1996.
+Alan W. Richardson. "Introduction: Origins of Logical Empiricism." In: Ronald N. Giere and Alan W. Richardson, eds.
+Origins of Logical Empiricism. Minnesota Studies in the Philosophy of Science, XVI. Minneapolis: U of
+Minnesota, 1996. 1-13.
+Alan W. Richardson. "Logical Empiricism, American Pragmatism, and the Fate of Scientific Philosophy in North
+America." In: Gary L. Hardcastle and Alan W. Richardson, eds. Logical Empiricism in North America.
+Minnesota Studies in the Philosophy of Science, XVIII. Minneapolis: U of Minnesota P, 2003. 1-24.
+Heinrich Rickert. The Limits of Concept Formation in Natural Science: A Logical Introduction to the Historical
+Sciences. Abridged ed. Trans. Guy Oakes. Cambridge: Cambridge UP, 2009 [1986].
+Robert Solomon. "On the Analytic-Continental Distinction." Ex nihilo, VI (2006). 54-61.
+Friedrich Stadler. "The Vienna Circle: Context, Profile, and Development." In: Alan W. Richardson and Thomas
+Uebel, eds. The Cambridge Companion to Logical Empiricism. Cambridge: Cambridge UP, 2007. 13-40.
+Friedrich Stadler. The Vienna Circle: Studies in the Origins, Development, and Influence of Logical Empiricism.
+Wien/New York: Springer Verlag, 2001 [1997 in German].
+David Stern. "Wittgenstein, the Vienna Circle, and Physicalism: A Reassessment." In: Alan W. Richardson and
+Thomas Uebel, eds. The Cambridge Companion to Logical Empiricism. Cambridge: Cambridge UP, 2007.
+305-331.
+
+Thomas Uebel. "On the Austrian Roots of Logical Empiricism: The Case of the First Vienna Circle." In: Paolo Parrini,
+Wesley C. Salmon, and Merrilee H. Salmon, eds. Logical Empiricism: Historical and Contemporary
+Perspectives. Pittsburgh: U of Pittsburgh P, 2003. 67-93.
+••NO PDF: Alexander Waugh. The House of Wittgenstein: A Family at War. New York: Doubleday, 2008.
+Wilhelm Windelband. History of Philosophy, with Especial Reference to the Formation and Development of Its
+Problems and Conceptions. 2nd ed. Trans. James H. Tufts. New York: The Macmillan Company, 1914
+Ludwig Wittgenstein. The Blue and Brown Books: Preliminary Studies for the 'Philosophical Investigations.' New
+York: Harper Torchbooks, 1960.
+Ludwig Wittgenstein. The Wittgenstein Reader. Ed. Anthony Kenny. Oxford: Blackwell, 1994.
+
+PRACTICAL INFORMATION
+CLASS AND CLASSROOMS:
+Cell phones must be turned off in class and kept out of sight in backpacks or pockets; computers and other
+electronic devices may not be used in the lecture classroom or discussion sessions unless the user has registered as a
+student with disabilities who needs a computer as an accommodation.. If a student uses electronic devices and
+creates a disturbance for the professor or other students, s/he will be asked to leave for the remainder of that class.
+SYLLABUS AND ASSIGNMENTS:
+All requirements have been given to you in writing, in the package including this sheet. If you don't read it
+and miss something, it's not our problem. NO LATE WORK ACCEPTED; see the conditions for making up work for
+medical and other leaves are listed in the next section.
+FINALS are given at times established by the University and posted as part of the course schedule. THESE
+TIMES ARE NOT NEGOTIABLE. The syllabus indicates this semester's deadline.
+WEB PRESENCE:
+• Class gradebook is on the class' Canvas site, the link to which can be found in UT Direct.
+• Class Readings are that are PDFs are on the Blackboard site under "Files"
+• BANDWIDTH: one group project will need to be posted on the class wiki under PAGES link in the Canvas
+site; working together will require bandwidth, if you edit online together.
+ACADEMIC ASSISTANCE
+• Academic Assistance is provided by the UT Learning Center, in Jester Center, Room A115A. It offers help
+with college-level writing, reading, and learning strategies. It is free to all currently enrolled students.
+• See: <http://www.lib.utexas.edu/services/assistive/policy.html> for requesting help in using the main library
+(PCL) or the Fine Arts Library (for films).
+STUDENTS WITH DISABILITIES
+The University of Austin provides upon request appropriate academic accommodations for qualified students
+with disabilities. For more information, contact the Office of the Dean of Students at 471-6259, 471-6441 TTY. Any
+student with a documented disability who requires academic accommodations should contact the Service for Students
+with Disabilities as soon as given to your TAs to receive accommodations. You must be registered with the Students
+with Disabilities Services to request any accommodations for tests, assignments, or other assistance and work with
+that office to arrange them with your instructors. See: <http://www.utexas.edu/diversity/ddce/ssd/index.php>.
+RELIGIOUS HOLIDAYS AND OTHER ABSENCES
+• By UT Austin policy, you must notify the instructor and TA of your pending absence at least fourteen days
+prior to the date of observance of a religious holy day. If you must miss a class, an examination, a work
+assignment, or a project in order to observe a religious holy day, you will be given an opportunity to complete
+the missed work within a reasonable time after the absence.
+• The same applies to official university obligations like Club or Varsity sports, which usually provide
+documentation of planned away games at the start of each semester.
+• Documentation from a physician is required for medical absence; arrangements for work to be made up must
+be made promptly.
+• In no case should the work be completed more than 2 weeks after the absence.
+• Other absences (e.g. family events) must be arranged for at least TWO WEEKS IN ADVANCE and missed
+work must be turned in at the NEXT CLASS SESSION after the one you missed. Submission before you
+leave is of course encouraged.
+CHEATING AND PLAGIARISM
+All students fall under the UT Honor Code:
+
+The core values of the University of Texas at Austin are learning, discovery, freedom, leadership,
+individual opportunity, and responsibility. Each member of the University is expected to uphold
+these values through integrity, honesty, trust, fairness, and respect toward peers and community.
+< http://registrar.utexas.edu/catalogs/gi09-10/ch01 />
+Cheating and other forms of scholastic dishonesty, including plagiarism, will be reported to the Dean of
+Students. Cheating on tests or plagiarism on papers will mean an F for the assignment, with no makeup possible. If
+you engage in any form of scholastic dishonesty more than once, you will receive an automatic F for the course.
+If you are unsure about the exact definition of scholastic dishonesty, you should consult the information
+about academic integrity produced by the Dean of Students Office:
+<http://deanofstudents.utexas.edu/sjs/acint_student.php>.
+Plagiarism means using words or ideas that are not your own without citing your sources and without
+indicating explicitly what you have taken from those sources. If you are unsure about what constitutes plagiarism,
+consult: <http://www.lib.utexas.edu/services/instruction/learningmodules/plagiarism/>.
+See the UT Honor Code or an additional explanation or example of what constitutes plagiarism (
+http://registrar.utexas.edu/catalogs/gi09-10/ch01/index.html).
+What does "citing your sources" mean? It means providing appropriate footnotes and bibliographic entries.
+See <http://www.lib.utexas.edu/services/instruction/learningmodules/citations/>. To make correct citations,
+researchers often use bibliographic software like UT's "Noodlebib" <http://www.lib.utexas.edu/noodlebib/> or Zotero
+<http://www.zotero.com>. The PCL Library offers free classes on how to you them at the start of every semester. Sign
+up now.
+ADDITIONAL INFORMATION ON CHEATING:
+The Student Judicial Services Website provides official definitions of plagiarism and cheating:
+• Definitions of plagiarism and other forms of scholastic dishonesty, based on Section 11-802d of UT’s
+Institutional Rules on Student Services and Activities:
+< http://deanofstudents.utexas.edu/sjs/scholdis_plagiarism.php >
+• The University’s Standard of Academic Integrity and Student Honor Code (from Chapter 11 of the
+University’s Institutional Rules on Student Services and Activities):
+< http://deanofstudents.utexas.edu/sjs/acint_student.php >
+• Consequences of scholastic dishonesty:
+< http://deanofstudents.utexas.edu/sjs/scholdis_conseq.php >
+• Types of scholastic dishonesty: unauthorized collaboration, plagiarism, and multiple submissions: <
+http://deanofstudents.utexas.edu/sjs/scholdis_whatis.php >
+BEHAVIOR CONCERNS ADVICE LINE (BCAL)
+If you are worried about someone who is acting differently, you may use the Behavior Concerns Advice Line
+to discuss by phone your concerns about another individual’s behavior. This service is provided through a partnership
+among the Office of the Dean of Students, the Counseling and Mental Health Center (CMHC), the Employee
+Assistance Program (EAP), and The University of Texas Police Department (UTPD). Call 512-232-5050 or visit <
+http://www.utexas.edu/safety/bcal >.
+SUMMARY OF RESOURCES FOR LEARNING & LIFE AT UT AUSTIN
+The University of Texas has numerous resources for students to provide assistance and support for your
+learning.
+• Sanger Learning and Career Center: http://lifelearning.utexas.edu/
+• Undergraduate Writing Center: http://uwc.utexas.edu/
+• Counseling & Mental Health Center: http://cmhc.utexas.edu/
+• Career Exploration Center: http://www.utexas.edu/student/careercenter/
+• Student Emergency Services: http://deanofstudents.utexas.edu/emergency/
+EMERGENCY EVACUATION POLICY
+Occupants of buildings on the UT Austin campus are required to evacuate and assemble outside when a fire
+alarm is activated or an announcement is made. Alarm activation or announcement requires exiting and assembling
+outside.
+
+Please be aware of the following policies regarding evacuation:
+o Familiarize yourself with all exit doors of the classroom and the building. Remember that the
+nearest exit door may not be the one you used when you entered the building.
+o If you require assistance to evacuate, inform your TA in writing during the first week of class.
+o In the event of an evacuation, follow my instructions or those of class instructors.
+o Do not re-enter a building unless you’re given instructions by the Austin Fire Department, the UT
+Austin Police Department, or the Fire Prevention Services office.
+Further information about emergency evacuation is available from the Office of Campus Safety and Security,
+512-471-5767, http://www.utexas.edu/safety/; emergency evacuation routes and emergency procedures can be found
+at: www.utexas.edu/emergency , where you can also sign up to receive text message emergency notices by text
+message.
+Q DROP POLICY AND OTHER SIGNIFICANT DATES
+• Texas law limits the number of course drops for academic reasons to six. Senate Bill 1231 says:
+Beginning with the fall 2007 academic term, an institution of higher education may not permit an
+undergraduate student a total of more than six dropped courses, including any course a transfer
+student has dropped at another institution of higher institution of higher education, unless the
+student shows good cause for dropping more than that number.
+• Note that the dates for dropping courses and changing grades are indicated in the University Academic
+Calendar: < http://registrar.utexas.edu/calendars/ >. You are responsible for these dates; instructors
+have NO control over them.

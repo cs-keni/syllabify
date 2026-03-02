@@ -1,0 +1,153 @@
+{
+  "course": {
+    "id": "bio336-2011250115",
+    "course_code": "BIO 336",
+    "course_title": "Tumor Biology",
+    "term": "Spring 2011",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Jon Huibregtse",
+        "email": "huibreg@mail.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "Burdine 108",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "Burdine 108",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "12:00",
+        "end_time": "13:00",
+        "timezone": "America/Chicago",
+        "location": "Burdine 108",
+        "type": "lecture"
+      }
+    ],
+    "location": "Burdine 108"
+  },
+  "assessment_categories": [
+    {
+      "id": "exams",
+      "name": "Exams",
+      "weight_percent": 80,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "quizzes",
+      "name": "Unannounced Quizzes",
+      "weight_percent": null,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "exam_1",
+      "title": "Exam 1",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-02-16T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Feb 16 100 pts"
+    },
+    {
+      "id": "exam_2",
+      "title": "Exam 2",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-03-23T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Mar 23 100 pts"
+    },
+    {
+      "id": "exam_3",
+      "title": "Exam 3",
+      "category_id": "exams",
+      "type": "midterm",
+      "due_datetime": "2011-04-11T00:00:00",
+      "all_day": true,
+      "timezone": "America/Chicago",
+      "weight_percent": 20,
+      "points": 100,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Apr 11 100 pts"
+    },
+    {
+      "id": "final_1",
+      "title": "Final Exam",
+      "category_id": "exams",
+      "type": "final",
+      "due_datetime": "2011-05-12T09:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 40,
+      "points": 200,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "May 12 9am-12pm 200 pts"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

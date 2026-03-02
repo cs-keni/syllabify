@@ -1,0 +1,455 @@
+FIN 377-1: Portfolio Analysis and Management (Spring 2019)
+Instructor: Dr. Kamm, Department of Finance
+Office & Email: CBA 6.304D; kelly.kamm@mccombs.utexas.edu
+Instructor Office Hours: 5 to 6:15pm Tuesday and Thursday
+T.A.s: Peter Fenelon, Peter.Fenelon@mba19.utexas.edu; Catinca Fercu, Catinca.Fercu@mba19.utexas.edu
+Section 03545 03550: TTH 2 to 3:30 and 3:30 to 5 in UTC 1.104, 90% or better class attendance expected
+Course Packet of Cases: GSB Copy Center on 3rd floor – Required (instead of book)
+Other Required Materials: Financial Calculator (HP 10B) for tests & WSJ for papers & presentations
+PPTs and Excel Workbooks: Posted prior to class on canvas
+Attendance & Assignments: due by end of class; professor guided, two will be dropped
+Class Web Site: Canvas – Find PPTs, spreadsheets, problem sets for download / printing
+Financial Center: Bloomberg and Excel work related to cases
+Group Portfolio Simulation: 3 Funds with Requirements and directions from Professor / www.stocktrak.com
+Readings: Portfolio Regulations and Case Analyses
+Portfolio Regulations – Set of three Portfolios in PPT notes
+Investments Review and Broadening Concepts: Futures and Options in PPT notes
+Tremblant Capital Group, by Greenwood; 9-210-071
+Universal Display Corporation: Go Long or Short? By R Korajczyk, et al, KEL 716
+Introduction to Portfolio Theory, by Andre Perold; 185066
+Partners Healthcare, by Joshua Coval; 206005
+Walt Disney’s Sleeping Beauty Bonds, Duration Analysis, by Carlis Baldwin; 294038
+Deutsche Bank: Finding Relative Value Trades, by Chacko et al, 205059
+Bitcoin: Investment or Illusion, by Y Allayanninis & A Fernstrom, UV7393
+Measuring Mutual Fund Performance, by Charles Williams; 298139 (Industry & Background Note)
+Thomson Asset Management, by Fruhan and Banko; 914565
+Behavioral Finance at JP Morgan, by Banker and Sesia; 207084
+The Hedge Fund Industry, by William Fruhan; 208126
+Amaranth Advisors: Burning Six Billion in Thirty Days, by Anuroop Duggal;908N03
+Martingale Asset Management LP in 2008, 130/30 Funds …, by Viciera and Tung; 209047
+Harvard Management Company (2010), by Perold and Stafford; 211004
+Illinois Teachers’ Retirement System: Private Equity Performance, by Susan Chaplinsky; UV6899
+
+Note on Option Valuation, by George Chacko et. Al; 205106
+The Galaxy Dividend Income Growth Fund’s Option Investment Strategies, by W. Carl Kester, 9216041
+Pine Street Capital (immunize hedge fund by shorting or buying options), by George Chacko, 9201071
+Note on Commodity Futures, by A. Nancy Donahue et. Al; 293018
+Betting on Gold Using a Futures-Based Gold ETF, by Pedro Matos; UV6654
+COURSE OVERVIEW:
+The pre-requisite for this course is FIN367, Investment Theory. FIN377-1, Portfolio Analysis and Management,
+is a course overview of the areas of portfolio management and security analysis. Topics covered include
+portfolio theory, risk management, performance evaluation, and behavioral finance and market anomalies. In
+addition, we will review the valuation, correlations, and performance of various asset classes—fixed income,
+stocks, real estate and commodities. The course will look at different types of funds and models of investing—
+hedge funds, endowment funds, pension funds, and the various assets they hold including PE investments. To
+be able to understand different types of hedge funds and risk management techniques the course will include
+sections on futures and options. Portfolio Analysis and Management is designed for upper-level finance majors
+to provide them with advanced skills in financial markets, security analysis and portfolio management.
+Students get hands-on practice at selecting securities and managing a portfolio using Stock-trak, an investment
+simulation product in “real time”. The instructor will provide each group with $1,000,000 to manage in the stock
+portfolio (long only), $500,000 in the long-short fund and $200,000 in the futures fund. The instructor will guide
+you toward building a portfolio of investments that will include the following securities: domestic and foreign
+stock, bonds, real estate and / or commodities. You will also set up portfolios to help you learn about hedge
+funds and how futures and options trade and are used in asset management. The professor gives portfolio
+requirements with which your group need comply so that you build a portfolio that accomplishes the intended
+objective. In small groups, you will undertake current financial research to decide which securities you will hold
+(or short) in your funds. Additional features that students practice include the use of stop and limit orders as
+well as leverage and short selling.
+In this course a combination of methods is utilized with special emphasis on student involvement. Some of the
+methods are: lecture, case review, spreadsheet modeling in Excel, working with financial center data feeds
+(Bloomberg and Fact Set), group meetings and research outside of class, and discussion of current financial
+events. Class attendance is very important; students who attend regularly tend to do better. The professor
+utilizes the lecture format to introduce key topics, to demonstrate financial models & techniques, and to guide
+students in their portfolio projects. Students take an active part in this class; you will likely find that the level of
+learning depends on your effort level both during class and outside of class. Group members are encouraged to
+assist one another and learn from one another. The emphasis on student involvement encourages students to
+learn by doing and encourages the self-motivation so important to the workplace. If a student is unable to fulfill
+his or her commitment to the group, he or she may be asked by the professor to complete assignments alone
+perhaps with a slight extension and with a full grade downgrade.
+EXPECTATIONS: PROFESSIONAL CLASSROOM & GROUP CONDUCT:
+Professional behavior is expected in the classroom and will help us have a rewarding and enjoyable learning
+experience. Arriving on time, excellent attendance, being attentive and participating are all essential for the
+success of the class. When class starts, all of us will cease side conversations and focus time allotted on
+classroom material. Electronic devices are prohibited during class; this includes checking text messages under
+backpacks or your desk. Computers are used only if required by professor during part or all of a class. Two
+combinations of the following will count as a zero for the day: using electronic devices, late arrival to class,
+leaving or walking around during class, and leaving prior to the end of class. In order for an absence to be
+marked as excused, you will need to send me the original email regarding an interview or some sort of an
+attachment via email. If the absence meets the university requirements for an excused absence, then it will be
+2
+
+recorded as excused. It is up to you to manage your schedule and arrive on time to keep excused absences to
+three or fewer over the term. If you wish to have one unexcused absence for reasons not covered under
+university policy, then keep excused absences down to two or fewer.
+In addition, you are expected to attend and arrive on time to group meetings and contribute in a meaningful and
+productive way to all group work. If a student is not able to meet his or her commitments, the other group
+members shall notify the professor as soon as possible. In accordance with academic integrity, students may
+not earn credit for work to which they have not contributed at a reasonable level; if someone in your group has
+not contributed at a meaningful level, leave his or her name off the project or presentation and then email me to
+call my attention to the issue. Once I am aware of the issue, the student may be redirected, receive partial or
+zero credit, and / or be permitted to do the group work as a single student. Adherence to the above expectations
+regarding professional behavior helps ensure a high participation / evaluation grade. Inability to meet these
+expectations will lead to a lowering of the final participation / evaluation grade.
+EVALUATION:
+Final grades will be determined as follows:
+In-Class Assignments (Individual) / Attendance 10%
+Many days the professor will give students in-class assignments, often Excel models, which the instructor helps
+lead students through. Though each student must complete his or her own work, students should in fact work in
+a collaborative fashion and help one another.
+Assignments are due by canvas upload at the end of class (although occasionally or possibly on occasion
+turned in hard copy). The professor will drop the lowest grade (or possibly two depending on the number
+assigned). The student should save his or her completed spreadsheet prior to upload and name the file, if
+possible, by last name. Do not ask to use another student’s work nor send your completed file to another
+student.
+The grading scheme is as follows:
+In class, submitted on time, best effort basis, (defined as about 80% or more correct) = full credit
+In class, submitted up to a day late, best effort basis, (defined as about 80% or more correct) = 80%
+Not in class, submitted on time, best effort basis, (defined as about 80% or more correct) = 70%
+Not in class, submitted up to a day late, best effort basis, (defined as about 80% or more correct) = 60%
+Up to 2 days late = 40%; later than that no credit
+Not completed on best efforts basis or not very well done = 40%
+Post blank spreadsheet = 0 (and possible 50% reduction on next posting)
+Shared or used someone else’s spreadsheet = zero not just for assignment but for entire category
+If a case discussion short paper is assigned prior to a class, similar policies will apply in terms of evaluation.
+Portfolio Projects: 1st Paper (Group Grade though possibly Individual Grade) 10%
+The first paper is a group Portfolio Assignment that includes a series of three papers submitted in one
+document. The series corresponds to the three group funds— Stock Fund (Long), Long / Short Hedge Fund,
+and Dedicated Futures (& Options) Fund. You will spend time in groups researching and setting up these three
+funds under the direction of the professor who provides you with the portfolio rules and necessary spreadsheets.
+Funds will be invested in stock-trak by the due date and form the basis of the 1st paper. In your group paper for
+each fund, include a one to two page write-up, at least two exhibit pages, and then a works cited listing research
+undertaken. Since you are including four or more pages each of the three papers (including exhibits and works
+cited), the entire project paper will be about 12 pages or longer (including the exhibits and works cited). The
+paper is submitted by canvas upload (and hard copy may be required if professor announces so), and will be
+graded on completeness and correctness, professional nature of the exhibits, and how well it is researched and
+3
+
+written. See additional documents regarding the paper and policies as well as the university policy on academic
+honesty.
+A student must contribute in a fair way toward the portfolio set-up and toward the research and writing to submit
+as part of the group. If any student is not able to uphold this commitment, he or she shall simply work alone on
+a portfolio and / or on the first paper and receive a one-letter downgrade.
+First, In-Class Test (Individual Grade) 22.5%
+The first test will be given about half way through the term. The test will consist of a multiple choice section
+counting for about 40% of the test grade and a problem solving / analysis / short essay counting for about 60%
+of the grade. The test will evaluate students’ understanding of all material covered to date including: material
+learned from preparing and discussing the cases; theory, application and interpretation related to portfolio
+management topics; articles covered in class discussion; and your hands-on experience from working in the
+trading center. To do well on tests, it is important to attend class, read material prior to class, review class
+notes, work through problems from the problem set and review excel spreadsheets. Though the problem set
+may not be collected and graded, many of the short problems and analysis are related to your successful
+completion of the problem set which is posted on-line with the solutions. Think of the problem set as a type of
+practice test for the problem section of the test.
+On test day, you should arrive 5 to 10 minutes early if possible, and bring a financial calculator, a pencil and one
+side of one page of notes. The one-sided page should be handwritten with any tips, formulas or short examples
+that are helpful to you but shall not include long portions of copying; the notes page is to help you learn and do
+better on the test and not just copy and paste. In the case that a test is missed with an excused absence
+approved by the Dean’s office, the student will take a cumulative final at the end of the term.
+Second, In-Class Test (Individual Grade) 22.5%
+The second test is given near the end of the term. The test will consist of a multiple choice section counting for
+about 40% of the test grade and a problem solving / analysis / short essay counting for about 60% of the grade.
+Test questions will primarily focus on material covered after the first test; it will be cumulative only in so far as
+the course material is cumulative. The test will evaluate students’ understanding of all material covered to date
+including: material learned from preparing and discussing the cases; theory, application and interpretation
+related to portfolio management topics; articles covered in class discussion; and your hands-on experience from
+working in the trading center. To do well on tests, it is important to attend class, read material prior to class,
+review class notes, work through problems from the problem set and review excel spreadsheets. Though the
+problem set may not be collected and graded, many of the short problems and analysis are related to your
+successful completion of the problem set which is posted on-line with the solutions. Think of the problem set as
+a type of practice test for the problem section of the test.
+On test day, you should arrive 5 to 10 minutes early if possible, and bring a financial calculator, a pencil and one
+side of one page of notes. The one-sided page should be handwritten with any tips, formulas or short examples
+that are helpful to you but shall not include long portions of copying; the notes page is to help you learn and do
+better on the test and not just copy and paste. In the case that a test is missed with an excused absence
+approved by the Dean’s office, the student will take a cumulative final at the end of the term.
+Final Portfolio Project Paper (Group Grade though possibly Individual Grade) 20%
+This paper takes the place of the cumulative final so you should look at the due date written on the syllabus
+schedule instead of consulting the final exam catalog. In groups, students set up, at the beginning of the term, a
+basic portfolio in stocks, a long-short hedge fund, and a futures hedge fund. In the basic diversified portfolio,
+students set up a growth or value style fund and select approximately 30 stocks representing different sectors.
+In the long-short hedge fund students use leverage and take both long and short positions; most students prefer
+4
+
+net long portfolios though a few do set up market neutral funds. In the long short hedge fund, students may
+invest in stocks only or may select ETFs on bonds, real estate, commodities or volatility. In the dedicated futures
+(and options) fund, students will be long or short several futures contracts as well as one or more options.
+Students previously submitted the first paper detailing positions and research. In the final paper, students shall
+analyze the performance of the funds over the term. Analysis of portfolio statistics and performance shall be
+demonstrated by way of exhibits. The paper must display evidence of research in the attached works cited
+pages. References used may be recent articles from the Wall Street Journal, Economist, etc. The paper will
+entail: approximately 12 pages written, 12 or more exhibit pages, and a page or more of references. The paper
+is submitted by canvas upload (and hard copy may be required if professor announces so), and will be graded
+on strength of analysis, demonstration of your understanding and ability to apply concepts learned in the course,
+strength of exhibits in applying course concepts and skills, and how well it is written. See additional documents
+regarding the paper and policies as well as the university policy on academic honesty.
+A student must contribute in a fair way toward the portfolio set-up and toward the research and writing to submit
+as part of the group. If any student is not able to uphold this commitment, he or she shall simply work alone on
+the final paper and receive a one-letter downgrade.
+Professor Evaluation / Participation & Peer Review (Individual Grade) 15%
+Class participation is based on the contribution of each student to the class as a whole and to the group efforts.
+Solid performance in this area depends on: consistent attendance; being actively engaged when we are doing
+in-class assignments, demonstration that you are prepared for class; effort level toward group papers and
+presentations; strong reviews by peers in their evaluations; and adherence to class policies (see below for class
+policies including prohibition of improper use of electronics during class). To be prepared for class, read the
+case prior to class. Also, take an active part in case analyses in class by giving your answer or opinion, solving
+problems, and suggesting solutions. Also submitting required peer reviews helps you with participation while
+failing to submit your self and peer reviews leads to a 20-point downgrade for each one not submitted.
+For most students, participation serves as a slight curve toward the final grade. After all components prior to
+this one have been scored, the grades are combined to provide an “objective average” or “starting point” grade
+for participation. Students with strong attendance, professional conduct and committed participation in group
+work will receive this grade or higher (up to a letter grade) for the participation grade. Strong attendance is
+defined as attending ninety percent or more of class periods unless excused by university policy*; ninety percent
+or better attendance equates to three or fewer absences. A student with poor attendance (missing more than
+20% of class periods—six or more classes), or poor effort in group work, or anyone who is disruptive /
+unprofessional earns a zero. Thus the grade in this final category may range from zero to a grade of A or 96 or
+perhaps higher. The vast majority of students—those with good class performance and solid participation,
+receive an A or B for the participation curve. This last component, if high, tends to help students on the
+borderline—for example a grade of 79 prior to participation will likely result in a final grade of an 80.
+*Any two combinations of the following will count as an absence: using electronics, late arrival to class, leaving
+during class, leaving prior to the end of class. Students who attend 90% or better are entitled to any curve if one
+is needed in the class; those with lower attendance than 90% do not qualify for any potential curve.
+Final Letter Grades
+Final letter grades will be determined so that a class G.P.A. of approximately 3.4 is obtained. This G.P.A. is
+within the recommendations provided by the UPO office and the department of finance curriculum committee.
+Let me give you a general idea of what such a G.P.A. could imply. If about 40% of the class were assigned
+grades distributed equally over A- and A and about 60% of the class were assigned grades of B+, B, and B-,
+then the class average G.P.A. would be almost a 3.4. The instructor for the course does not, though,
+necessarily adhere to a specific percentage breakdown of A, A-, B+, B, B-, C+ and the like. Since this is an
+elective course, most terms very few students earn grades in the C, D or F range but it does happen. Usually
+these are cases of poor peer evaluations, poor attendance, and missed work. Thus the example given was for
+illustrative purposes to help you understand one way a 3.4 average G.P.A. might be achieved. Since class
+5
+
+grades will be assigned based on this method and no number cutoffs are given, the professor for the course will
+attempt to post on occasion approximate grade cutoffs. Soon after grades for the first short paper and first test
+have been posted, the professor will share with the class what the grade assignments would be if given on that
+day. This information is for illustrative purposes and so that students may get a general sense of where they
+stand in terms of evaluation. Note again, the guidelines posted are general and apply only to those who have
+strong participation and peer review. If an upward curve is needed on tests or final grades, only those with
+strong attendance and peer evaluation are eligible to receive the curve. Grade assignments and cutoffs may
+change by the end of the term depending on new items submitted.
+Deviations from Academic Honesty / Not Pulling Weight in Groups and Negative Effect on Grades
+Deviations from Academic Honesty on a test or on a paper will be forwarded to the Dean of Students office with
+a recommendation of zero on the item in question and the penalty of another full letter downgrade in the
+student’s final average. Since academic dishonesty cases are not tolerated and result in clear downgrades, it is
+worth me reminding you that guessing on a test (or turning a paper in late and taking a downgrade) is a much
+better option than academic dishonesty.
+Students are expected to contribute in an approximately equal fashion to all group assignments. In a group of
+four, for example, it may not be the case that everyone contributes exactly equally at 25% of the final product on
+a particular assignment. If, however, a group member contributes either nothing or does contribute something
+but it is small relative to peers, then academic integrity would require you to do two things: one, leave that
+student’s name off the work and two, send an email to the instructor notifying her of the situation. The instructor
+for the course most often will decide to remove a student from a group if the group is experiencing challenges.
+In the case of little or no contribution, the student may receive a zero or she or he may be permitted to do the
+entire project on his own with a letter downgrade.
+Various Class Policies
+Electronics—I follow the department of finance policy on the use of electronics in class. This policy states that
+use of any electronic advices or tools (laptops, cell phones, etc.) during class is prohibited unless specifically
+requested by the professor of the class. This means that laptops are closed and all other devices are put away
+prior to the start of class; students shall not initiate nor receive text messages during class nor have phones out
+charging during class. If we need computers for class, the professor will at times permit computer use and at
+other times require computers closed or turned off. Adherence to this policy facilitates the students’ abilities to
+process class material and helps lead to a solid participation grade; failure to follow the policy disrupts the class
+and leads to a poor participation grade.
+Test Times-- I adopt class policies that encourage students to keep up on material such that with attendance
+and solid time management, students should find themselves adequately prepared to be able to study and take
+exams. You are required to take exams at the scheduled date unless you have a university excused absence.
+If you know you will have a university excused absence, contact me ahead of time to see if something can be
+arranged prior to take the test early. Submit documentation to verify. No make-up exam is offered after the test.
+If you miss an exam and have a university excused absence, you will be offered a cumulative exam at the end
+of the term.
+Test Review after the Test— Once tests are graded and ready to be reviewed, I will have a three week period
+when you may review your test during office hours. To be able to review your test, please stop by during that
+period.
+Accommodations—I follow the university policy on special accommodations and am happy to work with you on
+this matter. At the beginning of the term or prior to the first major project or test, please submit to me a letter
+prepared by the Service office listed above. Then, email three business days ahead of the scheduled test
+reminding me of the nature of the accommodation and the time that you can start (keeping in mind you must
+end by 4:30pm) so that we can make arrangements.
+6
+
+Attendance at your section – You are required to attend your own section. Attendance at the other section is
+not permitted. One exception to this rule is allowed per term (per student) if the student submits a request prior
+to the class and the instructor is able to accommodate the request. No guarantees are made on
+accommodating such a request since most days require attendance at your section.
+Documenting a family emergency—The office of the Dean of Students is able to provide student services that
+can assist you in the event of a family emergency. To get that assistance and to document that situation with
+me as your faculty member, look at the following web address for how to proceed:
+deanofstudents.utexas.edu/emergency/.
+Late Work and Presentation Arrival– The policy on work submitted late for major work (projects, papers, peer
+evaluations, etc.): 1 second to 10 minutes late = -8 points; 10 minutes to 20 minutes = -15; after 20 minutes
+email professor regarding issue and intended turn in, 20 minute mark to 1 day = -25; each day later than 24
+hours = original -25 plus -15 for each day.
+Important Notifications
+Students with Disabilities
+Students with disabilities may request appropriate academic accommodations from the Division of
+Diversity and Community Engagement, Services for Students with Disabilities, 512-471-6259,
+http://diversity.utexas.edu/disability/.
+Diversity and Inclusion
+It is my intent that students from all diverse backgrounds and perspectives be well served by this
+course, that students’ learning needs be addressed and that the diversity that students bring to this
+class can be comfortably expressed and be viewed as a resource, strength and benefit to all
+students. Please come to me at any time with any concerns.
+Religious Holy Days
+By UT Austin policy, you must notify me of your pending absence at least fourteen days prior to the
+date of observance of a religious holy day. If you must miss a class, an examination, a work
+assignment, or a project in order to observe a religious holy day, you will be given an opportunity to
+complete the missed work within a reasonable time after the absence.
+Policy on Scholastic Dishonesty
+The McCombs School of Business has no tolerance for acts of scholastic dishonesty. The
+responsibilities of both students and faculty with regard to scholastic dishonesty are described in
+detail in the BBA Program’s Statement on Scholastic Dishonesty at
+http://my.mccombs.utexas.edu/BBA/Code-of-Ethics. By teaching this course, I have agreed to
+observe all faculty responsibilities described there. By enrolling in this class, you have agreed to
+observe all student responsibilities described there. If the application of the Statement on Scholastic
+Dishonesty to this class or its assignments is unclear in any way, it is your responsibility to ask me
+for clarification. Students who violate University rules on scholastic dishonesty are subject to
+disciplinary penalties, including the possibility of failure in the course and/or dismissal from the
+University. Since dishonesty harms the individual, all students, the integrity of the University, and
+the value of our academic brand, policies on scholastic dishonesty will be strictly enforced. You
+should refer to the Student Conduct and Academic Integrity website at
+7
+
+http://deanofstudents.utexas.edu/conduct/ to access the official University policies and procedures
+on scholastic dishonesty as well as further elaboration on what constitutes scholastic dishonesty.
+Campus Safety
+Please note the following key recommendations regarding emergency evacuation, provided by the
+Office of Campus Safety and Security. More info at: https://preparedness.utexas.edu/.
+ Occupants of buildings on The University of Texas at Austin campus are required to
+evacuate buildings and assemble outside when a fire alarm is activated.
+ Familiarize yourself with all exit doors of each classroom and building you may occupy.
+ If you need evacuation assistance, inform the instructor in writing asap.
+ In the event of an evacuation, follow the instruction of faculty or class instructors.
+ Do not re-enter a building unless given instructions by Austin or UT police or fire authorities.
+Behavior Concerns Advice Line (BCAL): 512-232-5050 or on-line.
+In case of emergency, further information will be available at: http://www.utexas.edu/emergency.
+Go to the next page for the Schedule
+8
+
+Schedule
+T Jan 22 Introduction to Portfolio Analysis and Management
+Learning Objectives Syllabus & Course overview
+Readings PPT Notes: All Stock Portfolio (Long only), Long/Short Hedge Fund
+Th Jan 24 Long and Short Positions – Tremblant
+Learning Objectives Developing long vs. short investment theses
+Readings Tremblant Capital Group
+T Jan 29 Long and Short Positions – Universal Display
+Learning Objectives Developing long vs. short investment theses
+Readings Universal Display Corporation: Go Long or Short
+Th Jan 31- start FC Stock-Trak All Stock Portfolio
+Learning Objectives Setting up a Growth or Value Fund relative to a benchmark
+Bloomberg: correlation matrix and portfolio tracking
+Readings Stock-Trak All Stock Portfolio PPTs; Excel work
+Groups Assigned / Due Groups Set in Canvas by random assignment
+(Email by end of class to express preferences or concerns)
+T Feb 5 FC Stock-Trak Long Short Hedge Fund
+Learning Objectives Setting up & Evaluating Long Short Hedge Funds
+Bloomberg: correlation matrix and portfolio tracking
+Readings Stock-Trak Long-Short Hedge Fund PPTs; Excel work
+Registration for first two stock-trak portfolios (designated person only)
+Th Feb 7 Group Meeting Day to Work on All Stock Portfolio and L/S Hedge Fund
+Due Invest All stock Fund in Stock-Trak by this Sun, 5 pm
+Set up Correlation and Portfolio in Bloomberg by this Sun, 11:59pm
+Save for 1st paper – this is 1st of 3 series that comprise paper 1
+T Feb 12 FC Risky Assets, the Riskless Asset, & the Optimal Portfolio
+Learning Objectives Risky Assets, Correlation Coefficients, and Efficient Frontier
+Portfolio Standard Deviation vs. Average of Assets in Portfolio
+Readings Introduction to Portfolio Theory - Perold
+Th Feb 14 FC Traditional and Alternative Asset Classes and the Efficient Frontier
+Learning Objectives Five Risky Asset Classes and Efficient Frontier
+Historical Correlation Coefficients vs. Future Relationships
+Readings / to do Partners Healthcare – Coval
+9
+
+Due Invest Long-Short Hedge Fund in Stock-Trak by this Sun, 5pm
+Set up Correlation and Portfolio in Bloomberg by this Sun, 11:59 pm
+Save for 1st paper – this is 2nd of 3 series that comprise paper 1
+T Feb 19 FC Fixed Income Management and Disney Bonds
+Learning Objectives Fixed Income Valuation, Interest Rate risk & Duration
+Duration in Excel; Graphing the Bond Price Interest Rate Curve
+Readings Walt Disney’s Sleeping Beauty Bonds
+Th Feb 21 FC Yield Curve Trades at Deutsche Bank
+Learning Objectives Deutsche Bank Yield Curve Model vs. Bootstrap Results – Potential Trades
+Readings Deutsche Bank: Finding Relative Value Trades – Chacko et al
+T Feb 26 FC Stock-Trak Dedicated Futures (and Options) Portfolio
+Learning Objectives Futures and Options Parameters and Payoffs-- Review
+Set up & Futures (and Options) Hedge Fund in Stock Trak
+Readings Futures and Options PPT Review; Stock-Trak Futures Fund PPTs
+Due Invest Futures & Options Hedge Fund in Stock-Trak by this Wed, 5pm
+leverage calculation required / Bloomberg PRTU & Correl is optional
+Save for 1st paper – this is 3rd of 3 series that comprise paper 1
+Th Feb 28 FC Bitcoin and Other Asset Classes
+Learning Objectives Bitcoin and Futures on bitcoin
+Readings Bitcoin: Investment or Illusion– Y Allayanninis & A Fernstrom
+Due Turn in first portfolio paper – series of three papers submitted as one
+Monday after this class by 4pm in the Finance Department
+T Mar 5 FC Mutual Fund Performance and Morningstar Ratings
+Learning Objectives Measuring Mutual Fund Performance, Importance of Benchmark
+Morningstar Rating System, upside risk, downside risk
+Readings Measuring Mutual Fund Performance – Williams
+To Do Start Problem Set 1
+Th Mar 7 FC Thompson Asset Management
+Learning Objectives Apply Information Ratio; Standard Deviation and Sharpe Ratio
+Portfolio Beta, Treynor Ratio and Jensen’s Alpha; Portfolio Optimization
+Readings Thomson Asset Management—Fruhan and Banko
+10
+
+T Mar 12 FC Behavioral Finance / Professionally Managed Equity Funds
+Learning Objectives Anomalies, Behavioral Finance, Momentum &Value Strategies
+Readings Behavioral Finance at JP Morgan, by Banker and Sesia
+Th Mar 14 Test 1 (40% multiple choice; 60% problem solving & analysis)
+To Do Test 1
+Bring Pencil, Financial Calculator, 1-page, 1-side handwritten notes
+Spring Break
+T Mar 26 FC Hedge Fund Strategies: Risk and Return
+Learning Objectives Types of Hedge Funds; Incentive Fees, History of Hedge Funds
+Long-Short Hedge Fund Outperformance / Underperformance
+Readings Hedge Fund Industry
+Th Mar 28 FC Futures-Based Hedge Funds and Analysis of a Collapse
+Learning Objectives Review of a Hedge Fund Collapse with high L in energy futures
+Readings Hedge Fund Industry & Amaranth Advisors: Burning 6 Billion in 30 D
+T April 2 FC Overview of Class Standings in Stock Fund and Two Hedge Funds
+Learning Objectives Application of Absolute vs. Risk Adjusted Rankings
+Rank of Percent Return on each asset and contribution to portfolio
+Th April 4 FC Short Extension Funds; the 130/30 Strategy
+Learning Objectives Martingale Asset Management, a Quantitative Value Oriented Fund
+130/30 Fund, increased Tracking Error and the Optimal Shorting Ratio
+Readings Martingale Asset Management in 2008, 130/30 Funds – Viciera and Tung
+T April 9 FC Endowment Models of Investing and Performance Evaluation
+Learning Objectives Harvard Endowment Model: Policy Portfolio and Evolving Asset Mix
+Hybrid Model of Investing, Risk Management, Stress Tests
+Readings Harvard Management Company (2010) - Perold and Stafford
+Th April 11 FC Pension Models of Investing and PE Fund Allocations
+Learning Objectives Pension Fund Obligations, PE Allocation and Performance (Illinois TRS)
+Readings Illinois Teachers’ Retirement System: Private Equity Performance
+T April 16 FC Option Valuation and Implied Volatility
+Learning Objectives Apply Black-Scholes Option Pricing Model and Implied Volatility
+Readings Note on Option Valuation– Chako
+Th April 18 FC Option Strategies in Portfolio Management: Writing Calls
+Learning Objectives Writing Calls to Enhance Income and Support Dividend Payout
+11
+
+Readings Galaxy Dividend Income Growth Fund’s Option Investment Strategy
+T April 23 FC Portfolio Immunization in Asset Management
+Learning Objectives Shorting vs. Buying Puts to Immunize
+Readings Pine Street Capital
+Th April 25 FC Futures Pricing and Curves / Analyze Your Futures Holdings
+Learning Objectives Commodity Futures Pricing Models, Causes of Backwardation
+Futures Curves in Bloomberg; Your Futures Payoffs
+Readings Note on Commodity Futures – Donahue et al.
+T April 30 FC Betting on Commodities Using Futures
+Learning Objectives Physical vs. Futures Based Gold ETF; roll yield and invested cash
+Readings Betting on Gold Using a Futures-Based Gold ETF – Matos
+Th May 2 Test 2 (40% multiple choice; 60% problem solving & analysis)
+To Do Test 2
+Bring Pencil, Financial Calculator, 1-page, 1-side handwritten notes
+T May 7 FC Final Paper Data Analysis
+Learning Objectives Review Final Paper Requirements
+Learn to export and analyze your stock portfolio / use Bloomberg
+Th May 9 FC Final Paper Data Analysis (continued)
+Learning Objectives Learn to export and analyze your two hedge funds / use Bloomberg
+W May 15 FC Final Paper Due Date
+Due Final Group Portfolio Paper, 4 pm, Department of Finance
+Due Final Peer Evaluations (Individual) due, 5pm
+Deviations from the above schedule will be announced in class and / or posted on canvas.
+12

@@ -1,0 +1,12 @@
+This%course%an%introductory%course%that%is%intended%for%students%that%are%
+already%comfortable%with%programming%basics%and%are%looking%to%
+expand%their%knowledge%with%C++.%%The%course%will%go%over%the%syntax%
+and%concepts%needed%to%program%in%C++%and%will%cover%most%of%the%
+textbook%“The%C++%Programming%Language”%by%Bjarne%Stroustrup.%The%
+class%will%start%by%going%over%basic%syntax,%types,%and%control%flow.%I/O%
+operations%are%next,%followed%by%arrays,%pointers%vs%references,%and%
+dynamic%memory%management.%Afterwards%the%C++%containers%will%be%
+taught%followed%by%structures%and%classesII%a%large%area%that%will%include%
+operator%overloading,%inheritance,%exception%handling,%and%
+polymorphism.%The%class%will%finish%with%a%larger%object%oriented%project%
+to%tie%the%concepts%together.%

@@ -1,0 +1,221 @@
+{
+  "course": {
+    "id": "55855",
+    "course_code": "M 316K",
+    "course_title": "Foundations of Arithmetic",
+    "term": "Fall 2012",
+    "timezone": "America/Chicago",
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Hanna Bennett",
+        "email": "hbennett@math.utexas.edu"
+      }
+    ],
+    "meeting_times": [
+      {
+        "id": "mt-1",
+        "day_of_week": "MO",
+        "start_time": "10:00",
+        "end_time": "11:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.118",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-2",
+        "day_of_week": "WE",
+        "start_time": "10:00",
+        "end_time": "11:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.118",
+        "type": "lecture"
+      },
+      {
+        "id": "mt-3",
+        "day_of_week": "FR",
+        "start_time": "10:00",
+        "end_time": "11:00",
+        "timezone": "America/Chicago",
+        "location": "RLM 5.118",
+        "type": "lecture"
+      }
+    ],
+    "location": "RLM 5.118"
+  },
+  "assessment_categories": [
+    {
+      "id": "participation",
+      "name": "Participation",
+      "weight_percent": 20,
+      "drop_lowest": 3,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework_drafts",
+      "name": "Weekly homework drafts",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "homework_revised",
+      "name": "Weekly homework revised",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "skills_quizzes",
+      "name": "Skills Quizzes",
+      "weight_percent": 20,
+      "drop_lowest": 1,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "calculation_quiz",
+      "name": "Calculation Quiz",
+      "weight_percent": 10,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    },
+    {
+      "id": "final",
+      "name": "Final exam",
+      "weight_percent": 30,
+      "drop_lowest": null,
+      "subcategories": [],
+      "grading_bucket": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": "participation_1",
+      "title": "Participation",
+      "category_id": "participation",
+      "type": "participation",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Participation 20% drop 3 lowest"
+    },
+    {
+      "id": "homework_drafts_1",
+      "title": "Weekly homework drafts",
+      "category_id": "homework_drafts",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Weekly homework drafts 10%"
+    },
+    {
+      "id": "homework_revised_1",
+      "title": "Weekly homework revised",
+      "category_id": "homework_revised",
+      "type": "assignment",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Weekly homework revised 10%"
+    },
+    {
+      "id": "skills_quizzes_1",
+      "title": "Skills Quizzes",
+      "category_id": "skills_quizzes",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 20,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Skills Quizzes 20% drop lowest"
+    },
+    {
+      "id": "calculation_quiz_1",
+      "title": "Calculation Quiz",
+      "category_id": "calculation_quiz",
+      "type": "quiz",
+      "due_datetime": null,
+      "all_day": true,
+      "timezone": null,
+      "weight_percent": 10,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Calculation Quiz 10%"
+    },
+    {
+      "id": "final_1",
+      "title": "Final exam",
+      "category_id": "final",
+      "type": "final",
+      "due_datetime": "2012-12-15T09:00:00",
+      "all_day": false,
+      "timezone": "America/Chicago",
+      "weight_percent": 30,
+      "points": null,
+      "recurrence": null,
+      "policies": {
+        "late_policy": null,
+        "late_pass_allowed": null
+      },
+      "confidence": 0.9,
+      "source_excerpt": "Final Dec 15 9am-12pm 30%"
+    }
+  ],
+  "grading_structure": {
+    "type": "flat",
+    "buckets": []
+  },
+  "late_pass_policy": {
+    "total_allowed": null,
+    "extension_days": null
+  },
+  "schedule": [],
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "source_type": "pdf",
+    "schema_version": "1.0"
+  }
+}

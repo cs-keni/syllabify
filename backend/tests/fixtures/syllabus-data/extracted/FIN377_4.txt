@@ -1,0 +1,422 @@
+FIN 377-4: FINANCIAL ANALYSIS (Spring 2019)
+Instructor: Dr. Kamm, Department of Finance, CBA 6.304D
+Office & Email: CBA 6.304D; kelly.kamm@mccombs.utexas.edu
+Instructor Office Hours: 5-6:15 Tuesday Thursday
+T.A.: Peter Fenelon, Peter.Fenelon@mba19.utexas.edu; Catinca Fercu, Catinca.Fercu@mba19.utexas.edu
+Section 03570, 03575: 9:30 to 11 TTH and 11 to 12:30 TTH in GSB3.120
+Course Packet of Cases: SB Copy Center on 3rd floor – Required (instead of book)
+Simulations: “Working Capital / Growing a Business” & “Mergers & Acquisition in Wine Country”
+Other Required Materials: Financial Calculator HP 10b11; WSJ suggested
+PPTs and Excel Workbooks: Posted prior to class on canvas
+Attendance & Assignments: due by end of class; professor guided, two will be dropped
+Class Web Site: Canvas – Find PPTs, spreadsheets, problem sets for download / printing
+Financial Center: Bloomberg, FactSet, Excel work related to cases
+COURSE OVERVIEW:
+Financial Analysis is designed for finance majors in order to improve their skills at analyzing companies
+and to advance their knowledge of finance theory and application. The overall financial analysis
+includes: bond and stock valuation, financial statement and financial ratio analysis, EPS forecast,
+discounted cash flow and adjusted present value modeling, and multiples valuation. In the two
+simulations, students will grow and value a start-up, and forecast the synergies of a merger and
+acquisitions. We also analyze valuation of an initial public offering and a leveraged buyout. The course
+is quantitative and analytical in nature; we take theory and apply it to real world situations. Students
+calculate and interpret financial data, build spreadsheet models, and make general conclusions about the
+financial health of a company and its intrinsic value.
+In this course a combination of methods is utilized with special emphasis on student involvement and
+teamwork. The professor reviews terms and theory, asks questions, demonstrates techniques, assigns
+problems and guides students in their case preparation. Students take a very active part in this class;
+students complete finance simulations, and prepare two presentations. Learning takes place both inside
+and outside the classroom. The emphasis on student involvement encourages students to learn by doing
+and encourages the self-motivation so important to the workplace.
+The course concludes with current case study application on different types of companies in a variety of
+industry groups. By this time students will be formed into groups of perhaps three to five members.
+Students implement valuation models to determine “fair value” for a company’s stock. In debate
+fashion, students present their financial analysis and argue that the stock is currently priced correctly or
+alternatively overvalued (undervalued). The WSJ (interactive edition) and market data from the financial
+center will be important sources of information for student learning and research. Most groups get along
+well with the usual “bumps in the road.” More serious problems shall be brought to the attention of the
+professor.
+
+COURSE OBJECTIVES:
+Some of the objectives of this course include:
+ Improved ability to analyze and value companies in different industries using skills of finance,
+accounting and economics.
+ Greater understanding of the business strategy and financial ratios of well-known companies in
+various industries.
+ Review of major accounting and finance principles. Improved forecasting and valuation skills.
+ Improved ability with data export and Excel, and better familiarity with financial data programs such
+as Bloomberg and Fact Set.
+ Improved presentation, communication, and analytical skills. Improved ability to work in a team.
+ Real world application of finance through financial simulations.
+COURSE PACKET:
+UVA0400 (UVA) Overview of Credit Ratings
+9-211-083 (Harvard) Tombstones
+193029-PDF-ENG (Harvard) Introduction to Financial Ratios & Financial Statement Analysis
+297082-PDF-ENG (Harvard) Note on Value Drivers
+On-line Case link (Harvard) Working Capital Simulation: Managing Growth
+UV0402-PDF-ENG (UVA) Applying the Capital Asset Pricing Model
+UV0010-PDF-ENG (UVA) Nike, Inc.: Cost of Capital
+UV2549-PDF-ENG (UVA) Crocs, Inc.
+214048-PEDF-ENG (Harvard) Valuing Yahoo in 2013
+9-211-049 (Harvard) Fixed Income Arbitrage in a Financial Crisis (A);
+U.S. Treasuries in November 2008
+101045-PDF-ENG (Harvard) Amazon.com in the Year 2000
+4129-PDF-ENG (Harvard) Midland Energy Resources, Inc.: Cost of Capital
+W12073-PDF-ENG (Ivey) Selling Short Green Mountain Coffee Roasters
+On-line Case link (Harvard) Merger &Acquisition in Wine Country (Simulation)
+UV3927-PDF-ENG (UVA) Netflix, Inc., 2007
+2
+
+9-208-129 (Harvard) Mellon Financial and The Bank of NY (Merger)
+UV3930-PDF-ENG (UVA) Rosetta Stone: Pricing the 2009 IPO
+UV2534 (UVA) Bidding for Hertz: Leveraged Buyout
+UV6790-PDF-ENG (UVA) DuPont Corporation: Sale of Performance Coatings
+EXPECTATIONS: PROFESSIONAL CLASSROOM & GROUP CONDUCT:
+Professional behavior is expected in the classroom and will help us have a rewarding and enjoyable
+learning experience. Arriving on time, excellent attendance, being attentive and participating are all
+essential for the success of the class. When class starts, all of us will cease side conversations and focus
+time allotted on classroom material. Electronic devices are prohibited during class; this includes
+checking text messages under backpacks or your desk. Computers are used only if required by professor
+during part or all of a class. Two combinations of the following will count as a zero for the day: using
+electronic devices, late arrival to class, leaving or walking around during class, and leaving prior to the
+end of class. In order for an absence to be marked as excused, you will need to send me the original
+email regarding an interview or some sort of an attachment via email. If the absence meets the
+university requirements for an excused absence, then it will be recorded as excused. It is up to you to
+manage your schedule and arrive on time so as to keep excused absences to three or fewer over the term.
+If you wish to have one unexcused absence for reasons not covered under university policy, then keep
+excused absences down to two or fewer.
+Also, you are expected to attend and arrive on time to group meetings and contribute in a meaningful
+and productive way to all group work. If a student is not able to meet his or her commitments, the other
+group members shall notify the professor as soon as possible. In accordance with academic integrity,
+students may not earn credit for work to which they have not contributed at a reasonable level; if
+someone in your group has not contributed at a meaningful level, leave his or her name off the project
+or presentation and then email me to call my attention to the issue. Once I am aware of the issue, the
+student may be redirected, receive partial or zero credit, and / or be permitted to do the group work as a
+single student. Adherence to the above expectations regarding professional behavior helps ensure a high
+participation / evaluation grade. Inability to meet these expectations will lead to a lowering of the final
+participation / evaluation grade.
+EVALUATION: Final grades will be determined as follows:
+In-Class Assignments (Individual) / Attendance 10%
+Many days the professor will give students in-class assignments, often Excel models, which the
+instructor helps lead students through. Though each student must complete his or her own work,
+students should in fact work in a collaborative fashion and help one another.
+Assignments are due by canvas upload at the end of class (although occasionally or possibly on occasion
+turned in hard copy). The professor will drop the lowest grade (or possibly two depending on the
+3
+
+number assigned). The student should save his or her completed spreadsheet prior to upload and name
+the file, if possible, by last name. Do not ask to use another student’s work nor send your completed file
+to another student.
+The grading scheme is as follows:
+In class, submitted on time, best effort basis, (defined as about 80% or more correct) = full credit
+In class, submitted up to a day late, best effort basis, (defined as about 80% or more correct) = 80%
+Not in class, submitted on time, best effort basis, (defined as about 80% or more correct) = 70%
+Not in class, submitted up to a day late, best effort basis, (defined as about 80% or more correct) = 60%
+Up to 2 days late = 40%; later than that no credit
+Not completed on best efforts basis or not very well done = 40%
+Post blank spreadsheet = 0 (and possible 50% reduction on next posting)
+Shared or used someone else’s spreadsheet = zero not just for assignment but for entire category
+If a case discussion short paper is assigned prior to a class, similar policies will apply in terms of
+evaluation.
+Two Simulation Projects with Exhibits and Write-Up (Individual or Pairs) 20%
+As an individual or in pairs (under no circumstance may there may be more than two people), students
+will complete two on-line finance simulations. The first is called “Working Capital: Managing
+Growth” and the second is titled “Merger and Acquisition in Wine Country”. In Working Capital:
+Managing Growth, students take on the role of entrepreneurs / executives managing growth of a start-up.
+Students evaluate projects based on revenue growth, working capital required, and most importantly
+cash flow effects. After making decisions you believe will add value to the firm, you next analyze the
+effect of growth on financial ratios. In the “Merger and Acquisition in Wine Country” Simulation,
+individuals or student pairs (under no circumstance may there may be more than two people) are
+assigned one of three roles; there are two mid-sized wine companies, which could merge, and a larger
+company that may acquire one of the other two companies. Each party receives information regarding
+the range of estimated synergies of a merger or acquisition and run DCF and APV analyses to determine
+the estimate of value created. Next, you enter reservation prices and negotiate the deal seeing stock price
+effects of the negotiation.
+After the simulation is completed, students write a 5 to 6 page paper with 10 to 12 exhibit pages
+attached. Individual students are encouraged to submit 5 written pages with 10 exhibit pages while
+pairs are encouraged to submit 6 written pages with 12 exhibit pages. Also pairs must submit self and
+peer evaluations on canvas. If you are in a pair and the other student has not contributed at about 40%
+or more of the final product, then you should inform the professor and the partner that you will submit
+separately (which includes not sharing exhibit work). The paper is graded on strength of analysis,
+modeling and professional nature of exhibits, and how well it is written. For additional information, see
+the posted documents about the papers.
+Two Tests (Individual Grade) and Relation to Problem Sets 35%
+There will be two tests; each test will have a multiple choice section counting for about 40% of the
+grade and a problem solving / analysis / short essay counting for about 60% of the grade. Tests are
+equally weighted. The tests will evaluate students’ understanding of the material covered to date. The
+tests primarily cover material only in that unit; to the degree that the material builds the tests include
+such material. The in-class tests include theory and case questions, problems requiring application and
+interpretation (including working with a spreadsheet, financial statement, or handout). Though the
+problem set may not be collected and graded, many of the short problems and analysis are related to
+4
+
+your successful completion of the problem set which is posted on-line with the solutions. Think of the
+problem set as a type of practice test for the problem section of the test. On test day, you should arrive 5
+to 10 minutes early if possible, and bring a financial calculator, a pencil and one side of one page of
+notes. The one-sided page should be handwritten with any tips, formulas or short examples that are
+helpful to you but shall not include long portions of copying; the notes page is to help you learn and do
+better on the test and not just copy and paste. In the case that a test is missed with an excused absence
+approved by the Dean’s office, the student will take a cumulative final at the end of the term.
+Two Presentations (Group Grade with Individual Component) 15%
+Each group will present one case to the class. The presentation should be about 25-30 minutes.
+Approach the case as though you were in a case competition and work through any analytical or
+modeling issues proposed in the case. Primarily in your presentation, walk the class through the primary
+points and issues in the case. Your goal is to educate your peers at a deeper level, walk them through
+problems or Excel work, and engage the class in the analysis and problem solving. Materials shall be
+emailed to me no later than 15 minutes prior to the start of class so that they can be posted on-line. Your
+presentation and the power-point slides will be evaluated on: organization, accuracy, degree of interest,
+professional appearance of power-point and excel, and communication skill.
+The second presentation is given in the form of a debate. Two teams are assigned a particular stock.
+One side presents financial models and information supporting the position that the stock is undervalued
+and a “good buy.” Groups have PPTs for the opening arguments, one PPT for each of three possible
+challenges so three PPTs for challenges, and PPTs for the closing arguments. Students shall use power-
+point slides to outline their position and supporting evidence including qualitative evidence and
+quantitative support (DCF and multiples-based valuation). Presentations will be graded on strength of
+analysis, how interesting and persuasive, execution of valuation models, and presentation skills.
+Academic honesty rules apply to presentations- in a group of four for example, each student should
+contribute about 25% of the work. Most people in most groups contribute at an approximately equal
+level to presentations, as evidenced by peer reviews, and earn the same grades but there are occasional
+exceptions. If the professor determines that a student has contributed below the fair level the student
+will likely be removed from the group and be permitted to write a 10-page makeup due a week after the
+professor has informed said student, with a one letter grade downgrade. If the professor determines the
+contribution level is low or variable among members, she will add an individual component with half of
+the grade being based on the individual contribution and half on the group contribution.
+Final Stock Valuation Paper or Presentation (Individual Grade): 10%
+In place of a final exam, each student will individually analyze one company (to be announced by the
+professor). Each student submits his or her own valuation models (two or more exhibit pages) and then
+takes a buy or sell position on the stock. Students may either write a four to five page analysis of the
+qualitative and quantitative reasons that the stock is a buy or sell or the student may record an
+approximate 8 to 10 minute video of himself or herself presenting the analysis. If the paper is written,
+the submission should be all in one: written paper, exhibits, works cited. If the analysis is verbal, then
+upload two files – the presentation and a document of the exhibits and works cited. For more
+information see the posted document.
+5
+
+Professor Evaluation / Participation & Peer Review (Individual Grade) 10%
+Class participation is based on the contribution of each student to the class as a whole and to the group
+efforts. Solid performance in this area depends on: consistent attendance; being actively engaged when
+we are doing in-class assignments, demonstration that you are prepared for class; effort level toward
+group papers and presentations; strong reviews by peers in their evaluations; and adherence to class
+policies (see below for class policies including prohibition of improper use of electronics during class).
+To be prepared for class, read the case prior to class. Also take an active part in case analyses in class
+by giving your answer or opinion, solving problems, and suggesting solutions. Also submitting required
+peer reviews helps you with participation while failing to submit your self and peer reviews leads to a 20
+point downgrade for each one not submitted.
+For most students, participation serves as a slight curve toward the final grade. After all components
+prior to this one have been scored, the grades are combined to provide an “objective average” or
+“starting point” grade for participation. Students with strong attendance, professional conduct and
+committed participation in group work will receive this grade or higher (up to a letter grade) for the
+participation grade. Strong attendance is defined as attending ninety percent or more of class periods
+unless excused by university policy*; ninety percent or better attendance equates to three or fewer
+absences. A student with poor attendance (missing more than 20% of class periods—six or more
+classes), or poor effort in group work, or anyone who is disruptive / unprofessional earns a zero. Thus
+the grade in this final category may range from zero to a grade of A or 96 or perhaps higher. The vast
+majority of students—those with good class performance and solid participation, receive an A or B for
+the participation curve. This last component, if high, tends to help students on the borderline—for
+example a grade of 79 prior to participation will likely result in a final grade of an 80.
+*Any two combinations of the following will count as an absence: using electronics, late arrival to
+class, leaving during class, leaving prior to the end of class. Students who attend 90% or better are
+entitled to any curve if one is needed in the class; those with lower attendance than 90% do not qualify
+for any potential curve.
+Final Letter Grades
+Final letter grades will be determined so that a class G.P.A. of approximately 3.4 is obtained. This
+G.P.A. is within the recommendations provided by the UPO office and the department of finance
+curriculum committee. Let me give you a general idea of what such a G.P.A. could imply. If about 40%
+of the class were assigned grades distributed equally over A- and A and about 60% of the class were
+assigned grades of B+, B, and B-, then the class average G.P.A. would be almost a 3.4. The instructor
+for the course does not, though, necessarily adhere to a specific percentage breakdown of A, A-, B+, B,
+B-, C+ and the like. Since this is an elective course, most terms very few students earn grades in the C,
+D or F range but it does happen. Usually these are cases of poor peer evaluations, poor attendance, and
+missed work. Thus the example given was for illustrative purposes to help you understand one way a
+3.4 average G.P.A. might be achieved. Since class grades will be assigned based on this method and no
+number cutoffs are given, the professor for the course will attempt to post on occasion approximate
+grade cutoffs. Soon after grades for the first short paper and first test have been posted, the professor
+will share with the class what the grade assignments would be if given on that day. This information is
+for illustrative purposes and so that students may get a general sense of where they stand in terms of
+evaluation. Note again, the guidelines posted are general and apply only to those who have strong
+6
+
+participation and peer review. If an upward curve is needed on tests or final grades, only those with
+strong attendance and peer evaluation are eligible to receive the curve. Grade assignments and cutoffs
+may change by the end of the term depending on new items submitted.
+Deviations from Academic Honesty / Not Pulling Weight in Groups and Negative Effect on Grades
+Deviations from Academic Honesty on a test or on a paper will be forwarded to the Dean of Students
+office with a recommendation of zero on the item in question and the penalty of another full letter
+downgrade in the student’s final average. Since academic dishonesty cases are not tolerated and result
+in clear downgrades, it is worth me reminding you that guessing on a test (or turning a paper in late and
+taking a downgrade) is a much better option than academic dishonesty.
+Students are expected to contribute in an approximately equal fashion to all group assignments. In a
+group of four, for example, it may not be the case that everyone contributes exactly equally at 25% of
+the final product on a particular assignment. If, however, a group member contributes either nothing or
+does contribute something but it is small relative to peers, then academic integrity would require you to
+do two things: one, leave that student’s name off the work and two, send an email to the instructor
+notifying her of the situation. This includes presentations and / or debates. The instructor for the course
+most often will decide to remove a student from a group if the group is experiencing challenges. In the
+case of little or no contribution, the student may receive a zero or she or he may be permitted to do the
+entire project on his own with a letter downgrade.
+Various Class Policies
+Electronics—I follow the department of finance policy on the use of electronics in class. This policy
+states that use of any electronic advices or tools (laptops, cell phones, etc.) during class is prohibited
+unless specifically requested by the professor of the class. This means that laptops are closed and all
+other devices are put away prior to the start of class; students shall not initiate nor receive text messages
+during class nor have phones out charging during class. If we need computers for class, the professor
+will at times permit computer use and at other times require computers closed or turned off. Adherence
+to this policy facilitates the students’ abilities to process class material and helps lead to a solid
+participation grade; failure to follow the policy disrupts the class and leads to a poor participation grade.
+Test Times-- I adopt class policies that encourage students to keep up on material such that with
+attendance and solid time management, students should find themselves adequately prepared to be able
+to study and take exams. You are required to take exams at the scheduled date unless you have a
+university excused absence. If you know you will have a university excused absence, contact me ahead
+of time to see if something can be arranged prior to take the test early. Submit documentation to verify.
+No make-up exam is offered after the test. If you miss an exam and have a university excused absence,
+you will be offered a cumulative exam at the end of the term.
+Test Review after the Test— Once tests are graded and ready to be reviewed, I will have a three week
+period when you may review your test during office hours. To be able to review your test, please stop by
+during that time frame.
+Accommodations—I follow the university policy on special accommodations and am happy to work
+with you on this matter. At the beginning of the term or prior to the first major project or test, please
+submit to me a letter prepared by the Service office listed above. Then, email three business days ahead
+7
+
+of the scheduled test reminding me of the nature of the accommodation and the time that you can start
+(keeping in mind you must end by 4:30pm) so that we can make arrangements.
+Attendance at your section – You are required to attend your own section. Attendance at the other
+section is not permitted. One exception to this rule is allowed per term (per student) if the student
+submits a request prior to the class and the instructor is able to accommodate the request. No guarantees
+are made on accommodating such a request since most days require attendance at your section.
+Documenting a family emergency—The office of the Dean of Students is able to provide student
+services that can assist you in the event of a family emergency. To get that assistance and to document
+that situation with me as your faculty member, look at the following web address for how to proceed:
+deanofstudents.utexas.edu/emergency/.
+Late Work and Presentation Arrival– The policy on work submitted late for major work (projects,
+papers, peer evaluations, etc.): 1 second to 10 minutes late = -8 points; 10 minutes to 20 minutes = -15;
+after 20 minutes email professor regarding issue and intended turn in, 20 minute mark to 1 day = -25;
+each day later than 24 hours = original -25 plus -15 for each day.
+Important Notifications
+Students with Disabilities
+Students with disabilities may request appropriate academic accommodations from the Division of
+Diversity and Community Engagement, Services for Students with Disabilities, 512-471-6259,
+http://diversity.utexas.edu/disability/.
+Diversity and Inclusion
+It is my intent that students from all diverse backgrounds and perspectives be well served by this
+course, that students’ learning needs be addressed and that the diversity that students bring to this class
+can be comfortably expressed and be viewed as a resource, strength and benefit to all students. Please
+come to me at any time with any concerns.
+Religious Holy Days
+By UT Austin policy, you must notify me of your pending absence at least fourteen days prior to the
+date of observance of a religious holy day. If you must miss a class, an examination, a work assignment,
+or a project in order to observe a religious holy day, you will be given an opportunity to complete the
+missed work within a reasonable time after the absence.
+Policy on Scholastic Dishonesty
+The McCombs School of Business has no tolerance for acts of scholastic dishonesty. The
+responsibilities of both students and faculty with regard to scholastic dishonesty are described in detail
+in the BBA Program’s Statement on Scholastic Dishonesty at
+http://my.mccombs.utexas.edu/BBA/Code-of-Ethics. By teaching this course, I have agreed to observe
+all faculty responsibilities described there. By enrolling in this class, you have agreed to observe all
+student responsibilities described there. If the application of the Statement on Scholastic Dishonesty to
+this class or its assignments is unclear in any way, it is your responsibility to ask me for clarification.
+Students who violate University rules on scholastic dishonesty are subject to disciplinary penalties,
+8
+
+including the possibility of failure in the course and/or dismissal from the University. Since dishonesty
+harms the individual, all students, the integrity of the University, and the value of our academic brand,
+policies on scholastic dishonesty will be strictly enforced. You should refer to the Student Conduct
+and Academic Integrity website at http://deanofstudents.utexas.edu/conduct/ to access the official
+University policies and procedures on scholastic dishonesty as well as further elaboration on what
+constitutes scholastic dishonesty.
+Campus Safety
+Please note the following key recommendations regarding emergency evacuation, provided by the
+Office of Campus Safety and Security. More info at: https://preparedness.utexas.edu/.
+ Occupants of buildings on The University of Texas at Austin campus are required to evacuate
+buildings and assemble outside when a fire alarm is activated.
+ Familiarize yourself with all exit doors of each classroom and building you may occupy.
+ If you need evacuation assistance, inform the instructor in writing asap.
+ In the event of an evacuation, follow the instruction of faculty or class instructors.
+ Do not re-enter a building unless given instructions by Austin or UT police or fire authorities.
+Behavior Concerns Advice Line (BCAL): 512-232-5050 or on-line.
+In case of emergency, further information will be available at: http://www.utexas.edu/emergency.
+Please see next page for Schedule
+9
+
+Schedule
+Date Material Covered During Class
+T Jan 22 Review of Syllabus / Credit Ratings
+Overview of Credit Ratings Case
+Th Jan 24 Fixed Income Valuation (including convertible bonds)
+Tombstones Case
+T Jan 29 FC: Introduction to Financial Ratios and Financial Statement Analysis
+Th Jan 31 FC: Financial Ratios and Financial Statement Analysis continued
+T Feb 5 FC: Note on Value Drivers Case (ROE, Economic Value added)
+Canvas - WC Managing Growth Group formation as a single or pair (no threes allowed)
+Th Feb 7 FC: Working Capital Simulation: Managing Growth Simulation Lecture & Start
+T Feb 12 FC: Working Capital Simulation: Managing Growth Simulation
+Students make financing decision, estimate project value, select or reject projects
+Due by Canvas Upload: NPVs of all or most projects accepted or rejected
+Th Feb 14 FC: Working Capital Simulation: Managing Growth Simulation
+Students export and evaluate data: DCF of company, ratio analysis (ROE, PB)
+Due by Canvas Upload: Excel Work for Simulation: Ratio bar graphs, DCF, etc.
+T Feb 19 FC: Apply the CAPM, Nike, Inc. / Overview of Student Led Presentations
+Group formation in Canvas for Case Presentations
+Sign Ups for preferences on presentation dates
+Th Feb 21 FC: Crocs, Inc. (DCF model, multiples valuation)
+Start Problem Set 1 (work on your own; questions and answer key on canvas)
+Due by Canvas Upload: Excel Work
+T Feb 26 FC: Valuing Yahoo in 2013 (Sum of the Parts Valuation)
+Due by Canvas Upload: Excel Work
+Th Feb 28 1st In-Class Test (16 multiple choice 40%; 5 problems & analysis 60%)
+Bring financial calculator, pencil, 8 by 11 page notes, one, 1 side only with notes, turn in with test
+T Mar 5 Due CBA 6.222 Department of Finance by 4 pm: Paper 1 (individual or pairs)
+Due: Self and Peer Evaluations for pairs only (Download form, fill out, and upload)
+Th Mar 7 Preparation day for Student Led Presentations
+T Mar 12 FC: Student Presentation: Fixed Income Arbitrage in a Financial Crisis
+Student Presentation: Amazon.com in the Year 2000
+10
+
+Due by Canvas Upload: Excel Work
+Th Mar 14 FC: Student Presentation: Midland Energy Resources
+Student Presentation: Selling Short: Green Mountain Coffee Roasters
+Due by Canvas Upload: Excel Work
+Spring Break
+T Mar 26 FC: Student Presentation: Netflix, Inc. 2007
+FC: Student Presentation: Mellon Bank and The Bank of NY (Merger)
+Due by Canvas Upload: Excel Work
+Th Mar 28 FC: Student Presentation: Rosetta Stone: Pricing the 2009 IPO
+FC: Student Presentation: Bidding for Hertz: Leveraged Buyout
+Due by Canvas Upload: Excel Work
+T April 2 FC: Finance Simulation: M&A in Wine Country; Introduction
+Canvas – M&A Group formation as a single or pair (no threes allowed)
+Th April 4 FC: M&A in Wine Country: Value BV no M&A/stand-alone and then synergies/M&A
+DCF perpetuity for TV; APV perpetuity; DCF EV/EBITA for TV; APV EV/EBITA = 4
+No synergies (= stand-alone, no merger) then M&A under Low, mid, high synergy = 4
+Assume no synergies under 4 valuation methods, then low under 4 … then mid … high
+4 stand-alone (zero synergy) or synergy assumptions * 4 valuation methods = 16 results
+Due by canvas upload: 16 Valuations Results for BelVino
+T April 9 FC: M&A in Wine Country: Now do same 16 results for Starshine that you did for BV
+Due by canvas upload: 16 Valuations Results for Starshine
+Th April 11 FC: Finance Simulation: M&A in Wine Country: Prof Review of Reservation Price
+Due 20 minutes into class - submit reservation prices; Negotiations in class
+Missing Class on this date results in a 50% downgrade on the project
+Contact the professor by T, Nov 8 if you think you qualify for excused absence
+T April 16 FC: DCF and multiples Model using Data Export – you need for final assignments
+Overview of Debate and Final Presentation – Important Class;
+Due by canvas upload: the models
+Th April 18 2nd In-Class Test (16 multiple choice 40%; 5 problems& analysis 60%)
+Bring financial calculator, pencil, 8 by 11 page notes, one, 1 side only with notes, turn in with test
+T April 23 Due CBA 6.222 Department of Finance by 4 pm: Paper 2 (individual or pairs)
+Due: Self and Peer Evaluations for pairs only (Download form, fill out, and upload)
+Th April 25 Overview of Debate Assignments and Timing
+11
+
+T April 30 Valuation Debates & Evaluation of Debate
+Th May 2 Valuation Debates & Evaluation of Debate / Instructor Evaluations
+T May 7 Valuation Debates & Evaluation of Debate
+Th May 9 Overview of Individual Buy-Sell Presentation (link to youtube or google)
+Due: Self and Peer Evaluations (Forms to download, fill out, and upload on Canvas)
+Th May 16 Due: Buy or Sell Stock Pitch Presentation (Canvas)
+(film of student speaking and/or PPT with link to youtube or google)
+Also upload PPT of main points, excel results in PPT, works cited in PPT
+* NOTE REGARDING SYLLABUS: Please note that current events and other in-class activities may
+be added when the schedule allows. The above schedule is meant to be approximate. At times we may
+be slightly ahead of or slightly behind schedule. Work due on canvas may be moved, added, or not
+collected depending on instructor decisions. Financial center dates may need to be moved. Necessary
+changes regarding times, assignments, and other matters will be announced in class.
+12

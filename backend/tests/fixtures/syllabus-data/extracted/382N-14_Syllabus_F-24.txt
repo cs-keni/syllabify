@@ -1,0 +1,187 @@
+ECE 382N-14 High-Speed Computer Arithmetic
+Unique #17795
+Fall, 2024
+Hours: Monday & Wednesday
+5:00 PM to 6:30 PM
+Location: ECJ 1.214
+Professor Earl Swartzlander
+Office: EER 5.874
+Phone: 310-702-5756
+E-Mail: eswartzla@aol.com
+Office Hours: Monday and Wednesday 3:00 PM to 4:30 PM, Tuesday 11:00 AM
+to 2:00 PM or by appointment.
+Prerequisites: Graduate standing in ECE or CS.
+This course covers the design and implementation of binary arithmetic as applied to
+general purpose and special purpose computers. The focus is on developing high-
+speed algorithms for the basic arithmetic operations and understanding their
+implementation using VLSI technology at the gate level.
+Text: Earl Swartzlander, ed., Computer Arithmetic, Available from University
+Duplicating. This collection of reprints includes most of the required reading,
+although students may need to find a few articles from the literature.
+Grading: • 3 Examinations @ 20% each,
+• Project @ 40%
+Plus and Minus grades are not used.
+Numerical Grade Letter Grade
+G ≥ 90% A
+90% > G ≥ 80% B
+80% > G ≥ 70% C
+70% > G ≥ 60% D
+60% > G F
+Student Project: A properly documented project on a subject of interest to the student
+(with approval of the topic by the instructor) is a significant portion of the course
+grade. A written report is due on December 4, 2024. The projects may be done by
+individuals or by small groups of 2 to 4 students. Each project will be the subject of
+a BRIEF presentation of the project results to the class during the last two class
+sessions.
+
+EE 382N High-Speed Computer Arithmetic
+Policies:
+• Attendance at all classes is expected, but not counted in grading.
+• There is no Final Examination, but there are 3 “regular” examinations.
+• There are no make-up examinations. Excused absence from an examination
+must be approved in advance. Absence is excused only in extreme
+circumstances (serious illness, death in the immediate family, etc.). Requests
+for excused absences should be made in writing and must be supported by
+appropriate documentation. Unexcused absence from an examination will
+result in a grade of zero for that examination.
+• There is no re-grading of examinations, unless you feel that there is an error.
+In this case, you should submit a written request. Verbal requests will not be
+considered.
+• The fourth class day is the last day of the official add/drop period. Drops after
+this time must be approved by the Dean’s office.
+• University policies on scholastic dishonesty will be strictly enforced. Students
+who violate University rules on scholastic dishonesty (including, but not
+limited to, cheating, plagiarism, collusion, or falsifying academic records) are
+subject to disciplinary penalties, including failure in the course or dismissal
+from the University.
+• By UT Austin policy, you must notify me of your pending absence at least
+fourteen days prior to the date of observance of a religious holiday. If you
+must miss a class, an examination, a work assignment, or a project in order to
+observe a religious holiday, you will be given an opportunity to complete the
+missed work within a reasonable time after the absence.
+• Disabilities: The university is committed to creating an accessible and
+inclusive learning environment consistent with university policy and federal
+and state law. Please let me know if you experience any barriers to learning so
+I can work with you to ensure you have equal opportunity to participate fully
+in this course. If you are a student with a disability, or think you may have a
+disability, and need accommodations please contact Disability and Access
+(D&A). Please refer to D&A’s website for contact and more information:
+http://diversity.utexas.edu/disability/. If you are already registered with D&A,
+please deliver your Accommodation Letter to me as early as possible in the
+semester so we can discuss your approved accommodations and needs in this
+course.
+• Web-based, password-protected class rosters are associated with all academic
+courses taught at the University. Students who do not want their names to be
+included in these electronic class rosters must restrict their directory
+information in the Office of the Registrar, Main Building, Room 1.
+
+EE 382N High-Speed Computer Arithmetic
+Emergency Preparedness
+Every member of the university community must take appropriate and deliberate action
+when an emergency strikes a building, a portion of the campus, or entire campus
+community. Emergency preparedness means we are all ready to act for our own safety and
+the safety of others during a crisis. It takes an effort by all of us to create and sustain an
+effective emergency preparedness system.
+If you have an emergency either on or off campus, you should call 911 to report the
+situation.
+Please make note of the phone number for the Behavior Concerns Advice Line (BCAL:
+512-232-5050). This is the number to call if you have concerns regarding the attitude or
+actions of other students, staff, or faculty. It is advised that you carry this number with you
+when you are on campus
+Students requiring assistance in evacuation should inform me in writing of their needs
+during the first week of class. This information will then be provided to the Fire Prevention
+Services office.
+If you would like more information regarding emergency preparedness, visit
+http://www.utexas.edu/safety/preparedness/.
+Emergency Communications
+Emergencies may range from inclement weather, to building evacuations, to campus
+closures. The university has a variety of tools to communicate with the public in the event
+of these and other possible emergencies. Depending on the type of emergency, the
+University may use some or all of the following tools to communicate with faculty, staff and
+students:
+Siren System
+The siren system is tested at 11:50 AM on the first Wednesday of every month, and delivers
+a siren warning and public address announcement in the event of certain outdoor
+emergencies.
+Emergency Web Site
+You may want to bookmark the emergency Web site because it is updated with information
+during actual emergencies or campus closures.
+Local Press and Social Media
+University Communications staff sends emergency information to the press and update
+social media with public safety messages. The university depends a great deal on the press
+and social media to keep students, faculty, and staff informed during campus emergencies.
+
+EE 382N High-Speed Computer Arithmetic
+Pager System
+Our campus first responders, resident advisors, and some building managers are part of the
+AWACS paging system. The pagers send text messages about emergencies on campus and
+alert city responders (APD, AFD, EMS, Office of Emergency Management, etc.) to campus
+crisis situations.
+Fire Panel Systems
+Residence halls are equipped with fire panel systems that have a public address capability.
+Resident advisors are trained to use these systems in emergencies in order to make
+announcements to the entire building regarding evacuation, shelter in place, etc.
+Text Alerts
+The university collects cell phone numbers from members of the campus community for
+emergency text messages.
+University Group E-mail
+During emergencies, UT Safety Alert sends an “urgent” group e-mail to every student,
+faculty and staff member. The e-mail directs individuals to the emergency Web site for
+additional information and instruction.
+Voicemail to Office Telephones
+This tool leaves a voice message on every faculty and staff member’s office phone on
+campus.
+Public Safety Patrol Car Announcements
+UTPD patrol cars are equipped with PA systems, which officers can use to provide
+instructions to pedestrians during emergencies.
+University Emergency Information Line — 512-232-9999
+Students, faculty, and staff can call this main number for information about campus
+closures.
+
+EE 382N High-Speed Computer Arithmetic
+Course Schedule
+The following course schedule is approximate. It indicates the topics,
+their order and probable dates, but it is subject to change.
+DATE TOPIC READING ASSIGNMENT
+August 26 Course Overview
+August 28 Number Systems
+September 2 No Class (Labor Day)
+September 4 Ripple Carry and Carry Completion Gilchrist, Pomerene and Wong
+Adders
+September 9 Carry Lookahead Adders Weinberger and Smith and
+MacSorley (pp. 15-18)
+September 11 Carry Select and Conditional Sum Lehman and Burla and Sklansky
+Adders
+September 16 Carry Skip Adders Bedrij
+September 18 Parallel Prefix Adders Brent-Kung
+September 23 Parallel Prefix Adders Kogge-Stone
+September 25 Multiple Word Addition Svoboda and Swartzlander (Parallel
+Counters)
+September 30 Adder Comparison
+October 2 Examination 1
+October 7 Booth and Modified Booth Multipliers Booth, Baugh and Wooley, and
+and Array Multipliers Blankenship
+October 9 Fast Multipliers Wallace and Dadda (pp. 118-125)
+October 14 Serial-Parallel Multipliers Swartzlander (Quasi Serial Multiplier)
+October 16 Multiplier Comparison
+October 21 Logarithmic Arithmetic Combet, et al. and
+Swartzlander and Alexopoulos
+October 23 Examination 2
+October 28 Restoring Division and Non-Restoring Shaw (pp. 10-12) and MacSorley
+Division (pp. 27-38)
+
+EE 382N High-Speed Computer Arithmetic
+DATE TOPIC READING ASSIGNMENT
+October 30 SRT Division Robertson, Atkins
+November 4 Newton-Raphson and Goldschmidt Anderson, et al. (pp. 343-347)
+Division
+November 6 IEEE Standard Floating-Point IEEE Std. 754
+Arithmetic
+November 11 Floating-Point Fused Multiply Add
+November 13 Residue Arithmetic
+November 18 Review
+November 20 Examination 3
+November 25-29 Thanksgiving Break
+December 2 Advanced Topics
+December 4 Project Summaries
+December 9 Project Summaries
