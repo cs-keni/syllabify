@@ -6,6 +6,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import ThemeToggle from '../components/ThemeToggle';
 import GoogleSignInButton from '../components/GoogleSignInButton';
+import Footer from '../components/Footer';
 import { useAuth } from '../contexts/AuthContext';
 import { getSettings, register } from '../api/client';
 
@@ -124,7 +125,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-ink">
+    <div className="min-h-screen flex flex-col bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
           <div className="flex items-center justify-between gap-3">
@@ -279,6 +280,7 @@ export default function Register() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

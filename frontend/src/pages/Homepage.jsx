@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-surface text-ink">
+    <div className="min-h-screen flex flex-col bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
           <div className="sm:hidden space-y-1.5">
@@ -117,6 +118,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

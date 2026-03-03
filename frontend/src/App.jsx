@@ -20,6 +20,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import SecuritySetup from './pages/SecuritySetup';
 import Home from './pages/Homepage';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import MaintenancePage from './pages/MaintenancePage';
 import { getMaintenance, getSettings } from './api/client';
 import { useState, useEffect } from 'react';
@@ -81,6 +83,8 @@ function AppRoutes() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/security-setup" element={<SecuritySetup />} />

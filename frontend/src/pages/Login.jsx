@@ -8,6 +8,7 @@ import { useAuth } from '../contexts/AuthContext';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
 import GoogleSignInButton from '../components/GoogleSignInButton';
+import Footer from '../components/Footer';
 import toast from 'react-hot-toast';
 
 /** Login form. Uses AuthContext.login / loginWithGoogle, redirects based on security_setup_done. */
@@ -63,7 +64,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-ink">
+    <div className="min-h-screen flex flex-col bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
           <div className="sm:hidden space-y-1.5">
@@ -209,6 +210,7 @@ export default function Login() {
           </form>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
