@@ -6,11 +6,20 @@
  * modified. This describes the general idea as of the current state.
  */
 
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// If VITE_API_URL is unset, use same-origin /api (works with Vite proxy in dev).
+const BASE = (import.meta.env.VITE_API_URL || '').trim();
 
 /** Like fetch but on 401 from authenticated API calls, clears token and dispatches auth:unauthorized. */
 async function apiFetch(url, opts = {}) {
-  const res = await fetch(url, opts);
+  let res;
+  try {
+    res = await fetch(url, opts);
+  } catch (err) {
+    const target = typeof url === 'string' ? url : 'API endpoint';
+    throw new Error(
+      `Cannot reach the server (${target}). Ensure backend is running and VITE_API_URL is correct.`
+    );
+  }
   const hadAuth =
     opts.headers && (opts.headers.Authorization || opts.headers.authorization);
   if (

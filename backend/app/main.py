@@ -23,7 +23,11 @@ from app.api.users import bp as users_bp
 
 app = Flask(__name__)
 # CORS: set FRONTEND_URL on Render to your Vercel URL (e.g. https://syllabify-iota.vercel.app)
-_frontend_origins = os.getenv("FRONTEND_URL", "http://localhost:3000").strip()
+# Local default includes common Vite ports + localhost/127.0.0.1 variants.
+_frontend_origins = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173",
+).strip()
 _frontend_origins = [o.strip() for o in _frontend_origins.split(",") if o.strip()]
 CORS(
     app,

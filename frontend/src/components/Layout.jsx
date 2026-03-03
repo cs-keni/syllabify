@@ -13,6 +13,15 @@ import {
 import { useAuth } from '../contexts/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import ShortcutsOverlay from './ShortcutsOverlay';
+import BlueManAvatar from '../assets/BlueMan.png';
+import GreenManAvatar from '../assets/GreenMan.png';
+import RedManAvatar from '../assets/RedMan.png';
+
+const AVATAR_SRC_BY_KEY = {
+  blue: BlueManAvatar,
+  green: GreenManAvatar,
+  red: RedManAvatar,
+};
 
 const navItems = [
   { to: '/app', label: 'Dashboard', end: true },
@@ -127,6 +136,7 @@ export default function Layout() {
         .toUpperCase()
         .replace(/[^A-Z0-9]/g, '') || '?'
     : '?';
+  const avatarSrc = user?.avatar_key ? AVATAR_SRC_BY_KEY[user.avatar_key] : null;
   const navItemsFiltered = navItems.filter(
     item => !item.adminOnly || user?.is_admin
   );
@@ -277,12 +287,20 @@ export default function Layout() {
                   aria-expanded={profileOpen}
                   aria-haspopup="menu"
                 >
-                  <span
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-muted text-accent text-xs font-medium shrink-0"
-                    aria-hidden
-                  >
-                    {initials}
-                  </span>
+                  {avatarSrc ? (
+                    <img
+                      src={avatarSrc}
+                      alt={`${user.username} avatar`}
+                      className="h-8 w-8 rounded-full object-cover shrink-0 border border-border"
+                    />
+                  ) : (
+                    <span
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-muted text-accent text-xs font-medium shrink-0"
+                      aria-hidden
+                    >
+                      {initials}
+                    </span>
+                  )}
                   <span className="hidden sm:inline">{user.username}</span>
                   <svg
                     className={`h-4 w-4 shrink-0 transition-transform ${profileOpen ? 'rotate-180' : ''}`}

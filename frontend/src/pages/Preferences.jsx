@@ -14,6 +14,15 @@ import {
 } from '../api/client';
 import { useAccent } from '../contexts/AccentContext';
 import toast from 'react-hot-toast';
+import BlueManAvatar from '../assets/BlueMan.png';
+import GreenManAvatar from '../assets/GreenMan.png';
+import RedManAvatar from '../assets/RedMan.png';
+
+const AVATAR_OPTIONS = [
+  { key: 'blue', label: 'Blue', src: BlueManAvatar },
+  { key: 'green', label: 'Green', src: GreenManAvatar },
+  { key: 'red', label: 'Red', src: RedManAvatar },
+];
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const DAY_TO_CODE = {
@@ -47,9 +56,10 @@ const PASSWORD_REQUIREMENTS = [
 ];
 
 export default function Preferences() {
-  const { token } = useAuth();
+  const { token, user, setAvatar } = useAuth();
   const { accent, setAccent, palettes } = useAccent();
   const [email, setEmail] = useState('');
+  const [selectedAvatarKey, setSelectedAvatarKey] = useState(null);
   const [workStart, setWorkStart] = useState('09:00');
   const [workEnd, setWorkEnd] = useState('17:00');
   const [selectedDays, setSelectedDays] = useState([
@@ -98,6 +108,10 @@ export default function Preferences() {
       })
       .finally(() => setLoading(false));
   }, [token]);
+
+  useEffect(() => {
+    setSelectedAvatarKey(user?.avatar_key || null);
+  }, [user?.avatar_key]);
 
   const handleSaveAccount = async e => {
     e.preventDefault();
@@ -163,6 +177,11 @@ export default function Preferences() {
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleSaveAvatar = () => {
+    setAvatar(selectedAvatarKey || null);
+    toast.success('Avatar updated');
   };
 
   return (
@@ -324,6 +343,40 @@ export default function Preferences() {
                 {saving ? 'Saving…' : 'Save'}
               </button>
             </form>
+            <div className="mt-6">
+              <h3 className="text-sm font-medium text-ink mb-3">
+                Profile avatar
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {AVATAR_OPTIONS.map(option => (
+                  <button
+                    key={option.key}
+                    type="button"
+                    onClick={() => setSelectedAvatarKey(option.key)}
+                    className={`rounded-full border-2 p-0.5 transition-all ${
+                      selectedAvatarKey === option.key
+                        ? 'border-accent ring-2 ring-accent/30'
+                        : 'border-border hover:border-ink-muted'
+                    }`}
+                    aria-pressed={selectedAvatarKey === option.key}
+                    aria-label={`Use ${option.label} avatar`}
+                  >
+                    <img
+                      src={option.src}
+                      alt={`${option.label} avatar`}
+                      className="h-12 w-12 rounded-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={handleSaveAvatar}
+                className="mt-3 rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] w-fit"
+              >
+                Save avatar
+              </button>
+            </div>
           </section>
 
           <form onSubmit={handleSavePreferences} className="space-y-8">

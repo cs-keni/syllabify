@@ -13,6 +13,29 @@ import {
 import * as api from '../api/client';
 
 const TOKEN_KEY = 'syllabify_token';
+const AVATAR_MAP_KEY = 'syllabify_avatar_map';
+
+function getAvatarMap() {
+  try {
+    return JSON.parse(localStorage.getItem(AVATAR_MAP_KEY) || '{}');
+  } catch {
+    return {};
+  }
+}
+
+function getAvatarForUsername(username) {
+  if (!username) return null;
+  const map = getAvatarMap();
+  return map[username] || null;
+}
+
+function setAvatarForUsername(username, avatar) {
+  if (!username) return;
+  const map = getAvatarMap();
+  if (avatar) map[username] = avatar;
+  else delete map[username];
+  localStorage.setItem(AVATAR_MAP_KEY, JSON.stringify(map));
+}
 
 const AuthContext = createContext(null);
 
@@ -28,7 +51,11 @@ export function AuthProvider({ children }) {
     try {
       const data = await api.me(t);
       if (data) {
-        setUser({ username: data.username, is_admin: !!data.is_admin });
+        setUser({
+          username: data.username,
+          is_admin: !!data.is_admin,
+          avatar_key: getAvatarForUsername(data.username),
+        });
         setSecuritySetupDone(!!data.security_setup_done);
         return true;
       }
@@ -77,7 +104,11 @@ export function AuthProvider({ children }) {
     const t = data.token;
     localStorage.setItem(TOKEN_KEY, t);
     setToken(t);
-    setUser({ username: data.username, is_admin: !!data.is_admin });
+    setUser({
+      username: data.username,
+      is_admin: !!data.is_admin,
+      avatar_key: getAvatarForUsername(data.username),
+    });
     setSecuritySetupDone(!!data.security_setup_done);
     return { security_setup_done: !!data.security_setup_done };
   }, []);
@@ -88,7 +119,11 @@ export function AuthProvider({ children }) {
     const t = data.token;
     localStorage.setItem(TOKEN_KEY, t);
     setToken(t);
-    setUser({ username: data.username, is_admin: !!data.is_admin });
+    setUser({
+      username: data.username,
+      is_admin: !!data.is_admin,
+      avatar_key: getAvatarForUsername(data.username),
+    });
     setSecuritySetupDone(!!data.security_setup_done);
     return { security_setup_done: !!data.security_setup_done };
   }, []);
@@ -112,6 +147,14 @@ export function AuthProvider({ children }) {
     [token]
   );
 
+  const setAvatar = useCallback(avatarKey => {
+    setUser(prev => {
+      if (!prev?.username) return prev;
+      setAvatarForUsername(prev.username, avatarKey);
+      return { ...prev, avatar_key: avatarKey || null };
+    });
+  }, []);
+
   const value = {
     user,
     token,
@@ -121,6 +164,7 @@ export function AuthProvider({ children }) {
     loginWithGoogle,
     logout,
     completeSecuritySetup,
+    setAvatar,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
