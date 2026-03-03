@@ -5,6 +5,8 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import ThemeToggle from '../components/ThemeToggle';
+import GoogleSignInButton from '../components/GoogleSignInButton';
+import { useAuth } from '../contexts/AuthContext';
 import { getSettings, register } from '../api/client';
 
 const PASSWORD_REQUIREMENTS = [
@@ -54,6 +56,7 @@ function Requirement({ met, label }) {
 
 export default function Register() {
   const navigate = useNavigate();
+  const { loginWithGoogle } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -61,6 +64,23 @@ export default function Register() {
   const [submitting, setSubmitting] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(true);
   const [checkingRegistration, setCheckingRegistration] = useState(true);
+
+  const handleGoogleSuccess = async idToken => {
+    setError('');
+    setSubmitting(true);
+    try {
+      const result = await loginWithGoogle(idToken);
+      if (result.security_setup_done) {
+        navigate('/app', { replace: true });
+      } else {
+        navigate('/security-setup', { replace: true });
+      }
+    } catch (err) {
+      setError(err.message || 'Google sign-in failed');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     getSettings()
@@ -231,6 +251,20 @@ export default function Register() {
                 >
                   {submitting ? 'Creating account...' : 'Sign up'}
                 </button>
+                <div className="relative my-4">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-border" />
+                  </div>
+                  <div className="relative flex justify-center text-xs">
+                    <span className="bg-surface-elevated px-2 text-ink-muted">or</span>
+                  </div>
+                </div>
+                <GoogleSignInButton
+                  onSuccess={handleGoogleSuccess}
+                  onError={err => setError(err?.message || 'Google sign-in failed')}
+                  disabled={submitting || !registrationOpen}
+                  className="flex justify-center"
+                />
                 <p className="text-center text-sm text-ink-muted">
                   Already have an account?{' '}
                   <Link

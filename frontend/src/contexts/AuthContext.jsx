@@ -82,6 +82,17 @@ export function AuthProvider({ children }) {
     return { security_setup_done: !!data.security_setup_done };
   }, []);
 
+  /** Calls API loginWithGoogle, stores token, updates state. Returns { security_setup_done }. */
+  const loginWithGoogle = useCallback(async idToken => {
+    const data = await api.loginWithGoogle(idToken);
+    const t = data.token;
+    localStorage.setItem(TOKEN_KEY, t);
+    setToken(t);
+    setUser({ username: data.username, is_admin: !!data.is_admin });
+    setSecuritySetupDone(!!data.security_setup_done);
+    return { security_setup_done: !!data.security_setup_done };
+  }, []);
+
   /** Clears token and user from storage and state. */
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY);
@@ -107,6 +118,7 @@ export function AuthProvider({ children }) {
     securitySetupDone,
     isLoading,
     login,
+    loginWithGoogle,
     logout,
     completeSecuritySetup,
   };

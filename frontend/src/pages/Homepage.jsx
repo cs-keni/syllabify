@@ -28,12 +28,12 @@ export default function Home() {
               >
                 Log in
               </Link>
-              <button
-                type="button"
-                className="rounded-button border border-border bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200"
+              <Link
+                to="/register"
+                className="text-center rounded-button border border-border bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200"
               >
                 Sign up
-              </button>
+              </Link>
             </div>
           </div>
           <div className="relative hidden sm:flex items-center justify-between gap-3">
@@ -55,12 +55,12 @@ export default function Home() {
               >
                 Log in
               </Link>
-              <button
-                type="button"
+              <Link
+                to="/register"
                 className="rounded-button border border-border bg-surface px-4 py-2.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200 animate-fade-in [animation-delay:400ms]"
               >
                 Sign up
-              </button>
+              </Link>
             </div>
           </div>
         </div>

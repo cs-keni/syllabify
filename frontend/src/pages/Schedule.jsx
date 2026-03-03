@@ -1,18 +1,26 @@
 /**
  * Schedule page. Displays weekly schedule via SchedulePreview.
- * DISCLAIMER: Project structure may change.
+ * Google Calendar import and sync.
  */
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../contexts/AuthContext';
 import * as api from '../api/client';
 import SchedulePreview from '../components/SchedulePreview';
+import CalendarImportModal from '../components/CalendarImportModal';
 
 /** Renders schedule page with weekStart (Monday of current week) and SchedulePreview. */
 export default function Schedule() {
   const { token } = useAuth();
+  const [searchParams] = useSearchParams();
   const [generating, setGenerating] = useState(false);
+  const [importing, setImporting] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [calendarConnected, setCalendarConnected] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
+  const [terms, setTerms] = useState([]);
+  const [activeTerm, setActiveTerm] = useState(null);
 
   const [weekStart] = useState(() => {
     const d = new Date();
@@ -20,6 +28,61 @@ export default function Schedule() {
     const diff = d.getDate() - day + (day === 0 ? -6 : 1);
     return new Date(d.setDate(diff));
   });
+
+  useEffect(() => {
+    if (searchParams.get('calendar_connected') === '1') {
+      toast.success('Google Calendar connected.');
+      setCalendarConnected(true);
+      window.history.replaceState({}, '', '/app/schedule');
+    }
+    if (searchParams.get('calendar_error')) {
+      toast.error('Failed to connect Google Calendar. Try again.');
+      window.history.replaceState({}, '', '/app/schedule');
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (!token) return;
+    api.getCalendarStatus(token).then(d => setCalendarConnected(d.connected));
+    api.getTerms().then(d => {
+      const t = d.terms || [];
+      setTerms(t);
+      setActiveTerm(t.find(x => x.is_active) || t[0]);
+    });
+  }, [token]);
+
+  const handleConnectOrImport = async () => {
+    if (!token) {
+      toast.error('Please sign in first.');
+      return;
+    }
+    const status = await api.getCalendarStatus(token).catch(() => ({ connected: false }));
+    if (!status.connected) {
+      const { url } = await api.getCalendarAuthUrl(token);
+      window.location.href = url;
+      return;
+    }
+    setShowImportModal(true);
+  };
+
+  const handleImport = async payload => {
+    await api.importCalendar(token, payload);
+    toast.success('Calendar imported.');
+    setCalendarConnected(true);
+  };
+
+  const handleSync = async () => {
+    if (!token) return;
+    setSyncing(true);
+    try {
+      const data = await api.syncCalendar(token);
+      toast.success(`Synced ${data.synced_count ?? 0} event(s).`);
+    } catch (err) {
+      toast.error(err.message || 'Sync failed');
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   const handleGenerateStudyTimes = async () => {
     if (!token) {
@@ -60,15 +123,44 @@ export default function Schedule() {
         <p className="mt-1 text-sm text-ink-muted">
           Weekly view of your study blocks. Conflicts are highlighted subtly.
         </p>
-        <button
-          type="button"
-          onClick={handleGenerateStudyTimes}
-          disabled={generating || !token}
-          className="mt-3 px-4 py-2 rounded-lg bg-primary text-primary-inv font-medium text-sm hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-        >
-          {generating ? 'Generating…' : 'Generate study times'}
-        </button>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={handleGenerateStudyTimes}
+            disabled={generating || !token}
+            className="px-4 py-2 rounded-lg bg-primary text-primary-inv font-medium text-sm hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+          >
+            {generating ? 'Generating…' : 'Generate study times'}
+          </button>
+          <button
+            type="button"
+            onClick={handleConnectOrImport}
+            disabled={!token}
+            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+          >
+            {calendarConnected ? 'Import from Google Calendar' : 'Connect Google Calendar'}
+          </button>
+          {calendarConnected && (
+            <button
+              type="button"
+              onClick={handleSync}
+              disabled={syncing || !token}
+              className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+            >
+              {syncing ? 'Syncing…' : 'Sync'}
+            </button>
+          )}
+        </div>
       </div>
+      {showImportModal && (
+        <CalendarImportModal
+          onClose={() => setShowImportModal(false)}
+          onImport={handleImport}
+          token={token}
+          getCalendarList={api.getCalendarList}
+          activeTerm={activeTerm}
+        />
+      )}
       <SchedulePreview weekStart={weekStart} />
     </div>
   );
