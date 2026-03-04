@@ -8,6 +8,7 @@ from app.api.auth import decode_token, get_db
 bp = Blueprint("users", __name__, url_prefix="/api/users")
 
 EMAIL_REGEX = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+ALLOWED_AVATARS = {"red", "green", "blue"}
 
 
 @bp.route("/me", methods=["GET"])
@@ -25,19 +26,32 @@ def get_me():
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
-        cur.execute(
-            "SELECT id, username, email, security_setup_done FROM Users WHERE id = %s",
-            (user_id,),
-        )
+        try:
+            cur.execute(
+                "SELECT id, username, email, avatar, security_setup_done FROM Users WHERE id = %s",
+                (user_id,),
+            )
+        except Exception as e:
+            if "avatar" in str(e) and "Unknown column" in str(e):
+                cur.execute(
+                    "SELECT id, username, email, security_setup_done FROM Users WHERE id = %s",
+                    (user_id,),
+                )
+            else:
+                raise
         row = cur.fetchone()
         if not row:
             return jsonify({"error": "user not found"}), 404
         if row.get("email") is None:
             row["email"] = None
+        avatar = row.get("avatar")
+        if avatar not in ALLOWED_AVATARS:
+            avatar = None
         return jsonify({
             "id": row["id"],
             "username": row["username"],
             "email": row["email"],
+            "avatar": avatar,
             "security_setup_done": bool(row.get("security_setup_done")),
         })
     finally:
@@ -46,7 +60,7 @@ def get_me():
 
 @bp.route("/me", methods=["PUT"])
 def put_me():
-    """Update current user's profile (email)."""
+    """Update current user's profile (email/avatar)."""
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
     if not payload:
@@ -57,36 +71,59 @@ def put_me():
         return jsonify({"error": "unauthorized"}), 401
 
     data = request.get_json() or {}
-    if "email" not in data:
+    has_email = "email" in data
+    has_avatar = "avatar" in data
+    if not has_email and not has_avatar:
         return get_me()
-    raw = data.get("email")
-    email = (raw or "").strip() or None
-    if email is not None:
-        if len(email) > 255:
-            return jsonify({"error": "email too long"}), 400
-        if not EMAIL_REGEX.match(email):
-            return jsonify({"error": "invalid email format"}), 400
-        conn = get_db()
-        try:
-            cur = conn.cursor(dictionary=True)
+    email = None
+    if has_email:
+        raw = data.get("email")
+        email = (raw or "").strip() or None
+        if email is not None:
+            if len(email) > 255:
+                return jsonify({"error": "email too long"}), 400
+            if not EMAIL_REGEX.match(email):
+                return jsonify({"error": "invalid email format"}), 400
+
+    avatar = None
+    if has_avatar:
+        raw_avatar = (data.get("avatar") or "").strip().lower()
+        avatar = raw_avatar or None
+        if avatar is not None and avatar not in ALLOWED_AVATARS:
+            return jsonify({"error": "invalid avatar"}), 400
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        if has_email and email is not None:
             cur.execute(
                 "SELECT id FROM Users WHERE email = %s AND id != %s",
                 (email, user_id),
             )
             if cur.fetchone():
                 return jsonify({"error": "email already in use"}), 400
-            cur.execute("UPDATE Users SET email = %s WHERE id = %s", (email, user_id))
-            conn.commit()
-        finally:
-            conn.close()
-    else:
-        conn = get_db()
+
+        update_clauses = []
+        params = []
+        if has_email:
+            update_clauses.append("email = %s")
+            params.append(email)
+        if has_avatar:
+            update_clauses.append("avatar = %s")
+            params.append(avatar)
+        params.append(user_id)
         try:
-            cur = conn.cursor()
-            cur.execute("UPDATE Users SET email = NULL WHERE id = %s", (user_id,))
-            conn.commit()
-        finally:
-            conn.close()
+            cur.execute(
+                f"UPDATE Users SET {', '.join(update_clauses)} WHERE id = %s",
+                tuple(params),
+            )
+        except Exception as e:
+            if has_avatar and "avatar" in str(e) and "Unknown column" in str(e):
+                return jsonify({"error": "Database migration required. Run 012_user_avatar.sql"}), 503
+            raise
+        conn.commit()
+    finally:
+        conn.close()
 
     return get_me()
 

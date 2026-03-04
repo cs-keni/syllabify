@@ -203,7 +203,7 @@ export async function addMeetings(courseId, meeting_times) {
   return data;
 }
 
-/** GET /api/users/me with JWT. Returns { id, username, email, security_setup_done }. */
+/** GET /api/users/me with JWT. Returns { id, username, email, avatar, security_setup_done }. */
 export async function getProfile(token) {
   const t =
     token ||
@@ -474,12 +474,15 @@ export async function changePassword(token, { currentPassword, newPassword }) {
   return data;
 }
 
-/** PUT /api/users/me with JWT. Body: { email }. Returns updated profile. */
-export async function updateProfile(token, { email }) {
+/** PUT /api/users/me with JWT. Body: { email?, avatar? }. Returns updated profile. */
+export async function updateProfile(token, { email, avatar }) {
   const res = await apiFetch(`${BASE}/api/users/me`, {
     method: 'PUT',
     headers: headers(true, token),
-    body: JSON.stringify({ email: email || null }),
+    body: JSON.stringify({
+      ...(email !== undefined && { email: email || null }),
+      ...(avatar !== undefined && { avatar: avatar || null }),
+    }),
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
