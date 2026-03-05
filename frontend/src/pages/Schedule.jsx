@@ -56,7 +56,9 @@ export default function Schedule() {
       toast.error('Please sign in first.');
       return;
     }
-    const status = await api.getCalendarStatus(token).catch(() => ({ connected: false }));
+    const status = await api
+      .getCalendarStatus(token)
+      .catch(() => ({ connected: false }));
     if (!status.connected) {
       const { url } = await api.getCalendarAuthUrl(token);
       window.location.href = url;
@@ -94,7 +96,9 @@ export default function Schedule() {
       const { terms } = await api.getTerms();
       const activeTerm = terms?.find(t => t.is_active) || terms?.[0];
       if (!activeTerm?.id) {
-        toast.error('No term selected. Create or select a term from the dashboard.');
+        toast.error(
+          'No term selected. Create or select a term from the dashboard.'
+        );
         return;
       }
       const data = await api.generateStudyTimes(token, activeTerm.id);
@@ -138,7 +142,9 @@ export default function Schedule() {
             disabled={!token}
             className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
           >
-            {calendarConnected ? 'Import from Google Calendar' : 'Connect Google Calendar'}
+            {calendarConnected
+              ? 'Import from Google Calendar'
+              : 'Connect Google Calendar'}
           </button>
           {calendarConnected && (
             <button
