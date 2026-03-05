@@ -339,13 +339,13 @@ class _Dinic:
 
     def max_flow(self, s: int, t: int) -> int:
         flow = 0
-        INF = 10**18
+        inf = 10**18
         while self._bfs(s, t):
             self.it = [0] * self.n
-            f = self._dfs(s, t, INF)
+            f = self._dfs(s, t, inf)
             while f > 0:
                 flow += f
-                f = self._dfs(s, t, INF)
+                f = self._dfs(s, t, inf)
         return flow
 
 
