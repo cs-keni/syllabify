@@ -6,7 +6,12 @@ import { useEffect, useRef } from 'react';
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 
-export default function GoogleSignInButton({ onSuccess, onError, disabled, className = '' }) {
+export default function GoogleSignInButton({
+  onSuccess,
+  onError,
+  disabled,
+  className = '',
+}) {
   const containerRef = useRef(null);
   const cbRef = useRef({ onSuccess, onError });
   cbRef.current = { onSuccess, onError };
@@ -18,7 +23,7 @@ export default function GoogleSignInButton({ onSuccess, onError, disabled, class
       try {
         window.google.accounts.id.initialize({
           client_id: GOOGLE_CLIENT_ID,
-          callback: (response) => {
+          callback: response => {
             const { onSuccess: ok, onError: err } = cbRef.current;
             if (response?.credential) {
               ok?.(response.credential);
