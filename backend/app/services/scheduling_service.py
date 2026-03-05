@@ -5,14 +5,13 @@
 #
 # DISCLAIMER: Project structure may change. Functions may be added or modified.
 
-from datetime import date, datetime, timedelta, time
+from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
 from sqlalchemy.orm import Session, joinedload
 
-from app.models.term import Term
 from app.models.study_time import StudyTime
-
+from app.models.term import Term
 
 # Default study window (can be overridden by user preferences later).
 DEFAULT_STUDY_START = time(8, 0)   # 8:00 AM
@@ -387,7 +386,6 @@ def _generate_study_times_global(
 
     # Build all possible 15-min slots across the term, excluding meetings.
     # Slots are constrained to the study window [start_time, end_time].
-    from math import inf
 
     earliest = min(ws for _, ws, _ in normalized_assignments)
     latest = max(we for _, _, we in normalized_assignments)
