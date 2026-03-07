@@ -1,6 +1,8 @@
 from datetime import datetime
-from sqlalchemy import Integer, String, Text, Boolean, DateTime, ForeignKey, TIMESTAMP
+
+from sqlalchemy import TIMESTAMP, Boolean, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.db.base import Base
 
 

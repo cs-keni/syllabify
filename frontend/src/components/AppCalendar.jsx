@@ -36,8 +36,10 @@ export default function AppCalendar({
     for (const evt of calendarEvents) {
       if (evt.sync_status !== 'active') continue;
 
-      const title = evt.is_locally_modified && evt.local_title
-        ? evt.local_title : evt.title;
+      const title =
+        evt.is_locally_modified && evt.local_title
+          ? evt.local_title
+          : evt.title;
 
       if (evt.event_kind === 'deadline_marker') {
         events.push({
@@ -46,7 +48,8 @@ export default function AppCalendar({
           start: evt.start_date || evt.start_time,
           allDay: true,
           display: 'list-item',
-          backgroundColor: DEFAULT_CATEGORY_COLORS[evt.event_category] || '#F59E0B',
+          backgroundColor:
+            DEFAULT_CATEGORY_COLORS[evt.event_category] || '#F59E0B',
           borderColor: '#EF4444',
           extendedProps: { type: 'calendar_event', data: evt },
           classNames: ['deadline-marker'],
@@ -58,20 +61,30 @@ export default function AppCalendar({
           start: evt.start_date,
           end: evt.end_date,
           allDay: true,
-          backgroundColor: evt.source_color || DEFAULT_CATEGORY_COLORS[evt.event_category] || '#64748B',
+          backgroundColor:
+            evt.source_color ||
+            DEFAULT_CATEGORY_COLORS[evt.event_category] ||
+            '#64748B',
           extendedProps: { type: 'calendar_event', data: evt },
         });
       } else {
-        const startTime = evt.is_locally_modified && evt.local_start_time
-          ? evt.local_start_time : evt.start_time;
-        const endTime = evt.is_locally_modified && evt.local_end_time
-          ? evt.local_end_time : evt.end_time;
+        const startTime =
+          evt.is_locally_modified && evt.local_start_time
+            ? evt.local_start_time
+            : evt.start_time;
+        const endTime =
+          evt.is_locally_modified && evt.local_end_time
+            ? evt.local_end_time
+            : evt.end_time;
         events.push({
           id: `cal-${evt.id}`,
           title,
           start: startTime,
           end: endTime,
-          backgroundColor: evt.source_color || DEFAULT_CATEGORY_COLORS[evt.event_category] || '#64748B',
+          backgroundColor:
+            evt.source_color ||
+            DEFAULT_CATEGORY_COLORS[evt.event_category] ||
+            '#64748B',
           extendedProps: { type: 'calendar_event', data: evt },
         });
       }
@@ -81,7 +94,9 @@ export default function AppCalendar({
     for (const st of studyTimes) {
       events.push({
         id: `study-${st.id}`,
-        title: st.course_name ? `\u{1F4DA} ${st.course_name}` : '\u{1F4DA} Study',
+        title: st.course_name
+          ? `\u{1F4DA} ${st.course_name}`
+          : '\u{1F4DA} Study',
         start: st.start_time,
         end: st.end_time,
         backgroundColor: st.is_locked ? '#059669' : '#10B981',
@@ -95,19 +110,19 @@ export default function AppCalendar({
     return events;
   }, [calendarEvents, studyTimes]);
 
-  const handleEventClick = (info) => {
+  const handleEventClick = info => {
     if (onEventClick) {
       onEventClick(info.event.extendedProps, info.jsEvent);
     }
   };
 
-  const handleDateSelect = (info) => {
+  const handleDateSelect = info => {
     if (onDateSelect) {
       onDateSelect({ start: info.start, end: info.end, allDay: info.allDay });
     }
   };
 
-  const handleEventDrop = (info) => {
+  const handleEventDrop = info => {
     if (onEventDrop) {
       onEventDrop({
         eventId: info.event.id,
@@ -118,7 +133,7 @@ export default function AppCalendar({
     }
   };
 
-  const handleEventResize = (info) => {
+  const handleEventResize = info => {
     if (onEventResize) {
       onEventResize({
         eventId: info.event.id,
@@ -156,7 +171,7 @@ export default function AppCalendar({
         select={handleDateSelect}
         eventDrop={handleEventDrop}
         eventResize={handleEventResize}
-        viewDidMount={(info) => setCurrentView(info.view.type)}
+        viewDidMount={info => setCurrentView(info.view.type)}
         height="auto"
         stickyHeaderDates={true}
         eventTimeFormat={{

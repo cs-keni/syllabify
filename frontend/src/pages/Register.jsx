@@ -257,12 +257,16 @@ export default function Register() {
                     <div className="w-full border-t border-border" />
                   </div>
                   <div className="relative flex justify-center text-xs">
-                    <span className="bg-surface-elevated px-2 text-ink-muted">or</span>
+                    <span className="bg-surface-elevated px-2 text-ink-muted">
+                      or
+                    </span>
                   </div>
                 </div>
                 <GoogleSignInButton
                   onSuccess={handleGoogleSuccess}
-                  onError={err => setError(err?.message || 'Google sign-in failed')}
+                  onError={err =>
+                    setError(err?.message || 'Google sign-in failed')
+                  }
                   disabled={submitting || !registrationOpen}
                   className="flex justify-center"
                 />

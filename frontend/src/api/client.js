@@ -714,7 +714,8 @@ export async function getCalendarAuthUrl(token) {
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || data.message || 'Failed to get auth URL');
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to get auth URL');
   return data;
 }
 
@@ -736,12 +737,16 @@ export async function getCalendarList(token) {
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || data.message || 'Failed to list calendars');
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to list calendars');
   return data;
 }
 
 /** POST /api/calendar/import. Body: { calendar_ids, start_date, end_date }. Returns { ok, imported_count }. */
-export async function importCalendar(token, { calendar_ids, start_date, end_date }) {
+export async function importCalendar(
+  token,
+  { calendar_ids, start_date, end_date }
+) {
   const res = await apiFetch(`${BASE}/api/calendar/import`, {
     method: 'POST',
     headers: headers(true, token),
@@ -749,7 +754,8 @@ export async function importCalendar(token, { calendar_ids, start_date, end_date
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || data.message || 'Failed to import calendar');
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to import calendar');
   return data;
 }
 
@@ -761,12 +767,16 @@ export async function syncCalendar(token) {
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || data.message || 'Failed to sync calendar');
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to sync calendar');
   return data;
 }
 
 /** GET /api/calendar/events. Query: term_id, start_date, end_date. Returns { events }. */
-export async function getCalendarEvents(token, { term_id, start_date, end_date } = {}) {
+export async function getCalendarEvents(
+  token,
+  { term_id, start_date, end_date } = {}
+) {
   const url = new URL(`${BASE}/api/calendar/events`);
   if (term_id) url.searchParams.set('term_id', String(term_id));
   if (start_date) url.searchParams.set('start_date', start_date);
@@ -847,10 +857,13 @@ export async function deleteCalendarSource(token, sourceId) {
 
 /** GET /api/schedule/terms/:termId/study-times. Returns { study_times }. */
 export async function getStudyTimes(token, termId) {
-  const res = await apiFetch(`${BASE}/api/schedule/terms/${termId}/study-times`, {
-    headers: headers(true, token),
-    credentials: 'include',
-  });
+  const res = await apiFetch(
+    `${BASE}/api/schedule/terms/${termId}/study-times`,
+    {
+      headers: headers(true, token),
+      credentials: 'include',
+    }
+  );
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to fetch study times');
   return data;
@@ -858,14 +871,20 @@ export async function getStudyTimes(token, termId) {
 
 /** PATCH /api/schedule/study-times/:id. Body: { start_time?, end_time?, is_locked?, notes? }. */
 export async function updateStudyTime(token, studyTimeId, body) {
-  const res = await apiFetch(`${BASE}/api/schedule/study-times/${studyTimeId}`, {
-    method: 'PATCH',
-    headers: headers(true, token),
-    body: JSON.stringify(body || {}),
-    credentials: 'include',
-  });
+  const res = await apiFetch(
+    `${BASE}/api/schedule/study-times/${studyTimeId}`,
+    {
+      method: 'PATCH',
+      headers: headers(true, token),
+      body: JSON.stringify(body || {}),
+      credentials: 'include',
+    }
+  );
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.message || data.error || 'Failed to update study time');
+  if (!res.ok)
+    throw new Error(
+      data.message || data.error || 'Failed to update study time'
+    );
   return data;
 }
 
@@ -876,7 +895,10 @@ export async function getIcalExportToken(token) {
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || data.message || 'Failed to load iCal feed URL');
+  if (!res.ok)
+    throw new Error(
+      data.error || data.message || 'Failed to load iCal feed URL'
+    );
   return data;
 }
 
@@ -888,7 +910,10 @@ export async function rotateIcalExportToken(token) {
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || data.message || 'Failed to rotate feed token');
+  if (!res.ok)
+    throw new Error(
+      data.error || data.message || 'Failed to rotate feed token'
+    );
   return data;
 }
 

@@ -77,30 +77,34 @@ export default function Schedule() {
     }
   }, [token, activeTerm]);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   // Handlers
   const handleConnectOrImport = async () => {
     if (!token) return toast.error('Please sign in first.');
-    const status = await api.getCalendarStatus(token).catch(() => ({ connected: false }));
+    const status = await api
+      .getCalendarStatus(token)
+      .catch(() => ({ connected: false }));
     setCalendarConnected(status.connected);
     setShowImportModal(true);
   };
 
-  const handleImportGoogle = async (payload) => {
+  const handleImportGoogle = async payload => {
     await api.importCalendar(token, payload);
     toast.success('Calendar imported.');
     setCalendarConnected(true);
     fetchData();
   };
 
-  const handleImportIcs = async (payload) => {
+  const handleImportIcs = async payload => {
     const data = await api.importIcsFeed(token, payload);
     toast.success(`Imported ${data.imported_count ?? 0} event(s).`);
     fetchData();
   };
 
-  const handleSyncSource = async (sourceId) => {
+  const handleSyncSource = async sourceId => {
     setSyncingId(sourceId);
     try {
       const data = await api.syncSource(token, sourceId);
@@ -113,7 +117,7 @@ export default function Schedule() {
     }
   };
 
-  const handleDeleteSource = async (sourceId) => {
+  const handleDeleteSource = async sourceId => {
     try {
       await api.deleteCalendarSource(token, sourceId);
       toast.success('Source removed.');
@@ -174,9 +178,13 @@ export default function Schedule() {
     try {
       await api.updateStudyTime(token, studyTime.id, { is_locked: nextLocked });
       setStudyTimes(prev =>
-        prev.map(st => (st.id === studyTime.id ? { ...st, is_locked: nextLocked } : st))
+        prev.map(st =>
+          st.id === studyTime.id ? { ...st, is_locked: nextLocked } : st
+        )
       );
-      toast.success(nextLocked ? 'Study block locked.' : 'Study block unlocked.');
+      toast.success(
+        nextLocked ? 'Study block locked.' : 'Study block unlocked.'
+      );
     } catch (err) {
       toast.error(err.message || 'Failed to update study block');
       fetchData();
@@ -190,7 +198,9 @@ export default function Schedule() {
       const { terms } = await api.getTerms();
       const active = terms?.find(t => t.is_active) || terms?.[0];
       if (!active?.id) {
-        toast.error('No term selected. Create or select a term from the dashboard.');
+        toast.error(
+          'No term selected. Create or select a term from the dashboard.'
+        );
         return;
       }
       const data = await api.generateStudyTimes(token, active.id);
@@ -305,7 +315,8 @@ export default function Schedule() {
           <div className="relative z-10 w-full max-w-xl rounded-xl border border-border bg-surface p-5 shadow-xl">
             <h3 className="text-lg font-semibold text-ink">iCal Export</h3>
             <p className="mt-1 text-sm text-ink-muted">
-              Subscribe this private feed URL in Apple Calendar / Google Calendar.
+              Subscribe this private feed URL in Apple Calendar / Google
+              Calendar.
             </p>
 
             {exportLoading ? (
@@ -320,7 +331,9 @@ export default function Schedule() {
                   <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
                     Your Feed URL
                   </p>
-                  <p className="break-all text-xs text-ink">{exportFeedUrl || 'No feed URL available'}</p>
+                  <p className="break-all text-xs text-ink">
+                    {exportFeedUrl || 'No feed URL available'}
+                  </p>
                 </div>
                 <div className="mt-3 flex gap-2">
                   <button
@@ -374,7 +387,9 @@ export default function Schedule() {
                   {popover.studyTime.course_name || 'Study Block'}
                 </p>
                 <p className="mb-2 text-xs text-ink-muted">
-                  {popover.studyTime.is_locked ? 'Locked (pinned)' : 'Unlocked (will regenerate)'}
+                  {popover.studyTime.is_locked
+                    ? 'Locked (pinned)'
+                    : 'Unlocked (will regenerate)'}
                 </p>
                 <div className="flex gap-2">
                   <button
@@ -416,7 +431,8 @@ export default function Schedule() {
                     {eventDetail.event.event_category.replace('_', ' ')}
                   </span>
                 )}
-                {(eventDetail.event.start_date || eventDetail.event.start_time) && (
+                {(eventDetail.event.start_date ||
+                  eventDetail.event.start_time) && (
                   <p className="mt-2 text-xs text-ink-muted">
                     {eventDetail.event.start_date
                       ? `Date: ${eventDetail.event.start_date}`
@@ -433,9 +449,12 @@ export default function Schedule() {
                     {eventDetail.event.description}
                   </div>
                 )}
-                {!eventDetail.event.description && !eventDetail.event.location && (
-                  <p className="mt-2 text-xs text-ink-muted italic">No additional details.</p>
-                )}
+                {!eventDetail.event.description &&
+                  !eventDetail.event.location && (
+                    <p className="mt-2 text-xs text-ink-muted italic">
+                      No additional details.
+                    </p>
+                  )}
                 <button
                   type="button"
                   onClick={() => setEventDetail(null)}
@@ -455,11 +474,16 @@ export default function Schedule() {
               Sources
             </h3>
             {sources.length === 0 ? (
-              <p className="text-xs text-gray-500">No sources yet. Import a calendar to get started.</p>
+              <p className="text-xs text-gray-500">
+                No sources yet. Import a calendar to get started.
+              </p>
             ) : (
               <ul className="space-y-2">
-                {sources.map((src) => (
-                  <li key={src.id} className="flex items-center justify-between gap-2">
+                {sources.map(src => (
+                  <li
+                    key={src.id}
+                    className="flex items-center justify-between gap-2"
+                  >
                     <div className="flex items-center gap-2 min-w-0">
                       <span
                         className="w-2.5 h-2.5 rounded-full shrink-0"
@@ -470,7 +494,8 @@ export default function Schedule() {
                           {src.source_label}
                         </p>
                         <p className="text-[10px] text-gray-400">
-                          {src.event_count} events &middot; {src.source_type === 'google' ? 'Google' : 'ICS'}
+                          {src.event_count} events &middot;{' '}
+                          {src.source_type === 'google' ? 'Google' : 'ICS'}
                         </p>
                       </div>
                     </div>

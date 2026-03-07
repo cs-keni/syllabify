@@ -5,17 +5,16 @@
 #
 # DISCLAIMER: Project structure may change. Functions may be added or modified.
 
-from datetime import date, datetime, timedelta, time
 import re as _re
+from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
 from sqlalchemy.orm import Session, joinedload
 
 from app.models.calendar_event import CalendarEvent
 from app.models.course import Course
-from app.models.term import Term
 from app.models.study_time import StudyTime
-
+from app.models.term import Term
 
 # Default study window (can be overridden by user preferences later).
 DEFAULT_STUDY_START = time(8, 0)   # 8:00 AM
@@ -461,13 +460,13 @@ class _Dinic:
 
     def max_flow(self, s: int, t: int) -> int:
         flow = 0
-        INF = 10**18
+        inf_cap = 10**18
         while self._bfs(s, t):
             self.it = [0] * self.n
-            f = self._dfs(s, t, INF)
+            f = self._dfs(s, t, inf_cap)
             while f > 0:
                 flow += f
-                f = self._dfs(s, t, INF)
+                f = self._dfs(s, t, inf_cap)
         return flow
 
 
@@ -513,7 +512,6 @@ def _generate_study_times_global(
 
     # Build all possible 15-min slots across the term, excluding meetings.
     # Slots are constrained to the study window [start_time, end_time].
-    from math import inf
 
     earliest = min(ws for _, ws, _ in normalized_assignments)
     latest = max(we for _, _, we in normalized_assignments)

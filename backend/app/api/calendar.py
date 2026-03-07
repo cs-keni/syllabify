@@ -8,7 +8,7 @@ import secrets
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
 
-from flask import Blueprint, Response, jsonify, request, redirect
+from flask import Blueprint, Response, jsonify, redirect, request
 
 from app.services.calendar_export_service import (
     build_ical_feed_for_user,
@@ -17,11 +17,11 @@ from app.services.calendar_export_service import (
     set_feed_enabled,
 )
 from app.services.ics_parsing_service import (
-    fetch_ics_feed,
-    parse_ics_content,
-    hash_feed_url,
     auto_detect_category,
     classify_event,
+    fetch_ics_feed,
+    hash_feed_url,
+    parse_ics_content,
 )
 
 bp = Blueprint("calendar", __name__, url_prefix="/api/calendar")
@@ -78,8 +78,8 @@ def _get_google_credentials(user_id):
         if not row or not row.get("refresh_token"):
             return None
 
-        from google.oauth2.credentials import Credentials
         from google.auth.transport.requests import Request
+        from google.oauth2.credentials import Credentials
 
         creds = Credentials(
             token=row.get("access_token"),
