@@ -11,8 +11,13 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy.orm import Session, joinedload
 
-from app.models.term import Term
+from app.models.assignment import Assignment
+from app.models.course import Course
+from app.models.meeting import Meeting
 from app.models.study_time import StudyTime
+from app.models.term import Term
+from app.models.user import User
+# Import all so SQLAlchemy can resolve relationship names (e.g. Term.owner -> User).
 
 
 # Default study window (can be overridden by user preferences later).
