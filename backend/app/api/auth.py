@@ -153,8 +153,8 @@ def google_signin():
         return jsonify({"error": "id_token is required"}), 400
 
     try:
-        from google.oauth2 import id_token as google_id_token
         from google.auth.transport import requests as google_requests
+        from google.oauth2 import id_token as google_id_token
 
         idinfo = google_id_token.verify_oauth2_token(
             id_token_str, google_requests.Request(), GOOGLE_CLIENT_ID
@@ -166,7 +166,6 @@ def google_signin():
 
     google_id = idinfo.get("sub")
     email = (idinfo.get("email") or "").strip().lower()
-    name = (idinfo.get("name") or "").strip()
 
     if not google_id:
         return jsonify({"error": "invalid Google token"}), 401

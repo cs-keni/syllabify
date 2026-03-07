@@ -163,6 +163,9 @@ out/
 # Personal / resume notes (do not push)
 kennyresume.md
 
+# Local AI memory / private notes (do not push)
+AI_Memory/
+
 # Local planning / teammate notes (do not push)
 docs/EXPLAIN.md
 docs/ANIMATIONS.md

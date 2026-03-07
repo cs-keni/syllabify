@@ -93,11 +93,15 @@ export default function CalendarImportModal({
         onClick={e => e.stopPropagation()}
       >
         <div className="p-6">
-          <h2 id="calendar-import-title" className="text-lg font-semibold text-ink">
+          <h2
+            id="calendar-import-title"
+            className="text-lg font-semibold text-ink"
+          >
             Import from Google Calendar
           </h2>
           <p className="mt-1 text-sm text-ink-muted">
-            Select calendars and date range. Events will be used to avoid scheduling conflicts.
+            Select calendars and date range. Events will be used to avoid
+            scheduling conflicts.
           </p>
 
           {loading ? (
@@ -105,7 +109,9 @@ export default function CalendarImportModal({
           ) : (
             <>
               <div className="mt-4">
-                <label className="block text-sm font-medium text-ink mb-2">Calendars</label>
+                <label className="block text-sm font-medium text-ink mb-2">
+                  Calendars
+                </label>
                 <div className="space-y-2 max-h-40 overflow-y-auto border border-border rounded-lg p-2">
                   {calendars.map(cal => (
                     <label
@@ -121,7 +127,9 @@ export default function CalendarImportModal({
                       <span className="text-sm text-ink truncate">
                         {cal.summary || cal.id}
                         {cal.primary && (
-                          <span className="text-ink-muted text-xs ml-1">(primary)</span>
+                          <span className="text-ink-muted text-xs ml-1">
+                            (primary)
+                          </span>
                         )}
                       </span>
                     </label>
@@ -131,7 +139,9 @@ export default function CalendarImportModal({
 
               <div className="mt-4 grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-ink mb-1">Start date</label>
+                  <label className="block text-sm font-medium text-ink mb-1">
+                    Start date
+                  </label>
                   <input
                     type="date"
                     value={startDate}
@@ -140,7 +150,9 @@ export default function CalendarImportModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-ink mb-1">End date</label>
+                  <label className="block text-sm font-medium text-ink mb-1">
+                    End date
+                  </label>
                   <input
                     type="date"
                     value={endDate}
@@ -153,7 +165,9 @@ export default function CalendarImportModal({
           )}
 
           {error && (
-            <p className="mt-3 text-sm text-red-600 dark:text-red-400">{error}</p>
+            <p className="mt-3 text-sm text-red-600 dark:text-red-400">
+              {error}
+            </p>
           )}
 
           <div className="mt-6 flex gap-3 justify-end">
