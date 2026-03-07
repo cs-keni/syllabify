@@ -140,7 +140,8 @@ Render’s free tier spins down after ~15 minutes of no traffic; the first reque
 | `FRONTEND_URL`| Leave blank for now. After you deploy the frontend (Section 3), come back and set this to your Vercel URL, e.g. `https://syllabify-xxx.vercel.app` (no trailing slash). Then trigger a redeploy. |
 
 - Do **not** add `PORT`. Render sets it automatically; the Dockerfile uses it.
-- Optional later: `JWT_SECRET_KEY`, `JWT_ALGORITHM`, `JWT_EXPIRATION_DELTA`, Google OAuth vars – only if your code uses them.
+- Optional later: `JWT_SECRET_KEY`, `JWT_ALGORITHM`, `JWT_EXPIRATION_DELTA`.
+- **Google OAuth** (Sign-in + Calendar import): Add `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI`. See **docs/GOOGLE-OAUTH-SETUP.md** for full setup.
 
 ### Step 2.3 – Deploy and copy the backend URL
 
@@ -166,10 +167,9 @@ Render’s free tier spins down after ~15 minutes of no traffic; the first reque
    - **Build Command**: leave as `npm run build` (Vite default).
    - **Output Directory**: leave as `dist` (Vite default).
    - **Install Command**: leave as `npm install`.
-5. **Before** clicking Deploy, expand **Environment Variables** (if shown) and add one variable:
-   - **Name**: `VITE_API_URL`
-   - **Value**: paste the **Render backend URL** you copied in Step 2.3 (e.g. `https://syllabify-api.onrender.com`). No trailing slash.
-   - Apply to **Production** (and **Preview** if you want preview deploys to use the same API).
+5. **Before** clicking Deploy, expand **Environment Variables** (if shown) and add:
+   - **Name**: `VITE_API_URL` | **Value**: paste the **Render backend URL** you copied in Step 2.3 (e.g. `https://syllabify-api.onrender.com`). No trailing slash. Apply to **Production** (and **Preview** if desired).
+   - **Name**: `VITE_GOOGLE_CLIENT_ID` | **Value**: your Google OAuth Client ID (same as `GOOGLE_CLIENT_ID` on Render). Required for “Sign in with Google.” See **docs/GOOGLE-OAUTH-SETUP.md**.
 
 ### Step 3.3 – Deploy and copy the frontend URL
 

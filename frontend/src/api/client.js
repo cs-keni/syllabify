@@ -63,6 +63,18 @@ export async function register(username, password) {
   return data;
 }
 
+/** POST /api/auth/google. Body: { id_token }. Returns { token, username, security_setup_done }. */
+export async function loginWithGoogle(idToken) {
+  const res = await apiFetch(`${BASE}/api/auth/google`, {
+    method: 'POST',
+    headers: headers(false),
+    body: JSON.stringify({ id_token: idToken }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Google sign-in failed');
+  return data;
+}
+
 /** POST to /api/auth/login. Returns { token, username, security_setup_done }. Throws on error. */
 export async function login(username, password) {
   const res = await apiFetch(`${BASE}/api/auth/login`, {
@@ -191,7 +203,7 @@ export async function addMeetings(courseId, meeting_times) {
   return data;
 }
 
-/** GET /api/users/me with JWT. Returns { id, username, email, security_setup_done }. */
+/** GET /api/users/me with JWT. Returns { id, username, email, avatar, security_setup_done }. */
 export async function getProfile(token) {
   const t =
     token ||
@@ -462,12 +474,15 @@ export async function changePassword(token, { currentPassword, newPassword }) {
   return data;
 }
 
-/** PUT /api/users/me with JWT. Body: { email }. Returns updated profile. */
-export async function updateProfile(token, { email }) {
+/** PUT /api/users/me with JWT. Body: { email?, avatar? }. Returns updated profile. */
+export async function updateProfile(token, { email, avatar }) {
   const res = await apiFetch(`${BASE}/api/users/me`, {
     method: 'PUT',
     headers: headers(true, token),
-    body: JSON.stringify({ email: email || null }),
+    body: JSON.stringify({
+      ...(email !== undefined && { email: email || null }),
+      ...(avatar !== undefined && { avatar: avatar || null }),
+    }),
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
@@ -692,6 +707,89 @@ export async function addAssignments(courseId, assignments) {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to save assignments');
+  return data;
+}
+
+/** GET /api/calendar/auth-url. Returns { url }. Requires JWT. */
+export async function getCalendarAuthUrl(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/auth-url`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to get auth URL');
+  return data;
+}
+
+/** GET /api/calendar/status. Returns { connected }. Requires JWT. */
+export async function getCalendarStatus(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/status`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) return { connected: false };
+  return data;
+}
+
+/** GET /api/calendar/list. Returns { calendars: [{ id, summary, primary }] }. Requires JWT. */
+export async function getCalendarList(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/list`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to list calendars');
+  return data;
+}
+
+/** POST /api/calendar/import. Body: { calendar_ids, start_date, end_date }. Returns { ok, imported_count }. */
+export async function importCalendar(
+  token,
+  { calendar_ids, start_date, end_date }
+) {
+  const res = await apiFetch(`${BASE}/api/calendar/import`, {
+    method: 'POST',
+    headers: headers(true, token),
+    body: JSON.stringify({ calendar_ids, start_date, end_date }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to import calendar');
+  return data;
+}
+
+/** POST /api/calendar/sync. Returns { ok, synced_count }. */
+export async function syncCalendar(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/sync`, {
+    method: 'POST',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.error || data.message || 'Failed to sync calendar');
+  return data;
+}
+
+/** GET /api/calendar/events. Query: term_id, start_date, end_date. Returns { events }. */
+export async function getCalendarEvents(
+  token,
+  { term_id, start_date, end_date } = {}
+) {
+  const url = new URL(`${BASE}/api/calendar/events`);
+  if (term_id) url.searchParams.set('term_id', String(term_id));
+  if (start_date) url.searchParams.set('start_date', start_date);
+  if (end_date) url.searchParams.set('end_date', end_date);
+  const res = await apiFetch(url.toString(), {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch events');
   return data;
 }
 
