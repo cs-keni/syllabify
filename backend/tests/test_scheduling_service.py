@@ -82,3 +82,35 @@ def test_study_times_have_assignment_and_course_ids(db_session, sample_term, sam
         assert st.course_id is not None
         # keep type check to ensure relationship identity is correctly propagated
         assert isinstance(st, StudyTime)
+
+
+def test_calendar_event_blocks_study_slot(db_session, sample_term, sample_user, sample_assignment):
+    src = CalendarSource(
+        user_id=sample_user.id,
+        source_type="ics_url",
+        source_label="Test Source",
+        feed_category="other",
+    )
+    db_session.add(src)
+    db_session.flush()
+
+    block_start = datetime(2026, 1, 5, 9, 0, tzinfo=timezone.utc)
+    block_end = datetime(2026, 1, 5, 17, 0, tzinfo=timezone.utc)
+    evt = CalendarEvent(
+        user_id=sample_user.id,
+        source_id=src.id,
+        external_uid="test-block-event",
+        instance_key="base",
+        title="Blocked Window",
+        event_kind="timed",
+        sync_status="active",
+        start_time=block_start,
+        end_time=block_end,
+    )
+    db_session.add(evt)
+    db_session.commit()
+
+    created = generate_study_times(db_session, sample_term.id)
+    assert len(created) > 0
+    for st in created:
+        assert not (st.start_time < block_end and st.end_time > block_start)

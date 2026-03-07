@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy.orm import Session, joinedload
 
+from app.models.calendar_event import CalendarEvent
 from app.models.course import Course
 from app.models.term import Term
 from app.models.study_time import StudyTime
@@ -145,6 +146,32 @@ def generate_study_times(
             meeting_busy.append((meeting.start_time, meeting.end_time))
 
     meeting_busy = _merge_intervals(meeting_busy)
+
+    # Active timed calendar events also block scheduling.
+    user_id = term.user_id
+    cal_events = (
+        session.query(CalendarEvent)
+        .filter(
+            CalendarEvent.user_id == user_id,
+            CalendarEvent.event_kind == "timed",
+            CalendarEvent.sync_status == "active",
+            CalendarEvent.start_time.isnot(None),
+            CalendarEvent.end_time.isnot(None),
+        )
+        .all()
+    )
+    calendar_busy: list[tuple[datetime, datetime]] = []
+    for evt in cal_events:
+        s = evt.local_start_time if (evt.is_locally_modified and evt.local_start_time) else evt.start_time
+        e = evt.local_end_time if (evt.is_locally_modified and evt.local_end_time) else evt.end_time
+        if s and e:
+            if s.tzinfo is None:
+                s = s.replace(tzinfo=ZoneInfo("UTC"))
+            if e.tzinfo is None:
+                e = e.replace(tzinfo=ZoneInfo("UTC"))
+            calendar_busy.append((s, e))
+
+    meeting_busy = _merge_intervals(meeting_busy + calendar_busy)
 
     # Clear existing study times for this term
     session.query(StudyTime).filter(StudyTime.term_id == term_id).delete()
