@@ -17,6 +17,11 @@ export default function Schedule() {
   const [generating, setGenerating] = useState(false);
   const [calendarConnected, setCalendarConnected] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [exportLoading, setExportLoading] = useState(false);
+  const [exportFeedUrl, setExportFeedUrl] = useState('');
+  const [exportEnabled, setExportEnabled] = useState(true);
+  const [exportError, setExportError] = useState('');
 
   const [activeTerm, setActiveTerm] = useState(null);
   const [calendarEvents, setCalendarEvents] = useState([]);
@@ -202,6 +207,42 @@ export default function Schedule() {
     }
   };
 
+  const handleOpenExportModal = async () => {
+    if (!token) return toast.error('Please sign in first.');
+    setShowExportModal(true);
+    setExportLoading(true);
+    setExportError('');
+    setExportFeedUrl('');
+    try {
+      const data = await api.getIcalExportToken(token);
+      setExportFeedUrl(data.feedUrl || '');
+      setExportEnabled(data.enabled !== false);
+    } catch (err) {
+      setExportError(err.message || 'Failed to load iCal feed URL');
+    } finally {
+      setExportLoading(false);
+    }
+  };
+
+  const handleCopyExportUrl = async () => {
+    if (!exportFeedUrl) return;
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(exportFeedUrl);
+      } else {
+        const el = document.createElement('textarea');
+        el.value = exportFeedUrl;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      }
+      toast.success('Feed URL copied.');
+    } catch {
+      toast.error('Could not copy URL');
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="animate-fade-in">
@@ -234,9 +275,9 @@ export default function Schedule() {
           </button>
           <button
             type="button"
-            disabled
-            title="Coming soon"
-            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink-muted font-medium text-sm opacity-50 cursor-not-allowed"
+            onClick={handleOpenExportModal}
+            disabled={!token}
+            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
           >
             iCal Export
           </button>
@@ -253,6 +294,60 @@ export default function Schedule() {
           calendarConnected={calendarConnected}
           activeTerm={activeTerm}
         />
+      )}
+
+      {showExportModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/45"
+            onClick={() => setShowExportModal(false)}
+          />
+          <div className="relative z-10 w-full max-w-xl rounded-xl border border-border bg-surface p-5 shadow-xl">
+            <h3 className="text-lg font-semibold text-ink">iCal Export</h3>
+            <p className="mt-1 text-sm text-ink-muted">
+              Subscribe this private feed URL in Apple Calendar / Google Calendar.
+            </p>
+
+            {exportLoading ? (
+              <p className="mt-4 text-sm text-ink-muted">Loading feed URL...</p>
+            ) : exportError ? (
+              <p className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                {exportError}
+              </p>
+            ) : (
+              <>
+                <div className="mt-4 rounded-lg border border-border bg-surface-muted p-3">
+                  <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
+                    Your Feed URL
+                  </p>
+                  <p className="break-all text-xs text-ink">{exportFeedUrl || 'No feed URL available'}</p>
+                </div>
+                <div className="mt-3 flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyExportUrl}
+                    disabled={!exportFeedUrl}
+                    className="rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-inv hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Copy URL
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowExportModal(false)}
+                    className="rounded-lg border border-border px-3 py-2 text-xs font-medium text-ink hover:bg-surface-muted"
+                  >
+                    Close
+                  </button>
+                </div>
+                <p className="mt-3 text-xs text-ink-muted">
+                  {exportEnabled
+                    ? 'Feed is enabled. Changes may take some time to appear in subscribed calendar apps.'
+                    : 'Feed is currently disabled.'}
+                </p>
+              </>
+            )}
+          </div>
+        </div>
       )}
 
       <div className="flex gap-6">

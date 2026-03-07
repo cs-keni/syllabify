@@ -869,6 +869,17 @@ export async function updateStudyTime(token, studyTimeId, body) {
   return data;
 }
 
+/** GET /api/calendar/export/token. Returns { feedUrl, enabled }. */
+export async function getIcalExportToken(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/export/token`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || data.message || 'Failed to load iCal feed URL');
+  return data;
+}
+
 export default {
   login,
   register,
@@ -902,4 +913,5 @@ export default {
   deleteCalendarSource,
   getStudyTimes,
   updateStudyTime,
+  getIcalExportToken,
 };
