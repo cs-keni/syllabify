@@ -2,12 +2,43 @@
 Schedule API: engine input for scheduling teammate.
 Returns normalized JSON (courses, meeting_times, work_items, term) per parser-schedule-integration.md.
 """
+import os
+
 from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token
 from app.db.session import SessionLocal
 from app.services.schedule_input_builder import build_engine_input
 from app.services.scheduling_service import generate_study_times
+
+
+def _get_db():
+    import mysql.connector
+    port = os.getenv("DB_PORT", "3306")
+    try:
+        port = int(port)
+    except (TypeError, ValueError):
+        port = 3306
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST", "localhost"),
+        port=port,
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
+        connection_timeout=15,
+    )
+
+
+def _get_user(req):
+    """Extract user_id from JWT. Returns (user_id, None) or (None, error_response)."""
+    auth = req.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return None, (jsonify({"error": "unauthorized"}), 401)
+    try:
+        return int(payload.get("sub")), None
+    except (TypeError, ValueError):
+        return None, (jsonify({"error": "unauthorized"}), 401)
 
 bp = Blueprint("schedule", __name__, url_prefix="/api/schedule")
 
@@ -76,3 +107,44 @@ def generate_study_times_for_term(term_id):
         raise
     finally:
         session.close()
+
+
+@bp.route("/terms/<int:term_id>/study-times", methods=["GET"])
+def get_study_times(term_id):
+    """Return all study times for a term."""
+    user_id, err = _get_user(request)
+    if err:
+        return err
+
+    conn = _get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            """SELECT st.id, st.start_time, st.end_time, st.notes,
+                      st.is_locked, st.assignment_id, st.course_id,
+                      c.course_name
+               FROM StudyTimes st
+               LEFT JOIN Courses c ON st.course_id = c.id
+               WHERE st.term_id = %s
+               ORDER BY st.start_time""",
+            (term_id,),
+        )
+        rows = cur.fetchall()
+        cur.close()
+
+        study_times = []
+        for r in rows:
+            study_times.append({
+                "id": r["id"],
+                "start_time": r["start_time"].isoformat() if r["start_time"] else None,
+                "end_time": r["end_time"].isoformat() if r["end_time"] else None,
+                "notes": r["notes"],
+                "is_locked": bool(r["is_locked"]) if r.get("is_locked") is not None else False,
+                "assignment_id": r["assignment_id"],
+                "course_id": r["course_id"],
+                "course_name": r.get("course_name"),
+            })
+
+        return jsonify({"study_times": study_times})
+    finally:
+        conn.close()

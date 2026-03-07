@@ -795,6 +795,67 @@ export async function generateStudyTimes(token, termId) {
   return data;
 }
 
+// ── Calendar Sources ──
+
+/** GET /api/calendar/sources. Returns { sources }. */
+export async function getCalendarSources(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/sources`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch sources');
+  return data;
+}
+
+/** POST /api/calendar/import-ics. Body: { url, label, category }. Returns { ok, source_id, imported_count }. */
+export async function importIcsFeed(token, { url, label, category }) {
+  const res = await apiFetch(`${BASE}/api/calendar/import-ics`, {
+    method: 'POST',
+    headers: headers(true, token),
+    body: JSON.stringify({ url, label, category }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to import ICS feed');
+  return data;
+}
+
+/** POST /api/calendar/sync-source/:sourceId. Returns { ok, synced_count }. */
+export async function syncSource(token, sourceId) {
+  const res = await apiFetch(`${BASE}/api/calendar/sync-source/${sourceId}`, {
+    method: 'POST',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to sync source');
+  return data;
+}
+
+/** DELETE /api/calendar/sources/:sourceId. Returns { ok }. */
+export async function deleteCalendarSource(token, sourceId) {
+  const res = await apiFetch(`${BASE}/api/calendar/sources/${sourceId}`, {
+    method: 'DELETE',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to delete source');
+  return data;
+}
+
+/** GET /api/schedule/terms/:termId/study-times. Returns { study_times }. */
+export async function getStudyTimes(token, termId) {
+  const res = await apiFetch(`${BASE}/api/schedule/terms/${termId}/study-times`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch study times');
+  return data;
+}
+
 export default {
   login,
   register,
@@ -822,4 +883,9 @@ export default {
   deleteAssignment,
   parseSyllabus,
   generateStudyTimes,
+  getCalendarSources,
+  importIcsFeed,
+  syncSource,
+  deleteCalendarSource,
+  getStudyTimes,
 };
