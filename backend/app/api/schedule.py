@@ -2,6 +2,7 @@
 Schedule API: engine input for scheduling teammate.
 Returns normalized JSON (courses, meeting_times, work_items, term) per parser-schedule-integration.md.
 """
+from datetime import datetime
 import os
 
 from flask import Blueprint, jsonify, request
@@ -124,10 +125,11 @@ def get_study_times(term_id):
                       st.is_locked, st.assignment_id, st.course_id,
                       c.course_name
                FROM StudyTimes st
+               JOIN Terms t ON st.term_id = t.id
                LEFT JOIN Courses c ON st.course_id = c.id
-               WHERE st.term_id = %s
+               WHERE st.term_id = %s AND t.user_id = %s
                ORDER BY st.start_time""",
-            (term_id,),
+            (term_id, user_id),
         )
         rows = cur.fetchall()
         cur.close()
@@ -147,4 +149,117 @@ def get_study_times(term_id):
 
         return jsonify({"study_times": study_times})
     finally:
+        conn.close()
+
+
+def _parse_datetime(value):
+    if isinstance(value, datetime):
+        return value
+    if value is None:
+        raise ValueError("missing datetime value")
+    return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+
+
+def _to_db_datetime(dt: datetime) -> str:
+    # Calendar and StudyTime tables store naive UTC-style timestamps.
+    return dt.replace(tzinfo=None).strftime("%Y-%m-%d %H:%M:%S")
+
+
+@bp.route("/study-times/<int:study_time_id>", methods=["PATCH"])
+def update_study_time(study_time_id):
+    """Update a study time block with overlap validation."""
+    user_id, err = _get_user(request)
+    if err:
+        return err
+
+    body = request.get_json(silent=True) or {}
+    conn = _get_db()
+    cur = None
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            """SELECT st.id, st.start_time, st.end_time, st.term_id
+               FROM StudyTimes st
+               JOIN Terms t ON st.term_id = t.id
+               WHERE st.id = %s AND t.user_id = %s""",
+            (study_time_id, user_id),
+        )
+        row = cur.fetchone()
+        if not row:
+            return jsonify({"error": "not found"}), 404
+
+        try:
+            proposed_start = _parse_datetime(body.get("start_time", row["start_time"]))
+            proposed_end = _parse_datetime(body.get("end_time", row["end_time"]))
+        except ValueError:
+            return jsonify({"error": "invalid datetime format"}), 422
+
+        if proposed_start >= proposed_end:
+            return jsonify({"error": "start_time must be before end_time"}), 422
+
+        start_db = _to_db_datetime(proposed_start)
+        end_db = _to_db_datetime(proposed_end)
+
+        cur.execute(
+            """SELECT id, title FROM CalendarEvents
+               WHERE user_id = %s
+                 AND event_kind = 'timed'
+                 AND sync_status = 'active'
+                 AND start_time < %s
+                 AND end_time > %s
+               LIMIT 1""",
+            (user_id, end_db, start_db),
+        )
+        conflict_event = cur.fetchone()
+        if conflict_event:
+            return jsonify(
+                {
+                    "error": "conflict",
+                    "message": f"Overlaps calendar event: {conflict_event['title']}",
+                }
+            ), 409
+
+        cur.execute(
+            """SELECT id FROM StudyTimes
+               WHERE term_id = %s
+                 AND is_locked = 1
+                 AND id != %s
+                 AND start_time < %s
+                 AND end_time > %s
+               LIMIT 1""",
+            (row["term_id"], study_time_id, end_db, start_db),
+        )
+        if cur.fetchone():
+            return jsonify(
+                {"error": "conflict", "message": "Overlaps another locked study block"}
+            ), 409
+
+        updates = []
+        params = []
+        if "start_time" in body:
+            updates.append("start_time = %s")
+            params.append(start_db)
+        if "end_time" in body:
+            updates.append("end_time = %s")
+            params.append(end_db)
+        if "is_locked" in body:
+            updates.append("is_locked = %s")
+            params.append(1 if body["is_locked"] else 0)
+        if "notes" in body:
+            updates.append("notes = %s")
+            params.append(body["notes"])
+
+        if not updates:
+            return jsonify({"error": "no fields to update"}), 400
+
+        params.append(study_time_id)
+        cur.execute(
+            f"UPDATE StudyTimes SET {', '.join(updates)} WHERE id = %s",
+            tuple(params),
+        )
+        conn.commit()
+        return jsonify({"ok": True}), 200
+    finally:
+        if cur is not None:
+            cur.close()
         conn.close()
