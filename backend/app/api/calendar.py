@@ -7,7 +7,7 @@ import secrets
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
 
-from flask import Blueprint, jsonify, request, redirect
+from flask import Blueprint, jsonify, redirect, request
 
 bp = Blueprint("calendar", __name__, url_prefix="/api/calendar")
 
@@ -62,8 +62,8 @@ def _get_google_credentials(user_id):
         if not row or not row.get("refresh_token"):
             return None
 
-        from google.oauth2.credentials import Credentials
         from google.auth.transport.requests import Request
+        from google.oauth2.credentials import Credentials
 
         creds = Credentials(
             token=row.get("access_token"),

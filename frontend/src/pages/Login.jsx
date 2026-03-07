@@ -189,7 +189,9 @@ export default function Login() {
                 <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs">
-                <span className="bg-surface-elevated px-2 text-ink-muted">or</span>
+                <span className="bg-surface-elevated px-2 text-ink-muted">
+                  or
+                </span>
               </div>
             </div>
             <GoogleSignInButton
