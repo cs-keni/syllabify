@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy.orm import Session, joinedload
 
+from app.models.course import Course
 from app.models.term import Term
 from app.models.study_time import StudyTime
 
@@ -119,8 +120,8 @@ def generate_study_times(
     term = (
         session.query(Term)
         .options(
-            joinedload(Term.courses).joinedload("assignments"),
-            joinedload(Term.courses).joinedload("meetings"),
+            joinedload(Term.courses).joinedload(Course.assignments),
+            joinedload(Term.courses).joinedload(Course.meetings),
             joinedload(Term.study_times),
         )
         .filter(Term.id == term_id)
@@ -250,6 +251,8 @@ def generate_study_times(
                 end_time=end,
                 term_id=term_id,
                 notes=None,
+                assignment_id=assignment.id,
+                course_id=assignment.course_id,
             )
             session.add(st)
             created.append(st)
@@ -558,6 +561,8 @@ def _generate_study_times_global(
                 end_time=e,
                 term_id=term_id,
                 notes=None,
+                assignment_id=a.id,
+                course_id=a.course_id,
             )
             session.add(st)
             created.append(st)
