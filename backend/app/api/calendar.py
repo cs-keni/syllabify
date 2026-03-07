@@ -343,6 +343,7 @@ def import_calendar():
     calendar_ids = data.get("calendar_ids") or []
     start_date = data.get("start_date") or ""
     end_date = data.get("end_date") or ""
+    category = data.get("category", "other")
 
     if not calendar_ids:
         return jsonify({"error": "calendar_ids is required"}), 400
@@ -382,11 +383,11 @@ def import_calendar():
                 cur.execute(
                     """INSERT INTO CalendarSources
                        (user_id, source_type, source_label, google_calendar_id, feed_category)
-                       VALUES (%s, 'google', %s, %s, 'other')""",
-                    (user_id, cal_id[:100], cal_id),
+                       VALUES (%s, 'google', %s, %s, %s)""",
+                    (user_id, cal_id[:100], cal_id, category),
                 )
                 source_id = cur.lastrowid
-                src_category = "other"
+                src_category = category
 
             events_result = (
                 service.events()
@@ -509,9 +510,17 @@ def import_ics():
         if cur.fetchone():
             return jsonify({"error": "This feed URL is already imported"}), 409
 
-        # Fetch and parse
+        # Fetch and parse (expand recurring events over a reasonable horizon)
         ics_text = fetch_ics_feed(url)
-        events = parse_ics_content(ics_text, source_category=category)
+        now = datetime.utcnow()
+        expand_start = (now - timedelta(days=30)).isoformat()
+        expand_end = (now + timedelta(days=120)).isoformat()
+        events = parse_ics_content(
+            ics_text,
+            expand_start=expand_start,
+            expand_end=expand_end,
+            source_category=category,
+        )
 
         # Create source
         cur.execute(
@@ -576,7 +585,13 @@ def sync_source(source_id):
 def _sync_ics_source(conn, cur, user_id, source):
     """Re-fetch and re-parse an ICS feed."""
     ics_text = fetch_ics_feed(source["feed_url"])
-    events = parse_ics_content(ics_text, source_category=source["feed_category"])
+    now = datetime.utcnow()
+    events = parse_ics_content(
+        ics_text,
+        expand_start=(now - timedelta(days=30)).isoformat(),
+        expand_end=(now + timedelta(days=120)).isoformat(),
+        source_category=source["feed_category"],
+    )
 
     # Mark existing events as stale
     cur.execute(

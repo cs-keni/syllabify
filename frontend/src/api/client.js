@@ -880,6 +880,18 @@ export async function getIcalExportToken(token) {
   return data;
 }
 
+/** POST /api/calendar/export/token/rotate. Rotates feed token, old URL becomes invalid. */
+export async function rotateIcalExportToken(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/export/token/rotate`, {
+    method: 'POST',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || data.message || 'Failed to rotate feed token');
+  return data;
+}
+
 export default {
   login,
   register,
@@ -914,4 +926,5 @@ export default {
   getStudyTimes,
   updateStudyTime,
   getIcalExportToken,
+  rotateIcalExportToken,
 };

@@ -29,6 +29,7 @@ export default function Schedule() {
   const [sources, setSources] = useState([]);
   const [syncingId, setSyncingId] = useState(null);
   const [popover, setPopover] = useState(null); // { studyTime, x, y }
+  const [eventDetail, setEventDetail] = useState(null); // { event, x, y }
 
   // Handle OAuth callback params
   useEffect(() => {
@@ -82,11 +83,7 @@ export default function Schedule() {
   const handleConnectOrImport = async () => {
     if (!token) return toast.error('Please sign in first.');
     const status = await api.getCalendarStatus(token).catch(() => ({ connected: false }));
-    if (!status.connected) {
-      const { url } = await api.getCalendarAuthUrl(token);
-      window.location.href = url;
-      return;
-    }
+    setCalendarConnected(status.connected);
     setShowImportModal(true);
   };
 
@@ -156,13 +153,16 @@ export default function Schedule() {
     }
   };
 
-  const handleStudyTimeClick = ({ type, data }, jsEvent) => {
-    if (type !== 'study_time' || !data) return;
-    setPopover({
-      studyTime: data,
-      x: jsEvent?.clientX ?? 0,
-      y: jsEvent?.clientY ?? 0,
-    });
+  const handleEventClickAll = ({ type, data }, jsEvent) => {
+    const x = jsEvent?.clientX ?? 0;
+    const y = jsEvent?.clientY ?? 0;
+    if (type === 'study_time' && data) {
+      setEventDetail(null);
+      setPopover({ studyTime: data, x, y });
+    } else if (type === 'calendar_event' && data) {
+      setPopover(null);
+      setEventDetail({ event: data, x, y });
+    }
   };
 
   const handleToggleLock = async () => {
@@ -358,7 +358,7 @@ export default function Schedule() {
             studyTimes={studyTimes}
             onEventDrop={handleStudyTimeMove}
             onEventResize={handleStudyTimeMove}
-            onEventClick={handleStudyTimeClick}
+            onEventClick={handleEventClickAll}
           />
           {popover && (
             <>
@@ -392,6 +392,57 @@ export default function Schedule() {
                     Close
                   </button>
                 </div>
+              </div>
+            </>
+          )}
+          {eventDetail && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setEventDetail(null)}
+              />
+              <div
+                className="fixed z-50 w-80 max-h-[60vh] overflow-y-auto rounded-lg border border-border bg-surface p-4 text-sm shadow-lg"
+                style={{
+                  top: Math.min(eventDetail.y + 8, window.innerHeight - 320),
+                  left: Math.min(eventDetail.x + 8, window.innerWidth - 340),
+                }}
+              >
+                <p className="mb-1 font-semibold text-ink">
+                  {eventDetail.event.title}
+                </p>
+                {eventDetail.event.event_category && (
+                  <span className="mb-2 inline-block rounded-full bg-gray-100 dark:bg-gray-700 px-2 py-0.5 text-xs text-ink-muted">
+                    {eventDetail.event.event_category.replace('_', ' ')}
+                  </span>
+                )}
+                {(eventDetail.event.start_date || eventDetail.event.start_time) && (
+                  <p className="mt-2 text-xs text-ink-muted">
+                    {eventDetail.event.start_date
+                      ? `Date: ${eventDetail.event.start_date}`
+                      : `${new Date(eventDetail.event.start_time).toLocaleString()} – ${new Date(eventDetail.event.end_time).toLocaleString()}`}
+                  </p>
+                )}
+                {eventDetail.event.location && (
+                  <p className="mt-1 text-xs text-ink-muted">
+                    Location: {eventDetail.event.location}
+                  </p>
+                )}
+                {eventDetail.event.description && (
+                  <div className="mt-2 whitespace-pre-wrap break-words text-xs text-ink leading-relaxed border-t border-border pt-2">
+                    {eventDetail.event.description}
+                  </div>
+                )}
+                {!eventDetail.event.description && !eventDetail.event.location && (
+                  <p className="mt-2 text-xs text-ink-muted italic">No additional details.</p>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setEventDetail(null)}
+                  className="mt-3 w-full rounded border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink"
+                >
+                  Close
+                </button>
               </div>
             </>
           )}

@@ -128,11 +128,11 @@ def classify_event(
         is_single_day = (s == e) or (e - s <= timedelta(days=1))
         has_deadline_keyword = any(kw in title_lower for kw in deadline_keywords)
 
-        if source_category == "canvas" and (is_single_day or has_deadline_keyword):
+        if has_deadline_keyword:
             return "deadline_marker"
-        if is_single_day and has_deadline_keyword:
+        if source_category == "canvas" and is_single_day:
             return "deadline_marker"
-        return "all_day" if not is_single_day else "deadline_marker" if source_category == "canvas" else "all_day"
+        return "all_day"
 
     return "timed"
 

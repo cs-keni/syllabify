@@ -2,7 +2,7 @@
 Schedule API: engine input for scheduling teammate.
 Returns normalized JSON (courses, meeting_times, work_items, term) per parser-schedule-integration.md.
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 
 from flask import Blueprint, jsonify, request
@@ -196,6 +196,13 @@ def update_study_time(study_time_id):
 
         if proposed_start >= proposed_end:
             return jsonify({"error": "start_time must be before end_time"}), 422
+
+        MIN_STUDY_MINUTES = 15
+        if (proposed_end - proposed_start) < timedelta(minutes=MIN_STUDY_MINUTES):
+            return jsonify({
+                "error": "duration_too_short",
+                "message": f"Study block must be at least {MIN_STUDY_MINUTES} minutes",
+            }), 422
 
         start_db = _to_db_datetime(proposed_start)
         end_db = _to_db_datetime(proposed_end)
