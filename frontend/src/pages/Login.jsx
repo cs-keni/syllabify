@@ -7,11 +7,13 @@ import { useNavigate, Link, Navigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
+import GoogleSignInButton from '../components/GoogleSignInButton';
+import Footer from '../components/Footer';
 import toast from 'react-hot-toast';
 
-/** Login form. Uses AuthContext.login, redirects based on security_setup_done. */
+/** Login form. Uses AuthContext.login / loginWithGoogle, redirects based on security_setup_done. */
 export default function Login() {
-  const { user, securitySetupDone, login } = useAuth();
+  const { user, securitySetupDone, login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const expired = searchParams.get('expired');
@@ -25,6 +27,23 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  const handleGoogleSuccess = async idToken => {
+    setError('');
+    setSubmitting(true);
+    try {
+      const result = await loginWithGoogle(idToken);
+      if (result.security_setup_done) {
+        navigate('/app', { replace: true });
+      } else {
+        navigate('/security-setup', { replace: true });
+      }
+    } catch (err) {
+      setError(err.message || 'Google sign-in failed');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   /** Submits credentials, calls login, navigates on success. */
   const handleSubmit = async e => {
@@ -45,7 +64,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-ink">
+    <div className="min-h-screen flex flex-col bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
           <div className="sm:hidden space-y-1.5">
@@ -165,6 +184,20 @@ export default function Login() {
             >
               {submitting ? 'Logging in...' : 'Log in'}
             </button>
+            <div className="relative my-4">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-border" />
+              </div>
+              <div className="relative flex justify-center text-xs">
+                <span className="bg-surface-elevated px-2 text-ink-muted">or</span>
+              </div>
+            </div>
+            <GoogleSignInButton
+              onSuccess={handleGoogleSuccess}
+              onError={err => setError(err?.message || 'Google sign-in failed')}
+              disabled={submitting}
+              className="flex justify-center"
+            />
             <p className="text-center text-sm text-ink-muted">
               Don&apos;t have an account?{' '}
               <Link
@@ -177,6 +210,7 @@ export default function Login() {
           </form>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

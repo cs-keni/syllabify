@@ -14,6 +14,7 @@ from flask_cors import CORS
 from app.api.admin import bp as admin_bp
 from app.api.assignments import bp as assignments_bp
 from app.api.auth import bp as auth_bp
+from app.api.calendar import bp as calendar_bp
 from app.api.courses import bp as courses_bp
 from app.api.schedule import bp as schedule_bp
 from app.api.syllabus import bp as syllabus_bp
@@ -63,7 +64,9 @@ def _maintenance_check():
     path = request.path or ""
     if path in ("/api/maintenance", "/api/settings") and request.method == "GET":
         return None
-    if path in ("/api/auth/login", "/api/auth/register"):
+    if path in ("/api/auth/login", "/api/auth/register", "/api/auth/google"):
+        return None
+    if path.startswith("/api/calendar/callback"):
         return None
     enabled, _ = get_maintenance_status()
     if not enabled:
@@ -102,6 +105,7 @@ def get_settings():
 
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(calendar_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(users_bp)
 app.register_blueprint(terms_bp)
