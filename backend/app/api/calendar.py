@@ -356,21 +356,23 @@ def import_calendar():
         for cal_id in calendar_ids[:20]:
             # Find or create CalendarSource for this Google calendar
             cur.execute(
-                """SELECT id FROM CalendarSources
+                """SELECT id, feed_category FROM CalendarSources
                    WHERE user_id = %s AND source_type = 'google' AND google_calendar_id = %s""",
                 (user_id, cal_id),
             )
             source_row = cur.fetchone()
             if source_row:
                 source_id = source_row["id"]
+                src_category = source_row.get("feed_category", "other")
             else:
                 cur.execute(
                     """INSERT INTO CalendarSources
                        (user_id, source_type, source_label, google_calendar_id, feed_category)
-                       VALUES (%s, 'google', %s, %s, 'academic')""",
+                       VALUES (%s, 'google', %s, %s, 'other')""",
                     (user_id, cal_id[:100], cal_id),
                 )
                 source_id = cur.lastrowid
+                src_category = "other"
 
             events_result = (
                 service.events()
@@ -406,9 +408,9 @@ def import_calendar():
                     start_val=start_str,
                     end_val=end_str,
                     title=title,
-                    source_category="academic",
+                    source_category=src_category,
                 )
-                event_category = auto_detect_category(title, "academic")
+                event_category = auto_detect_category(title, src_category)
 
                 if is_date_event:
                     cur.execute(
@@ -629,8 +631,9 @@ def _sync_google_source(conn, cur, user_id, source):
         title = (ev.get("summary") or "Untitled")[:500]
         description = (ev.get("description") or "")[:2000] or None
         location = (ev.get("location") or "")[:500] or None
-        event_kind = classify_event(is_date_event, start_str, end_str, title, "academic")
-        event_category = auto_detect_category(title, "academic")
+        src_category = source.get("feed_category", "other")
+        event_kind = classify_event(is_date_event, start_str, end_str, title, src_category)
+        event_category = auto_detect_category(title, src_category)
 
         if is_date_event:
             cur.execute(

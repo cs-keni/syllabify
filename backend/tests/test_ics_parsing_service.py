@@ -1,6 +1,6 @@
 import pytest
 from pathlib import Path
-from app.services.ics_parsing_service import parse_ics_content, classify_event, fetch_ics_feed
+from app.services.ics_parsing_service import parse_ics_content, classify_event, fetch_ics_feed, auto_detect_category
 
 
 FIXTURE_PATH = Path(__file__).parent / "fixtures" / "test_calendar.ics"
@@ -116,19 +116,18 @@ class TestClassifyEvent:
 
 class TestAutoDetectCategory:
     """Test event_category auto-detection from title and source."""
-    from app.services.ics_parsing_service import auto_detect_category
 
     def test_lecture_keyword(self):
-        assert self.auto_detect_category("CS 422 Lecture", "academic") == "class"
+        assert auto_detect_category("CS 422 Lecture", "academic") == "class"
 
     def test_office_hours_keyword(self):
-        assert self.auto_detect_category("Office Hours - Prof Smith", "academic") == "office_hours"
+        assert auto_detect_category("Office Hours - Prof Smith", "academic") == "office_hours"
 
     def test_exam_keyword(self):
-        assert self.auto_detect_category("Midterm Exam", "academic") == "exam"
+        assert auto_detect_category("Midterm Exam", "academic") == "exam"
 
     def test_assignment_due(self):
-        assert self.auto_detect_category("Assignment 3 Due", "canvas") == "assignment_deadline"
+        assert auto_detect_category("Assignment 3 Due", "canvas") == "assignment_deadline"
 
     def test_fallback_other(self):
-        assert self.auto_detect_category("Random Event", "personal") == "other"
+        assert auto_detect_category("Random Event", "personal") == "other"

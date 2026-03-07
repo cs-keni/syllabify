@@ -111,8 +111,19 @@ def classify_event(
 
     if is_date:
         # Convert to date objects for comparison if needed
-        s = start_val if isinstance(start_val, date) else start_val.date()
-        e = end_val if isinstance(end_val, date) else end_val.date()
+        if isinstance(start_val, date):
+            s = start_val
+        elif isinstance(start_val, str):
+            s = date.fromisoformat(start_val[:10])
+        else:
+            s = start_val.date()
+
+        if isinstance(end_val, date):
+            e = end_val
+        elif isinstance(end_val, str):
+            e = date.fromisoformat(end_val[:10])
+        else:
+            e = end_val.date()
 
         is_single_day = (s == e) or (e - s <= timedelta(days=1))
         has_deadline_keyword = any(kw in title_lower for kw in deadline_keywords)
@@ -225,9 +236,9 @@ def _build_event_dict(
 
 
 def _to_utc(dt: datetime) -> datetime:
-    """Convert a datetime to UTC. Naive datetimes are assumed UTC."""
+    """Convert a datetime to naive UTC. Naive datetimes are assumed already UTC."""
     if dt.tzinfo is None:
-        return dt.replace(tzinfo=ZoneInfo("UTC"))
+        return dt  # already naive, assume UTC
     return dt.astimezone(ZoneInfo("UTC")).replace(tzinfo=None)
 
 
@@ -259,12 +270,30 @@ def _expand_recurring(component, uid, base_event, expand_start, expand_end, sour
             dtstart = dtstart.replace(tzinfo=ZoneInfo("UTC"))
 
     try:
-        rule = rrulestr(f"DTSTART:{dtstart.strftime('%Y%m%dT%H%M%S')}\nRRULE:{rrule_str}", ignoretz=is_date)
-        occurrences = list(rule.between(
-            range_start if not is_date else datetime.combine(range_start, datetime.min.time()),
-            range_end if not is_date else datetime.combine(range_end, datetime.min.time()),
-            inc=True,
-        ))
+        if is_date:
+            rule = rrulestr(
+                f"DTSTART:{dtstart.strftime('%Y%m%dT%H%M%S')}\nRRULE:{rrule_str}",
+                ignoretz=True,
+            )
+            occurrences = list(rule.between(
+                datetime.combine(range_start, datetime.min.time()),
+                datetime.combine(range_end, datetime.min.time()),
+                inc=True,
+            ))
+        else:
+            # For timed events, strip tzinfo and work in naive datetimes
+            # to avoid rrulestr timezone mismatches
+            naive_start = dtstart.replace(tzinfo=None) if dtstart.tzinfo else dtstart
+            rule = rrulestr(
+                f"DTSTART:{naive_start.strftime('%Y%m%dT%H%M%S')}\nRRULE:{rrule_str}",
+                ignoretz=True,
+            )
+            naive_range_start = range_start.replace(tzinfo=None) if range_start.tzinfo else range_start
+            naive_range_end = range_end.replace(tzinfo=None) if range_end.tzinfo else range_end
+            occurrences = list(rule.between(naive_range_start, naive_range_end, inc=True))
+            # Re-attach original timezone
+            if dtstart.tzinfo:
+                occurrences = [occ.replace(tzinfo=dtstart.tzinfo) for occ in occurrences]
     except Exception:
         return [base_event]
 
