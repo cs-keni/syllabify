@@ -8,8 +8,14 @@ import secrets
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
 
-from flask import Blueprint, jsonify, request, redirect
+from flask import Blueprint, Response, jsonify, request, redirect
 
+from app.services.calendar_export_service import (
+    build_ical_feed_for_user,
+    get_or_create_feed_token,
+    rotate_feed_token,
+    set_feed_enabled,
+)
 from app.services.ics_parsing_service import (
     fetch_ics_feed,
     parse_ics_content,
@@ -203,6 +209,14 @@ def _frontend_redirect(path):
     """Build redirect URL to frontend."""
     base = os.getenv("FRONTEND_URL", "http://localhost:5173").strip().split(",")[0].strip()
     return base.rstrip("/") + path
+
+
+def _calendar_public_base_url():
+    """Resolve public backend base URL used in export feed links."""
+    configured = os.getenv("BACKEND_PUBLIC_URL", "").strip()
+    if configured:
+        return configured.rstrip("/")
+    return request.url_root.rstrip("/")
 
 
 @bp.route("/list", methods=["GET"])
@@ -745,6 +759,95 @@ def get_events():
                 "local_notes": r.get("local_notes"),
             })
         return jsonify({"events": events})
+    finally:
+        conn.close()
+
+
+@bp.route("/export/<string:feed_token>.ics", methods=["GET"])
+def export_study_times_ics(feed_token):
+    """Public iCal subscription endpoint. Auth intentionally not required."""
+    token = (feed_token or "").strip()
+    if not token:
+        return jsonify({"error": "not found"}), 404
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            """SELECT id FROM Users
+               WHERE ical_feed_token = %s
+                 AND COALESCE(ical_feed_enabled, 1) = 1
+               LIMIT 1""",
+            (token,),
+        )
+        row = cur.fetchone()
+        cur.close()
+        if not row:
+            return jsonify({"error": "not found"}), 404
+
+        ical_bytes = build_ical_feed_for_user(conn, int(row["id"]))
+        return Response(
+            ical_bytes,
+            status=200,
+            headers={
+                "Content-Type": "text/calendar; charset=utf-8",
+                "Content-Disposition": 'inline; filename=\"syllabify-study-plan.ics\"',
+                "Cache-Control": "private, max-age=300",
+            },
+        )
+    finally:
+        conn.close()
+
+
+@bp.route("/export/token", methods=["GET"])
+def get_export_feed_token():
+    """Get (or create) current user's personal iCal feed URL."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    conn = get_db()
+    try:
+        token, enabled = get_or_create_feed_token(conn, user_id)
+        feed_url = f"{_calendar_public_base_url()}/api/calendar/export/{token}.ics"
+        return jsonify({"feedUrl": feed_url, "enabled": bool(enabled)})
+    finally:
+        conn.close()
+
+
+@bp.route("/export/token/rotate", methods=["POST"])
+def rotate_export_feed_token():
+    """Rotate current user's feed token. Old URL becomes invalid."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    conn = get_db()
+    try:
+        token = rotate_feed_token(conn, user_id)
+        feed_url = f"{_calendar_public_base_url()}/api/calendar/export/{token}.ics"
+        return jsonify({"feedUrl": feed_url, "ok": True})
+    finally:
+        conn.close()
+
+
+@bp.route("/export/token", methods=["PATCH"])
+def patch_export_feed_status():
+    """Enable/disable current user's feed token."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    body = request.get_json(silent=True) or {}
+    if "enabled" not in body:
+        return jsonify({"error": "enabled is required"}), 400
+
+    conn = get_db()
+    try:
+        set_feed_enabled(conn, user_id, bool(body.get("enabled")))
+        token, enabled = get_or_create_feed_token(conn, user_id)
+        feed_url = f"{_calendar_public_base_url()}/api/calendar/export/{token}.ics"
+        return jsonify({"feedUrl": feed_url, "enabled": bool(enabled), "ok": True})
     finally:
         conn.close()
 
