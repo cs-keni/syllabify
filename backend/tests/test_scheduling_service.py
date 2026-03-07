@@ -13,7 +13,7 @@ from app.models.meeting import Meeting  # ensure mapper registration
 from app.models.study_time import StudyTime
 from app.models.term import Term
 from app.models.user import User
-from app.services.scheduling_service import generate_study_times
+from app.services.scheduling_service import _reconcile_deadlines, generate_study_times
 
 
 @pytest.fixture
@@ -114,3 +114,37 @@ def test_calendar_event_blocks_study_slot(db_session, sample_term, sample_user, 
     assert len(created) > 0
     for st in created:
         assert not (st.start_time < block_end and st.end_time > block_start)
+
+
+def test_deadline_reconciliation_uses_earlier_imported_date(
+    db_session, sample_user, sample_assignment
+):
+    src = CalendarSource(
+        user_id=sample_user.id,
+        source_type="ics_url",
+        source_label="Canvas",
+        feed_category="canvas",
+    )
+    db_session.add(src)
+    db_session.flush()
+
+    earlier_date = date(2026, 1, 5)
+    marker = CalendarEvent(
+        user_id=sample_user.id,
+        source_id=src.id,
+        external_uid="deadline-1",
+        instance_key="base",
+        title=f"Due: {sample_assignment.assignment_name}",
+        event_kind="deadline_marker",
+        event_category="assignment_deadline",
+        sync_status="active",
+        start_date=earlier_date,
+    )
+    db_session.add(marker)
+    db_session.commit()
+
+    effective = _reconcile_deadlines(db_session, sample_user.id, [sample_assignment])
+    assert sample_assignment.id in effective
+    assert effective[sample_assignment.id] == datetime(
+        2026, 1, 5, 23, 59, 59, tzinfo=timezone.utc
+    )

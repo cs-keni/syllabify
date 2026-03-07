@@ -6,6 +6,7 @@
 # DISCLAIMER: Project structure may change. Functions may be added or modified.
 
 from datetime import date, datetime, timedelta, time
+import re as _re
 from zoneinfo import ZoneInfo
 
 from sqlalchemy.orm import Session, joinedload
@@ -21,6 +22,22 @@ DEFAULT_STUDY_START = time(8, 0)   # 8:00 AM
 DEFAULT_STUDY_END = time(22, 0)    # 10:00 PM
 MINUTES_PER_SLOT = 15
 MINUTES_PER_WORKLOAD_UNIT = 15
+
+
+def _normalize_title(raw: str) -> str:
+    """Normalize titles for fuzzy deadline matching."""
+    s = (raw or "").lower().strip()
+    for prefix in ("due:", "assignment:", "hw:", "homework:", "project:", "quiz:", "exam:"):
+        if s.startswith(prefix):
+            s = s[len(prefix):].strip()
+    return _re.sub(r"[^\w\s]", "", s).strip()
+
+
+def _ensure_utc(dt: datetime) -> datetime:
+    """Return an aware UTC datetime; naive datetimes are assumed UTC."""
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=ZoneInfo("UTC"))
+    return dt.astimezone(ZoneInfo("UTC"))
 
 
 def _get_tz(dt: datetime) -> ZoneInfo:
@@ -96,6 +113,65 @@ def _free_slots_for_day(
     return slots
 
 
+def _reconcile_deadlines(session: Session, user_id: int, assignments: list) -> dict[int, datetime]:
+    """
+    Return assignment.id -> effective due datetime using imported deadline markers.
+    Imported dates only override when they are earlier than assignment.due_date.
+    """
+    markers = (
+        session.query(CalendarEvent)
+        .filter(
+            CalendarEvent.user_id == user_id,
+            CalendarEvent.event_kind == "deadline_marker",
+            CalendarEvent.sync_status == "active",
+        )
+        .all()
+    )
+
+    effective: dict[int, datetime] = {}
+    window_seconds = 14 * 24 * 60 * 60
+
+    for assignment in assignments:
+        due = _ensure_utc(assignment.due_date)
+        effective[assignment.id] = due
+
+        normalized_assignment = _normalize_title(assignment.assignment_name or "")
+        best_match_due: datetime | None = None
+        best_delta: float | None = None
+
+        for marker in markers:
+            if marker.start_date:
+                marker_due = datetime.combine(
+                    marker.start_date, time(23, 59, 59), tzinfo=ZoneInfo("UTC")
+                )
+            elif marker.start_time:
+                marker_due = _ensure_utc(marker.start_time)
+            else:
+                continue
+
+            if abs((marker_due - due).total_seconds()) > window_seconds:
+                continue
+
+            normalized_marker = _normalize_title(marker.title or "")
+            if not normalized_assignment or not normalized_marker:
+                continue
+            if (
+                normalized_assignment not in normalized_marker
+                and normalized_marker not in normalized_assignment
+            ):
+                continue
+
+            delta = abs((marker_due - due).total_seconds())
+            if best_delta is None or delta < best_delta:
+                best_delta = delta
+                best_match_due = marker_due
+
+        if best_match_due is not None and best_match_due < due:
+            effective[assignment.id] = best_match_due
+
+    return effective
+
+
 def generate_study_times(
     session: Session,
     term_id: int,
@@ -165,13 +241,12 @@ def generate_study_times(
         s = evt.local_start_time if (evt.is_locally_modified and evt.local_start_time) else evt.start_time
         e = evt.local_end_time if (evt.is_locally_modified and evt.local_end_time) else evt.end_time
         if s and e:
-            if s.tzinfo is None:
-                s = s.replace(tzinfo=ZoneInfo("UTC"))
-            if e.tzinfo is None:
-                e = e.replace(tzinfo=ZoneInfo("UTC"))
+            s = _ensure_utc(s)
+            e = _ensure_utc(e)
             calendar_busy.append((s, e))
 
     meeting_busy = _merge_intervals(meeting_busy + calendar_busy)
+    effective_due_dates = _reconcile_deadlines(session, user_id, assignments)
 
     # Clear existing study times for this term
     session.query(StudyTime).filter(StudyTime.term_id == term_id).delete()
@@ -192,7 +267,7 @@ def generate_study_times(
             continue
 
         window_start = assignment.start_date
-        window_end = assignment.due_date
+        window_end = effective_due_dates.get(assignment.id, assignment.due_date)
         if window_start.tzinfo is None:
             window_start = window_start.replace(tzinfo=tz)
         if window_end.tzinfo is None:
@@ -235,7 +310,7 @@ def generate_study_times(
             continue
 
         window_start = assignment.start_date
-        window_end = assignment.due_date
+        window_end = effective_due_dates.get(assignment.id, assignment.due_date)
         if window_start.tzinfo is None:
             window_start = window_start.replace(tzinfo=tz)
         if window_end.tzinfo is None:
@@ -315,6 +390,7 @@ def generate_study_times(
         start_time=start_time,
         end_time=end_time,
         term_id=term_id,
+        effective_due_dates=effective_due_dates,
     )
     return global_created
 
@@ -389,6 +465,7 @@ def _generate_study_times_global(
     start_time: time,
     end_time: time,
     term_id: int,
+    effective_due_dates: dict[int, datetime] | None = None,
 ) -> list[StudyTime]:
     """
     Global optimal scheduling using max-flow + binary search on the maximum
@@ -404,7 +481,11 @@ def _generate_study_times_global(
         if a.work_load <= 0:
             continue
         ws = a.start_date
-        we = a.due_date
+        we = (
+            effective_due_dates.get(a.id, a.due_date)
+            if effective_due_dates is not None
+            else a.due_date
+        )
         if ws.tzinfo is None:
             ws = ws.replace(tzinfo=tz)
         if we.tzinfo is None:
