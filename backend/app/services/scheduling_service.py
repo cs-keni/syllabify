@@ -248,8 +248,21 @@ def generate_study_times(
     meeting_busy = _merge_intervals(meeting_busy + calendar_busy)
     effective_due_dates = _reconcile_deadlines(session, user_id, assignments)
 
-    # Clear existing study times for this term
-    session.query(StudyTime).filter(StudyTime.term_id == term_id).delete()
+    locked_study_times = (
+        session.query(StudyTime)
+        .filter(StudyTime.term_id == term_id, StudyTime.is_locked.is_(True))
+        .all()
+    )
+    session.query(StudyTime).filter(
+        StudyTime.term_id == term_id, StudyTime.is_locked.is_(False)
+    ).delete(synchronize_session="fetch")
+
+    locked_busy: list[tuple[datetime, datetime]] = []
+    for locked in locked_study_times:
+        if locked.start_time and locked.end_time:
+            locked_busy.append((_ensure_utc(locked.start_time), _ensure_utc(locked.end_time)))
+
+    meeting_busy = _merge_intervals(meeting_busy + locked_busy)
 
     # We'll add study times as we allocate, so they become busy for later assignments
     created: list[StudyTime] = []
@@ -375,7 +388,9 @@ def generate_study_times(
     # ----- Phase 2: Global solver fallback (minimize max daily study time) -----
 
     # Remove any partially-created study times from the greedy phase.
-    session.query(StudyTime).filter(StudyTime.term_id == term_id).delete()
+    session.query(StudyTime).filter(
+        StudyTime.term_id == term_id, StudyTime.is_locked.is_(False)
+    ).delete(synchronize_session="fetch")
 
     # Use a global optimization approach as a fallback. This will:
     # - Use all 15-minute slots across the term (respecting meetings and study window),

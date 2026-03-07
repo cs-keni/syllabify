@@ -148,3 +148,40 @@ def test_deadline_reconciliation_uses_earlier_imported_date(
     assert effective[sample_assignment.id] == datetime(
         2026, 1, 5, 23, 59, 59, tzinfo=timezone.utc
     )
+
+
+def test_locked_study_times_survive_regeneration(db_session, sample_term, sample_assignment):
+    locked = StudyTime(
+        term_id=sample_term.id,
+        start_time=datetime(2026, 1, 5, 7, 0, tzinfo=timezone.utc),
+        end_time=datetime(2026, 1, 5, 7, 15, tzinfo=timezone.utc),
+        is_locked=True,
+    )
+    db_session.add(locked)
+    db_session.commit()
+    locked_id = locked.id
+
+    generate_study_times(db_session, sample_term.id)
+    db_session.commit()
+
+    still_exists = db_session.query(StudyTime).filter_by(id=locked_id).first()
+    assert still_exists is not None
+    assert still_exists.is_locked is True
+
+
+def test_new_study_times_do_not_overlap_locked(db_session, sample_term, sample_assignment):
+    lock_s = datetime(2026, 1, 5, 8, 0, tzinfo=timezone.utc)
+    lock_e = datetime(2026, 1, 5, 8, 15, tzinfo=timezone.utc)
+    locked = StudyTime(
+        term_id=sample_term.id,
+        start_time=lock_s,
+        end_time=lock_e,
+        is_locked=True,
+    )
+    db_session.add(locked)
+    db_session.commit()
+
+    created = generate_study_times(db_session, sample_term.id)
+    assert len(created) > 0
+    for st in created:
+        assert not (st.start_time < lock_e and st.end_time > lock_s)
