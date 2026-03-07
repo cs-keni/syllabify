@@ -23,6 +23,7 @@ export default function Schedule() {
   const [studyTimes, setStudyTimes] = useState([]);
   const [sources, setSources] = useState([]);
   const [syncingId, setSyncingId] = useState(null);
+  const [popover, setPopover] = useState(null); // { studyTime, x, y }
 
   // Handle OAuth callback params
   useEffect(() => {
@@ -120,6 +121,63 @@ export default function Schedule() {
     }
   };
 
+  const handleStudyTimeMove = async ({ props, start, end }) => {
+    if (props?.type !== 'study_time' || !props?.data?.id) return;
+    const studyTimeId = props.data.id;
+
+    setStudyTimes(prev =>
+      prev.map(st =>
+        st.id === studyTimeId
+          ? {
+              ...st,
+              start_time: start.toISOString(),
+              end_time: end.toISOString(),
+              is_locked: true,
+            }
+          : st
+      )
+    );
+
+    try {
+      await api.updateStudyTime(token, studyTimeId, {
+        start_time: start.toISOString(),
+        end_time: end.toISOString(),
+        is_locked: true,
+      });
+      toast.success('Study block pinned.');
+    } catch (err) {
+      toast.error(err.message || 'Could not move study block');
+      fetchData();
+    }
+  };
+
+  const handleStudyTimeClick = ({ type, data }, jsEvent) => {
+    if (type !== 'study_time' || !data) return;
+    setPopover({
+      studyTime: data,
+      x: jsEvent?.clientX ?? 0,
+      y: jsEvent?.clientY ?? 0,
+    });
+  };
+
+  const handleToggleLock = async () => {
+    if (!popover?.studyTime) return;
+    const studyTime = popover.studyTime;
+    const nextLocked = !studyTime.is_locked;
+    setPopover(null);
+
+    try {
+      await api.updateStudyTime(token, studyTime.id, { is_locked: nextLocked });
+      setStudyTimes(prev =>
+        prev.map(st => (st.id === studyTime.id ? { ...st, is_locked: nextLocked } : st))
+      );
+      toast.success(nextLocked ? 'Study block locked.' : 'Study block unlocked.');
+    } catch (err) {
+      toast.error(err.message || 'Failed to update study block');
+      fetchData();
+    }
+  };
+
   const handleGenerateStudyTimes = async () => {
     if (!token) return toast.error('Please sign in to generate study times.');
     setGenerating(true);
@@ -203,7 +261,45 @@ export default function Schedule() {
           <AppCalendar
             calendarEvents={calendarEvents}
             studyTimes={studyTimes}
+            onEventDrop={handleStudyTimeMove}
+            onEventResize={handleStudyTimeMove}
+            onEventClick={handleStudyTimeClick}
           />
+          {popover && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setPopover(null)}
+              />
+              <div
+                className="fixed z-50 min-w-[180px] rounded-lg border border-border bg-surface p-3 text-sm shadow-lg"
+                style={{ top: popover.y + 8, left: popover.x + 8 }}
+              >
+                <p className="mb-1 truncate font-medium text-ink">
+                  {popover.studyTime.course_name || 'Study Block'}
+                </p>
+                <p className="mb-2 text-xs text-ink-muted">
+                  {popover.studyTime.is_locked ? 'Locked (pinned)' : 'Unlocked (will regenerate)'}
+                </p>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleToggleLock}
+                    className="flex-1 rounded bg-primary px-2 py-1 text-xs font-medium text-primary-inv hover:opacity-90"
+                  >
+                    {popover.studyTime.is_locked ? 'Unlock' : 'Lock'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPopover(null)}
+                    className="rounded border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Sources sidebar */}

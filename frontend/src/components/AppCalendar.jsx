@@ -97,7 +97,7 @@ export default function AppCalendar({
 
   const handleEventClick = (info) => {
     if (onEventClick) {
-      onEventClick(info.event.extendedProps);
+      onEventClick(info.event.extendedProps, info.jsEvent);
     }
   };
 
