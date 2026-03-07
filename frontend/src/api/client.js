@@ -856,6 +856,19 @@ export async function getStudyTimes(token, termId) {
   return data;
 }
 
+/** PATCH /api/schedule/study-times/:id. Body: { start_time?, end_time?, is_locked?, notes? }. */
+export async function updateStudyTime(token, studyTimeId, body) {
+  const res = await apiFetch(`${BASE}/api/schedule/study-times/${studyTimeId}`, {
+    method: 'PATCH',
+    headers: headers(true, token),
+    body: JSON.stringify(body || {}),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.message || data.error || 'Failed to update study time');
+  return data;
+}
+
 export default {
   login,
   register,
@@ -888,4 +901,5 @@ export default {
   syncSource,
   deleteCalendarSource,
   getStudyTimes,
+  updateStudyTime,
 };
