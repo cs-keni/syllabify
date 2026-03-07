@@ -2,6 +2,7 @@
 # Input: term_id, DB session. Loads term with courses, assignments, and meetings,
 # allocates study time blocks (15-min multiples, 8am–10pm, no conflicts).
 # Goal: minimize max study minutes in a single day.
+# Meetings are recurring (day_of_week + start_time_str/end_time_str) or legacy one-off (start_time/end_time).
 #
 # DISCLAIMER: Project structure may change. Functions may be added or modified.
 
@@ -19,6 +20,78 @@ DEFAULT_STUDY_START = time(8, 0)   # 8:00 AM
 DEFAULT_STUDY_END = time(22, 0)    # 10:00 PM
 MINUTES_PER_SLOT = 15
 MINUTES_PER_WORKLOAD_UNIT = 15
+
+# Recurring meeting: 2-char day codes (MO, TU, ...) -> Python weekday (Mon=0, ..., Sun=6).
+_DAY_CODE_TO_WEEKDAY = {
+    "MO": 0, "TU": 1, "WE": 2, "TH": 3, "FR": 4, "SA": 5, "SU": 6,
+}
+
+
+def _parse_time_str(s: str | None) -> time | None:
+    """Parse 'HH:MM' or 'H:MM' string to time. Returns None if invalid or empty."""
+    if not s or not isinstance(s, str):
+        return None
+    s = s.strip()
+    if not s:
+        return None
+    try:
+        parts = s.split(":")
+        if len(parts) != 2:
+            return None
+        h, m = int(parts[0], 10), int(parts[1], 10)
+        if 0 <= h <= 23 and 0 <= m <= 59:
+            return time(h, m)
+    except (ValueError, TypeError):
+        pass
+    return None
+
+
+def _meetings_to_busy_intervals(
+    term: Term,
+    courses: list,
+    tz: ZoneInfo,
+) -> list[tuple[datetime, datetime]]:
+    """
+    Expand all meetings for the term's courses into (start, end) datetime intervals.
+    - Recurring: day_of_week + start_time_str + end_time_str over term.start_date..term.end_date.
+    - Legacy one-off: meeting.start_time / meeting.end_time if set.
+    """
+    intervals: list[tuple[datetime, datetime]] = []
+    term_start = term.start_date
+    term_end = term.end_date
+    if term_start is None or term_end is None:
+        return intervals
+    current = term_start
+    one_day = timedelta(days=1)
+    while current <= term_end:
+        for course in courses:
+            for meeting in course.meetings:
+                # Recurring: day_of_week + start_time_str, end_time_str
+                if meeting.day_of_week and meeting.start_time_str and meeting.end_time_str:
+                    day_code = (meeting.day_of_week or "").strip().upper()
+                    weekday = _DAY_CODE_TO_WEEKDAY.get(day_code)
+                    if weekday is None or current.weekday() != weekday:
+                        continue
+                    start_t = _parse_time_str(meeting.start_time_str)
+                    end_t = _parse_time_str(meeting.end_time_str)
+                    if start_t is None or end_t is None:
+                        continue
+                    start_dt = datetime.combine(current, start_t, tzinfo=tz)
+                    end_dt = datetime.combine(current, end_t, tzinfo=tz)
+                    if end_dt <= start_dt:
+                        continue
+                    intervals.append((start_dt, end_dt))
+                # Legacy one-off: start_time, end_time
+                elif meeting.start_time is not None and meeting.end_time is not None:
+                    s, e = meeting.start_time, meeting.end_time
+                    if s.tzinfo is None:
+                        s = s.replace(tzinfo=tz)
+                    if e.tzinfo is None:
+                        e = e.replace(tzinfo=tz)
+                    if e > s:
+                        intervals.append((s, e))
+        current += one_day
+    return intervals
 
 
 def _get_tz(dt: datetime) -> ZoneInfo:
@@ -137,12 +210,8 @@ def generate_study_times(
     # Timezone from first assignment
     tz = _get_tz(assignments[0].start_date)
 
-    # Busy intervals: all meetings for this term's courses
-    meeting_busy: list[tuple[datetime, datetime]] = []
-    for course in term.courses:
-        for meeting in course.meetings:
-            meeting_busy.append((meeting.start_time, meeting.end_time))
-
+    # Busy intervals: expand recurring and one-off meetings into (start, end) intervals
+    meeting_busy = _meetings_to_busy_intervals(term, term.courses, tz)
     meeting_busy = _merge_intervals(meeting_busy)
 
     # Clear existing study times for this term
