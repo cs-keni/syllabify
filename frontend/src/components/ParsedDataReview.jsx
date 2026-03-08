@@ -336,6 +336,7 @@ function AddAssessmentModal({
 }) {
   const [name, setName] = useState('');
   const [type, setType] = useState(defaultType);
+  const [start, setStart] = useState('');
   const [due, setDue] = useState('');
   const [hours, setHours] = useState(
     type === 'midterm' || type === 'final' ? 2 : type === 'quiz' ? 1 : 3
@@ -346,6 +347,7 @@ function AddAssessmentModal({
     onAdd({
       id: `temp-${Date.now()}`,
       name: name.trim() || 'Untitled',
+      start: start.trim() || '',
       due: due.trim() || '',
       hours: Number(hours) || 1,
       type,
@@ -353,6 +355,7 @@ function AddAssessmentModal({
     onClose();
     setName('');
     setType('assignment');
+    setStart('');
     setDue('');
     setHours(3);
   };
@@ -394,6 +397,20 @@ function AddAssessmentModal({
               </option>
             ))}
           </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-ink-muted">
+            Start date (optional)
+          </label>
+          <input
+            type="date"
+            value={start || ''}
+            onChange={e => setStart(e.target.value)}
+            className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
+          />
+          <p className="text-xs text-ink-muted mt-0.5">
+            When the assignment becomes available. Leave blank to use term start.
+          </p>
         </div>
         <div>
           <label className="block text-sm font-medium text-ink-muted">
@@ -587,6 +604,13 @@ function SortableAssessmentRow({ item, onUpdate, onDelete, sectionId }) {
       </td>
       <td className="px-3 py-2">
         <EditableCell
+          value={item.start || item.start_date || ''}
+          onChange={v => onUpdate(item.id, 'start', v)}
+          type="date"
+        />
+      </td>
+      <td className="px-3 py-2">
+        <EditableCell
           value={item.due || item.due_date || ''}
           onChange={v => onUpdate(item.id, 'due', v)}
           type="date"
@@ -744,6 +768,9 @@ function AssessmentSectionBox({
                 <th className="text-left font-medium text-ink px-3 py-2">
                   Type
                 </th>
+                <th className="text-left font-medium text-ink px-3 py-2" title="When assignment becomes available (scheduler uses term start if blank)">
+                  Start date
+                </th>
                 <th className="text-left font-medium text-ink px-3 py-2">
                   Due date
                 </th>
@@ -816,7 +843,7 @@ export default function ParsedDataReview({
     const newId = `temp-${Date.now()}`;
     onAssignmentsChange([
       ...assignments,
-      { id: newId, name: '', due: '', hours: 3, type: defaultType },
+      { id: newId, name: '', start: '', due: '', hours: 3, type: defaultType },
     ]);
   };
 
@@ -1107,6 +1134,9 @@ export default function ParsedDataReview({
                         <td className="w-8 px-2 py-2 text-ink-muted">⋮⋮</td>
                         <td className="px-3 py-2">{a.name}</td>
                         <td className="px-3 py-2">{a.type || 'assignment'}</td>
+                        <td className="px-3 py-2">
+                          {a.start || a.start_date || '—'}
+                        </td>
                         <td className="px-3 py-2">
                           {a.due || a.due_date || '—'}
                         </td>

@@ -177,6 +177,7 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
   );
   const items = (assignments || []).map(a => ({
     name: a.name,
+    start: a.start || a.start_date || null,
     due: a.due || a.due_date || null,
     hours: a.hours ?? 3,
     type: a.type || 'assignment',
