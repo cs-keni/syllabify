@@ -794,6 +794,22 @@ export async function getCalendarEvents(
   return data;
 }
 
+/** GET /api/schedule/terms/:termId/study-times?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD. Returns { study_times }. */
+export async function getStudyTimes(token, termId, startDate, endDate) {
+  const url = new URL(
+    `${BASE}/api/schedule/terms/${termId}/study-times`
+  );
+  url.searchParams.set('start_date', startDate);
+  url.searchParams.set('end_date', endDate);
+  const res = await apiFetch(url.toString(), {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch study times');
+  return data;
+}
+
 /** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. */
 export async function generateStudyTimes(token, termId) {
   const res = await apiFetch(
@@ -835,5 +851,6 @@ export default {
   updateAssignment,
   deleteAssignment,
   parseSyllabus,
+  getStudyTimes,
   generateStudyTimes,
 };

@@ -2,13 +2,23 @@
  * Schedule page. Displays weekly schedule via SchedulePreview.
  * Google Calendar import and sync.
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../contexts/AuthContext';
 import * as api from '../api/client';
 import SchedulePreview from '../components/SchedulePreview';
 import CalendarImportModal from '../components/CalendarImportModal';
+
+/** Monday of the given week. */
+function getMonday(d) {
+  const x = new Date(d);
+  const day = x.getDay();
+  const diff = x.getDate() - day + (day === 0 ? -6 : 1);
+  x.setDate(diff);
+  x.setHours(0, 0, 0, 0);
+  return x;
+}
 
 /** Renders schedule page with weekStart (Monday of current week) and SchedulePreview. */
 export default function Schedule() {
@@ -21,13 +31,8 @@ export default function Schedule() {
   const [showImportModal, setShowImportModal] = useState(false);
   const [terms, setTerms] = useState([]);
   const [activeTerm, setActiveTerm] = useState(null);
-
-  const [weekStart] = useState(() => {
-    const d = new Date();
-    const day = d.getDay();
-    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-    return new Date(d.setDate(diff));
-  });
+  const [weekStart, setWeekStart] = useState(() => getMonday(new Date()));
+  const scheduleRefreshRef = useRef(null);
 
   useEffect(() => {
     if (searchParams.get('calendar_connected') === '1') {
@@ -107,6 +112,7 @@ export default function Schedule() {
           ? `Generated ${data.created_count} study time block(s).`
           : 'Study times generated.'
       );
+      scheduleRefreshRef.current?.();
     } catch (err) {
       toast.error(err.message || 'Failed to generate study times.');
     } finally {
@@ -125,8 +131,51 @@ export default function Schedule() {
         </Link>
         <h1 className="mt-2 text-2xl font-semibold text-ink">Schedule</h1>
         <p className="mt-1 text-sm text-ink-muted">
-          Weekly view of your study blocks. Conflicts are highlighted subtly.
+          Weekly view of your study blocks.
         </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() =>
+                setWeekStart(d => {
+                  const next = new Date(d);
+                  next.setDate(next.getDate() - 7);
+                  return getMonday(next);
+                })
+              }
+              className="rounded-button border border-border px-2 py-1.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-muted"
+              aria-label="Previous week"
+            >
+              ←
+            </button>
+            <span className="text-sm text-ink px-2 min-w-[140px] text-center">
+              {weekStart.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              })}{' '}
+              –{' '}
+              {new Date(
+                weekStart.getTime() + 6 * 24 * 60 * 60 * 1000
+              ).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+            </span>
+            <button
+              type="button"
+              onClick={() =>
+                setWeekStart(d => {
+                  const next = new Date(d);
+                  next.setDate(next.getDate() + 7);
+                  return getMonday(next);
+                })
+              }
+              className="rounded-button border border-border px-2 py-1.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-muted"
+              aria-label="Next week"
+            >
+              →
+            </button>
+          </div>
+        </div>
         <div className="mt-3 flex flex-wrap gap-2">
           <button
             type="button"
@@ -167,7 +216,13 @@ export default function Schedule() {
           activeTerm={activeTerm}
         />
       )}
-      <SchedulePreview weekStart={weekStart} />
+      <SchedulePreview
+        weekStart={weekStart}
+        activeTerm={activeTerm}
+        token={token}
+        getStudyTimes={api.getStudyTimes}
+        onRefresh={scheduleRefreshRef}
+      />
     </div>
   );
 }
