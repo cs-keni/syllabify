@@ -197,8 +197,8 @@ def generate_study_times(
     term = (
         session.query(Term)
         .options(
-            joinedload(Term.courses).joinedload("assignments"),
-            joinedload(Term.courses).joinedload("meetings"),
+            joinedload(Term.courses).joinedload(Course.assignments),
+            joinedload(Term.courses).joinedload(Course.meetings),
             joinedload(Term.study_times),
         )
         .filter(Term.id == term_id)
