@@ -11,8 +11,14 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy.orm import Session, joinedload
 
+# Import all models referenced by Term's relationships so SQLAlchemy can resolve
+# them when configuring the mapper (avoids InvalidRequestError: failed to locate 'User').
+from app.models.assignment import Assignment  # noqa: F401
+from app.models.course import Course  # noqa: F401
+from app.models.meeting import Meeting  # noqa: F401
 from app.models.study_time import StudyTime
 from app.models.term import Term
+from app.models.user import User  # noqa: F401
 
 # Default study window (can be overridden by user preferences later).
 DEFAULT_STUDY_START = time(8, 0)   # 8:00 AM
