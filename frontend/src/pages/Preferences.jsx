@@ -14,9 +14,12 @@ import {
 } from '../api/client';
 import { useAccent } from '../contexts/AccentContext';
 import toast from 'react-hot-toast';
-import RedMan from '../assets/RedMan.png';
-import GreenMan from '../assets/GreenMan.png';
-import BlueMan from '../assets/BlueMan.png';
+import BlueInvertedTriangle from '../assets/blue_inverted_triangle.png';
+import GreenTriangle from '../assets/green_triangle.png';
+import PinkSquare from '../assets/pink_square.png';
+import PurpleHeart from '../assets/purple_heart.png';
+import RedTriangleKing from '../assets/red_triangle_king.png';
+import YellowDiamond from '../assets/yellow_diamond.png';
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const DAY_TO_CODE = {
@@ -29,9 +32,16 @@ const DAY_TO_CODE = {
   Sun: 'SU',
 };
 const AVATAR_OPTIONS = [
-  { key: 'red', label: 'Red', src: RedMan },
-  { key: 'green', label: 'Green', src: GreenMan },
-  { key: 'blue', label: 'Blue', src: BlueMan },
+  {
+    key: 'blue_inverted_triangle',
+    label: 'Blue Inverted Triangle',
+    src: BlueInvertedTriangle,
+  },
+  { key: 'green_triangle', label: 'Green Triangle', src: GreenTriangle },
+  { key: 'pink_square', label: 'Pink Square', src: PinkSquare },
+  { key: 'purple_heart', label: 'Purple Heart', src: PurpleHeart },
+  { key: 'red_triangle_king', label: 'Red Triangle King', src: RedTriangleKing },
+  { key: 'yellow_diamond', label: 'Yellow Diamond', src: YellowDiamond },
 ];
 
 function parsePreferredDays(csv) {
