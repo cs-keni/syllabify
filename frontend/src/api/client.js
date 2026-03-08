@@ -810,6 +810,37 @@ export async function getStudyTimes(token, termId, startDate, endDate) {
   return data;
 }
 
+/** PATCH /api/schedule/study-times/:id. Body: { start_time?, end_time?, notes? }. */
+export async function updateStudyTime(token, studyTimeId, body) {
+  const res = await apiFetch(
+    `${BASE}/api/schedule/study-times/${studyTimeId}`,
+    {
+      method: 'PATCH',
+      headers: headers(true, token),
+      body: JSON.stringify(body || {}),
+      credentials: 'include',
+    }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update study time');
+  return data;
+}
+
+/** DELETE /api/schedule/study-times/:id. */
+export async function deleteStudyTime(token, studyTimeId) {
+  const res = await apiFetch(
+    `${BASE}/api/schedule/study-times/${studyTimeId}`,
+    {
+      method: 'DELETE',
+      headers: headers(true, token),
+      credentials: 'include',
+    }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to delete study time');
+  return data;
+}
+
 /** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. */
 export async function generateStudyTimes(token, termId) {
   const res = await apiFetch(
@@ -853,4 +884,6 @@ export default {
   parseSyllabus,
   getStudyTimes,
   generateStudyTimes,
+  updateStudyTime,
+  deleteStudyTime,
 };

@@ -221,6 +221,8 @@ export default function Schedule() {
         activeTerm={activeTerm}
         token={token}
         getStudyTimes={api.getStudyTimes}
+        updateStudyTime={api.updateStudyTime}
+        deleteStudyTime={api.deleteStudyTime}
         onRefresh={scheduleRefreshRef}
       />
     </div>
