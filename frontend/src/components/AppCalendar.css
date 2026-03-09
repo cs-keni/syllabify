@@ -1,4 +1,4 @@
-/* Schedule calendar – cohesive typography, timestamps, and event styling */
+/* Schedule calendar – Google Calendar–inspired styling */
 
 .app-calendar-container {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -9,6 +9,11 @@
     0 1px 2px -1px rgb(0 0 0 / 0.06);
   padding: 1.25rem;
   border: 1px solid var(--color-border, #e5e7eb);
+  transition: opacity 0.2s ease;
+}
+
+.app-calendar-container .fc-view-harness {
+  transition: opacity 0.15s ease;
 }
 
 .dark .app-calendar-container {
@@ -33,7 +38,63 @@
   color: var(--color-ink);
 }
 
-/* Time labels – tabular numbers for alignment, monospace for consistency */
+/* Google-style: Month/Year header at top – larger, cleaner */
+.app-calendar-google-style .fc-toolbar-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+}
+
+/* Day column headers: SUN / 9 – weekday above, day number below, Google-like */
+.app-calendar-google-style .fc-day-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.app-calendar-google-style .fc-day-header-weekday {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.04em;
+}
+
+.app-calendar-google-style .fc-day-header-day {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.app-calendar-google-style .fc-col-header-cell-cushion {
+  padding: 0.6rem 0.35rem;
+}
+
+/* Day numbers in month view – larger, more prominent */
+.app-calendar-google-style .fc-daygrid-day-number {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  padding: 0.5rem;
+  min-width: 2rem;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.app-calendar-google-style .fc-day-today .fc-daygrid-day-number {
+  background: var(--color-accent, #10b981);
+  color: white;
+}
+
+/* Week view: day numbers in header – larger */
+.app-calendar-google-style .fc-timegrid-axis-cushion {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+
+/* Time labels – tabular numbers */
 .app-calendar-container .fc-timegrid-slot-label {
   font-family: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
   font-size: 0.6875rem;

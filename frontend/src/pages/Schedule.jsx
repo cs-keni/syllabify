@@ -2,7 +2,7 @@
  * Schedule page. Displays calendar via AppCalendar (FullCalendar).
  * Supports Google Calendar and ICS feed import, sources sidebar.
  */
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../contexts/AuthContext';
@@ -28,8 +28,10 @@ export default function Schedule() {
   const [studyTimes, setStudyTimes] = useState([]);
   const [sources, setSources] = useState([]);
   const [syncingId, setSyncingId] = useState(null);
+  const [colorEditId, setColorEditId] = useState(null);
   const [popover, setPopover] = useState(null); // { studyTime, x, y }
   const [eventDetail, setEventDetail] = useState(null); // { event, x, y }
+  const autoSyncDone = useRef(false);
 
   // Handle OAuth callback params
   useEffect(() => {
@@ -81,6 +83,24 @@ export default function Schedule() {
     fetchData();
   }, [fetchData]);
 
+  // Auto-sync stale sources when schedule page loads (e.g. not synced in 6+ hours)
+  useEffect(() => {
+    if (!token || sources.length === 0 || autoSyncDone.current) return;
+    const STALE_HOURS = 6;
+    const staleSources = sources.filter(src => {
+      const last = src.last_synced_at;
+      if (!last) return true;
+      const age = (Date.now() - new Date(last).getTime()) / (1000 * 60 * 60);
+      return age >= STALE_HOURS;
+    });
+    if (staleSources.length > 0) {
+      autoSyncDone.current = true;
+      Promise.all(staleSources.map(src => api.syncSource(token, src.id)))
+        .then(() => fetchData())
+        .catch(() => {});
+    }
+  }, [token, sources, fetchData]);
+
   // Handlers
   const handleConnectOrImport = async () => {
     if (!token) return toast.error('Please sign in first.');
@@ -129,6 +149,24 @@ export default function Schedule() {
       fetchData();
     } catch (err) {
       toast.error(err.message || 'Delete failed');
+    }
+  };
+
+  const handleColorChange = async (sourceId, color) => {
+    setColorEditId(null);
+    try {
+      await api.updateCalendarSource(token, sourceId, { color });
+      setSources(prev =>
+        prev.map(s => (s.id === sourceId ? { ...s, color } : s))
+      );
+      setCalendarEvents(prev =>
+        prev.map(e =>
+          e.source_id === sourceId ? { ...e, source_color: color } : e
+        )
+      );
+      toast.success('Color updated.');
+    } catch (err) {
+      toast.error(err.message || 'Failed to update color');
     }
   };
 
@@ -493,10 +531,55 @@ export default function Schedule() {
                     className="flex items-center justify-between gap-2"
                   >
                     <div className="flex items-center gap-2 min-w-0">
-                      <span
-                        className="w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{ backgroundColor: src.color || '#64748B' }}
-                      />
+                      <div className="relative shrink-0">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setColorEditId(c => (c === src.id ? null : src.id))
+                          }
+                          className="w-5 h-5 rounded-full border-2 border-white dark:border-gray-800 shadow-sm hover:ring-2 hover:ring-accent/50 transition-all cursor-pointer"
+                          style={{
+                            backgroundColor: src.color || '#64748B',
+                          }}
+                          title="Change color"
+                        />
+                        {colorEditId === src.id && (
+                          <>
+                            <div
+                              className="fixed inset-0 z-40"
+                              onClick={() => setColorEditId(null)}
+                            />
+                            <div className="absolute left-0 top-6 z-50 p-2 rounded-lg border border-border bg-surface shadow-lg">
+                              <div className="grid grid-cols-4 gap-1">
+                                {[
+                                  '#3B82F6',
+                                  '#10B981',
+                                  '#F59E0B',
+                                  '#EF4444',
+                                  '#8B5CF6',
+                                  '#EC4899',
+                                  '#06B6D4',
+                                  '#84CC16',
+                                  '#F97316',
+                                  '#64748B',
+                                  '#6366F1',
+                                  '#14B8A6',
+                                ].map(c => (
+                                  <button
+                                    key={c}
+                                    type="button"
+                                    onClick={() =>
+                                      handleColorChange(src.id, c)
+                                    }
+                                    className="w-6 h-6 rounded border border-border hover:scale-110 transition-transform"
+                                    style={{ backgroundColor: c }}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
                       <div className="min-w-0">
                         <p className="text-xs font-medium text-ink truncate">
                           {src.source_label}

@@ -4,6 +4,7 @@
 
 import logging
 import os
+import re
 import secrets
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
@@ -304,6 +305,38 @@ def get_sources():
         conn.close()
 
 
+@bp.route("/sources/<int:source_id>", methods=["PATCH"])
+def patch_source(source_id):
+    """Update a calendar source (e.g. color)."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    data = request.get_json() or {}
+    color = data.get("color")
+
+    if not color or not isinstance(color, str):
+        return jsonify({"error": "color is required (hex string)"}), 400
+
+    # Validate hex color
+    if not re.match(r"^#[0-9A-Fa-f]{6}$", color):
+        return jsonify({"error": "invalid color format (use #RRGGBB)"}), 400
+
+    conn = get_db()
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            "UPDATE CalendarSources SET color = %s WHERE id = %s AND user_id = %s",
+            (color[:7], source_id, user_id),
+        )
+        conn.commit()
+        if cur.rowcount == 0:
+            return jsonify({"error": "source not found"}), 404
+        return jsonify({"ok": True})
+    finally:
+        conn.close()
+
+
 @bp.route("/sources/<int:source_id>", methods=["DELETE"])
 def delete_source(source_id):
     """Delete a calendar source (cascade deletes events)."""
@@ -348,16 +381,18 @@ def import_calendar():
     if not calendar_ids:
         return jsonify({"error": "calendar_ids is required"}), 400
 
-    try:
-        start_dt = datetime.fromisoformat(start_date.replace("Z", "+00:00")) if start_date else None
-        end_dt = datetime.fromisoformat(end_date.replace("Z", "+00:00")) if end_date else None
-    except (ValueError, TypeError):
-        return jsonify({"error": "invalid start_date or end_date"}), 400
+    # Use wide default range if no dates provided: 1 year past to 2 years future
+    now = datetime.utcnow()
+    if start_date and end_date:
+        try:
+            start_dt = datetime.fromisoformat(start_date.replace("Z", "+00:00"))
+            end_dt = datetime.fromisoformat(end_date.replace("Z", "+00:00"))
+        except (ValueError, TypeError):
+            return jsonify({"error": "invalid start_date or end_date"}), 400
+    else:
+        start_dt = now - timedelta(days=365)
+        end_dt = now + timedelta(days=730)
 
-    if not start_dt or not end_dt:
-        return jsonify({"error": "start_date and end_date are required"}), 400
-
-    # Google Calendar API expects RFC3339; use UTC. time_max is exclusive, so add 1 day.
     def to_rfc3339(dt):
         if dt.tzinfo is None:
             return dt.strftime("%Y-%m-%dT%H:%M:%SZ")

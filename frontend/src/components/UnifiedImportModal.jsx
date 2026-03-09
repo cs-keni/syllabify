@@ -24,8 +24,6 @@ export default function UnifiedImportModal({
   // Google Calendar tab state
   const [calendars, setCalendars] = useState([]);
   const [selected, setSelected] = useState(new Set());
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
   const [loadingCals, setLoadingCals] = useState(false);
 
   // ICS tab state
@@ -51,20 +49,6 @@ export default function UnifiedImportModal({
     }
   }, [activeTab, calendarConnected, token]);
 
-  // Set date defaults from active term
-  useEffect(() => {
-    if (activeTerm?.start_date && activeTerm?.end_date) {
-      setStartDate(activeTerm.start_date);
-      setEndDate(activeTerm.end_date);
-    } else {
-      const now = new Date();
-      setStartDate(now.toISOString().slice(0, 10));
-      const future = new Date(now);
-      future.setMonth(future.getMonth() + 3);
-      setEndDate(future.toISOString().slice(0, 10));
-    }
-  }, [activeTerm]);
-
   const toggleCalendar = id => {
     setSelected(prev => {
       const next = new Set(prev);
@@ -75,14 +59,11 @@ export default function UnifiedImportModal({
 
   const handleGoogleImport = async () => {
     if (selected.size === 0) return setError('Select at least one calendar');
-    if (!startDate || !endDate) return setError('Select a date range');
     setImporting(true);
     setError('');
     try {
       await onImportGoogle({
         calendar_ids: Array.from(selected),
-        start_date: startDate,
-        end_date: endDate,
       });
       onClose();
     } catch (e) {
@@ -166,8 +147,12 @@ export default function UnifiedImportModal({
                 <>
                   <div>
                     <label className="block text-sm font-medium text-ink mb-2">
-                      Select calendars
+                      Select calendars to import
                     </label>
+                    <p className="text-xs text-ink-muted mb-2">
+                      All events from your selected calendars will be imported.
+                      Syncing happens automatically when you add or update sources.
+                    </p>
                     <div className="max-h-40 overflow-y-auto border border-border rounded-lg p-2 space-y-1 bg-surface">
                       {calendars.map(cal => (
                         <label
@@ -185,30 +170,6 @@ export default function UnifiedImportModal({
                           </span>
                         </label>
                       ))}
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-sm font-medium text-ink mb-1">
-                        Start
-                      </label>
-                      <input
-                        type="date"
-                        value={startDate}
-                        onChange={e => setStartDate(e.target.value)}
-                        className="w-full rounded-lg border border-border bg-surface text-ink text-sm px-3 py-2"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-ink mb-1">
-                        End
-                      </label>
-                      <input
-                        type="date"
-                        value={endDate}
-                        onChange={e => setEndDate(e.target.value)}
-                        className="w-full rounded-lg border border-border bg-surface text-ink text-sm px-3 py-2"
-                      />
                     </div>
                   </div>
                 </>

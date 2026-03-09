@@ -145,11 +145,18 @@ export default function AppCalendar({
   };
 
   return (
-    <div className="app-calendar-container">
+    <div className="app-calendar-container app-calendar-google-style">
       <FullCalendar
         ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         initialView={currentView}
+        firstDay={0}
+        dayHeaderContent={arg => (
+          <div className="fc-day-header-content">
+            <span className="fc-day-header-weekday">{arg.date.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}</span>
+            <span className="fc-day-header-day">{arg.date.getDate()}</span>
+          </div>
+        )}
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',
@@ -163,8 +170,9 @@ export default function AppCalendar({
         weekends={true}
         slotMinTime="06:00:00"
         slotMaxTime="24:00:00"
-        slotDuration="00:15:00"
+        slotDuration="00:05:00"
         slotLabelInterval="01:00:00"
+        snapDuration="00:05:00"
         allDaySlot={true}
         nowIndicator={true}
         eventClick={handleEventClick}

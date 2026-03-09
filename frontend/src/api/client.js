@@ -746,15 +746,12 @@ export async function getCalendarList(token) {
   return data;
 }
 
-/** POST /api/calendar/import. Body: { calendar_ids, start_date, end_date }. Returns { ok, imported_count }. */
-export async function importCalendar(
-  token,
-  { calendar_ids, start_date, end_date }
-) {
+/** POST /api/calendar/import. Body: { calendar_ids } (optional start_date, end_date). Returns { ok, imported_count }. */
+export async function importCalendar(token, { calendar_ids, start_date, end_date } = {}) {
   const res = await apiFetch(`${BASE}/api/calendar/import`, {
     method: 'POST',
     headers: headers(true, token),
-    body: JSON.stringify({ calendar_ids, start_date, end_date }),
+    body: JSON.stringify({ calendar_ids: calendar_ids || [], start_date: start_date || '', end_date: end_date || '' }),
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
@@ -897,6 +894,18 @@ export async function syncSource(token, sourceId) {
 }
 
 /** DELETE /api/calendar/sources/:sourceId. Returns { ok }. */
+export async function updateCalendarSource(token, sourceId, { color }) {
+  const res = await apiFetch(`${BASE}/api/calendar/sources/${sourceId}`, {
+    method: 'PATCH',
+    headers: headers(true, token),
+    body: JSON.stringify({ color }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update source');
+  return data;
+}
+
 export async function deleteCalendarSource(token, sourceId) {
   const res = await apiFetch(`${BASE}/api/calendar/sources/${sourceId}`, {
     method: 'DELETE',
