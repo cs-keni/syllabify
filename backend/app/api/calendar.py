@@ -1,15 +1,31 @@
-# Calendar API: Google Calendar import, sync, events.
-# OAuth flow for calendar scope; events.list; store in ExternalEvents.
+# Calendar API: Google Calendar import, ICS feed import, sync, events.
+# OAuth flow for calendar scope; events.list; store in CalendarSources/CalendarEvents.
 # See docs/GOOGLE-OAUTH.md.
 
+import logging
 import os
 import secrets
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
 
-from flask import Blueprint, jsonify, redirect, request
+from flask import Blueprint, Response, jsonify, redirect, request
+
+from app.services.calendar_export_service import (
+    build_ical_feed_for_user,
+    get_or_create_feed_token,
+    rotate_feed_token,
+    set_feed_enabled,
+)
+from app.services.ics_parsing_service import (
+    auto_detect_category,
+    classify_event,
+    fetch_ics_feed,
+    hash_feed_url,
+    parse_ics_content,
+)
 
 bp = Blueprint("calendar", __name__, url_prefix="/api/calendar")
+logger = logging.getLogger(__name__)
 
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
 GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET", "").strip()
@@ -111,6 +127,8 @@ def _store_tokens(user_id, access_token, refresh_token, expires_at=None):
 _oauth_state_store = {}
 
 
+# ── OAuth Endpoints (unchanged) ────────────────────────────
+
 @bp.route("/auth-url", methods=["GET"])
 def auth_url():
     """Return Google OAuth URL for Calendar scope. Requires JWT."""
@@ -193,6 +211,14 @@ def _frontend_redirect(path):
     return base.rstrip("/") + path
 
 
+def _calendar_public_base_url():
+    """Resolve public backend base URL used in export feed links."""
+    configured = os.getenv("BACKEND_PUBLIC_URL", "").strip()
+    if configured:
+        return configured.rstrip("/")
+    return request.url_root.rstrip("/")
+
+
 @bp.route("/list", methods=["GET"])
 def list_calendars():
     """Return user's Google calendars. Requires Calendar OAuth."""
@@ -220,14 +246,91 @@ def list_calendars():
         ]
         return jsonify({"calendars": calendars})
     except Exception as e:
-        import logging
-        logging.getLogger(__name__).warning("Calendar list failed: %s", e)
+        logger.warning("Calendar list failed: %s", e)
         return jsonify({"error": "calendar_api_failed", "message": str(e)}), 500
 
 
+@bp.route("/status", methods=["GET"])
+def status():
+    """Return whether user has Calendar connected."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    creds = _get_google_credentials(user_id)
+    connected = creds is not None
+    return jsonify({"connected": connected})
+
+
+# ── Calendar Sources ───────────────────────────────────────
+
+@bp.route("/sources", methods=["GET"])
+def get_sources():
+    """Return user's calendar sources with event counts."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            """SELECT cs.id, cs.source_type, cs.source_label, cs.feed_category,
+                      cs.color, cs.is_active, cs.last_synced_at, cs.sync_error,
+                      COUNT(ce.id) AS event_count
+               FROM CalendarSources cs
+               LEFT JOIN CalendarEvents ce ON ce.source_id = cs.id AND ce.sync_status = 'active'
+               WHERE cs.user_id = %s
+               GROUP BY cs.id
+               ORDER BY cs.created_at""",
+            (user_id,),
+        )
+        rows = cur.fetchall()
+        sources = []
+        for r in rows:
+            sources.append({
+                "id": r["id"],
+                "source_type": r["source_type"],
+                "source_label": r["source_label"],
+                "feed_category": r["feed_category"],
+                "color": r["color"],
+                "is_active": bool(r["is_active"]),
+                "last_synced_at": r["last_synced_at"].isoformat() if r.get("last_synced_at") else None,
+                "sync_error": r["sync_error"],
+                "event_count": r["event_count"],
+            })
+        return jsonify({"sources": sources})
+    finally:
+        conn.close()
+
+
+@bp.route("/sources/<int:source_id>", methods=["DELETE"])
+def delete_source(source_id):
+    """Delete a calendar source (cascade deletes events)."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    conn = get_db()
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            "DELETE FROM CalendarSources WHERE id = %s AND user_id = %s",
+            (source_id, user_id),
+        )
+        conn.commit()
+        if cur.rowcount == 0:
+            return jsonify({"error": "source not found"}), 404
+        return jsonify({"ok": True})
+    finally:
+        conn.close()
+
+
+# ── Google Calendar Import (refactored to use new tables) ──
+
 @bp.route("/import", methods=["POST"])
 def import_calendar():
-    """Import events from selected calendars. Body: { calendar_ids: [], start_date, end_date }."""
+    """Import events from selected Google calendars into CalendarSources/CalendarEvents."""
     user_id, err = _get_user_from_token()
     if err:
         return err[0], err[1]
@@ -240,6 +343,7 @@ def import_calendar():
     calendar_ids = data.get("calendar_ids") or []
     start_date = data.get("start_date") or ""
     end_date = data.get("end_date") or ""
+    category = data.get("category", "other")
 
     if not calendar_ids:
         return jsonify({"error": "calendar_ids is required"}), 400
@@ -265,6 +369,26 @@ def import_calendar():
         cur = conn.cursor(dictionary=True)
 
         for cal_id in calendar_ids[:20]:
+            # Find or create CalendarSource for this Google calendar
+            cur.execute(
+                """SELECT id, feed_category FROM CalendarSources
+                   WHERE user_id = %s AND source_type = 'google' AND google_calendar_id = %s""",
+                (user_id, cal_id),
+            )
+            source_row = cur.fetchone()
+            if source_row:
+                source_id = source_row["id"]
+                src_category = source_row.get("feed_category", "other")
+            else:
+                cur.execute(
+                    """INSERT INTO CalendarSources
+                       (user_id, source_type, source_label, google_calendar_id, feed_category)
+                       VALUES (%s, 'google', %s, %s, %s)""",
+                    (user_id, cal_id[:100], cal_id, category),
+                )
+                source_id = cur.lastrowid
+                src_category = category
+
             events_result = (
                 service.events()
                 .list(
@@ -287,196 +411,544 @@ def import_calendar():
                 end_str = end.get("dateTime") or end.get("date")
                 if not start_str or not end_str:
                     continue
-                try:
-                    ev_start = datetime.fromisoformat(start_str.replace("Z", "+00:00"))
-                    ev_end = datetime.fromisoformat(end_str.replace("Z", "+00:00"))
-                except (ValueError, TypeError):
-                    continue
 
+                is_date_event = "date" in start and "dateTime" not in start
                 ev_id = ev.get("id", "")
                 title = (ev.get("summary") or "Untitled")[:500]
+                description = (ev.get("description") or "")[:2000] or None
+                location = (ev.get("location") or "")[:500] or None
 
-                cur.execute(
-                    """INSERT INTO ExternalEvents (user_id, google_event_id, google_calendar_id, title, start_time, end_time, source)
-                       VALUES (%s, %s, %s, %s, %s, %s, 'google')
-                       ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time), end_time = VALUES(end_time)""",
-                    (user_id, ev_id, cal_id, title, ev_start, ev_end),
+                event_kind = classify_event(
+                    is_date=is_date_event,
+                    start_val=start_str,
+                    end_val=end_str,
+                    title=title,
+                    source_category=src_category,
                 )
+                event_category = auto_detect_category(title, src_category)
+
+                if is_date_event:
+                    cur.execute(
+                        """INSERT INTO CalendarEvents
+                           (user_id, source_id, external_uid, instance_key, title, description, location,
+                            start_date, end_date, event_kind, event_category, sync_status, original_data)
+                           VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, 'active', %s)
+                           ON DUPLICATE KEY UPDATE title = VALUES(title), start_date = VALUES(start_date),
+                           end_date = VALUES(end_date), sync_status = 'active', description = VALUES(description)""",
+                        (user_id, source_id, ev_id, title, description, location,
+                         start_str, end_str, event_kind, event_category,
+                         '{"source": "google"}'),
+                    )
+                else:
+                    try:
+                        ev_start = datetime.fromisoformat(start_str.replace("Z", "+00:00"))
+                        ev_end = datetime.fromisoformat(end_str.replace("Z", "+00:00"))
+                    except (ValueError, TypeError):
+                        continue
+
+                    tz = start.get("timeZone", "")
+
+                    cur.execute(
+                        """INSERT INTO CalendarEvents
+                           (user_id, source_id, external_uid, instance_key, title, description, location,
+                            start_time, end_time, original_timezone, event_kind, event_category, sync_status, original_data)
+                           VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, %s, 'active', %s)
+                           ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time),
+                           end_time = VALUES(end_time), sync_status = 'active', description = VALUES(description)""",
+                        (user_id, source_id, ev_id, title, description, location,
+                         ev_start, ev_end, tz or None, event_kind, event_category,
+                         '{"source": "google"}'),
+                    )
                 total_imported += 1
 
+            # Update source last_synced_at
             cur.execute(
-                """INSERT INTO UserCalendarConnections (user_id, google_calendar_id, calendar_name, import_date_range_start, import_date_range_end, last_synced_at)
-                   VALUES (%s, %s, %s, %s, %s, NOW())
-                   ON DUPLICATE KEY UPDATE calendar_name = VALUES(calendar_name), import_date_range_start = VALUES(import_date_range_start),
-                   import_date_range_end = VALUES(import_date_range_end), last_synced_at = NOW()""",
-                (user_id, cal_id, cal_id[:255], start_dt.date(), end_dt.date()),
+                "UPDATE CalendarSources SET last_synced_at = NOW(), sync_error = NULL WHERE id = %s",
+                (source_id,),
             )
 
         conn.commit()
         return jsonify({"ok": True, "imported_count": total_imported})
     except Exception as e:
         conn.rollback()
-        import logging
-        logging.getLogger(__name__).warning("Calendar import failed: %s", e)
+        logger.warning("Calendar import failed: %s", e)
         return jsonify({"error": "import_failed", "message": str(e)}), 500
     finally:
         conn.close()
 
 
-@bp.route("/sync", methods=["POST"])
-def sync_calendar():
-    """Re-fetch events from connected calendars. Full replace per calendar."""
+# ── ICS Feed Import ────────────────────────────────────────
+
+@bp.route("/import-ics", methods=["POST"])
+def import_ics():
+    """Import events from an ICS/iCal feed URL."""
     user_id, err = _get_user_from_token()
     if err:
         return err[0], err[1]
 
-    creds = _get_google_credentials(user_id)
-    if not creds:
-        return jsonify({"error": "calendar_not_connected", "message": "Connect Google Calendar first"}), 401
+    data = request.get_json() or {}
+    url = (data.get("url") or "").strip()
+    label = (data.get("label") or "").strip()
+    category = data.get("category", "other")
+
+    if not url:
+        return jsonify({"error": "url is required"}), 400
+    if not label:
+        return jsonify({"error": "label is required"}), 400
+
+    url_hash = hash_feed_url(url)
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+
+        # Check for duplicate
+        cur.execute(
+            "SELECT id FROM CalendarSources WHERE user_id = %s AND feed_url_hash = %s",
+            (user_id, url_hash),
+        )
+        if cur.fetchone():
+            return jsonify({"error": "This feed URL is already imported"}), 409
+
+        # Fetch and parse (expand recurring events over a reasonable horizon)
+        ics_text = fetch_ics_feed(url)
+        now = datetime.utcnow()
+        expand_start = (now - timedelta(days=30)).isoformat()
+        expand_end = (now + timedelta(days=120)).isoformat()
+        events = parse_ics_content(
+            ics_text,
+            expand_start=expand_start,
+            expand_end=expand_end,
+            source_category=category,
+        )
+
+        # Create source
+        cur.execute(
+            """INSERT INTO CalendarSources
+               (user_id, source_type, source_label, feed_url, feed_url_hash, feed_category)
+               VALUES (%s, 'ics_url', %s, %s, %s, %s)""",
+            (user_id, label[:100], url, url_hash, category),
+        )
+        source_id = cur.lastrowid
+
+        # Bulk insert events
+        imported = _insert_events(cur, user_id, source_id, events)
+
+        cur.execute(
+            "UPDATE CalendarSources SET last_synced_at = NOW(), sync_error = NULL WHERE id = %s",
+            (source_id,),
+        )
+        conn.commit()
+        return jsonify({"ok": True, "source_id": source_id, "imported_count": imported})
+    except Exception as e:
+        conn.rollback()
+        logger.warning("ICS import failed: %s", e)
+        return jsonify({"error": "import_failed", "message": str(e)}), 500
+    finally:
+        conn.close()
+
+
+# ── Sync Source ────────────────────────────────────────────
+
+@bp.route("/sync-source/<int:source_id>", methods=["POST"])
+def sync_source(source_id):
+    """Re-sync a calendar source (ICS or Google)."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
 
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
         cur.execute(
-            """SELECT google_calendar_id, import_date_range_start, import_date_range_end
-               FROM UserCalendarConnections WHERE user_id = %s""",
-            (user_id,),
+            "SELECT * FROM CalendarSources WHERE id = %s AND user_id = %s",
+            (source_id, user_id),
         )
-        connections = cur.fetchall()
+        source = cur.fetchone()
+        if not source:
+            return jsonify({"error": "source not found"}), 404
+
+        if source["source_type"] == "ics_url":
+            return _sync_ics_source(conn, cur, user_id, source)
+        elif source["source_type"] == "google":
+            return _sync_google_source(conn, cur, user_id, source)
+        else:
+            return jsonify({"error": "unsupported source type"}), 400
+    except Exception as e:
+        conn.rollback()
+        logger.warning("Sync failed for source %s: %s", source_id, e)
+        return jsonify({"error": "sync_failed", "message": str(e)}), 500
     finally:
         conn.close()
 
-    if not connections:
-        return jsonify({"error": "no_calendars_connected", "message": "Import calendars first"}), 400
 
-    total_synced = 0
-    for conn_row in connections:
-        cal_id = conn_row["google_calendar_id"]
-        start_d = conn_row.get("import_date_range_start")
-        end_d = conn_row.get("import_date_range_end")
-        if not start_d or not end_d:
+def _sync_ics_source(conn, cur, user_id, source):
+    """Re-fetch and re-parse an ICS feed."""
+    ics_text = fetch_ics_feed(source["feed_url"])
+    now = datetime.utcnow()
+    events = parse_ics_content(
+        ics_text,
+        expand_start=(now - timedelta(days=30)).isoformat(),
+        expand_end=(now + timedelta(days=120)).isoformat(),
+        source_category=source["feed_category"],
+    )
+
+    # Mark existing events as stale
+    cur.execute(
+        "UPDATE CalendarEvents SET sync_status = 'stale' WHERE source_id = %s",
+        (source["id"],),
+    )
+
+    # Upsert fresh events
+    synced = _insert_events(cur, user_id, source["id"], events)
+
+    # Mark remaining stale events as deleted_at_source
+    cur.execute(
+        "UPDATE CalendarEvents SET sync_status = 'deleted_at_source' WHERE source_id = %s AND sync_status = 'stale'",
+        (source["id"],),
+    )
+
+    cur.execute(
+        "UPDATE CalendarSources SET last_synced_at = NOW(), sync_error = NULL WHERE id = %s",
+        (source["id"],),
+    )
+    conn.commit()
+    return jsonify({"ok": True, "synced_count": synced})
+
+
+def _sync_google_source(conn, cur, user_id, source):
+    """Re-fetch events from Google Calendar API."""
+    creds = _get_google_credentials(user_id)
+    if not creds:
+        return jsonify({"error": "calendar_not_connected"}), 401
+
+    from googleapiclient.discovery import build
+    service = build("calendar", "v3", credentials=creds)
+
+    cal_id = source["google_calendar_id"]
+    # Use a reasonable default date range
+    now = datetime.utcnow()
+    time_min = (now - timedelta(days=30)).isoformat() + "Z"
+    time_max = (now + timedelta(days=120)).isoformat() + "Z"
+
+    events_result = (
+        service.events()
+        .list(calendarId=cal_id, timeMin=time_min, timeMax=time_max,
+              singleEvents=True, orderBy="startTime")
+        .execute()
+    )
+
+    # Mark existing as stale
+    cur.execute(
+        "UPDATE CalendarEvents SET sync_status = 'stale' WHERE source_id = %s",
+        (source["id"],),
+    )
+
+    synced = 0
+    for ev in events_result.get("items", []):
+        if ev.get("status") == "cancelled":
             continue
-        time_min = datetime.combine(start_d, datetime.min.time()).isoformat()
-        time_max = datetime.combine(end_d, datetime.max.time()).isoformat()
+        start = ev.get("start") or {}
+        end = ev.get("end") or {}
+        start_str = start.get("dateTime") or start.get("date")
+        end_str = end.get("dateTime") or end.get("date")
+        if not start_str or not end_str:
+            continue
 
-        try:
-            from googleapiclient.discovery import build
-            service = build("calendar", "v3", credentials=creds)
-            events_result = (
-                service.events()
-                .list(
-                    calendarId=cal_id,
-                    timeMin=time_min,
-                    timeMax=time_max,
-                    singleEvents=True,
-                    orderBy="startTime",
-                )
-                .execute()
+        is_date_event = "date" in start and "dateTime" not in start
+        ev_id = ev.get("id", "")
+        title = (ev.get("summary") or "Untitled")[:500]
+        description = (ev.get("description") or "")[:2000] or None
+        location = (ev.get("location") or "")[:500] or None
+        src_category = source.get("feed_category", "other")
+        event_kind = classify_event(is_date_event, start_str, end_str, title, src_category)
+        event_category = auto_detect_category(title, src_category)
+
+        if is_date_event:
+            cur.execute(
+                """INSERT INTO CalendarEvents
+                   (user_id, source_id, external_uid, instance_key, title, description, location,
+                    start_date, end_date, event_kind, event_category, sync_status)
+                   VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, 'active')
+                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_date = VALUES(start_date),
+                   end_date = VALUES(end_date), sync_status = 'active'""",
+                (user_id, source["id"], ev_id, title, description, location,
+                 start_str, end_str, event_kind, event_category),
             )
-            events = events_result.get("items", [])
-
-            conn = get_db()
+        else:
             try:
-                cur = conn.cursor()
-                cur.execute(
-                    "DELETE FROM ExternalEvents WHERE user_id = %s AND google_calendar_id = %s",
-                    (user_id, cal_id),
-                )
-                for ev in events:
-                    if ev.get("status") == "cancelled":
-                        continue
-                    start = ev.get("start") or {}
-                    end = ev.get("end") or {}
-                    start_str = start.get("dateTime") or start.get("date")
-                    end_str = end.get("dateTime") or end.get("date")
-                    if not start_str or not end_str:
-                        continue
-                    try:
-                        ev_start = datetime.fromisoformat(start_str.replace("Z", "+00:00"))
-                        ev_end = datetime.fromisoformat(end_str.replace("Z", "+00:00"))
-                    except (ValueError, TypeError):
-                        continue
-                    ev_id = ev.get("id", "")
-                    title = (ev.get("summary") or "Untitled")[:500]
-                    cur.execute(
-                        """INSERT INTO ExternalEvents (user_id, google_event_id, google_calendar_id, title, start_time, end_time, source)
-                           VALUES (%s, %s, %s, %s, %s, %s, 'google')
-                           ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time), end_time = VALUES(end_time)""",
-                        (user_id, ev_id, cal_id, title, ev_start, ev_end),
-                    )
-                    total_synced += 1
-                cur.execute(
-                    "UPDATE UserCalendarConnections SET last_synced_at = NOW() WHERE user_id = %s AND google_calendar_id = %s",
-                    (user_id, cal_id),
-                )
-                conn.commit()
-            finally:
-                conn.close()
-        except Exception as e:
-            import logging
-            logging.getLogger(__name__).warning("Sync failed for %s: %s", cal_id, e)
+                ev_start = datetime.fromisoformat(start_str.replace("Z", "+00:00"))
+                ev_end = datetime.fromisoformat(end_str.replace("Z", "+00:00"))
+            except (ValueError, TypeError):
+                continue
+            tz = start.get("timeZone", "")
+            cur.execute(
+                """INSERT INTO CalendarEvents
+                   (user_id, source_id, external_uid, instance_key, title, description, location,
+                    start_time, end_time, original_timezone, event_kind, event_category, sync_status)
+                   VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, %s, 'active')
+                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time),
+                   end_time = VALUES(end_time), sync_status = 'active'""",
+                (user_id, source["id"], ev_id, title, description, location,
+                 ev_start, ev_end, tz or None, event_kind, event_category),
+            )
+        synced += 1
 
-    return jsonify({"ok": True, "synced_count": total_synced})
+    cur.execute(
+        "UPDATE CalendarEvents SET sync_status = 'deleted_at_source' WHERE source_id = %s AND sync_status = 'stale'",
+        (source["id"],),
+    )
+    cur.execute(
+        "UPDATE CalendarSources SET last_synced_at = NOW(), sync_error = NULL WHERE id = %s",
+        (source["id"],),
+    )
+    conn.commit()
+    return jsonify({"ok": True, "synced_count": synced})
 
+
+# ── Events Endpoint (refactored) ──────────────────────────
 
 @bp.route("/events", methods=["GET"])
 def get_events():
-    """Return stored external events for current user. Optional term_id or date range."""
+    """Return CalendarEvents for current user with optional filters."""
     user_id, err = _get_user_from_token()
     if err:
         return err[0], err[1]
 
-    term_id = request.args.get("term_id", type=int)
+    source_id = request.args.get("source_id", type=int)
+    event_kind = request.args.get("event_kind", "")
     start_date = request.args.get("start_date", "")
     end_date = request.args.get("end_date", "")
 
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
-        if term_id:
-            cur.execute(
-                """SELECT id, google_event_id, google_calendar_id, title, start_time, end_time, source, term_id
-                   FROM ExternalEvents WHERE user_id = %s AND (term_id = %s OR term_id IS NULL)
-                   ORDER BY start_time""",
-                (user_id, term_id),
-            )
-        elif start_date and end_date:
-            cur.execute(
-                """SELECT id, google_event_id, google_calendar_id, title, start_time, end_time, source, term_id
-                   FROM ExternalEvents WHERE user_id = %s AND start_time >= %s AND end_time <= %s
-                   ORDER BY start_time""",
-                (user_id, start_date, end_date),
-            )
-        else:
-            cur.execute(
-                """SELECT id, google_event_id, google_calendar_id, title, start_time, end_time, source, term_id
-                   FROM ExternalEvents WHERE user_id = %s ORDER BY start_time""",
-                (user_id,),
-            )
+        query = """SELECT ce.*, cs.source_label, cs.color AS source_color, cs.source_type
+                   FROM CalendarEvents ce
+                   JOIN CalendarSources cs ON cs.id = ce.source_id
+                   WHERE ce.user_id = %s AND ce.sync_status = 'active'"""
+        params = [user_id]
+
+        if source_id:
+            query += " AND ce.source_id = %s"
+            params.append(source_id)
+        if event_kind:
+            query += " AND ce.event_kind = %s"
+            params.append(event_kind)
+        if start_date:
+            query += " AND (ce.start_time >= %s OR ce.start_date >= %s)"
+            params.extend([start_date, start_date])
+        if end_date:
+            query += " AND (ce.end_time <= %s OR ce.end_date <= %s)"
+            params.extend([end_date, end_date])
+
+        query += " ORDER BY COALESCE(ce.start_time, ce.start_date)"
+        cur.execute(query, params)
         rows = cur.fetchall()
+
         events = []
         for r in rows:
             events.append({
                 "id": r["id"],
-                "google_event_id": r["google_event_id"],
-                "google_calendar_id": r["google_calendar_id"],
+                "source_id": r["source_id"],
+                "source_label": r["source_label"],
+                "source_color": r["source_color"],
+                "source_type": r["source_type"],
+                "external_uid": r["external_uid"],
                 "title": r["title"],
+                "description": r["description"],
+                "location": r["location"],
                 "start_time": r["start_time"].isoformat() if r.get("start_time") else None,
                 "end_time": r["end_time"].isoformat() if r.get("end_time") else None,
-                "source": r.get("source", "google"),
+                "original_timezone": r["original_timezone"],
+                "start_date": r["start_date"].isoformat() if r.get("start_date") else None,
+                "end_date": r["end_date"].isoformat() if r.get("end_date") else None,
+                "event_kind": r["event_kind"],
+                "event_category": r["event_category"],
+                "sync_status": r["sync_status"],
+                "is_recurring_instance": bool(r.get("is_recurring_instance")),
+                "is_locally_modified": bool(r.get("is_locally_modified")),
+                "local_title": r.get("local_title"),
+                "local_start_time": r["local_start_time"].isoformat() if r.get("local_start_time") else None,
+                "local_end_time": r["local_end_time"].isoformat() if r.get("local_end_time") else None,
+                "local_notes": r.get("local_notes"),
             })
         return jsonify({"events": events})
     finally:
         conn.close()
 
 
-@bp.route("/status", methods=["GET"])
-def status():
-    """Return whether user has Calendar connected."""
+@bp.route("/export/<string:feed_token>.ics", methods=["GET"])
+def export_study_times_ics(feed_token):
+    """Public iCal subscription endpoint. Auth intentionally not required."""
+    token = (feed_token or "").strip()
+    if not token:
+        return jsonify({"error": "not found"}), 404
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            """SELECT id FROM Users
+               WHERE ical_feed_token = %s
+                 AND COALESCE(ical_feed_enabled, 1) = 1
+               LIMIT 1""",
+            (token,),
+        )
+        row = cur.fetchone()
+        cur.close()
+        if not row:
+            return jsonify({"error": "not found"}), 404
+
+        ical_bytes = build_ical_feed_for_user(conn, int(row["id"]))
+        return Response(
+            ical_bytes,
+            status=200,
+            headers={
+                "Content-Type": "text/calendar; charset=utf-8",
+                "Content-Disposition": 'inline; filename=\"syllabify-study-plan.ics\"',
+                "Cache-Control": "private, max-age=300",
+            },
+        )
+    finally:
+        conn.close()
+
+
+@bp.route("/export/token", methods=["GET"])
+def get_export_feed_token():
+    """Get (or create) current user's personal iCal feed URL."""
     user_id, err = _get_user_from_token()
     if err:
         return err[0], err[1]
 
-    creds = _get_google_credentials(user_id)
-    connected = creds is not None
-    return jsonify({"connected": connected})
+    conn = get_db()
+    try:
+        token, enabled = get_or_create_feed_token(conn, user_id)
+        feed_url = f"{_calendar_public_base_url()}/api/calendar/export/{token}.ics"
+        return jsonify({"feedUrl": feed_url, "enabled": bool(enabled)})
+    finally:
+        conn.close()
+
+
+@bp.route("/export/token/rotate", methods=["POST"])
+def rotate_export_feed_token():
+    """Rotate current user's feed token. Old URL becomes invalid."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    conn = get_db()
+    try:
+        token = rotate_feed_token(conn, user_id)
+        feed_url = f"{_calendar_public_base_url()}/api/calendar/export/{token}.ics"
+        return jsonify({"feedUrl": feed_url, "ok": True})
+    finally:
+        conn.close()
+
+
+@bp.route("/export/token", methods=["PATCH"])
+def patch_export_feed_status():
+    """Enable/disable current user's feed token."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    body = request.get_json(silent=True) or {}
+    if "enabled" not in body:
+        return jsonify({"error": "enabled is required"}), 400
+
+    conn = get_db()
+    try:
+        set_feed_enabled(conn, user_id, bool(body.get("enabled")))
+        token, enabled = get_or_create_feed_token(conn, user_id)
+        feed_url = f"{_calendar_public_base_url()}/api/calendar/export/{token}.ics"
+        return jsonify({"feedUrl": feed_url, "enabled": bool(enabled), "ok": True})
+    finally:
+        conn.close()
+
+
+# ── Legacy sync endpoint (kept for backward compat) ───────
+
+@bp.route("/sync", methods=["POST"])
+def sync_calendar():
+    """Re-fetch events from all connected Google calendar sources."""
+    user_id, err = _get_user_from_token()
+    if err:
+        return err[0], err[1]
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT id FROM CalendarSources WHERE user_id = %s AND source_type = 'google'",
+            (user_id,),
+        )
+        sources = cur.fetchall()
+    finally:
+        conn.close()
+
+    if not sources:
+        return jsonify({"error": "no_calendars_connected", "message": "Import calendars first"}), 400
+
+    total_synced = 0
+    for src in sources:
+        try:
+            conn = get_db()
+            cur = conn.cursor(dictionary=True)
+            cur.execute("SELECT * FROM CalendarSources WHERE id = %s", (src["id"],))
+            source = cur.fetchone()
+            if source:
+                resp = _sync_google_source(conn, cur, user_id, source)
+                resp_data = resp[0].get_json() if isinstance(resp, tuple) else resp.get_json()
+                total_synced += resp_data.get("synced_count", 0)
+        except Exception as e:
+            logger.warning("Sync failed for source %s: %s", src["id"], e)
+        finally:
+            conn.close()
+
+    return jsonify({"ok": True, "synced_count": total_synced})
+
+
+# ── Helpers ────────────────────────────────────────────────
+
+def _insert_events(cur, user_id, source_id, events):
+    """Bulk insert/upsert parsed events into CalendarEvents. Returns count."""
+    import json
+    count = 0
+    for ev in events:
+        original_data_str = json.dumps(ev.get("original_data") or {})
+        if ev.get("event_kind") in ("all_day", "deadline_marker"):
+            cur.execute(
+                """INSERT INTO CalendarEvents
+                   (user_id, source_id, external_uid, instance_key, recurrence_id,
+                    title, description, location, start_date, end_date,
+                    event_kind, event_category, sync_status, recurrence_rule,
+                    is_recurring_instance, original_data)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', %s, %s, %s)
+                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_date = VALUES(start_date),
+                   end_date = VALUES(end_date), sync_status = 'active', description = VALUES(description)""",
+                (user_id, source_id, ev["external_uid"], ev.get("instance_key", "base"),
+                 ev.get("recurrence_id"), ev["title"], ev.get("description"),
+                 ev.get("location"), ev.get("start_date"), ev.get("end_date"),
+                 ev["event_kind"], ev["event_category"], ev.get("recurrence_rule"),
+                 ev.get("is_recurring_instance", False), original_data_str),
+            )
+        else:
+            cur.execute(
+                """INSERT INTO CalendarEvents
+                   (user_id, source_id, external_uid, instance_key, recurrence_id,
+                    title, description, location, start_time, end_time, original_timezone,
+                    event_kind, event_category, sync_status, recurrence_rule,
+                    is_recurring_instance, original_data)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', %s, %s, %s)
+                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time),
+                   end_time = VALUES(end_time), sync_status = 'active', description = VALUES(description)""",
+                (user_id, source_id, ev["external_uid"], ev.get("instance_key", "base"),
+                 ev.get("recurrence_id"), ev["title"], ev.get("description"),
+                 ev.get("location"), ev.get("start_time"), ev.get("end_time"),
+                 ev.get("original_timezone"), ev["event_kind"], ev["event_category"],
+                 ev.get("recurrence_rule"), ev.get("is_recurring_instance", False),
+                 original_data_str),
+            )
+        count += 1
+    return count
