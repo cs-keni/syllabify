@@ -40,12 +40,20 @@ function studyTimesToBlocks(studyTimes, weekStart) {
   for (const st of studyTimes) {
     const startDt = new Date(st.start_time);
     const endDt = new Date(st.end_time);
-    const startDate = new Date(startDt.getFullYear(), startDt.getMonth(), startDt.getDate());
-    const dayDiff = Math.round((startDate - weekStartTime) / (24 * 60 * 60 * 1000));
+    const startDate = new Date(
+      startDt.getFullYear(),
+      startDt.getMonth(),
+      startDt.getDate()
+    );
+    const dayDiff = Math.round(
+      (startDate - weekStartTime) / (24 * 60 * 60 * 1000)
+    );
     if (dayDiff < 0 || dayDiff >= DAYS) continue;
 
     const startHour =
-      startDt.getHours() + startDt.getMinutes() / 60 + startDt.getSeconds() / 3600;
+      startDt.getHours() +
+      startDt.getMinutes() / 60 +
+      startDt.getSeconds() / 3600;
     const endHour =
       endDt.getHours() + endDt.getMinutes() / 60 + endDt.getSeconds() / 3600;
 
@@ -232,10 +240,7 @@ export default function SchedulePreview({
           ))}
         </div>
         {/* Grid area */}
-        <div
-          className="flex-1 relative"
-          style={{ height: HOURS * hourHeight }}
-        >
+        <div className="flex-1 relative" style={{ height: HOURS * hourHeight }}>
           {/* Hour lines */}
           {Array.from({ length: HOURS }, (_, i) => (
             <div
@@ -300,7 +305,9 @@ export default function SchedulePreview({
           className="fixed z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-card border border-border bg-surface-elevated shadow-dropdown p-4 min-w-[260px] animate-scale-in"
           onClick={e => e.stopPropagation()}
         >
-          <h4 className="text-sm font-medium text-ink mb-3">Edit study block</h4>
+          <h4 className="text-sm font-medium text-ink mb-3">
+            Edit study block
+          </h4>
           <div className="space-y-3">
             <div>
               <label className="block text-xs text-ink-muted mb-0.5">
@@ -310,20 +317,24 @@ export default function SchedulePreview({
                 type="datetime-local"
                 value={editingBlock.editStart}
                 onChange={e =>
-                  setEditingBlock(prev => ({ ...prev, editStart: e.target.value }))
+                  setEditingBlock(prev => ({
+                    ...prev,
+                    editStart: e.target.value,
+                  }))
                 }
                 className="w-full rounded-input border border-border bg-surface px-2 py-1.5 text-sm"
               />
             </div>
             <div>
-              <label className="block text-xs text-ink-muted mb-0.5">
-                End
-              </label>
+              <label className="block text-xs text-ink-muted mb-0.5">End</label>
               <input
                 type="datetime-local"
                 value={editingBlock.editEnd}
                 onChange={e =>
-                  setEditingBlock(prev => ({ ...prev, editEnd: e.target.value }))
+                  setEditingBlock(prev => ({
+                    ...prev,
+                    editEnd: e.target.value,
+                  }))
                 }
                 className="w-full rounded-input border border-border bg-surface px-2 py-1.5 text-sm"
               />
@@ -336,7 +347,10 @@ export default function SchedulePreview({
                 type="text"
                 value={editingBlock.editNotes}
                 onChange={e =>
-                  setEditingBlock(prev => ({ ...prev, editNotes: e.target.value }))
+                  setEditingBlock(prev => ({
+                    ...prev,
+                    editNotes: e.target.value,
+                  }))
                 }
                 placeholder="e.g. Chapter 3"
                 className="w-full rounded-input border border-border bg-surface px-2 py-1.5 text-sm"

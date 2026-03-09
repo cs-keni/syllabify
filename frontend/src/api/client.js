@@ -796,9 +796,7 @@ export async function getCalendarEvents(
 
 /** GET /api/schedule/terms/:termId/study-times. Optional start_date, end_date for range. Returns { study_times }. */
 export async function getStudyTimes(token, termId, startDate, endDate) {
-  const url = new URL(
-    `${BASE}/api/schedule/terms/${termId}/study-times`
-  );
+  const url = new URL(`${BASE}/api/schedule/terms/${termId}/study-times`);
   if (startDate) url.searchParams.set('start_date', startDate);
   if (endDate) url.searchParams.set('end_date', endDate);
   const res = await apiFetch(url.toString(), {

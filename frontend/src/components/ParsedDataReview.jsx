@@ -409,7 +409,8 @@ function AddAssessmentModal({
             className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
           />
           <p className="text-xs text-ink-muted mt-0.5">
-            When the assignment becomes available. Leave blank to use term start.
+            When the assignment becomes available. Leave blank to use term
+            start.
           </p>
         </div>
         <div>
@@ -768,7 +769,10 @@ function AssessmentSectionBox({
                 <th className="text-left font-medium text-ink px-3 py-2">
                   Type
                 </th>
-                <th className="text-left font-medium text-ink px-3 py-2" title="When assignment becomes available (scheduler uses term start if blank)">
+                <th
+                  className="text-left font-medium text-ink px-3 py-2"
+                  title="When assignment becomes available (scheduler uses term start if blank)"
+                >
                   Start date
                 </th>
                 <th className="text-left font-medium text-ink px-3 py-2">

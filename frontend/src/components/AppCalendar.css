@@ -9,7 +9,7 @@
   --fc-border-color: #e5e7eb;
   --fc-today-bg-color: rgba(59, 130, 246, 0.05);
   --fc-event-border-color: transparent;
-  --fc-now-indicator-color: #EF4444;
+  --fc-now-indicator-color: #ef4444;
   font-family: inherit;
 }
 
@@ -54,14 +54,14 @@
 .app-calendar-container .deadline-marker {
   @apply font-bold;
   border-left-width: 3px;
-  border-left-color: #EF4444 !important;
-  background-color: #FEF2F2 !important;
-  color: #991B1B !important;
+  border-left-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
 }
 
 .dark .app-calendar-container .deadline-marker {
   background-color: rgba(239, 68, 68, 0.15) !important;
-  color: #FCA5A5 !important;
+  color: #fca5a5 !important;
 }
 
 /* Locked study block styling */
