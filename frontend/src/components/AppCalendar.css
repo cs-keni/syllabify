@@ -1,59 +1,116 @@
-/* frontend/src/components/AppCalendar.css */
+/* Schedule calendar – cohesive typography, timestamps, and event styling */
 
 .app-calendar-container {
-  @apply bg-white dark:bg-gray-800 rounded-lg shadow p-4;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: var(--color-surface-elevated, #fff);
+  border-radius: var(--radius-card, 12px);
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.06),
+    0 1px 2px -1px rgb(0 0 0 / 0.06);
+  padding: 1.25rem;
+  border: 1px solid var(--color-border, #e5e7eb);
 }
 
-/* FullCalendar theme overrides */
+.dark .app-calendar-container {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-border);
+}
+
+/* FullCalendar base – inherit app font */
 .app-calendar-container .fc {
-  --fc-border-color: #e5e7eb;
-  --fc-today-bg-color: rgba(59, 130, 246, 0.05);
+  --fc-border-color: var(--color-border, #e5e7eb);
+  --fc-today-bg-color: rgba(15, 138, 76, 0.06);
   --fc-event-border-color: transparent;
   --fc-now-indicator-color: #ef4444;
+  --fc-page-bg-color: transparent;
   font-family: inherit;
 }
 
-/* Dark mode */
 .dark .app-calendar-container .fc {
-  --fc-border-color: #374151;
-  --fc-today-bg-color: rgba(59, 130, 246, 0.1);
-  --fc-page-bg-color: #1f2937;
-  --fc-neutral-bg-color: #374151;
-  color: #f3f4f6;
+  --fc-border-color: var(--color-border);
+  --fc-today-bg-color: rgba(15, 138, 76, 0.12);
+  --fc-page-bg-color: transparent;
+  color: var(--color-ink);
 }
 
-/* Header toolbar styling */
-.app-calendar-container .fc .fc-toolbar-title {
-  @apply text-lg font-semibold;
+/* Time labels – tabular numbers for alignment, monospace for consistency */
+.app-calendar-container .fc-timegrid-slot-label {
+  font-family: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  padding-right: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.app-calendar-container .fc-col-header-cell-cushion {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Toolbar – match app buttons */
+.app-calendar-container .fc-toolbar-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-ink);
 }
 
 .app-calendar-container .fc .fc-button {
-  @apply text-sm font-medium rounded px-3 py-1.5;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-button, 8px);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.app-calendar-container .fc .fc-button:hover:not(:disabled) {
+  background: var(--color-surface-muted);
 }
 
 .app-calendar-container .fc .fc-button-primary {
-  @apply bg-blue-600 border-blue-600;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
 }
 
-.app-calendar-container .fc .fc-button-primary:hover {
-  @apply bg-blue-700;
+.app-calendar-container .fc .fc-button-primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 .app-calendar-container .fc .fc-button-primary:not(:disabled).fc-button-active {
-  @apply bg-blue-800;
+  opacity: 0.9;
 }
 
-/* Event styling */
+/* Events – consistent typography */
 .app-calendar-container .fc-event {
-  @apply rounded px-1.5 py-0.5 text-xs font-medium cursor-pointer;
-  border-width: 0;
-  border-left-width: 3px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  border: none;
+  border-left: 3px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
-/* Deadline marker styling */
+.app-calendar-container .fc-event .fc-event-time {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.app-calendar-container .fc-event .fc-event-title {
+  font-weight: 500;
+}
+
+/* Deadline markers */
 .app-calendar-container .deadline-marker {
-  @apply font-bold;
-  border-left-width: 3px;
+  font-weight: 600;
   border-left-color: #ef4444 !important;
   background-color: #fef2f2 !important;
   color: #991b1b !important;
@@ -64,22 +121,23 @@
   color: #fca5a5 !important;
 }
 
-/* Locked study block styling */
+/* Locked study blocks */
 .app-calendar-container .locked-study {
   background-image: repeating-linear-gradient(
     45deg,
     transparent,
     transparent 3px,
-    rgba(255, 255, 255, 0.1) 3px,
-    rgba(255, 255, 255, 0.1) 6px
+    rgba(255, 255, 255, 0.08) 3px,
+    rgba(255, 255, 255, 0.08) 6px
   );
 }
 
-/* Slot styling */
+/* Slot grid */
 .app-calendar-container .fc-timegrid-slot {
-  height: 1.5rem;
+  height: 1.75rem;
 }
 
-.app-calendar-container .fc-timegrid-slot-label {
-  @apply text-xs text-gray-500;
+.app-calendar-container .fc-timegrid-axis {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
 }

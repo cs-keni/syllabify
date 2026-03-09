@@ -113,19 +113,17 @@ export default function UnifiedImportModal({
 
   return (
     <div className="fixed inset-0 z-40 bg-black/40 flex items-center justify-center p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-surface-elevated rounded-xl shadow-xl border border-border max-w-lg w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="px-6 pt-5 pb-3">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Import Calendar
-          </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <h2 className="text-lg font-semibold text-ink">Import Calendar</h2>
+          <p className="text-sm text-ink-muted mt-1">
             Import events from Google Calendar or an ICS/iCal feed URL.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="px-6 flex border-b border-gray-200 dark:border-gray-700">
+        <div className="px-6 flex border-b border-border">
           <button
             onClick={() => {
               setActiveTab('google');
@@ -133,8 +131,8 @@ export default function UnifiedImportModal({
             }}
             className={`px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
               activeTab === 'google'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-accent text-accent'
+                : 'border-transparent text-ink-muted hover:text-ink'
             }`}
           >
             Google Calendar
@@ -146,8 +144,8 @@ export default function UnifiedImportModal({
             }}
             className={`px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
               activeTab === 'ics'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-accent text-accent'
+                : 'border-transparent text-ink-muted hover:text-ink'
             }`}
           >
             ICS / iCal Feed
@@ -159,30 +157,30 @@ export default function UnifiedImportModal({
           {activeTab === 'google' && (
             <div className="space-y-4">
               {!calendarConnected ? (
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-ink-muted">
                   Connect your Google account first from the Schedule page.
                 </p>
               ) : loadingCals ? (
-                <p className="text-sm text-gray-500">Loading calendars...</p>
+                <p className="text-sm text-ink-muted">Loading calendars...</p>
               ) : (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-ink mb-2">
                       Select calendars
                     </label>
-                    <div className="max-h-40 overflow-y-auto border rounded-lg p-2 space-y-1 dark:border-gray-600">
+                    <div className="max-h-40 overflow-y-auto border border-border rounded-lg p-2 space-y-1 bg-surface">
                       {calendars.map(cal => (
                         <label
                           key={cal.id}
-                          className="flex items-center gap-2 p-1.5 rounded hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
+                          className="flex items-center gap-2 p-1.5 rounded hover:bg-surface-muted cursor-pointer"
                         >
                           <input
                             type="checkbox"
                             checked={selected.has(cal.id)}
                             onChange={() => toggleCalendar(cal.id)}
-                            className="rounded text-blue-600"
+                            className="rounded text-accent"
                           />
-                          <span className="text-sm text-gray-800 dark:text-gray-200 truncate">
+                          <span className="text-sm text-ink truncate">
                             {cal.summary} {cal.primary && '(Primary)'}
                           </span>
                         </label>
@@ -191,25 +189,25 @@ export default function UnifiedImportModal({
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      <label className="block text-sm font-medium text-ink mb-1">
                         Start
                       </label>
                       <input
                         type="date"
                         value={startDate}
                         onChange={e => setStartDate(e.target.value)}
-                        className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
+                        className="w-full rounded-lg border border-border bg-surface text-ink text-sm px-3 py-2"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      <label className="block text-sm font-medium text-ink mb-1">
                         End
                       </label>
                       <input
                         type="date"
                         value={endDate}
                         onChange={e => setEndDate(e.target.value)}
-                        className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
+                        className="w-full rounded-lg border border-border bg-surface text-ink text-sm px-3 py-2"
                       />
                     </div>
                   </div>
@@ -221,7 +219,7 @@ export default function UnifiedImportModal({
           {activeTab === 'ics' && (
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-ink mb-1">
                   Feed URL
                 </label>
                 <input
@@ -229,14 +227,14 @@ export default function UnifiedImportModal({
                   value={icsUrl}
                   onChange={e => setIcsUrl(e.target.value)}
                   placeholder="https://example.com/calendar.ics"
-                  className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
+                  className="w-full rounded-lg border border-border bg-surface text-ink text-sm px-3 py-2"
                 />
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-1 text-xs text-ink-muted">
                   Paste an ICS/iCal feed URL (e.g. Canvas Calendar Feed).
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-ink mb-1">
                   Label
                 </label>
                 <input
@@ -244,17 +242,17 @@ export default function UnifiedImportModal({
                   value={icsLabel}
                   onChange={e => setIcsLabel(e.target.value)}
                   placeholder="My Canvas Calendar"
-                  className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
+                  className="w-full rounded-lg border border-border bg-surface text-ink text-sm px-3 py-2"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-ink mb-1">
                   Category
                 </label>
                 <select
                   value={icsCategory}
                   onChange={e => setIcsCategory(e.target.value)}
-                  className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
+                  className="w-full rounded-lg border border-border bg-surface text-ink text-sm px-3 py-2"
                 >
                   {CATEGORIES.map(c => (
                     <option key={c.value} value={c.value}>
@@ -275,10 +273,10 @@ export default function UnifiedImportModal({
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3">
+        <div className="px-6 py-4 border-t border-border flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
+            className="px-4 py-2 text-sm font-medium text-ink bg-surface-muted rounded-lg hover:bg-border transition-colors"
           >
             Cancel
           </button>
@@ -289,7 +287,7 @@ export default function UnifiedImportModal({
             disabled={
               importing || (activeTab === 'google' && !calendarConnected)
             }
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {importing ? 'Importing...' : 'Import'}
           </button>

@@ -443,10 +443,10 @@ export default function Schedule() {
                 )}
                 {(eventDetail.event.start_date ||
                   eventDetail.event.start_time) && (
-                  <p className="mt-2 text-xs text-ink-muted">
+                  <p className="mt-2 text-xs text-ink-muted font-mono tabular-nums">
                     {eventDetail.event.start_date
                       ? `Date: ${eventDetail.event.start_date}`
-                      : `${new Date(eventDetail.event.start_time).toLocaleString()} – ${new Date(eventDetail.event.end_time).toLocaleString()}`}
+                      : `${new Date(eventDetail.event.start_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })} – ${new Date(eventDetail.event.end_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`}
                   </p>
                 )}
                 {eventDetail.event.location && (
@@ -479,12 +479,10 @@ export default function Schedule() {
 
         {/* Sources sidebar */}
         <div className="w-64 shrink-0 hidden lg:block">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-              Sources
-            </h3>
+          <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
+            <h3 className="text-sm font-semibold text-ink mb-3">Sources</h3>
             {sources.length === 0 ? (
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-ink-muted">
                 No sources yet. Import a calendar to get started.
               </p>
             ) : (
@@ -497,14 +495,14 @@ export default function Schedule() {
                     <div className="flex items-center gap-2 min-w-0">
                       <span
                         className="w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{ backgroundColor: src.color }}
+                        style={{ backgroundColor: src.color || '#64748B' }}
                       />
                       <div className="min-w-0">
-                        <p className="text-xs font-medium text-gray-800 dark:text-gray-200 truncate">
+                        <p className="text-xs font-medium text-ink truncate">
                           {src.source_label}
                         </p>
-                        <p className="text-[10px] text-gray-400">
-                          {src.event_count} events &middot;{' '}
+                        <p className="text-[10px] text-ink-muted font-mono tabular-nums">
+                          {src.event_count} events ·{' '}
                           {src.source_type === 'google' ? 'Google' : 'ICS'}
                         </p>
                       </div>
@@ -514,16 +512,16 @@ export default function Schedule() {
                         onClick={() => handleSyncSource(src.id)}
                         disabled={syncingId === src.id}
                         title="Sync"
-                        className="text-gray-400 hover:text-blue-600 text-xs disabled:opacity-50"
+                        className="text-ink-muted hover:text-accent text-xs disabled:opacity-50 transition-colors"
                       >
-                        {syncingId === src.id ? '\u21BB' : '\u21BB'}
+                        ↻
                       </button>
                       <button
                         onClick={() => handleDeleteSource(src.id)}
                         title="Remove"
-                        className="text-gray-400 hover:text-red-600 text-xs"
+                        className="text-ink-muted hover:text-red-600 text-xs transition-colors"
                       >
-                        &times;
+                        ×
                       </button>
                     </div>
                   </li>
@@ -532,7 +530,7 @@ export default function Schedule() {
             )}
             <button
               onClick={handleConnectOrImport}
-              className="mt-3 w-full text-xs text-blue-600 hover:text-blue-700 font-medium"
+              className="mt-3 w-full text-xs font-medium text-accent hover:text-accent-hover transition-colors"
             >
               + Add Source
             </button>

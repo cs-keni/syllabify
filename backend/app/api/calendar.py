@@ -357,13 +357,20 @@ def import_calendar():
     if not start_dt or not end_dt:
         return jsonify({"error": "start_date and end_date are required"}), 400
 
+    # Google Calendar API expects RFC3339; use UTC. time_max is exclusive, so add 1 day.
+    def to_rfc3339(dt):
+        if dt.tzinfo is None:
+            return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+        return dt.isoformat().replace("+00:00", "Z")
+
+    time_min = to_rfc3339(start_dt)
+    time_max = to_rfc3339(end_dt + timedelta(days=1))
+
     conn = get_db()
     try:
         from googleapiclient.discovery import build
 
         service = build("calendar", "v3", credentials=creds)
-        time_min = start_dt.isoformat()
-        time_max = end_dt.isoformat()
 
         total_imported = 0
         cur = conn.cursor(dictionary=True)

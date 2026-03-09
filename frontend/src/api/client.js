@@ -759,7 +759,7 @@ export async function importCalendar(
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok)
-    throw new Error(data.error || data.message || 'Failed to import calendar');
+    throw new Error(data.message || data.error || 'Failed to import calendar');
   return data;
 }
 
@@ -879,7 +879,8 @@ export async function importIcsFeed(token, { url, label, category }) {
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to import ICS feed');
+  if (!res.ok)
+    throw new Error(data.message || data.error || 'Failed to import ICS feed');
   return data;
 }
 
