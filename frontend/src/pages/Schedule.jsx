@@ -10,6 +10,21 @@ import * as api from '../api/client';
 import AppCalendar from '../components/AppCalendar';
 import UnifiedImportModal from '../components/UnifiedImportModal';
 
+const SOURCE_COLOR_OPTIONS = [
+  { hex: '#EF4444', label: 'Red' },
+  { hex: '#F97316', label: 'Orange' },
+  { hex: '#F59E0B', label: 'Amber' },
+  { hex: '#84CC16', label: 'Lime' },
+  { hex: '#10B981', label: 'Green' },
+  { hex: '#14B8A6', label: 'Teal' },
+  { hex: '#06B6D4', label: 'Cyan' },
+  { hex: '#3B82F6', label: 'Blue' },
+  { hex: '#6366F1', label: 'Indigo' },
+  { hex: '#8B5CF6', label: 'Violet' },
+  { hex: '#EC4899', label: 'Pink' },
+  { hex: '#64748B', label: 'Slate' },
+];
+
 export default function Schedule() {
   const { token } = useAuth();
   const [searchParams] = useSearchParams();
@@ -280,6 +295,24 @@ export default function Schedule() {
     }
   };
 
+  // Pie chart data: study time per course (minutes)
+  const studyTimeByCourse = (() => {
+    const byCourse = {};
+    for (const st of studyTimes) {
+      const name = st.course_name || 'Study';
+      const start = new Date(st.start_time).getTime();
+      const end = new Date(st.end_time).getTime();
+      const mins = Math.round((end - start) / 60000);
+      byCourse[name] = (byCourse[name] || 0) + mins;
+    }
+    return Object.entries(byCourse)
+      .map(([name, mins]) => ({ name, mins }))
+      .sort((a, b) => b.mins - a.mins);
+  })();
+
+  const totalStudyMins = studyTimeByCourse.reduce((s, x) => s + x.mins, 0);
+  const PIE_COLORS = [ '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899', '#06B6D4', '#64748B' ];
+
   const handleCopyExportUrl = async () => {
     if (!exportFeedUrl) return;
     try {
@@ -411,9 +444,9 @@ export default function Schedule() {
         </div>
       )}
 
-      <div className="flex gap-6">
+      <div className="flex flex-col lg:flex-row gap-6">
         {/* Main calendar */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 order-1">
           <AppCalendar
             calendarEvents={calendarEvents}
             studyTimes={studyTimes}
@@ -492,6 +525,26 @@ export default function Schedule() {
                     Location: {eventDetail.event.location}
                   </p>
                 )}
+                {eventDetail.event.source_id != null && (
+                  <div className="mt-3 pt-2 border-t border-border">
+                    <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">Event color</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {SOURCE_COLOR_OPTIONS.map(({ hex, label }) => (
+                        <button
+                          key={hex}
+                          type="button"
+                          onClick={() => {
+                            const src = sources.find(s => s.id === eventDetail.event.source_id);
+                            if (src) handleColorChange(src.id, hex);
+                          }}
+                          className="w-6 h-6 rounded border border-border hover:scale-110 transition-transform"
+                          style={{ backgroundColor: hex }}
+                          title={label}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {eventDetail.event.description && (
                   <div className="mt-2 whitespace-pre-wrap break-words text-xs text-ink leading-relaxed border-t border-border pt-2">
                     {eventDetail.event.description}
@@ -499,10 +552,10 @@ export default function Schedule() {
                 )}
                 {!eventDetail.event.description &&
                   !eventDetail.event.location && (
-                    <p className="mt-2 text-xs text-ink-muted italic">
-                      No additional details.
-                    </p>
-                  )}
+                  <p className="mt-2 text-xs text-ink-muted italic">
+                    No additional details.
+                  </p>
+                )}
                 <button
                   type="button"
                   onClick={() => setEventDetail(null)}
@@ -515,8 +568,48 @@ export default function Schedule() {
           )}
         </div>
 
-        {/* Sources sidebar */}
-        <div className="w-64 shrink-0 hidden lg:block">
+        {/* Sidebar: sources + pie chart */}
+        <div className="w-full lg:w-64 shrink-0 order-2 space-y-4">
+          {/* Study time pie chart */}
+          {studyTimeByCourse.length > 0 && (
+            <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
+              <h3 className="text-sm font-semibold text-ink mb-2">Time per course</h3>
+              <div className="flex items-center gap-4">
+                <div
+                  className="w-20 h-20 rounded-full shrink-0"
+                  style={{
+                    background: `conic-gradient(${studyTimeByCourse
+                      .map((c, i) => {
+                        const start = studyTimeByCourse.slice(0, i).reduce((s, x) => s + (x.mins / totalStudyMins) * 100, 0);
+                        const end = start + (c.mins / totalStudyMins) * 100;
+                        return `${PIE_COLORS[i % PIE_COLORS.length]} ${start}% ${end}%`;
+                      })
+                      .join(', ')})`,
+                  }}
+                  title={studyTimeByCourse.map(c => `${c.name}: ${Math.round(c.mins / 60 * 10) / 10}h`).join(', ')}
+                />
+                <div className="min-w-0 flex-1 space-y-1">
+                  {studyTimeByCourse.slice(0, 5).map((c, i) => (
+                    <div
+                      key={c.name}
+                      className="flex items-center gap-2 text-xs group"
+                      title={`${c.name}: ${Math.round(c.mins / 60 * 10) / 10} hours`}
+                    >
+                      <span
+                        className="w-2.5 h-2.5 rounded-full shrink-0"
+                        style={{ backgroundColor: PIE_COLORS[i % PIE_COLORS.length] }}
+                      />
+                      <span className="truncate text-ink">{c.name}</span>
+                      <span className="text-ink-muted tabular-nums shrink-0">
+                        {Math.round((c.mins / totalStudyMins) * 100)}%
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
             <h3 className="text-sm font-semibold text-ink mb-3">Sources</h3>
             {sources.length === 0 ? (
@@ -549,30 +642,17 @@ export default function Schedule() {
                               className="fixed inset-0 z-40"
                               onClick={() => setColorEditId(null)}
                             />
-                            <div className="absolute left-0 top-6 z-50 p-2 rounded-lg border border-border bg-surface shadow-lg">
-                              <div className="grid grid-cols-4 gap-1">
-                                {[
-                                  '#3B82F6',
-                                  '#10B981',
-                                  '#F59E0B',
-                                  '#EF4444',
-                                  '#8B5CF6',
-                                  '#EC4899',
-                                  '#06B6D4',
-                                  '#84CC16',
-                                  '#F97316',
-                                  '#64748B',
-                                  '#6366F1',
-                                  '#14B8A6',
-                                ].map(c => (
+                            <div className="absolute left-0 top-6 z-50 p-2 rounded-lg border border-border bg-surface shadow-lg min-w-[140px]">
+                              <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">Color</p>
+                              <div className="grid grid-cols-4 gap-1.5">
+                                {SOURCE_COLOR_OPTIONS.map(({ hex, label }) => (
                                   <button
-                                    key={c}
+                                    key={hex}
                                     type="button"
-                                    onClick={() =>
-                                      handleColorChange(src.id, c)
-                                    }
-                                    className="w-6 h-6 rounded border border-border hover:scale-110 transition-transform"
-                                    style={{ backgroundColor: c }}
+                                    onClick={() => handleColorChange(src.id, hex)}
+                                    className="w-7 h-7 rounded border border-border hover:scale-110 transition-transform"
+                                    style={{ backgroundColor: hex }}
+                                    title={label}
                                   />
                                 ))}
                               </div>

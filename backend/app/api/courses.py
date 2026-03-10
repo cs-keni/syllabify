@@ -92,6 +92,14 @@ def create_course(term_id):
         if not cur.fetchone():
             return jsonify({"error": "Term not found"}), 404
 
+        # Prevent duplicate course names in same term (case-insensitive)
+        cur.execute(
+            "SELECT id FROM Courses WHERE term_id = %s AND LOWER(TRIM(course_name)) = LOWER(%s)",
+            (term_id, course_name),
+        )
+        if cur.fetchone():
+            return jsonify({"error": "duplicate_course", "message": "A course with this name already exists in this term"}), 409
+
         cur.execute(
             "INSERT INTO Courses (course_name, term_id, study_hours_per_week, color) VALUES (%s, %s, %s, %s)",
             (course_name, term_id, study_hours_per_week, color or None),

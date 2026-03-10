@@ -607,7 +607,8 @@ export async function createCourse(
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to create course');
+  if (!res.ok)
+    throw new Error(data.message || data.error || 'Failed to create course');
   return data;
 }
 

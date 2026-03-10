@@ -85,6 +85,13 @@ export default function Dashboard() {
     e.preventDefault();
     const name = newCourseName.trim();
     if (!name || !currentTermId) return;
+    const exists = courses.some(
+      c => (c.course_name || '').toLowerCase() === name.toLowerCase()
+    );
+    if (exists) {
+      setCourseError('A course with this name already exists.');
+      return;
+    }
     setSaving(true);
     setCourseError('');
     try {
@@ -93,7 +100,7 @@ export default function Dashboard() {
       setNewCourseName('');
       setAdding(false);
     } catch (e) {
-      setCourseError(e.message);
+      setCourseError(e.message || 'Could not add course');
     } finally {
       setSaving(false);
     }
