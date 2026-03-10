@@ -15,6 +15,7 @@ import Upload from './pages/Upload';
 import Course from './pages/Course';
 import Schedule from './pages/Schedule';
 import Preferences from './pages/Preferences';
+import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -107,6 +108,7 @@ function AppRoutes() {
             <Route path="courses/:courseId" element={<Course />} />
             <Route path="schedule" element={<Schedule />} />
             <Route path="preferences" element={<Preferences />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/app" replace />} />
           </Route>

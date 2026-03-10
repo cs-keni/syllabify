@@ -200,6 +200,8 @@ function AddMeetingModal({ open, onClose, onAdd }) {
               type="time"
               value={startTime}
               onChange={e => setStartTime(e.target.value)}
+              step={300}
+              title="Click to open clock picker"
               className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
             />
           </div>
@@ -211,6 +213,8 @@ function AddMeetingModal({ open, onClose, onAdd }) {
               type="time"
               value={endTime}
               onChange={e => setEndTime(e.target.value)}
+              step={300}
+              title="Click to open clock picker"
               className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
             />
           </div>

@@ -207,7 +207,7 @@ def get_study_times(term_id):
         cur.execute(
             """SELECT st.id, st.start_time, st.end_time, st.notes,
                       st.is_locked, st.assignment_id, st.course_id,
-                      c.course_name
+                      c.course_name, c.color AS course_color
                FROM StudyTimes st
                JOIN Terms t ON st.term_id = t.id
                LEFT JOIN Courses c ON st.course_id = c.id
@@ -229,6 +229,7 @@ def get_study_times(term_id):
                 "assignment_id": r["assignment_id"],
                 "course_id": r["course_id"],
                 "course_name": r.get("course_name"),
+                "course_color": r.get("course_color"),
             })
 
         return jsonify({"study_times": study_times})

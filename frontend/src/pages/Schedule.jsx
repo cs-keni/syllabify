@@ -528,6 +528,7 @@ export default function Schedule() {
                 {eventDetail.event.source_id != null && (
                   <div className="mt-3 pt-2 border-t border-border">
                     <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">Event color</p>
+                    <p className="text-[10px] text-ink-muted mb-1.5">Changes all events from this source (e.g. this Google calendar).</p>
                     <div className="flex flex-wrap gap-1.5">
                       {SOURCE_COLOR_OPTIONS.map(({ hex, label }) => (
                         <button
@@ -570,10 +571,10 @@ export default function Schedule() {
 
         {/* Sidebar: sources + pie chart */}
         <div className="w-full lg:w-64 shrink-0 order-2 space-y-4">
-          {/* Study time pie chart */}
-          {studyTimeByCourse.length > 0 && (
-            <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
-              <h3 className="text-sm font-semibold text-ink mb-2">Time per course</h3>
+          {/* Study time pie chart – always visible */}
+          <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
+            <h3 className="text-sm font-semibold text-ink mb-2">Time per course</h3>
+            {studyTimeByCourse.length > 0 ? (
               <div className="flex items-center gap-4">
                 <div
                   className="w-20 h-20 rounded-full shrink-0"
@@ -607,8 +608,12 @@ export default function Schedule() {
                   ))}
                 </div>
               </div>
-            </div>
-          )}
+            ) : (
+              <p className="text-xs text-ink-muted">
+                Add courses from your syllabus, then click <strong>Generate Study Times</strong> above to see a breakdown of study time per course.
+              </p>
+            )}
+          </div>
 
           <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
             <h3 className="text-sm font-semibold text-ink mb-3">Sources</h3>

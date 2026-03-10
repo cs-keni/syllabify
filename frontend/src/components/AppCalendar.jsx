@@ -90,8 +90,11 @@ export default function AppCalendar({
       }
     }
 
-    // Transform study times
+    // Transform study times (use course color when available)
+    const STUDY_GREEN = '#10B981';
+    const STUDY_LOCKED = '#059669';
     for (const st of studyTimes) {
+      const baseColor = st.course_color || (st.is_locked ? STUDY_LOCKED : STUDY_GREEN);
       events.push({
         id: `study-${st.id}`,
         title: st.course_name
@@ -99,8 +102,8 @@ export default function AppCalendar({
           : '\u{1F4DA} Study',
         start: st.start_time,
         end: st.end_time,
-        backgroundColor: st.is_locked ? '#059669' : '#10B981',
-        borderColor: st.is_locked ? '#047857' : '#059669',
+        backgroundColor: baseColor,
+        borderColor: baseColor,
         extendedProps: { type: 'study_time', data: st },
         classNames: st.is_locked ? ['locked-study'] : [],
         editable: !st.is_locked,
@@ -150,6 +153,7 @@ export default function AppCalendar({
         ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         initialView={currentView}
+        locale="en-US"
         firstDay={0}
         dayHeaderContent={arg => (
           <div className="fc-day-header-content">
