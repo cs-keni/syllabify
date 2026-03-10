@@ -154,7 +154,9 @@ export default function AppCalendar({
         dayHeaderContent={arg => (
           <div className="fc-day-header-content">
             <span className="fc-day-header-weekday">{arg.date.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}</span>
-            <span className="fc-day-header-day">{arg.date.getDate()}</span>
+            {currentView !== 'dayGridMonth' && (
+              <span className="fc-day-header-day">{arg.date.getDate()}</span>
+            )}
           </div>
         )}
         headerToolbar={{
