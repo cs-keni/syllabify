@@ -166,7 +166,6 @@ def google_signin():
 
     google_id = idinfo.get("sub")
     email = (idinfo.get("email") or "").strip().lower()
-    (idinfo.get("name") or "").strip()
 
     if not google_id:
         return jsonify({"error": "invalid Google token"}), 401

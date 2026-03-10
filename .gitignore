@@ -163,6 +163,9 @@ out/
 # Personal / resume notes (do not push)
 kennyresume.md
 
+# Local AI memory / private notes (do not push)
+AI_Memory/
+
 # Local planning / teammate notes (do not push)
 docs/EXPLAIN.md
 docs/ANIMATIONS.md
@@ -171,3 +174,4 @@ docs/progress-report2.txt
 docs/syllabus-parser-alternatives.md
 docs/parser-schedule-integration.md
 docs/patterns.md
+docs/things-to-do.txt

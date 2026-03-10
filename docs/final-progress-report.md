@@ -9,9 +9,9 @@
 
 ## 1. Executive Summary
 
-Syllabify is a web-based academic planning tool that helps university students transform course syllabi into structured, personalized study schedules. Students upload syllabi (PDF or text), review and correct extracted assignments and due dates, and generate study plans that integrate with their calendars. The system emphasizes **user control**—all extracted data is reviewed before saving, and schedule export requires explicit approval.
+Syllabify is a web-based academic planning tool that helps university students transform course syllabi into structured, personalized study schedules. Students upload syllabi (PDF, DOCX, or text), review and correct extracted assignments and due dates, and generate study plans that integrate with their calendars. The system emphasizes **user control**—all extracted data is reviewed before saving, and schedule export requires explicit approval.
 
-The project follows a client–server architecture with a React frontend (Vercel), Flask backend (Render), and MySQL database (Railway). Development uses Scrum with CI/CD (GitHub Actions). The syllabus parser is implemented (hybrid LLM + heuristics); the scheduling engine and calendar export are in progress by teammates.
+The project follows a client–server architecture with a React frontend (Vercel), Flask backend (Render), and MySQL database (Railway). Development uses Scrum with CI/CD (GitHub Actions). The syllabus parser is implemented (hybrid LLM + heuristics). User registration, admin interface (user management, maintenance mode, audit log), preferences persistence, and change password are complete. The scheduling engine and calendar export are in progress by teammates.
 
 ---
 
@@ -38,7 +38,7 @@ Research (Inside Higher Ed / College Pulse, 40% of students; Educational Data Mi
 
 ### 3.2 Solution Overview
 
-1. **Upload** — PDF or pasted text
+1. **Upload** — PDF, DOCX, or pasted text
 2. **Parse** — Hybrid (rule-based + optional LLM) extraction of assignments, exams, meeting times
 3. **Review & confirm** — User edits and approves extracted data
 4. **Generate schedule** — Engine allocates time blocks using deadlines, workload, preferences
@@ -54,7 +54,7 @@ Research (Inside Higher Ed / College Pulse, 40% of students; Educational Data Mi
 |----|-------------|-------|--------|
 | R1 | User login (username/password) and JWT auth | Backend team | Done |
 | R2 | First-time security setup (Q&A for account recovery) | Backend team | Done |
-| R3 | Syllabus upload (PDF and paste text) | Kenny | Done |
+| R3 | Syllabus upload (PDF, DOCX, paste text) | Kenny | Done |
 | R4 | Syllabus parsing (assignments, due dates, meeting times, types) | Kenny | Done |
 | R5 | Review and edit parsed data before saving | Andrew | Done |
 | R6 | Save course and assignments to database | Backend team | Done |
@@ -68,33 +68,33 @@ Research (Inside Higher Ed / College Pulse, 40% of students; Educational Data Mi
 
 ### 4.2 Should Have (Post-MVP)
 
-| ID | Requirement | Owner |
-|----|-------------|-------|
-| R14 | Export to Google Calendar (OAuth) | Leon |
-| R15 | Preferences persistence (work hours, days) | Andrew + Backend |
-| R16 | User registration (signup) | Backend |
-| R17 | Email for password recovery | Backend |
-| R18 | Import from existing calendar (ICS/Google) | Leon |
-| R19 | Conflict detection and highlighting in schedule | Saint George + Andrew |
+| ID | Requirement | Owner | Status |
+|----|-------------|-------|--------|
+| R14 | Export to Google Calendar (OAuth) | Leon | Not started |
+| R15 | Preferences persistence (work hours, days) | Andrew + Backend | Done |
+| R16 | User registration (signup) | Backend | Done |
+| R17 | Email for password recovery | Backend | Not started |
+| R18 | Import from existing calendar (ICS/Google) | Leon | Not started |
+| R19 | Conflict detection and highlighting in schedule | Saint George + Andrew | In progress |
 
-### 4.3 Could Have
+### 4.3 Could Have (Implemented)
 
-| ID | Requirement |
-|----|-------------|
-| R20 | Admin interface for user management |
-| R21 | Maintenance mode toggle |
-| R22 | Dark mode / theme preferences |
-| R23 | Per-course color coding |
+| ID | Requirement | Status |
+|----|-------------|--------|
+| R20 | Admin interface for user management | Done |
+| R21 | Maintenance mode toggle | Done |
+| R22 | Dark mode / theme preferences | Done |
+| R23 | Per-course color coding | Done |
 
 ### 4.4 Use Cases (Summary)
 
 1. **User login** — Authenticate; redirect to security setup (first-time) or dashboard
 2. **Security setup** — One-time Q&A for account recovery
-3. **Upload and parse syllabus** — PDF or text → extracted assignments, meeting times
+3. **Upload and parse syllabus** — PDF, DOCX, or text → extracted assignments, meeting times
 4. **Review and confirm** — Edit parsed data → save course and assignments
 5. **Generate and approve schedule** — Select courses → engine allocates blocks → user approves
 6. **Export schedule** — ICS download or Google Calendar push
-7. **Administrator maintenance** — User management, maintenance mode (future)
+7. **Administrator maintenance** — User management, maintenance mode, audit log (done)
 
 ---
 
@@ -111,7 +111,9 @@ The MVP delivers an end-to-end flow:
 ### 5.2 Implemented (Ready for MVP)
 
 - Login and JWT auth
+- User registration (signup)
 - Security setup (Q&A)
+- Change password (in Preferences)
 - Syllabus upload (PDF, paste)
 - Hybrid parser (rule-based + optional LLM)
 - Parsed data review UI with editable assignments, meeting times, instructors
@@ -119,8 +121,12 @@ The MVP delivers an end-to-end flow:
 - Term CRUD and activation
 - Multi-course per term
 - Dashboard with term selector and course cards
-- Course detail page (assignments list)
+- Course detail page (assignments list, color coding)
 - Schedule engine input API (`GET /api/schedule/engine-input`)
+- Preferences persistence (work hours, preferred days, timezone)
+- Admin interface (user list, disable/enable, grant/revoke admin, reset security, set temp password, create user, delete user, audit log)
+- Maintenance mode (admins bypass when on)
+- Theme toggle (dark mode)
 - Deployment (Vercel, Render, Railway)
 - CI/CD (GitHub Actions)
 
@@ -133,8 +139,6 @@ The MVP delivers an end-to-end flow:
 | Schedule generation API | Saint George | `POST /api/schedule/generate` (or equivalent) that calls scheduling engine and returns blocks. |
 | User approval step | Andrew | “Approve schedule” before export. |
 | ICS export | Leon | `calendar_service.py` and `export.py` are stubs. Need ICS generation from approved schedule. |
-| Preferences persistence | Andrew | Preferences UI exists but does not persist to backend. |
-| Fix: Update existing course | Backend | When uploading from Course page, update that course instead of creating a new one (duplicate-course bug). |
 
 ### 5.4 MVP Completion Checklist
 
@@ -145,8 +149,6 @@ The MVP delivers an end-to-end flow:
 - [ ] Leon: Implement ICS generation in `calendar_service.py`
 - [ ] Leon: Add `POST /api/export/ics` endpoint
 - [ ] Andrew: Connect “Export ICS” button to export API
-- [ ] Optional: Persist Preferences to backend (or use defaults)
-- [ ] Fix: Update-course flow (avoid duplicate courses on re-upload)
 
 ---
 
@@ -169,11 +171,13 @@ flowchart TB
         Schedule[Schedule Page]
         Preferences[Preferences]
         Course[Course Page]
+        Admin[Admin Page]
     end
 
     subgraph Backend["Backend (Render - Flask)"]
         subgraph API["API Layer"]
             AuthAPI[Auth API]
+            AdminAPI[Admin API]
             SyllabusAPI[Syllabus API]
             CoursesAPI[Courses API]
             TermsAPI[Terms API]
@@ -212,8 +216,10 @@ flowchart TB
     Schedule --> ExportAPI
     Preferences --> TermsAPI
     Course --> CoursesAPI
+    Admin --> AdminAPI
 
     AuthAPI --> MySQL
+    AdminAPI --> MySQL
     SyllabusAPI --> ParsingSvc
     ParsingSvc --> RuleParser
     ParsingSvc --> LLMParser
@@ -264,11 +270,13 @@ flowchart TB
         SchedulePreview[SchedulePreview - Time blocks]
         Preferences[Preferences - Work hours, days]
         Course[Course - Assignments list]
+        Admin[Admin - User management]
         CourseCard[CourseCard]
         TermSelector[TermSelector]
     end
 
     Layout --> Dashboard
+    Layout --> Admin
     Layout --> Upload
     Layout --> Schedule
     Layout --> Preferences
@@ -293,7 +301,10 @@ erDiagram
         int id PK
         string username
         string password_hash
+        string email
         bool security_setup_done
+        bool is_admin
+        bool is_disabled
     }
 
     Terms {
@@ -345,8 +356,17 @@ erDiagram
 flowchart TB
     subgraph Auth["Auth"]
         POST_login[POST /api/auth/login]
+        POST_register[POST /api/auth/register]
         POST_security[POST /api/auth/security-setup]
+        POST_change_pw[POST /api/auth/change-password]
         GET_me[GET /api/auth/me]
+    end
+
+    subgraph Admin["Admin - admin only"]
+        GET_admin_users[GET /api/admin/users]
+        PUT_disable[PUT .../disable]
+        PUT_set_admin[PUT .../set-admin]
+        PUT_reset_security[PUT .../reset-security]
     end
 
     subgraph Terms["Terms"]
@@ -365,6 +385,13 @@ flowchart TB
         DELETE_course[DELETE /api/courses/:id]
         POST_assignments[POST /api/courses/:id/assignments]
         POST_meetings[POST /api/courses/:id/meetings]
+    end
+
+    subgraph Users["Users"]
+        GET_profile[GET /api/users/me]
+        PUT_profile[PUT /api/users/me]
+        GET_prefs[GET /api/users/me/preferences]
+        PUT_prefs[PUT /api/users/me/preferences]
     end
 
     subgraph Syllabus["Syllabus"]
@@ -489,11 +516,12 @@ sequenceDiagram
 
 | Component | Status | Notes |
 |-----------|--------|------|
-| Auth (login, JWT, security setup) | Done | Single dev user; registration TODO |
+| Auth (login, JWT, security setup) | Done | Registration, change password, security Q&A |
 | Syllabus parse API | Done | PDF + text; hybrid parser |
 | Courses API | Done | CRUD, assignments, meetings |
 | Terms API | Done | CRUD, activate |
 | Schedule engine-input API | Done | Returns normalized JSON for scheduling engine |
+| Admin API | Done | Users, disable, set-admin, reset-security, set-password, create, delete, audit log, maintenance, settings |
 | Scheduling service | Stub | Logic to be implemented by Saint George |
 | Calendar service | Stub | ICS/Google to be implemented by Leon |
 | Export API | Stub | Endpoints TODO |
@@ -503,6 +531,7 @@ sequenceDiagram
 | Component | Status | Notes |
 |-----------|--------|------|
 | Login page | Done | |
+| Register page | Done | |
 | Security setup page | Done | |
 | Dashboard | Done | Term selector, course cards |
 | Upload flow | Done | Upload → Review → Confirm |
@@ -511,8 +540,9 @@ sequenceDiagram
 | Course page | Done | Assignments list, delete |
 | Schedule page | Placeholder | Mock blocks |
 | SchedulePreview | Placeholder | MOCK_BLOCKS |
-| Preferences | UI only | Not persisted |
-| Layout/Nav | Done | Dashboard, Upload, Schedule, Preferences |
+| Preferences | Done | Persisted via /api/users/me/preferences |
+| Admin page | Done | User management, maintenance, settings, audit log |
+| Layout/Nav | Done | Dashboard, Upload, Schedule, Preferences, Admin (admin only) |
 | Theme toggle | Done | |
 
 ### 8.3 Parser (Kenny)
@@ -557,7 +587,7 @@ sequenceDiagram
 3. **Leon:** Implement ICS in `calendar_service.py`; add `POST /api/export/ics`.
 4. **Andrew:** Connect Export button to export API.
 5. **Backend:** Fix update-course flow (use `courseId` when provided to avoid duplicates).
-6. **Optional:** Persist Preferences; add user registration; email for password recovery.
+6. **Optional:** Email for password recovery.
 
 ---
 

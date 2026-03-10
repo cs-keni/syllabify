@@ -52,6 +52,16 @@ def patch_assignment(assignment_id):
                 updates.append("assignment_name = %s")
                 params.append(name)
 
+        if "start_date" in data:
+            start_raw = data.get("start_date")
+            if start_raw is not None and start_raw != "":
+                try:
+                    start_dt = datetime.fromisoformat(str(start_raw).replace("Z", "+00:00"))
+                    updates.append("start_date = %s")
+                    params.append(start_dt)
+                except (ValueError, TypeError):
+                    pass
+
         if "due_date" in data:
             due_raw = data.get("due_date")
             if due_raw is None or due_raw == "":

@@ -177,6 +177,7 @@ export async function saveCourse(token, termIdOrPayload, maybePayload) {
   );
   const items = (assignments || []).map(a => ({
     name: a.name,
+    start: a.start || a.start_date || null,
     due: a.due || a.due_date || null,
     hours: a.hours ?? 3,
     type: a.type || 'assignment',
@@ -606,7 +607,8 @@ export async function createCourse(
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to create course');
+  if (!res.ok)
+    throw new Error(data.message || data.error || 'Failed to create course');
   return data;
 }
 
@@ -745,20 +747,17 @@ export async function getCalendarList(token) {
   return data;
 }
 
-/** POST /api/calendar/import. Body: { calendar_ids, start_date, end_date }. Returns { ok, imported_count }. */
-export async function importCalendar(
-  token,
-  { calendar_ids, start_date, end_date }
-) {
+/** POST /api/calendar/import. Body: { calendar_ids } (optional start_date, end_date). Returns { ok, imported_count }. */
+export async function importCalendar(token, { calendar_ids, start_date, end_date } = {}) {
   const res = await apiFetch(`${BASE}/api/calendar/import`, {
     method: 'POST',
     headers: headers(true, token),
-    body: JSON.stringify({ calendar_ids, start_date, end_date }),
+    body: JSON.stringify({ calendar_ids: calendar_ids || [], start_date: start_date || '', end_date: end_date || '' }),
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok)
-    throw new Error(data.error || data.message || 'Failed to import calendar');
+    throw new Error(data.message || data.error || 'Failed to import calendar');
   return data;
 }
 
@@ -793,6 +792,54 @@ export async function getCalendarEvents(
   return data;
 }
 
+/** GET /api/schedule/terms/:termId/study-times. Optional start_date, end_date for range. Returns { study_times }. */
+export async function getStudyTimes(token, termId, startDate, endDate) {
+  const url = new URL(`${BASE}/api/schedule/terms/${termId}/study-times`);
+  if (startDate) url.searchParams.set('start_date', startDate);
+  if (endDate) url.searchParams.set('end_date', endDate);
+  const res = await apiFetch(url.toString(), {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch study times');
+  return data;
+}
+
+/** PATCH /api/schedule/study-times/:id. Body: { start_time?, end_time?, is_locked?, notes? }. */
+export async function updateStudyTime(token, studyTimeId, body) {
+  const res = await apiFetch(
+    `${BASE}/api/schedule/study-times/${studyTimeId}`,
+    {
+      method: 'PATCH',
+      headers: headers(true, token),
+      body: JSON.stringify(body || {}),
+      credentials: 'include',
+    }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(
+      data.message || data.error || 'Failed to update study time'
+    );
+  return data;
+}
+
+/** DELETE /api/schedule/study-times/:id. */
+export async function deleteStudyTime(token, studyTimeId) {
+  const res = await apiFetch(
+    `${BASE}/api/schedule/study-times/${studyTimeId}`,
+    {
+      method: 'DELETE',
+      headers: headers(true, token),
+      credentials: 'include',
+    }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to delete study time');
+  return data;
+}
+
 /** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. */
 export async function generateStudyTimes(token, termId) {
   const res = await apiFetch(
@@ -805,6 +852,98 @@ export async function generateStudyTimes(token, termId) {
   );
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to generate study times');
+  return data;
+}
+
+// ── Calendar Sources ──
+
+/** GET /api/calendar/sources. Returns { sources }. */
+export async function getCalendarSources(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/sources`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch sources');
+  return data;
+}
+
+/** POST /api/calendar/import-ics. Body: { url, label, category }. Returns { ok, source_id, imported_count }. */
+export async function importIcsFeed(token, { url, label, category }) {
+  const res = await apiFetch(`${BASE}/api/calendar/import-ics`, {
+    method: 'POST',
+    headers: headers(true, token),
+    body: JSON.stringify({ url, label, category }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.message || data.error || 'Failed to import ICS feed');
+  return data;
+}
+
+/** POST /api/calendar/sync-source/:sourceId. Returns { ok, synced_count }. */
+export async function syncSource(token, sourceId) {
+  const res = await apiFetch(`${BASE}/api/calendar/sync-source/${sourceId}`, {
+    method: 'POST',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to sync source');
+  return data;
+}
+
+/** DELETE /api/calendar/sources/:sourceId. Returns { ok }. */
+export async function updateCalendarSource(token, sourceId, { color }) {
+  const res = await apiFetch(`${BASE}/api/calendar/sources/${sourceId}`, {
+    method: 'PATCH',
+    headers: headers(true, token),
+    body: JSON.stringify({ color }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to update source');
+  return data;
+}
+
+export async function deleteCalendarSource(token, sourceId) {
+  const res = await apiFetch(`${BASE}/api/calendar/sources/${sourceId}`, {
+    method: 'DELETE',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to delete source');
+  return data;
+}
+
+/** GET /api/calendar/export/token. Returns { feedUrl, enabled }. */
+export async function getIcalExportToken(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/export/token`, {
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(
+      data.error || data.message || 'Failed to load iCal feed URL'
+    );
+  return data;
+}
+
+/** POST /api/calendar/export/token/rotate. Rotates feed token, old URL becomes invalid. */
+export async function rotateIcalExportToken(token) {
+  const res = await apiFetch(`${BASE}/api/calendar/export/token/rotate`, {
+    method: 'POST',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(
+      data.error || data.message || 'Failed to rotate feed token'
+    );
   return data;
 }
 
@@ -834,5 +973,14 @@ export default {
   updateAssignment,
   deleteAssignment,
   parseSyllabus,
+  getStudyTimes,
   generateStudyTimes,
+  updateStudyTime,
+  deleteStudyTime,
+  getCalendarSources,
+  importIcsFeed,
+  syncSource,
+  deleteCalendarSource,
+  getIcalExportToken,
+  rotateIcalExportToken,
 };

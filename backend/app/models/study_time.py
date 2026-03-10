@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String
+from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..db.base import Base
@@ -22,5 +22,9 @@ class StudyTime(Base):
     )
 
     term_id: Mapped[int] = mapped_column(ForeignKey("Terms.id"), nullable=False)
+
+    is_locked: Mapped[bool] = mapped_column(Boolean, default=False)
+    assignment_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    course_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     term = relationship("Term", back_populates="study_times")
