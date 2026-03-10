@@ -46,6 +46,8 @@ export default function Schedule() {
   const [colorEditId, setColorEditId] = useState(null);
   const [popover, setPopover] = useState(null); // { studyTime, x, y }
   const [eventDetail, setEventDetail] = useState(null); // { event, x, y }
+  const [hoverPreview, setHoverPreview] = useState(null); // { type, data, x, y }
+  const hoverTimeoutRef = useRef(null);
   const autoSyncDone = useRef(false);
 
   // Handle OAuth callback params
@@ -216,6 +218,7 @@ export default function Schedule() {
   };
 
   const handleEventClickAll = ({ type, data }, jsEvent) => {
+    setHoverPreview(null);
     const x = jsEvent?.clientX ?? 0;
     const y = jsEvent?.clientY ?? 0;
     if (type === 'study_time' && data) {
@@ -225,6 +228,23 @@ export default function Schedule() {
       setPopover(null);
       setEventDetail({ event: data, x, y });
     }
+  };
+
+  const handleEventHover = ({ type, data }, jsEvent) => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    hoverTimeoutRef.current = setTimeout(() => {
+      const x = jsEvent?.clientX ?? 0;
+      const y = jsEvent?.clientY ?? 0;
+      setHoverPreview({ type, data, x, y });
+    }, 300);
+  };
+
+  const handleEventHoverEnd = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setHoverPreview(null);
   };
 
   const handleToggleLock = async () => {
@@ -453,7 +473,53 @@ export default function Schedule() {
             onEventDrop={handleStudyTimeMove}
             onEventResize={handleStudyTimeMove}
             onEventClick={handleEventClickAll}
+            onEventHover={handleEventHover}
+            onEventHoverEnd={handleEventHoverEnd}
           />
+          {hoverPreview && !popover && !eventDetail && (
+            <div
+              className="fixed z-50 min-w-[200px] max-w-[280px] rounded-lg border border-border bg-surface-elevated p-3 text-sm shadow-dropdown animate-fade-in pointer-events-none"
+              style={{
+                top: Math.min(hoverPreview.y + 12, window.innerHeight - 180),
+                left: Math.min(hoverPreview.x + 12, window.innerWidth - 300),
+              }}
+            >
+              {hoverPreview.type === 'study_time' ? (
+                <>
+                  <p className="font-medium text-ink truncate">
+                    {hoverPreview.data.course_name || 'Study Block'}
+                  </p>
+                  <p className="text-xs text-ink-muted mt-0.5">
+                    {hoverPreview.data.is_locked ? 'Locked' : 'Unlocked'} · Click to edit
+                  </p>
+                  {hoverPreview.data.start_time && (
+                    <p className="text-xs text-ink-muted font-mono mt-1">
+                      {new Date(hoverPreview.data.start_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })} – {new Date(hoverPreview.data.end_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
+                    </p>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p className="font-medium text-ink truncate">
+                    {hoverPreview.data.title}
+                  </p>
+                  {(hoverPreview.data.start_time || hoverPreview.data.start_date) && (
+                    <p className="text-xs text-ink-muted font-mono mt-0.5">
+                      {hoverPreview.data.start_date
+                        ? `${hoverPreview.data.start_date}${hoverPreview.data.end_date ? ` – ${hoverPreview.data.end_date}` : ''}`
+                        : `${new Date(hoverPreview.data.start_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })} – ${new Date(hoverPreview.data.end_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`}
+                    </p>
+                  )}
+                  {hoverPreview.data.location && (
+                    <p className="text-xs text-ink-muted mt-0.5 truncate">
+                      {hoverPreview.data.location}
+                    </p>
+                  )}
+                  <p className="text-[10px] text-ink-subtle mt-1.5">Click to edit</p>
+                </>
+              )}
+            </div>
+          )}
           {popover && (
             <>
               <div

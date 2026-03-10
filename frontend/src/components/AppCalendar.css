@@ -31,6 +31,35 @@
   font-family: inherit;
 }
 
+/* Remove outermost table borders – freer, less boxed feel */
+.app-calendar-container .fc-scrollgrid {
+  border: none !important;
+}
+
+.app-calendar-container .fc-theme-standard td,
+.app-calendar-container .fc-theme-standard th {
+  border-color: transparent;
+}
+
+.app-calendar-container .fc-scrollgrid-section-header th,
+.app-calendar-container .fc-scrollgrid-section-header td {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: var(--color-border, #e5e7eb);
+}
+
+.app-calendar-container .fc-timegrid-axis {
+  border-right: 1px solid var(--color-border-subtle, #f3f4f6);
+}
+
+.app-calendar-container .fc-timegrid-col {
+  border-right: 1px solid var(--color-border-subtle, #f3f4f6);
+}
+
+.app-calendar-container .fc-timegrid-col:last-child {
+  border-right: none;
+}
+
 .dark .app-calendar-container .fc {
   --fc-border-color: var(--color-border);
   --fc-today-bg-color: rgba(15, 138, 76, 0.12);
@@ -252,26 +281,50 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Hide horizontal lines between hours – cleaner look */
+/* Hour separator lines – subtle lines between each hour */
+.app-calendar-container .fc-timegrid-slot {
+  border-top: 1px solid var(--color-border-subtle, #f3f4f6);
+}
+
 .app-calendar-container .fc-timegrid-slot-minor {
   border-top-style: none;
 }
 
-.app-calendar-container .fc-timegrid-slot {
-  border-top: none;
+.dark .app-calendar-container .fc-timegrid-slot {
+  border-top-color: var(--color-border-subtle);
 }
 
-.app-calendar-container .fc-timegrid-divider {
-  display: none;
-}
-
-/* All-day area: minimal height – events show under day number like Google */
+/* All-day: no visible bar – events show as chips under day number */
 .app-calendar-container .fc-timegrid-slot-allday {
   height: auto;
-  min-height: 1.5rem;
+  min-height: 0;
+  border: none !important;
+  background: transparent !important;
 }
 
 .app-calendar-container .fc-timegrid-slot-allday .fc-timegrid-slot-label {
+  display: none;
+}
+
+/* All-day axis (left cell) – no label, no bar */
+.app-calendar-container .fc-timegrid-axis.fc-scrollgrid-shrink {
+  border: none !important;
+  background: transparent !important;
+}
+
+.app-calendar-container .fc-timegrid-slot-allday,
+.app-calendar-container .fc-timegrid-slot-allday .fc-timegrid-slot {
+  border-top: none !important;
+}
+
+/* All-day row: axis + day columns – transparent, no bar appearance */
+.app-calendar-container .fc-scrollgrid-section.fc-scrollgrid-section-liquid > .fc-timegrid-axis,
+.app-calendar-container .fc-scrollgrid-section.fc-scrollgrid-section-liquid > .fc-scrollgrid-shrink {
+  background: transparent !important;
+  border: none !important;
+}
+
+.app-calendar-container .fc-timegrid-divider {
   display: none;
 }
 

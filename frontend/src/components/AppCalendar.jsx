@@ -22,6 +22,8 @@ export default function AppCalendar({
   calendarEvents = [],
   studyTimes = [],
   onEventClick,
+  onEventHover,
+  onEventHoverEnd,
   onDateSelect,
   onEventDrop,
   onEventResize,
@@ -119,6 +121,16 @@ export default function AppCalendar({
     }
   };
 
+  const handleEventMouseEnter = info => {
+    if (onEventHover) {
+      onEventHover(info.event.extendedProps, info.jsEvent);
+    }
+  };
+
+  const handleEventMouseLeave = () => {
+    if (onEventHoverEnd) onEventHoverEnd();
+  };
+
   const handleDateSelect = info => {
     if (onDateSelect) {
       onDateSelect({ start: info.start, end: info.end, allDay: info.allDay });
@@ -189,6 +201,9 @@ export default function AppCalendar({
         allDaySlot={true}
         nowIndicator={true}
         eventClick={handleEventClick}
+        eventMouseEnter={handleEventMouseEnter}
+        eventMouseLeave={handleEventMouseLeave}
+        eventMinHeight={28}
         select={handleDateSelect}
         eventDrop={handleEventDrop}
         eventResize={handleEventResize}
