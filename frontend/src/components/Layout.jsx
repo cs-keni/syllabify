@@ -18,8 +18,6 @@ const navItems = [
   { to: '/app', label: 'Dashboard', end: true },
   { to: '/app/upload', label: 'Upload syllabus', end: true },
   { to: '/app/schedule', label: 'Schedule', end: true },
-  { to: '/app/profile', label: 'Profile', end: true },
-  { to: '/app/preferences', label: 'Preferences', end: true },
   { to: '/app/admin', label: 'Admin', end: true, adminOnly: true },
 ];
 
@@ -96,7 +94,7 @@ export default function Layout() {
         if (e.key === 'd') navigate('/app');
         else if (e.key === 'u') navigate('/app/upload');
         else if (e.key === 's') navigate('/app/schedule');
-        else if (e.key === 'p') navigate('/app/preferences');
+        else if (e.key === 'p') navigate('/app/settings');
         return;
       }
       if (e.key === 'g') gPendingRef.current = true;
@@ -211,7 +209,7 @@ export default function Layout() {
         onClose={() => setShortcutsOpen(false)}
       />
       <header className="sticky top-0 z-10 bg-surface-elevated border-b border-border shadow-card">
-        <nav className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <nav className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 xl:px-10">
           <div className="flex min-h-14 flex-wrap items-center gap-2 py-2 md:flex-nowrap md:justify-between md:py-0">
             <NavLink
               to="/"
@@ -301,7 +299,7 @@ export default function Layout() {
                 </button>
                 {profileOpen && (
                   <div
-                    className="absolute right-0 mt-1 py-1 min-w-[160px] rounded-card border border-border bg-surface-elevated shadow-dropdown z-50 animate-fade-in"
+                    className="absolute right-0 mt-1 py-1 min-w-[160px] rounded-card border border-border bg-surface-elevated shadow-dropdown z-50 animate-fade-in animate-slide-down"
                     role="menu"
                   >
                     <NavLink
@@ -326,7 +324,7 @@ export default function Layout() {
                       Profile
                     </NavLink>
                     <NavLink
-                      to="/app/preferences"
+                      to="/app/settings"
                       onClick={() => setProfileOpen(false)}
                       className="flex items-center gap-2 px-4 py-2 text-sm text-ink no-underline hover:bg-surface-muted"
                       role="menuitem"
@@ -350,7 +348,7 @@ export default function Layout() {
                           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                         />
                       </svg>
-                      Preferences
+                      Settings
                     </NavLink>
                     <button
                       type="button"
@@ -385,7 +383,7 @@ export default function Layout() {
       </header>
       <main
         id="main-content"
-        className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
+        className="flex-1 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 xl:px-10 py-6 sm:py-8"
       >
         <Outlet />
       </main>

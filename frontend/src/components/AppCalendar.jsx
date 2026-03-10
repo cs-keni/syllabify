@@ -176,9 +176,9 @@ export default function AppCalendar({
         weekends={true}
         slotMinTime="06:00:00"
         slotMaxTime="24:00:00"
-        slotDuration="00:05:00"
+        slotDuration="00:15:00"
         slotLabelInterval="01:00:00"
-        snapDuration="00:05:00"
+        snapDuration="00:15:00"
         allDaySlot={true}
         nowIndicator={true}
         eventClick={handleEventClick}

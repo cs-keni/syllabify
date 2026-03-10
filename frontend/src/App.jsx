@@ -100,14 +100,15 @@ function AppRoutes() {
           />
           <Route
             path="/preferences"
-            element={<Navigate to="/app/preferences" replace />}
+            element={<Navigate to="/app/settings" replace />}
           />
           <Route path="/app" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="upload" element={<Upload />} />
             <Route path="courses/:courseId" element={<Course />} />
             <Route path="schedule" element={<Schedule />} />
-            <Route path="preferences" element={<Preferences />} />
+            <Route path="settings" element={<Preferences />} />
+            <Route path="preferences" element={<Navigate to="/app/settings" replace />} />
             <Route path="profile" element={<Profile />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/app" replace />} />

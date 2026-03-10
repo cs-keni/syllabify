@@ -187,7 +187,7 @@ export default function Preferences() {
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-2 text-2xl font-semibold text-ink">Preferences</h1>
+        <h1 className="mt-2 text-2xl font-semibold text-ink">Settings</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Manage your account and study preferences.
         </p>

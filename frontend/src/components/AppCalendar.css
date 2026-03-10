@@ -193,9 +193,9 @@
   );
 }
 
-/* Slot grid */
+/* Slot grid – 15-min blocks (4 per hour) like Google Calendar */
 .app-calendar-container .fc-timegrid-slot {
-  height: 1.75rem;
+  height: 2.5rem;
 }
 
 .app-calendar-container .fc-timegrid-axis {
