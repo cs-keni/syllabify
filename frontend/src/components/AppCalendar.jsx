@@ -168,6 +168,13 @@ export default function AppCalendar({
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
         }}
+        buttonText={{
+          month: 'Month',
+          week: 'Week',
+          day: 'Day',
+          list: 'List',
+          listWeek: 'List',
+        }}
         events={transformEvents()}
         editable={true}
         selectable={true}
@@ -187,6 +194,7 @@ export default function AppCalendar({
         eventResize={handleEventResize}
         viewDidMount={info => setCurrentView(info.view.type)}
         height={currentView === 'dayGridMonth' ? 'auto' : '70vh'}
+        expandRows={currentView !== 'dayGridMonth'}
         stickyHeaderDates={true}
         eventTimeFormat={{
           hour: 'numeric',

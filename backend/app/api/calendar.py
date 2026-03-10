@@ -685,6 +685,22 @@ def _sync_google_source(conn, cur, user_id, source):
     service = build("calendar", "v3", credentials=creds)
 
     cal_id = source["google_calendar_id"]
+
+    # Fetch calendar list to update color from Google
+    try:
+        cal_list = service.calendarList().list().execute()
+        for c in cal_list.get("items", []):
+            if c.get("id") == cal_id:
+                cal_color = c.get("backgroundColor")
+                cal_label = c.get("summary", source.get("source_label", ""))[:100]
+                if cal_color and re.match(r"^#[0-9A-Fa-f]{6}$", cal_color):
+                    cur.execute(
+                        "UPDATE CalendarSources SET color = %s, source_label = %s WHERE id = %s",
+                        (cal_color, cal_label, source["id"]),
+                    )
+                break
+    except Exception:
+        pass  # Non-fatal; continue with event sync
     # Use a reasonable default date range
     now = datetime.utcnow()
     time_min = (now - timedelta(days=30)).isoformat() + "Z"

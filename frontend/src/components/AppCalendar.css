@@ -94,7 +94,7 @@
   color: var(--color-ink-muted);
 }
 
-/* Time labels – tabular numbers */
+/* Time labels – tabular numbers, top-aligned so "10am" aligns with top of 10am slot */
 .app-calendar-container .fc-timegrid-slot-label {
   font-family: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
   font-size: 0.6875rem;
@@ -102,6 +102,17 @@
   color: var(--color-ink-muted);
   padding-right: 0.5rem;
   font-variant-numeric: tabular-nums;
+  vertical-align: top;
+}
+
+.app-calendar-container .fc-timegrid-slot-label-frame {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.app-calendar-container .fc-timegrid-axis .fc-timegrid-slot {
+  vertical-align: top;
 }
 
 .app-calendar-container .fc-col-header-cell-cushion {
@@ -133,6 +144,44 @@
   background: var(--color-surface-muted);
 }
 
+/* View switcher: selected = accent (highlighted), inactive = muted; border around group */
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group,
+.app-calendar-container .fc-toolbar-chunk:last-child {
+  border-radius: var(--radius-button, 8px);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-muted);
+  padding: 2px;
+  gap: 0;
+}
+
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button,
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button {
+  border: none !important;
+  background: transparent !important;
+  border-radius: 6px;
+  color: var(--color-ink-muted);
+}
+
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button:hover:not(:disabled),
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button:hover:not(:disabled) {
+  background: var(--color-surface) !important;
+  color: var(--color-ink);
+}
+
+/* Selected view = accent (highlighted) – override any primary styling */
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button.fc-button-active,
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button.fc-button-active {
+  background: var(--color-accent) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button.fc-button-active:hover:not(:disabled),
+.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button.fc-button-active:hover:not(:disabled) {
+  background: var(--color-accent-hover) !important;
+}
+
+/* Prev/next/today keep default primary style */
 .app-calendar-container .fc .fc-button-primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
@@ -193,9 +242,9 @@
   );
 }
 
-/* Slot grid – 1 block per hour (Google-style), compact height */
+/* Slot grid – 1 block per hour; expandRows fills viewport (no gap after 11pm) */
 .app-calendar-container .fc-timegrid-slot {
-  height: 1.25rem;
+  min-height: 1.875rem;
 }
 
 .app-calendar-container .fc-timegrid-axis {
