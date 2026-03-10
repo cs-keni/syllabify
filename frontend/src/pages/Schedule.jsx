@@ -575,9 +575,9 @@ export default function Schedule() {
           <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
             <h3 className="text-sm font-semibold text-ink mb-2">Time per course</h3>
             {studyTimeByCourse.length > 0 ? (
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 group/pie">
                 <div
-                  className="w-20 h-20 rounded-full shrink-0"
+                  className="w-20 h-20 rounded-full shrink-0 transition-transform duration-300 ease-out group-hover/pie:scale-110"
                   style={{
                     background: `conic-gradient(${studyTimeByCourse
                       .map((c, i) => {
@@ -593,7 +593,7 @@ export default function Schedule() {
                   {studyTimeByCourse.slice(0, 5).map((c, i) => (
                     <div
                       key={c.name}
-                      className="flex items-center gap-2 text-xs group"
+                      className="flex items-center gap-2 text-xs group/legend transition-colors duration-200 rounded px-1 -mx-1 hover:bg-surface-muted"
                       title={`${c.name}: ${Math.round(c.mins / 60 * 10) / 10} hours`}
                     >
                       <span

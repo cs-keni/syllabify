@@ -242,6 +242,7 @@ def list_calendars():
                 "id": c.get("id"),
                 "summary": c.get("summary", "Unnamed"),
                 "primary": c.get("primary", False),
+                "backgroundColor": c.get("backgroundColor") or None,
             }
             for c in items
         ]
@@ -407,10 +408,20 @@ def import_calendar():
 
         service = build("calendar", "v3", credentials=creds)
 
+        # Fetch calendar list to get colors (Google Calendar API returns backgroundColor)
+        cal_list = service.calendarList().list().execute()
+        cal_entries = {c["id"]: c for c in cal_list.get("items", [])}
+
         total_imported = 0
         cur = conn.cursor(dictionary=True)
 
         for cal_id in calendar_ids[:20]:
+            cal_entry = cal_entries.get(cal_id, {})
+            cal_label = cal_entry.get("summary", cal_id[:100])
+            cal_color = cal_entry.get("backgroundColor")
+            if cal_color and not re.match(r"^#[0-9A-Fa-f]{6}$", cal_color):
+                cal_color = None
+
             # Find or create CalendarSource for this Google calendar
             cur.execute(
                 """SELECT id, feed_category FROM CalendarSources
@@ -421,12 +432,18 @@ def import_calendar():
             if source_row:
                 source_id = source_row["id"]
                 src_category = source_row.get("feed_category", "other")
+                # Update color from Google if we have it and source was created without it
+                if cal_color:
+                    cur.execute(
+                        "UPDATE CalendarSources SET color = %s, source_label = %s WHERE id = %s",
+                        (cal_color, cal_label[:100], source_id),
+                    )
             else:
                 cur.execute(
                     """INSERT INTO CalendarSources
-                       (user_id, source_type, source_label, google_calendar_id, feed_category)
-                       VALUES (%s, 'google', %s, %s, %s)""",
-                    (user_id, cal_id[:100], cal_id, category),
+                       (user_id, source_type, source_label, google_calendar_id, feed_category, color)
+                       VALUES (%s, 'google', %s, %s, %s, %s)""",
+                    (user_id, cal_label[:100], cal_id, category, cal_color or "#3B82F6"),
                 )
                 source_id = cur.lastrowid
                 src_category = category

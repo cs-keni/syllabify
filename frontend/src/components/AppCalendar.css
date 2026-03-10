@@ -193,12 +193,80 @@
   );
 }
 
-/* Slot grid – 15-min blocks (4 per hour) like Google Calendar */
+/* Slot grid – 1 block per hour (Google-style), compact height */
 .app-calendar-container .fc-timegrid-slot {
-  height: 2.5rem;
+  height: 1.25rem;
 }
 
 .app-calendar-container .fc-timegrid-axis {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
+}
+
+/* Hide horizontal lines between hours – cleaner look */
+.app-calendar-container .fc-timegrid-slot-minor {
+  border-top-style: none;
+}
+
+.app-calendar-container .fc-timegrid-slot {
+  border-top: none;
+}
+
+.app-calendar-container .fc-timegrid-divider {
+  display: none;
+}
+
+/* All-day area: minimal height – events show under day number like Google */
+.app-calendar-container .fc-timegrid-slot-allday {
+  height: auto;
+  min-height: 1.5rem;
+}
+
+.app-calendar-container .fc-timegrid-slot-allday .fc-timegrid-slot-label {
+  display: none;
+}
+
+/* Now indicator: red dot + thicker line (connected) */
+.app-calendar-container .fc .fc-timegrid-now-indicator-arrow {
+  display: none;
+}
+
+.app-calendar-container .fc .fc-timegrid-now-indicator-line {
+  position: relative;
+  border-width: 2px;
+  border-color: #ef4444;
+  margin-top: -1px;
+}
+
+.app-calendar-container .fc .fc-timegrid-now-indicator-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  margin-left: -4px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--color-surface-elevated, #fff);
+}
+
+.dark .app-calendar-container .fc .fc-timegrid-now-indicator-line::before {
+  box-shadow: 0 0 0 2px var(--color-surface-elevated);
+}
+
+/* Sticky day headers when scrolling week/day view – always show day/date */
+.app-calendar-container .fc-scrollgrid-section-header th,
+.app-calendar-container .fc-scrollgrid-section-header td {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 3;
+  background: var(--color-surface-elevated, #fff) !important;
+  box-shadow: 0 1px 0 var(--color-border, #e5e7eb);
+}
+
+.dark .app-calendar-container .fc-scrollgrid-section-header th,
+.dark .app-calendar-container .fc-scrollgrid-section-header td {
+  background: var(--color-surface-elevated) !important;
 }

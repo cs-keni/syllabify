@@ -176,7 +176,7 @@ export default function AppCalendar({
         weekends={true}
         slotMinTime="06:00:00"
         slotMaxTime="24:00:00"
-        slotDuration="00:15:00"
+        slotDuration="01:00:00"
         slotLabelInterval="01:00:00"
         snapDuration="00:15:00"
         allDaySlot={true}
@@ -186,7 +186,7 @@ export default function AppCalendar({
         eventDrop={handleEventDrop}
         eventResize={handleEventResize}
         viewDidMount={info => setCurrentView(info.view.type)}
-        height="auto"
+        height={currentView === 'dayGridMonth' ? 'auto' : '70vh'}
         stickyHeaderDates={true}
         eventTimeFormat={{
           hour: 'numeric',
