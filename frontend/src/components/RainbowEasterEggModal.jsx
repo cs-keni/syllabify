@@ -9,11 +9,11 @@ import confetti from 'canvas-confetti';
 const RAINBOW_COLORS = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#8f00ff'];
 
 const GIF_POSITIONS = [
-  { left: '1.5rem', bottom: '1.5rem', right: 'auto', top: 'auto', transform: 'none' },
-  { left: 'auto', bottom: 'auto', right: '1.5rem', top: '1.5rem', transform: 'none' },
-  { left: 'auto', bottom: '1.5rem', right: '1.5rem', top: 'auto', transform: 'none' },
-  { left: '1.5rem', bottom: 'auto', right: 'auto', top: '1.5rem', transform: 'none' },
-  { left: '50%', bottom: 'auto', right: 'auto', top: '50%', transform: 'translate(-50%, -50%) scale(2)' },
+  { left: '1.5rem', bottom: '1.5rem', right: 'auto', top: 'auto', transform: 'scale(2)', transformOrigin: 'bottom left' },
+  { left: 'auto', bottom: 'auto', right: '1.5rem', top: '1.5rem', transform: 'scale(2)', transformOrigin: 'top right' },
+  { left: 'auto', bottom: '1.5rem', right: '1.5rem', top: 'auto', transform: 'scale(2)', transformOrigin: 'bottom right' },
+  { left: '1.5rem', bottom: 'auto', right: 'auto', top: '1.5rem', transform: 'scale(2)', transformOrigin: 'top left' },
+  { left: '50%', bottom: 'auto', right: 'auto', top: '50%', transform: 'translate(-50%, -50%) scale(3)', transformOrigin: 'center center' },
 ];
 
 export default function RainbowEasterEggModal({ onClose }) {
@@ -21,12 +21,12 @@ export default function RainbowEasterEggModal({ onClose }) {
   const [canClose, setCanClose] = useState(false);
 
   useEffect(() => {
-    const delays = [0, 500, 1000, 1500, 2000];
+    const delays = [0, 250, 500, 750, 1000];
     const timeouts = delays.map((d, i) => setTimeout(() => setGifPosition(i), d));
     const doneTimeout = setTimeout(() => {
       setGifPosition(-1);
       setCanClose(true);
-    }, 3000);
+    }, 1500);
     return () => {
       timeouts.forEach(clearTimeout);
       clearTimeout(doneTimeout);
@@ -78,7 +78,9 @@ export default function RainbowEasterEggModal({ onClose }) {
         <img
           src="/cat-tongue-shake.gif"
           alt=""
-          className="absolute z-20 w-24 h-24 object-contain transition-all duration-300 ease-out pointer-events-none"
+          className={`absolute z-20 w-24 h-24 object-contain pointer-events-none ${
+            gifPosition === 4 ? '' : 'transition-all duration-200 ease-out'
+          }`}
           style={GIF_POSITIONS[gifPosition]}
         />
       )}
