@@ -478,7 +478,7 @@ export default function Schedule() {
           />
           {hoverPreview && !popover && !eventDetail && (
             <div
-              className="fixed z-50 min-w-[200px] max-w-[280px] rounded-lg border border-border bg-surface-elevated p-3 text-sm shadow-dropdown animate-fade-in pointer-events-none"
+              className="fixed z-50 min-w-[200px] max-w-[280px] rounded-lg border border-border bg-surface-elevated p-3 text-sm shadow-dropdown animate-fade-in-fast pointer-events-none"
               style={{
                 top: Math.min(hoverPreview.y + 12, window.innerHeight - 180),
                 left: Math.min(hoverPreview.x + 12, window.innerWidth - 300),
