@@ -282,7 +282,7 @@ export default function Schedule() {
     });
     setPopover(null);
     if (blocksOnDay.length === 0) {
-      toast.info('All blocks on this day are already locked.');
+      toast('All blocks on this day are already locked.');
       return;
     }
     try {
@@ -320,7 +320,7 @@ export default function Schedule() {
       const slots = data.study_times || [];
       const count = data.created_count ?? slots.length;
       if (count === 0) {
-        toast.info(
+        toast(
           'No study blocks to generate (assignments may have no workload or no available slots).'
         );
         return;

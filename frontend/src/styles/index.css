@@ -23,6 +23,7 @@
   --color-ink-subtle: #9ca3af;
   --color-accent: #0f8a4c;
   --color-accent-hover: #094728;
+  --color-accent-inv: #ffffff;
   --color-accent-muted: #f5c30f;
   --color-border: #e5e7eb;
   --color-border-subtle: #f3f4f6;
@@ -37,6 +38,7 @@
   --color-ink-subtle: #9ca3af;
   --color-accent: #f5c30f;
   --color-accent-hover: #0f8a4c;
+  --color-accent-inv: #0a0a0a;
   --color-accent-muted: #094728;
   --color-border: #374151;
   --color-border-subtle: #1f2937;
@@ -52,6 +54,7 @@
   --color-ink-subtle: #718096;
   --color-accent: #e94560;
   --color-accent-hover: #ff6b6b;
+  --color-accent-inv: #ffffff;
   --color-accent-muted: #533483;
   --color-border: rgba(45, 55, 72, 0.8);
   --color-border-subtle: rgba(26, 32, 44, 0.8);

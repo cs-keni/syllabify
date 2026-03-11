@@ -19,6 +19,7 @@ export default {
         accent: {
           DEFAULT: 'var(--color-accent)',
           hover: 'var(--color-accent-hover)',
+          inv: 'var(--color-accent-inv)',
           muted: 'var(--color-accent-muted)',
         },
         border: {

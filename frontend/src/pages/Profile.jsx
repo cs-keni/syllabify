@@ -197,7 +197,7 @@ export default function Profile() {
               </label>
             </div>
             <input
-              type="url"
+              type="text"
               value={bannerUrl}
               onChange={e => setBannerUrl(e.target.value)}
               placeholder="Or paste image URL (e.g. from Imgur)"
@@ -258,7 +258,7 @@ export default function Profile() {
                 </label>
               </div>
               <input
-                type="url"
+                type="text"
                 value={avatarUrl}
                 onChange={e => handleAvatarUrlChange(e.target.value)}
                 placeholder="Or paste image URL (GIFs work)"
