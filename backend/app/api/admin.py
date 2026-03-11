@@ -70,20 +70,35 @@ def list_users():
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
-        cur.execute(
-            "SELECT id, username, email, security_setup_done, is_admin, is_disabled FROM Users ORDER BY id"
-        )
+        try:
+            cur.execute(
+                """SELECT id, username, email, avatar, avatar_url, banner_url, description,
+                   security_setup_done, is_admin, is_disabled FROM Users ORDER BY id"""
+            )
+        except Exception:
+            cur.execute(
+                "SELECT id, username, email, security_setup_done, is_admin, is_disabled FROM Users ORDER BY id"
+            )
         rows = cur.fetchall()
         users = []
         for r in rows:
-            users.append({
+            u = {
                 "id": r["id"],
                 "username": r["username"],
                 "email": r.get("email"),
                 "security_setup_done": bool(r.get("security_setup_done")),
                 "is_admin": bool(r.get("is_admin")),
                 "is_disabled": bool(r.get("is_disabled")),
-            })
+            }
+            if "avatar" in r:
+                u["avatar"] = r.get("avatar")
+            if "avatar_url" in r:
+                u["avatar_url"] = (r.get("avatar_url") or "").strip() or None
+            if "banner_url" in r:
+                u["banner_url"] = (r.get("banner_url") or "").strip() or None
+            if "description" in r:
+                u["description"] = (r.get("description") or "").strip() or None
+            users.append(u)
         return jsonify({"users": users})
     finally:
         conn.close()
@@ -145,10 +160,17 @@ def get_user(user_id):
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
-        cur.execute(
-            "SELECT id, username, email, security_setup_done, is_admin, is_disabled FROM Users WHERE id = %s",
-            (user_id,),
-        )
+        try:
+            cur.execute(
+                """SELECT id, username, email, avatar, avatar_url, banner_url, description,
+                   security_setup_done, is_admin, is_disabled FROM Users WHERE id = %s""",
+                (user_id,),
+            )
+        except Exception:
+            cur.execute(
+                "SELECT id, username, email, security_setup_done, is_admin, is_disabled FROM Users WHERE id = %s",
+                (user_id,),
+            )
         row = cur.fetchone()
         if not row:
             return jsonify({"error": "user not found"}), 404
@@ -160,6 +182,14 @@ def get_user(user_id):
             "is_admin": bool(row.get("is_admin")),
             "is_disabled": bool(row.get("is_disabled")),
         }
+        if "avatar" in row:
+            user_data["avatar"] = row.get("avatar")
+        if "avatar_url" in row:
+            user_data["avatar_url"] = (row.get("avatar_url") or "").strip() or None
+        if "banner_url" in row:
+            user_data["banner_url"] = (row.get("banner_url") or "").strip() or None
+        if "description" in row:
+            user_data["description"] = (row.get("description") or "").strip() or None
         # Term, course, assignment counts
         cur.execute("SELECT COUNT(*) as n FROM Terms WHERE user_id = %s", (user_id,))
         user_data["terms_count"] = cur.fetchone()["n"]

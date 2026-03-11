@@ -475,14 +475,17 @@ export async function changePassword(token, { currentPassword, newPassword }) {
   return data;
 }
 
-/** PUT /api/users/me with JWT. Body: { email?, avatar? }. Returns updated profile. */
-export async function updateProfile(token, { email, avatar }) {
+/** PUT /api/users/me with JWT. Body: { email?, avatar?, avatar_url?, banner_url?, description? }. Returns updated profile. */
+export async function updateProfile(token, { email, avatar, avatar_url, banner_url, description }) {
   const res = await apiFetch(`${BASE}/api/users/me`, {
     method: 'PUT',
     headers: headers(true, token),
     body: JSON.stringify({
       ...(email !== undefined && { email: email || null }),
       ...(avatar !== undefined && { avatar: avatar || null }),
+      ...(avatar_url !== undefined && { avatar_url: avatar_url || null }),
+      ...(banner_url !== undefined && { banner_url: banner_url || null }),
+      ...(description !== undefined && { description: description || null }),
     }),
     credentials: 'include',
   });
