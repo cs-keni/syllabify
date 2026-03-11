@@ -15,7 +15,11 @@ Output strictly valid JSON matching the schema. Use ISO 8601 for dates (YYYY-MM-
 Infer academic year from term (e.g. Fall 2025 -> 2025). Assign confidence 0.0-1.0 per assessment based on how clearly the syllabus states it. Use 0.9+ only when you see explicit due date and/or weight. Use 0.5-0.7 when inferring from schedule context.
 If unclear, use null. Do not invent data. day_of_week must be MO, TU, WE, TH, FR, SA, or SU. type for assessments must be assignment, midterm, final, quiz, project, or participation.
 
-For each assessment, estimate estimated_hours (1-20): total hours a typical student might spend on that single assignment (e.g. Homework 3 ~3h, Final Project ~15h). Use syllabus hints ("4-6 hours per week", "projects take 10-15 hours"), type, weight, and title. Use null if completely unclear.
+HOURS: For each assessment, estimate estimated_hours (1-50): total hours a typical student might spend on that single assignment. CRITICAL: Use workload tables and "Credit Hours and Student Workload" sections. Map entries like "Project work 50" or "5 hrs/week for 10 weeks" to the matching assessment (e.g. Group Project -> 50). Term-long projects often take 40-50 hours. Short assignments 2-5h, exams 2-3h, quizzes 1h. Use null if completely unclear.
+
+DATES: Extract due_datetime when explicitly stated. When NOT stated, infer from the term: for Fall 2025 use mid-Oct for midterms, early Dec for finals; for Winter/Spring use similar mid/end patterns. Output ISO dates (YYYY-MM-DD). Use null only when impossible to infer.
+
+COURSE: Extract study_hours_per_week from workload tables (e.g. "TOTAL HOURS 120" over 10 weeks -> 12, or "5 hrs/week" for project work). Use null if not found.
 
 Do NOT include as assessments: grade scale entries (A 90, B 80, C 70, D 60), policy text (accommodation for religious observances, grades are assigned according to...), sentence fragments, section headers, or anything that is not an actual graded deliverable (homework, project, exam, quiz, etc.). Meeting location must be a room/building, not a section title like "Prerequisites"."""
 
@@ -35,6 +39,7 @@ SYLLABUS_JSON_SCHEMA = {
                         "course_title": {"type": "string"},
                         "term": {"type": "string"},
                         "timezone": {"type": "string"},
+                        "study_hours_per_week": {"type": "number"},
                         "instructors": {
                             "type": "array",
                             "items": {
@@ -210,7 +215,7 @@ def estimate_assignment_hours(name: str, atype: str) -> int | None:
 Assignment: "{name}"
 Type: {atype}
 
-Reply with ONLY a single integer between 1 and 20 (hours). No explanation."""
+Reply with ONLY a single integer between 1 and 50 (hours). No explanation."""
 
     try:
         client = OpenAI(api_key=api_key)
@@ -225,7 +230,7 @@ Reply with ONLY a single integer between 1 and 20 (hours). No explanation."""
         match = re.search(r"\d+", content)
         if match:
             h = int(match.group())
-            return max(1, min(20, h))
+            return max(1, min(50, h))
     except Exception:
         pass
     return None
@@ -263,6 +268,7 @@ def _validate_and_normalize(data: dict) -> dict:
             "course_title": course.get("course_title"),
             "term": course.get("term"),
             "timezone": course.get("timezone") or "America/Los_Angeles",
+            "study_hours_per_week": course.get("study_hours_per_week"),
             "instructors": course.get("instructors") or [],
             "meeting_times": course.get("meeting_times") or [],
         },

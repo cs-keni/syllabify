@@ -73,5 +73,7 @@ def parse():
         resp["confidence"] = result["confidence"]
     if result.get("raw_text") is not None:
         resp["raw_text"] = result["raw_text"]
+    if result.get("study_hours_per_week") is not None:
+        resp["study_hours_per_week"] = result["study_hours_per_week"]
 
     return jsonify(resp), 200

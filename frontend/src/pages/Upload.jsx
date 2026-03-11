@@ -8,7 +8,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import SyllabusUpload from '../components/SyllabusUpload';
 import ParsedDataReview from '../components/ParsedDataReview';
-import { addAssignments, saveCourse, updateCourse } from '../api/client';
+import {
+  addAssignments,
+  saveCourse,
+  updateCourse,
+  getTerms,
+  generateStudyTimes,
+} from '../api/client';
 
 const STEPS = [
   { id: 'upload', label: 'Upload' },
@@ -36,19 +42,21 @@ export default function Upload() {
 
   const currentStepId = STEPS[step].id;
 
-  /** Called by SyllabusUpload with { course_name, meeting_times, assignments, instructors, confidence } from parse API. */
+  /** Called by SyllabusUpload with { course_name, meeting_times, assignments, instructors, confidence, study_hours_per_week } from parse API. */
   const handleUploadComplete = ({
     course_name,
     meeting_times,
     assignments: parsed,
     instructors: inst,
     confidence: conf,
+    study_hours_per_week: hrs,
   }) => {
     setParsedCourseName(course_name || initialCourseName);
     setMeetingTimes(Array.isArray(meeting_times) ? meeting_times : []);
     setAssignments(parsed || []);
     setInstructors(Array.isArray(inst) ? inst : []);
     setConfidence(conf || null);
+    setStudyHoursPerWeek(hrs != null && hrs !== '' ? String(hrs) : '');
     setStep(1);
   };
 
@@ -135,6 +143,12 @@ export default function Upload() {
                   Array.isArray(payload.instructors) ? payload.instructors : []
                 );
                 setConfidence(payload.confidence || null);
+                setStudyHoursPerWeek(
+                  payload.study_hours_per_week != null &&
+                    payload.study_hours_per_week !== ''
+                    ? String(payload.study_hours_per_week)
+                    : ''
+                );
                 setStep(1);
               }}
             />
@@ -166,13 +180,30 @@ export default function Upload() {
                       : null;
                   if (hrs != null && !Number.isNaN(hrs) && hrs >= 0)
                     payload.study_hours_per_week = hrs;
+                  let savedCourseId = courseId;
                   if (state?.courseId) {
                     await updateCourse(token, state.courseId, payload);
                   } else {
                     const result = await saveCourse(token, payload);
-                    if (result?.id) setCreatedCourseId(result.id);
+                    if (result?.id) {
+                      setCreatedCourseId(result.id);
+                      savedCourseId = result.id;
+                    }
                   }
                   setStep(2);
+                  // Auto-generate study times so user sees schedule immediately
+                  if (savedCourseId && token) {
+                    try {
+                      const { terms } = await getTerms();
+                      const activeTerm =
+                        terms?.find(t => t.is_active) || terms?.[0];
+                      if (activeTerm?.id) {
+                        await generateStudyTimes(token, activeTerm.id);
+                      }
+                    } catch (_) {
+                      // Ignore; user can generate manually from Schedule tab
+                    }
+                  }
                 } catch (err) {
                   setSaveError(err.message || 'Failed to save');
                 } finally {
@@ -192,17 +223,26 @@ export default function Upload() {
                 {meetingTimes.length > 0
                   ? ` and ${meetingTimes.length} meeting time${meetingTimes.length !== 1 ? 's' : ''}`
                   : ''}
-                .
+                . Study times have been generated.
               </p>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 {courseId && (
-                  <button
-                    type="button"
-                    onClick={() => navigate(`/app/courses/${courseId}`)}
-                    className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
-                  >
-                    View course
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => navigate('/app/schedule')}
+                      className="rounded-button bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
+                    >
+                      View schedule
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => navigate(`/app/courses/${courseId}`)}
+                      className="rounded-button border border-border px-4 py-2 text-sm font-medium text-ink hover:bg-surface-muted transition-colors duration-200"
+                    >
+                      View course
+                    </button>
+                  </>
                 )}
                 <button
                   type="button"

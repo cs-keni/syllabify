@@ -77,9 +77,23 @@
 
 ---
 
+### Phase 5: Seamless upload → schedule flow (2026-03-10)
+
+**Goal:** Upload syllabus → Confirm → See schedule with minimal/no manual edits.
+
+**Changes:**
+- **Hours cap 50** — Term-long projects (e.g. "Project work 50") now supported
+- **Workload tables** — LLM uses "Credit Hours and Student Workload" sections; maps "Project work 50" to Group Project
+- **Date inference** — When due dates not stated, LLM infers from term (midterm ~midpoint, final ~end)
+- **study_hours_per_week** — Parsed from syllabus, pre-fills course setting
+- **Auto-generate** — After confirm, study times are generated automatically
+- **View schedule** — Primary CTA on confirm step; user goes straight to schedule
+
+---
+
 ## Notes
 
-- **1–20 hours** = per assignment (e.g. "Homework 3" ~3h, "Final Project" ~15h), not per week.
+- **1–50 hours** = per assignment (e.g. "Homework 3" ~3h, "Group Project" ~50h for term-long), not per week.
 - The scheduling engine uses `work_load = hours * 4` (15-min blocks). No changes needed there.
 - Heuristic parser path stays as-is; only LLM path gets estimated hours.
 - User can always override hours in ParsedDataReview or AddAssignmentForm before saving.

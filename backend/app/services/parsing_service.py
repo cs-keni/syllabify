@@ -173,7 +173,7 @@ def _map_llm_result_to_api(llm_result: dict, source_type: str, raw_text: str = "
         conf_val = a.get("confidence")
         if key not in seen or (due_date and not seen[key].get("due_date")):
             raw_hours = a.get("estimated_hours")
-            if isinstance(raw_hours, (int, float)) and 1 <= raw_hours <= 20:
+            if isinstance(raw_hours, (int, float)) and 1 <= raw_hours <= 50:
                 hours = int(round(raw_hours))
             else:
                 hours = _hours_from_assessment_type(atype)
@@ -190,18 +190,25 @@ def _map_llm_result_to_api(llm_result: dict, source_type: str, raw_text: str = "
         for v in seen.values()
     ]
     assessments_for_api = [
-        {"title": v["name"], "due_datetime": v["due_date"], "type": v["type"], "confidence": v.get("confidence")}
+        {"title": v["name"], "due_datetime": v["due_date"], "hours": v["hours"], "type": v["type"], "confidence": v.get("confidence")}
         for v in seen.values()
     ]
     meeting_times = _clean_meeting_times(course.get("meeting_times") or [])
     instructors = course.get("instructors") or []
     conf = compute_parse_confidence(llm_result, course_name, assignments)
+    study_hrs = course.get("study_hours_per_week")
+    if isinstance(study_hrs, (int, float)) and 1 <= study_hrs <= 80:
+        study_hours_per_week = int(round(study_hrs))
+    else:
+        study_hours_per_week = None
+
     return {
         "course_name": course_name,
         "assignments": assignments,
         "assessments": assessments_for_api,
         "meeting_times": meeting_times,
         "instructors": instructors,
+        "study_hours_per_week": study_hours_per_week,
         "raw_text": None if conf["label"] == "high" else raw_text,
         "confidence": conf,
     }
@@ -387,9 +394,9 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
         {"name": v["name"], "due_date": v["due_date"], "hours": v["hours"], "type": v["type"]}
         for v in seen.values()
     ]
-    # Assessments-shaped list (deduped) for frontend so it gets type/due
+    # Assessments-shaped list (deduped) for frontend so it gets type/due/hours
     assessments_for_api = [
-        {"title": v["name"], "due_datetime": v["due_date"], "type": v["type"]}
+        {"title": v["name"], "due_datetime": v["due_date"], "hours": v["hours"], "type": v["type"]}
         for v in seen.values()
     ]
 
@@ -408,7 +415,7 @@ def _parse_with_syllabus_parser(text: str, source_type: str) -> dict:
                 "type": atype,
             }
             assignments.append(item)
-            assessments_for_api.append({"title": a["name"], "due_datetime": a.get("due_date"), "type": atype})
+            assessments_for_api.append({"title": a["name"], "due_datetime": a.get("due_date"), "hours": a.get("hours", 3), "type": atype})
         if fallback.get("course_name") and not course_name:
             course_name = fallback["course_name"]
         conf = compute_parse_confidence(None, course_name, assignments)

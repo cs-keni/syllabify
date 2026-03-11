@@ -72,21 +72,21 @@ def test_parse_file_txt():
 
 
 def test_map_llm_uses_estimated_hours_when_valid():
-    """When LLM returns estimated_hours in range 1-20, use it."""
+    """When LLM returns estimated_hours in range 1-50, use it."""
     llm_result = {
         "course": {"course_code": "CS 422", "course_title": "Software", "term": "Spring 2025", "instructors": [], "meeting_times": []},
         "assessments": [
             {"id": "a1", "title": "Homework 1", "category_id": "hw", "type": "assignment", "confidence": 0.9, "source_excerpt": "...", "estimated_hours": 5},
-            {"id": "a2", "title": "Midterm", "category_id": "exam", "type": "midterm", "confidence": 0.9, "source_excerpt": "...", "estimated_hours": 3},
+            {"id": "a2", "title": "Group Project", "category_id": "p", "type": "project", "confidence": 0.9, "source_excerpt": "...", "estimated_hours": 50},
         ],
-        "assessment_categories": [{"id": "hw", "name": "Homework"}, {"id": "exam", "name": "Exams"}],
+        "assessment_categories": [{"id": "hw", "name": "Homework"}, {"id": "p", "name": "Project"}],
     }
     result = _map_llm_result_to_api(llm_result, "txt", "")
     assert len(result["assignments"]) == 2
     hw = next(a for a in result["assignments"] if "Homework" in a["name"])
-    mid = next(a for a in result["assignments"] if "Midterm" in a["name"])
+    proj = next(a for a in result["assignments"] if "Group Project" in a["name"])
     assert hw["hours"] == 5
-    assert mid["hours"] == 3
+    assert proj["hours"] == 50
 
 
 def test_map_llm_falls_back_to_type_when_estimated_hours_missing():
@@ -104,12 +104,12 @@ def test_map_llm_falls_back_to_type_when_estimated_hours_missing():
 
 
 def test_map_llm_falls_back_when_estimated_hours_out_of_range():
-    """When estimated_hours is < 1 or > 20, use type-based default."""
+    """When estimated_hours is < 1 or > 50, use type-based default."""
     llm_result = {
         "course": {"course_code": "CS 422", "course_title": "Software", "term": "Spring 2025", "instructors": [], "meeting_times": []},
         "assessments": [
             {"id": "a1", "title": "Project", "category_id": "p", "type": "project", "confidence": 0.9, "source_excerpt": "...", "estimated_hours": 0},
-            {"id": "a2", "title": "Final", "category_id": "f", "type": "final", "confidence": 0.9, "source_excerpt": "...", "estimated_hours": 25},
+            {"id": "a2", "title": "Final", "category_id": "f", "type": "final", "confidence": 0.9, "source_excerpt": "...", "estimated_hours": 99},
         ],
         "assessment_categories": [{"id": "p", "name": "Project"}, {"id": "f", "name": "Final"}],
     }
