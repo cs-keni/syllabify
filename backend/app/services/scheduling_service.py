@@ -29,6 +29,9 @@ DEFAULT_STUDY_END = time(22, 0)    # 10:00 PM
 MINUTES_PER_SLOT = 15
 MINUTES_PER_WORKLOAD_UNIT = 15
 
+# Synthetic id base for ongoing (non-assignment) study work; avoids collision with real assignment ids.
+_ONGOING_ID_BASE = -1000000
+
 # Recurring meeting: 2-char day codes (MO, TU, ...) -> Python weekday (Mon=0, ..., Sun=6).
 _DAY_CODE_TO_WEEKDAY = {
     "MO": 0, "TU": 1, "WE": 2, "TH": 3, "FR": 4, "SA": 5, "SU": 6,
@@ -290,13 +293,36 @@ def generate_study_times(
     if not term:
         raise ValueError(f"Term with id {term_id} not found.")
 
-    # Collect all assignments across the term's courses
+    # Collect assignments and add ongoing study (study_hours_per_week spread across term).
+    # Ongoing ensures study blocks throughout the term, not just before assignment due dates.
     assignments = [a for course in term.courses for a in course.assignments]
-    if not assignments:
+    term_start = term.start_date if isinstance(term.start_date, date) else term.start_date.date()
+    term_end = term.end_date if isinstance(term.end_date, date) else term.end_date.date()
+    num_weeks = max(1, (term_end - term_start).days / 7.0)
+
+    class _OngoingWork:
+        """Synthetic work item for ongoing course study (assignment_id=None in StudyTime)."""
+
+        def __init__(self, course_id: int, work_load: int, start_d: date, due_d: date):
+            self.id = _ONGOING_ID_BASE - course_id
+            self.course_id = course_id
+            self.work_load = work_load
+            self.start_date = datetime.combine(start_d, time(0, 0), tzinfo=ZoneInfo("UTC"))
+            self.due_date = datetime.combine(due_d, time(23, 59), tzinfo=ZoneInfo("UTC"))
+
+    ongoing: list = []
+    for course in term.courses:
+        hrs_per_week = course.study_hours_per_week if course.study_hours_per_week is not None else 5
+        hrs_per_week = max(1, min(168, int(hrs_per_week)))  # clamp 1-168
+        work_load = max(1, int(hrs_per_week * num_weeks * 4))  # 4 slots per hour
+        ongoing.append(_OngoingWork(course.id, work_load, term_start, term_end))
+
+    work_items = assignments + ongoing
+    if not work_items:
         return []
 
-    # Timezone from first assignment
-    tz = _get_tz(assignments[0].start_date)
+    # Timezone from first work item
+    tz = _get_tz(work_items[0].start_date)
 
     # Busy intervals: expand recurring and one-off meetings into (start, end) intervals
     meeting_busy = _meetings_to_busy_intervals(term, term.courses, tz)
@@ -343,16 +369,20 @@ def generate_study_times(
 
     meeting_busy = _merge_intervals(meeting_busy + locked_busy)
 
-    # We'll add study times as we allocate, so they become busy for later assignments
+    # We'll add study times as we allocate, so they become busy for later work items
     created: list[StudyTime] = []
     daily_minutes: dict[date, int] = {}  # date -> total study minutes so far
+    weekly_minutes: dict[tuple[int, int], int] = {}  # (year, week) -> total minutes (for spreading)
+
+    def _week_key(d: date) -> tuple[int, int]:
+        return (d.isocalendar()[0], d.isocalendar()[1])
 
     # ----- Phase 1: Slack-based greedy scheduling -----
 
-    # Precompute slack (available_minutes - required_minutes) for each assignment,
+    # Precompute slack (available_minutes - required_minutes) for each work item,
     # using only meetings as busy intervals.
     slack_by_assignment_id: dict[int, int] = {}
-    for assignment in assignments:
+    for assignment in work_items:
         total_minutes = assignment.work_load * MINUTES_PER_WORKLOAD_UNIT
         if total_minutes <= 0:
             slack_by_assignment_id[assignment.id] = 0
@@ -386,8 +416,8 @@ def generate_study_times(
         slack_by_assignment_id[assignment.id] = available_minutes - total_minutes
 
     # Use slack-based ordering (least slack first, then by due date).
-    ordered_assignments = sorted(
-        assignments,
+    ordered_work_items = sorted(
+        work_items,
         key=lambda a: (slack_by_assignment_id.get(a.id, 0), a.due_date),
     )
 
@@ -396,7 +426,7 @@ def generate_study_times(
 
     all_fully_allocated = True
 
-    for assignment in ordered_assignments:
+    for assignment in ordered_work_items:
         total_minutes = assignment.work_load * MINUTES_PER_WORKLOAD_UNIT
         if total_minutes <= 0:
             continue
@@ -427,10 +457,11 @@ def generate_study_times(
             slots.extend(day_slots)
             current = day_end_dt
 
-        # Sort by (daily total so far, start time) to prefer low-load days first.
-        def slot_key(s: tuple[datetime, datetime]) -> tuple[int, datetime]:
+        # Sort by (weekly total, daily total, start time) to spread across weeks and days.
+        def slot_key(s: tuple[datetime, datetime]) -> tuple[int, int, datetime]:
             d = s[0].date()
-            return (daily_minutes.get(d, 0), s[0])
+            wk = _week_key(d)
+            return (weekly_minutes.get(wk, 0), daily_minutes.get(d, 0), s[0])
 
         slots.sort(key=slot_key)
 
@@ -444,18 +475,20 @@ def generate_study_times(
             d = start.date()
             if daily_minutes.get(d, 0) + MINUTES_PER_SLOT > max_minutes_per_day:
                 continue  # skip this slot to respect max_hours_per_day
+            aid = assignment.id if assignment.id >= 0 else None  # ongoing work has negative id
             st = StudyTime(
                 start_time=start,
                 end_time=end,
                 term_id=term_id,
                 notes=None,
-                assignment_id=assignment.id,
+                assignment_id=aid,
                 course_id=assignment.course_id,
             )
             session.add(st)
             created.append(st)
             new_busy.append((start, end))
             daily_minutes[d] = daily_minutes.get(d, 0) + MINUTES_PER_SLOT
+            weekly_minutes[_week_key(d)] = weekly_minutes.get(_week_key(d), 0) + MINUTES_PER_SLOT
             used += 1
 
         busy.extend(new_busy)
@@ -481,7 +514,7 @@ def generate_study_times(
     global_created = _generate_study_times_global(
         session=session,
         term=term,
-        assignments=assignments,
+        assignments=work_items,
         meeting_busy=meeting_busy,
         tz=tz,
         start_time=start_time,
@@ -762,12 +795,13 @@ def _generate_study_times_global(
         slot_indices = used_slots_by_assignment.get(a.id, [])
         for idx in slot_indices:
             s, e, _di = all_slots[idx]
+            aid = a.id if a.id >= 0 else None  # ongoing work has negative id
             st = StudyTime(
                 start_time=s,
                 end_time=e,
                 term_id=term_id,
                 notes=None,
-                assignment_id=a.id,
+                assignment_id=aid,
                 course_id=a.course_id,
             )
             session.add(st)

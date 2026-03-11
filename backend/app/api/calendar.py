@@ -572,8 +572,8 @@ def import_ics():
         # Fetch and parse (expand recurring events over a reasonable horizon)
         ics_text = fetch_ics_feed(url)
         now = datetime.utcnow()
-        expand_start = (now - timedelta(days=30)).isoformat()
-        expand_end = (now + timedelta(days=120)).isoformat()
+        expand_start = (now - timedelta(days=365)).isoformat()
+        expand_end = (now + timedelta(days=365)).isoformat()
         events = parse_ics_content(
             ics_text,
             expand_start=expand_start,
@@ -647,8 +647,8 @@ def _sync_ics_source(conn, cur, user_id, source):
     now = datetime.utcnow()
     events = parse_ics_content(
         ics_text,
-        expand_start=(now - timedelta(days=30)).isoformat(),
-        expand_end=(now + timedelta(days=120)).isoformat(),
+        expand_start=(now - timedelta(days=365)).isoformat(),
+        expand_end=(now + timedelta(days=365)).isoformat(),
         source_category=source["feed_category"],
     )
 
@@ -701,10 +701,10 @@ def _sync_google_source(conn, cur, user_id, source):
                 break
     except Exception:
         pass  # Non-fatal; continue with event sync
-    # Use a reasonable default date range
+    # Use wide date range so scheduler sees full term (1 year past, 1 year future)
     now = datetime.utcnow()
-    time_min = (now - timedelta(days=30)).isoformat() + "Z"
-    time_max = (now + timedelta(days=120)).isoformat() + "Z"
+    time_min = (now - timedelta(days=365)).isoformat() + "Z"
+    time_max = (now + timedelta(days=365)).isoformat() + "Z"
 
     events_result = (
         service.events()
