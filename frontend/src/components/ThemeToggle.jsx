@@ -10,11 +10,12 @@ const EASTER_EGG_CLICKS = 10;
 const EASTER_EGG_WINDOW_MS = 2000;
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme, unlockRainbow } = useTheme();
+  const { theme, toggleTheme, unlockRainbow, showRainbowModal } = useTheme();
   const clickCountRef = useRef(0);
   const lastClickRef = useRef(0);
 
   const handleClick = () => {
+    if (showRainbowModal) return;
     const now = Date.now();
     if (now - lastClickRef.current > EASTER_EGG_WINDOW_MS) {
       clickCountRef.current = 0;
