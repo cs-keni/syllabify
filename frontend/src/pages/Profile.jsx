@@ -78,6 +78,7 @@ export default function Profile() {
     if (src && !avatarError) {
       return (
         <img
+          key={avatarUrl}
           src={src}
           alt="Profile"
           className="w-full h-full rounded-full object-cover"
@@ -113,7 +114,8 @@ export default function Profile() {
     try {
       const { url } = await uploadBanner(token, file);
       setBannerUrl(url);
-      await updateProfile(token, { banner_url: url });
+      const p = await updateProfile(token, { banner_url: url });
+      if (p?.banner_url != null) setBannerUrl(p.banner_url);
       toast.success('Banner uploaded and saved');
     } catch (err) {
       toast.error(err.message || 'Failed to upload banner');
@@ -132,7 +134,8 @@ export default function Profile() {
       setAvatarUrl(url);
       setAvatar(null);
       setAvatarError(false);
-      await updateProfile(token, { avatar_url: url });
+      const p = await updateProfile(token, { avatar_url: url });
+      if (p?.avatar_url != null) setAvatarUrl(p.avatar_url);
       toast.success('Profile picture uploaded and saved');
     } catch (err) {
       toast.error(err.message || 'Failed to upload');
@@ -165,6 +168,7 @@ export default function Profile() {
         <div className="h-32 overflow-hidden bg-surface-muted">
           {imgUrl(bannerUrl.trim()) ? (
             <img
+              key={bannerUrl}
               src={imgUrl(bannerUrl.trim())}
               alt="Banner"
               className="w-full h-full object-cover"

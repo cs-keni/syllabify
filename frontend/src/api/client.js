@@ -873,6 +873,21 @@ export async function updateStudyTime(token, studyTimeId, body) {
   return data;
 }
 
+/** DELETE /api/schedule/terms/:termId/study-times. Clears all study times for the term. */
+export async function clearStudyTimes(token, termId) {
+  const res = await apiFetch(
+    `${BASE}/api/schedule/terms/${termId}/study-times`,
+    {
+      method: 'DELETE',
+      headers: headers(true, token),
+      credentials: 'include',
+    }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to clear study times');
+  return data;
+}
+
 /** DELETE /api/schedule/study-times/:id. */
 export async function deleteStudyTime(token, studyTimeId) {
   const res = await apiFetch(
@@ -1023,6 +1038,7 @@ export default {
   parseSyllabus,
   getStudyTimes,
   generateStudyTimes,
+  clearStudyTimes,
   updateStudyTime,
   deleteStudyTime,
   getCalendarSources,

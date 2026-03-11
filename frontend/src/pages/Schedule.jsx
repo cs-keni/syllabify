@@ -40,6 +40,7 @@ export default function Schedule() {
   const [showProposedScheduleModal, setShowProposedScheduleModal] = useState(false);
   const [proposedSlots, setProposedSlots] = useState([]);
   const [applyingSchedule, setApplyingSchedule] = useState(false);
+  const [clearingSchedule, setClearingSchedule] = useState(false);
 
   const [activeTerm, setActiveTerm] = useState(null);
   const [calendarEvents, setCalendarEvents] = useState([]);
@@ -355,6 +356,21 @@ export default function Schedule() {
     }
   };
 
+  const handleClearStudyTimes = async () => {
+    if (!token || !activeTerm?.id) return;
+    setClearingSchedule(true);
+    try {
+      const data = await api.clearStudyTimes(token, activeTerm.id);
+      const count = data.deleted_count ?? 0;
+      toast.success(count > 0 ? `Cleared ${count} study block(s).` : 'No study blocks to clear.');
+      fetchData();
+    } catch (err) {
+      toast.error(err.message || 'Failed to clear study times');
+    } finally {
+      setClearingSchedule(false);
+    }
+  };
+
   const handleOpenExportModal = async () => {
     if (!token) return toast.error('Please sign in first.');
     setShowExportModal(true);
@@ -430,6 +446,14 @@ export default function Schedule() {
             className="px-4 py-2 rounded-lg bg-primary text-primary-inv font-medium text-sm hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
           >
             {generating ? 'Generating\u2026' : 'Generate Study Times'}
+          </button>
+          <button
+            type="button"
+            onClick={handleClearStudyTimes}
+            disabled={clearingSchedule || !token || studyTimes.length === 0}
+            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+          >
+            {clearingSchedule ? 'Clearing…' : 'Clear study times'}
           </button>
           <button
             type="button"

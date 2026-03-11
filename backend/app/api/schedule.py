@@ -94,12 +94,11 @@ def get_engine_input():
     return jsonify(result), 200
 
 
-@bp.route("/terms/<int:term_id>/study-times", methods=["GET"])
-def get_study_times_for_term(term_id):
+@bp.route("/terms/<int:term_id>/study-times", methods=["GET", "DELETE"])
+def get_or_clear_study_times_for_term(term_id):
     """
-    GET /api/schedule/terms/:term_id/study-times
-    Optional: ?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD to filter by date range.
-    Returns study time blocks for the term. Without date params, returns all.
+    GET: Returns study times. Optional ?start_date=&end_date=.
+    DELETE: Clears all study times for the term.
     """
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
@@ -110,6 +109,23 @@ def get_study_times_for_term(term_id):
         user_id = int(payload.get("sub"))
     except (TypeError, ValueError):
         return jsonify({"error": "unauthorized"}), 401
+
+    if request.method == "DELETE":
+        conn = get_db()
+        try:
+            cur = conn.cursor(dictionary=True)
+            cur.execute(
+                "SELECT t.id FROM Terms t WHERE t.id = %s AND t.user_id = %s",
+                (term_id, user_id),
+            )
+            if not cur.fetchone():
+                return jsonify({"error": "Term not found"}), 404
+            cur.execute("DELETE FROM StudyTimes WHERE term_id = %s", (term_id,))
+            deleted = cur.rowcount
+            conn.commit()
+            return jsonify({"ok": True, "deleted_count": deleted}), 200
+        finally:
+            conn.close()
 
     start_date = request.args.get("start_date", "").strip()
     end_date = request.args.get("end_date", "").strip()
