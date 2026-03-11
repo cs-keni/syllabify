@@ -10,6 +10,7 @@ import re as _re
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
+from sqlalchemy import text
 from sqlalchemy.orm import Session, joinedload
 
 # Import all models referenced by Term's relationships so SQLAlchemy can resolve
@@ -585,18 +586,15 @@ def _generate_study_times_global(
     if not normalized_assignments or total_required_slots == 0:
         return []
 
-    # Build all possible 15-min slots across the term, excluding meetings.
+    # Build all possible 15-min slots across the full term (not just assignment windows).
+    # This ensures work is spread across the course span even when assignments have gaps.
     # Slots are constrained to the study window [start_time, end_time].
-
-    earliest = min(ws for _, ws, _ in normalized_assignments)
-    latest = max(we for _, _, we in normalized_assignments)
+    current_day = term.start_date if isinstance(term.start_date, date) else term.start_date.date()
+    end_day = term.end_date if isinstance(term.end_date, date) else term.end_date.date()
 
     all_slots: list[tuple[datetime, datetime, int]] = []
     days: list[date] = []
     day_index_by_date: dict[date, int] = {}
-
-    current_day = earliest.date()
-    end_day = latest.date()
     while current_day <= end_day:
         day_idx = len(days)
         days.append(current_day)
@@ -646,9 +644,22 @@ def _generate_study_times_global(
             return []
 
     # Binary search on the maximum number of slots allowed per day.
+    # Cap by user's max_hours_per_day so we never exceed their preferred daily limit.
     max_slots_in_any_day = max(slots_per_day) if slots_per_day else 0
+    max_hours_per_day = 8  # default
+    try:
+        r = session.execute(
+            text("SELECT max_hours_per_day FROM UserPreferences WHERE user_id = :uid"),
+            {"uid": term.user_id},
+        )
+        row = r.fetchone()
+        if row and row[0] is not None:
+            max_hours_per_day = max(1, min(24, int(row[0])))
+    except Exception:
+        pass
+    max_slots_per_day_cap = max_hours_per_day * 4  # 4 slots per hour (15-min slots)
+    high = min(max_slots_in_any_day, max_slots_per_day_cap)
     low = 0
-    high = max_slots_in_any_day
     best_limit = None
     best_flow_graph: _Dinic | None = None
     best_node_indices: dict[str, int] | None = None
@@ -711,8 +722,8 @@ def _generate_study_times_global(
 
         return flow
 
-    # If even allowing all slots per day we cannot satisfy demand, return empty.
-    if build_and_run_flow(max_slots_in_any_day) < total_required_slots:
+    # If we cannot satisfy demand within the user's max_hours_per_day cap, return empty.
+    if build_and_run_flow(high) < total_required_slots:
         return []
 
     while low <= high:
