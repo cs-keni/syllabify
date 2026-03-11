@@ -14,6 +14,9 @@ import {
 } from '../api/client';
 import { useAccent } from '../contexts/AccentContext';
 import toast from 'react-hot-toast';
+import RedMan from '../assets/RedMan.png';
+import GreenMan from '../assets/GreenMan.png';
+import BlueMan from '../assets/BlueMan.png';
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const DAY_TO_CODE = {
@@ -25,6 +28,11 @@ const DAY_TO_CODE = {
   Sat: 'SA',
   Sun: 'SU',
 };
+const AVATAR_OPTIONS = [
+  { key: 'red', label: 'Red', src: RedMan },
+  { key: 'green', label: 'Green', src: GreenMan },
+  { key: 'blue', label: 'Blue', src: BlueMan },
+];
 
 function parsePreferredDays(csv) {
   if (!csv || typeof csv !== 'string') return [];
@@ -50,6 +58,7 @@ export default function Preferences() {
   const { token } = useAuth();
   const { accent, setAccent, palettes } = useAccent();
   const [email, setEmail] = useState('');
+  const [avatar, setAvatar] = useState(null);
   const [workStart, setWorkStart] = useState('09:00');
   const [workEnd, setWorkEnd] = useState('17:00');
   const [selectedDays, setSelectedDays] = useState([
@@ -82,6 +91,7 @@ export default function Preferences() {
     Promise.all([getProfile(token), getPreferences(token)])
       .then(([p, prefs]) => {
         if (p?.email != null) setEmail(p.email);
+        if (p && 'avatar' in p) setAvatar(p.avatar || null);
         if (prefs) {
           setWorkStart(prefs.work_start || '09:00');
           setWorkEnd(prefs.work_end || '17:00');
@@ -104,7 +114,10 @@ export default function Preferences() {
     if (!token) return;
     setSaving(true);
     try {
-      await updateProfile(token, { email: email.trim() || null });
+      await updateProfile(token, {
+        email: email.trim() || null,
+        avatar: avatar || null,
+      });
       toast.success('Profile saved');
     } catch (err) {
       toast.error(err.message || 'Failed to save');
@@ -174,7 +187,7 @@ export default function Preferences() {
         >
           ← Dashboard
         </Link>
-        <h1 className="mt-2 text-2xl font-semibold text-ink">Preferences</h1>
+        <h1 className="mt-2 text-2xl font-semibold text-ink">Settings</h1>
         <p className="mt-1 text-sm text-ink-muted">
           Manage your account and study preferences.
         </p>
@@ -315,6 +328,44 @@ export default function Preferences() {
                   disabled={loading}
                   className="w-full max-w-md rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
                 />
+              </div>
+              <div>
+                <p className="block text-sm text-ink-muted mb-2">Avatar</p>
+                <div className="flex flex-wrap gap-3">
+                  {AVATAR_OPTIONS.map(option => (
+                    <label
+                      key={option.key}
+                      className={`cursor-pointer rounded-card border p-2 transition-all ${
+                        avatar === option.key
+                          ? 'border-accent bg-accent-muted'
+                          : 'border-border bg-surface hover:bg-surface-muted'
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="avatar"
+                        value={option.key}
+                        checked={avatar === option.key}
+                        onChange={() => setAvatar(option.key)}
+                        disabled={loading}
+                        className="sr-only"
+                      />
+                      <img
+                        src={option.src}
+                        alt={`${option.label} avatar`}
+                        className="h-16 w-16 rounded-full object-cover border border-border"
+                      />
+                    </label>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setAvatar(null)}
+                  disabled={loading}
+                  className="mt-2 text-xs text-ink-muted hover:text-ink underline underline-offset-2 disabled:opacity-60"
+                >
+                  Clear avatar
+                </button>
               </div>
               <button
                 type="submit"

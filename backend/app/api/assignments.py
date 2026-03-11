@@ -10,6 +10,35 @@ bp = Blueprint("assignments", __name__, url_prefix="/api/assignments")
 VALID_TYPES = ("assignment", "midterm", "final", "quiz", "project", "participation")
 
 
+@bp.route("/estimate-hours", methods=["POST"])
+def estimate_hours():
+    """
+    POST /api/assignments/estimate-hours
+    Body: { name, type }. Uses LLM to estimate hours (1-20). Returns { hours } or { error }.
+    """
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "unauthorized"}), 401
+
+    data = request.get_json() or {}
+    name = (data.get("name") or "").strip()
+    atype = (data.get("type") or "assignment").strip().lower()
+    if atype not in VALID_TYPES:
+        atype = "assignment"
+
+    try:
+        from app.services.llm_parser import estimate_assignment_hours
+    except ImportError:
+        return jsonify({"error": "AI estimation not available"}), 503
+
+    hours = estimate_assignment_hours(name, atype)
+    if hours is None:
+        return jsonify({"error": "Could not estimate hours"}), 503
+
+    return jsonify({"hours": hours})
+
+
 def _owns_assignment(cur, assignment_id, user_id):
     """Returns assignment row if user owns it (via assignment -> course -> term), else None."""
     cur.execute(
@@ -51,6 +80,16 @@ def patch_assignment(assignment_id):
             if name:
                 updates.append("assignment_name = %s")
                 params.append(name)
+
+        if "start_date" in data:
+            start_raw = data.get("start_date")
+            if start_raw is not None and start_raw != "":
+                try:
+                    start_dt = datetime.fromisoformat(str(start_raw).replace("Z", "+00:00"))
+                    updates.append("start_date = %s")
+                    params.append(start_dt)
+                except (ValueError, TypeError):
+                    pass
 
         if "due_date" in data:
             due_raw = data.get("due_date")

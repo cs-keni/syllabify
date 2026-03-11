@@ -14,6 +14,9 @@ from flask import Blueprint, jsonify, request
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
+# Google OAuth (optional; requires GOOGLE_CLIENT_ID)
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
+
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 DEV_USERNAME = "syllabify-client"
 DEV_PASSWORD = "ineedtocutmytoenails422"
@@ -103,6 +106,155 @@ def decode_token(auth_header):
     except jwt.InvalidTokenError as e:
         log.warning("JWT decode failed: %s", type(e).__name__)
         return None
+
+
+def _derive_username_from_email(email):
+    """Derive a valid username from email. Handles collisions."""
+    if not email or "@" not in email:
+        return None
+    local = email.split("@")[0].lower()
+    # Replace invalid chars (only a-zA-Z0-9_- allowed) with underscore
+    username = re.sub(r"[^a-zA-Z0-9_-]", "_", local)
+    if not username:
+        username = "user"
+    # Truncate to 50
+    username = username[:50]
+    return username
+
+
+def _ensure_unique_username(cursor, base_username):
+    """If base_username exists, append _1, _2, etc. until unique."""
+    username = base_username
+    suffix = 0
+    while True:
+        cursor.execute("SELECT id FROM Users WHERE username = %s", (username,))
+        if not cursor.fetchone():
+            return username
+        suffix += 1
+        username = f"{base_username}_{suffix}"[:50]
+
+
+@bp.route("/google", methods=["POST"])
+def google_signin():
+    """Accept Google ID token, validate, create/link user, return Syllabify JWT."""
+    from app.admin_settings import get_registration_enabled
+    from app.maintenance import get_maintenance_status
+
+    if not GOOGLE_CLIENT_ID:
+        return jsonify({"error": "Google sign-in is not configured"}), 503
+
+    enabled, msg = get_maintenance_status()
+    if enabled:
+        return jsonify({"error": "maintenance", "message": msg}), 503
+
+    data = request.get_json() or {}
+    id_token_str = (data.get("id_token") or data.get("credential") or "").strip()
+    if not id_token_str:
+        return jsonify({"error": "id_token is required"}), 400
+
+    try:
+        from google.auth.transport import requests as google_requests
+        from google.oauth2 import id_token as google_id_token
+
+        idinfo = google_id_token.verify_oauth2_token(
+            id_token_str, google_requests.Request(), GOOGLE_CLIENT_ID
+        )
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).warning("Google ID token verification failed: %s", e)
+        return jsonify({"error": "invalid Google token"}), 401
+
+    google_id = idinfo.get("sub")
+    email = (idinfo.get("email") or "").strip().lower()
+
+    if not google_id:
+        return jsonify({"error": "invalid Google token"}), 401
+
+    if not get_registration_enabled():
+        # Still allow login for existing users
+        pass
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+
+        # 1. Find by google_id (already linked)
+        try:
+            cur.execute(
+                "SELECT id, username, security_setup_done, is_admin FROM Users "
+                "WHERE google_id = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
+                (google_id,),
+            )
+        except Exception as e:
+            if "Unknown column 'google_id'" in str(e):
+                return jsonify({"error": "Database migration required. Run 011_google_oauth_calendar.sql"}), 503
+            raise
+        row = cur.fetchone()
+        if row:
+            user_id = row["id"]
+            username = row["username"]
+            security_setup_done = True  # Google users skip security setup
+            is_admin = bool(row.get("is_admin"))
+        else:
+            # 2. Find by email (auto-link)
+            if email:
+                cur.execute(
+                    "SELECT id, username, security_setup_done, is_admin FROM Users "
+                    "WHERE LOWER(email) = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
+                    (email,),
+                )
+                row = cur.fetchone()
+                if row:
+                    user_id = row["id"]
+                    username = row["username"]
+                    security_setup_done = bool(row.get("security_setup_done"))
+                    is_admin = bool(row.get("is_admin"))
+                    cur.execute(
+                        "UPDATE Users SET google_id = %s WHERE id = %s",
+                        (google_id, user_id),
+                    )
+                    conn.commit()
+                else:
+                    row = None
+
+            # 3. New user
+            if not row:
+                if not get_registration_enabled():
+                    return jsonify({
+                        "error": "registration_closed",
+                        "message": "Signups are currently closed. Contact an administrator.",
+                    }), 403
+
+                base_username = _derive_username_from_email(email) or "user"
+                username = _ensure_unique_username(cur, base_username)
+
+                cur.execute(
+                    """INSERT INTO Users (username, email, password_hash, google_id, auth_provider, security_setup_done)
+                       VALUES (%s, %s, NULL, %s, 'google', TRUE)""",
+                    (username, email or None, google_id),
+                )
+                user_id = cur.lastrowid
+                conn.commit()
+                security_setup_done = True
+                is_admin = False
+
+        env_admins = set(
+            u.strip().lower()
+            for u in (os.getenv("ADMIN_USERNAMES") or "").split(",")
+            if u.strip()
+        )
+        is_admin_user = is_admin or (username.strip().lower() in env_admins)
+
+        token = token_for_user(user_id, username)
+        token_str = token if isinstance(token, str) else token.decode("utf-8")
+        return jsonify({
+            "token": token_str,
+            "username": username,
+            "security_setup_done": security_setup_done,
+            "is_admin": is_admin_user,
+        })
+    finally:
+        conn.close()
 
 
 @bp.route("/register", methods=["POST"])

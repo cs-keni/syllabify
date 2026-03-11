@@ -8,32 +8,6 @@ import { getCourses, createCourse, deleteCourse } from '../api/client';
 import CourseCard from '../components/CourseCard';
 import TermSelector from '../components/TermSelector';
 
-const PLACEHOLDER_MODAL_KEY = 'syllabify_placeholder_modal_dismissed';
-
-const MOCK_UPCOMING = [
-  {
-    id: '1',
-    title: 'Assignment 3 (Placeholder)',
-    course: 'CS 422',
-    due: 'Feb 2',
-    hours: 4,
-  },
-  {
-    id: '2',
-    title: 'Reading quiz (Placeholder)',
-    course: 'CS 422',
-    due: 'Feb 4',
-    hours: 1,
-  },
-  {
-    id: '3',
-    title: 'Lab 2 (Placeholder)',
-    course: 'CS 422',
-    due: 'Feb 6',
-    hours: 3,
-  },
-];
-
 function getGreeting() {
   const h = new Date().getHours();
   if (h < 12) return 'Good morning';
@@ -41,10 +15,9 @@ function getGreeting() {
   return 'Good evening';
 }
 
-/** Main dashboard. Shows placeholder weekly chart, upcoming list, and courses. */
+/** Main dashboard. Shows courses and links to schedule. */
 export default function Dashboard() {
   const { user, token } = useAuth();
-  const [showPlaceholderModal, setShowPlaceholderModal] = useState(false);
   const [courses, setCourses] = useState([]);
   const [coursesError, setCoursesError] = useState(null);
   const [currentTermId, setCurrentTermId] = useState(null);
@@ -75,13 +48,6 @@ export default function Dashboard() {
     const bc = b.assignment_count ?? 0;
     return sortBy === 'count-desc' ? bc - ac : ac - bc;
   });
-
-  const closePlaceholderModal = () => {
-    setShowPlaceholderModal(false);
-    try {
-      localStorage.setItem(PLACEHOLDER_MODAL_KEY, '1');
-    } catch (_) {}
-  };
 
   // Courses load when term changes (via handleTermChange from TermSelector)
 
@@ -119,6 +85,13 @@ export default function Dashboard() {
     e.preventDefault();
     const name = newCourseName.trim();
     if (!name || !currentTermId) return;
+    const exists = courses.some(
+      c => (c.course_name || '').toLowerCase() === name.toLowerCase()
+    );
+    if (exists) {
+      setCourseError('A course with this name already exists.');
+      return;
+    }
     setSaving(true);
     setCourseError('');
     try {
@@ -127,7 +100,7 @@ export default function Dashboard() {
       setNewCourseName('');
       setAdding(false);
     } catch (e) {
-      setCourseError(e.message);
+      setCourseError(e.message || 'Could not add course');
     } finally {
       setSaving(false);
     }
@@ -135,35 +108,6 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6 sm:space-y-10">
-      {showPlaceholderModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/20 animate-fade-in"
-          onClick={closePlaceholderModal}
-          onKeyDown={e => e.key === 'Escape' && closePlaceholderModal()}
-          role="presentation"
-        >
-          <div
-            className="rounded-card bg-surface-elevated border border-border shadow-dropdown p-4 max-w-md mx-4 animate-scale-in"
-            onClick={e => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-          >
-            <p className="text-sm text-ink mb-3">
-              These are placeholder values to show an example of what the page
-              might look like. They will be replaced with real data once we have
-              a working backend.
-            </p>
-            <button
-              type="button"
-              onClick={closePlaceholderModal}
-              className="rounded-button bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-hover transition-colors duration-200"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
       <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">
           {user?.username ? `${getGreeting()}, ${user.username}` : 'Dashboard'}
@@ -177,57 +121,20 @@ export default function Dashboard() {
         <TermSelector onTermChange={handleTermChange} />
       </div>
 
-      <section className="rounded-card bg-surface-elevated border border-border p-4 sm:p-6 shadow-card animate-fade-in [animation-delay:200ms]">
-        <div className="flex items-center gap-2 mb-3">
-          <h2 className="text-sm font-medium text-ink">This week</h2>
-          <span className="text-xs text-ink-subtle bg-surface-muted rounded-button px-2 py-0.5">
-            Placeholder
-          </span>
-        </div>
-        <div className="overflow-x-auto">
-          <div className="flex gap-4 items-end min-w-[420px]">
-            {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => (
-              <div
-                key={day}
-                className="flex-1 flex flex-col items-center gap-1"
-              >
-                <div
-                  className="w-full rounded-t min-h-[4px] bg-accent-muted max-h-24 origin-bottom animate-bar-grow"
-                  style={{
-                    height: `${[4, 6, 2, 5, 3, 0, 0][i]}rem`,
-                    animationDelay: `${i * 120}ms`,
-                  }}
-                />
-                <span className="text-xs text-ink-subtle">{day}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <p className="mt-3 text-xs text-ink-subtle">
-          Hours of work scheduled this week.
-        </p>
-      </section>
-
       <div className="grid gap-8 lg:grid-cols-2">
-        {/* Upcoming (placeholder) */}
-        <section className="rounded-card bg-surface-elevated border border-border p-4 sm:p-6 shadow-card animate-fade-in-up [animation-delay:400ms]">
+        <section className="rounded-card bg-surface-elevated border border-border p-4 sm:p-6 shadow-card animate-fade-in-up [animation-delay:200ms]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-            <div className="flex items-center gap-2">
-              <h2 className="text-sm font-medium text-ink">Upcoming</h2>
-              <span className="text-xs text-ink-subtle bg-surface-muted rounded-button px-2 py-0.5">
-                Placeholder
-              </span>
-            </div>
+            <h2 className="text-sm font-medium text-ink">Schedule</h2>
             <Link
               to="/app/schedule"
               className="text-sm font-medium text-accent no-underline hover:text-accent-hover transition-colors duration-200"
             >
-              View schedule
+              View schedule →
             </Link>
           </div>
           <p className="text-sm text-ink-muted py-2">
-            Upcoming assignments will appear here once schedule generation is
-            implemented.
+            Generate study times from your courses, then view your weekly
+            schedule.
           </p>
         </section>
 

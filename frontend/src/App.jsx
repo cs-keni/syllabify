@@ -15,11 +15,14 @@ import Upload from './pages/Upload';
 import Course from './pages/Course';
 import Schedule from './pages/Schedule';
 import Preferences from './pages/Preferences';
+import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import SecuritySetup from './pages/SecuritySetup';
 import Home from './pages/Homepage';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import MaintenancePage from './pages/MaintenancePage';
 import { getMaintenance, getSettings } from './api/client';
 import { useState, useEffect } from 'react';
@@ -81,6 +84,8 @@ function AppRoutes() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/security-setup" element={<SecuritySetup />} />
@@ -95,14 +100,16 @@ function AppRoutes() {
           />
           <Route
             path="/preferences"
-            element={<Navigate to="/app/preferences" replace />}
+            element={<Navigate to="/app/settings" replace />}
           />
           <Route path="/app" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="upload" element={<Upload />} />
             <Route path="courses/:courseId" element={<Course />} />
             <Route path="schedule" element={<Schedule />} />
-            <Route path="preferences" element={<Preferences />} />
+            <Route path="settings" element={<Preferences />} />
+            <Route path="preferences" element={<Navigate to="/app/settings" replace />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/app" replace />} />
           </Route>

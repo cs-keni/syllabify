@@ -5,6 +5,7 @@ import {
   getCourse,
   deleteCourse,
   addAssignments,
+  estimateAssignmentHours,
   updateAssignment,
   deleteAssignment,
   parseSyllabus,
@@ -72,6 +73,7 @@ function AssignmentRow({
 }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(assignment.assignment_name);
+  const [start, setStart] = useState(toInputDate(assignment.start_date));
   const [due, setDue] = useState(toInputDate(assignment.due_date));
   const [hours, setHours] = useState(
     ((assignment.work_load || 0) / 4).toFixed(1)
@@ -85,6 +87,7 @@ function AssignmentRow({
     try {
       await updateAssignment(token, assignment.id, {
         assignment_name: name.trim(),
+        start_date: start || null,
         due_date: due || null,
         hours: parseFloat(hours) || 3,
         type,
@@ -106,6 +109,7 @@ function AssignmentRow({
       await addAssignments(courseId, [
         {
           name: (assignment.assignment_name || '') + ' (copy)',
+          start: assignment.start_date || null,
           due: assignment.due_date || null,
           hours: (assignment.work_load || 0) / 4,
           type: assignment.assignment_type || 'assignment',
@@ -124,6 +128,7 @@ function AssignmentRow({
     if (!window.confirm('Remove this assignment?')) return;
     const snapshot = {
       name: assignment.assignment_name,
+      start: assignment.start_date,
       due: assignment.due_date,
       hours: (assignment.work_load || 0) / 4,
       type: assignment.assignment_type || 'assignment',
@@ -171,6 +176,16 @@ function AssignmentRow({
           className="flex-1 min-w-[120px] rounded-input border border-border bg-surface px-2 py-1 text-sm"
         />
         <div>
+          <label className="block text-xs text-ink-muted mb-0.5">Start</label>
+          <input
+            type="date"
+            value={start}
+            onChange={e => setStart(e.target.value)}
+            className="rounded-input border border-border bg-surface px-2 py-1 text-sm mb-1"
+          />
+        </div>
+        <div>
+          <label className="block text-xs text-ink-muted mb-0.5">Due</label>
           <div className="flex items-center gap-1">
             <input
               type="date"
@@ -565,6 +580,7 @@ function AssignmentsSection({ course, token, refreshCourse, navigate }) {
       await addAssignments(course.id, [
         {
           name: snapshot.name,
+          start: snapshot.start,
           due: snapshot.due,
           hours: snapshot.hours,
           type: snapshot.type,
@@ -729,6 +745,7 @@ function AddAssignmentForm({ courseId, courseAssignments, token, onAdded }) {
   const [hours, setHours] = useState('3');
   const [type, setType] = useState('assignment');
   const [adding, setAdding] = useState(false);
+  const [estimating, setEstimating] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -817,14 +834,39 @@ function AddAssignmentForm({ courseId, courseAssignments, token, onAdded }) {
           </div>
           <div>
             <label className="block text-xs text-ink-muted mb-0.5">Hours</label>
-            <input
-              type="number"
-              min="0.5"
-              step="0.5"
-              value={hours}
-              onChange={e => setHours(e.target.value)}
-              className="rounded-input border border-border bg-surface px-3 py-2 text-sm w-20"
-            />
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                min="0.5"
+                step="0.5"
+                value={hours}
+                onChange={e => setHours(e.target.value)}
+                className="rounded-input border border-border bg-surface px-3 py-2 text-sm w-20"
+              />
+              <button
+                type="button"
+                onClick={async () => {
+                  if (!token || !name.trim()) {
+                    toast.error('Enter assignment name first');
+                    return;
+                  }
+                  setEstimating(true);
+                  try {
+                    const { hours: est } = await estimateAssignmentHours(token, name.trim(), type);
+                    setHours(String(est));
+                    toast.success(`AI estimate: ${est} hour${est !== 1 ? 's' : ''}`);
+                  } catch (e) {
+                    toast.error(e.message || 'Could not estimate');
+                  } finally {
+                    setEstimating(false);
+                  }
+                }}
+                disabled={estimating || !name.trim()}
+                className="rounded-button border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink hover:bg-surface-muted disabled:opacity-50"
+              >
+                {estimating ? '…' : 'Estimate with AI'}
+              </button>
+            </div>
           </div>
           <div>
             <label className="block text-xs text-ink-muted mb-0.5">Type</label>

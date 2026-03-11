@@ -10,11 +10,11 @@ There are two ways to get admin access, depending on how your project is set up.
 
 ### Option A: Pre-created Admin Accounts
 
-If admin accounts were created for you (e.g., via `docker/migrations/006_admin_users.sql` or `backend/scripts/create_admin_users.py`):
+If admin accounts were created for you (via `backend/scripts/create_admin_users.py`; the setup person runs this with env vars, no secrets in the repo):
 
 1. **Get your credentials** from whoever set up the app:
-   - Username: e.g. `admin-andrew`, `admin-leon`, `admin-saintgeorge`, `admin-kenny`
-   - Initial password: e.g. `Changeme123!` (you’ll change this later)
+   - Username: (your admin will provide yours)
+   - Initial password: a temporary password (you’ll change it in Preferences after first login)
 
 2. **Go to the app** at your deployment URL (e.g. `https://your-app.vercel.app` or whatever your frontend URL is).
 
@@ -141,6 +141,21 @@ Syllabify does **not** have a “forgot password” email link. Instead:
 3. **Tell the user** the temporary password (by email, in person, etc.).
 4. **User logs in** with the temporary password.
 5. **User goes to Preferences** → scroll to **Change password** (top of the page) → sets a new password they choose.
+
+---
+
+## Creating Admin Accounts (for setup person)
+
+To create admin accounts **without storing passwords in the repo**:
+
+```bash
+cd backend
+ADMIN_INITIAL_PASSWORD="YourTempPassword123!" ADMIN_USERNAMES="admin-user1,admin-user2" python scripts/create_admin_users.py
+```
+
+- Set `ADMIN_INITIAL_PASSWORD` to a temporary password (min 8 chars). Never commit this value.
+- Set `ADMIN_USERNAMES` to comma-separated usernames.
+- Admins should change their password in Preferences after first login.
 
 ---
 

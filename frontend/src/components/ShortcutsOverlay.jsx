@@ -9,7 +9,7 @@ const SHORTCUTS = [
   { keys: ['g', 'd'], desc: 'Go to Dashboard' },
   { keys: ['g', 'u'], desc: 'Go to Upload syllabus' },
   { keys: ['g', 's'], desc: 'Go to Schedule' },
-  { keys: ['g', 'p'], desc: 'Go to Preferences' },
+  { keys: ['g', 'p'], desc: 'Go to Settings' },
 ];
 
 export default function ShortcutsOverlay({ open, onClose }) {

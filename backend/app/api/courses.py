@@ -92,6 +92,14 @@ def create_course(term_id):
         if not cur.fetchone():
             return jsonify({"error": "Term not found"}), 404
 
+        # Prevent duplicate course names in same term (case-insensitive)
+        cur.execute(
+            "SELECT id FROM Courses WHERE term_id = %s AND LOWER(TRIM(course_name)) = LOWER(%s)",
+            (term_id, course_name),
+        )
+        if cur.fetchone():
+            return jsonify({"error": "duplicate_course", "message": "A course with this name already exists in this term"}), 409
+
         cur.execute(
             "INSERT INTO Courses (course_name, term_id, study_hours_per_week, color) VALUES (%s, %s, %s, %s)",
             (course_name, term_id, study_hours_per_week, color or None),
@@ -213,7 +221,16 @@ def update_course(course_id):
                 pass
 
         cur.execute("DELETE FROM Assignments WHERE course_id = %s", (course_id,))
+        # Fetch term dates once for assignment start_date/due_date fallbacks
+        cur.execute(
+            "SELECT t.start_date, t.end_date FROM Courses c JOIN Terms t ON t.id = c.term_id WHERE c.id = %s",
+            (course_id,),
+        )
+        term_row = cur.fetchone()
+        term_start = term_row.get("start_date") if term_row else None
+        term_end = term_row.get("end_date") if term_row else None
         now = datetime.utcnow()
+
         for a in assignments_payload:
             name = (a.get("name") or "").strip()
             if not name:
@@ -222,32 +239,52 @@ def update_course(course_id):
             work_load = max(1, int(hours * 4))
             due_raw = a.get("due") or a.get("due_date")
             try:
-                due_dt = datetime.fromisoformat(due_raw) if due_raw else now
+                due_dt = datetime.fromisoformat(str(due_raw).replace("Z", "+00:00")) if due_raw else now
             except (ValueError, TypeError):
                 due_dt = now
             atype = (a.get("type") or "assignment").strip().lower()
             if atype not in ("assignment", "midterm", "final", "quiz", "project", "participation"):
                 atype = "assignment"
-            if not due_raw and due_dt == now:
-                cur.execute(
-                    "SELECT t.end_date FROM Courses c JOIN Terms t ON t.id = c.term_id WHERE c.id = %s",
-                    (course_id,),
+            if not due_raw and due_dt == now and term_end:
+                end_d = term_end
+                due_dt = (
+                    datetime.combine(end_d, datetime.min.time())
+                    if isinstance(end_d, date) and not isinstance(end_d, datetime)
+                    else end_d
                 )
-                row = cur.fetchone()
-                if row and row.get("end_date"):
-                    end_d = row["end_date"]
-                    due_dt = (
-                        datetime.combine(end_d, datetime.min.time())
-                        if isinstance(end_d, date) and not isinstance(end_d, datetime)
-                        else end_d
-                    )
+            # Use term.start_date for start_date so scheduling engine has valid [start, due] window.
+            # Accept start_date from payload if provided (parser or manual input).
+            start_raw = a.get("start_date") or a.get("start")
+            if start_raw:
+                try:
+                    start_dt = datetime.fromisoformat(str(start_raw).replace("Z", "+00:00"))
+                except (ValueError, TypeError):
+                    start_dt = None
+            else:
+                start_dt = None
+            if start_dt is None and term_start:
+                start_dt = (
+                    datetime.combine(term_start, datetime.min.time())
+                    if isinstance(term_start, date) and not isinstance(term_start, datetime)
+                    else term_start
+                )
+            if start_dt is None:
+                start_dt = now
+            # Ensure start_date <= due_date for scheduling; if due is before start, use term_end
+            if due_dt < start_dt and term_end:
+                end_d = term_end
+                due_dt = (
+                    datetime.combine(end_d, datetime.min.time())
+                    if isinstance(end_d, date) and not isinstance(end_d, datetime)
+                    else end_d
+                )
             cur.execute(
                 """
                 INSERT INTO Assignments
                   (assignment_name, work_load, notes, start_date, due_date, assignment_type, course_id)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
                 """,
-                (name, work_load, a.get("notes") or None, now, due_dt, atype, course_id),
+                (name, work_load, a.get("notes") or None, start_dt, due_dt, atype, course_id),
             )
 
         cur.execute("DELETE FROM Meetings WHERE course_id = %s", (course_id,))
@@ -375,6 +412,13 @@ def add_assignments(course_id):
         if not _owns_course(cur, course_id, user_id):
             return jsonify({"error": "Course not found"}), 404
 
+        cur.execute(
+            "SELECT t.start_date, t.end_date FROM Courses c JOIN Terms t ON t.id = c.term_id WHERE c.id = %s",
+            (course_id,),
+        )
+        term_row = cur.fetchone()
+        term_start = term_row.get("start_date") if term_row else None
+        term_end = term_row.get("end_date") if term_row else None
         now = datetime.utcnow()
         inserted = 0
         for a in items:
@@ -385,7 +429,7 @@ def add_assignments(course_id):
             work_load = max(1, int(hours * 4))  # 15-min increments
             due_raw = a.get("due") or a.get("due_date")
             try:
-                due_dt = datetime.fromisoformat(due_raw) if due_raw else now
+                due_dt = datetime.fromisoformat(str(due_raw).replace("Z", "+00:00")) if due_raw else now
             except (ValueError, TypeError):
                 due_dt = now
 
@@ -394,19 +438,37 @@ def add_assignments(course_id):
                 atype = "assignment"
 
             # Fallback for empty due: use term end_date (for scheduling engine)
-            if not due_raw and due_dt == now:
-                cur.execute(
-                    "SELECT t.end_date FROM Courses c JOIN Terms t ON t.id = c.term_id WHERE c.id = %s",
-                    (course_id,),
+            if not due_raw and due_dt == now and term_end:
+                end_d = term_end
+                due_dt = (
+                    datetime.combine(end_d, datetime.min.time())
+                    if isinstance(end_d, date) and not isinstance(end_d, datetime)
+                    else end_d
                 )
-                row = cur.fetchone()
-                if row and row.get("end_date"):
-                    end_d = row["end_date"]
-                    due_dt = (
-                        datetime.combine(end_d, datetime.min.time())
-                        if isinstance(end_d, date) and not isinstance(end_d, datetime)
-                        else end_d
-                    )
+            # Use term.start_date for start_date so scheduling engine has valid [start, due] window
+            start_raw = a.get("start_date") or a.get("start")
+            if start_raw:
+                try:
+                    start_dt = datetime.fromisoformat(str(start_raw).replace("Z", "+00:00"))
+                except (ValueError, TypeError):
+                    start_dt = None
+            else:
+                start_dt = None
+            if start_dt is None and term_start:
+                start_dt = (
+                    datetime.combine(term_start, datetime.min.time())
+                    if isinstance(term_start, date) and not isinstance(term_start, datetime)
+                    else term_start
+                )
+            if start_dt is None:
+                start_dt = now
+            if due_dt < start_dt and term_end:
+                end_d = term_end
+                due_dt = (
+                    datetime.combine(end_d, datetime.min.time())
+                    if isinstance(end_d, date) and not isinstance(end_d, datetime)
+                    else end_d
+                )
 
             cur.execute(
                 """
@@ -414,7 +476,7 @@ def add_assignments(course_id):
                   (assignment_name, work_load, notes, start_date, due_date, assignment_type, course_id)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
                 """,
-                (name, work_load, a.get("notes") or None, now, due_dt, atype, course_id),
+                (name, work_load, a.get("notes") or None, start_dt, due_dt, atype, course_id),
             )
             inserted += 1
 

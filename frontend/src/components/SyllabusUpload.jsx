@@ -61,7 +61,7 @@ export default function SyllabusUpload({ onComplete, token }) {
               due_date: a.due_datetime
                 ? String(a.due_datetime).slice(0, 10)
                 : '',
-              hours: hoursFromType(a.type),
+              hours: typeof a.hours === 'number' ? a.hours : hoursFromType(a.type),
               type: a.type || 'assignment',
               confidence:
                 typeof a.confidence === 'number' ? a.confidence : null,
@@ -95,6 +95,7 @@ export default function SyllabusUpload({ onComplete, token }) {
         assignments,
         instructors,
         confidence,
+        study_hours_per_week: data.study_hours_per_week ?? null,
       });
     } catch (err) {
       setError(err.message || 'Parse failed');

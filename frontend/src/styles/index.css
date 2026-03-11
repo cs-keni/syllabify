@@ -42,6 +42,57 @@
   --color-border-subtle: #1f2937;
 }
 
+/* Easter egg: rainbow (Nyan Cat) theme – scrolling rainbow stripes */
+.theme-rainbow {
+  --color-surface: rgba(26, 26, 46, 0.85);
+  --color-surface-elevated: rgba(22, 33, 62, 0.9);
+  --color-surface-muted: rgba(15, 52, 96, 0.85);
+  --color-ink: #eaeaea;
+  --color-ink-muted: #a0aec0;
+  --color-ink-subtle: #718096;
+  --color-accent: #e94560;
+  --color-accent-hover: #ff6b6b;
+  --color-accent-muted: #533483;
+  --color-border: rgba(45, 55, 72, 0.8);
+  --color-border-subtle: rgba(26, 32, 44, 0.8);
+}
+
+/* Fixed rainbow layer – Nyan Cat style: bright, diagonal, blended, fast */
+.theme-rainbow::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: repeating-linear-gradient(
+    124deg,
+    #ff0066 0%,
+    #ff6600 4%,
+    #ffcc00 8%,
+    #66ff00 12%,
+    #00ff99 16%,
+    #00ccff 20%,
+    #6633ff 24%,
+    #ff00cc 28%,
+    #ff0066 32%
+  );
+  background-size: 250% 250%;
+  animation: rainbow-nyan 1.2s linear infinite;
+}
+
+@keyframes rainbow-nyan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 250% 50%; }
+}
+
+.theme-rainbow body {
+  background: transparent !important;
+}
+
+/* Semi-transparent layout so rainbow shows through */
+.theme-rainbow .theme-rainbow-layout {
+  background: rgba(26, 26, 46, 0.75) !important;
+}
+
 /* Admin control panel - distinct slate/indigo aesthetic vs client green */
 .admin-shell {
   @apply flex flex-col gap-0 -mx-4 sm:-mx-6 lg:-mx-8 -mt-6 sm:-mt-8;

@@ -5,7 +5,9 @@
 # DISCLAIMER: Project structure may change. Fields/relationships may be added or
 # modified. This describes the general idea.
 
-from sqlalchemy import Integer, String
+from datetime import datetime
+
+from sqlalchemy import Boolean, DateTime, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..db.base import Base
@@ -17,5 +19,12 @@ class User(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
     username: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
+    ical_feed_token: Mapped[str | None] = mapped_column(
+        String(191), nullable=True, unique=True
+    )
+    ical_feed_enabled: Mapped[bool] = mapped_column(Boolean, default=True)
+    ical_feed_token_updated_at: Mapped[datetime | None] = mapped_column(
+        DateTime, nullable=True
+    )
 
     terms = relationship("Term", back_populates="owner", cascade="all, delete-orphan")

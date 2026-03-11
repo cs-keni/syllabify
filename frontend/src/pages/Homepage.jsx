@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-surface text-ink">
+    <div className="min-h-screen flex flex-col bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-1.5 sm:py-4">
           <div className="sm:hidden space-y-1.5">
@@ -28,12 +29,12 @@ export default function Home() {
               >
                 Log in
               </Link>
-              <button
-                type="button"
-                className="rounded-button border border-border bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200"
+              <Link
+                to="/register"
+                className="text-center rounded-button border border-border bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200"
               >
                 Sign up
-              </button>
+              </Link>
             </div>
           </div>
           <div className="relative hidden sm:flex items-center justify-between gap-3">
@@ -55,12 +56,12 @@ export default function Home() {
               >
                 Log in
               </Link>
-              <button
-                type="button"
+              <Link
+                to="/register"
                 className="rounded-button border border-border bg-surface px-4 py-2.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200 animate-fade-in [animation-delay:400ms]"
               >
                 Sign up
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -117,6 +118,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }
