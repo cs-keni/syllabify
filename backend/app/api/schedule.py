@@ -201,24 +201,35 @@ def delete_study_time(study_time_id):
 
 
 def _load_user_prefs_for_scheduling(user_id: int) -> dict:
-    """Load work_start, work_end, max_hours_per_day from UserPreferences. Returns defaults if missing."""
+    """Load work_start, work_end, max_hours_per_day, timezone from UserPreferences."""
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
         cur.execute(
-            "SELECT work_start, work_end, max_hours_per_day FROM UserPreferences WHERE user_id = %s",
+            "SELECT work_start, work_end, max_hours_per_day, timezone FROM UserPreferences WHERE user_id = %s",
             (user_id,),
         )
         row = cur.fetchone()
         if not row:
-            return {"work_start": "08:00", "work_end": "22:00", "max_hours_per_day": 8}
+            return {"work_start": "08:00", "work_end": "22:00", "max_hours_per_day": 8, "timezone": "UTC"}
         return {
             "work_start": row.get("work_start") or "08:00",
             "work_end": row.get("work_end") or "22:00",
             "max_hours_per_day": int(row["max_hours_per_day"]) if row.get("max_hours_per_day") is not None else 8,
+            "timezone": (row.get("timezone") or "UTC").strip() or "UTC",
         }
     finally:
         conn.close()
+
+
+def _course_name_by_id(session, term_id):
+    """Return {course_id: course_name} for the term."""
+    from sqlalchemy.orm import joinedload
+    from app.models.term import Term
+    term = session.query(Term).options(joinedload(Term.courses)).filter(Term.id == term_id).first()
+    if not term:
+        return {}
+    return {c.id: (c.course_name or "Study") for c in term.courses}
 
 
 @bp.route("/terms/<int:term_id>/generate-study-times", methods=["POST"])
@@ -226,7 +237,7 @@ def generate_study_times_for_term(term_id):
     """
     Generate study times for the given term (scheduling algorithm).
     Uses UserPreferences: work_start/work_end = study window, max_hours_per_day = daily cap.
-    For dev: test with curl -X POST -H "Authorization: Bearer <token>" <base>/api/schedule/terms/<term_id>/generate-study-times
+    Query param: preview=true returns proposed slots without applying (for modal review).
     """
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
@@ -237,10 +248,18 @@ def generate_study_times_for_term(term_id):
     except (TypeError, ValueError):
         return jsonify({"error": "unauthorized"}), 401
 
+    preview = request.args.get("preview", "").lower() in ("1", "true", "yes")
+
     prefs = _load_user_prefs_for_scheduling(user_id)
     study_start = _parse_pref_time(prefs["work_start"], 8, 0)
     study_end = _parse_pref_time(prefs["work_end"], 22, 0)
     max_hours = max(1, min(24, prefs["max_hours_per_day"]))
+    user_tz = prefs.get("timezone") or "UTC"
+    try:
+        from zoneinfo import ZoneInfo
+        ZoneInfo(user_tz)
+    except Exception:
+        user_tz = "UTC"
 
     session = SessionLocal()
     try:
@@ -249,7 +268,26 @@ def generate_study_times_for_term(term_id):
             study_start=study_start,
             study_end=study_end,
             max_hours_per_day=max_hours,
+            user_timezone=user_tz,
+            dry_run=preview,
         )
+        if preview:
+            session.rollback()
+            course_names = _course_name_by_id(session, term_id)
+            return jsonify({
+                "preview": True,
+                "created_count": len(created),
+                "study_times": [
+                    {
+                        "start_time": st.start_time.isoformat(),
+                        "end_time": st.end_time.isoformat(),
+                        "course_id": st.course_id,
+                        "course_name": course_names.get(st.course_id, "Study"),
+                        "assignment_id": st.assignment_id,
+                    }
+                    for st in created
+                ],
+            }), 200
         session.commit()
         return jsonify({
             "ok": True,

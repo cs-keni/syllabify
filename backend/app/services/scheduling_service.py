@@ -259,6 +259,8 @@ def generate_study_times(
     study_start: time | None = None,
     study_end: time | None = None,
     max_hours_per_day: int | None = None,
+    user_timezone: str | None = None,
+    dry_run: bool = False,
 ) -> list[StudyTime]:
     """
     Load the term by id, clear existing study times for it, then create new
@@ -321,14 +323,20 @@ def generate_study_times(
     if not work_items:
         return []
 
-    # Timezone from first work item
-    tz = _get_tz(work_items[0].start_date)
+    # Use user's timezone so 5pm-10pm is correct (not UTC)
+    if user_timezone:
+        try:
+            tz = ZoneInfo(user_timezone)
+        except Exception:
+            tz = _get_tz(work_items[0].start_date)
+    else:
+        tz = _get_tz(work_items[0].start_date)
 
     # Busy intervals: expand recurring and one-off meetings into (start, end) intervals
     meeting_busy = _meetings_to_busy_intervals(term, term.courses, tz)
     meeting_busy = _merge_intervals(meeting_busy)
 
-    # Active timed calendar events also block scheduling.
+    # Active timed calendar events block scheduling.
     user_id = term.user_id
     cal_events = (
         session.query(CalendarEvent)
@@ -350,6 +358,31 @@ def generate_study_times(
             e = _ensure_utc(e)
             calendar_busy.append((s, e))
 
+    # All-day events block the study window for each day in their range.
+    all_day_events = (
+        session.query(CalendarEvent)
+        .filter(
+            CalendarEvent.user_id == user_id,
+            CalendarEvent.event_kind == "all_day",
+            CalendarEvent.sync_status == "active",
+            CalendarEvent.start_date.isnot(None),
+        )
+        .all()
+    )
+    for evt in all_day_events:
+        ev_start = evt.start_date
+        ev_end = evt.end_date if evt.end_date else evt.start_date
+        ev_end = max(ev_start, ev_end)
+        day_range = (max(term_start, ev_start), min(term_end, ev_end))
+        if day_range[0] > day_range[1]:
+            continue
+        d = day_range[0]
+        while d <= day_range[1]:
+            slot_start = datetime.combine(d, start_time, tzinfo=tz)
+            slot_end = datetime.combine(d, end_time, tzinfo=tz)
+            calendar_busy.append((slot_start.astimezone(ZoneInfo("UTC")), slot_end.astimezone(ZoneInfo("UTC"))))
+            d += timedelta(days=1)
+
     meeting_busy = _merge_intervals(meeting_busy + calendar_busy)
     effective_due_dates = _reconcile_deadlines(session, user_id, assignments)
 
@@ -358,9 +391,10 @@ def generate_study_times(
         .filter(StudyTime.term_id == term_id, StudyTime.is_locked.is_(True))
         .all()
     )
-    session.query(StudyTime).filter(
-        StudyTime.term_id == term_id, StudyTime.is_locked.is_(False)
-    ).delete(synchronize_session="fetch")
+    if not dry_run:
+        session.query(StudyTime).filter(
+            StudyTime.term_id == term_id, StudyTime.is_locked.is_(False)
+        ).delete(synchronize_session="fetch")
 
     locked_busy: list[tuple[datetime, datetime]] = []
     for locked in locked_study_times:
@@ -484,7 +518,8 @@ def generate_study_times(
                 assignment_id=aid,
                 course_id=assignment.course_id,
             )
-            session.add(st)
+            if not dry_run:
+                session.add(st)
             created.append(st)
             new_busy.append((start, end))
             daily_minutes[d] = daily_minutes.get(d, 0) + MINUTES_PER_SLOT
@@ -503,9 +538,10 @@ def generate_study_times(
     # ----- Phase 2: Global solver fallback (minimize max daily study time) -----
 
     # Remove any partially-created study times from the greedy phase.
-    session.query(StudyTime).filter(
-        StudyTime.term_id == term_id, StudyTime.is_locked.is_(False)
-    ).delete(synchronize_session="fetch")
+    if not dry_run:
+        session.query(StudyTime).filter(
+            StudyTime.term_id == term_id, StudyTime.is_locked.is_(False)
+        ).delete(synchronize_session="fetch")
 
     # Use a global optimization approach as a fallback. This will:
     # - Use all 15-minute slots across the term (respecting meetings and study window),
@@ -522,6 +558,7 @@ def generate_study_times(
         term_id=term_id,
         effective_due_dates=effective_due_dates,
         max_hours_per_day=max_hours,
+        dry_run=dry_run,
     )
     return global_created
 
@@ -598,6 +635,7 @@ def _generate_study_times_global(
     term_id: int,
     effective_due_dates: dict[int, datetime] | None = None,
     max_hours_per_day: int | None = None,
+    dry_run: bool = False,
 ) -> list[StudyTime]:
     """
     Global optimal scheduling using max-flow + binary search on the maximum
@@ -804,7 +842,8 @@ def _generate_study_times_global(
                 assignment_id=aid,
                 course_id=a.course_id,
             )
-            session.add(st)
+            if not dry_run:
+                session.add(st)
             created.append(st)
 
     return created

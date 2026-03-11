@@ -856,16 +856,15 @@ export async function deleteStudyTime(token, studyTimeId) {
   return data;
 }
 
-/** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. */
-export async function generateStudyTimes(token, termId) {
-  const res = await apiFetch(
-    `${BASE}/api/schedule/terms/${termId}/generate-study-times`,
-    {
-      method: 'POST',
-      headers: headers(true, token),
-      credentials: 'include',
-    }
-  );
+/** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. Use preview=true to get proposed slots without applying. */
+export async function generateStudyTimes(token, termId, { preview = false } = {}) {
+  const url = new URL(`${BASE}/api/schedule/terms/${termId}/generate-study-times`);
+  if (preview) url.searchParams.set('preview', 'true');
+  const res = await apiFetch(url.toString(), {
+    method: 'POST',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to generate study times');
   return data;
