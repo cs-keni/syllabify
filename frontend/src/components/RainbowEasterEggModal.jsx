@@ -1,13 +1,38 @@
 /**
  * Easter egg modal: confetti + message when user unlocks rainbow theme.
+ * Cat GIF bounces around corners then center before user can close.
  * Only OK/X close the modal – no backdrop click, so spamming won't accidentally dismiss.
  */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 
 const RAINBOW_COLORS = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#8f00ff'];
 
+const GIF_POSITIONS = [
+  { left: '1.5rem', bottom: '1.5rem', right: 'auto', top: 'auto', transform: 'none' },
+  { left: 'auto', bottom: 'auto', right: '1.5rem', top: '1.5rem', transform: 'none' },
+  { left: 'auto', bottom: '1.5rem', right: '1.5rem', top: 'auto', transform: 'none' },
+  { left: '1.5rem', bottom: 'auto', right: 'auto', top: '1.5rem', transform: 'none' },
+  { left: '50%', bottom: 'auto', right: 'auto', top: '50%', transform: 'translate(-50%, -50%) scale(2)' },
+];
+
 export default function RainbowEasterEggModal({ onClose }) {
+  const [gifPosition, setGifPosition] = useState(-1);
+  const [canClose, setCanClose] = useState(false);
+
+  useEffect(() => {
+    const delays = [0, 500, 1000, 1500, 2000];
+    const timeouts = delays.map((d, i) => setTimeout(() => setGifPosition(i), d));
+    const doneTimeout = setTimeout(() => {
+      setGifPosition(-1);
+      setCanClose(true);
+    }, 3000);
+    return () => {
+      timeouts.forEach(clearTimeout);
+      clearTimeout(doneTimeout);
+    };
+  }, []);
+
   useEffect(() => {
     const duration = 3 * 1000;
     const end = Date.now() + duration;
@@ -48,6 +73,15 @@ export default function RainbowEasterEggModal({ onClose }) {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 pointer-events-none">
       <div className="absolute inset-0 bg-black/50 pointer-events-auto" aria-hidden />
+      {/* Cat GIF bounces: bottom-left → top-right → bottom-right → top-left → center (2x) */}
+      {gifPosition >= 0 && (
+        <img
+          src="/cat-tongue-shake.gif"
+          alt=""
+          className="absolute z-20 w-24 h-24 object-contain transition-all duration-300 ease-out pointer-events-none"
+          style={GIF_POSITIONS[gifPosition]}
+        />
+      )}
       <div
         className="relative z-10 max-w-md rounded-2xl border-2 border-amber-400 bg-surface-elevated p-6 shadow-2xl animate-scale-in pointer-events-auto"
         role="dialog"
@@ -56,8 +90,11 @@ export default function RainbowEasterEggModal({ onClose }) {
       >
         <button
           type="button"
-          onClick={onClose}
-          className="absolute top-3 right-3 rounded-button p-1.5 text-ink-muted hover:bg-surface-muted hover:text-ink transition-colors"
+          onClick={canClose ? onClose : undefined}
+          disabled={!canClose}
+          className={`absolute top-3 right-3 rounded-button p-1.5 transition-colors ${
+            canClose ? 'text-ink-muted hover:bg-surface-muted hover:text-ink cursor-pointer' : 'text-ink-subtle cursor-not-allowed opacity-50'
+          }`}
           aria-label="Close"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,8 +112,11 @@ export default function RainbowEasterEggModal({ onClose }) {
         </p>
         <button
           type="button"
-          onClick={onClose}
-          className="mt-6 w-full rounded-button bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover transition-colors"
+          onClick={canClose ? onClose : undefined}
+          disabled={!canClose}
+          className={`mt-6 w-full rounded-button px-4 py-2.5 font-medium transition-colors ${
+            canClose ? 'bg-accent text-white hover:bg-accent-hover cursor-pointer' : 'bg-surface-muted text-ink-muted cursor-not-allowed'
+          }`}
         >
           OK
         </button>
