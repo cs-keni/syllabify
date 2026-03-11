@@ -16,7 +16,9 @@ from sqlalchemy.orm import Session, joinedload
 # them when configuring the mapper (avoids InvalidRequestError: failed to locate 'User').
 from app.models.assignment import Assignment  # noqa: F401
 from app.models.calendar_event import CalendarEvent
-from app.models.calendar_source import CalendarSource  # noqa: F401 - needed for CalendarEvent.source relationship
+from app.models.calendar_source import (
+    CalendarSource,  # noqa: F401 - needed for CalendarEvent.source relationship
+)
 from app.models.course import Course  # noqa: F401
 from app.models.meeting import Meeting  # noqa: F401
 from app.models.study_time import StudyTime

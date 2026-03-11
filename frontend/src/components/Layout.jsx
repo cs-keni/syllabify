@@ -283,7 +283,10 @@ export default function Layout() {
                   aria-expanded={profileOpen}
                   aria-haspopup="menu"
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-muted text-accent text-xs font-medium shrink-0 overflow-hidden border border-border" aria-hidden>
+                  <span
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-muted text-accent text-xs font-medium shrink-0 overflow-hidden border border-border"
+                    aria-hidden
+                  >
                     {avatarUrl ? (
                       <img
                         src={avatarUrl}

@@ -17,12 +17,12 @@ The project follows a client–server architecture with a React frontend (Vercel
 
 ## 2. Team Ownership and Responsibilities
 
-| Team Member        | Primary Responsibility                         | Status |
-|--------------------|------------------------------------------------|--------|
-| **Kenny Nguyen**   | Syllabus parser (extraction, LLM, hybrid model) | Done   |
+| Team Member              | Primary Responsibility                                          | Status      |
+| ------------------------ | --------------------------------------------------------------- | ----------- |
+| **Kenny Nguyen**         | Syllabus parser (extraction, LLM, hybrid model)                 | Done        |
 | **Saint George Aufranc** | Scheduling engine (heuristics, time blocks, conflict detection) | In progress |
-| **Leon Wong**      | Calendar export and imports (ICS, Google Calendar) | In progress |
-| **Andrew Martin**  | Frontend (UI, Dashboard, Upload, Schedule, Preferences) | In progress |
+| **Leon Wong**            | Calendar export and imports (ICS, Google Calendar)              | In progress |
+| **Andrew Martin**        | Frontend (UI, Dashboard, Upload, Schedule, Preferences)         | In progress |
 
 Ownership is modular: parser outputs structured JSON; scheduling engine consumes it via `GET /api/schedule/engine-input`; calendar services consume approved schedules.
 
@@ -50,41 +50,41 @@ Research (Inside Higher Ed / College Pulse, 40% of students; Educational Data Mi
 
 ### 4.1 Must Have (MVP)
 
-| ID | Requirement | Owner | Status |
-|----|-------------|-------|--------|
-| R1 | User login (username/password) and JWT auth | Backend team | Done |
-| R2 | First-time security setup (Q&A for account recovery) | Backend team | Done |
-| R3 | Syllabus upload (PDF, DOCX, paste text) | Kenny | Done |
-| R4 | Syllabus parsing (assignments, due dates, meeting times, types) | Kenny | Done |
-| R5 | Review and edit parsed data before saving | Andrew | Done |
-| R6 | Save course and assignments to database | Backend team | Done |
-| R7 | Term management (create, activate, list) | Backend team | Done |
-| R8 | Multi-course support per term | Backend team | Done |
-| R9 | Generate study schedule from courses + assignments | Saint George | In progress |
-| R10 | Display proposed schedule in weekly grid | Andrew | Placeholder |
-| R11 | User approves schedule before export | Andrew | Not started |
-| R12 | Export to ICS file download | Leon | In progress |
-| R13 | Dashboard with courses and term selector | Andrew | Done |
+| ID  | Requirement                                                     | Owner        | Status      |
+| --- | --------------------------------------------------------------- | ------------ | ----------- |
+| R1  | User login (username/password) and JWT auth                     | Backend team | Done        |
+| R2  | First-time security setup (Q&A for account recovery)            | Backend team | Done        |
+| R3  | Syllabus upload (PDF, DOCX, paste text)                         | Kenny        | Done        |
+| R4  | Syllabus parsing (assignments, due dates, meeting times, types) | Kenny        | Done        |
+| R5  | Review and edit parsed data before saving                       | Andrew       | Done        |
+| R6  | Save course and assignments to database                         | Backend team | Done        |
+| R7  | Term management (create, activate, list)                        | Backend team | Done        |
+| R8  | Multi-course support per term                                   | Backend team | Done        |
+| R9  | Generate study schedule from courses + assignments              | Saint George | In progress |
+| R10 | Display proposed schedule in weekly grid                        | Andrew       | Placeholder |
+| R11 | User approves schedule before export                            | Andrew       | Not started |
+| R12 | Export to ICS file download                                     | Leon         | In progress |
+| R13 | Dashboard with courses and term selector                        | Andrew       | Done        |
 
 ### 4.2 Should Have (Post-MVP)
 
-| ID | Requirement | Owner | Status |
-|----|-------------|-------|--------|
-| R14 | Export to Google Calendar (OAuth) | Leon | Not started |
-| R15 | Preferences persistence (work hours, days) | Andrew + Backend | Done |
-| R16 | User registration (signup) | Backend | Done |
-| R17 | Email for password recovery | Backend | Not started |
-| R18 | Import from existing calendar (ICS/Google) | Leon | Not started |
+| ID  | Requirement                                     | Owner                 | Status      |
+| --- | ----------------------------------------------- | --------------------- | ----------- |
+| R14 | Export to Google Calendar (OAuth)               | Leon                  | Not started |
+| R15 | Preferences persistence (work hours, days)      | Andrew + Backend      | Done        |
+| R16 | User registration (signup)                      | Backend               | Done        |
+| R17 | Email for password recovery                     | Backend               | Not started |
+| R18 | Import from existing calendar (ICS/Google)      | Leon                  | Not started |
 | R19 | Conflict detection and highlighting in schedule | Saint George + Andrew | In progress |
 
 ### 4.3 Could Have (Implemented)
 
-| ID | Requirement | Status |
-|----|-------------|--------|
-| R20 | Admin interface for user management | Done |
-| R21 | Maintenance mode toggle | Done |
-| R22 | Dark mode / theme preferences | Done |
-| R23 | Per-course color coding | Done |
+| ID  | Requirement                         | Status |
+| --- | ----------------------------------- | ------ |
+| R20 | Admin interface for user management | Done   |
+| R21 | Maintenance mode toggle             | Done   |
+| R22 | Dark mode / theme preferences       | Done   |
+| R23 | Per-course color coding             | Done   |
 
 ### 4.4 Use Cases (Summary)
 
@@ -132,13 +132,13 @@ The MVP delivers an end-to-end flow:
 
 ### 5.3 Missing for MVP
 
-| Component | Owner | Description |
-|-----------|-------|-------------|
+| Component               | Owner        | Description                                                                                                                    |
+| ----------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | Scheduling engine logic | Saint George | `scheduling_service.py` is a stub. Needs: input parsing, time-block allocation, conflict detection, output of proposed blocks. |
-| Schedule page real data | Andrew | `SchedulePreview` uses mock data. Must fetch from schedule API and render real blocks. |
-| Schedule generation API | Saint George | `POST /api/schedule/generate` (or equivalent) that calls scheduling engine and returns blocks. |
-| User approval step | Andrew | “Approve schedule” before export. |
-| ICS export | Leon | `calendar_service.py` and `export.py` are stubs. Need ICS generation from approved schedule. |
+| Schedule page real data | Andrew       | `SchedulePreview` uses mock data. Must fetch from schedule API and render real blocks.                                         |
+| Schedule generation API | Saint George | `POST /api/schedule/generate` (or equivalent) that calls scheduling engine and returns blocks.                                 |
+| User approval step      | Andrew       | “Approve schedule” before export.                                                                                              |
+| ICS export              | Leon         | `calendar_service.py` and `export.py` are stubs. Need ICS generation from approved schedule.                                   |
 
 ### 5.4 MVP Completion Checklist
 
@@ -497,16 +497,16 @@ sequenceDiagram
 
 ## 7. Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 18, Vite, Tailwind CSS |
-| Backend | Python 3, Flask, Flask-CORS |
-| Database | MySQL 8 (Railway) |
-| Auth | JWT (HS256), bcrypt |
-| Parsing | Rule-based + OpenAI GPT-4o-mini (optional) |
-| Deployment | Vercel (frontend), Render (backend), Railway (DB) |
-| CI/CD | GitHub Actions |
-| Version control | Git, branch strategy (dev → main) |
+| Layer           | Technology                                        |
+| --------------- | ------------------------------------------------- |
+| Frontend        | React 18, Vite, Tailwind CSS                      |
+| Backend         | Python 3, Flask, Flask-CORS                       |
+| Database        | MySQL 8 (Railway)                                 |
+| Auth            | JWT (HS256), bcrypt                               |
+| Parsing         | Rule-based + OpenAI GPT-4o-mini (optional)        |
+| Deployment      | Vercel (frontend), Render (backend), Railway (DB) |
+| CI/CD           | GitHub Actions                                    |
+| Version control | Git, branch strategy (dev → main)                 |
 
 ---
 
@@ -514,47 +514,47 @@ sequenceDiagram
 
 ### 8.1 Backend
 
-| Component | Status | Notes |
-|-----------|--------|------|
-| Auth (login, JWT, security setup) | Done | Registration, change password, security Q&A |
-| Syllabus parse API | Done | PDF + text; hybrid parser |
-| Courses API | Done | CRUD, assignments, meetings |
-| Terms API | Done | CRUD, activate |
-| Schedule engine-input API | Done | Returns normalized JSON for scheduling engine |
-| Admin API | Done | Users, disable, set-admin, reset-security, set-password, create, delete, audit log, maintenance, settings |
-| Scheduling service | Stub | Logic to be implemented by Saint George |
-| Calendar service | Stub | ICS/Google to be implemented by Leon |
-| Export API | Stub | Endpoints TODO |
+| Component                         | Status | Notes                                                                                                     |
+| --------------------------------- | ------ | --------------------------------------------------------------------------------------------------------- |
+| Auth (login, JWT, security setup) | Done   | Registration, change password, security Q&A                                                               |
+| Syllabus parse API                | Done   | PDF + text; hybrid parser                                                                                 |
+| Courses API                       | Done   | CRUD, assignments, meetings                                                                               |
+| Terms API                         | Done   | CRUD, activate                                                                                            |
+| Schedule engine-input API         | Done   | Returns normalized JSON for scheduling engine                                                             |
+| Admin API                         | Done   | Users, disable, set-admin, reset-security, set-password, create, delete, audit log, maintenance, settings |
+| Scheduling service                | Stub   | Logic to be implemented by Saint George                                                                   |
+| Calendar service                  | Stub   | ICS/Google to be implemented by Leon                                                                      |
+| Export API                        | Stub   | Endpoints TODO                                                                                            |
 
 ### 8.2 Frontend
 
-| Component | Status | Notes |
-|-----------|--------|------|
-| Login page | Done | |
-| Register page | Done | |
-| Security setup page | Done | |
-| Dashboard | Done | Term selector, course cards |
-| Upload flow | Done | Upload → Review → Confirm |
-| SyllabusUpload | Done | File + paste |
-| ParsedDataReview | Done | Editable assignments, meetings |
-| Course page | Done | Assignments list, delete |
-| Schedule page | Placeholder | Mock blocks |
-| SchedulePreview | Placeholder | MOCK_BLOCKS |
-| Preferences | Done | Persisted via /api/users/me/preferences |
-| Admin page | Done | User management, maintenance, settings, audit log |
-| Layout/Nav | Done | Dashboard, Upload, Schedule, Preferences, Admin (admin only) |
-| Theme toggle | Done | |
+| Component           | Status      | Notes                                                        |
+| ------------------- | ----------- | ------------------------------------------------------------ |
+| Login page          | Done        |                                                              |
+| Register page       | Done        |                                                              |
+| Security setup page | Done        |                                                              |
+| Dashboard           | Done        | Term selector, course cards                                  |
+| Upload flow         | Done        | Upload → Review → Confirm                                    |
+| SyllabusUpload      | Done        | File + paste                                                 |
+| ParsedDataReview    | Done        | Editable assignments, meetings                               |
+| Course page         | Done        | Assignments list, delete                                     |
+| Schedule page       | Placeholder | Mock blocks                                                  |
+| SchedulePreview     | Placeholder | MOCK_BLOCKS                                                  |
+| Preferences         | Done        | Persisted via /api/users/me/preferences                      |
+| Admin page          | Done        | User management, maintenance, settings, audit log            |
+| Layout/Nav          | Done        | Dashboard, Upload, Schedule, Preferences, Admin (admin only) |
+| Theme toggle        | Done        |                                                              |
 
 ### 8.3 Parser (Kenny)
 
-| Component | Status | Notes |
-|-----------|--------|------|
-| Rule-based extraction | Done | assignments, meeting_times, course metadata |
-| LLM parser | Done | GPT-4o-mini; `USE_LLM_PARSER` flag |
-| Hybrid flow | Done | LLM fallback or supplement |
-| PDF input | Done | |
-| Text input | Done | |
-| Confidence scores | Done | Surfaced in UI for uncertain items |
+| Component             | Status | Notes                                       |
+| --------------------- | ------ | ------------------------------------------- |
+| Rule-based extraction | Done   | assignments, meeting_times, course metadata |
+| LLM parser            | Done   | GPT-4o-mini; `USE_LLM_PARSER` flag          |
+| Hybrid flow           | Done   | LLM fallback or supplement                  |
+| PDF input             | Done   |                                             |
+| Text input            | Done   |                                             |
+| Confidence scores     | Done   | Surfaced in UI for uncertain items          |
 
 ---
 
@@ -571,12 +571,12 @@ sequenceDiagram
 
 ## 10. Risks and Mitigations
 
-| Risk | Mitigation |
-|------|------------|
-| Scheduling engine delay | Engine-input API ready; Saint George can develop against contract. |
-| Calendar export complexity | ICS first (simpler); Google OAuth later. |
-| Parser accuracy | Confidence scores; editable review step; hybrid model. |
-| Cold start (Render free tier) | Documented; first request may take 30–60s. |
+| Risk                          | Mitigation                                                         |
+| ----------------------------- | ------------------------------------------------------------------ |
+| Scheduling engine delay       | Engine-input API ready; Saint George can develop against contract. |
+| Calendar export complexity    | ICS first (simpler); Google OAuth later.                           |
+| Parser accuracy               | Confidence scores; editable review step; hybrid model.             |
+| Cold start (Render free tier) | Documented; first request may take 30–60s.                         |
 
 ---
 

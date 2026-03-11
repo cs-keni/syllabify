@@ -27,15 +27,15 @@ All API endpoints that touch courses/assignments/meetings verify ownership via `
 
 ## 2. Table Layout (current schema)
 
-| Table | Key columns | Purpose |
-|-------|-------------|---------|
-| **Users** | `id`, `username`, `password_hash`, `security_setup_done` | Auth. Username used for login (no email yet). |
-| **UserSecurityAnswers** | `user_id`, `question_text`, `answer_hash` | Security Q&A for password recovery. |
-| **Terms** | `id`, `user_id`, `term_name`, `start_date`, `end_date`, `is_active` | Semesters/quarters per user. |
-| **Courses** | `id`, `course_name`, `term_id`, `study_hours_per_week` | Courses within a term. |
-| **Assignments** | `id`, `assignment_name`, `work_load`, `due_date`, `assignment_type`, `course_id` | Assignments within a course. `work_load` = 15‑min units (4 per hour). |
-| **Meetings** | `id`, `course_id`, `day_of_week`, `start_time_str`, `end_time_str`, `location`, `meeting_type` | Meeting times (lectures, office hours, etc.). |
-| **Schedules** | *(empty for now)* | Future: generated study schedules. |
+| Table                   | Key columns                                                                                    | Purpose                                                               |
+| ----------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **Users**               | `id`, `username`, `password_hash`, `security_setup_done`                                       | Auth. Username used for login (no email yet).                         |
+| **UserSecurityAnswers** | `user_id`, `question_text`, `answer_hash`                                                      | Security Q&A for password recovery.                                   |
+| **Terms**               | `id`, `user_id`, `term_name`, `start_date`, `end_date`, `is_active`                            | Semesters/quarters per user.                                          |
+| **Courses**             | `id`, `course_name`, `term_id`, `study_hours_per_week`                                         | Courses within a term.                                                |
+| **Assignments**         | `id`, `assignment_name`, `work_load`, `due_date`, `assignment_type`, `course_id`               | Assignments within a course. `work_load` = 15‑min units (4 per hour). |
+| **Meetings**            | `id`, `course_id`, `day_of_week`, `start_time_str`, `end_time_str`, `location`, `meeting_type` | Meeting times (lectures, office hours, etc.).                         |
+| **Schedules**           | _(empty for now)_                                                                              | Future: generated study schedules.                                    |
 
 ---
 
@@ -155,10 +155,10 @@ SELECT * FROM UserSecurityAnswers;
 
 ## 7. Summary
 
-| Topic | Status | Notes |
-|-------|--------|-------|
-| Multi-user isolation | ✅ Implemented | Via `Users` → `Terms` → `Courses`. |
-| Duplicate courses | ❌ Bug | Every syllabus confirm creates a new course. Fix: update existing when `courseId` provided. |
-| User registration | 🔜 Planned | Need signup API and optional email field. |
-| Email for password recovery | 🔜 Planned | Add `email` to `Users` and implement reset flow. |
-| User settings | 🔜 Planned | Add `UserSettings` or `settings` column. |
+| Topic                       | Status         | Notes                                                                                       |
+| --------------------------- | -------------- | ------------------------------------------------------------------------------------------- |
+| Multi-user isolation        | ✅ Implemented | Via `Users` → `Terms` → `Courses`.                                                          |
+| Duplicate courses           | ❌ Bug         | Every syllabus confirm creates a new course. Fix: update existing when `courseId` provided. |
+| User registration           | 🔜 Planned     | Need signup API and optional email field.                                                   |
+| Email for password recovery | 🔜 Planned     | Add `email` to `Users` and implement reset flow.                                            |
+| User settings               | 🔜 Planned     | Add `UserSettings` or `settings` column.                                                    |

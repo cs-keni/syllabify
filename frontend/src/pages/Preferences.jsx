@@ -372,9 +372,12 @@ export default function Preferences() {
 
           <form onSubmit={handleSavePreferences} className="space-y-8">
             <section>
-              <h2 className="text-sm font-medium text-ink mb-3">Study window</h2>
+              <h2 className="text-sm font-medium text-ink mb-3">
+                Study window
+              </h2>
               <p className="text-xs text-ink-subtle mb-2">
-                The time range each day when you&apos;re available to study (e.g. after work: 5pm–10pm).
+                The time range each day when you&apos;re available to study
+                (e.g. after work: 5pm–10pm).
               </p>
               <div className="flex items-center gap-4">
                 <label className="text-sm text-ink-muted">From</label>

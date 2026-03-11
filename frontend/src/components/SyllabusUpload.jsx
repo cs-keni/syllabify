@@ -61,7 +61,8 @@ export default function SyllabusUpload({ onComplete, token }) {
               due_date: a.due_datetime
                 ? String(a.due_datetime).slice(0, 10)
                 : '',
-              hours: typeof a.hours === 'number' ? a.hours : hoursFromType(a.type),
+              hours:
+                typeof a.hours === 'number' ? a.hours : hoursFromType(a.type),
               type: a.type || 'assignment',
               confidence:
                 typeof a.confidence === 'number' ? a.confidence : null,

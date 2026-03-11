@@ -89,24 +89,30 @@ export function AuthProvider({ children }) {
   }, [loadUser]);
 
   /** Calls API login, stores token, updates state. Returns { security_setup_done }. */
-  const login = useCallback(async (username, password) => {
-    const data = await api.login(username, password);
-    const t = data.token;
-    localStorage.setItem(TOKEN_KEY, t);
-    setToken(t);
-    await loadUser(t);
-    return { security_setup_done: !!data.security_setup_done };
-  }, [loadUser]);
+  const login = useCallback(
+    async (username, password) => {
+      const data = await api.login(username, password);
+      const t = data.token;
+      localStorage.setItem(TOKEN_KEY, t);
+      setToken(t);
+      await loadUser(t);
+      return { security_setup_done: !!data.security_setup_done };
+    },
+    [loadUser]
+  );
 
   /** Calls API loginWithGoogle, stores token, updates state. Returns { security_setup_done }. */
-  const loginWithGoogle = useCallback(async idToken => {
-    const data = await api.loginWithGoogle(idToken);
-    const t = data.token;
-    localStorage.setItem(TOKEN_KEY, t);
-    setToken(t);
-    await loadUser(t);
-    return { security_setup_done: !!data.security_setup_done };
-  }, [loadUser]);
+  const loginWithGoogle = useCallback(
+    async idToken => {
+      const data = await api.loginWithGoogle(idToken);
+      const t = data.token;
+      localStorage.setItem(TOKEN_KEY, t);
+      setToken(t);
+      await loadUser(t);
+      return { security_setup_done: !!data.security_setup_done };
+    },
+    [loadUser]
+  );
 
   /** Clears token and user from storage and state. */
   const logout = useCallback(() => {

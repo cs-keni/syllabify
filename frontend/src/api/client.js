@@ -508,7 +508,10 @@ export async function uploadBanner(token, file) {
 }
 
 /** PUT /api/users/me with JWT. Body: { email?, avatar?, avatar_url?, banner_url?, description? }. Returns updated profile. */
-export async function updateProfile(token, { email, avatar, avatar_url, banner_url, description }) {
+export async function updateProfile(
+  token,
+  { email, avatar, avatar_url, banner_url, description }
+) {
   const res = await apiFetch(`${BASE}/api/users/me`, {
     method: 'PUT',
     headers: headers(true, token),
@@ -796,11 +799,18 @@ export async function getCalendarList(token) {
 }
 
 /** POST /api/calendar/import. Body: { calendar_ids } (optional start_date, end_date). Returns { ok, imported_count }. */
-export async function importCalendar(token, { calendar_ids, start_date, end_date } = {}) {
+export async function importCalendar(
+  token,
+  { calendar_ids, start_date, end_date } = {}
+) {
   const res = await apiFetch(`${BASE}/api/calendar/import`, {
     method: 'POST',
     headers: headers(true, token),
-    body: JSON.stringify({ calendar_ids: calendar_ids || [], start_date: start_date || '', end_date: end_date || '' }),
+    body: JSON.stringify({
+      calendar_ids: calendar_ids || [],
+      start_date: start_date || '',
+      end_date: end_date || '',
+    }),
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
@@ -904,8 +914,14 @@ export async function deleteStudyTime(token, studyTimeId) {
 }
 
 /** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. Use preview=true to get proposed slots without applying. */
-export async function generateStudyTimes(token, termId, { preview = false } = {}) {
-  const url = new URL(`${BASE}/api/schedule/terms/${termId}/generate-study-times`);
+export async function generateStudyTimes(
+  token,
+  termId,
+  { preview = false } = {}
+) {
+  const url = new URL(
+    `${BASE}/api/schedule/terms/${termId}/generate-study-times`
+  );
   if (preview) url.searchParams.set('preview', 'true');
   const res = await apiFetch(url.toString(), {
     method: 'POST',

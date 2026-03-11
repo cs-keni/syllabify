@@ -5,7 +5,13 @@
     "course_title": "Foundations of Data Science I",
     "term": "Fall 2025",
     "timezone": "America/Los_Angeles",
-    "instructors": [{"id": "inst-0", "name": "Caitlin Smith", "email": "csmith29@uoregon.edu"}],
+    "instructors": [
+      {
+        "id": "inst-0",
+        "name": "Caitlin Smith",
+        "email": "csmith29@uoregon.edu"
+      }
+    ],
     "meeting_times": [
       {
         "id": "mt-1",
@@ -101,9 +107,7 @@
       "recurrence": {
         "frequency": "weekly",
         "interval": 1,
-        "by_day": [
-          "FR"
-        ],
+        "by_day": ["FR"],
         "until": null,
         "count": null
       },

@@ -4,7 +4,12 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import { getProfile, updateProfile, uploadAvatar, uploadBanner } from '../api/client';
+import {
+  getProfile,
+  updateProfile,
+  uploadAvatar,
+  uploadBanner,
+} from '../api/client';
 import toast from 'react-hot-toast';
 import { AVATAR_OPTIONS, getAvatarUrl } from '../lib/avatarOptions';
 

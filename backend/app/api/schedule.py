@@ -6,9 +6,11 @@ import os
 from datetime import datetime, time, timedelta
 
 from flask import Blueprint, jsonify, request
+from sqlalchemy.orm import joinedload
 
 from app.api.auth import decode_token, get_db
 from app.db.session import SessionLocal
+from app.models.term import Term
 from app.services.schedule_input_builder import build_engine_input
 from app.services.scheduling_service import generate_study_times
 
@@ -244,8 +246,6 @@ def _load_user_prefs_for_scheduling(user_id: int) -> dict:
 
 def _course_name_by_id(session, term_id):
     """Return {course_id: course_name} for the term."""
-    from sqlalchemy.orm import joinedload
-    from app.models.term import Term
     term = session.query(Term).options(joinedload(Term.courses)).filter(Term.id == term_id).first()
     if not term:
         return {}

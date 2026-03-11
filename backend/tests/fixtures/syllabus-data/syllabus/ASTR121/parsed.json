@@ -122,9 +122,7 @@
       "recurrence": {
         "frequency": "weekly",
         "interval": 1,
-        "by_day": [
-          "MO"
-        ],
+        "by_day": ["MO"],
         "until": null,
         "count": null
       },

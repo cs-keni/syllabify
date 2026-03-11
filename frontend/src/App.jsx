@@ -108,7 +108,10 @@ function AppRoutes() {
             <Route path="courses/:courseId" element={<Course />} />
             <Route path="schedule" element={<Schedule />} />
             <Route path="settings" element={<Preferences />} />
-            <Route path="preferences" element={<Navigate to="/app/settings" replace />} />
+            <Route
+              path="preferences"
+              element={<Navigate to="/app/settings" replace />}
+            />
             <Route path="profile" element={<Profile />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/app" replace />} />

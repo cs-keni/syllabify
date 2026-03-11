@@ -151,7 +151,8 @@ export default function UnifiedImportModal({
                     </label>
                     <p className="text-xs text-ink-muted mb-2">
                       All events from your selected calendars will be imported.
-                      Syncing happens automatically when you add or update sources.
+                      Syncing happens automatically when you add or update
+                      sources.
                     </p>
                     <div className="max-h-40 overflow-y-auto border border-border rounded-lg p-2 space-y-1 bg-surface">
                       {calendars.map(cal => (

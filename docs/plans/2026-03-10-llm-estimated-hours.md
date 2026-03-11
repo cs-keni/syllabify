@@ -13,6 +13,7 @@
 **Files:** `backend/app/services/llm_parser.py`
 
 **Tasks:**
+
 1. Add `estimated_hours` to the assessment schema in `SYLLABUS_JSON_SCHEMA`:
    - Type: `number` or `integer`, nullable
    - Range: 1–20 (hours **per assignment**, e.g. "Homework 3" ~3h, "Final Project" ~15h)
@@ -31,6 +32,7 @@
 **Files:** `backend/app/services/parsing_service.py`
 
 **Tasks:**
+
 1. In `_map_llm_to_assignments` (or the LLM output mapping path), when building each assignment:
    - Read `estimated_hours` from the LLM assessment
    - If valid (1 ≤ value ≤ 20), use it for `hours`
@@ -44,6 +46,7 @@
 ### Phase 3: Testing
 
 **Tasks:**
+
 1. Add or extend unit tests for the LLM mapping path:
    - When `estimated_hours` is present and valid → use it
    - When `estimated_hours` is null or out of range → use type default
@@ -59,6 +62,7 @@
 **Files:** `backend/app/services/llm_parser.py`, `backend/app/api/assignments.py`, `frontend/src/api/client.js`, `frontend/src/pages/Course.jsx`
 
 **Tasks:**
+
 1. Add `estimate_assignment_hours(name, type)` in llm_parser.py — simple LLM call returning 1–20
 2. Add POST `/api/assignments/estimate-hours` — body `{ name, type }`, returns `{ hours }`
 3. Add `estimateAssignmentHours(token, name, type)` to API client
@@ -82,6 +86,7 @@
 **Goal:** Upload syllabus → Confirm → See schedule with minimal/no manual edits.
 
 **Changes:**
+
 - **Hours cap 50** — Term-long projects (e.g. "Project work 50") now supported
 - **Workload tables** — LLM uses "Credit Hours and Student Workload" sections; maps "Project work 50" to Group Project
 - **Date inference** — When due dates not stated, LLM infers from term (midterm ~midpoint, final ~end)

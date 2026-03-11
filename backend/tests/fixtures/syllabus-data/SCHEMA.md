@@ -14,15 +14,15 @@ See `syllabus-schema-template.json` for the full template.
 
 ## Section Explanations
 
-| Section | Purpose |
-|--------|---------|
-| **course** | Top-level metadata. `id` for references. `instructors` as objects (id, name, email). `meeting_times` structured: `day_of_week` (iCal: MO, TU, WE...), `start_time`, `end_time`, `timezone`, `location`, `type`. `timezone` default for the course. |
-| **assessment_categories** | Groups of graded work (Projects, Exams, Quizzes). `drop_lowest` per category. `grading_bucket` links to bucketed grading. |
-| **assessments** | Individual graded items. `due_datetime` (ISO 8601) instead of `due_date`—supports calendar export. `all_day`, `timezone` for ambiguous cases. `recurrence` follows RFC5545: `frequency` (weekly, daily), `interval`, `by_day`, `until`, `count`. `confidence` and `source_excerpt` for parser debugging. |
-| **grading_structure** | `type`: **flat** (items sum to 100%) or **bucketed** (buckets have weights; items roll up). `buckets` have `id` for reference. |
-| **late_pass_policy** | Global policy: `total_allowed`, `extension_days`. Extracted from syllabus text. |
-| **schedule** | Week-by-week events. `id` for reference. `date` (YYYY-MM-DD), `type`, `topic`. |
-| **metadata** | `created_at`, `updated_at`, `source_type` (pdf, docx, manual), `schema_version`. |
+| Section                   | Purpose                                                                                                                                                                                                                                                                                                  |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **course**                | Top-level metadata. `id` for references. `instructors` as objects (id, name, email). `meeting_times` structured: `day_of_week` (iCal: MO, TU, WE...), `start_time`, `end_time`, `timezone`, `location`, `type`. `timezone` default for the course.                                                       |
+| **assessment_categories** | Groups of graded work (Projects, Exams, Quizzes). `drop_lowest` per category. `grading_bucket` links to bucketed grading.                                                                                                                                                                                |
+| **assessments**           | Individual graded items. `due_datetime` (ISO 8601) instead of `due_date`—supports calendar export. `all_day`, `timezone` for ambiguous cases. `recurrence` follows RFC5545: `frequency` (weekly, daily), `interval`, `by_day`, `until`, `count`. `confidence` and `source_excerpt` for parser debugging. |
+| **grading_structure**     | `type`: **flat** (items sum to 100%) or **bucketed** (buckets have weights; items roll up). `buckets` have `id` for reference.                                                                                                                                                                           |
+| **late_pass_policy**      | Global policy: `total_allowed`, `extension_days`. Extracted from syllabus text.                                                                                                                                                                                                                          |
+| **schedule**              | Week-by-week events. `id` for reference. `date` (YYYY-MM-DD), `type`, `topic`.                                                                                                                                                                                                                           |
+| **metadata**              | `created_at`, `updated_at`, `source_type` (pdf, docx, manual), `schema_version`.                                                                                                                                                                                                                         |
 
 ---
 
@@ -57,7 +57,11 @@ Updating one assessment, instructor, or schedule entry without IDs forces brittl
     "term": "Spring 2025",
     "timezone": "America/Los_Angeles",
     "instructors": [
-      { "id": "inst-1", "name": "Zena M. Ariola", "email": "ariola@uoregon.edu" },
+      {
+        "id": "inst-1",
+        "name": "Zena M. Ariola",
+        "email": "ariola@uoregon.edu"
+      },
       { "id": "inst-2", "name": "William Qiu", "email": "williamq@uoregon.edu" }
     ],
     "meeting_times": [
@@ -112,7 +116,13 @@ Updating one assessment, instructor, or schedule entry without IDs forces brittl
       "timezone": "America/Los_Angeles",
       "weight_percent": 30,
       "points": null,
-      "recurrence": { "frequency": null, "interval": null, "by_day": null, "until": null, "count": null },
+      "recurrence": {
+        "frequency": null,
+        "interval": null,
+        "by_day": null,
+        "until": null,
+        "count": null
+      },
       "policies": { "late_policy": null, "late_pass_allowed": null },
       "confidence": 0.95,
       "source_excerpt": "Midterm 1     30%   April 23rd  (Week 4 Wednesday"

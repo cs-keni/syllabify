@@ -20,12 +20,14 @@ docker/
 **Purpose:** Defines the database schema (tables) that MySQL needs when it first starts. It runs automatically when the MySQL container is created for the first time.
 
 **What it creates:**
+
 - **Users** — Stores usernames, password hashes, and whether security setup is done
 - **UserSecurityAnswers** — Stores security questions and hashed answers (linked to Users)
 - **Schedules** — Stores schedule names and which user owns them
 - **Assignments** — Stores assignment names, workload, notes (linked to Schedules)
 
 **Connections:**
+
 - Used by **docker-compose.yml** (at project root): `./docker/init.sql` is mounted into the MySQL container at `/docker-entrypoint-initdb.d/init.sql`
 - MySQL runs this script automatically on first startup
 - The **backend** (Flask) connects to this MySQL database and reads/writes these tables via `app/db/session.py` and `app/models/`

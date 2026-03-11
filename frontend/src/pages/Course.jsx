@@ -852,9 +852,15 @@ function AddAssignmentForm({ courseId, courseAssignments, token, onAdded }) {
                   }
                   setEstimating(true);
                   try {
-                    const { hours: est } = await estimateAssignmentHours(token, name.trim(), type);
+                    const { hours: est } = await estimateAssignmentHours(
+                      token,
+                      name.trim(),
+                      type
+                    );
                     setHours(String(est));
-                    toast.success(`AI estimate: ${est} hour${est !== 1 ? 's' : ''}`);
+                    toast.success(
+                      `AI estimate: ${est} hour${est !== 1 ? 's' : ''}`
+                    );
                   } catch (e) {
                     toast.error(e.message || 'Could not estimate');
                   } finally {
