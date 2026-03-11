@@ -172,10 +172,15 @@ def _map_llm_result_to_api(llm_result: dict, source_type: str, raw_text: str = "
         key = (title.lower()[:50], atype)
         conf_val = a.get("confidence")
         if key not in seen or (due_date and not seen[key].get("due_date")):
+            raw_hours = a.get("estimated_hours")
+            if isinstance(raw_hours, (int, float)) and 1 <= raw_hours <= 20:
+                hours = int(round(raw_hours))
+            else:
+                hours = _hours_from_assessment_type(atype)
             seen[key] = {
                 "name": title,
                 "due_date": due_date,
-                "hours": _hours_from_assessment_type(atype),
+                "hours": hours,
                 "type": atype,
                 "weight": weight,
                 "confidence": conf_val if isinstance(conf_val, (int, float)) else None,

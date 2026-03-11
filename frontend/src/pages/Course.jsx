@@ -5,6 +5,7 @@ import {
   getCourse,
   deleteCourse,
   addAssignments,
+  estimateAssignmentHours,
   updateAssignment,
   deleteAssignment,
   parseSyllabus,
@@ -744,6 +745,7 @@ function AddAssignmentForm({ courseId, courseAssignments, token, onAdded }) {
   const [hours, setHours] = useState('3');
   const [type, setType] = useState('assignment');
   const [adding, setAdding] = useState(false);
+  const [estimating, setEstimating] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -832,14 +834,39 @@ function AddAssignmentForm({ courseId, courseAssignments, token, onAdded }) {
           </div>
           <div>
             <label className="block text-xs text-ink-muted mb-0.5">Hours</label>
-            <input
-              type="number"
-              min="0.5"
-              step="0.5"
-              value={hours}
-              onChange={e => setHours(e.target.value)}
-              className="rounded-input border border-border bg-surface px-3 py-2 text-sm w-20"
-            />
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                min="0.5"
+                step="0.5"
+                value={hours}
+                onChange={e => setHours(e.target.value)}
+                className="rounded-input border border-border bg-surface px-3 py-2 text-sm w-20"
+              />
+              <button
+                type="button"
+                onClick={async () => {
+                  if (!token || !name.trim()) {
+                    toast.error('Enter assignment name first');
+                    return;
+                  }
+                  setEstimating(true);
+                  try {
+                    const { hours: est } = await estimateAssignmentHours(token, name.trim(), type);
+                    setHours(String(est));
+                    toast.success(`AI estimate: ${est} hour${est !== 1 ? 's' : ''}`);
+                  } catch (e) {
+                    toast.error(e.message || 'Could not estimate');
+                  } finally {
+                    setEstimating(false);
+                  }
+                }}
+                disabled={estimating || !name.trim()}
+                className="rounded-button border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink hover:bg-surface-muted disabled:opacity-50"
+              >
+                {estimating ? '…' : 'Estimate with AI'}
+              </button>
+            </div>
           </div>
           <div>
             <label className="block text-xs text-ink-muted mb-0.5">Type</label>

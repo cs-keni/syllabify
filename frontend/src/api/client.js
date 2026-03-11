@@ -712,6 +712,19 @@ export async function addAssignments(courseId, assignments) {
   return data;
 }
 
+/** POST /api/assignments/estimate-hours. Body: { name, type }. Returns { hours }. Uses AI to estimate. */
+export async function estimateAssignmentHours(token, name, type) {
+  const res = await apiFetch(`${BASE}/api/assignments/estimate-hours`, {
+    method: 'POST',
+    headers: headers(true, token),
+    body: JSON.stringify({ name: name || '', type: type || 'assignment' }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Could not estimate hours');
+  return data;
+}
+
 /** GET /api/calendar/auth-url. Returns { url }. Requires JWT. */
 export async function getCalendarAuthUrl(token) {
   const res = await apiFetch(`${BASE}/api/calendar/auth-url`, {
@@ -969,6 +982,7 @@ export default {
   updateCourse,
   patchCourse,
   addAssignments,
+  estimateAssignmentHours,
   addMeetings,
   updateAssignment,
   deleteAssignment,

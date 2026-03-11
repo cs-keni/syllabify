@@ -15,6 +15,8 @@ Output strictly valid JSON matching the schema. Use ISO 8601 for dates (YYYY-MM-
 Infer academic year from term (e.g. Fall 2025 -> 2025). Assign confidence 0.0-1.0 per assessment based on how clearly the syllabus states it. Use 0.9+ only when you see explicit due date and/or weight. Use 0.5-0.7 when inferring from schedule context.
 If unclear, use null. Do not invent data. day_of_week must be MO, TU, WE, TH, FR, SA, or SU. type for assessments must be assignment, midterm, final, quiz, project, or participation.
 
+For each assessment, estimate estimated_hours (1-20): total hours a typical student might spend on that single assignment (e.g. Homework 3 ~3h, Final Project ~15h). Use syllabus hints ("4-6 hours per week", "projects take 10-15 hours"), type, weight, and title. Use null if completely unclear.
+
 Do NOT include as assessments: grade scale entries (A 90, B 80, C 70, D 60), policy text (accommodation for religious observances, grades are assigned according to...), sentence fragments, section headers, or anything that is not an actual graded deliverable (homework, project, exam, quiz, etc.). Meeting location must be a room/building, not a section title like "Prerequisites"."""
 
 # JSON schema for structured output (OpenAI strict mode)
@@ -79,6 +81,7 @@ SYLLABUS_JSON_SCHEMA = {
                             "weight_percent": {"type": "number"},
                             "confidence": {"type": "number"},
                             "source_excerpt": {"type": "string"},
+                            "estimated_hours": {"type": "number"},
                         },
                         "required": ["id", "title", "category_id", "type", "confidence", "source_excerpt"],
                         "additionalProperties": False,
@@ -186,6 +189,46 @@ def parse_with_llm(intermediate: dict) -> dict | None:
         return None
 
     return _validate_and_normalize(data)
+
+
+def estimate_assignment_hours(name: str, atype: str) -> int | None:
+    """
+    Use LLM to estimate hours for a single assignment.
+    name: assignment title (e.g. "Homework 3", "Final Project")
+    atype: assignment, midterm, final, quiz, project, or participation
+    Returns estimated hours (1-20) or None on failure.
+    """
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return None
+    try:
+        from openai import OpenAI
+    except ImportError:
+        return None
+
+    prompt = f"""Estimate how many hours a typical college student would spend on this assignment.
+Assignment: "{name}"
+Type: {atype}
+
+Reply with ONLY a single integer between 1 and 20 (hours). No explanation."""
+
+    try:
+        client = OpenAI(api_key=api_key)
+        response = client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.1,
+            max_tokens=10,
+        )
+        content = (response.choices[0].message.content or "").strip()
+        # Extract first number
+        match = re.search(r"\d+", content)
+        if match:
+            h = int(match.group())
+            return max(1, min(20, h))
+    except Exception:
+        pass
+    return None
 
 
 def _validate_and_normalize(data: dict) -> dict:
