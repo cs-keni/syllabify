@@ -37,6 +37,10 @@ export default function Schedule() {
   const [exportFeedUrl, setExportFeedUrl] = useState('');
   const [exportEnabled, setExportEnabled] = useState(true);
   const [exportError, setExportError] = useState('');
+  const [showProposedScheduleModal, setShowProposedScheduleModal] = useState(false);
+  const [proposedSlots, setProposedSlots] = useState([]);
+  const [applyingSchedule, setApplyingSchedule] = useState(false);
+  const [clearingSchedule, setClearingSchedule] = useState(false);
 
   const [activeTerm, setActiveTerm] = useState(null);
   const [calendarEvents, setCalendarEvents] = useState([]);
@@ -90,8 +94,8 @@ export default function Schedule() {
       try {
         const stData = await api.getStudyTimes(token, activeTerm.id);
         setStudyTimes(stData.study_times || []);
-      } catch {
-        // study times may not exist yet
+      } catch (err) {
+        console.warn('Failed to fetch study times:', err?.message);
       }
     }
   }, [token, activeTerm]);
@@ -269,6 +273,35 @@ export default function Schedule() {
     }
   };
 
+  const handleLockEntireDay = async () => {
+    if (!popover?.studyTime || !token) return;
+    const dayStart = new Date(popover.studyTime.start_time);
+    const dayStr = dayStart.toISOString().slice(0, 10);
+    const blocksOnDay = studyTimes.filter(st => {
+      const d = new Date(st.start_time).toISOString().slice(0, 10);
+      return d === dayStr && !st.is_locked;
+    });
+    setPopover(null);
+    if (blocksOnDay.length === 0) {
+      toast('All blocks on this day are already locked.');
+      return;
+    }
+    try {
+      await Promise.all(
+        blocksOnDay.map(st => api.updateStudyTime(token, st.id, { is_locked: true }))
+      );
+      setStudyTimes(prev =>
+        prev.map(st =>
+          blocksOnDay.some(b => b.id === st.id) ? { ...st, is_locked: true } : st
+        )
+      );
+      toast.success(`Locked ${blocksOnDay.length} block(s) for this day.`);
+    } catch (err) {
+      toast.error(err.message || 'Failed to lock day');
+      fetchData();
+    }
+  };
+
   const handleGenerateStudyTimes = async () => {
     if (!token) return toast.error('Please sign in to generate study times.');
     setGenerating(true);
@@ -284,17 +317,57 @@ export default function Schedule() {
         );
         return;
       }
-      const data = await api.generateStudyTimes(token, termToUse.id);
-      toast.success(
-        data.created_count !== undefined
-          ? `Generated ${data.created_count} study time block(s).`
-          : 'Study times generated.'
-      );
-      fetchData();
+      const data = await api.generateStudyTimes(token, termToUse.id, { preview: true });
+      const slots = data.study_times || [];
+      const count = data.created_count ?? slots.length;
+      if (count === 0) {
+        toast(
+          'No study blocks to generate (assignments may have no workload or no available slots).'
+        );
+        return;
+      }
+      setProposedSlots(slots);
+      setShowProposedScheduleModal(true);
     } catch (err) {
       toast.error(err.message || 'Failed to generate study times.');
     } finally {
       setGenerating(false);
+    }
+  };
+
+  const handleApplyProposedSchedule = async () => {
+    if (!token || !activeTerm?.id) return;
+    setApplyingSchedule(true);
+    try {
+      const data = await api.generateStudyTimes(token, activeTerm.id, { preview: false });
+      const count = data.created_count ?? 0;
+      toast.success(
+        count > 0
+          ? `Applied ${count} study block(s). Use the calendar arrows to navigate to the weeks of your assignments to see them.`
+          : 'Schedule applied.'
+      );
+      setShowProposedScheduleModal(false);
+      setProposedSlots([]);
+      fetchData();
+    } catch (err) {
+      toast.error(err.message || 'Failed to apply study schedule.');
+    } finally {
+      setApplyingSchedule(false);
+    }
+  };
+
+  const handleClearStudyTimes = async () => {
+    if (!token || !activeTerm?.id) return;
+    setClearingSchedule(true);
+    try {
+      const data = await api.clearStudyTimes(token, activeTerm.id);
+      const count = data.deleted_count ?? 0;
+      toast.success(count > 0 ? `Cleared ${count} study block(s).` : 'No study blocks to clear.');
+      fetchData();
+    } catch (err) {
+      toast.error(err.message || 'Failed to clear study times');
+    } finally {
+      setClearingSchedule(false);
     }
   };
 
@@ -363,7 +436,7 @@ export default function Schedule() {
         </Link>
         <h1 className="mt-2 text-2xl font-semibold text-ink">Schedule</h1>
         <p className="mt-1 text-sm text-ink-muted">
-          Your calendar events and study blocks at a glance.
+          Your calendar events and study blocks at a glance. Study blocks appear in the date range of your assignments—use the calendar arrows to navigate.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           <button
@@ -373,6 +446,14 @@ export default function Schedule() {
             className="px-4 py-2 rounded-lg bg-primary text-primary-inv font-medium text-sm hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
           >
             {generating ? 'Generating\u2026' : 'Generate Study Times'}
+          </button>
+          <button
+            type="button"
+            onClick={handleClearStudyTimes}
+            disabled={clearingSchedule || !token || studyTimes.length === 0}
+            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+          >
+            {clearingSchedule ? 'Clearing…' : 'Clear study times'}
           </button>
           <button
             type="button"
@@ -405,6 +486,64 @@ export default function Schedule() {
           calendarConnected={calendarConnected}
           activeTerm={activeTerm}
         />
+      )}
+
+      {showProposedScheduleModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/45"
+            onClick={() => !applyingSchedule && setShowProposedScheduleModal(false)}
+          />
+          <div className="relative z-10 w-full max-w-xl rounded-xl border border-border bg-surface p-5 shadow-xl max-h-[85vh] flex flex-col">
+            <h3 className="text-lg font-semibold text-ink">
+              Proposed study schedule
+            </h3>
+            <p className="mt-1 text-sm text-ink-muted">
+              Here&apos;s a proposed study schedule based on your availability, course workload, and calendar events. Unlocked blocks will be replaced when you apply.
+            </p>
+            <div className="mt-4 overflow-y-auto flex-1 min-h-0 rounded-lg border border-border bg-surface-muted/50 p-3">
+              <p className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
+                {proposedSlots.length} block(s) · spread across your study window
+              </p>
+              <ul className="space-y-1.5 text-sm">
+                {proposedSlots.slice(0, 50).map((s, i) => (
+                  <li key={i} className="flex items-center gap-2 text-ink">
+                    <span className="font-medium truncate flex-1">
+                      {s.course_name || 'Study'}
+                    </span>
+                    <span className="text-ink-muted shrink-0 font-mono text-xs">
+                      {new Date(s.start_time).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}{' '}
+                      {new Date(s.start_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}–{new Date(s.end_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
+                    </span>
+                  </li>
+                ))}
+                {proposedSlots.length > 50 && (
+                  <li className="text-ink-muted text-xs">
+                    … and {proposedSlots.length - 50} more
+                  </li>
+                )}
+              </ul>
+            </div>
+            <div className="mt-4 flex gap-2 justify-end">
+              <button
+                type="button"
+                onClick={() => setShowProposedScheduleModal(false)}
+                disabled={applyingSchedule}
+                className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleApplyProposedSchedule}
+                disabled={applyingSchedule}
+                className="rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-inv hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {applyingSchedule ? 'Applying…' : 'Apply schedule'}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {showExportModal && (
@@ -478,7 +617,7 @@ export default function Schedule() {
           />
           {hoverPreview && !popover && !eventDetail && (
             <div
-              className="fixed z-50 min-w-[200px] max-w-[280px] rounded-lg border border-border bg-surface-elevated p-3 text-sm shadow-dropdown animate-fade-in pointer-events-none"
+              className="fixed z-50 min-w-[200px] max-w-[280px] rounded-lg border border-border bg-surface-elevated p-3 text-sm shadow-dropdown animate-fade-in-fast pointer-events-none"
               style={{
                 top: Math.min(hoverPreview.y + 12, window.innerHeight - 180),
                 left: Math.min(hoverPreview.x + 12, window.innerWidth - 300),
@@ -490,7 +629,7 @@ export default function Schedule() {
                     {hoverPreview.data.course_name || 'Study Block'}
                   </p>
                   <p className="text-xs text-ink-muted mt-0.5">
-                    {hoverPreview.data.is_locked ? 'Locked' : 'Unlocked'} · Click to edit
+                    {hoverPreview.data.is_locked ? 'Locked (kept when regenerating)' : 'Unlocked (replaced when regenerating)'} · Click to edit
                   </p>
                   {hoverPreview.data.start_time && (
                     <p className="text-xs text-ink-muted font-mono mt-1">
@@ -535,23 +674,34 @@ export default function Schedule() {
                 </p>
                 <p className="mb-2 text-xs text-ink-muted">
                   {popover.studyTime.is_locked
-                    ? 'Locked (pinned)'
-                    : 'Unlocked (will regenerate)'}
+                    ? 'Locked — this block stays when you regenerate.'
+                    : 'Unlocked — will be replaced when you regenerate. Lock to keep it.'}
                 </p>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={handleToggleLock}
+                      className="flex-1 rounded bg-primary px-2 py-1 text-xs font-medium text-primary-inv hover:opacity-90"
+                      title={popover.studyTime.is_locked ? 'Unlock so it can be replaced' : 'Lock to keep this block'}
+                    >
+                      {popover.studyTime.is_locked ? 'Unlock' : 'Lock block'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPopover(null)}
+                      className="rounded border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink"
+                    >
+                      Close
+                    </button>
+                  </div>
                   <button
                     type="button"
-                    onClick={handleToggleLock}
-                    className="flex-1 rounded bg-primary px-2 py-1 text-xs font-medium text-primary-inv hover:opacity-90"
+                    onClick={handleLockEntireDay}
+                    className="w-full rounded border border-border px-2 py-1 text-xs text-ink-muted hover:bg-surface-muted hover:text-ink"
+                    title="Lock all study blocks on this day at once"
                   >
-                    {popover.studyTime.is_locked ? 'Unlock' : 'Lock'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPopover(null)}
-                    className="rounded border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink"
-                  >
-                    Close
+                    Lock entire day
                   </button>
                 </div>
               </div>

@@ -19,6 +19,7 @@ export default {
         accent: {
           DEFAULT: 'var(--color-accent)',
           hover: 'var(--color-accent-hover)',
+          inv: 'var(--color-accent-inv)',
           muted: 'var(--color-accent-muted)',
         },
         border: {
@@ -76,6 +77,7 @@ export default {
       animation: {
         /* both = backwards (start hidden) + forwards (end visible) */
         'fade-in': 'fadeIn 600ms ease-out both',
+        'fade-in-fast': 'fadeIn 300ms ease-out both',
         'fade-in-up': 'fadeInUp 800ms ease-out both',
         'scale-in': 'scaleIn 500ms ease-out both',
         'slide-down': 'slideDown 400ms ease-out both',

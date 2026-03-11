@@ -475,14 +475,49 @@ export async function changePassword(token, { currentPassword, newPassword }) {
   return data;
 }
 
-/** PUT /api/users/me with JWT. Body: { email?, avatar? }. Returns updated profile. */
-export async function updateProfile(token, { email, avatar }) {
+/** POST /api/uploads/avatar. Multipart file. Returns { url: '/api/uploads/avatars/...' }. */
+export async function uploadAvatar(token, file) {
+  const form = new FormData();
+  form.append('file', file);
+  const h = { Authorization: `Bearer ${token}` };
+  const res = await apiFetch(`${BASE}/api/uploads/avatar`, {
+    method: 'POST',
+    headers: h,
+    body: form,
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to upload avatar');
+  return data;
+}
+
+/** POST /api/uploads/banner. Multipart file. Returns { url: '/api/uploads/banners/...' }. */
+export async function uploadBanner(token, file) {
+  const form = new FormData();
+  form.append('file', file);
+  const h = { Authorization: `Bearer ${token}` };
+  const res = await apiFetch(`${BASE}/api/uploads/banner`, {
+    method: 'POST',
+    headers: h,
+    body: form,
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to upload banner');
+  return data;
+}
+
+/** PUT /api/users/me with JWT. Body: { email?, avatar?, avatar_url?, banner_url?, description? }. Returns updated profile. */
+export async function updateProfile(token, { email, avatar, avatar_url, banner_url, description }) {
   const res = await apiFetch(`${BASE}/api/users/me`, {
     method: 'PUT',
     headers: headers(true, token),
     body: JSON.stringify({
       ...(email !== undefined && { email: email || null }),
       ...(avatar !== undefined && { avatar: avatar || null }),
+      ...(avatar_url !== undefined && { avatar_url: avatar_url || null }),
+      ...(banner_url !== undefined && { banner_url: banner_url || null }),
+      ...(description !== undefined && { description: description || null }),
     }),
     credentials: 'include',
   });
@@ -712,6 +747,19 @@ export async function addAssignments(courseId, assignments) {
   return data;
 }
 
+/** POST /api/assignments/estimate-hours. Body: { name, type }. Returns { hours }. Uses AI to estimate. */
+export async function estimateAssignmentHours(token, name, type) {
+  const res = await apiFetch(`${BASE}/api/assignments/estimate-hours`, {
+    method: 'POST',
+    headers: headers(true, token),
+    body: JSON.stringify({ name: name || '', type: type || 'assignment' }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Could not estimate hours');
+  return data;
+}
+
 /** GET /api/calendar/auth-url. Returns { url }. Requires JWT. */
 export async function getCalendarAuthUrl(token) {
   const res = await apiFetch(`${BASE}/api/calendar/auth-url`, {
@@ -825,6 +873,21 @@ export async function updateStudyTime(token, studyTimeId, body) {
   return data;
 }
 
+/** DELETE /api/schedule/terms/:termId/study-times. Clears all study times for the term. */
+export async function clearStudyTimes(token, termId) {
+  const res = await apiFetch(
+    `${BASE}/api/schedule/terms/${termId}/study-times`,
+    {
+      method: 'DELETE',
+      headers: headers(true, token),
+      credentials: 'include',
+    }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to clear study times');
+  return data;
+}
+
 /** DELETE /api/schedule/study-times/:id. */
 export async function deleteStudyTime(token, studyTimeId) {
   const res = await apiFetch(
@@ -840,16 +903,15 @@ export async function deleteStudyTime(token, studyTimeId) {
   return data;
 }
 
-/** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. */
-export async function generateStudyTimes(token, termId) {
-  const res = await apiFetch(
-    `${BASE}/api/schedule/terms/${termId}/generate-study-times`,
-    {
-      method: 'POST',
-      headers: headers(true, token),
-      credentials: 'include',
-    }
-  );
+/** POST /api/schedule/terms/:termId/generate-study-times. Generates study time blocks for the term. Returns { ok, created_count, study_times }. Use preview=true to get proposed slots without applying. */
+export async function generateStudyTimes(token, termId, { preview = false } = {}) {
+  const url = new URL(`${BASE}/api/schedule/terms/${termId}/generate-study-times`);
+  if (preview) url.searchParams.set('preview', 'true');
+  const res = await apiFetch(url.toString(), {
+    method: 'POST',
+    headers: headers(true, token),
+    credentials: 'include',
+  });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Failed to generate study times');
   return data;
@@ -969,12 +1031,14 @@ export default {
   updateCourse,
   patchCourse,
   addAssignments,
+  estimateAssignmentHours,
   addMeetings,
   updateAssignment,
   deleteAssignment,
   parseSyllabus,
   getStudyTimes,
   generateStudyTimes,
+  clearStudyTimes,
   updateStudyTime,
   deleteStudyTime,
   getCalendarSources,

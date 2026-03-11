@@ -142,6 +142,9 @@ con
 prn
 aux
 
+# User uploads (avatars, banners)
+uploads/
+
 # Temporary files
 *.tmp
 *.temp

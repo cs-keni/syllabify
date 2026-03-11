@@ -28,13 +28,14 @@ def get_me():
         cur = conn.cursor(dictionary=True)
         try:
             cur.execute(
-                "SELECT id, username, email, avatar, security_setup_done FROM Users WHERE id = %s",
+                """SELECT id, username, email, avatar, avatar_url, banner_url, description, security_setup_done
+                   FROM Users WHERE id = %s""",
                 (user_id,),
             )
         except Exception as e:
-            if "avatar" in str(e) and "Unknown column" in str(e):
+            if "unknown column" in str(e).lower():
                 cur.execute(
-                    "SELECT id, username, email, security_setup_done FROM Users WHERE id = %s",
+                    "SELECT id, username, email, avatar, security_setup_done FROM Users WHERE id = %s",
                     (user_id,),
                 )
             else:
@@ -47,13 +48,20 @@ def get_me():
         avatar = row.get("avatar")
         if avatar not in ALLOWED_AVATARS:
             avatar = None
-        return jsonify({
+        out = {
             "id": row["id"],
             "username": row["username"],
             "email": row["email"],
             "avatar": avatar,
             "security_setup_done": bool(row.get("security_setup_done")),
-        })
+        }
+        if "avatar_url" in row:
+            out["avatar_url"] = (row["avatar_url"] or "").strip() or None
+        if "banner_url" in row:
+            out["banner_url"] = (row["banner_url"] or "").strip() or None
+        if "description" in row:
+            out["description"] = (row["description"] or "").strip() or None
+        return jsonify(out)
     finally:
         conn.close()
 
@@ -73,7 +81,10 @@ def put_me():
     data = request.get_json() or {}
     has_email = "email" in data
     has_avatar = "avatar" in data
-    if not has_email and not has_avatar:
+    has_avatar_url = "avatar_url" in data
+    has_banner_url = "banner_url" in data
+    has_description = "description" in data
+    if not any([has_email, has_avatar, has_avatar_url, has_banner_url, has_description]):
         return get_me()
     email = None
     if has_email:
@@ -91,6 +102,34 @@ def put_me():
         avatar = raw_avatar or None
         if avatar is not None and avatar not in ALLOWED_AVATARS:
             return jsonify({"error": "invalid avatar"}), 400
+
+    def _valid_url(s, max_len=500):
+        if not s or not isinstance(s, str):
+            return None
+        s = s.strip()[:max_len]
+        if not s:
+            return None
+        if s.startswith(("http://", "https://")) and len(s) <= max_len:
+            return s
+        if s.startswith("/api/uploads/") and len(s) <= max_len:
+            return s
+        return None
+
+    avatar_url = None
+    if has_avatar_url:
+        avatar_url = _valid_url(data.get("avatar_url"))
+        if data.get("avatar_url") and avatar_url is None:
+            return jsonify({"error": "avatar_url must be a valid URL or uploaded image path"}), 400
+
+    banner_url = None
+    if has_banner_url:
+        banner_url = _valid_url(data.get("banner_url"))
+        if data.get("banner_url") and banner_url is None:
+            return jsonify({"error": "banner_url must be a valid URL or uploaded image path"}), 400
+
+    description = None
+    if has_description:
+        description = (data.get("description") or "").strip()[:2000] or None
 
     conn = get_db()
     try:
@@ -111,6 +150,15 @@ def put_me():
         if has_avatar:
             update_clauses.append("avatar = %s")
             params.append(avatar)
+        if has_avatar_url:
+            update_clauses.append("avatar_url = %s")
+            params.append(avatar_url)
+        if has_banner_url:
+            update_clauses.append("banner_url = %s")
+            params.append(banner_url)
+        if has_description:
+            update_clauses.append("description = %s")
+            params.append(description)
         params.append(user_id)
         try:
             cur.execute(
@@ -118,8 +166,8 @@ def put_me():
                 tuple(params),
             )
         except Exception as e:
-            if has_avatar and "avatar" in str(e) and "Unknown column" in str(e):
-                return jsonify({"error": "Database migration required. Run 012_user_avatar.sql"}), 503
+            if "Unknown column" in str(e):
+                return jsonify({"error": "Database migration required. Run 014_user_profile_banner_description.sql"}), 503
             raise
         conn.commit()
     finally:

@@ -19,6 +19,7 @@ from app.api.courses import bp as courses_bp
 from app.api.schedule import bp as schedule_bp
 from app.api.syllabus import bp as syllabus_bp
 from app.api.terms import bp as terms_bp
+from app.api.uploads import bp as uploads_bp
 from app.api.users import bp as users_bp
 
 app = Flask(__name__)
@@ -31,6 +32,7 @@ CORS(
     supports_credentials=True,
     allow_headers=["Content-Type", "Authorization"],
     methods=["GET", "POST", "OPTIONS", "PUT", "DELETE", "PATCH"],
+    expose_headers=["Content-Disposition"],
 )
 
 
@@ -105,6 +107,7 @@ def get_settings():
 
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(uploads_bp)
 app.register_blueprint(calendar_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(users_bp)

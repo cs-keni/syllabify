@@ -448,18 +448,26 @@ def import_calendar():
                 source_id = cur.lastrowid
                 src_category = category
 
-            events_result = (
-                service.events()
-                .list(
-                    calendarId=cal_id,
-                    timeMin=time_min,
-                    timeMax=time_max,
-                    singleEvents=True,
-                    orderBy="startTime",
+            page_token = None
+            events = []
+            while True:
+                events_result = (
+                    service.events()
+                    .list(
+                        calendarId=cal_id,
+                        timeMin=time_min,
+                        timeMax=time_max,
+                        singleEvents=True,
+                        orderBy="startTime",
+                        pageToken=page_token,
+                        maxResults=500,
+                    )
+                    .execute()
                 )
-                .execute()
-            )
-            events = events_result.get("items", [])
+                events.extend(events_result.get("items", []))
+                page_token = events_result.get("nextPageToken")
+                if not page_token:
+                    break
 
             for ev in events:
                 if ev.get("status") == "cancelled":
@@ -572,8 +580,8 @@ def import_ics():
         # Fetch and parse (expand recurring events over a reasonable horizon)
         ics_text = fetch_ics_feed(url)
         now = datetime.utcnow()
-        expand_start = (now - timedelta(days=30)).isoformat()
-        expand_end = (now + timedelta(days=120)).isoformat()
+        expand_start = (now - timedelta(days=365)).isoformat()
+        expand_end = (now + timedelta(days=365)).isoformat()
         events = parse_ics_content(
             ics_text,
             expand_start=expand_start,
@@ -647,8 +655,8 @@ def _sync_ics_source(conn, cur, user_id, source):
     now = datetime.utcnow()
     events = parse_ics_content(
         ics_text,
-        expand_start=(now - timedelta(days=30)).isoformat(),
-        expand_end=(now + timedelta(days=120)).isoformat(),
+        expand_start=(now - timedelta(days=365)).isoformat(),
+        expand_end=(now + timedelta(days=365)).isoformat(),
         source_category=source["feed_category"],
     )
 
@@ -701,17 +709,31 @@ def _sync_google_source(conn, cur, user_id, source):
                 break
     except Exception:
         pass  # Non-fatal; continue with event sync
-    # Use a reasonable default date range
+    # Use wide date range so scheduler sees full term (1 year past, 1 year future)
     now = datetime.utcnow()
-    time_min = (now - timedelta(days=30)).isoformat() + "Z"
-    time_max = (now + timedelta(days=120)).isoformat() + "Z"
+    time_min = (now - timedelta(days=365)).isoformat() + "Z"
+    time_max = (now + timedelta(days=365)).isoformat() + "Z"
 
-    events_result = (
-        service.events()
-        .list(calendarId=cal_id, timeMin=time_min, timeMax=time_max,
-              singleEvents=True, orderBy="startTime")
-        .execute()
-    )
+    page_token = None
+    all_events = []
+    while True:
+        events_result = (
+            service.events()
+            .list(
+                calendarId=cal_id,
+                timeMin=time_min,
+                timeMax=time_max,
+                singleEvents=True,
+                orderBy="startTime",
+                pageToken=page_token,
+                maxResults=500,
+            )
+            .execute()
+        )
+        all_events.extend(events_result.get("items", []))
+        page_token = events_result.get("nextPageToken")
+        if not page_token:
+            break
 
     # Mark existing as stale
     cur.execute(
@@ -720,7 +742,7 @@ def _sync_google_source(conn, cur, user_id, source):
     )
 
     synced = 0
-    for ev in events_result.get("items", []):
+    for ev in all_events:
         if ev.get("status") == "cancelled":
             continue
         start = ev.get("start") or {}

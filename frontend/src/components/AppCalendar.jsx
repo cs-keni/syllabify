@@ -192,6 +192,7 @@ export default function AppCalendar({
         selectable={true}
         selectMirror={true}
         dayMaxEvents={true}
+        slotEventOverlap={false}
         weekends={true}
         slotMinTime="06:00:00"
         slotMaxTime="24:00:00"
