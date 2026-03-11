@@ -1,16 +1,16 @@
 /**
  * Light/dark theme toggle button.
- * Easter egg: click ~10 times quickly to unlock rainbow (Nyan Cat) mode.
+ * Easter egg: click ~10 times quickly (within 2s) to unlock rainbow (Nyan Cat) mode.
  * In rainbow mode, click once to return to light/dark.
  */
 import { useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const EASTER_EGG_CLICKS = 10;
-const EASTER_EGG_WINDOW_MS = 1500;
+const EASTER_EGG_WINDOW_MS = 2000;
 
 export default function ThemeToggle() {
-  const { theme, setTheme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, unlockRainbow } = useTheme();
   const clickCountRef = useRef(0);
   const lastClickRef = useRef(0);
 
@@ -28,7 +28,7 @@ export default function ThemeToggle() {
     }
     if (clickCountRef.current >= EASTER_EGG_CLICKS) {
       clickCountRef.current = 0;
-      setTheme('rainbow');
+      unlockRainbow();
       return;
     }
     toggleTheme();

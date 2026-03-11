@@ -11,6 +11,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useTheme } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle';
 import ShortcutsOverlay from './ShortcutsOverlay';
 
@@ -39,6 +40,7 @@ function getEasing(distance) {
 /** Main layout with header nav and Outlet for child routes. */
 export default function Layout() {
   const { user, securitySetupDone, logout } = useAuth();
+  const { theme } = useTheme();
   const location = useLocation();
   const navContainerRef = useRef(null);
   const linkRefs = useRef([]);
@@ -189,7 +191,9 @@ export default function Layout() {
   if (!securitySetupDone) return <Navigate to="/security-setup" replace />;
 
   return (
-    <div className="min-h-screen flex flex-col bg-surface">
+    <div
+      className={`min-h-screen flex flex-col ${theme === 'rainbow' ? 'theme-rainbow-layout' : 'bg-surface'}`}
+    >
       <a
         href="#main-content"
         className="absolute -top-12 left-4 z-[100] rounded-button bg-accent px-4 py-2 text-sm font-medium text-white no-underline opacity-0 transition-opacity focus:top-4 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2"

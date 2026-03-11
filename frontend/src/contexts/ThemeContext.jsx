@@ -4,6 +4,7 @@
  * Easter egg: spam the theme toggle ~10 times to unlock rainbow (Nyan Cat) mode.
  */
 import { createContext, useContext, useEffect, useState } from 'react';
+import RainbowEasterEggModal from '../components/RainbowEasterEggModal';
 
 const THEME_KEY = 'syllabify-theme';
 
@@ -14,6 +15,7 @@ export function ThemeProvider({ children }) {
     if (typeof window === 'undefined') return 'light';
     return localStorage.getItem(THEME_KEY) || 'light';
   });
+  const [showRainbowModal, setShowRainbowModal] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -39,9 +41,19 @@ export function ThemeProvider({ children }) {
     setThemeState(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const unlockRainbow = () => {
+    setThemeState('rainbow');
+    setShowRainbowModal(true);
+  };
+
+  const dismissRainbowModal = () => setShowRainbowModal(false);
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, unlockRainbow }}>
       {children}
+      {showRainbowModal && (
+        <RainbowEasterEggModal onClose={dismissRainbowModal} />
+      )}
     </ThemeContext.Provider>
   );
 }
