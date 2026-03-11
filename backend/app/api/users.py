@@ -111,19 +111,21 @@ def put_me():
             return None
         if s.startswith(("http://", "https://")) and len(s) <= max_len:
             return s
+        if s.startswith("/api/uploads/") and len(s) <= max_len:
+            return s
         return None
 
     avatar_url = None
     if has_avatar_url:
         avatar_url = _valid_url(data.get("avatar_url"))
         if data.get("avatar_url") and avatar_url is None:
-            return jsonify({"error": "avatar_url must be a valid http(s) URL"}), 400
+            return jsonify({"error": "avatar_url must be a valid URL or uploaded image path"}), 400
 
     banner_url = None
     if has_banner_url:
         banner_url = _valid_url(data.get("banner_url"))
         if data.get("banner_url") and banner_url is None:
-            return jsonify({"error": "banner_url must be a valid http(s) URL"}), 400
+            return jsonify({"error": "banner_url must be a valid URL or uploaded image path"}), 400
 
     description = None
     if has_description:

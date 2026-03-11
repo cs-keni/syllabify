@@ -272,6 +272,35 @@ export default function Schedule() {
     }
   };
 
+  const handleLockEntireDay = async () => {
+    if (!popover?.studyTime || !token) return;
+    const dayStart = new Date(popover.studyTime.start_time);
+    const dayStr = dayStart.toISOString().slice(0, 10);
+    const blocksOnDay = studyTimes.filter(st => {
+      const d = new Date(st.start_time).toISOString().slice(0, 10);
+      return d === dayStr && !st.is_locked;
+    });
+    setPopover(null);
+    if (blocksOnDay.length === 0) {
+      toast.info('All blocks on this day are already locked.');
+      return;
+    }
+    try {
+      await Promise.all(
+        blocksOnDay.map(st => api.updateStudyTime(token, st.id, { is_locked: true }))
+      );
+      setStudyTimes(prev =>
+        prev.map(st =>
+          blocksOnDay.some(b => b.id === st.id) ? { ...st, is_locked: true } : st
+        )
+      );
+      toast.success(`Locked ${blocksOnDay.length} block(s) for this day.`);
+    } catch (err) {
+      toast.error(err.message || 'Failed to lock day');
+      fetchData();
+    }
+  };
+
   const handleGenerateStudyTimes = async () => {
     if (!token) return toast.error('Please sign in to generate study times.');
     setGenerating(true);
@@ -624,21 +653,31 @@ export default function Schedule() {
                     ? 'Locked — this block stays when you regenerate.'
                     : 'Unlocked — will be replaced when you regenerate. Lock to keep it.'}
                 </p>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={handleToggleLock}
+                      className="flex-1 rounded bg-primary px-2 py-1 text-xs font-medium text-primary-inv hover:opacity-90"
+                      title={popover.studyTime.is_locked ? 'Unlock so it can be replaced' : 'Lock to keep this block'}
+                    >
+                      {popover.studyTime.is_locked ? 'Unlock' : 'Lock block'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPopover(null)}
+                      className="rounded border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink"
+                    >
+                      Close
+                    </button>
+                  </div>
                   <button
                     type="button"
-                    onClick={handleToggleLock}
-                    className="flex-1 rounded bg-primary px-2 py-1 text-xs font-medium text-primary-inv hover:opacity-90"
-                    title={popover.studyTime.is_locked ? 'Unlock so it can be replaced' : 'Lock to keep this block'}
+                    onClick={handleLockEntireDay}
+                    className="w-full rounded border border-border px-2 py-1 text-xs text-ink-muted hover:bg-surface-muted hover:text-ink"
+                    title="Lock all study blocks on this day at once"
                   >
-                    {popover.studyTime.is_locked ? 'Unlock' : 'Lock'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPopover(null)}
-                    className="rounded border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink"
-                  >
-                    Close
+                    Lock entire day
                   </button>
                 </div>
               </div>

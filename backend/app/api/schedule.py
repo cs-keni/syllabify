@@ -201,22 +201,26 @@ def delete_study_time(study_time_id):
 
 
 def _load_user_prefs_for_scheduling(user_id: int) -> dict:
-    """Load work_start, work_end, max_hours_per_day, timezone from UserPreferences."""
+    """Load work_start, work_end, max_hours_per_day, timezone, preferred_days from UserPreferences."""
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
         cur.execute(
-            "SELECT work_start, work_end, max_hours_per_day, timezone FROM UserPreferences WHERE user_id = %s",
+            "SELECT work_start, work_end, max_hours_per_day, timezone, preferred_days FROM UserPreferences WHERE user_id = %s",
             (user_id,),
         )
         row = cur.fetchone()
         if not row:
-            return {"work_start": "08:00", "work_end": "22:00", "max_hours_per_day": 8, "timezone": "UTC"}
+            return {
+                "work_start": "08:00", "work_end": "22:00", "max_hours_per_day": 8,
+                "timezone": "UTC", "preferred_days": "MO,TU,WE,TH,FR",
+            }
         return {
             "work_start": row.get("work_start") or "08:00",
             "work_end": row.get("work_end") or "22:00",
             "max_hours_per_day": int(row["max_hours_per_day"]) if row.get("max_hours_per_day") is not None else 8,
             "timezone": (row.get("timezone") or "UTC").strip() or "UTC",
+            "preferred_days": (row.get("preferred_days") or "MO,TU,WE,TH,FR").strip() or "MO,TU,WE,TH,FR",
         }
     finally:
         conn.close()
@@ -255,6 +259,7 @@ def generate_study_times_for_term(term_id):
     study_end = _parse_pref_time(prefs["work_end"], 22, 0)
     max_hours = max(1, min(24, prefs["max_hours_per_day"]))
     user_tz = prefs.get("timezone") or "UTC"
+    preferred_days = prefs.get("preferred_days") or "MO,TU,WE,TH,FR"
     try:
         from zoneinfo import ZoneInfo
         ZoneInfo(user_tz)
@@ -269,6 +274,7 @@ def generate_study_times_for_term(term_id):
             study_end=study_end,
             max_hours_per_day=max_hours,
             user_timezone=user_tz,
+            preferred_days=preferred_days,
             dry_run=preview,
         )
         if preview:

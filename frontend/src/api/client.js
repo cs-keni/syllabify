@@ -475,6 +475,38 @@ export async function changePassword(token, { currentPassword, newPassword }) {
   return data;
 }
 
+/** POST /api/uploads/avatar. Multipart file. Returns { url: '/api/uploads/avatars/...' }. */
+export async function uploadAvatar(token, file) {
+  const form = new FormData();
+  form.append('file', file);
+  const h = { Authorization: `Bearer ${token}` };
+  const res = await apiFetch(`${BASE}/api/uploads/avatar`, {
+    method: 'POST',
+    headers: h,
+    body: form,
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to upload avatar');
+  return data;
+}
+
+/** POST /api/uploads/banner. Multipart file. Returns { url: '/api/uploads/banners/...' }. */
+export async function uploadBanner(token, file) {
+  const form = new FormData();
+  form.append('file', file);
+  const h = { Authorization: `Bearer ${token}` };
+  const res = await apiFetch(`${BASE}/api/uploads/banner`, {
+    method: 'POST',
+    headers: h,
+    body: form,
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Failed to upload banner');
+  return data;
+}
+
 /** PUT /api/users/me with JWT. Body: { email?, avatar?, avatar_url?, banner_url?, description? }. Returns updated profile. */
 export async function updateProfile(token, { email, avatar, avatar_url, banner_url, description }) {
   const res = await apiFetch(`${BASE}/api/users/me`, {

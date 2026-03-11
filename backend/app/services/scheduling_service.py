@@ -38,6 +38,21 @@ _DAY_CODE_TO_WEEKDAY = {
 }
 
 
+def _parse_preferred_days(csv: str | None) -> set[int] | None:
+    """Parse 'MO,TU,WE,TH,FR' into set of weekdays. None = allow all days."""
+    if not csv or not isinstance(csv, str):
+        return None
+    codes = [c.strip().upper()[:2] for c in csv.split(",") if c.strip()]
+    if not codes:
+        return None
+    weekdays = set()
+    for c in codes:
+        w = _DAY_CODE_TO_WEEKDAY.get(c)
+        if w is not None:
+            weekdays.add(w)
+    return weekdays if weekdays else None
+
+
 def _parse_time_str(s: str | None) -> time | None:
     """Parse 'HH:MM' or 'H:MM' string to time. Returns None if invalid or empty."""
     if not s or not isinstance(s, str):
@@ -260,6 +275,7 @@ def generate_study_times(
     study_end: time | None = None,
     max_hours_per_day: int | None = None,
     user_timezone: str | None = None,
+    preferred_days: str | None = None,
     dry_run: bool = False,
 ) -> list[StudyTime]:
     """
@@ -331,6 +347,8 @@ def generate_study_times(
             tz = _get_tz(work_items[0].start_date)
     else:
         tz = _get_tz(work_items[0].start_date)
+
+    allowed_weekdays = _parse_preferred_days(preferred_days)
 
     # Busy intervals: expand recurring and one-off meetings into (start, end) intervals
     meeting_busy = _meetings_to_busy_intervals(term, term.courses, tz)
@@ -434,16 +452,17 @@ def generate_study_times(
         one_day = timedelta(days=1)
         while current < window_end:
             day_end_dt = min(current + one_day, window_end)
-            day_slots = _free_slots_for_day(
-                current,
-                day_end_dt,
-                meeting_busy,
-                MINUTES_PER_SLOT,
-                tz,
-                start_time,
-                end_time,
-            )
-            slots.extend(day_slots)
+            if allowed_weekdays is None or current.date().weekday() in allowed_weekdays:
+                day_slots = _free_slots_for_day(
+                    current,
+                    day_end_dt,
+                    meeting_busy,
+                    MINUTES_PER_SLOT,
+                    tz,
+                    start_time,
+                    end_time,
+                )
+                slots.extend(day_slots)
             current = day_end_dt
 
         available_minutes = len(slots) * MINUTES_PER_SLOT
@@ -479,16 +498,17 @@ def generate_study_times(
         one_day = timedelta(days=1)
         while current < window_end:
             day_end_dt = min(current + one_day, window_end)
-            day_slots = _free_slots_for_day(
-                current,
-                day_end_dt,
-                busy,
-                MINUTES_PER_SLOT,
-                tz,
-                start_time,
-                end_time,
-            )
-            slots.extend(day_slots)
+            if allowed_weekdays is None or current.date().weekday() in allowed_weekdays:
+                day_slots = _free_slots_for_day(
+                    current,
+                    day_end_dt,
+                    busy,
+                    MINUTES_PER_SLOT,
+                    tz,
+                    start_time,
+                    end_time,
+                )
+                slots.extend(day_slots)
             current = day_end_dt
 
         # Sort by (weekly total, daily total, start time) to spread across weeks and days.
@@ -558,6 +578,7 @@ def generate_study_times(
         term_id=term_id,
         effective_due_dates=effective_due_dates,
         max_hours_per_day=max_hours,
+        allowed_weekdays=allowed_weekdays,
         dry_run=dry_run,
     )
     return global_created
@@ -635,6 +656,7 @@ def _generate_study_times_global(
     term_id: int,
     effective_due_dates: dict[int, datetime] | None = None,
     max_hours_per_day: int | None = None,
+    allowed_weekdays: set[int] | None = None,
     dry_run: bool = False,
 ) -> list[StudyTime]:
     """
@@ -676,6 +698,9 @@ def _generate_study_times_global(
     days: list[date] = []
     day_index_by_date: dict[date, int] = {}
     while current_day <= end_day:
+        if allowed_weekdays is not None and current_day.weekday() not in allowed_weekdays:
+            current_day = current_day + timedelta(days=1)
+            continue
         day_idx = len(days)
         days.append(current_day)
         day_index_by_date[current_day] = day_idx

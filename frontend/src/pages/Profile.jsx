@@ -4,11 +4,14 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import { getProfile, updateProfile } from '../api/client';
+import { getProfile, updateProfile, uploadAvatar, uploadBanner } from '../api/client';
 import toast from 'react-hot-toast';
 import RedMan from '../assets/RedMan.png';
 import GreenMan from '../assets/GreenMan.png';
 import BlueMan from '../assets/BlueMan.png';
+
+const BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const imgUrl = (url) => (url && url.startsWith('/') ? BASE + url : url);
 
 const AVATAR_OPTIONS = [
   { key: 'red', label: 'Red', src: RedMan },
@@ -24,6 +27,8 @@ export default function Profile() {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploadingBanner, setUploadingBanner] = useState(false);
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
 
   useEffect(() => {
     if (!token) return;
@@ -69,10 +74,11 @@ export default function Profile() {
   const [avatarError, setAvatarError] = useState(false);
 
   const displayAvatar = () => {
-    if (avatarUrl.trim() && !avatarError) {
+    const src = imgUrl(avatarUrl.trim());
+    if (src && !avatarError) {
       return (
         <img
-          src={avatarUrl.trim()}
+          src={src}
           alt="Profile"
           className="w-full h-full rounded-full object-cover"
           onError={() => setAvatarError(true)}
@@ -100,6 +106,42 @@ export default function Profile() {
     if (v.trim()) setAvatar(null);
   };
 
+  const handleBannerUpload = async e => {
+    const file = e?.target?.files?.[0];
+    if (!file || !token) return;
+    setUploadingBanner(true);
+    try {
+      const { url } = await uploadBanner(token, file);
+      setBannerUrl(url);
+      await updateProfile(token, { banner_url: url });
+      toast.success('Banner uploaded and saved');
+    } catch (err) {
+      toast.error(err.message || 'Failed to upload banner');
+    } finally {
+      setUploadingBanner(false);
+      e.target.value = '';
+    }
+  };
+
+  const handleAvatarUpload = async e => {
+    const file = e?.target?.files?.[0];
+    if (!file || !token) return;
+    setUploadingAvatar(true);
+    try {
+      const { url } = await uploadAvatar(token, file);
+      setAvatarUrl(url);
+      setAvatar(null);
+      setAvatarError(false);
+      await updateProfile(token, { avatar_url: url });
+      toast.success('Profile picture uploaded and saved');
+    } catch (err) {
+      toast.error(err.message || 'Failed to upload');
+    } finally {
+      setUploadingAvatar(false);
+      e.target.value = '';
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="animate-fade-in">
@@ -121,9 +163,9 @@ export default function Profile() {
       >
         {/* Banner */}
         <div className="h-32 overflow-hidden bg-surface-muted">
-          {bannerUrl.trim() ? (
+          {imgUrl(bannerUrl.trim()) ? (
             <img
-              src={bannerUrl.trim()}
+              src={imgUrl(bannerUrl.trim())}
               alt="Banner"
               className="w-full h-full object-cover"
               onError={e => {
@@ -140,19 +182,28 @@ export default function Profile() {
         <div className="p-6 space-y-6">
           <div>
             <label className="block text-sm font-medium text-ink mb-1">
-              Banner URL
+              Banner
             </label>
+            <div className="flex gap-2 flex-wrap">
+              <label className="rounded-button bg-accent text-accent-inv px-3 py-2 text-sm font-medium hover:bg-accent-hover cursor-pointer disabled:opacity-50">
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/gif,image/webp"
+                  onChange={handleBannerUpload}
+                  disabled={loading || uploadingBanner}
+                  className="sr-only"
+                />
+                {uploadingBanner ? 'Uploading…' : 'Upload from computer'}
+              </label>
+            </div>
             <input
               type="url"
               value={bannerUrl}
               onChange={e => setBannerUrl(e.target.value)}
-              placeholder="https://example.com/banner.jpg"
+              placeholder="Or paste image URL (e.g. from Imgur)"
               disabled={loading}
-              className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
+              className="mt-2 w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
             />
-            <p className="mt-1 text-xs text-ink-subtle">
-              Paste an image URL for your profile banner (e.g. from Imgur).
-            </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6">
@@ -192,19 +243,28 @@ export default function Profile() {
             </div>
             <div className="flex-1 min-w-0">
               <label className="block text-sm font-medium text-ink mb-1">
-                Custom profile picture URL (GIFs work)
+                Custom profile picture
               </label>
+              <div className="flex gap-2 mb-2">
+                <label className="rounded-button bg-accent text-accent-inv px-3 py-2 text-sm font-medium hover:bg-accent-hover cursor-pointer disabled:opacity-50">
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/gif,image/webp"
+                    onChange={handleAvatarUpload}
+                    disabled={loading || uploadingAvatar}
+                    className="sr-only"
+                  />
+                  {uploadingAvatar ? 'Uploading…' : 'Upload from computer'}
+                </label>
+              </div>
               <input
                 type="url"
                 value={avatarUrl}
                 onChange={e => handleAvatarUrlChange(e.target.value)}
-                placeholder="https://example.com/avatar.gif"
+                placeholder="Or paste image URL (GIFs work)"
                 disabled={loading}
                 className="w-full rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm placeholder:text-ink-subtle focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
               />
-              <p className="mt-1 text-xs text-ink-subtle">
-                Paste an image or GIF URL. Overrides preset above when set.
-              </p>
             </div>
           </div>
 
