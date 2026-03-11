@@ -10,7 +10,6 @@ import re as _re
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
-from sqlalchemy import text
 from sqlalchemy.orm import Session, joinedload
 
 # Import all models referenced by Term's relationships so SQLAlchemy can resolve
@@ -256,6 +255,7 @@ def generate_study_times(
     term_id: int,
     study_start: time | None = None,
     study_end: time | None = None,
+    max_hours_per_day: int | None = None,
 ) -> list[StudyTime]:
     """
     Load the term by id, clear existing study times for it, then create new
@@ -263,6 +263,7 @@ def generate_study_times(
     - Each assignment gets work_load * 15 minutes between its start_date and due_date.
     - Slots are 15 minutes, between study_start and study_end (default 8:00 - 22:00).
     - No conflict with course meetings or other study times.
+    - Respects max_hours_per_day (from UserPreferences or param).
     - Tries to minimize the maximum study minutes on any single day.
 
     Returns the list of created StudyTime instances (already added to session;
@@ -270,8 +271,11 @@ def generate_study_times(
     """
     start_time = study_start if study_start is not None else DEFAULT_STUDY_START
     end_time = study_end if study_end is not None else DEFAULT_STUDY_END
-    # Use module-level defaults for the rest of the function for consistency
-    del study_start, study_end
+    if max_hours_per_day is not None:
+        max_hours = max(1, min(24, max_hours_per_day))
+    else:
+        max_hours = 8  # fallback when called without prefs (e.g. tests)
+    del study_start, study_end, max_hours_per_day
 
     term = (
         session.query(Term)
@@ -433,9 +437,13 @@ def generate_study_times(
         needed_slots = total_minutes // MINUTES_PER_SLOT
         used = 0
         new_busy: list[tuple[datetime, datetime]] = []
+        max_minutes_per_day = max_hours * 60
         for start, end in slots:
             if used >= needed_slots:
                 break
+            d = start.date()
+            if daily_minutes.get(d, 0) + MINUTES_PER_SLOT > max_minutes_per_day:
+                continue  # skip this slot to respect max_hours_per_day
             st = StudyTime(
                 start_time=start,
                 end_time=end,
@@ -447,7 +455,6 @@ def generate_study_times(
             session.add(st)
             created.append(st)
             new_busy.append((start, end))
-            d = start.date()
             daily_minutes[d] = daily_minutes.get(d, 0) + MINUTES_PER_SLOT
             used += 1
 
@@ -481,6 +488,7 @@ def generate_study_times(
         end_time=end_time,
         term_id=term_id,
         effective_due_dates=effective_due_dates,
+        max_hours_per_day=max_hours,
     )
     return global_created
 
@@ -556,6 +564,7 @@ def _generate_study_times_global(
     end_time: time,
     term_id: int,
     effective_due_dates: dict[int, datetime] | None = None,
+    max_hours_per_day: int | None = None,
 ) -> list[StudyTime]:
     """
     Global optimal scheduling using max-flow + binary search on the maximum
@@ -646,18 +655,8 @@ def _generate_study_times_global(
     # Binary search on the maximum number of slots allowed per day.
     # Cap by user's max_hours_per_day so we never exceed their preferred daily limit.
     max_slots_in_any_day = max(slots_per_day) if slots_per_day else 0
-    max_hours_per_day = 8  # default
-    try:
-        r = session.execute(
-            text("SELECT max_hours_per_day FROM UserPreferences WHERE user_id = :uid"),
-            {"uid": term.user_id},
-        )
-        row = r.fetchone()
-        if row and row[0] is not None:
-            max_hours_per_day = max(1, min(24, int(row[0])))
-    except Exception:
-        pass
-    max_slots_per_day_cap = max_hours_per_day * 4  # 4 slots per hour (15-min slots)
+    max_hrs = max_hours_per_day if max_hours_per_day is not None else 8
+    max_slots_per_day_cap = max_hrs * 4  # 4 slots per hour (15-min slots)
     high = min(max_slots_in_any_day, max_slots_per_day_cap)
     low = 0
     best_limit = None
