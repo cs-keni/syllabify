@@ -13,7 +13,7 @@ const GIF_POSITIONS = [
   { left: 'auto', bottom: 'auto', right: '1.5rem', top: '1.5rem', transform: 'scale(2)', transformOrigin: 'top right' },
   { left: 'auto', bottom: '1.5rem', right: '1.5rem', top: 'auto', transform: 'scale(2)', transformOrigin: 'bottom right' },
   { left: '1.5rem', bottom: 'auto', right: 'auto', top: '1.5rem', transform: 'scale(2)', transformOrigin: 'top left' },
-  { left: '50%', bottom: 'auto', right: 'auto', top: '50%', transform: 'translate(-50%, -50%) scale(3)', transformOrigin: 'center center' },
+  { left: '50%', bottom: 'auto', right: 'auto', top: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', maxWidth: '100vw', maxHeight: '100vh', objectFit: 'contain' },
 ];
 
 export default function RainbowEasterEggModal({ onClose }) {
@@ -78,8 +78,8 @@ export default function RainbowEasterEggModal({ onClose }) {
         <img
           src="/cat-tongue-shake.gif"
           alt=""
-          className={`absolute z-20 w-24 h-24 object-contain pointer-events-none ${
-            gifPosition === 4 ? '' : 'transition-all duration-200 ease-out'
+          className={`absolute z-20 object-contain pointer-events-none ${
+            gifPosition === 4 ? 'w-screen h-screen' : 'w-24 h-24 transition-all duration-200 ease-out'
           }`}
           style={GIF_POSITIONS[gifPosition]}
         />
