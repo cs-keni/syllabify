@@ -5,8 +5,9 @@
     <script>
       (function(){
         var t=localStorage.getItem('syllabify-theme');
-        if(t==='dark')document.documentElement.classList.add('dark');
-        else document.documentElement.classList.remove('dark');
+        if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.classList.remove('theme-rainbow');}
+        else if(t==='rainbow'){document.documentElement.classList.remove('dark');document.documentElement.classList.add('theme-rainbow');}
+        else{document.documentElement.classList.remove('dark');document.documentElement.classList.remove('theme-rainbow');}
         var a=localStorage.getItem('syllabify-accent')||'green';
         var p={green:['#0f8a4c','#094728','#dcfce7'],blue:['#2563eb','#1d4ed8','#dbeafe'],purple:['#7c3aed','#5b21b6','#ede9fe'],indigo:['#4f46e5','#3730a3','#e0e7ff']}[a]||['#0f8a4c','#094728','#dcfce7'];
         document.documentElement.style.setProperty('--color-accent',p[0]);

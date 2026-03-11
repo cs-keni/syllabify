@@ -42,6 +42,43 @@
   --color-border-subtle: #1f2937;
 }
 
+/* Easter egg: rainbow (Nyan Cat) theme – animated background */
+.theme-rainbow {
+  --color-surface: #1a1a2e;
+  --color-surface-elevated: #16213e;
+  --color-surface-muted: #0f3460;
+  --color-ink: #eaeaea;
+  --color-ink-muted: #a0aec0;
+  --color-ink-subtle: #718096;
+  --color-accent: #e94560;
+  --color-accent-hover: #ff6b6b;
+  --color-accent-muted: #533483;
+  --color-border: #2d3748;
+  --color-border-subtle: #1a202c;
+}
+
+.theme-rainbow body {
+  background: linear-gradient(
+    124deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #8f00ff,
+    #ff0000
+  );
+  background-size: 1800% 1800%;
+  animation: rainbow-bg 8s ease infinite;
+}
+
+@keyframes rainbow-bg {
+  0% { background-position: 0% 82%; }
+  50% { background-position: 100% 19%; }
+  100% { background-position: 0% 82%; }
+}
+
 /* Admin control panel - distinct slate/indigo aesthetic vs client green */
 .admin-shell {
   @apply flex flex-col gap-0 -mx-4 sm:-mx-6 lg:-mx-8 -mt-6 sm:-mt-8;

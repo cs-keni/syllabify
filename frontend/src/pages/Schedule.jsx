@@ -90,8 +90,8 @@ export default function Schedule() {
       try {
         const stData = await api.getStudyTimes(token, activeTerm.id);
         setStudyTimes(stData.study_times || []);
-      } catch {
-        // study times may not exist yet
+      } catch (err) {
+        console.warn('Failed to fetch study times:', err?.message);
       }
     }
   }, [token, activeTerm]);
@@ -285,10 +285,11 @@ export default function Schedule() {
         return;
       }
       const data = await api.generateStudyTimes(token, termToUse.id);
+      const count = data.created_count ?? 0;
       toast.success(
-        data.created_count !== undefined
-          ? `Generated ${data.created_count} study time block(s).`
-          : 'Study times generated.'
+        count > 0
+          ? `Generated ${count} study block(s). Use the calendar arrows to navigate to the weeks of your assignments to see them.`
+          : 'No study blocks to generate (assignments may have no workload or no available slots).'
       );
       fetchData();
     } catch (err) {
@@ -363,7 +364,7 @@ export default function Schedule() {
         </Link>
         <h1 className="mt-2 text-2xl font-semibold text-ink">Schedule</h1>
         <p className="mt-1 text-sm text-ink-muted">
-          Your calendar events and study blocks at a glance.
+          Your calendar events and study blocks at a glance. Study blocks appear in the date range of your assignments—use the calendar arrows to navigate.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           <button

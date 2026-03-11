@@ -80,8 +80,9 @@ def get_engine_input():
 @bp.route("/terms/<int:term_id>/study-times", methods=["GET"])
 def get_study_times_for_term(term_id):
     """
-    GET /api/schedule/terms/:term_id/study-times?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD
-    Returns study time blocks for the term in the given date range.
+    GET /api/schedule/terms/:term_id/study-times
+    Optional: ?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD to filter by date range.
+    Returns study time blocks for the term. Without date params, returns all.
     """
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
@@ -95,24 +96,40 @@ def get_study_times_for_term(term_id):
 
     start_date = request.args.get("start_date", "").strip()
     end_date = request.args.get("end_date", "").strip()
-    if not start_date or not end_date:
-        return jsonify({"error": "start_date and end_date query params required (YYYY-MM-DD)"}), 400
+    use_date_filter = bool(start_date and end_date)
 
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
-        # end_date is exclusive (e.g. week 8-14 uses end_date=15)
-        cur.execute(
-            """
-            SELECT st.id, st.start_time, st.end_time, st.notes
-            FROM StudyTimes st
-            JOIN Terms t ON t.id = st.term_id
-            WHERE st.term_id = %s AND t.user_id = %s
-              AND st.start_time < %s AND st.end_time > %s
-            ORDER BY st.start_time
-            """,
-            (term_id, user_id, end_date + " 00:00:00", start_date + " 00:00:00"),
-        )
+        if use_date_filter:
+            cur.execute(
+                """
+                SELECT st.id, st.start_time, st.end_time, st.notes,
+                       st.is_locked, st.assignment_id, st.course_id,
+                       c.course_name, c.color AS course_color
+                FROM StudyTimes st
+                JOIN Terms t ON t.id = st.term_id
+                LEFT JOIN Courses c ON st.course_id = c.id
+                WHERE st.term_id = %s AND t.user_id = %s
+                  AND st.start_time < %s AND st.end_time > %s
+                ORDER BY st.start_time
+                """,
+                (term_id, user_id, end_date + " 00:00:00", start_date + " 00:00:00"),
+            )
+        else:
+            cur.execute(
+                """
+                SELECT st.id, st.start_time, st.end_time, st.notes,
+                       st.is_locked, st.assignment_id, st.course_id,
+                       c.course_name, c.color AS course_color
+                FROM StudyTimes st
+                JOIN Terms t ON st.term_id = t.id
+                LEFT JOIN Courses c ON st.course_id = c.id
+                WHERE st.term_id = %s AND t.user_id = %s
+                ORDER BY st.start_time
+                """,
+                (term_id, user_id),
+            )
         rows = cur.fetchall()
         study_times = []
         for r in rows:
@@ -121,6 +138,11 @@ def get_study_times_for_term(term_id):
                 "start_time": r["start_time"].isoformat() if r.get("start_time") else None,
                 "end_time": r["end_time"].isoformat() if r.get("end_time") else None,
                 "notes": r.get("notes"),
+                "is_locked": bool(r["is_locked"]) if r.get("is_locked") is not None else False,
+                "assignment_id": r.get("assignment_id"),
+                "course_id": r.get("course_id"),
+                "course_name": r.get("course_name"),
+                "course_color": r.get("course_color"),
             })
         return jsonify({"study_times": study_times}), 200
     finally:
@@ -192,49 +214,6 @@ def generate_study_times_for_term(term_id):
         raise
     finally:
         session.close()
-
-
-@bp.route("/terms/<int:term_id>/study-times", methods=["GET"])
-def get_study_times(term_id):
-    """Return all study times for a term."""
-    user_id, err = _get_user(request)
-    if err:
-        return err
-
-    conn = _get_db()
-    try:
-        cur = conn.cursor(dictionary=True)
-        cur.execute(
-            """SELECT st.id, st.start_time, st.end_time, st.notes,
-                      st.is_locked, st.assignment_id, st.course_id,
-                      c.course_name, c.color AS course_color
-               FROM StudyTimes st
-               JOIN Terms t ON st.term_id = t.id
-               LEFT JOIN Courses c ON st.course_id = c.id
-               WHERE st.term_id = %s AND t.user_id = %s
-               ORDER BY st.start_time""",
-            (term_id, user_id),
-        )
-        rows = cur.fetchall()
-        cur.close()
-
-        study_times = []
-        for r in rows:
-            study_times.append({
-                "id": r["id"],
-                "start_time": r["start_time"].isoformat() if r["start_time"] else None,
-                "end_time": r["end_time"].isoformat() if r["end_time"] else None,
-                "notes": r["notes"],
-                "is_locked": bool(r["is_locked"]) if r.get("is_locked") is not None else False,
-                "assignment_id": r["assignment_id"],
-                "course_id": r["course_id"],
-                "course_name": r.get("course_name"),
-                "course_color": r.get("course_color"),
-            })
-
-        return jsonify({"study_times": study_times})
-    finally:
-        conn.close()
 
 
 def _parse_datetime(value):

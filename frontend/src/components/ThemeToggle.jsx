@@ -1,22 +1,55 @@
 /**
  * Light/dark theme toggle button.
+ * Easter egg: click ~10 times quickly to unlock rainbow (Nyan Cat) mode.
+ * In rainbow mode, click once to return to light/dark.
  */
+import { useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
+const EASTER_EGG_CLICKS = 10;
+const EASTER_EGG_WINDOW_MS = 1500;
+
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme, toggleTheme } = useTheme();
+  const clickCountRef = useRef(0);
+  const lastClickRef = useRef(0);
+
+  const handleClick = () => {
+    const now = Date.now();
+    if (now - lastClickRef.current > EASTER_EGG_WINDOW_MS) {
+      clickCountRef.current = 0;
+    }
+    lastClickRef.current = now;
+    clickCountRef.current += 1;
+
+    if (theme === 'rainbow') {
+      toggleTheme();
+      return;
+    }
+    if (clickCountRef.current >= EASTER_EGG_CLICKS) {
+      clickCountRef.current = 0;
+      setTheme('rainbow');
+      return;
+    }
+    toggleTheme();
+  };
+
+  const title =
+    theme === 'rainbow'
+      ? 'Click to return to light/dark mode'
+      : theme === 'dark'
+        ? 'Switch to light mode'
+        : 'Switch to dark mode';
 
   return (
     <button
       type="button"
-      onClick={toggleTheme}
+      onClick={handleClick}
       className="rounded-button p-2 text-ink-muted hover:bg-surface-muted hover:text-ink active:scale-95 transition-all duration-200"
-      title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      aria-label={
-        theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-      }
+      title={title}
+      aria-label={title}
     >
-      {theme === 'dark' ? (
+      {theme === 'rainbow' || theme === 'dark' ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

@@ -1,6 +1,7 @@
 /**
  * Theme context: light/dark mode. Persists to localStorage.
  * Applies .dark class to document.documentElement when dark mode is active.
+ * Easter egg: spam the theme toggle ~10 times to unlock rainbow (Nyan Cat) mode.
  */
 import { createContext, useContext, useEffect, useState } from 'react';
 
@@ -18,14 +19,20 @@ export function ThemeProvider({ children }) {
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
+      root.classList.remove('theme-rainbow');
+    } else if (theme === 'rainbow') {
+      root.classList.remove('dark');
+      root.classList.add('theme-rainbow');
     } else {
       root.classList.remove('dark');
+      root.classList.remove('theme-rainbow');
     }
     localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
   const setTheme = value => {
-    setThemeState(value === 'dark' ? 'dark' : 'light');
+    if (value === 'rainbow') setThemeState('rainbow');
+    else setThemeState(value === 'dark' ? 'dark' : 'light');
   };
 
   const toggleTheme = () => {
