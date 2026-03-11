@@ -8,7 +8,26 @@ from app.api.auth import decode_token, get_db
 bp = Blueprint("users", __name__, url_prefix="/api/users")
 
 EMAIL_REGEX = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
-ALLOWED_AVATARS = {"red", "green", "blue"}
+ALLOWED_AVATARS = {
+    "blue_inverted_triangle",
+    "green_triangle",
+    "pink_square",
+    "purple_heart",
+    "red_triangle_king",
+    "yellow_diamond",
+}
+
+
+def _users_columns(cur):
+    """Return the current set of column names on Users."""
+    cur.execute(
+        """
+        SELECT COLUMN_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'Users'
+        """
+    )
+    return {row["COLUMN_NAME"] for row in cur.fetchall()}
 
 
 @bp.route("/me", methods=["GET"])
@@ -26,20 +45,20 @@ def get_me():
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
-        try:
-            cur.execute(
-                """SELECT id, username, email, avatar, avatar_url, banner_url, description, security_setup_done
-                   FROM Users WHERE id = %s""",
-                (user_id,),
-            )
-        except Exception as e:
-            if "unknown column" in str(e).lower():
-                cur.execute(
-                    "SELECT id, username, email, avatar, security_setup_done FROM Users WHERE id = %s",
-                    (user_id,),
-                )
-            else:
-                raise
+        users_columns = _users_columns(cur)
+        select_columns = ["id", "username", "email", "security_setup_done"]
+        if "avatar" in users_columns:
+            select_columns.append("avatar")
+        if "avatar_url" in users_columns:
+            select_columns.append("avatar_url")
+        if "banner_url" in users_columns:
+            select_columns.append("banner_url")
+        if "description" in users_columns:
+            select_columns.append("description")
+        cur.execute(
+            f"SELECT {', '.join(select_columns)} FROM Users WHERE id = %s",
+            (user_id,),
+        )
         row = cur.fetchone()
         if not row:
             return jsonify({"error": "user not found"}), 404
@@ -142,6 +161,55 @@ def put_me():
             if cur.fetchone():
                 return jsonify({"error": "email already in use"}), 400
 
+        users_columns = _users_columns(cur)
+        needs_avatar_migration = False
+        needs_profile_migration = False
+
+        if has_avatar and "avatar" not in users_columns:
+            has_avatar = False
+            needs_avatar_migration = needs_avatar_migration or bool(avatar)
+
+        if has_avatar_url and "avatar_url" not in users_columns:
+            has_avatar_url = False
+            needs_profile_migration = needs_profile_migration or bool(
+                (data.get("avatar_url") or "").strip()
+            )
+
+        if has_banner_url and "banner_url" not in users_columns:
+            has_banner_url = False
+            needs_profile_migration = needs_profile_migration or bool(
+                (data.get("banner_url") or "").strip()
+            )
+
+        if has_description and "description" not in users_columns:
+            has_description = False
+            needs_profile_migration = needs_profile_migration or bool(description)
+
+        if needs_profile_migration:
+            return (
+                jsonify(
+                    {
+                        "error": (
+                            "Database migration required. "
+                            "Run 014_user_profile_banner_description.sql"
+                        )
+                    }
+                ),
+                503,
+            )
+        if needs_avatar_migration:
+            return (
+                jsonify(
+                    {
+                        "error": (
+                            "Database migration required. "
+                            "Run 012_user_avatar.sql"
+                        )
+                    }
+                ),
+                503,
+            )
+
         update_clauses = []
         params = []
         if has_email:
@@ -159,6 +227,8 @@ def put_me():
         if has_description:
             update_clauses.append("description = %s")
             params.append(description)
+        if not update_clauses:
+            return get_me()
         params.append(user_id)
         try:
             cur.execute(
@@ -166,6 +236,8 @@ def put_me():
                 tuple(params),
             )
         except Exception as e:
+            if "Unknown column 'avatar'" in str(e):
+                return jsonify({"error": "Database migration required. Run 012_user_avatar.sql"}), 503
             if "Unknown column" in str(e):
                 return jsonify({"error": "Database migration required. Run 014_user_profile_banner_description.sql"}), 503
             raise

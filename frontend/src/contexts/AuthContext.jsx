@@ -16,6 +16,15 @@ const TOKEN_KEY = 'syllabify_token';
 
 const AuthContext = createContext(null);
 
+function buildUser(authData, profileData) {
+  return {
+    username: authData.username,
+    is_admin: !!authData.is_admin,
+    avatar: profileData?.avatar || null,
+    avatar_url: profileData?.avatar_url || null,
+  };
+}
+
 /** Wraps the app to provide auth state. Loads user from token on mount. */
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -23,20 +32,28 @@ export function AuthProvider({ children }) {
   const [securitySetupDone, setSecuritySetupDone] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
-  /** Fetches current user from API using token. Returns true if valid. */
+  /** Fetches current user from API using token. Returns auth payload if valid. */
   const loadUser = useCallback(async t => {
     try {
-      const data = await api.me(t);
-      if (data) {
-        setUser({ username: data.username, is_admin: !!data.is_admin });
-        setSecuritySetupDone(!!data.security_setup_done);
-        return true;
+      const authData = await api.me(t);
+      if (authData) {
+        const profileData = await api.getProfile(t);
+        setUser(buildUser(authData, profileData));
+        setSecuritySetupDone(!!authData.security_setup_done);
+        return authData;
       }
-      return false;
+      return null;
     } catch {
-      return false;
+      return null;
     }
   }, []);
+
+  const refreshUser = useCallback(async () => {
+    const t = token || localStorage.getItem(TOKEN_KEY);
+    if (!t) return false;
+    const authData = await loadUser(t);
+    return !!authData;
+  }, [loadUser, token]);
 
   useEffect(() => {
     const onUnauthorized = () => {
@@ -58,8 +75,8 @@ export function AuthProvider({ children }) {
     }
     setToken(t);
     loadUser(t)
-      .then(ok => {
-        if (!ok) {
+      .then(authData => {
+        if (!authData) {
           localStorage.removeItem(TOKEN_KEY);
           setToken(null);
           setUser(null);
@@ -77,10 +94,9 @@ export function AuthProvider({ children }) {
     const t = data.token;
     localStorage.setItem(TOKEN_KEY, t);
     setToken(t);
-    setUser({ username: data.username, is_admin: !!data.is_admin });
-    setSecuritySetupDone(!!data.security_setup_done);
+    await loadUser(t);
     return { security_setup_done: !!data.security_setup_done };
-  }, []);
+  }, [loadUser]);
 
   /** Calls API loginWithGoogle, stores token, updates state. Returns { security_setup_done }. */
   const loginWithGoogle = useCallback(async idToken => {
@@ -88,10 +104,9 @@ export function AuthProvider({ children }) {
     const t = data.token;
     localStorage.setItem(TOKEN_KEY, t);
     setToken(t);
-    setUser({ username: data.username, is_admin: !!data.is_admin });
-    setSecuritySetupDone(!!data.security_setup_done);
+    await loadUser(t);
     return { security_setup_done: !!data.security_setup_done };
-  }, []);
+  }, [loadUser]);
 
   /** Clears token and user from storage and state. */
   const logout = useCallback(() => {
@@ -121,6 +136,7 @@ export function AuthProvider({ children }) {
     loginWithGoogle,
     logout,
     completeSecuritySetup,
+    refreshUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

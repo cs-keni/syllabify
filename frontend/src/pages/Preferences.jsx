@@ -14,12 +14,7 @@ import {
 } from '../api/client';
 import { useAccent } from '../contexts/AccentContext';
 import toast from 'react-hot-toast';
-import BlueInvertedTriangle from '../assets/blue_inverted_triangle.png';
-import GreenTriangle from '../assets/green_triangle.png';
-import PinkSquare from '../assets/pink_square.png';
-import PurpleHeart from '../assets/purple_heart.png';
-import RedTriangleKing from '../assets/red_triangle_king.png';
-import YellowDiamond from '../assets/yellow_diamond.png';
+import { AVATAR_OPTIONS } from '../lib/avatarOptions';
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const DAY_TO_CODE = {
@@ -31,19 +26,6 @@ const DAY_TO_CODE = {
   Sat: 'SA',
   Sun: 'SU',
 };
-const AVATAR_OPTIONS = [
-  {
-    key: 'blue_inverted_triangle',
-    label: 'Blue Inverted Triangle',
-    src: BlueInvertedTriangle,
-  },
-  { key: 'green_triangle', label: 'Green Triangle', src: GreenTriangle },
-  { key: 'pink_square', label: 'Pink Square', src: PinkSquare },
-  { key: 'purple_heart', label: 'Purple Heart', src: PurpleHeart },
-  { key: 'red_triangle_king', label: 'Red Triangle King', src: RedTriangleKing },
-  { key: 'yellow_diamond', label: 'Yellow Diamond', src: YellowDiamond },
-];
-
 function parsePreferredDays(csv) {
   if (!csv || typeof csv !== 'string') return [];
   return csv
@@ -65,7 +47,7 @@ const PASSWORD_REQUIREMENTS = [
 ];
 
 export default function Preferences() {
-  const { token } = useAuth();
+  const { token, refreshUser } = useAuth();
   const { accent, setAccent, palettes } = useAccent();
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState(null);
@@ -128,6 +110,7 @@ export default function Preferences() {
         email: email.trim() || null,
         avatar: avatar || null,
       });
+      await refreshUser();
       toast.success('Profile saved');
     } catch (err) {
       toast.error(err.message || 'Failed to save');
