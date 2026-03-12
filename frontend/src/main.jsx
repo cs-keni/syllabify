@@ -9,8 +9,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles/index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// StrictMode disabled: FullCalendar's toolbar duplicates when StrictMode double-mounts in dev.
+// See https://github.com/fullcalendar/fullcalendar/issues/7254
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
