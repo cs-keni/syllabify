@@ -37,7 +37,8 @@ export default function Schedule() {
   const [exportFeedUrl, setExportFeedUrl] = useState('');
   const [exportEnabled, setExportEnabled] = useState(true);
   const [exportError, setExportError] = useState('');
-  const [showProposedScheduleModal, setShowProposedScheduleModal] = useState(false);
+  const [showProposedScheduleModal, setShowProposedScheduleModal] =
+    useState(false);
   const [proposedSlots, setProposedSlots] = useState([]);
   const [applyingSchedule, setApplyingSchedule] = useState(false);
   const [clearingSchedule, setClearingSchedule] = useState(false);
@@ -288,11 +289,15 @@ export default function Schedule() {
     }
     try {
       await Promise.all(
-        blocksOnDay.map(st => api.updateStudyTime(token, st.id, { is_locked: true }))
+        blocksOnDay.map(st =>
+          api.updateStudyTime(token, st.id, { is_locked: true })
+        )
       );
       setStudyTimes(prev =>
         prev.map(st =>
-          blocksOnDay.some(b => b.id === st.id) ? { ...st, is_locked: true } : st
+          blocksOnDay.some(b => b.id === st.id)
+            ? { ...st, is_locked: true }
+            : st
         )
       );
       toast.success(`Locked ${blocksOnDay.length} block(s) for this day.`);
@@ -317,7 +322,9 @@ export default function Schedule() {
         );
         return;
       }
-      const data = await api.generateStudyTimes(token, termToUse.id, { preview: true });
+      const data = await api.generateStudyTimes(token, termToUse.id, {
+        preview: true,
+      });
       const slots = data.study_times || [];
       const count = data.created_count ?? slots.length;
       if (count === 0) {
@@ -339,7 +346,9 @@ export default function Schedule() {
     if (!token || !activeTerm?.id) return;
     setApplyingSchedule(true);
     try {
-      const data = await api.generateStudyTimes(token, activeTerm.id, { preview: false });
+      const data = await api.generateStudyTimes(token, activeTerm.id, {
+        preview: false,
+      });
       const count = data.created_count ?? 0;
       toast.success(
         count > 0
@@ -362,7 +371,11 @@ export default function Schedule() {
     try {
       const data = await api.clearStudyTimes(token, activeTerm.id);
       const count = data.deleted_count ?? 0;
-      toast.success(count > 0 ? `Cleared ${count} study block(s).` : 'No study blocks to clear.');
+      toast.success(
+        count > 0
+          ? `Cleared ${count} study block(s).`
+          : 'No study blocks to clear.'
+      );
       fetchData();
     } catch (err) {
       toast.error(err.message || 'Failed to clear study times');
@@ -404,7 +417,16 @@ export default function Schedule() {
   })();
 
   const totalStudyMins = studyTimeByCourse.reduce((s, x) => s + x.mins, 0);
-  const PIE_COLORS = [ '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899', '#06B6D4', '#64748B' ];
+  const PIE_COLORS = [
+    '#3B82F6',
+    '#10B981',
+    '#F59E0B',
+    '#EF4444',
+    '#8B5CF6',
+    '#EC4899',
+    '#06B6D4',
+    '#64748B',
+  ];
 
   const handleCopyExportUrl = async () => {
     if (!exportFeedUrl) return;
@@ -436,7 +458,9 @@ export default function Schedule() {
         </Link>
         <h1 className="mt-2 text-2xl font-semibold text-ink">Schedule</h1>
         <p className="mt-1 text-sm text-ink-muted">
-          Your calendar events and study blocks at a glance. Study blocks appear in the date range of your assignments—use the calendar arrows to navigate.
+          Your calendar events and study blocks at a glance. Study blocks appear
+          in the date range of your assignments—use the calendar arrows to
+          navigate.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           <button
@@ -492,18 +516,23 @@ export default function Schedule() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
             className="absolute inset-0 bg-black/45"
-            onClick={() => !applyingSchedule && setShowProposedScheduleModal(false)}
+            onClick={() =>
+              !applyingSchedule && setShowProposedScheduleModal(false)
+            }
           />
           <div className="relative z-10 w-full max-w-xl rounded-xl border border-border bg-surface p-5 shadow-xl max-h-[85vh] flex flex-col">
             <h3 className="text-lg font-semibold text-ink">
               Proposed study schedule
             </h3>
             <p className="mt-1 text-sm text-ink-muted">
-              Here&apos;s a proposed study schedule based on your availability, course workload, and calendar events. Unlocked blocks will be replaced when you apply.
+              Here&apos;s a proposed study schedule based on your availability,
+              course workload, and calendar events. Unlocked blocks will be
+              replaced when you apply.
             </p>
             <div className="mt-4 overflow-y-auto flex-1 min-h-0 rounded-lg border border-border bg-surface-muted/50 p-3">
               <p className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
-                {proposedSlots.length} block(s) · spread across your study window
+                {proposedSlots.length} block(s) · spread across your study
+                window
               </p>
               <ul className="space-y-1.5 text-sm">
                 {proposedSlots.slice(0, 50).map((s, i) => (
@@ -512,8 +541,20 @@ export default function Schedule() {
                       {s.course_name || 'Study'}
                     </span>
                     <span className="text-ink-muted shrink-0 font-mono text-xs">
-                      {new Date(s.start_time).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}{' '}
-                      {new Date(s.start_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}–{new Date(s.end_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
+                      {new Date(s.start_time).toLocaleDateString(undefined, {
+                        weekday: 'short',
+                        month: 'short',
+                        day: 'numeric',
+                      })}{' '}
+                      {new Date(s.start_time).toLocaleTimeString([], {
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      })}
+                      –
+                      {new Date(s.end_time).toLocaleTimeString([], {
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      })}
                     </span>
                   </li>
                 ))}
@@ -629,11 +670,24 @@ export default function Schedule() {
                     {hoverPreview.data.course_name || 'Study Block'}
                   </p>
                   <p className="text-xs text-ink-muted mt-0.5">
-                    {hoverPreview.data.is_locked ? 'Locked (kept when regenerating)' : 'Unlocked (replaced when regenerating)'} · Click to edit
+                    {hoverPreview.data.is_locked
+                      ? 'Locked (kept when regenerating)'
+                      : 'Unlocked (replaced when regenerating)'}{' '}
+                    · Click to edit
                   </p>
                   {hoverPreview.data.start_time && (
                     <p className="text-xs text-ink-muted font-mono mt-1">
-                      {new Date(hoverPreview.data.start_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })} – {new Date(hoverPreview.data.end_time).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
+                      {new Date(
+                        hoverPreview.data.start_time
+                      ).toLocaleTimeString([], {
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      })}{' '}
+                      –{' '}
+                      {new Date(hoverPreview.data.end_time).toLocaleTimeString(
+                        [],
+                        { hour: 'numeric', minute: '2-digit' }
+                      )}
                     </p>
                   )}
                 </>
@@ -642,7 +696,8 @@ export default function Schedule() {
                   <p className="font-medium text-ink truncate">
                     {hoverPreview.data.title}
                   </p>
-                  {(hoverPreview.data.start_time || hoverPreview.data.start_date) && (
+                  {(hoverPreview.data.start_time ||
+                    hoverPreview.data.start_date) && (
                     <p className="text-xs text-ink-muted font-mono mt-0.5">
                       {hoverPreview.data.start_date
                         ? `${hoverPreview.data.start_date}${hoverPreview.data.end_date ? ` – ${hoverPreview.data.end_date}` : ''}`
@@ -654,7 +709,9 @@ export default function Schedule() {
                       {hoverPreview.data.location}
                     </p>
                   )}
-                  <p className="text-[10px] text-ink-subtle mt-1.5">Click to edit</p>
+                  <p className="text-[10px] text-ink-subtle mt-1.5">
+                    Click to edit
+                  </p>
                 </>
               )}
             </div>
@@ -683,7 +740,11 @@ export default function Schedule() {
                       type="button"
                       onClick={handleToggleLock}
                       className="flex-1 rounded bg-primary px-2 py-1 text-xs font-medium text-primary-inv hover:opacity-90"
-                      title={popover.studyTime.is_locked ? 'Unlock so it can be replaced' : 'Lock to keep this block'}
+                      title={
+                        popover.studyTime.is_locked
+                          ? 'Unlock so it can be replaced'
+                          : 'Lock to keep this block'
+                      }
                     >
                       {popover.studyTime.is_locked ? 'Unlock' : 'Lock block'}
                     </button>
@@ -743,15 +804,22 @@ export default function Schedule() {
                 )}
                 {eventDetail.event.source_id != null && (
                   <div className="mt-3 pt-2 border-t border-border">
-                    <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">Event color</p>
-                    <p className="text-[10px] text-ink-muted mb-1.5">Changes all events from this source (e.g. this Google calendar).</p>
+                    <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">
+                      Event color
+                    </p>
+                    <p className="text-[10px] text-ink-muted mb-1.5">
+                      Changes all events from this source (e.g. this Google
+                      calendar).
+                    </p>
                     <div className="flex flex-wrap gap-1.5">
                       {SOURCE_COLOR_OPTIONS.map(({ hex, label }) => (
                         <button
                           key={hex}
                           type="button"
                           onClick={() => {
-                            const src = sources.find(s => s.id === eventDetail.event.source_id);
+                            const src = sources.find(
+                              s => s.id === eventDetail.event.source_id
+                            );
                             if (src) handleColorChange(src.id, hex);
                           }}
                           className="w-6 h-6 rounded border border-border hover:scale-110 transition-transform"
@@ -769,10 +837,10 @@ export default function Schedule() {
                 )}
                 {!eventDetail.event.description &&
                   !eventDetail.event.location && (
-                  <p className="mt-2 text-xs text-ink-muted italic">
-                    No additional details.
-                  </p>
-                )}
+                    <p className="mt-2 text-xs text-ink-muted italic">
+                      No additional details.
+                    </p>
+                  )}
                 <button
                   type="button"
                   onClick={() => setEventDetail(null)}
@@ -789,7 +857,9 @@ export default function Schedule() {
         <div className="w-full lg:w-64 shrink-0 order-2 space-y-4">
           {/* Study time pie chart – always visible */}
           <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
-            <h3 className="text-sm font-semibold text-ink mb-2">Time per course</h3>
+            <h3 className="text-sm font-semibold text-ink mb-2">
+              Time per course
+            </h3>
             {studyTimeByCourse.length > 0 ? (
               <div className="flex items-center gap-4 group/pie">
                 <div
@@ -797,24 +867,35 @@ export default function Schedule() {
                   style={{
                     background: `conic-gradient(${studyTimeByCourse
                       .map((c, i) => {
-                        const start = studyTimeByCourse.slice(0, i).reduce((s, x) => s + (x.mins / totalStudyMins) * 100, 0);
+                        const start = studyTimeByCourse
+                          .slice(0, i)
+                          .reduce(
+                            (s, x) => s + (x.mins / totalStudyMins) * 100,
+                            0
+                          );
                         const end = start + (c.mins / totalStudyMins) * 100;
                         return `${PIE_COLORS[i % PIE_COLORS.length]} ${start}% ${end}%`;
                       })
                       .join(', ')})`,
                   }}
-                  title={studyTimeByCourse.map(c => `${c.name}: ${Math.round(c.mins / 60 * 10) / 10}h`).join(', ')}
+                  title={studyTimeByCourse
+                    .map(
+                      c => `${c.name}: ${Math.round((c.mins / 60) * 10) / 10}h`
+                    )
+                    .join(', ')}
                 />
                 <div className="min-w-0 flex-1 space-y-1">
                   {studyTimeByCourse.slice(0, 5).map((c, i) => (
                     <div
                       key={c.name}
                       className="flex items-center gap-2 text-xs group/legend transition-colors duration-200 rounded px-1 -mx-1 hover:bg-surface-muted"
-                      title={`${c.name}: ${Math.round(c.mins / 60 * 10) / 10} hours`}
+                      title={`${c.name}: ${Math.round((c.mins / 60) * 10) / 10} hours`}
                     >
                       <span
                         className="w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{ backgroundColor: PIE_COLORS[i % PIE_COLORS.length] }}
+                        style={{
+                          backgroundColor: PIE_COLORS[i % PIE_COLORS.length],
+                        }}
                       />
                       <span className="truncate text-ink">{c.name}</span>
                       <span className="text-ink-muted tabular-nums shrink-0">
@@ -826,7 +907,9 @@ export default function Schedule() {
               </div>
             ) : (
               <p className="text-xs text-ink-muted">
-                Add courses from your syllabus, then click <strong>Generate Study Times</strong> above to see a breakdown of study time per course.
+                Add courses from your syllabus, then click{' '}
+                <strong>Generate Study Times</strong> above to see a breakdown
+                of study time per course.
               </p>
             )}
           </div>
@@ -864,13 +947,17 @@ export default function Schedule() {
                               onClick={() => setColorEditId(null)}
                             />
                             <div className="absolute left-0 top-6 z-50 p-2 rounded-lg border border-border bg-surface shadow-lg min-w-[140px]">
-                              <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">Color</p>
+                              <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">
+                                Color
+                              </p>
                               <div className="grid grid-cols-4 gap-1.5">
                                 {SOURCE_COLOR_OPTIONS.map(({ hex, label }) => (
                                   <button
                                     key={hex}
                                     type="button"
-                                    onClick={() => handleColorChange(src.id, hex)}
+                                    onClick={() =>
+                                      handleColorChange(src.id, hex)
+                                    }
                                     className="w-7 h-7 rounded border border-border hover:scale-110 transition-transform"
                                     style={{ backgroundColor: hex }}
                                     title={label}

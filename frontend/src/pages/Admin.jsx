@@ -1192,12 +1192,18 @@ export default function Admin() {
                         <td colSpan={9} className="p-4 pl-12">
                           {expandedDetails ? (
                             <div className="space-y-4">
-                              {(expandedDetails.banner_url || expandedDetails.avatar_url || expandedDetails.description) && (
+                              {(expandedDetails.banner_url ||
+                                expandedDetails.avatar_url ||
+                                expandedDetails.description) && (
                                 <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-4">
-                                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Profile</p>
+                                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                                    Profile
+                                  </p>
                                   {expandedDetails.banner_url && (
                                     <div className="mb-2">
-                                      <p className="text-[10px] text-slate-500 mb-1">Banner</p>
+                                      <p className="text-[10px] text-slate-500 mb-1">
+                                        Banner
+                                      </p>
                                       <img
                                         src={expandedDetails.banner_url}
                                         alt="Banner"

@@ -25,6 +25,7 @@
 ## Task 1: Set assignment_id + course_id when creating StudyTimes
 
 **Files:**
+
 - Modify: `backend/app/services/scheduling_service.py` — greedy StudyTime creation (~line 248), global solver StudyTime creation (~line 555)
 - Test: `backend/tests/test_scheduling_service.py`
 
@@ -47,6 +48,7 @@ def test_study_times_have_assignment_and_course_ids(db_session, sample_term):
 ```bash
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py::test_study_times_have_assignment_and_course_ids -v
 ```
+
 Expected: FAIL
 
 **Step 3: Update greedy phase StudyTime creation (~line 248)**
@@ -99,6 +101,7 @@ st = StudyTime(
 docker compose up -d --build backend
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py::test_study_times_have_assignment_and_course_ids -v
 ```
+
 Expected: PASS
 
 **Step 6: Commit**
@@ -113,6 +116,7 @@ git commit -m "feat: set assignment_id and course_id on StudyTimes during schedu
 ## Task 2: Load CalendarEvents as busy intervals
 
 **Files:**
+
 - Modify: `backend/app/services/scheduling_service.py` — top of `generate_study_times`
 - Test: `backend/tests/test_scheduling_service.py`
 
@@ -166,6 +170,7 @@ def test_calendar_event_blocks_study_slot(db_session, sample_term, sample_user):
 ```bash
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py::test_calendar_event_blocks_study_slot -v
 ```
+
 Expected: FAIL
 
 **Step 3: Add import at top of scheduling_service.py**
@@ -214,6 +219,7 @@ meeting_busy = _merge_intervals(meeting_busy + calendar_busy)
 docker compose up -d --build backend
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py -v
 ```
+
 Expected: All pass
 
 **Step 6: Commit**
@@ -230,16 +236,19 @@ git commit -m "feat: use CalendarEvents as busy intervals in scheduling engine"
 **Design:** At schedule-generation time, query `CalendarEvent` rows where `event_kind='deadline_marker'` for this user. For each Assignment, attempt a fuzzy title match against these events. If a match is found and the imported deadline is **earlier** than the assignment's own `due_date`, use the imported date as the effective deadline for that assignment's scheduling window. **Does not write to the DB** — reconciliation is purely in-memory.
 
 **Matching rules:**
+
 - Normalize both strings: lowercase, strip common prefixes (`"due:"`, `"assignment:"`, `"hw:"`, etc.), strip trailing punctuation
 - Match if one normalized string is a substring of the other
 - Only consider CalendarEvents where `start_date` or `start_time` is within ±14 days of `assignment.due_date` (prevents false matches across terms)
 - If multiple matches, pick the one with the closest date
 
 **Reconciliation rule:**
+
 - `effective_due_date = min(assignment.due_date, imported_deadline_date)`
 - If no match found: `effective_due_date = assignment.due_date` (unchanged)
 
 **Files:**
+
 - Modify: `backend/app/services/scheduling_service.py`
 - Test: `backend/tests/test_scheduling_service.py`
 
@@ -293,9 +302,10 @@ def test_deadline_reconciliation_uses_earlier_imported_date(db_session, sample_t
 ```bash
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py::test_deadline_reconciliation_uses_earlier_imported_date -v
 ```
+
 Expected: FAIL
 
-**Step 3: Add helper function _normalize_title in scheduling_service.py**
+**Step 3: Add helper function \_normalize_title in scheduling_service.py**
 
 Add near the top of the file (after imports):
 
@@ -311,7 +321,7 @@ def _normalize_title(s: str) -> str:
     return _re.sub(r"[^\w\s]", "", s).strip()
 ```
 
-**Step 4: Add helper function _reconcile_deadlines**
+**Step 4: Add helper function \_reconcile_deadlines**
 
 ```python
 def _reconcile_deadlines(
@@ -384,7 +394,7 @@ def _reconcile_deadlines(
     return effective
 ```
 
-**Step 5: Call _reconcile_deadlines in generate_study_times**
+**Step 5: Call \_reconcile_deadlines in generate_study_times**
 
 After the CalendarEvents busy interval block (Task 2), add:
 
@@ -404,7 +414,7 @@ window_end = effective_due_dates.get(assignment.id, assignment.due_date)
 
 Do the same replacement in the slack pre-computation loop and in `_generate_study_times_global` (pass `effective_due_dates` as a parameter).
 
-**Step 6: Update _generate_study_times_global signature**
+**Step 6: Update \_generate_study_times_global signature**
 
 ```python
 def _generate_study_times_global(
@@ -428,6 +438,7 @@ Inside, replace `we` (window_end) with `effective_due_dates.get(a.id, we)` when 
 docker compose up -d --build backend
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py -v
 ```
+
 Expected: All pass
 
 **Step 8: Commit**
@@ -442,6 +453,7 @@ git commit -m "feat: reconcile assignment due_dates from imported deadline_marke
 ## Task 4: Preserve locked StudyTimes during regeneration
 
 **Files:**
+
 - Modify: `backend/app/services/scheduling_service.py`
 - Test: `backend/tests/test_scheduling_service.py`
 
@@ -499,6 +511,7 @@ def test_new_study_times_do_not_overlap_locked(db_session, sample_term):
 ```bash
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py::test_locked_study_times_survive_regeneration tests/test_scheduling_service.py::test_new_study_times_do_not_overlap_locked -v
 ```
+
 Expected: FAIL
 
 **Step 3: Modify the first delete in generate_study_times (~line 149)**
@@ -548,6 +561,7 @@ session.query(StudyTime).filter(
 docker compose up -d --build backend
 docker compose exec -T backend python -m pytest tests/test_scheduling_service.py -v
 ```
+
 Expected: All pass
 
 **Step 6: Commit**
@@ -562,11 +576,13 @@ git commit -m "feat: preserve locked StudyTimes during schedule regeneration"
 ## Task 5: Backend PATCH endpoint with server-side validation
 
 **Validation rules (minimum MVP):**
+
 1. `start_time < end_time` (time validity)
 2. No overlap with `active` timed `CalendarEvents` for this user (excluding all-day)
 3. No overlap with other `locked` StudyTimes in the same term (excluding self)
 
 **Files:**
+
 - Modify: `backend/app/api/schedule.py`
 - Test: `backend/tests/test_schedule_api.py`
 
@@ -622,6 +638,7 @@ def test_patch_study_time_wrong_user(client, other_auth_token, sample_study_time
 ```bash
 docker compose exec -T backend python -m pytest tests/test_schedule_api.py -v 2>&1 | head -30
 ```
+
 Expected: FAIL or 405
 
 **Step 3: Add PATCH endpoint to schedule.py**
@@ -742,6 +759,7 @@ def update_study_time(study_time_id):
 docker compose up -d --build backend
 docker compose exec -T backend python -m pytest tests/test_schedule_api.py -v
 ```
+
 Expected: PASS
 
 **Step 5: Commit**
@@ -756,6 +774,7 @@ git commit -m "feat: add PATCH /api/schedule/study-times/:id with overlap valida
 ## Task 6: Add updateStudyTime to frontend API client
 
 **Files:**
+
 - Modify: `frontend/src/api/client.js`
 
 **Step 1: Add function before `export default` block**
@@ -767,14 +786,20 @@ git commit -m "feat: add PATCH /api/schedule/study-times/:id with overlap valida
  * Returns { ok: true } or throws with server error message.
  */
 export async function updateStudyTime(token, studyTimeId, body) {
-  const res = await apiFetch(`${BASE}/api/schedule/study-times/${studyTimeId}`, {
-    method: 'PATCH',
-    headers: headers(true, token),
-    body: JSON.stringify(body || {}),
-    credentials: 'include',
-  });
+  const res = await apiFetch(
+    `${BASE}/api/schedule/study-times/${studyTimeId}`,
+    {
+      method: "PATCH",
+      headers: headers(true, token),
+      body: JSON.stringify(body || {}),
+      credentials: "include",
+    },
+  );
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.message || data.error || 'Failed to update study time');
+  if (!res.ok)
+    throw new Error(
+      data.message || data.error || "Failed to update study time",
+    );
   return data;
 }
 ```
@@ -788,6 +813,7 @@ Add `updateStudyTime` to the list in the `export default { ... }` block.
 ```bash
 cd frontend && npm run build 2>&1 | tail -5
 ```
+
 Expected: clean build
 
 **Step 4: Commit**
@@ -802,6 +828,7 @@ git commit -m "feat: add updateStudyTime API client method"
 ## Task 7: Frontend — drag/resize auto-lock + popover with unlock
 
 **Files:**
+
 - Modify: `frontend/src/pages/Schedule.jsx`
 - Modify: `frontend/src/components/AppCalendar.jsx` (add small StudyTimePopover)
 
@@ -811,25 +838,30 @@ git commit -m "feat: add updateStudyTime API client method"
 
 ```javascript
 const handleStudyTimeMove = async ({ props, start, end }) => {
-  if (props.type !== 'study_time') return;
+  if (props.type !== "study_time") return;
   const studyTimeId = props.data.id;
   // Optimistic update
-  setStudyTimes(prev =>
-    prev.map(st =>
+  setStudyTimes((prev) =>
+    prev.map((st) =>
       st.id === studyTimeId
-        ? { ...st, start_time: start.toISOString(), end_time: end.toISOString(), is_locked: true }
-        : st
-    )
+        ? {
+            ...st,
+            start_time: start.toISOString(),
+            end_time: end.toISOString(),
+            is_locked: true,
+          }
+        : st,
+    ),
   );
   try {
     await api.updateStudyTime(token, studyTimeId, {
-      start_time: start.toISOString().slice(0, 19).replace('T', ' '),
-      end_time: end.toISOString().slice(0, 19).replace('T', ' '),
+      start_time: start.toISOString().slice(0, 19).replace("T", " "),
+      end_time: end.toISOString().slice(0, 19).replace("T", " "),
       is_locked: true,
     });
-    toast.success('Study block pinned.');
+    toast.success("Study block pinned.");
   } catch (err) {
-    toast.error(err.message || 'Could not move study block');
+    toast.error(err.message || "Could not move study block");
     fetchData(); // Revert on error
   }
 };
@@ -843,7 +875,7 @@ const handleStudyTimeMove = async ({ props, start, end }) => {
   studyTimes={studyTimes}
   onEventDrop={handleStudyTimeMove}
   onEventResize={handleStudyTimeMove}
-  onEventClick={handleStudyTimeClick}   // Added in Part B
+  onEventClick={handleStudyTimeClick} // Added in Part B
 />
 ```
 
@@ -855,8 +887,12 @@ const handleStudyTimeMove = async ({ props, start, end }) => {
 const [popover, setPopover] = useState(null); // { studyTime, x, y }
 
 const handleStudyTimeClick = ({ type, data }, jsEvent) => {
-  if (type !== 'study_time') return;
-  setPopover({ studyTime: data, x: jsEvent?.clientX ?? 0, y: jsEvent?.clientY ?? 0 });
+  if (type !== "study_time") return;
+  setPopover({
+    studyTime: data,
+    x: jsEvent?.clientX ?? 0,
+    y: jsEvent?.clientY ?? 0,
+  });
 };
 
 const handleToggleLock = async () => {
@@ -866,12 +902,14 @@ const handleToggleLock = async () => {
   setPopover(null);
   try {
     await api.updateStudyTime(token, studyTime.id, { is_locked: newLocked });
-    setStudyTimes(prev =>
-      prev.map(st => st.id === studyTime.id ? { ...st, is_locked: newLocked } : st)
+    setStudyTimes((prev) =>
+      prev.map((st) =>
+        st.id === studyTime.id ? { ...st, is_locked: newLocked } : st,
+      ),
     );
-    toast.success(newLocked ? 'Study block locked.' : 'Study block unlocked.');
+    toast.success(newLocked ? "Study block locked." : "Study block unlocked.");
   } catch (err) {
-    toast.error(err.message || 'Failed to update');
+    toast.error(err.message || "Failed to update");
     fetchData();
   }
 };
@@ -882,36 +920,42 @@ const handleToggleLock = async () => {
 Place after the AppCalendar block:
 
 ```jsx
-{popover && (
-  <div
-    className="fixed z-50 bg-white dark:bg-gray-800 border border-border rounded-lg shadow-lg p-3 text-sm min-w-[160px]"
-    style={{ top: popover.y + 8, left: popover.x + 8 }}
-  >
-    <p className="font-medium text-ink mb-1 truncate">
-      {popover.studyTime.course_name || 'Study Block'}
-    </p>
-    <p className="text-xs text-ink-muted mb-2">
-      {popover.studyTime.is_locked ? 'Locked (pinned)' : 'Unlocked (will regenerate)'}
-    </p>
-    <div className="flex gap-2">
-      <button
-        onClick={handleToggleLock}
-        className="flex-1 text-xs rounded px-2 py-1 bg-primary text-primary-inv font-medium hover:opacity-90"
-      >
-        {popover.studyTime.is_locked ? 'Unlock' : 'Lock'}
-      </button>
-      <button
-        onClick={() => setPopover(null)}
-        className="text-xs rounded px-2 py-1 border border-border text-ink-muted hover:text-ink"
-      >
-        Close
-      </button>
+{
+  popover && (
+    <div
+      className="fixed z-50 bg-white dark:bg-gray-800 border border-border rounded-lg shadow-lg p-3 text-sm min-w-[160px]"
+      style={{ top: popover.y + 8, left: popover.x + 8 }}
+    >
+      <p className="font-medium text-ink mb-1 truncate">
+        {popover.studyTime.course_name || "Study Block"}
+      </p>
+      <p className="text-xs text-ink-muted mb-2">
+        {popover.studyTime.is_locked
+          ? "Locked (pinned)"
+          : "Unlocked (will regenerate)"}
+      </p>
+      <div className="flex gap-2">
+        <button
+          onClick={handleToggleLock}
+          className="flex-1 text-xs rounded px-2 py-1 bg-primary text-primary-inv font-medium hover:opacity-90"
+        >
+          {popover.studyTime.is_locked ? "Unlock" : "Lock"}
+        </button>
+        <button
+          onClick={() => setPopover(null)}
+          className="text-xs rounded px-2 py-1 border border-border text-ink-muted hover:text-ink"
+        >
+          Close
+        </button>
+      </div>
     </div>
-  </div>
-)}
-{popover && (
-  <div className="fixed inset-0 z-40" onClick={() => setPopover(null)} />
-)}
+  );
+}
+{
+  popover && (
+    <div className="fixed inset-0 z-40" onClick={() => setPopover(null)} />
+  );
+}
 ```
 
 **Step 5: Update AppCalendar.jsx to pass jsEvent to onEventClick**
@@ -931,6 +975,7 @@ const handleEventClick = (info) => {
 ```bash
 cd frontend && npm run build 2>&1 | tail -5
 ```
+
 Expected: clean build
 
 **Step 7: Commit**
@@ -949,6 +994,7 @@ git commit -m "feat: drag/resize auto-lock and popover unlock for study blocks"
 ```bash
 docker compose exec -T backend python -m pytest tests/ -v --ignore=tests/test_syllabus_parser.py
 ```
+
 Expected: All pass.
 
 **Step 2: Frontend build**
@@ -956,9 +1002,11 @@ Expected: All pass.
 ```bash
 cd frontend && npm run build 2>&1 | tail -10
 ```
+
 Expected: No errors.
 
 **Step 3: Manual smoke test checklist**
+
 - [ ] Import an ICS feed with timed events
 - [ ] Click "Generate Study Times" — no overlap with imported events
 - [ ] Import a Canvas deadline_marker event matching an assignment name

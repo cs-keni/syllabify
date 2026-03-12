@@ -30,10 +30,10 @@ Choose **Public Network**. Your backend runs on Render (outside Railway), so it 
 
 **Overview**
 
-| Deployment   | Branch | Frontend (Vercel)     | Backend (Render)   | Database (Railway) |
-|-------------|--------|------------------------|--------------------|--------------------|
-| **Production** | `main` | e.g. syllabify-iota.vercel.app      | e.g. syllabify-api.onrender.com  | Production MySQL   |
-| **Dev**        | `dev`  | e.g. syllabify-dev.vercel.app | e.g. syllabify-api-dev.onrender.com | Dev MySQL (separate) |
+| Deployment     | Branch | Frontend (Vercel)              | Backend (Render)                    | Database (Railway)   |
+| -------------- | ------ | ------------------------------ | ----------------------------------- | -------------------- |
+| **Production** | `main` | e.g. syllabify-iota.vercel.app | e.g. syllabify-api.onrender.com     | Production MySQL     |
+| **Dev**        | `dev`  | e.g. syllabify-dev.vercel.app  | e.g. syllabify-api-dev.onrender.com | Dev MySQL (separate) |
 
 Sections 1–3 set up **production** (main). Section 4 sets up the **dev** deployment. Section 5 is optional local development.
 
@@ -54,7 +54,7 @@ Your backend runs on **Render**, not on Railway. So the database must accept con
 
 5. In the MySQL service, find the **Connect** (or **Networking** / **Settings**) area. You may see a prompt to connect the database.
 6. When Railway asks how to connect, you’ll see two options:
-   - **Private Network** – only other services in the *same* Railway project can reach the database. **Do not use this** for Syllabify, because the backend runs on Render.
+   - **Private Network** – only other services in the _same_ Railway project can reach the database. **Do not use this** for Syllabify, because the backend runs on Render.
    - **Public Network** – Railway gives you a public host and port so anything on the internet (including Render) can connect with your username/password.
 7. **Choose “Public Network”** (or “Public” / “Enable public networking” / “TCP proxy”, depending on Railway’s wording). Your backend on Render needs this to reach MySQL.
 8. After enabling public access, Railway will show connection details (host, port, user, password, database). Keep this tab open or copy the values somewhere safe.
@@ -78,14 +78,16 @@ Your backend runs on **Render**, not on Railway. So the database must accept con
 
 13. Your app needs four tables: `Users`, `UserSecurityAnswers`, `Schedules`, `Assignments`. You only need to run the SQL **once** against your Railway MySQL. **No Docker or MySQL install required** – use Option A.
 
-**Option A – Railway’s web UI (no Docker, no mysql install; recommended)**  
+**Option A – Railway’s web UI (no Docker, no mysql install; recommended)**
+
 - In [Railway](https://railway.app), open your project → click your **MySQL** service.
 - Look for a **Data** tab, or **Query**, or **Connect** → **Query** (Railway’s wording may vary). If you see a place to run SQL or “Open in Data Browser,” use it.
 - Open the file **`docker/init.sql`** in your repo in an editor. **Select all** and copy the entire contents (all the `CREATE TABLE ...` statements).
 - Paste into Railway’s SQL / query box and run it (e.g. **Run** or **Execute**). You should see success or “Query OK” for each table. Then you’re done.
 - If you don’t see a Query/Data option, try **Connect** and see if there’s a “Web client” or link to a query UI; or use Option B or D.
 
-**Option B – Use Docker (only if Docker Desktop is installed and running)**  
+**Option B – Use Docker (only if Docker Desktop is installed and running)**
+
 - The error `failed to connect to the docker API ... check if the daemon is running` means Docker isn’t installed or Docker Desktop isn’t started. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and start it, then try again.
 - Run from your **syllabify repo root** (the folder that contains `docker/init.sql`). If you’re in `syllabify/docker`, run `cd ..` first.
 - **Piping the file** (no volume mount – works on Windows with OneDrive/paths with spaces). Replace host, port, and password with your Railway **public** values:
@@ -96,10 +98,12 @@ Your backend runs on **Render**, not on Railway. So the database must accept con
 
   No space between `-p` and the password. The host reads `docker/init.sql` and pipes it into the container, so no `-v` mount is needed.
 
-**Option C – From your computer (only if the `mysql` command is installed)**  
+**Option C – From your computer (only if the `mysql` command is installed)**
+
 - The `mysql` CLI is **not** the same as `npm install mysql`. Install the real MySQL client (e.g. [MySQL Installer](https://dev.mysql.com/downloads/installer/)) or use WSL. From **syllabify repo root**: `mysql -h PUBLIC_HOST -P PUBLIC_PORT -u root -p railway`, then at `mysql>` run `source docker/init.sql`.
 
-**Option D – Skip for now**  
+**Option D – Skip for now**
+
 - Continue to Section 2. After the backend is on Render, the first login may fail with “table doesn’t exist.” Then run Option A and redeploy.
 
 14. After the schema is created, you’re done with **production** Railway. Save the connection details as “production DB”; you’ll create a **separate** MySQL for dev in Section 4. Move on to Section 2 (Render) and use the **public** host, **public** port, user, password, and database name from Step 1.3.
@@ -129,15 +133,15 @@ Render’s free tier spins down after ~15 minutes of no traffic; the first reque
 6. In the same Web Service form, find **Environment** or **Environment Variables**.
 7. Add each variable below. Use the **Key** exactly as written; for **Value**, use the source indicated. If Render has a “Secret” toggle for sensitive values, turn it on for `DB_PASSWORD` and `SECRET_KEY`.
 
-| Key           | Where to get the value |
-|---------------|------------------------|
-| `DB_HOST`     | **Public** host from Railway (e.g. from the connection URL: `maglev.proxy.rlwy.net`). **Not** `MYSQLHOST` (that’s internal). |
-| `DB_PORT`     | **Public** port from Railway (e.g. from the connection URL: `35428`). **Not** `MYSQLPORT` (3306) – that’s internal. |
-| `DB_NAME`     | From Railway: `MYSQLDATABASE` (value is often `railway`). |
-| `DB_USER`     | From Railway: `MYSQLUSER` (often `root`). |
-| `DB_PASSWORD` | From Railway: `MYSQLPASSWORD`. (Mark as Secret.) |
-| `SECRET_KEY`  | Generate one: run `openssl rand -hex 32` in a terminal, or use any long random string. (Mark as Secret.) |
-| `FRONTEND_URL`| Leave blank for now. After you deploy the frontend (Section 3), come back and set this to your Vercel URL, e.g. `https://syllabify-xxx.vercel.app` (no trailing slash). Then trigger a redeploy. |
+| Key            | Where to get the value                                                                                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `DB_HOST`      | **Public** host from Railway (e.g. from the connection URL: `maglev.proxy.rlwy.net`). **Not** `MYSQLHOST` (that’s internal).                                                                     |
+| `DB_PORT`      | **Public** port from Railway (e.g. from the connection URL: `35428`). **Not** `MYSQLPORT` (3306) – that’s internal.                                                                              |
+| `DB_NAME`      | From Railway: `MYSQLDATABASE` (value is often `railway`).                                                                                                                                        |
+| `DB_USER`      | From Railway: `MYSQLUSER` (often `root`).                                                                                                                                                        |
+| `DB_PASSWORD`  | From Railway: `MYSQLPASSWORD`. (Mark as Secret.)                                                                                                                                                 |
+| `SECRET_KEY`   | Generate one: run `openssl rand -hex 32` in a terminal, or use any long random string. (Mark as Secret.)                                                                                         |
+| `FRONTEND_URL` | Leave blank for now. After you deploy the frontend (Section 3), come back and set this to your Vercel URL, e.g. `https://syllabify-xxx.vercel.app` (no trailing slash). Then trigger a redeploy. |
 
 - Do **not** add `PORT`. Render sets it automatically; the Dockerfile uses it.
 - Optional later: `JWT_SECRET_KEY`, `JWT_ALGORITHM`, `JWT_EXPIRATION_DELTA`.
@@ -248,7 +252,7 @@ If you want to run the app on your machine (e.g. backend + DB via `docker-compos
 **Production (main)**
 
 - [ ] **Railway (prod)**: MySQL created → **Public Network** → Variables copied → `docker/init.sql` run once.
-- [ ] **Render (prod)**: Web Service, branch **main** → DB_*, SECRET_KEY set → deploy Live → backend URL copied.
+- [ ] **Render (prod)**: Web Service, branch **main** → DB\_\*, SECRET_KEY set → deploy Live → backend URL copied.
 - [ ] **Vercel (prod)**: Project, branch **main**, root **frontend** → `VITE_API_URL` = prod Render URL → deploy → frontend URL copied.
 - [ ] **Render (prod)**: `FRONTEND_URL` = prod Vercel URL → redeploy.
 - [ ] **Test prod**: Open prod Vercel URL → login → confirm API works.
@@ -256,7 +260,7 @@ If you want to run the app on your machine (e.g. backend + DB via `docker-compos
 **Dev (dev branch)**
 
 - [ ] **Railway (dev)**: Second MySQL → Public Network → run `docker/init.sql` → copy dev DB variables.
-- [ ] **Render (dev)**: Second Web Service, branch **dev** → dev DB_*, new SECRET_KEY → deploy Live → copy dev backend URL.
+- [ ] **Render (dev)**: Second Web Service, branch **dev** → dev DB\_\*, new SECRET_KEY → deploy Live → copy dev backend URL.
 - [ ] **Vercel (dev)**: Second project, branch **dev**, root **frontend** → `VITE_API_URL` = dev Render URL → deploy → copy dev frontend URL.
 - [ ] **Render (dev)**: `FRONTEND_URL` = dev Vercel URL → redeploy.
 - [ ] **Test dev**: Open dev Vercel URL → login → confirm dev API works.

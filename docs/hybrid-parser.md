@@ -12,13 +12,13 @@ Modern document automation systems (contract analyzers, invoice parsers, tax for
 
 ### What You Need To Do (Your Side)
 
-| Task | Details | When |
-|------|---------|------|
-| **Choose LLM API** | OpenAI recommended (GPT-4o-mini for cost); alternatively Claude/Anthropic. | Before Phase 2 |
-| **Create API key** | See detailed walkthrough below. | Before Phase 2 |
-| **Add `OPENAI_API_KEY`** | In Render dashboard: Environment → Add variable → `OPENAI_API_KEY` = your key (mark as Secret). Also add to local `.env` for dev. | Phase 2 start |
-| **Ensure billing / credits** | OpenAI requires payment method for API access. GPT-4o-mini is ~$0.01–0.03 per syllabus. | Phase 2 start |
-| **Review parse endpoint timeout** | Render default may be 30s. LLM calls can take 3–8s. Extend if needed. | Phase 3 |
+| Task                              | Details                                                                                                                           | When           |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| **Choose LLM API**                | OpenAI recommended (GPT-4o-mini for cost); alternatively Claude/Anthropic.                                                        | Before Phase 2 |
+| **Create API key**                | See detailed walkthrough below.                                                                                                   | Before Phase 2 |
+| **Add `OPENAI_API_KEY`**          | In Render dashboard: Environment → Add variable → `OPENAI_API_KEY` = your key (mark as Secret). Also add to local `.env` for dev. | Phase 2 start  |
+| **Ensure billing / credits**      | OpenAI requires payment method for API access. GPT-4o-mini is ~$0.01–0.03 per syllabus.                                           | Phase 2 start  |
+| **Review parse endpoint timeout** | Render default may be 30s. LLM calls can take 3–8s. Extend if needed.                                                             | Phase 3        |
 
 ---
 
@@ -28,10 +28,10 @@ When you're on the [OpenAI API Keys page](https://platform.openai.com/api-keys) 
 
 #### 1. **Ownership: "Me" vs "Service account"**
 
-| Option | Use this when |
-|--------|----------------|
-| **Me** | You're the developer, solo or small team, dev/testing, or first production deploy. Key is tied to your account. |
-| **Service account** | You want a separate identity for CI/CD, production servers, or team automation. Requires more setup. |
+| Option              | Use this when                                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Me**              | You're the developer, solo or small team, dev/testing, or first production deploy. Key is tied to your account. |
+| **Service account** | You want a separate identity for CI/CD, production servers, or team automation. Requires more setup.            |
 
 **Recommendation:** Choose **Me**. For Syllabify, a personal key is fine. You can create a service account later for production if needed.
 
@@ -58,11 +58,11 @@ You can create multiple keys (one for local, one for Render). Naming is just for
 
 #### 4. **Permissions: All, Restricted, or Read only**
 
-| Option | What it does | Use for Syllabify? |
-|--------|---------------|-------------------|
-| **All** | Full access to all endpoints. Default. | ✅ **Yes** — simplest, works for Chat Completions. |
+| Option         | What it does                                                               | Use for Syllabify?                                                                                     |
+| -------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **All**        | Full access to all endpoints. Default.                                     | ✅ **Yes** — simplest, works for Chat Completions.                                                     |
 | **Restricted** | Fine-grained Read/Write per endpoint. You must enable access for each API. | Optional — use if you want to limit scope. Need to enable Chat Completions (and possibly Completions). |
-| **Read only** | Read-only for all endpoints. | ❌ No — Chat Completions needs to send requests (POST) and get responses, which is not read-only. |
+| **Read only**  | Read-only for all endpoints.                                               | ❌ No — Chat Completions needs to send requests (POST) and get responses, which is not read-only.      |
 
 **Recommendation:** Choose **All** to get started. If you later want to lock it down, use **Restricted** and enable only the Chat Completions API.
 
@@ -90,10 +90,10 @@ You can create multiple keys (one for local, one for Render). Naming is just for
 
 After the hybrid parser code is deployed, add one more env var so the app actually uses it:
 
-| Variable | Value | Where |
-|----------|-------|-------|
-| `USE_LLM_PARSER` | `true` | Render (syllabify-dev) — enable hybrid on dev first |
-| `USE_LLM_PARSER` | `true` or `false` | Render (syllabify prod) — enable when confident |
+| Variable         | Value             | Where                                               |
+| ---------------- | ----------------- | --------------------------------------------------- |
+| `USE_LLM_PARSER` | `true`            | Render (syllabify-dev) — enable hybrid on dev first |
+| `USE_LLM_PARSER` | `true` or `false` | Render (syllabify prod) — enable when confident     |
 
 **GPT-4o-mini:** You don't set the model in the OpenAI dashboard. We specify `model="gpt-4o-mini"` in our code when calling the API. Your API key works with any model; the code chooses which one to use.
 
@@ -125,37 +125,37 @@ After the hybrid parser code is deployed, add one more env var so the app actual
 
 ### Keep As-Is (Reuse Directly)
 
-| Component | Path | Use |
-|-----------|------|-----|
-| **document_utils** | `backend/app/utils/document_utils.py` | PDF/DOCX/TXT extraction. We *extend* it (add table extraction), not replace. |
-| **date_utils** | `backend/app/utils/date_utils.py` | `parse_due_date()`, date normalization—use in validation. |
+| Component                     | Path                                      | Use                                                                                                                         |
+| ----------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **document_utils**            | `backend/app/utils/document_utils.py`     | PDF/DOCX/TXT extraction. We _extend_ it (add table extraction), not replace.                                                |
+| **date_utils**                | `backend/app/utils/date_utils.py`         | `parse_due_date()`, date normalization—use in validation.                                                                   |
 | **parsing_service API shape** | `backend/app/services/parsing_service.py` | Output format (`course_name`, `assignments`, `assessments`, `meeting_times`, `confidence`) stays same. Frontend expects it. |
-| **syllabus API route** | `backend/app/api/syllabus.py` | `POST /parse` unchanged. We add internal routing (hybrid vs rule). |
-| **Syllabus schema** | Same shape as `parsed.json` fixtures | `course`, `assessments`, `assessment_categories`, `meeting_times`, `late_pass_policy`. LLM must output this. |
+| **syllabus API route**        | `backend/app/api/syllabus.py`             | `POST /parse` unchanged. We add internal routing (hybrid vs rule).                                                          |
+| **Syllabus schema**           | Same shape as `parsed.json` fixtures      | `course`, `assessments`, `assessment_categories`, `meeting_times`, `late_pass_policy`. LLM must output this.                |
 
 ### Refactor / Extend
 
-| Component | Path | Change |
-|-----------|------|--------|
-| **document_utils** | `backend/app/utils/document_utils.py` | Add `extract_structured(file)` → returns `{sections, tables, raw_text, metadata}`. Keep `extract_text_from_file()` for backward compat. |
+| Component           | Path                                      | Change                                                                                                                                                                                                                                                    |
+| ------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **document_utils**  | `backend/app/utils/document_utils.py`     | Add `extract_structured(file)` → returns `{sections, tables, raw_text, metadata}`. Keep `extract_text_from_file()` for backward compat.                                                                                                                   |
 | **parsing_service** | `backend/app/services/parsing_service.py` | Add `parse_text(..., mode="hybrid")` path. When `USE_LLM_PARSER=true`, call hybrid flow; else call existing `_parse_with_syllabus_parser()`. Reuse `compute_parse_confidence()`, `_hours_from_assessment_type()`, `_is_junk_title()` for post-processing. |
-| **syllabus.py** | `backend/app/api/syllabus.py` | Already supports `mode` query param. Add `mode=hybrid` when feature flag on. No route change. |
+| **syllabus.py**     | `backend/app/api/syllabus.py`             | Already supports `mode` query param. Add `mode=hybrid` when feature flag on. No route change.                                                                                                                                                             |
 
 ### New (Add, Don’t Replace)
 
-| Component | Path | Purpose |
-|-----------|------|---------|
+| Component                | Path                                                               | Purpose                                                   |
+| ------------------------ | ------------------------------------------------------------------ | --------------------------------------------------------- |
 | **Structured extractor** | `backend/app/services/extraction/extractor.py` or `document_utils` | Sections, tables, candidate_dates, candidate_percentages. |
-| **LLM parser** | `backend/app/services/llm_parser.py` | OpenAI call, prompt, schema enforcement. |
-| **Validator** | `backend/app/services/validation.py` or inside `llm_parser` | Schema check, date normalize, dedupe. |
+| **LLM parser**           | `backend/app/services/llm_parser.py`                               | OpenAI call, prompt, schema enforcement.                  |
+| **Validator**            | `backend/app/services/validation.py` or inside `llm_parser`        | Schema check, date normalize, dedupe.                     |
 
 ### Existing Heuristic Parser Role
 
-| Module | Path | Role in Hybrid |
-|--------|------|----------------|
-| **syllabus_parser** | `backend/app/services/syllabus_parser/` | **Fallback:** If LLM fails, times out, or returns empty → run `parse_syllabus_text()`. **Also:** Optionally run in parallel and merge (e.g. take LLM assessments + heuristic meeting times if LLM missed them). |
-| **assessments.py** | `backend/app/services/syllabus_parser/assessments.py` | Can reuse regex for `candidate_percentages` in Step 1 (pre-extraction). Optional. |
-| **meeting_times.py** | `backend/app/services/syllabus_parser/meeting_times.py` | Can reuse patterns for `candidate_meetings` in Step 1. Optional. |
+| Module               | Path                                                    | Role in Hybrid                                                                                                                                                                                                  |
+| -------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **syllabus_parser**  | `backend/app/services/syllabus_parser/`                 | **Fallback:** If LLM fails, times out, or returns empty → run `parse_syllabus_text()`. **Also:** Optionally run in parallel and merge (e.g. take LLM assessments + heuristic meeting times if LLM missed them). |
+| **assessments.py**   | `backend/app/services/syllabus_parser/assessments.py`   | Can reuse regex for `candidate_percentages` in Step 1 (pre-extraction). Optional.                                                                                                                               |
+| **meeting_times.py** | `backend/app/services/syllabus_parser/meeting_times.py` | Can reuse patterns for `candidate_meetings` in Step 1. Optional.                                                                                                                                                |
 
 ---
 
@@ -194,12 +194,12 @@ After the hybrid parser code is deployed, add one more env var so the app actual
 
 ### 1.1 Document Extraction
 
-| Format   | Tool              | Notes                                                   |
-|----------|-------------------|---------------------------------------------------------|
-| PDF      | **pdfplumber**    | Already used; preserve tables via `page.extract_tables()` |
-| PDF      | **PyMuPDF (fitz)**| Optional: better layout, image handling if needed       |
-| DOCX     | **python-docx**   | Already used; extract paragraphs + tables separately   |
-| TXT      | Direct read       | UTF-8, handle BOM                                      |
+| Format | Tool               | Notes                                                     |
+| ------ | ------------------ | --------------------------------------------------------- |
+| PDF    | **pdfplumber**     | Already used; preserve tables via `page.extract_tables()` |
+| PDF    | **PyMuPDF (fitz)** | Optional: better layout, image handling if needed         |
+| DOCX   | **python-docx**    | Already used; extract paragraphs + tables separately      |
+| TXT    | Direct read        | UTF-8, handle BOM                                         |
 
 ### 1.2 Light Structure (Intermediate Format)
 
@@ -214,10 +214,26 @@ Produce a structured blob instead of raw concatenated text:
       "tables": [
         ["Week", "Date", "Topic", "Readings", "Assignments"],
         ["1", "Sept. 30", "lecture-0-welcome.pdf", "", "Lab 0"],
-        ["2", "Oct. 7", "lecture-3-system-calls.pdf", "OSC: Ch 2", "Project 1 (out: Oct. 3)"]
+        [
+          "2",
+          "Oct. 7",
+          "lecture-3-system-calls.pdf",
+          "OSC: Ch 2",
+          "Project 1 (out: Oct. 3)"
+        ]
       ],
-      "candidate_dates": ["Sept. 30", "Oct. 3", "Oct. 7", "Oct. 24", "Nov. 4", "Dec. 11"],
-      "candidate_percentages": [{"value": 20, "context": "Projects 20%"}, {"value": 20, "context": "Midterm 20%"}]
+      "candidate_dates": [
+        "Sept. 30",
+        "Oct. 3",
+        "Oct. 7",
+        "Oct. 24",
+        "Nov. 4",
+        "Dec. 11"
+      ],
+      "candidate_percentages": [
+        { "value": 20, "context": "Projects 20%" },
+        { "value": 20, "context": "Midterm 20%" }
+      ]
     }
   ],
   "raw_text": "...",
@@ -303,7 +319,7 @@ Each assessment (and optionally each meeting time) gets a `confidence` score (0�
 - **< 0.3**: Guess; highlight for user
 
 **Prompt instruction:**  
-*"Assign confidence 0.0–1.0 for each assessment based on how clearly the syllabus states it. Use 0.9+ only when you see explicit due date and/or weight. Use 0.5–0.7 when inferring from schedule context."*
+_"Assign confidence 0.0–1.0 for each assessment based on how clearly the syllabus states it. Use 0.9+ only when you see explicit due date and/or weight. Use 0.5–0.7 when inferring from schedule context."_
 
 ### 2.4 LLM Prompt Design
 
@@ -351,14 +367,14 @@ LAB: Thursday, B026 Klamath
 
 ### 3.1 Validation Pipeline
 
-| Step            | Action |
-|-----------------|--------|
+| Step            | Action                                                   |
+| --------------- | -------------------------------------------------------- |
 | Schema validate | Ensure all required fields, correct types, allowed enums |
-| Date normalize  | Convert `Oct. 24` → `2025-10-24`; handle academic year |
-| Dedupe          | Merge duplicate assessments (same title + type) |
-| Consistency     | `category_id` must exist; `weight_percent` sum ≤ 110% |
-| IDs             | Generate stable `id` for each assessment/meeting |
-| Fallback fill   | If LLM returns empty, run heuristic parser and merge |
+| Date normalize  | Convert `Oct. 24` → `2025-10-24`; handle academic year   |
+| Dedupe          | Merge duplicate assessments (same title + type)          |
+| Consistency     | `category_id` must exist; `weight_percent` sum ≤ 110%    |
+| IDs             | Generate stable `id` for each assessment/meeting         |
+| Fallback fill   | If LLM returns empty, run heuristic parser and merge     |
 
 ### 3.2 Normalization Rules
 
@@ -390,14 +406,14 @@ Map schema to existing tables:
 
 ## Token Cost Reduction
 
-| Strategy                    | Effect |
-|----------------------------|--------|
+| Strategy                      | Effect                                                                    |
+| ----------------------------- | ------------------------------------------------------------------------- |
 | Rule-based section extraction | Send only grading + schedule + course info; skip policies, readings, etc. |
-| Candidate line filtering   | Send lines containing dates, %, or assessment keywords |
-| Chunked calls              | One call for grading, one for schedule; smaller inputs |
-| Use GPT-4o-mini            | ~10× cheaper than GPT-4o; often sufficient for structured extraction |
-| Caching                    | Same syllabus re-parsed → cache by hash; skip LLM |
-| Fallback heuristic        | If heuristic parser gets high confidence, skip LLM for that upload |
+| Candidate line filtering      | Send lines containing dates, %, or assessment keywords                    |
+| Chunked calls                 | One call for grading, one for schedule; smaller inputs                    |
+| Use GPT-4o-mini               | ~10× cheaper than GPT-4o; often sufficient for structured extraction      |
+| Caching                       | Same syllabus re-parsed → cache by hash; skip LLM                         |
+| Fallback heuristic            | If heuristic parser gets high confidence, skip LLM for that upload        |
 
 **Rough estimate:** ~2–5K input tokens + ~1–2K output tokens per syllabus → ~$0.01–0.03 per parse with GPT-4o-mini.
 
@@ -425,8 +441,8 @@ Map schema to existing tables:
    - New: `validate_and_normalize(llm_output)` → DB-ready
    - Existing: `parsing_service` API shape for UI
 
-3. **Feature flag:**  
-   - `USE_LLM_PARSER=true` → hybrid path  
+3. **Feature flag:**
+   - `USE_LLM_PARSER=true` → hybrid path
    - `USE_LLM_PARSER=false` → current heuristic-only path (for testing or cost control)
 
 ### Railway Considerations
@@ -442,11 +458,13 @@ Map schema to existing tables:
 ### Current: MySQL on Railway
 
 **Pros:**
+
 - Already deployed; schema and migrations in place
 - Railway MySQL free tier available
 - Backend uses `mysql.connector` / PyMySQL; no migration needed
 
 **Cons:**
+
 - Railway MySQL can be flaky (see DEPLOYMENT.md: "Lost connection" issues)
 - JSON columns: MySQL has `JSON` type but less ergonomic than PostgreSQL for nested JSON
 - No built-in realtime; no auth integration (Syllabify has its own auth)
@@ -454,11 +472,13 @@ Map schema to existing tables:
 ### Alternative: Supabase (PostgreSQL)
 
 **Pros:**
+
 - PostgreSQL: excellent `JSONB`, full-text search, array types
 - Supabase: auth, storage, realtime, Edge Functions—if you want them later
 - Often more stable than Railway MySQL on free tier
 
 **Cons:**
+
 - **Migration cost:** New schema, new connection, update all queries
 - Syllabify already has auth; Supabase auth is redundant unless you replace it
 - More moving parts for a project that may not need them
@@ -480,12 +500,12 @@ Map schema to existing tables:
 
 ### Phase 0: Prep (Do First)
 
-| Step | Owner | Action |
-|------|-------|--------|
-| 0.1 | You | Create OpenAI account, add payment, create API key |
-| 0.2 | You | Add `OPENAI_API_KEY` to `.env` (local) and Render (prod) |
-| 0.3 | We | Add `openai` to `backend/requirements.txt` |
-| 0.4 | We | Add `USE_LLM_PARSER=false` to `.env.example` and document it |
+| Step | Owner | Action                                                       |
+| ---- | ----- | ------------------------------------------------------------ |
+| 0.1  | You   | Create OpenAI account, add payment, create API key           |
+| 0.2  | You   | Add `OPENAI_API_KEY` to `.env` (local) and Render (prod)     |
+| 0.3  | We    | Add `openai` to `backend/requirements.txt`                   |
+| 0.4  | We    | Add `USE_LLM_PARSER=false` to `.env.example` and document it |
 
 ---
 
@@ -493,16 +513,16 @@ Map schema to existing tables:
 
 **Goal:** Produce `{ sections, tables, candidate_dates, candidate_percentages }` from PDF/DOCX/TXT. No LLM yet.
 
-| Step | File | Action |
-|------|------|--------|
-| 1.1 | `backend/app/utils/document_utils.py` | Add `extract_structured_from_file(file)` → dict. Keep `extract_text_from_file()` unchanged. |
-| 1.2 | `document_utils.py` | For PDF: use `pdfplumber` `page.extract_tables()`; return `tables` per page/section. Already have `page.extract_text()`. |
-| 1.3 | `document_utils.py` | For DOCX: extract tables separately (python-docx `doc.tables`); return structure similar to PDF. |
-| 1.4 | New or `document_utils` | Add `detect_sections(raw_text)` — regex for headings like "Grading", "Schedule", "Course Information", "Assignments", "Syllabus". Split text into `{heading, content}`. |
-| 1.5 | New or `document_utils` | Add `extract_candidate_dates(text)` — reuse patterns from `date_utils` + syllabus_parser. Return list of `{raw, normalized?, context}`. |
-| 1.6 | New or `document_utils` | Add `extract_candidate_percentages(text)` — regex `(\d{1,3})\s*%` with ~20 chars context. Return list of `{value, context}`. |
-| 1.7 | Tests | Add `tests/test_document_utils.py` cases for `extract_structured_from_file` using CS415 fixture. |
-| 1.8 | Integration | Wire `extract_structured_from_file` into a temp endpoint or script to verify output. No parser change yet. |
+| Step | File                                  | Action                                                                                                                                                                  |
+| ---- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.1  | `backend/app/utils/document_utils.py` | Add `extract_structured_from_file(file)` → dict. Keep `extract_text_from_file()` unchanged.                                                                             |
+| 1.2  | `document_utils.py`                   | For PDF: use `pdfplumber` `page.extract_tables()`; return `tables` per page/section. Already have `page.extract_text()`.                                                |
+| 1.3  | `document_utils.py`                   | For DOCX: extract tables separately (python-docx `doc.tables`); return structure similar to PDF.                                                                        |
+| 1.4  | New or `document_utils`               | Add `detect_sections(raw_text)` — regex for headings like "Grading", "Schedule", "Course Information", "Assignments", "Syllabus". Split text into `{heading, content}`. |
+| 1.5  | New or `document_utils`               | Add `extract_candidate_dates(text)` — reuse patterns from `date_utils` + syllabus_parser. Return list of `{raw, normalized?, context}`.                                 |
+| 1.6  | New or `document_utils`               | Add `extract_candidate_percentages(text)` — regex `(\d{1,3})\s*%` with ~20 chars context. Return list of `{value, context}`.                                            |
+| 1.7  | Tests                                 | Add `tests/test_document_utils.py` cases for `extract_structured_from_file` using CS415 fixture.                                                                        |
+| 1.8  | Integration                           | Wire `extract_structured_from_file` into a temp endpoint or script to verify output. No parser change yet.                                                              |
 
 **Deliverable:** `extract_structured_from_file(file)` returns the intermediate JSON. Token reduction ready for Phase 2.
 
@@ -512,17 +532,17 @@ Map schema to existing tables:
 
 **Goal:** Call OpenAI with structured output. Input = intermediate from Phase 1; output = schema-matched JSON.
 
-| Step | File | Action |
-|------|------|--------|
-| 2.1 | `backend/requirements.txt` | Add `openai>=1.0.0` (or version you choose). |
-| 2.2 | New: `backend/app/services/llm_parser.py` | Create module. Define schema (Pydantic models or dict) matching `parsed.json` shape. |
-| 2.3 | `llm_parser.py` | Implement `parse_with_llm(intermediate: dict) -> dict`. Build prompt from `intermediate["sections"]`, `candidate_dates`, `candidate_percentages`. |
-| 2.4 | `llm_parser.py` | Use OpenAI `client.chat.completions.create()` with `response_format={"type": "json_schema", "json_schema": {...}}` or function calling. |
-| 2.5 | `llm_parser.py` | Add system prompt (see §2.4). Add user prompt template with `[SECTION: X]` blocks. |
-| 2.6 | `llm_parser.py` | Add confidence instructions. Ensure each assessment has `confidence` 0–1. |
-| 2.7 | `llm_parser.py` | Handle errors: timeout, rate limit, invalid JSON. Return `None` or raise; caller will fallback to heuristic. |
-| 2.8 | Tests | Add `tests/test_llm_parser.py` with mocked OpenAI (no real API calls in CI). Use fixture intermediate from Phase 1. |
-| 2.9 | Manual test | Run locally with real API key against CS415 extracted content. Verify output shape. |
+| Step | File                                      | Action                                                                                                                                            |
+| ---- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2.1  | `backend/requirements.txt`                | Add `openai>=1.0.0` (or version you choose).                                                                                                      |
+| 2.2  | New: `backend/app/services/llm_parser.py` | Create module. Define schema (Pydantic models or dict) matching `parsed.json` shape.                                                              |
+| 2.3  | `llm_parser.py`                           | Implement `parse_with_llm(intermediate: dict) -> dict`. Build prompt from `intermediate["sections"]`, `candidate_dates`, `candidate_percentages`. |
+| 2.4  | `llm_parser.py`                           | Use OpenAI `client.chat.completions.create()` with `response_format={"type": "json_schema", "json_schema": {...}}` or function calling.           |
+| 2.5  | `llm_parser.py`                           | Add system prompt (see §2.4). Add user prompt template with `[SECTION: X]` blocks.                                                                |
+| 2.6  | `llm_parser.py`                           | Add confidence instructions. Ensure each assessment has `confidence` 0–1.                                                                         |
+| 2.7  | `llm_parser.py`                           | Handle errors: timeout, rate limit, invalid JSON. Return `None` or raise; caller will fallback to heuristic.                                      |
+| 2.8  | Tests                                     | Add `tests/test_llm_parser.py` with mocked OpenAI (no real API calls in CI). Use fixture intermediate from Phase 1.                               |
+| 2.9  | Manual test                               | Run locally with real API key against CS415 extracted content. Verify output shape.                                                               |
 
 **Deliverable:** `parse_with_llm(intermediate)` returns schema-valid dict or None.
 
@@ -532,18 +552,18 @@ Map schema to existing tables:
 
 **Goal:** Validate LLM output, normalize, map to API shape, add feature flag and fallback.
 
-| Step | File | Action |
-|------|------|--------|
-| 3.1 | New or `llm_parser.py` | Add `validate_and_normalize(llm_output)`. Schema check (required fields, enums). Use `date_utils.parse_due_date` for any remaining date strings. |
-| 3.2 | Validator | Dedupe assessments (same title+type). Ensure `category_id` exists. Cap `weight_percent` sum at 110. |
-| 3.3 | Validator | Generate stable IDs (`project_1`, `midterm_1`, etc.) if missing. |
-| 3.4 | `parsing_service.py` | Add `_parse_hybrid(file)` or `_parse_hybrid_text(text)`. Flow: `extract_structured_from_file` → `parse_with_llm` → `validate_and_normalize` → map to `{course_name, assignments, assessments, meeting_times, confidence}`. |
-| 3.5 | `parsing_service.py` | In `parse_text()` / `parse_file()`: if `os.getenv("USE_LLM_PARSER") == "true"` and `mode in ("hybrid", "rule")`, try hybrid first. On failure/empty, fall back to `_parse_with_syllabus_parser()`. |
-| 3.6 | `parsing_service.py` | Map LLM result to same shape as heuristic: `assignments` = `[{name, due_date, hours, type}]` derived from `assessments`. Reuse `_hours_from_assessment_type`, `_is_junk_title` if needed. |
-| 3.7 | `syllabus.py` | Add `?mode=hybrid` support (may already exist). When `USE_LLM_PARSER=true`, default `mode` to `hybrid` or accept both. |
-| 3.8 | `.env.example` | Document `USE_LLM_PARSER`, `OPENAI_API_KEY`. |
-| 3.9 | Render | Set `USE_LLM_PARSER=true`, `OPENAI_API_KEY=<secret>` in Render env. |
-| 3.10 | Tests | End-to-end: `POST /parse` with file, `USE_LLM_PARSER=true`, mocked LLM. Assert response shape. |
+| Step | File                   | Action                                                                                                                                                                                                                     |
+| ---- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.1  | New or `llm_parser.py` | Add `validate_and_normalize(llm_output)`. Schema check (required fields, enums). Use `date_utils.parse_due_date` for any remaining date strings.                                                                           |
+| 3.2  | Validator              | Dedupe assessments (same title+type). Ensure `category_id` exists. Cap `weight_percent` sum at 110.                                                                                                                        |
+| 3.3  | Validator              | Generate stable IDs (`project_1`, `midterm_1`, etc.) if missing.                                                                                                                                                           |
+| 3.4  | `parsing_service.py`   | Add `_parse_hybrid(file)` or `_parse_hybrid_text(text)`. Flow: `extract_structured_from_file` → `parse_with_llm` → `validate_and_normalize` → map to `{course_name, assignments, assessments, meeting_times, confidence}`. |
+| 3.5  | `parsing_service.py`   | In `parse_text()` / `parse_file()`: if `os.getenv("USE_LLM_PARSER") == "true"` and `mode in ("hybrid", "rule")`, try hybrid first. On failure/empty, fall back to `_parse_with_syllabus_parser()`.                         |
+| 3.6  | `parsing_service.py`   | Map LLM result to same shape as heuristic: `assignments` = `[{name, due_date, hours, type}]` derived from `assessments`. Reuse `_hours_from_assessment_type`, `_is_junk_title` if needed.                                  |
+| 3.7  | `syllabus.py`          | Add `?mode=hybrid` support (may already exist). When `USE_LLM_PARSER=true`, default `mode` to `hybrid` or accept both.                                                                                                     |
+| 3.8  | `.env.example`         | Document `USE_LLM_PARSER`, `OPENAI_API_KEY`.                                                                                                                                                                               |
+| 3.9  | Render                 | Set `USE_LLM_PARSER=true`, `OPENAI_API_KEY=<secret>` in Render env.                                                                                                                                                        |
+| 3.10 | Tests                  | End-to-end: `POST /parse` with file, `USE_LLM_PARSER=true`, mocked LLM. Assert response shape.                                                                                                                             |
 
 **Deliverable:** Hybrid parser wired end-to-end. Feature flag controls it. Fallback works.
 
@@ -553,12 +573,12 @@ Map schema to existing tables:
 
 **Goal:** Surface confidence, optional re-parse, monitor costs.
 
-| Step | File | Action |
-|------|------|--------|
-| 4.1 | Frontend | Pass `confidence` from assessments to UI. Each assignment row: if `confidence < 0.6`, add visual cue (yellow background, icon, tooltip "Parsed with low confidence—please verify"). |
-| 4.2 | Frontend | Optionally add "Re-parse" or "Parse with AI" button that re-calls `POST /parse?mode=hybrid`. |
-| 4.3 | Backend | Optional: log token usage for monitoring. Add simple counter or log `usage` from OpenAI response. |
-| 4.4 | Docs | Update `hybrid-parser.md` with any learnings. Document cost per parse. |
+| Step | File     | Action                                                                                                                                                                              |
+| ---- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 4.1  | Frontend | Pass `confidence` from assessments to UI. Each assignment row: if `confidence < 0.6`, add visual cue (yellow background, icon, tooltip "Parsed with low confidence—please verify"). |
+| 4.2  | Frontend | Optionally add "Re-parse" or "Parse with AI" button that re-calls `POST /parse?mode=hybrid`.                                                                                        |
+| 4.3  | Backend  | Optional: log token usage for monitoring. Add simple counter or log `usage` from OpenAI response.                                                                                   |
+| 4.4  | Docs     | Update `hybrid-parser.md` with any learnings. Document cost per parse.                                                                                                              |
 
 **Deliverable:** User sees which items need review. Optional re-parse. Basic observability.
 
@@ -618,17 +638,17 @@ When both LLM and heuristic produce results, options:
 
 ## Quick Reference: Key Files
 
-| Purpose | Path |
-|---------|------|
-| Document extraction (PDF/DOCX/TXT) | `backend/app/utils/document_utils.py` |
-| Date parsing | `backend/app/utils/date_utils.py` |
-| Heuristic syllabus parser | `backend/app/services/syllabus_parser/` |
-| Parsing API layer | `backend/app/services/parsing_service.py` |
-| Syllabus API route | `backend/app/api/syllabus.py` |
-| Schema reference | `backend/tests/fixtures/syllabus-data/syllabus/CS415/parsed.json` |
-| New: structured extractor | Extend `document_utils` or `backend/app/services/extraction/` |
-| New: LLM parser | `backend/app/services/llm_parser.py` |
-| New: validator | `backend/app/services/validation.py` or inside `llm_parser` |
+| Purpose                            | Path                                                              |
+| ---------------------------------- | ----------------------------------------------------------------- |
+| Document extraction (PDF/DOCX/TXT) | `backend/app/utils/document_utils.py`                             |
+| Date parsing                       | `backend/app/utils/date_utils.py`                                 |
+| Heuristic syllabus parser          | `backend/app/services/syllabus_parser/`                           |
+| Parsing API layer                  | `backend/app/services/parsing_service.py`                         |
+| Syllabus API route                 | `backend/app/api/syllabus.py`                                     |
+| Schema reference                   | `backend/tests/fixtures/syllabus-data/syllabus/CS415/parsed.json` |
+| New: structured extractor          | Extend `document_utils` or `backend/app/services/extraction/`     |
+| New: LLM parser                    | `backend/app/services/llm_parser.py`                              |
+| New: validator                     | `backend/app/services/validation.py` or inside `llm_parser`       |
 
 **Note:** `parsing_service.parse_text()` already supports `mode="hybrid"` and `mode="ai"` (looks for `ai_parser`). We implement the hybrid path; the `ai_parser` import falls through to heuristic when absent.
 
@@ -636,12 +656,12 @@ When both LLM and heuristic produce results, options:
 
 ## Implementation Status
 
-| Phase | Status | Notes |
-|-------|--------|-------|
-| Phase 0 | ✅ Done | openai dep, .env.example |
-| Phase 1 | ✅ Done | extract_structured_from_file |
-| Phase 2 | ✅ Done | llm_parser.py, GPT-4o-mini |
-| Phase 3 | ✅ Done | Hybrid flow, fallback, feature flag |
+| Phase   | Status  | Notes                                                                           |
+| ------- | ------- | ------------------------------------------------------------------------------- |
+| Phase 0 | ✅ Done | openai dep, .env.example                                                        |
+| Phase 1 | ✅ Done | extract_structured_from_file                                                    |
+| Phase 2 | ✅ Done | llm_parser.py, GPT-4o-mini                                                      |
+| Phase 3 | ✅ Done | Hybrid flow, fallback, feature flag                                             |
 | Phase 4 | ✅ Done | UI confidence highlighting (low-confidence rows get amber background + tooltip) |
 
 ---
@@ -650,11 +670,11 @@ When both LLM and heuristic produce results, options:
 
 The LLM sometimes returns junk that we filter in `_is_junk_title` and `_clean_meeting_times`:
 
-| Issue | Example | Fix |
-|-------|---------|-----|
-| Grade scale entries | "B 80", "C 70", "D 60" | Filter: `^[A-D]\s*\d{2,3}$` |
-| Policy text | "Accommodation for Religious Observances" | Filter: contains "accommodation" + "religious" |
-| Sentence fragments | "done during that time will be worth", "Grades are assigned according to the scale" | Filter: contains phrases |
-| Bad meeting location | "Prerequisites" (section header) | `_clean_meeting_times`: section words → null |
+| Issue                | Example                                                                             | Fix                                            |
+| -------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Grade scale entries  | "B 80", "C 70", "D 60"                                                              | Filter: `^[A-D]\s*\d{2,3}$`                    |
+| Policy text          | "Accommodation for Religious Observances"                                           | Filter: contains "accommodation" + "religious" |
+| Sentence fragments   | "done during that time will be worth", "Grades are assigned according to the scale" | Filter: contains phrases                       |
+| Bad meeting location | "Prerequisites" (section header)                                                    | `_clean_meeting_times`: section words → null   |
 
 **LLM prompt:** Explicit instructions added to exclude grade scales, policy text, sentence fragments. Meeting location must be room/building, not section title.

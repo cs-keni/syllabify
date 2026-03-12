@@ -13,6 +13,7 @@
 ## Task 1: Database Migration
 
 **Files:**
+
 - Create: `docker/migrations/012_calendar_sources_events.sql`
 
 **Step 1: Write migration SQL**
@@ -121,6 +122,7 @@ git commit -m "feat: add migration 012 for CalendarSources and CalendarEvents ta
 ## Task 2: SQLAlchemy Models
 
 **Files:**
+
 - Create: `backend/app/models/calendar_source.py`
 - Create: `backend/app/models/calendar_event.py`
 - Modify: `backend/app/models/study_time.py`
@@ -234,6 +236,7 @@ git commit -m "feat: add CalendarSource and CalendarEvent models, extend StudyTi
 ## Task 3: ICS Parsing Service (TDD)
 
 **Files:**
+
 - Create: `backend/app/services/ics_parsing_service.py`
 - Create: `backend/tests/test_ics_parsing_service.py`
 - Create: `backend/tests/fixtures/test_calendar.ics` (test fixture)
@@ -242,6 +245,7 @@ git commit -m "feat: add CalendarSource and CalendarEvent models, extend StudyTi
 **Step 1: Add dependencies to requirements.txt**
 
 Add these lines to `backend/requirements.txt`:
+
 ```
 icalendar>=5.0.0
 requests>=2.31.0
@@ -439,6 +443,7 @@ class TestAutoDetectCategory:
 Run: `cd /Users/leonwong/Desktop/syllabify/syllabify && docker compose exec backend python -m pytest tests/test_ics_parsing_service.py -v 2>&1 | head -30`
 
 If Docker is not running, run locally:
+
 ```bash
 cd backend && python -m pytest tests/test_ics_parsing_service.py -v 2>&1 | head -30
 ```
@@ -774,6 +779,7 @@ git commit -m "feat: add ICS parsing service with tests and test fixtures"
 ## Task 4: Refactor Backend Calendar API
 
 **Files:**
+
 - Modify: `backend/app/api/calendar.py` — refactor to use CalendarSources/CalendarEvents, add ICS endpoints
 - Modify: `backend/app/main.py` — no changes needed (calendar_bp already registered)
 
@@ -784,6 +790,7 @@ Read the full file first to understand exact code structure.
 **Step 2: Refactor calendar.py**
 
 The refactored file must:
+
 1. Keep all existing Google Calendar endpoints working
 2. Migrate Google import/sync to use CalendarSources + CalendarEvents tables
 3. Add new ICS feed endpoints:
@@ -829,6 +836,7 @@ Key endpoints to add:
 **Step 3: Refactor Google import to use new tables**
 
 In the existing `/api/calendar/import` endpoint:
+
 1. Create/find CalendarSource with source_type='google' for each calendar_id
 2. Insert events into CalendarEvents instead of ExternalEvents
 3. Map Google event fields to our schema:
@@ -854,6 +862,7 @@ git commit -m "feat: refactor calendar API to use CalendarSources/CalendarEvents
 ## Task 5: Frontend — Install FullCalendar
 
 **Files:**
+
 - Modify: `frontend/package.json`
 
 **Step 1: Install FullCalendar packages**
@@ -880,12 +889,14 @@ git commit -m "chore: install FullCalendar React dependencies"
 ## Task 6: Frontend — AppCalendar Component (Replace SchedulePreview)
 
 **Files:**
+
 - Create: `frontend/src/components/AppCalendar.jsx`
 - Create: `frontend/src/components/AppCalendar.css` (FullCalendar style overrides)
 
 **Step 1: Create AppCalendar component**
 
 This component wraps FullCalendar and handles:
+
 - Displaying events from CalendarEvents API + StudyTimes
 - Week/day/month view switching
 - Color coding by source/course
@@ -894,30 +905,30 @@ This component wraps FullCalendar and handles:
 
 ```jsx
 // frontend/src/components/AppCalendar.jsx
-import { useState, useRef, useCallback } from 'react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import listPlugin from '@fullcalendar/list';
-import './AppCalendar.css';
+import { useState, useRef, useCallback } from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import listPlugin from "@fullcalendar/list";
+import "./AppCalendar.css";
 
 const EVENT_KIND_STYLES = {
-  timed: { display: 'block' },
-  all_day: { display: 'block', allDay: true },
-  deadline_marker: { display: 'list-item', borderColor: '#EF4444' },
+  timed: { display: "block" },
+  all_day: { display: "block", allDay: true },
+  deadline_marker: { display: "list-item", borderColor: "#EF4444" },
 };
 
 const DEFAULT_CATEGORY_COLORS = {
-  class: '#3B82F6',
-  office_hours: '#8B5CF6',
-  exam: '#EF4444',
-  assignment_deadline: '#F59E0B',
-  meeting: '#6366F1',
-  blocked_time: '#6B7280',
-  personal: '#10B981',
-  work: '#F97316',
-  other: '#64748B',
+  class: "#3B82F6",
+  office_hours: "#8B5CF6",
+  exam: "#EF4444",
+  assignment_deadline: "#F59E0B",
+  meeting: "#6366F1",
+  blocked_time: "#6B7280",
+  personal: "#10B981",
+  work: "#F97316",
+  other: "#64748B",
 };
 
 export default function AppCalendar({
@@ -929,52 +940,65 @@ export default function AppCalendar({
   onEventResize,
 }) {
   const calendarRef = useRef(null);
-  const [currentView, setCurrentView] = useState('timeGridWeek');
+  const [currentView, setCurrentView] = useState("timeGridWeek");
 
   const transformEvents = useCallback(() => {
     const events = [];
 
     // Transform calendar events
     for (const evt of calendarEvents) {
-      if (evt.sync_status !== 'active') continue;
+      if (evt.sync_status !== "active") continue;
 
-      const title = evt.is_locally_modified && evt.local_title
-        ? evt.local_title : evt.title;
+      const title =
+        evt.is_locally_modified && evt.local_title
+          ? evt.local_title
+          : evt.title;
 
-      if (evt.event_kind === 'deadline_marker') {
+      if (evt.event_kind === "deadline_marker") {
         events.push({
           id: `cal-${evt.id}`,
           title: `📌 ${title}`,
           start: evt.start_date || evt.start_time,
           allDay: true,
-          display: 'list-item',
-          backgroundColor: DEFAULT_CATEGORY_COLORS[evt.event_category] || '#F59E0B',
-          borderColor: '#EF4444',
-          extendedProps: { type: 'calendar_event', data: evt },
-          classNames: ['deadline-marker'],
+          display: "list-item",
+          backgroundColor:
+            DEFAULT_CATEGORY_COLORS[evt.event_category] || "#F59E0B",
+          borderColor: "#EF4444",
+          extendedProps: { type: "calendar_event", data: evt },
+          classNames: ["deadline-marker"],
         });
-      } else if (evt.event_kind === 'all_day') {
+      } else if (evt.event_kind === "all_day") {
         events.push({
           id: `cal-${evt.id}`,
           title,
           start: evt.start_date,
           end: evt.end_date,
           allDay: true,
-          backgroundColor: evt.source_color || DEFAULT_CATEGORY_COLORS[evt.event_category] || '#64748B',
-          extendedProps: { type: 'calendar_event', data: evt },
+          backgroundColor:
+            evt.source_color ||
+            DEFAULT_CATEGORY_COLORS[evt.event_category] ||
+            "#64748B",
+          extendedProps: { type: "calendar_event", data: evt },
         });
       } else {
-        const startTime = evt.is_locally_modified && evt.local_start_time
-          ? evt.local_start_time : evt.start_time;
-        const endTime = evt.is_locally_modified && evt.local_end_time
-          ? evt.local_end_time : evt.end_time;
+        const startTime =
+          evt.is_locally_modified && evt.local_start_time
+            ? evt.local_start_time
+            : evt.start_time;
+        const endTime =
+          evt.is_locally_modified && evt.local_end_time
+            ? evt.local_end_time
+            : evt.end_time;
         events.push({
           id: `cal-${evt.id}`,
           title,
           start: startTime,
           end: endTime,
-          backgroundColor: evt.source_color || DEFAULT_CATEGORY_COLORS[evt.event_category] || '#64748B',
-          extendedProps: { type: 'calendar_event', data: evt },
+          backgroundColor:
+            evt.source_color ||
+            DEFAULT_CATEGORY_COLORS[evt.event_category] ||
+            "#64748B",
+          extendedProps: { type: "calendar_event", data: evt },
         });
       }
     }
@@ -983,13 +1007,13 @@ export default function AppCalendar({
     for (const st of studyTimes) {
       events.push({
         id: `study-${st.id}`,
-        title: st.course_name ? `📚 ${st.course_name}` : '📚 Study',
+        title: st.course_name ? `📚 ${st.course_name}` : "📚 Study",
         start: st.start_time,
         end: st.end_time,
-        backgroundColor: st.is_locked ? '#059669' : '#10B981',
-        borderColor: st.is_locked ? '#047857' : '#059669',
-        extendedProps: { type: 'study_time', data: st },
-        classNames: st.is_locked ? ['locked-study'] : [],
+        backgroundColor: st.is_locked ? "#059669" : "#10B981",
+        borderColor: st.is_locked ? "#047857" : "#059669",
+        extendedProps: { type: "study_time", data: st },
+        classNames: st.is_locked ? ["locked-study"] : [],
         editable: !st.is_locked,
       });
     }
@@ -1038,9 +1062,9 @@ export default function AppCalendar({
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         initialView={currentView}
         headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
         }}
         events={transformEvents()}
         editable={true}
@@ -1062,9 +1086,9 @@ export default function AppCalendar({
         height="auto"
         stickyHeaderDates={true}
         eventTimeFormat={{
-          hour: 'numeric',
-          minute: '2-digit',
-          meridiem: 'short',
+          hour: "numeric",
+          minute: "2-digit",
+          meridiem: "short",
         }}
       />
     </div>
@@ -1086,7 +1110,7 @@ export default function AppCalendar({
   --fc-border-color: #e5e7eb;
   --fc-today-bg-color: rgba(59, 130, 246, 0.05);
   --fc-event-border-color: transparent;
-  --fc-now-indicator-color: #EF4444;
+  --fc-now-indicator-color: #ef4444;
   font-family: inherit;
 }
 
@@ -1131,14 +1155,14 @@ export default function AppCalendar({
 .app-calendar-container .deadline-marker {
   @apply font-bold;
   border-left-width: 3px;
-  border-left-color: #EF4444 !important;
-  background-color: #FEF2F2 !important;
-  color: #991B1B !important;
+  border-left-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
 }
 
 .dark .app-calendar-container .deadline-marker {
   background-color: rgba(239, 68, 68, 0.15) !important;
-  color: #FCA5A5 !important;
+  color: #fca5a5 !important;
 }
 
 /* Locked study block styling */
@@ -1174,24 +1198,26 @@ git commit -m "feat: add AppCalendar component with FullCalendar integration"
 ## Task 7: Frontend — Unified Import Modal
 
 **Files:**
+
 - Create: `frontend/src/components/UnifiedImportModal.jsx` (replaces CalendarImportModal)
 
 **Step 1: Create UnifiedImportModal with tabs**
 
 The modal has two tabs:
+
 1. Google Calendar — same flow as current CalendarImportModal
 2. ICS Feed URL — new form: URL input, label, category dropdown
 
 ```jsx
 // frontend/src/components/UnifiedImportModal.jsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const CATEGORIES = [
-  { value: 'canvas', label: 'Canvas Calendar' },
-  { value: 'academic', label: 'Academic / University' },
-  { value: 'personal', label: 'Personal' },
-  { value: 'work', label: 'Work' },
-  { value: 'other', label: 'Other' },
+  { value: "canvas", label: "Canvas Calendar" },
+  { value: "academic", label: "Academic / University" },
+  { value: "personal", label: "Personal" },
+  { value: "work", label: "Work" },
+  { value: "other", label: "Other" },
 ];
 
 export default function UnifiedImportModal({
@@ -1203,26 +1229,28 @@ export default function UnifiedImportModal({
   calendarConnected,
   activeTerm,
 }) {
-  const [activeTab, setActiveTab] = useState(calendarConnected ? 'google' : 'ics');
+  const [activeTab, setActiveTab] = useState(
+    calendarConnected ? "google" : "ics",
+  );
 
   // ── Google Calendar tab state ──
   const [calendars, setCalendars] = useState([]);
   const [selected, setSelected] = useState(new Set());
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [loadingCals, setLoadingCals] = useState(false);
 
   // ── ICS tab state ──
-  const [icsUrl, setIcsUrl] = useState('');
-  const [icsLabel, setIcsLabel] = useState('');
-  const [icsCategory, setIcsCategory] = useState('other');
+  const [icsUrl, setIcsUrl] = useState("");
+  const [icsLabel, setIcsLabel] = useState("");
+  const [icsCategory, setIcsCategory] = useState("other");
 
   const [importing, setImporting] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   // Load Google calendars when tab switches to google
   useEffect(() => {
-    if (activeTab === 'google' && calendarConnected && calendars.length === 0) {
+    if (activeTab === "google" && calendarConnected && calendars.length === 0) {
       setLoadingCals(true);
       getCalendarList(token)
         .then((data) => {
@@ -1230,7 +1258,7 @@ export default function UnifiedImportModal({
           const primary = data.calendars?.find((c) => c.primary);
           if (primary) setSelected(new Set([primary.id]));
         })
-        .catch(() => setError('Failed to load calendars'))
+        .catch(() => setError("Failed to load calendars"))
         .finally(() => setLoadingCals(false));
     }
   }, [activeTab, calendarConnected, token]);
@@ -1258,10 +1286,10 @@ export default function UnifiedImportModal({
   };
 
   const handleGoogleImport = async () => {
-    if (selected.size === 0) return setError('Select at least one calendar');
-    if (!startDate || !endDate) return setError('Select a date range');
+    if (selected.size === 0) return setError("Select at least one calendar");
+    if (!startDate || !endDate) return setError("Select a date range");
     setImporting(true);
-    setError('');
+    setError("");
     try {
       await onImportGoogle({
         calendar_ids: Array.from(selected),
@@ -1270,17 +1298,17 @@ export default function UnifiedImportModal({
       });
       onClose();
     } catch (e) {
-      setError(e.message || 'Import failed');
+      setError(e.message || "Import failed");
     } finally {
       setImporting(false);
     }
   };
 
   const handleIcsImport = async () => {
-    if (!icsUrl.trim()) return setError('Enter a feed URL');
-    if (!icsLabel.trim()) return setError('Enter a label for this calendar');
+    if (!icsUrl.trim()) return setError("Enter a feed URL");
+    if (!icsLabel.trim()) return setError("Enter a label for this calendar");
     setImporting(true);
-    setError('');
+    setError("");
     try {
       await onImportIcs({
         url: icsUrl.trim(),
@@ -1289,7 +1317,7 @@ export default function UnifiedImportModal({
       });
       onClose();
     } catch (e) {
-      setError(e.message || 'Import failed');
+      setError(e.message || "Import failed");
     } finally {
       setImporting(false);
     }
@@ -1311,21 +1339,27 @@ export default function UnifiedImportModal({
         {/* Tabs */}
         <div className="px-6 flex border-b border-gray-200 dark:border-gray-700">
           <button
-            onClick={() => { setActiveTab('google'); setError(''); }}
+            onClick={() => {
+              setActiveTab("google");
+              setError("");
+            }}
             className={`px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
-              activeTab === 'google'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+              activeTab === "google"
+                ? "border-blue-600 text-blue-600"
+                : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
             Google Calendar
           </button>
           <button
-            onClick={() => { setActiveTab('ics'); setError(''); }}
+            onClick={() => {
+              setActiveTab("ics");
+              setError("");
+            }}
             className={`px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
-              activeTab === 'ics'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+              activeTab === "ics"
+                ? "border-blue-600 text-blue-600"
+                : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
             ICS / iCal Feed
@@ -1334,7 +1368,7 @@ export default function UnifiedImportModal({
 
         {/* Tab Content */}
         <div className="px-6 py-4">
-          {activeTab === 'google' && (
+          {activeTab === "google" && (
             <div className="space-y-4">
               {!calendarConnected ? (
                 <p className="text-sm text-gray-500">
@@ -1350,7 +1384,10 @@ export default function UnifiedImportModal({
                     </label>
                     <div className="max-h-40 overflow-y-auto border rounded-lg p-2 space-y-1 dark:border-gray-600">
                       {calendars.map((cal) => (
-                        <label key={cal.id} className="flex items-center gap-2 p-1.5 rounded hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer">
+                        <label
+                          key={cal.id}
+                          className="flex items-center gap-2 p-1.5 rounded hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
+                        >
                           <input
                             type="checkbox"
                             checked={selected.has(cal.id)}
@@ -1358,7 +1395,7 @@ export default function UnifiedImportModal({
                             className="rounded text-blue-600"
                           />
                           <span className="text-sm text-gray-800 dark:text-gray-200 truncate">
-                            {cal.summary} {cal.primary && '(Primary)'}
+                            {cal.summary} {cal.primary && "(Primary)"}
                           </span>
                         </label>
                       ))}
@@ -1366,14 +1403,26 @@ export default function UnifiedImportModal({
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start</label>
-                      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)}
-                        className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        Start
+                      </label>
+                      <input
+                        type="date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
+                      />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">End</label>
-                      <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}
-                        className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        End
+                      </label>
+                      <input
+                        type="date"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
+                      />
                     </div>
                   </div>
                 </>
@@ -1381,7 +1430,7 @@ export default function UnifiedImportModal({
             </div>
           )}
 
-          {activeTab === 'ics' && (
+          {activeTab === "ics" && (
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -1420,7 +1469,9 @@ export default function UnifiedImportModal({
                   className="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
                 >
                   {CATEGORIES.map((c) => (
-                    <option key={c.value} value={c.value}>{c.label}</option>
+                    <option key={c.value} value={c.value}>
+                      {c.label}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -1429,7 +1480,9 @@ export default function UnifiedImportModal({
 
           {/* Error */}
           {error && (
-            <p className="mt-3 text-sm text-red-600 dark:text-red-400">{error}</p>
+            <p className="mt-3 text-sm text-red-600 dark:text-red-400">
+              {error}
+            </p>
           )}
         </div>
 
@@ -1442,11 +1495,15 @@ export default function UnifiedImportModal({
             Cancel
           </button>
           <button
-            onClick={activeTab === 'google' ? handleGoogleImport : handleIcsImport}
-            disabled={importing || (activeTab === 'google' && !calendarConnected)}
+            onClick={
+              activeTab === "google" ? handleGoogleImport : handleIcsImport
+            }
+            disabled={
+              importing || (activeTab === "google" && !calendarConnected)
+            }
             className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {importing ? 'Importing...' : 'Import'}
+            {importing ? "Importing..." : "Import"}
           </button>
         </div>
       </div>
@@ -1467,6 +1524,7 @@ git commit -m "feat: add UnifiedImportModal with Google Calendar and ICS tabs"
 ## Task 8: Frontend — API Client Updates
 
 **Files:**
+
 - Modify: `frontend/src/api/client.js`
 
 **Step 1: Read client.js to find exact insertion point**
@@ -1489,7 +1547,7 @@ export async function getCalendarSources(token) {
 
 export async function importIcsFeed(token, { url, label, category }) {
   const res = await apiFetch(`${BASE}/api/calendar/import-ics`, {
-    method: 'POST',
+    method: "POST",
     headers: headers(true, token),
     body: JSON.stringify({ url, label, category }),
   });
@@ -1498,7 +1556,7 @@ export async function importIcsFeed(token, { url, label, category }) {
 
 export async function syncSource(token, sourceId) {
   const res = await apiFetch(`${BASE}/api/calendar/sync-source/${sourceId}`, {
-    method: 'POST',
+    method: "POST",
     headers: headers(true, token),
   });
   return res.json();
@@ -1506,16 +1564,19 @@ export async function syncSource(token, sourceId) {
 
 export async function deleteCalendarSource(token, sourceId) {
   const res = await apiFetch(`${BASE}/api/calendar/sources/${sourceId}`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: headers(true, token),
   });
   return res.json();
 }
 
 export async function getStudyTimes(token, termId) {
-  const res = await apiFetch(`${BASE}/api/schedule/terms/${termId}/study-times`, {
-    headers: headers(true, token),
-  });
+  const res = await apiFetch(
+    `${BASE}/api/schedule/terms/${termId}/study-times`,
+    {
+      headers: headers(true, token),
+    },
+  );
   return res.json();
 }
 ```
@@ -1534,6 +1595,7 @@ git commit -m "feat: add API client methods for calendar sources, ICS import, st
 ## Task 9: Frontend — Rewire Schedule Page
 
 **Files:**
+
 - Modify: `frontend/src/pages/Schedule.jsx`
 
 **Step 1: Read current Schedule.jsx**
@@ -1545,6 +1607,7 @@ Read the full file to understand current structure.
 Replace the SchedulePreview with AppCalendar, wire up UnifiedImportModal, fetch real events:
 
 Key changes:
+
 1. Import `AppCalendar` instead of `SchedulePreview`
 2. Import `UnifiedImportModal` instead of `CalendarImportModal`
 3. Fetch calendar events via `api.getCalendarEvents(token, { start_date, end_date })`
@@ -1556,6 +1619,7 @@ Key changes:
 9. Add sources list sidebar showing connected sources with sync/delete actions
 
 The page layout should be:
+
 ```
 ┌─────────────────────────────────────────────┐
 │ Schedule                                     │
@@ -1582,6 +1646,7 @@ git commit -m "feat: rewire Schedule page with AppCalendar, unified import, real
 ## Task 10: Backend — GET StudyTimes Endpoint
 
 **Files:**
+
 - Modify: `backend/app/api/schedule.py`
 
 **Step 1: Read current schedule.py**
@@ -1706,14 +1771,14 @@ git commit -m "fix: integration fixes for Phase 1 calendar data ingestion"
 
 ## Compatibility Check with Phase 2 & Phase 3
 
-| Future Feature | Phase 1 Preparation | Status |
-|---|---|---|
-| Scheduling conflict detection | CalendarEvents has event_kind + start_time/end_time for busy interval queries | Ready |
-| Locked/pinned study blocks | StudyTimes.is_locked column added | Ready |
-| Local overrides | CalendarEvents has local_* columns + local_modified_at | Ready |
-| iCal export subscription | CalendarEvents has stable external_uid + instance_key for UID generation | Ready |
-| Sync status management | sync_status enum with 'stale' for safe sync | Ready |
-| Two-way Google write-back | CalendarSources.is_writable + source_mode distinguish read/write | Ready |
-| Event category for scheduler | Two-layer event_kind + event_category | Ready |
+| Future Feature                | Phase 1 Preparation                                                           | Status |
+| ----------------------------- | ----------------------------------------------------------------------------- | ------ |
+| Scheduling conflict detection | CalendarEvents has event_kind + start_time/end_time for busy interval queries | Ready  |
+| Locked/pinned study blocks    | StudyTimes.is_locked column added                                             | Ready  |
+| Local overrides               | CalendarEvents has local\_\* columns + local_modified_at                      | Ready  |
+| iCal export subscription      | CalendarEvents has stable external_uid + instance_key for UID generation      | Ready  |
+| Sync status management        | sync_status enum with 'stale' for safe sync                                   | Ready  |
+| Two-way Google write-back     | CalendarSources.is_writable + source_mode distinguish read/write              | Ready  |
+| Event category for scheduler  | Two-layer event_kind + event_category                                         | Ready  |
 
 **No known conflicts with Phase 2 or Phase 3.**

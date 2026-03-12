@@ -12,12 +12,12 @@ Admins access the **Admin** page (`/app/admin`) from the nav bar. The Admin UI u
 
 ### What Admins Can Do (That Clients Cannot)
 
-| Action | Description | API |
-|--------|-------------|-----|
-| **List all users** | View every user: id, username, email, security setup status, admin status, disabled status | `GET /api/admin/users` |
-| **Disable / Enable account** | Disable a user so they cannot log in; re-enable when needed | `PUT /api/admin/users/:id/disable` |
-| **Grant / revoke admin** | Promote a client to admin, or demote an admin to client. Cannot change your own status. | `PUT /api/admin/users/:id/set-admin` |
-| **Reset security setup** | Clear a user's security Q&A; they must redo security setup on next login | `PUT /api/admin/users/:id/reset-security` |
+| Action                       | Description                                                                                | API                                       |
+| ---------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------- |
+| **List all users**           | View every user: id, username, email, security setup status, admin status, disabled status | `GET /api/admin/users`                    |
+| **Disable / Enable account** | Disable a user so they cannot log in; re-enable when needed                                | `PUT /api/admin/users/:id/disable`        |
+| **Grant / revoke admin**     | Promote a client to admin, or demote an admin to client. Cannot change your own status.    | `PUT /api/admin/users/:id/set-admin`      |
+| **Reset security setup**     | Clear a user's security Q&A; they must redo security setup on next login                   | `PUT /api/admin/users/:id/reset-security` |
 
 ### What Clients Can Do (Same as Admins)
 
@@ -41,35 +41,35 @@ Prioritized by impact and effort. Add new ideas here as we discover them. `[x]` 
 
 ### High Priority
 
-| Status | Idea | Description | Effort |
-|--------|------|-------------|--------|
-| [x] | **Search / filter users** | Search by username or email; filter by admin/disabled/security status | Medium |
-| [x] | **View user details** | Expand row or modal: when user registered, last login (if we track it), their terms/courses count | Medium |
-| [x] | **Admin password reset** | Allow admin to set a temporary password for a user (e.g. after account recovery) | Low |
+| Status | Idea                      | Description                                                                                       | Effort |
+| ------ | ------------------------- | ------------------------------------------------------------------------------------------------- | ------ |
+| [x]    | **Search / filter users** | Search by username or email; filter by admin/disabled/security status                             | Medium |
+| [x]    | **View user details**     | Expand row or modal: when user registered, last login (if we track it), their terms/courses count | Medium |
+| [x]    | **Admin password reset**  | Allow admin to set a temporary password for a user (e.g. after account recovery)                  | Low    |
 
 ### Medium Priority
 
-| Status | Idea | Description | Effort |
-|--------|------|-------------|--------|
-| [x] | **Bulk actions** | Select multiple users → disable all, reset security for all | Medium |
-| [x] | **Audit log** | Log admin actions (who disabled whom, when; who promoted whom) for accountability | High |
-| [x] | **Maintenance mode** | Toggle "maintenance" so only admins can access the app; show message to clients | Medium |
-| [x] | **User creation** | Create a new user (e.g. for class roster) with temp password; user must change on first login | Low |
+| Status | Idea                 | Description                                                                                   | Effort |
+| ------ | -------------------- | --------------------------------------------------------------------------------------------- | ------ |
+| [x]    | **Bulk actions**     | Select multiple users → disable all, reset security for all                                   | Medium |
+| [x]    | **Audit log**        | Log admin actions (who disabled whom, when; who promoted whom) for accountability             | High   |
+| [x]    | **Maintenance mode** | Toggle "maintenance" so only admins can access the app; show message to clients               | Medium |
+| [x]    | **User creation**    | Create a new user (e.g. for class roster) with temp password; user must change on first login | Low    |
 
 ### Lower Priority
 
-| Status | Idea | Description | Effort |
-|--------|------|-------------|--------|
-| [x] | **System stats dashboard** | Total users, new signups this week, active courses, storage usage | Medium |
-| [x] | **Export users** | CSV/JSON export of user list for reporting | Low |
-| [x] | **Disable registration** | Close signups; show "contact admin" on register page | Low |
-| [x] | **Announcement banner** | Site-wide banner from admin (e.g. downtime notice) | Low |
-| [x] | **Delete user** | Permanently remove user and all data; require typing DELETE to confirm | Medium |
-| [x] | **Admin notes on user** | Freeform note per user (e.g. "Contacted about duplicate"); only admins see | Low |
-| [x] | **Quick actions** | Keyboard shortcuts: `d` disable, `r` reset security on selected users; `?` show help | Low |
-| [ ] | **Impersonate user** | Admin logs in as another user to debug issues (with clear UI indicator) | High (security-sensitive) |
-| [ ] | **Rate limit / abuse view** | See failed login attempts, flag suspicious activity | High |
-| [ ] | **Feature flags** | Toggle features per user or globally (e.g. beta parser, new schedule UI) | High |
+| Status | Idea                        | Description                                                                          | Effort                    |
+| ------ | --------------------------- | ------------------------------------------------------------------------------------ | ------------------------- |
+| [x]    | **System stats dashboard**  | Total users, new signups this week, active courses, storage usage                    | Medium                    |
+| [x]    | **Export users**            | CSV/JSON export of user list for reporting                                           | Low                       |
+| [x]    | **Disable registration**    | Close signups; show "contact admin" on register page                                 | Low                       |
+| [x]    | **Announcement banner**     | Site-wide banner from admin (e.g. downtime notice)                                   | Low                       |
+| [x]    | **Delete user**             | Permanently remove user and all data; require typing DELETE to confirm               | Medium                    |
+| [x]    | **Admin notes on user**     | Freeform note per user (e.g. "Contacted about duplicate"); only admins see           | Low                       |
+| [x]    | **Quick actions**           | Keyboard shortcuts: `d` disable, `r` reset security on selected users; `?` show help | Low                       |
+| [ ]    | **Impersonate user**        | Admin logs in as another user to debug issues (with clear UI indicator)              | High (security-sensitive) |
+| [ ]    | **Rate limit / abuse view** | See failed login attempts, flag suspicious activity                                  | High                      |
+| [ ]    | **Feature flags**           | Toggle features per user or globally (e.g. beta parser, new schedule UI)             | High                      |
 
 ### From SRS / MVP (Reference)
 

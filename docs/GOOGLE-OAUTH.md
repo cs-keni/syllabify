@@ -16,12 +16,12 @@ This document explains what Google OAuth is capable of, how we will use it for *
 
 ### 1.1 Core Capabilities
 
-| Capability | Description |
-|------------|-------------|
-| **Sign-in with Google** | User clicks “Sign in with Google” → redirects to Google → user signs in → app receives an ID token with user identity (email, name, picture, unique Google ID). No password needed. |
-| **User profile** | With `openid`, `email`, `profile` scopes: access to `sub` (Google user ID), `email`, `name`, `picture`, etc. |
-| **Access Google APIs** | With additional scopes (e.g., Calendar): receive access tokens to call Google APIs on behalf of the user. |
-| **Incremental authorization** | Request minimal scopes first (sign-in only), then request more scopes (e.g., Calendar) only when the user uses a feature that needs them. |
+| Capability                    | Description                                                                                                                                                                         |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Sign-in with Google**       | User clicks “Sign in with Google” → redirects to Google → user signs in → app receives an ID token with user identity (email, name, picture, unique Google ID). No password needed. |
+| **User profile**              | With `openid`, `email`, `profile` scopes: access to `sub` (Google user ID), `email`, `name`, `picture`, etc.                                                                        |
+| **Access Google APIs**        | With additional scopes (e.g., Calendar): receive access tokens to call Google APIs on behalf of the user.                                                                           |
+| **Incremental authorization** | Request minimal scopes first (sign-in only), then request more scopes (e.g., Calendar) only when the user uses a feature that needs them.                                           |
 
 ### 1.2 OpenID Connect
 
@@ -39,12 +39,12 @@ The backend validates this ID token and can create or link a user account withou
 
 ### 2.1 Current Auth vs. Google Sign-In
 
-| Current (manual) | With Google Sign-In |
-|------------------|---------------------|
-| User creates account with username + password | User clicks “Sign in with Google” |
-| Password stored as bcrypt hash | No password stored for Google users |
-| Username chosen by user | Username derived from email (e.g., `user@gmail.com` → `user`) or stored as email |
-| Security setup (Q&A) required | Security setup **skipped** for Google users (we trust Google’s authentication) |
+| Current (manual)                              | With Google Sign-In                                                              |
+| --------------------------------------------- | -------------------------------------------------------------------------------- |
+| User creates account with username + password | User clicks “Sign in with Google”                                                |
+| Password stored as bcrypt hash                | No password stored for Google users                                              |
+| Username chosen by user                       | Username derived from email (e.g., `user@gmail.com` → `user`) or stored as email |
+| Security setup (Q&A) required                 | Security setup **skipped** for Google users (we trust Google’s authentication)   |
 
 ### 2.2 Sign-In Flow (High Level)
 
@@ -123,7 +123,7 @@ For new users signing in with Google, we need a unique `username`. Options:
 
 **Import** = read events **from** the user’s Google Calendar into Syllabify. This is the opposite of **export** (which pushes our schedule to their calendar).
 
-We use the **Calendar API `events.list`** endpoint to fetch events. The `events.import` endpoint is for adding events *to* a calendar, not reading from it.
+We use the **Calendar API `events.list`** endpoint to fetch events. The `events.import` endpoint is for adding events _to_ a calendar, not reading from it.
 
 ### 3.2 Why Import?
 
@@ -133,14 +133,15 @@ We use the **Calendar API `events.list`** endpoint to fetch events. The `events.
 
 ### 3.3 Calendar API Scopes
 
-| Scope | Purpose |
-|-------|---------|
-| `https://www.googleapis.com/auth/calendar.readonly` | See and download any calendar the user can access; required for **calendar list** and **events** |
-| `https://www.googleapis.com/auth/calendar.events.readonly` | View events on all calendars |
-| `https://www.googleapis.com/auth/calendar.events.owned.readonly` | View events on calendars the user owns (most restrictive) |
-| `https://www.googleapis.com/auth/calendar.calendarlist.readonly` | List the user’s calendars (for multi-calendar selection) |
+| Scope                                                            | Purpose                                                                                          |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `https://www.googleapis.com/auth/calendar.readonly`              | See and download any calendar the user can access; required for **calendar list** and **events** |
+| `https://www.googleapis.com/auth/calendar.events.readonly`       | View events on all calendars                                                                     |
+| `https://www.googleapis.com/auth/calendar.events.owned.readonly` | View events on calendars the user owns (most restrictive)                                        |
+| `https://www.googleapis.com/auth/calendar.calendarlist.readonly` | List the user’s calendars (for multi-calendar selection)                                         |
 
 **For multi-calendar selection:** We need `calendar.readonly` (or `calendar.calendarlist.readonly` + `calendar.events.readonly`) so we can:
+
 1. Call `calendarList.list` to show the user their calendars.
 2. Call `events.list` for each selected calendar.
 
@@ -149,6 +150,7 @@ We use the **Calendar API `events.list`** endpoint to fetch events. The `events.
 **Policy:** If the user has multiple calendars, they **choose which calendars to import**. We do not import all calendars by default.
 
 **Flow:**
+
 1. User clicks “Import from Google Calendar.”
 2. Backend calls `calendarList.list` to fetch the user’s calendars.
 3. Frontend displays a list (e.g. checkboxes) with calendar names.
@@ -207,6 +209,7 @@ We split scopes so the initial consent is minimal:
 **Policy:** After importing, the user can press a **“Sync”** button to refresh the imported calendar data. This re-fetches events from the selected calendars and updates our stored copy (add new, update changed, optionally remove deleted).
 
 **Implementation notes:**
+
 - Track which calendars the user has imported (e.g. in `UserCalendarConnections` or similar).
 - “Sync” calls the same `events.list` logic for those calendars and upserts into `ExternalEvents`.
 - Use `syncToken` from Calendar API for incremental sync (optional optimization).
@@ -215,10 +218,10 @@ We split scopes so the initial consent is minimal:
 
 **Chosen approach:** Add an `ExternalEvents` (or `UserCalendarEvents`) table so the schedule engine can treat imported events as fixed blocks when allocating study times.
 
-| Table | Purpose |
-|-------|---------|
-| **ExternalEvents** | `user_id`, `google_event_id`, `google_calendar_id`, `title`, `start_time`, `end_time`, `source` (`google`), `term_id` (optional). Used by schedule engine to avoid conflicts. |
-| **UserCalendarConnections** (or similar) | `user_id`, `google_calendar_id`, `calendar_name`, `last_synced_at`. Tracks which calendars the user has imported so we know what to sync when they press “Sync.” |
+| Table                                    | Purpose                                                                                                                                                                       |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ExternalEvents**                       | `user_id`, `google_event_id`, `google_calendar_id`, `title`, `start_time`, `end_time`, `source` (`google`), `term_id` (optional). Used by schedule engine to avoid conflicts. |
+| **UserCalendarConnections** (or similar) | `user_id`, `google_calendar_id`, `calendar_name`, `last_synced_at`. Tracks which calendars the user has imported so we know what to sync when they press “Sync.”              |
 
 ---
 
@@ -235,42 +238,42 @@ We split scopes so the initial consent is minimal:
 
 ### 4.2 Database Changes
 
-| Change | Purpose |
-|--------|---------|
-| `Users.google_id` (VARCHAR, UNIQUE, nullable) | Link user to Google account |
-| `Users.auth_provider` (VARCHAR, default `'local'`) | `'local'` or `'google'` |
-| `UserOAuthTokens` | `user_id`, `provider` (`google`), `access_token`, `refresh_token`, `expires_at` — **required** for Calendar import/sync (backend needs refresh token for server-side API calls) |
-| `ExternalEvents` (or `UserCalendarEvents`) | Store imported calendar events for conflict avoidance |
-| `UserCalendarConnections` | Track which calendars the user has imported (for Sync button) |
+| Change                                             | Purpose                                                                                                                                                                         |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Users.google_id` (VARCHAR, UNIQUE, nullable)      | Link user to Google account                                                                                                                                                     |
+| `Users.auth_provider` (VARCHAR, default `'local'`) | `'local'` or `'google'`                                                                                                                                                         |
+| `UserOAuthTokens`                                  | `user_id`, `provider` (`google`), `access_token`, `refresh_token`, `expires_at` — **required** for Calendar import/sync (backend needs refresh token for server-side API calls) |
+| `ExternalEvents` (or `UserCalendarEvents`)         | Store imported calendar events for conflict avoidance                                                                                                                           |
+| `UserCalendarConnections`                          | Track which calendars the user has imported (for Sync button)                                                                                                                   |
 
 For Google-only users: `password_hash` can be `NULL`. **Security setup is skipped** — we trust Google’s authentication, so no security Q&A required.
 
 ### 4.3 Backend
 
-| Component | Description |
-|-----------|-------------|
-| `POST /api/auth/google` or `POST /api/auth/google/callback` | Accept ID token (or auth code), validate with Google, create/link user, return Syllabify JWT |
-| `GET /api/auth/google/url` | Return Google authorization URL for frontend redirect (if using code flow) |
-| `GET /api/calendar/auth-url` | Return Google OAuth URL for Calendar scope. Backend includes `state` to associate callback with current user. |
-| `GET /api/calendar/callback` | Handle OAuth redirect: exchange code for tokens, store in `UserOAuthTokens`. |
-| `GET /api/calendar/list` | Return user’s calendars (from `calendarList.list`) for multi-calendar picker |
-| `POST /api/calendar/import` | Accept `calendar_ids[]`, `date_range`; call `events.list` per calendar; persist to `ExternalEvents`; store connections in `UserCalendarConnections` |
-| `POST /api/calendar/sync` | Re-fetch events from connected calendars; upsert into `ExternalEvents` (Sync button) |
-| `GET /api/calendar/events` | Return stored external events for the current user/term |
-| Token refresh logic | Use refresh token to get new access token when expired |
-| `google-auth` or `google-auth-oauthlib` | Python libraries for token validation and Calendar API |
+| Component                                                   | Description                                                                                                                                         |
+| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `POST /api/auth/google` or `POST /api/auth/google/callback` | Accept ID token (or auth code), validate with Google, create/link user, return Syllabify JWT                                                        |
+| `GET /api/auth/google/url`                                  | Return Google authorization URL for frontend redirect (if using code flow)                                                                          |
+| `GET /api/calendar/auth-url`                                | Return Google OAuth URL for Calendar scope. Backend includes `state` to associate callback with current user.                                       |
+| `GET /api/calendar/callback`                                | Handle OAuth redirect: exchange code for tokens, store in `UserOAuthTokens`.                                                                        |
+| `GET /api/calendar/list`                                    | Return user’s calendars (from `calendarList.list`) for multi-calendar picker                                                                        |
+| `POST /api/calendar/import`                                 | Accept `calendar_ids[]`, `date_range`; call `events.list` per calendar; persist to `ExternalEvents`; store connections in `UserCalendarConnections` |
+| `POST /api/calendar/sync`                                   | Re-fetch events from connected calendars; upsert into `ExternalEvents` (Sync button)                                                                |
+| `GET /api/calendar/events`                                  | Return stored external events for the current user/term                                                                                             |
+| Token refresh logic                                         | Use refresh token to get new access token when expired                                                                                              |
+| `google-auth` or `google-auth-oauthlib`                     | Python libraries for token validation and Calendar API                                                                                              |
 
 ### 4.4 Frontend
 
-| Component | Description |
-|-----------|-------------|
-| “Sign in with Google” button on Login and Register pages | Triggers Google OAuth flow |
-| Google Identity Services (GIS) script | Load `https://accounts.google.com/gsi/client` |
-| Handle redirect/callback | Send ID token or auth code to backend |
-| “Import from Google Calendar” on Schedule page | Triggers Calendar OAuth (if needed); fetches calendar list; shows calendar picker |
-| Calendar picker (multi-select) | User selects which calendars to import |
-| Date range picker for import | User chooses which period to import (e.g. term dates) |
-| “Sync” button | Re-fetches events from connected calendars and updates stored data |
+| Component                                                | Description                                                                       |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| “Sign in with Google” button on Login and Register pages | Triggers Google OAuth flow                                                        |
+| Google Identity Services (GIS) script                    | Load `https://accounts.google.com/gsi/client`                                     |
+| Handle redirect/callback                                 | Send ID token or auth code to backend                                             |
+| “Import from Google Calendar” on Schedule page           | Triggers Calendar OAuth (if needed); fetches calendar list; shows calendar picker |
+| Calendar picker (multi-select)                           | User selects which calendars to import                                            |
+| Date range picker for import                             | User chooses which period to import (e.g. term dates)                             |
+| “Sync” button                                            | Re-fetches events from connected calendars and updates stored data                |
 
 ### 4.5 Schedule Engine Integration (Deferred)
 
@@ -280,16 +283,16 @@ For Google-only users: `password_hash` can be `NULL`. **Security setup is skippe
 
 ### 4.6 Edge Cases & Implementation Notes
 
-| Scenario | Handling |
-|---------|----------|
-| User revokes Google Calendar access | Token refresh fails; show “Reconnect Google Calendar” and prompt for re-auth. |
-| User removes a calendar from their Google account | Sync may fail for that calendar; optionally remove from `UserCalendarConnections` or mark as disconnected. |
-| Duplicate events (same `google_event_id`) | With full-replace sync, duplicates are avoided by replacing all events per calendar. |
-| Sync strategy | Full replace per calendar: for each connected calendar, delete our stored events in the date range, then insert freshly fetched events. Simpler than incremental; avoids orphaned deleted events. |
-| Sync date range | Use active term dates, or the same range as the original import. Store `import_date_range_start`, `import_date_range_end` in `UserCalendarConnections` if we want to remember the user's choice; otherwise default to active term. |
-| Timezone | Store `start_time`/`end_time` in UTC or user’s timezone; align with `UserPreferences.timezone` if present. |
-| All-day events | Include in import; treat as blocking the full day (or full day within term dates). |
-| Recurring events | `events.list` with `singleEvents=true` expands them; we get individual instances. |
+| Scenario                                          | Handling                                                                                                                                                                                                                           |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| User revokes Google Calendar access               | Token refresh fails; show “Reconnect Google Calendar” and prompt for re-auth.                                                                                                                                                      |
+| User removes a calendar from their Google account | Sync may fail for that calendar; optionally remove from `UserCalendarConnections` or mark as disconnected.                                                                                                                         |
+| Duplicate events (same `google_event_id`)         | With full-replace sync, duplicates are avoided by replacing all events per calendar.                                                                                                                                               |
+| Sync strategy                                     | Full replace per calendar: for each connected calendar, delete our stored events in the date range, then insert freshly fetched events. Simpler than incremental; avoids orphaned deleted events.                                  |
+| Sync date range                                   | Use active term dates, or the same range as the original import. Store `import_date_range_start`, `import_date_range_end` in `UserCalendarConnections` if we want to remember the user's choice; otherwise default to active term. |
+| Timezone                                          | Store `start_time`/`end_time` in UTC or user’s timezone; align with `UserPreferences.timezone` if present.                                                                                                                         |
+| All-day events                                    | Include in import; treat as blocking the full day (or full day within term dates).                                                                                                                                                 |
+| Recurring events                                  | `events.list` with `singleEvents=true` expands them; we get individual instances.                                                                                                                                                  |
 
 ---
 
@@ -349,12 +352,12 @@ For Google-only users: `password_hash` can be `NULL`. **Security setup is skippe
 
 ## 8. Decided Policies (Summary)
 
-| Topic | Decision |
-|-------|----------|
-| **Account linking** | Auto-link if same email. User can sign in with password or Google. |
-| **Security setup for Google users** | Skip. We trust Google’s authentication. |
-| **Calendar selection** | User chooses which calendars to import (multi-select). |
-| **Sync** | “Sync” button re-fetches from connected calendars on demand. |
+| Topic                               | Decision                                                           |
+| ----------------------------------- | ------------------------------------------------------------------ |
+| **Account linking**                 | Auto-link if same email. User can sign in with password or Google. |
+| **Security setup for Google users** | Skip. We trust Google’s authentication.                            |
+| **Calendar selection**              | User chooses which calendars to import (multi-select).             |
+| **Sync**                            | “Sync” button re-fetches from connected calendars on demand.       |
 
 ---
 

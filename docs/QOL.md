@@ -235,26 +235,26 @@ Ideas to improve the Syllabify user experience. Think from both a **user perspec
 
 ## Priority Matrix (suggested)
 
-| High impact, low effort | High impact, high effort |
-|------------------------|--------------------------|
-| Full-width / two-column layouts | Global search |
-| Empty states everywhere | Drag-and-drop reorder |
-| Skeleton loaders | Undo after delete |
-| Breadcrumbs | PWA / offline |
-| Timezone support | Notifications (email) |
-| Per-course colors | Bulk actions |
-| Due date presets | Data export/import |
+| High impact, low effort         | High impact, high effort |
+| ------------------------------- | ------------------------ |
+| Full-width / two-column layouts | Global search            |
+| Empty states everywhere         | Drag-and-drop reorder    |
+| Skeleton loaders                | Undo after delete        |
+| Breadcrumbs                     | PWA / offline            |
+| Timezone support                | Notifications (email)    |
+| Per-course colors               | Bulk actions             |
+| Due date presets                | Data export/import       |
 
 | Low impact, low effort | Low impact, high effort |
-|------------------------|--------------------------|
-| Accent color picker | 2FA |
-| Tooltips | Collaboration features |
-| Keyboard shortcuts | API access |
-| Copy assignment | Video walkthrough |
+| ---------------------- | ----------------------- |
+| Accent color picker    | 2FA                     |
+| Tooltips               | Collaboration features  |
+| Keyboard shortcuts     | API access              |
+| Copy assignment        | Video walkthrough       |
 
 ---
 
-*Add, remove, or reprioritize as the product evolves.*
+_Add, remove, or reprioritize as the product evolves._
 
 ---
 
@@ -264,18 +264,18 @@ The following QOL features from this document have been implemented in the dev b
 
 ### Implemented
 
-| Category | Feature |
-|----------|---------|
-| Layout & Visual | Empty states (No courses/assignments + CTA), skeleton loaders, card shadows, stagger animations |
-| Navigation | Breadcrumbs (Dashboard → Term → Course), back button, keyboard shortcuts (?, g+d, g+u, g+s, g+p, Esc), shortcuts overlay (? key), sticky headers (course, nav), recently viewed (last 5 courses) |
-| Profile | Theme persistence (light/dark in localStorage), reduce motion (prefers-reduced-motion) |
-| Course & Assignment | Due date presets (Today, Tomorrow, Next Mon, +1 wk, +2 wks), duplicate assignment (Copy), overdue highlight (red + badge), sort courses (name/count), sort assignments |
-| Schedule | Conflict highlighting (overlapping blocks in schedule view) |
-| Upload & Parse | Drag-and-drop file upload, confidence display (score + label, low-confidence styling) |
-| Dashboard | Personalized greeting (Good morning/afternoon/evening), course quick stats |
-| Error & Resilience | ErrorBoundary with Retry, 401 handling + redirect, session expiry toast, offline banner |
-| Accessibility | Skip-to-content link, prefers-reduced-motion |
-| **New (Feb 2025)** | **Undo after delete**, **accent color picker**, **per-course colors**, **timezone**, **bulk delete** |
+| Category            | Feature                                                                                                                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Layout & Visual     | Empty states (No courses/assignments + CTA), skeleton loaders, card shadows, stagger animations                                                                                                  |
+| Navigation          | Breadcrumbs (Dashboard → Term → Course), back button, keyboard shortcuts (?, g+d, g+u, g+s, g+p, Esc), shortcuts overlay (? key), sticky headers (course, nav), recently viewed (last 5 courses) |
+| Profile             | Theme persistence (light/dark in localStorage), reduce motion (prefers-reduced-motion)                                                                                                           |
+| Course & Assignment | Due date presets (Today, Tomorrow, Next Mon, +1 wk, +2 wks), duplicate assignment (Copy), overdue highlight (red + badge), sort courses (name/count), sort assignments                           |
+| Schedule            | Conflict highlighting (overlapping blocks in schedule view)                                                                                                                                      |
+| Upload & Parse      | Drag-and-drop file upload, confidence display (score + label, low-confidence styling)                                                                                                            |
+| Dashboard           | Personalized greeting (Good morning/afternoon/evening), course quick stats                                                                                                                       |
+| Error & Resilience  | ErrorBoundary with Retry, 401 handling + redirect, session expiry toast, offline banner                                                                                                          |
+| Accessibility       | Skip-to-content link, prefers-reduced-motion                                                                                                                                                     |
+| **New (Feb 2025)**  | **Undo after delete**, **accent color picker**, **per-course colors**, **timezone**, **bulk delete**                                                                                             |
 
 ### Not yet implemented (future backlog)
 
@@ -283,4 +283,4 @@ Global search, PWA/offline support, data export, email notifications, two-factor
 
 ---
 
-*This document remains a living brainstorm. The above status reflects dev branch as of Feb 2025.*
+_This document remains a living brainstorm. The above status reflects dev branch as of Feb 2025._

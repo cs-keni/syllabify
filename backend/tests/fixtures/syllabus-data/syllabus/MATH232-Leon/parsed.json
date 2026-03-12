@@ -87,9 +87,7 @@
       "recurrence": {
         "frequency": "weekly",
         "interval": 1,
-        "by_day": [
-          "FR"
-        ],
+        "by_day": ["FR"],
         "until": null,
         "count": null
       },

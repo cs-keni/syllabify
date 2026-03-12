@@ -96,7 +96,8 @@ export default function AppCalendar({
     const STUDY_GREEN = '#10B981';
     const STUDY_LOCKED = '#059669';
     for (const st of studyTimes) {
-      const baseColor = st.course_color || (st.is_locked ? STUDY_LOCKED : STUDY_GREEN);
+      const baseColor =
+        st.course_color || (st.is_locked ? STUDY_LOCKED : STUDY_GREEN);
       events.push({
         id: `study-${st.id}`,
         title: st.course_name
@@ -169,7 +170,11 @@ export default function AppCalendar({
         firstDay={0}
         dayHeaderContent={arg => (
           <div className="fc-day-header-content">
-            <span className="fc-day-header-weekday">{arg.date.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}</span>
+            <span className="fc-day-header-weekday">
+              {arg.date
+                .toLocaleDateString('en-US', { weekday: 'short' })
+                .toUpperCase()}
+            </span>
             {currentView !== 'dayGridMonth' && (
               <span className="fc-day-header-day">{arg.date.getDate()}</span>
             )}

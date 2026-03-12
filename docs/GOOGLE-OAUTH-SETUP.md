@@ -6,12 +6,12 @@ This guide walks you through setting up **Google Sign-In** and **Google Calendar
 
 ## Overview
 
-| What | Where |
-|------|-------|
-| **Database migration** | Run once on Railway MySQL |
-| **Backend env vars** | Render (syllabify-api) |
-| **Frontend env vars** | Vercel |
-| **Google Cloud** | Create OAuth credentials, configure redirect URIs |
+| What                   | Where                                             |
+| ---------------------- | ------------------------------------------------- |
+| **Database migration** | Run once on Railway MySQL                         |
+| **Backend env vars**   | Render (syllabify-api)                            |
+| **Frontend env vars**  | Vercel                                            |
+| **Google Cloud**       | Create OAuth credentials, configure redirect URIs |
 
 ---
 
@@ -98,11 +98,11 @@ Replace `YOUR_RAILWAY_PUBLIC_HOST`, `YOUR_RAILWAY_PUBLIC_PORT`, `YOUR_DATABASE`,
 2. Open **Environment** (or **Environment Variables**).
 3. Add these variables:
 
-| Key | Value | Secret? |
-|-----|-------|---------|
-| `GOOGLE_CLIENT_ID` | Your Google OAuth Client ID (from Step 1.4) | No |
-| `GOOGLE_CLIENT_SECRET` | Your Google OAuth Client Secret (from Step 1.4) | **Yes** |
-| `GOOGLE_REDIRECT_URI` | `https://syllabify-api.onrender.com/api/calendar/callback` | No |
+| Key                    | Value                                                      | Secret? |
+| ---------------------- | ---------------------------------------------------------- | ------- |
+| `GOOGLE_CLIENT_ID`     | Your Google OAuth Client ID (from Step 1.4)                | No      |
+| `GOOGLE_CLIENT_SECRET` | Your Google OAuth Client Secret (from Step 1.4)            | **Yes** |
+| `GOOGLE_REDIRECT_URI`  | `https://syllabify-api.onrender.com/api/calendar/callback` | No      |
 
 **Important:** Replace `syllabify-api.onrender.com` with your actual Render backend URL.
 
@@ -118,8 +118,8 @@ Replace `YOUR_RAILWAY_PUBLIC_HOST`, `YOUR_RAILWAY_PUBLIC_PORT`, `YOUR_DATABASE`,
 2. Open **Settings** → **Environment Variables**.
 3. Add:
 
-| Name | Value | Environment |
-|------|-------|-------------|
+| Name                    | Value                                                    | Environment                          |
+| ----------------------- | -------------------------------------------------------- | ------------------------------------ |
 | `VITE_GOOGLE_CLIENT_ID` | Your Google OAuth Client ID (same as `GOOGLE_CLIENT_ID`) | Production (and Preview if you want) |
 
 4. Save.
@@ -187,35 +187,41 @@ Use this to confirm everything is done:
 ## Part 6: Troubleshooting
 
 ### “Google sign-in is not configured”
+
 - `GOOGLE_CLIENT_ID` is missing or empty on Render. Add it and redeploy.
 
 ### “Sign in with Google” button doesn’t appear
+
 - `VITE_GOOGLE_CLIENT_ID` is missing or empty on Vercel. Add it and **redeploy** (env vars are baked in at build time).
 
 ### “invalid Google token” after clicking Sign in
+
 - Client ID mismatch: `VITE_GOOGLE_CLIENT_ID` (frontend) must match `GOOGLE_CLIENT_ID` (backend).
 - Google Cloud: ensure your Vercel URL is in **Authorized JavaScript origins**.
 
 ### “Failed to connect Google Calendar” / redirect fails
+
 - `GOOGLE_REDIRECT_URI` on Render must exactly match the URL in Google Cloud **Authorized redirect URIs** (including `/api/calendar/callback`).
 - No trailing slash on the redirect URI.
 
 ### “redirect_uri_mismatch” from Google
+
 - The redirect URI in the request does not match what’s configured in Google Cloud. Check:
   - Render: `GOOGLE_REDIRECT_URI` = `https://your-app.onrender.com/api/calendar/callback`
   - Google Cloud: same URL listed under **Authorized redirect URIs**.
 
 ### “Database migration required”
+
 - Run `docker/migrations/011_google_oauth_calendar.sql` on your Railway MySQL (see Part 2).
 
 ---
 
 ## Summary
 
-| Platform | Variables to add |
-|----------|------------------|
-| **Render** | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI` |
-| **Vercel** | `VITE_GOOGLE_CLIENT_ID` |
-| **Railway** | None (run migration only) |
+| Platform    | Variables to add                                                  |
+| ----------- | ----------------------------------------------------------------- |
+| **Render**  | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI` |
+| **Vercel**  | `VITE_GOOGLE_CLIENT_ID`                                           |
+| **Railway** | None (run migration only)                                         |
 
 After setup, users can sign in with Google on the Login and Register pages, and use “Connect Google Calendar” and “Import” on the Schedule page.

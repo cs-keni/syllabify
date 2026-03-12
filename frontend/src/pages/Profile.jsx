@@ -4,23 +4,19 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import { getProfile, updateProfile, uploadAvatar, uploadBanner } from '../api/client';
+import {
+  getProfile,
+  updateProfile,
+  uploadAvatar,
+  uploadBanner,
+} from '../api/client';
 import toast from 'react-hot-toast';
-import RedMan from '../assets/RedMan.png';
-import GreenMan from '../assets/GreenMan.png';
-import BlueMan from '../assets/BlueMan.png';
+import { AVATAR_OPTIONS, getAvatarUrl } from '../lib/avatarOptions';
 
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-const imgUrl = (url) => (url && url.startsWith('/') ? BASE + url : url);
-
-const AVATAR_OPTIONS = [
-  { key: 'red', label: 'Red', src: RedMan },
-  { key: 'green', label: 'Green', src: GreenMan },
-  { key: 'blue', label: 'Blue', src: BlueMan },
-];
+const imgUrl = getAvatarUrl;
 
 export default function Profile() {
-  const { token, user } = useAuth();
+  const { token, user, refreshUser } = useAuth();
   const [bannerUrl, setBannerUrl] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
   const [avatar, setAvatar] = useState(null);
@@ -56,6 +52,7 @@ export default function Profile() {
         avatar: avatar || null,
         description: description.trim() || null,
       });
+      await refreshUser();
       toast.success('Profile saved');
     } catch (err) {
       toast.error(err.message || 'Failed to save');
@@ -116,6 +113,7 @@ export default function Profile() {
       setBannerUrl(url);
       const p = await updateProfile(token, { banner_url: url });
       if (p?.banner_url != null) setBannerUrl(p.banner_url);
+      await refreshUser();
       toast.success('Banner uploaded and saved');
     } catch (err) {
       toast.error(err.message || 'Failed to upload banner');
@@ -136,6 +134,7 @@ export default function Profile() {
       setAvatarError(false);
       const p = await updateProfile(token, { avatar_url: url });
       if (p?.avatar_url != null) setAvatarUrl(p.avatar_url);
+      await refreshUser();
       toast.success('Profile picture uploaded and saved');
     } catch (err) {
       toast.error(err.message || 'Failed to upload');

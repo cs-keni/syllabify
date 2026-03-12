@@ -49,7 +49,9 @@ export function ThemeProvider({ children }) {
   const dismissRainbowModal = () => setShowRainbowModal(false);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, unlockRainbow, showRainbowModal }}>
+    <ThemeContext.Provider
+      value={{ theme, setTheme, toggleTheme, unlockRainbow, showRainbowModal }}
+    >
       {children}
       {showRainbowModal && (
         <RainbowEasterEggModal onClose={dismissRainbowModal} />

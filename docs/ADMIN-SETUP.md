@@ -75,17 +75,17 @@ Admins have full access to the app plus the Admin panel. Here’s what you can d
 
 ### User Management
 
-| Action | Description |
-|--------|-------------|
-| **List all users** | See every user: id, username, email, security status, admin status, disabled status |
-| **Search & filter** | Search by username/email; filter by role (admin/client), status (active/disabled), security (done/pending) |
-| **View user details** | Expand a row to see term/course/assignment counts and more |
-| **Disable / Enable** | Disable a user so they can’t log in; re-enable when needed |
-| **Grant / revoke admin** | Make another user an admin or remove their admin status (you can’t change your own) |
-| **Reset security setup** | Clear a user’s security Q&A so they must redo it on next login |
+| Action                     | Description                                                                                                                                                                   |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **List all users**         | See every user: id, username, email, security status, admin status, disabled status                                                                                           |
+| **Search & filter**        | Search by username/email; filter by role (admin/client), status (active/disabled), security (done/pending)                                                                    |
+| **View user details**      | Expand a row to see term/course/assignment counts and more                                                                                                                    |
+| **Disable / Enable**       | Disable a user so they can’t log in; re-enable when needed                                                                                                                    |
+| **Grant / revoke admin**   | Make another user an admin or remove their admin status (you can’t change your own)                                                                                           |
+| **Reset security setup**   | Clear a user’s security Q&A so they must redo it on next login                                                                                                                |
 | **Set temporary password** | Set a new password for a user (e.g. after account recovery). **Location:** Expand a user’s row (click the chevron ▶), then use “Set temporary password” in the details panel. |
-| **Admin notes** | Add private notes on a user (e.g. “Contacted about duplicate account”) |
-| **Delete user** | Permanently delete a user and all their data (requires typing `DELETE` to confirm) |
+| **Admin notes**            | Add private notes on a user (e.g. “Contacted about duplicate account”)                                                                                                        |
+| **Delete user**            | Permanently delete a user and all their data (requires typing `DELETE` to confirm)                                                                                            |
 
 ### Bulk Actions
 
@@ -103,19 +103,19 @@ Admins have full access to the app plus the Admin panel. Here’s what you can d
 
 ### System Settings
 
-| Setting | Description |
-|---------|-------------|
-| **Registration** | Turn off new signups when needed; users see “Signups are closed” |
-| **Announcement banner** | Show a site-wide message (e.g. downtime notice) |
-| **Maintenance mode** | When ON, only admins can use the app; others see a maintenance page |
+| Setting                 | Description                                                         |
+| ----------------------- | ------------------------------------------------------------------- |
+| **Registration**        | Turn off new signups when needed; users see “Signups are closed”    |
+| **Announcement banner** | Show a site-wide message (e.g. downtime notice)                     |
+| **Maintenance mode**    | When ON, only admins can use the app; others see a maintenance page |
 
 ### Reporting & Audit
 
-| Feature | Description |
-|--------|-------------|
-| **Export CSV** | Download the user list as CSV |
-| **System stats** | View total terms, courses, assignments |
-| **Audit log** | View who did what (disable, promote, reset security, etc.) |
+| Feature          | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| **Export CSV**   | Download the user list as CSV                              |
+| **System stats** | View total terms, courses, assignments                     |
+| **Audit log**    | View who did what (disable, promote, reset security, etc.) |
 
 ---
 
@@ -161,9 +161,9 @@ ADMIN_INITIAL_PASSWORD="YourTempPassword123!" ADMIN_USERNAMES="admin-user1,admin
 
 ## Troubleshooting
 
-| Problem | What to try |
-|---------|-------------|
-| No Admin link in nav | Log out and log back in; if it still doesn’t appear, your account may not be admin yet |
-| “Forbidden” on Admin page | Your session may not have admin status; try logging out and back in |
-| Forgot password | Ask another admin to set a temporary password for you (Admin → expand your row → Set temporary password) |
-| Maintenance mode is on | Only admins can log in; if you’re an admin, log in as usual |
+| Problem                   | What to try                                                                                              |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| No Admin link in nav      | Log out and log back in; if it still doesn’t appear, your account may not be admin yet                   |
+| “Forbidden” on Admin page | Your session may not have admin status; try logging out and back in                                      |
+| Forgot password           | Ask another admin to set a temporary password for you (Admin → expand your row → Set temporary password) |
+| Maintenance mode is on    | Only admins can log in; if you’re an admin, log in as usual                                              |
