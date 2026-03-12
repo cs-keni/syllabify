@@ -22,6 +22,7 @@ import {
   getAdminAuditLog,
 } from '../api/client';
 import toast from 'react-hot-toast';
+import { getAvatarUrl } from '../lib/avatarOptions';
 
 function Badge({ variant, children }) {
   const styles = {
@@ -1114,8 +1115,9 @@ export default function Admin() {
                           <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden shrink-0 flex items-center justify-center">
                             {u.avatar_url ? (
                               <img
-                                src={u.avatar_url}
+                                src={getAvatarUrl(u.avatar_url)}
                                 alt=""
+                                crossOrigin="anonymous"
                                 className="w-full h-full object-cover"
                               />
                             ) : (
@@ -1205,8 +1207,9 @@ export default function Admin() {
                                         Banner
                                       </p>
                                       <img
-                                        src={expandedDetails.banner_url}
+                                        src={getAvatarUrl(expandedDetails.banner_url)}
                                         alt="Banner"
+                                        crossOrigin="anonymous"
                                         className="h-16 w-full object-cover rounded border border-slate-200 dark:border-slate-600"
                                       />
                                     </div>
@@ -1214,8 +1217,9 @@ export default function Admin() {
                                   <div className="flex items-center gap-3">
                                     {expandedDetails.avatar_url && (
                                       <img
-                                        src={expandedDetails.avatar_url}
+                                        src={getAvatarUrl(expandedDetails.avatar_url)}
                                         alt="Avatar"
+                                        crossOrigin="anonymous"
                                         className="w-12 h-12 rounded-full object-cover border border-slate-200 dark:border-slate-600"
                                       />
                                     )}

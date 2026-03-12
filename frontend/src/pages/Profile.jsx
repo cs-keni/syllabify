@@ -78,6 +78,7 @@ export default function Profile() {
           key={avatarUrl}
           src={src}
           alt="Profile"
+          crossOrigin="anonymous"
           className="w-full h-full rounded-full object-cover"
           onError={() => setAvatarError(true)}
         />
@@ -170,6 +171,7 @@ export default function Profile() {
               key={bannerUrl}
               src={imgUrl(bannerUrl.trim())}
               alt="Banner"
+              crossOrigin="anonymous"
               className="w-full h-full object-cover"
               onError={e => {
                 e.target.style.display = 'none';

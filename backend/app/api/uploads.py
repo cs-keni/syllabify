@@ -45,12 +45,13 @@ def serve_avatar(filename):
         return jsonify({"error": "not found"}), 404
     resp = send_from_directory(str(base), filename, max_age=86400)
     resp.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
+    resp.headers["Access-Control-Allow-Origin"] = "*"
     return resp
 
 
 @bp.route("/banners/<path:filename>", methods=["GET"])
 def serve_banner(filename):
-    """Serve uploaded banner. Public read. Cross-Origin-Resource-Policy for ORB."""
+    """Serve uploaded banner. Public read. CORS headers for ORB."""
     if not re.match(r"^[a-zA-Z0-9_\-\.]+$", filename):
         return jsonify({"error": "invalid filename"}), 400
     base = _uploads_dir() / "banners"
@@ -60,6 +61,7 @@ def serve_banner(filename):
         return jsonify({"error": "not found"}), 404
     resp = send_from_directory(str(base), filename, max_age=86400)
     resp.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
+    resp.headers["Access-Control-Allow-Origin"] = "*"
     return resp
 
 
