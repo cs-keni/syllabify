@@ -294,6 +294,9 @@ If you want to run the app on your machine (e.g. backend + DB via `docker-compos
 - **Frontend shows wrong API**  
   `VITE_API_URL` is baked in at **build** time. Change it in Vercel, then trigger a new deploy.
 
+- **Uploaded avatars/banners don't display (404 or broken image)**  
+  On **Render**, the filesystem is ephemeral: uploaded files are lost when the dyno restarts. Avatar/banner uploads work initially but may 404 after a restart. For persistent storage, use S3, Cloudinary, or similar and update the upload endpoint. For **local dev** with `docker-compose`, uploads persist via the `backend_uploads` volume.
+
 - **Login: "Failed to fetch"**  
   See **Debugging "Failed to fetch"** below.
 

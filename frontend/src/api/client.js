@@ -479,10 +479,10 @@ export async function changePassword(token, { currentPassword, newPassword }) {
 export async function uploadAvatar(token, file) {
   const form = new FormData();
   form.append('file', file);
-  const h = { Authorization: `Bearer ${token}` };
+  // Do NOT set Content-Type: fetch will set multipart/form-data with boundary for FormData
   const res = await apiFetch(`${BASE}/api/uploads/avatar`, {
     method: 'POST',
-    headers: h,
+    headers: { Authorization: `Bearer ${token}` },
     body: form,
     credentials: 'include',
   });
@@ -495,10 +495,9 @@ export async function uploadAvatar(token, file) {
 export async function uploadBanner(token, file) {
   const form = new FormData();
   form.append('file', file);
-  const h = { Authorization: `Bearer ${token}` };
   const res = await apiFetch(`${BASE}/api/uploads/banner`, {
     method: 'POST',
-    headers: h,
+    headers: { Authorization: `Bearer ${token}` },
     body: form,
     credentials: 'include',
   });

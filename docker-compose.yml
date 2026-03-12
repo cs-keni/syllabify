@@ -34,9 +34,13 @@ services:
       DB_USER: ${DB_USER:-syllabify}
       DB_PASSWORD: ${DB_PASSWORD:-syllabify}
       SECRET_KEY: ${SECRET_KEY:-dev-secret-key}
+      UPLOADS_DIR: /app/backend/uploads
+    volumes:
+      - backend_uploads:/app/backend/uploads
     depends_on:
       mysql:
         condition: service_healthy
 
 volumes:
   mysql_data:
+  backend_uploads:

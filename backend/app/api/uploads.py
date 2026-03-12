@@ -35,7 +35,7 @@ def _require_user():
 
 @bp.route("/avatars/<path:filename>", methods=["GET"])
 def serve_avatar(filename):
-    """Serve uploaded avatar. Public read."""
+    """Serve uploaded avatar. Public read. Cross-Origin-Resource-Policy for ORB."""
     if not re.match(r"^[a-zA-Z0-9_\-\.]+$", filename):
         return jsonify({"error": "invalid filename"}), 400
     base = _uploads_dir() / "avatars"
@@ -43,12 +43,14 @@ def serve_avatar(filename):
     path = base / filename
     if not path.exists() or not path.is_file():
         return jsonify({"error": "not found"}), 404
-    return send_from_directory(str(base), filename, max_age=86400)
+    resp = send_from_directory(str(base), filename, max_age=86400)
+    resp.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
+    return resp
 
 
 @bp.route("/banners/<path:filename>", methods=["GET"])
 def serve_banner(filename):
-    """Serve uploaded banner. Public read."""
+    """Serve uploaded banner. Public read. Cross-Origin-Resource-Policy for ORB."""
     if not re.match(r"^[a-zA-Z0-9_\-\.]+$", filename):
         return jsonify({"error": "invalid filename"}), 400
     base = _uploads_dir() / "banners"
@@ -56,7 +58,9 @@ def serve_banner(filename):
     path = base / filename
     if not path.exists() or not path.is_file():
         return jsonify({"error": "not found"}), 404
-    return send_from_directory(str(base), filename, max_age=86400)
+    resp = send_from_directory(str(base), filename, max_age=86400)
+    resp.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
+    return resp
 
 
 def _handle_upload(field: str, subdir: str) -> tuple[dict, int]:
