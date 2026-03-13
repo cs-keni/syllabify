@@ -16,8 +16,11 @@ MAX_SIZE = 5 * 1024 * 1024  # 5 MB
 
 
 def _uploads_dir() -> Path:
-    """Return uploads base directory. Creates if needed."""
-    base = Path(os.getenv("UPLOADS_DIR", "uploads"))
+    """Return uploads base directory. Creates if needed.
+    Default /tmp/uploads for production (Render, etc.) where app dir may be read-only.
+    Use UPLOADS_DIR env to override. Local docker-compose uses a volume at /app/backend/uploads.
+    """
+    base = Path(os.getenv("UPLOADS_DIR", "/tmp/uploads"))
     base.mkdir(parents=True, exist_ok=True)
     return base
 
