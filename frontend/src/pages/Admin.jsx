@@ -1207,7 +1207,9 @@ export default function Admin() {
                                         Banner
                                       </p>
                                       <img
-                                        src={getAvatarUrl(expandedDetails.banner_url)}
+                                        src={getAvatarUrl(
+                                          expandedDetails.banner_url
+                                        )}
                                         alt="Banner"
                                         crossOrigin="anonymous"
                                         className="h-16 w-full object-cover rounded border border-slate-200 dark:border-slate-600"
@@ -1217,7 +1219,9 @@ export default function Admin() {
                                   <div className="flex items-center gap-3">
                                     {expandedDetails.avatar_url && (
                                       <img
-                                        src={getAvatarUrl(expandedDetails.avatar_url)}
+                                        src={getAvatarUrl(
+                                          expandedDetails.avatar_url
+                                        )}
                                         alt="Avatar"
                                         crossOrigin="anonymous"
                                         className="w-12 h-12 rounded-full object-cover border border-slate-200 dark:border-slate-600"
