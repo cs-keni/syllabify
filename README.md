@@ -104,10 +104,10 @@ This project is developed as part of **CS 422 / CS 522 – Software Methodologie
 
 ## Team
 
-- Andrew Martin  
-- Leon Wong  
-- Saint George Aufranc  
-- Kenny Nguyen  
+- Andrew Martin
+- Leon Wong
+- Saint George Aufranc
+- Kenny Nguyen
 
 ---
 

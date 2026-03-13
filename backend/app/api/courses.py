@@ -94,10 +94,11 @@ def create_course(term_id):
 
         # Prevent duplicate course names in same term (case-insensitive)
         cur.execute(
-            "SELECT id FROM Courses WHERE term_id = %s AND LOWER(TRIM(course_name)) = LOWER(%s)",
+            "SELECT id, course_name FROM Courses WHERE term_id = %s AND LOWER(TRIM(course_name)) = LOWER(%s)",
             (term_id, course_name),
         )
-        if cur.fetchone():
+        duplicate_course = cur.fetchone()
+        if duplicate_course and duplicate_course.get("course_name"):
             return jsonify({"error": "duplicate_course", "message": "A course with this name already exists in this term"}), 409
 
         cur.execute(

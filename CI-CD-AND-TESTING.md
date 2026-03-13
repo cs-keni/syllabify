@@ -15,6 +15,7 @@ Syllabify uses **GitHub Actions** for CI/CD, ensuring code quality and consisten
 ### When CI Runs
 
 The CI pipeline automatically runs on:
+
 - **Pushes** to `dev` and `main` branches
 - **Pull requests** targeting `dev` and `main` branches
 
@@ -140,6 +141,7 @@ npm run lint:fix
 **Configuration**: Uses default settings. Can be configured via `pyproject.toml` or `ruff.toml` if needed.
 
 **Common Commands**:
+
 - `ruff check backend/` - Check for linting errors
 - `ruff check backend/ --fix` - Auto-fix issues
 - `ruff format backend/` - Format code (if configured)
@@ -149,11 +151,13 @@ npm run lint:fix
 **Pytest** is the testing framework for Python code.
 
 **Test Discovery**:
+
 - Tests must be in files named `test_*.py` or `*_test.py`
 - Tests must be in the `backend/tests/` directory
 - Test functions must start with `test_`
 
 **Example Test**:
+
 ```python
 def test_example():
     assert True
@@ -174,6 +178,7 @@ def test_example():
 **Configuration**: See `frontend/.prettierrc.json`
 
 **Settings**:
+
 - Single quotes
 - Semicolons enabled
 - 80 character line width
@@ -191,11 +196,13 @@ def test_example():
 Before pushing code, developers should:
 
 1. **Format code**:
+
    ```bash
    cd frontend && npm run format
    ```
 
 2. **Check linting**:
+
    ```bash
    # Backend (Docker)
    docker compose run --rm backend ruff check app/
@@ -205,6 +212,7 @@ Before pushing code, developers should:
    ```
 
 3. **Run tests**:
+
    ```bash
    docker compose run --rm backend pytest
    ```
@@ -225,6 +233,7 @@ The CI pipeline will automatically verify all checks pass.
 **Problem**: Ruff finds linting errors in Python code.
 
 **Solution**:
+
 ```bash
 # Run ruff in container
 docker compose run --rm backend ruff check app/
@@ -240,6 +249,7 @@ docker compose run --rm backend ruff check app/ --fix
 **Problem**: Pytest finds failing tests.
 
 **Solution**:
+
 ```bash
 # Run tests in container
 docker compose run --rm backend pytest -v
@@ -252,6 +262,7 @@ docker compose run --rm backend pytest -v
 **Problem**: Code doesn't match Prettier formatting rules.
 
 **Solution**:
+
 ```bash
 cd frontend
 
@@ -269,6 +280,7 @@ git push origin dev
 **Problem**: ESLint finds linting errors.
 
 **Solution**:
+
 ```bash
 cd frontend
 
@@ -286,6 +298,7 @@ npm run lint:fix
 **Problem**: CI fails because dependencies are missing.
 
 **Solution**:
+
 - **Backend**: Ensure `backend/requirements.txt` and `backend/requirements-dev.txt` include all needed packages (Docker installs both)
 - **Frontend**: Ensure `frontend/package.json` has all dependencies in `devDependencies`
 
@@ -296,6 +309,7 @@ npm run lint:fix
 ### Backend Tests
 
 1. Create test file in `backend/tests/`:
+
    ```python
    # backend/tests/test_new_feature.py
    def test_new_feature():
@@ -304,6 +318,7 @@ npm run lint:fix
    ```
 
 2. Run in container to verify:
+
    ```bash
    docker compose run --rm backend pytest tests/test_new_feature.py
    ```
@@ -312,7 +327,7 @@ npm run lint:fix
 
 ### Frontend Tests
 
-*Frontend testing framework will be configured when frontend development begins.*
+_Frontend testing framework will be configured when frontend development begins._
 
 ---
 
@@ -344,6 +359,7 @@ npm run lint:fix
 ## Questions?
 
 If you have questions about CI/CD, linting, or testing:
+
 - Check this document first
 - Review the `.github/workflows/ci.yml` file
 - Ask in the team Discord channel

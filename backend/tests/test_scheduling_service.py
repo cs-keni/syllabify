@@ -78,10 +78,11 @@ def test_study_times_have_assignment_and_course_ids(db_session, sample_term, sam
     created = generate_study_times(db_session, sample_term.id)
     assert len(created) > 0
     for st in created:
-        assert st.assignment_id is not None
         assert st.course_id is not None
-        # keep type check to ensure relationship identity is correctly propagated
+        # assignment_id can be None for ongoing study; assignment-driven study has assignment_id
         assert isinstance(st, StudyTime)
+    # At least some study times should be linked to the assignment
+    assert any(st.assignment_id == sample_assignment.id for st in created)
 
 
 def test_calendar_event_blocks_study_slot(db_session, sample_term, sample_user, sample_assignment):

@@ -14,9 +14,7 @@ import {
 } from '../api/client';
 import { useAccent } from '../contexts/AccentContext';
 import toast from 'react-hot-toast';
-import RedMan from '../assets/RedMan.png';
-import GreenMan from '../assets/GreenMan.png';
-import BlueMan from '../assets/BlueMan.png';
+import { AVATAR_OPTIONS } from '../lib/avatarOptions';
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const DAY_TO_CODE = {
@@ -28,12 +26,6 @@ const DAY_TO_CODE = {
   Sat: 'SA',
   Sun: 'SU',
 };
-const AVATAR_OPTIONS = [
-  { key: 'red', label: 'Red', src: RedMan },
-  { key: 'green', label: 'Green', src: GreenMan },
-  { key: 'blue', label: 'Blue', src: BlueMan },
-];
-
 function parsePreferredDays(csv) {
   if (!csv || typeof csv !== 'string') return [];
   return csv
@@ -55,7 +47,7 @@ const PASSWORD_REQUIREMENTS = [
 ];
 
 export default function Preferences() {
-  const { token } = useAuth();
+  const { token, refreshUser } = useAuth();
   const { accent, setAccent, palettes } = useAccent();
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState(null);
@@ -118,6 +110,7 @@ export default function Preferences() {
         email: email.trim() || null,
         avatar: avatar || null,
       });
+      await refreshUser();
       toast.success('Profile saved');
     } catch (err) {
       toast.error(err.message || 'Failed to save');
@@ -379,9 +372,15 @@ export default function Preferences() {
 
           <form onSubmit={handleSavePreferences} className="space-y-8">
             <section>
-              <h2 className="text-sm font-medium text-ink mb-3">Work hours</h2>
+              <h2 className="text-sm font-medium text-ink mb-3">
+                Study window
+              </h2>
+              <p className="text-xs text-ink-subtle mb-2">
+                The time range each day when you&apos;re available to study
+                (e.g. after work: 5pm–10pm).
+              </p>
               <div className="flex items-center gap-4">
-                <label className="text-sm text-ink-muted">Start</label>
+                <label className="text-sm text-ink-muted">From</label>
                 <input
                   type="time"
                   value={workStart}
@@ -389,7 +388,7 @@ export default function Preferences() {
                   disabled={loading}
                   className="rounded-input border border-border bg-surface px-3 py-2 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent disabled:opacity-60"
                 />
-                <label className="text-sm text-ink-muted">End</label>
+                <label className="text-sm text-ink-muted">To</label>
                 <input
                   type="time"
                   value={workEnd}
@@ -462,8 +461,11 @@ export default function Preferences() {
 
             <section>
               <h2 className="text-sm font-medium text-ink mb-3">
-                Max hours per day
+                Max study hours per day
               </h2>
+              <p className="text-xs text-ink-subtle mb-2">
+                Study times will never exceed this many hours on any single day.
+              </p>
               <div className="flex items-center gap-4">
                 <input
                   type="range"

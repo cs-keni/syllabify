@@ -36,16 +36,16 @@ DB Schema → Registration → Login Refactor → Profile/Settings → Admin
 
 ## 2. Implementation Phases (Order)
 
-| Phase | Description | Blocks |
-|-------|-------------|--------|
-| **1** | Database schema | Users (email, is_admin), UserPreferences |
-| **2** | User registration | Backend + Frontend |
-| **3** | Login refactor | Validate against DB; remove hardcoded dev user |
-| **4** | Profile / settings | Email; GET/PUT /api/users/me |
-| **5** | Admin interface | Admin API + Admin page (protected) |
-| **6** | Preferences persistence | Backend + wire Preferences UI |
-| **7** | Fix update-course flow | Upload from Course page → update, not create |
-| **8** | Course Dashboard | Assignment CRUD, paste + parse snippet, enhanced Course page |
+| Phase | Description             | Blocks                                                       |
+| ----- | ----------------------- | ------------------------------------------------------------ |
+| **1** | Database schema         | Users (email, is_admin), UserPreferences                     |
+| **2** | User registration       | Backend + Frontend                                           |
+| **3** | Login refactor          | Validate against DB; remove hardcoded dev user               |
+| **4** | Profile / settings      | Email; GET/PUT /api/users/me                                 |
+| **5** | Admin interface         | Admin API + Admin page (protected)                           |
+| **6** | Preferences persistence | Backend + wire Preferences UI                                |
+| **7** | Fix update-course flow  | Upload from Course page → update, not create                 |
+| **8** | Course Dashboard        | Assignment CRUD, paste + parse snippet, enhanced Course page |
 
 ---
 
@@ -320,11 +320,11 @@ def require_admin():
 
 #### 7.2.2 Endpoints
 
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| GET | /api/admin/users | Admin | List all users. Return `{users: [{id, username, email, security_setup_done, is_admin, is_disabled}]}`. |
-| PUT | /api/admin/users/:id/disable | Admin | Body: `{"disabled": true}` or `{"disabled": false}`. Set `is_disabled` for that user. |
-| PUT | /api/admin/users/:id/reset-security | Admin | Set `security_setup_done = FALSE` for that user. Clear their UserSecurityAnswers. |
+| Method | Path                                | Auth  | Description                                                                                            |
+| ------ | ----------------------------------- | ----- | ------------------------------------------------------------------------------------------------------ |
+| GET    | /api/admin/users                    | Admin | List all users. Return `{users: [{id, username, email, security_setup_done, is_admin, is_disabled}]}`. |
+| PUT    | /api/admin/users/:id/disable        | Admin | Body: `{"disabled": true}` or `{"disabled": false}`. Set `is_disabled` for that user.                  |
+| PUT    | /api/admin/users/:id/reset-security | Admin | Set `security_setup_done = FALSE` for that user. Clear their UserSecurityAnswers.                      |
 
 **Disable behavior:** If `is_disabled` is True, login should reject. Add check in login: `SELECT ... WHERE username = %s AND (is_disabled = FALSE OR is_disabled IS NULL)`.
 
@@ -365,10 +365,10 @@ Work hours, preferred days, and max hours per day from Preferences page are stor
 
 #### 8.2.1 Endpoints (add to users blueprint)
 
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| GET | /api/users/me/preferences | JWT | Return `{work_start, work_end, preferred_days, max_hours_per_day}`. If no row exists, INSERT default row and return it. |
-| PUT | /api/users/me/preferences | JWT | Body: `{work_start?, work_end?, preferred_days?, max_hours_per_day?}`. Update row; create if none. |
+| Method | Path                      | Auth | Description                                                                                                             |
+| ------ | ------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------- |
+| GET    | /api/users/me/preferences | JWT  | Return `{work_start, work_end, preferred_days, max_hours_per_day}`. If no row exists, INSERT default row and return it. |
+| PUT    | /api/users/me/preferences | JWT  | Body: `{work_start?, work_end?, preferred_days?, max_hours_per_day?}`. Update row; create if none.                      |
 
 **Preferred days:** Backend stores comma-separated iCal: "MO,TU,WE,TH,FR". Frontend can send `["MO","TU","WE","TH","FR"]` or "MO,TU,WE,TH,FR". Normalize to string for DB.
 
@@ -412,6 +412,7 @@ When the user navigates from a Course page to Upload (with `courseId` in `locati
 - Replace meetings: Already supported by `POST /api/courses/:id/meetings` (it deletes existing first per current code).
 
 **Option B:** Reuse existing:
+
 - `PUT` for course metadata if you add it.
 - `POST /api/courses/:id/assignments` — currently appends. We need **replace** behavior. So either:
   - Add `replace=true` query param to delete first, or
@@ -423,7 +424,7 @@ When the user navigates from a Course page to Upload (with `courseId` in `locati
 2. Parse body: `{ course_name?, study_hours_per_week?, assignments, meeting_times }`. assignments and meeting_times are required (arrays, can be empty).
 3. Update course: `UPDATE Courses SET course_name = %s, study_hours_per_week = %s WHERE id = %s` (use payload values or keep existing).
 4. Delete assignments: `DELETE FROM Assignments WHERE course_id = %s`.
-5. Insert new assignments (same logic as `add_assignments`—work_load from hours*4, etc.).
+5. Insert new assignments (same logic as `add_assignments`—work_load from hours\*4, etc.).
 6. Delete meetings: `DELETE FROM Meetings WHERE course_id = %s`.
 7. Insert new meetings (same logic as `add_meetings`).
 8. Return 200 with updated course info.
@@ -448,6 +449,7 @@ When the user navigates from a Course page to Upload (with `courseId` in `locati
 ### 10.1 Goal
 
 After a course is created, users open the **Course page** (serving as the "Course Dashboard") and see:
+
 1. Parsed syllabus content (assignments, meetings) mapped to that course
 2. Ability to **add, remove, edit** assignments (since syllabi often omit details)
 3. A **"Paste additional assignment info"** section: user pastes text → AI parses → user reviews and adds parsed items to the course (or edits manually)
@@ -458,11 +460,11 @@ The Course page (`/app/courses/:courseId`) already exists and shows assignments.
 
 #### 10.2.1 New endpoints
 
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| PATCH | /api/assignments/:id | JWT | Update single assignment. Body: `{assignment_name?, due_date?, hours?, type?}` (hours → work_load as hours×4). Verify ownership via assignment → course → term → user. |
-| DELETE | /api/assignments/:id | JWT | Delete single assignment. Verify ownership. |
-| POST | /api/courses/:id/assignments | JWT | *(existing)* Bulk add. Reuse for "Add from parsed" and "Add single" (send array of 1). |
+| Method | Path                         | Auth | Description                                                                                                                                                            |
+| ------ | ---------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PATCH  | /api/assignments/:id         | JWT  | Update single assignment. Body: `{assignment_name?, due_date?, hours?, type?}` (hours → work_load as hours×4). Verify ownership via assignment → course → term → user. |
+| DELETE | /api/assignments/:id         | JWT  | Delete single assignment. Verify ownership.                                                                                                                            |
+| POST   | /api/courses/:id/assignments | JWT  | _(existing)_ Bulk add. Reuse for "Add from parsed" and "Add single" (send array of 1).                                                                                 |
 
 **Placement:** Add `backend/app/api/assignments.py` with `bp = Blueprint("assignments", __name__, url_prefix="/api/assignments")`. Register in `main.py`. Import `decode_token, get_db` from auth. Create helper `_owns_assignment(cur, assignment_id, user_id)` that does: `SELECT a.id FROM Assignments a JOIN Courses c ON c.id = a.course_id JOIN Terms t ON t.id = c.term_id WHERE a.id = %s AND t.user_id = %s`.
 
@@ -480,6 +482,7 @@ The Course page (`/app/courses/:courseId`) already exists and shows assignments.
 #### 10.3.1 Course page structure (Course.jsx → CourseDashboard.jsx or enhance in place)
 
 **Sections:**
+
 1. **Header** — Course name, term, "Upload syllabus", "Delete" (unchanged).
 2. **Assignments** — List with **edit** and **remove** buttons per row. Inline edit or modal.
 3. **Add assignment** — Small form or expandable: name, due date, hours, type. Submit → `POST /api/courses/:id/assignments` with `{assignments: [one item]}`.
@@ -568,23 +571,23 @@ export async function deleteAssignment(token, assignmentId) { ... }
 
 ## 12. Migration Files Summary
 
-| File | Purpose |
-|------|---------|
+| File                                          | Purpose                             |
+| --------------------------------------------- | ----------------------------------- |
 | `docker/migrations/003_user_registration.sql` | Users: email, is_admin, is_disabled |
-| `docker/migrations/004_user_preferences.sql` | Create UserPreferences table |
+| `docker/migrations/004_user_preferences.sql`  | Create UserPreferences table        |
 
 ---
 
 ## 13. Routing Summary
 
-| Path | Auth | Description |
-|------|------|--------------|
-| /register | No | Registration form |
-| /login | No | Login form |
-| /app | Yes | Main app layout |
-| /app/courses/:courseId | Yes | Course Dashboard (assignments, edit, paste+parse) |
-| /app/preferences | Yes | Preferences + Account (email) |
-| /app/admin | Yes (admin) | Admin user management |
+| Path                   | Auth        | Description                                       |
+| ---------------------- | ----------- | ------------------------------------------------- |
+| /register              | No          | Registration form                                 |
+| /login                 | No          | Login form                                        |
+| /app                   | Yes         | Main app layout                                   |
+| /app/courses/:courseId | Yes         | Course Dashboard (assignments, edit, paste+parse) |
+| /app/preferences       | Yes         | Preferences + Account (email)                     |
+| /app/admin             | Yes (admin) | Admin user management                             |
 
 ---
 

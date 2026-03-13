@@ -3,12 +3,14 @@ Schedule API: engine input for scheduling teammate.
 Returns normalized JSON (courses, meeting_times, work_items, term) per parser-schedule-integration.md.
 """
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 
 from flask import Blueprint, jsonify, request
+from sqlalchemy.orm import joinedload
 
 from app.api.auth import decode_token, get_db
 from app.db.session import SessionLocal
+from app.models.term import Term
 from app.services.schedule_input_builder import build_engine_input
 from app.services.scheduling_service import generate_study_times
 
@@ -40,6 +42,23 @@ def _get_user(req):
         return int(payload.get("sub")), None
     except (TypeError, ValueError):
         return None, (jsonify({"error": "unauthorized"}), 401)
+
+
+def _parse_pref_time(s: str | None, default_h: int, default_m: int) -> time:
+    """Parse 'HH:MM' from preferences; return time(default_h, default_m) if invalid."""
+    if not s or not isinstance(s, str):
+        return time(default_h, default_m)
+    s = s.strip()[:5]
+    try:
+        parts = s.split(":")
+        if len(parts) == 2:
+            h, m = int(parts[0], 10), int(parts[1], 10)
+            if 0 <= h <= 23 and 0 <= m <= 59:
+                return time(h, m)
+    except (ValueError, TypeError):
+        pass
+    return time(default_h, default_m)
+
 
 bp = Blueprint("schedule", __name__, url_prefix="/api/schedule")
 
@@ -77,12 +96,11 @@ def get_engine_input():
     return jsonify(result), 200
 
 
-@bp.route("/terms/<int:term_id>/study-times", methods=["GET"])
-def get_study_times_for_term(term_id):
+@bp.route("/terms/<int:term_id>/study-times", methods=["GET", "DELETE"])
+def get_or_clear_study_times_for_term(term_id):
     """
-    GET /api/schedule/terms/:term_id/study-times
-    Optional: ?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD to filter by date range.
-    Returns study time blocks for the term. Without date params, returns all.
+    GET: Returns study times. Optional ?start_date=&end_date=.
+    DELETE: Clears all study times for the term.
     """
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
@@ -93,6 +111,23 @@ def get_study_times_for_term(term_id):
         user_id = int(payload.get("sub"))
     except (TypeError, ValueError):
         return jsonify({"error": "unauthorized"}), 401
+
+    if request.method == "DELETE":
+        conn = get_db()
+        try:
+            cur = conn.cursor(dictionary=True)
+            cur.execute(
+                "SELECT t.id FROM Terms t WHERE t.id = %s AND t.user_id = %s",
+                (term_id, user_id),
+            )
+            if not cur.fetchone():
+                return jsonify({"error": "Term not found"}), 404
+            cur.execute("DELETE FROM StudyTimes WHERE term_id = %s", (term_id,))
+            deleted = cur.rowcount
+            conn.commit()
+            return jsonify({"ok": True, "deleted_count": deleted}), 200
+        finally:
+            conn.close()
 
     start_date = request.args.get("start_date", "").strip()
     end_date = request.args.get("end_date", "").strip()
@@ -183,20 +218,98 @@ def delete_study_time(study_time_id):
         conn.close()
 
 
+def _load_user_prefs_for_scheduling(user_id: int) -> dict:
+    """Load work_start, work_end, max_hours_per_day, timezone, preferred_days from UserPreferences."""
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT work_start, work_end, max_hours_per_day, timezone, preferred_days FROM UserPreferences WHERE user_id = %s",
+            (user_id,),
+        )
+        row = cur.fetchone()
+        if not row:
+            return {
+                "work_start": "08:00", "work_end": "22:00", "max_hours_per_day": 8,
+                "timezone": "UTC", "preferred_days": "MO,TU,WE,TH,FR",
+            }
+        return {
+            "work_start": row.get("work_start") or "08:00",
+            "work_end": row.get("work_end") or "22:00",
+            "max_hours_per_day": int(row["max_hours_per_day"]) if row.get("max_hours_per_day") is not None else 8,
+            "timezone": (row.get("timezone") or "UTC").strip() or "UTC",
+            "preferred_days": (row.get("preferred_days") or "MO,TU,WE,TH,FR").strip() or "MO,TU,WE,TH,FR",
+        }
+    finally:
+        conn.close()
+
+
+def _course_name_by_id(session, term_id):
+    """Return {course_id: course_name} for the term."""
+    term = session.query(Term).options(joinedload(Term.courses)).filter(Term.id == term_id).first()
+    if not term:
+        return {}
+    return {c.id: (c.course_name or "Study") for c in term.courses}
+
+
 @bp.route("/terms/<int:term_id>/generate-study-times", methods=["POST"])
 def generate_study_times_for_term(term_id):
     """
     Generate study times for the given term (scheduling algorithm).
-    For dev: test with curl -X POST -H "Authorization: Bearer <token>" <base>/api/schedule/terms/<term_id>/generate-study-times
+    Uses UserPreferences: work_start/work_end = study window, max_hours_per_day = daily cap.
+    Query param: preview=true returns proposed slots without applying (for modal review).
     """
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
     if not payload:
         return jsonify({"error": "unauthorized"}), 401
+    try:
+        user_id = int(payload.get("sub"))
+    except (TypeError, ValueError):
+        return jsonify({"error": "unauthorized"}), 401
+
+    preview = request.args.get("preview", "").lower() in ("1", "true", "yes")
+
+    prefs = _load_user_prefs_for_scheduling(user_id)
+    study_start = _parse_pref_time(prefs["work_start"], 8, 0)
+    study_end = _parse_pref_time(prefs["work_end"], 22, 0)
+    max_hours = max(1, min(24, prefs["max_hours_per_day"]))
+    user_tz = prefs.get("timezone") or "UTC"
+    preferred_days = prefs.get("preferred_days") or "MO,TU,WE,TH,FR"
+    try:
+        from zoneinfo import ZoneInfo
+        ZoneInfo(user_tz)
+    except Exception:
+        user_tz = "UTC"
 
     session = SessionLocal()
     try:
-        created = generate_study_times(session, term_id)
+        created = generate_study_times(
+            session, term_id,
+            study_start=study_start,
+            study_end=study_end,
+            max_hours_per_day=max_hours,
+            user_timezone=user_tz,
+            preferred_days=preferred_days,
+            dry_run=preview,
+        )
+        if preview:
+            session.rollback()
+            course_names = _course_name_by_id(session, term_id)
+            return jsonify({
+                "preview": True,
+                "created_count": len(created),
+                "study_times": [
+                    {
+                        "start_time": st.start_time.isoformat(),
+                        "end_time": st.end_time.isoformat(),
+                        "course_id": st.course_id,
+                        "course_name": course_names.get(st.course_id, "Study"),
+                        "assignment_id": st.assignment_id,
+                    }
+                    for st in created
+                ],
+            }), 200
         session.commit()
         return jsonify({
             "ok": True,

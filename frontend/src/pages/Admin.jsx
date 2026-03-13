@@ -22,6 +22,7 @@ import {
   getAdminAuditLog,
 } from '../api/client';
 import toast from 'react-hot-toast';
+import { getAvatarUrl } from '../lib/avatarOptions';
 
 function Badge({ variant, children }) {
   const styles = {
@@ -1109,8 +1110,26 @@ export default function Admin() {
                       <td className="p-3 font-mono text-slate-500 dark:text-slate-400 text-xs">
                         {u.id}
                       </td>
-                      <td className="p-3 font-medium text-slate-800 dark:text-slate-100">
-                        {u.username}
+                      <td className="p-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden shrink-0 flex items-center justify-center">
+                            {u.avatar_url ? (
+                              <img
+                                src={getAvatarUrl(u.avatar_url)}
+                                alt=""
+                                crossOrigin="anonymous"
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <span className="text-[10px] font-medium text-slate-500">
+                                {u.username?.slice(0, 2).toUpperCase() || '?'}
+                              </span>
+                            )}
+                          </div>
+                          <span className="font-medium text-slate-800 dark:text-slate-100">
+                            {u.username}
+                          </span>
+                        </div>
                       </td>
                       <td
                         className="p-3 text-slate-600 dark:text-slate-400 text-xs hidden sm:table-cell truncate max-w-[180px]"
@@ -1175,6 +1194,47 @@ export default function Admin() {
                         <td colSpan={9} className="p-4 pl-12">
                           {expandedDetails ? (
                             <div className="space-y-4">
+                              {(expandedDetails.banner_url ||
+                                expandedDetails.avatar_url ||
+                                expandedDetails.description) && (
+                                <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-4">
+                                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                                    Profile
+                                  </p>
+                                  {expandedDetails.banner_url && (
+                                    <div className="mb-2">
+                                      <p className="text-[10px] text-slate-500 mb-1">
+                                        Banner
+                                      </p>
+                                      <img
+                                        src={getAvatarUrl(
+                                          expandedDetails.banner_url
+                                        )}
+                                        alt="Banner"
+                                        crossOrigin="anonymous"
+                                        className="h-16 w-full object-cover rounded border border-slate-200 dark:border-slate-600"
+                                      />
+                                    </div>
+                                  )}
+                                  <div className="flex items-center gap-3">
+                                    {expandedDetails.avatar_url && (
+                                      <img
+                                        src={getAvatarUrl(
+                                          expandedDetails.avatar_url
+                                        )}
+                                        alt="Avatar"
+                                        crossOrigin="anonymous"
+                                        className="w-12 h-12 rounded-full object-cover border border-slate-200 dark:border-slate-600"
+                                      />
+                                    )}
+                                    {expandedDetails.description && (
+                                      <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 flex-1">
+                                        {expandedDetails.description}
+                                      </p>
+                                    )}
+                                  </div>
+                                </div>
+                              )}
                               <div className="flex flex-wrap gap-6 text-sm">
                                 <span className="text-slate-600 dark:text-slate-400">
                                   <strong className="text-slate-800 dark:text-slate-100">

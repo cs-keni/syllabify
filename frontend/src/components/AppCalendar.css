@@ -184,29 +184,47 @@
 }
 
 .app-calendar-container .fc-toolbar-chunk:last-child .fc-button,
-.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button {
+.app-calendar-container
+  .fc-toolbar-chunk:last-child
+  .fc-button-group
+  .fc-button {
   border: none !important;
   background: transparent !important;
   border-radius: 6px;
   color: var(--color-ink-muted);
 }
 
-.app-calendar-container .fc-toolbar-chunk:last-child .fc-button:hover:not(:disabled),
-.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button:hover:not(:disabled) {
+.app-calendar-container
+  .fc-toolbar-chunk:last-child
+  .fc-button:hover:not(:disabled),
+.app-calendar-container
+  .fc-toolbar-chunk:last-child
+  .fc-button-group
+  .fc-button:hover:not(:disabled) {
   background: var(--color-surface) !important;
   color: var(--color-ink);
 }
 
 /* Selected view = accent (highlighted) – override any primary styling */
-.app-calendar-container .fc-toolbar-chunk:last-child .fc-button.fc-button-active,
-.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button.fc-button-active {
+.app-calendar-container
+  .fc-toolbar-chunk:last-child
+  .fc-button.fc-button-active,
+.app-calendar-container
+  .fc-toolbar-chunk:last-child
+  .fc-button-group
+  .fc-button.fc-button-active {
   background: var(--color-accent) !important;
   color: white !important;
   border-color: transparent !important;
 }
 
-.app-calendar-container .fc-toolbar-chunk:last-child .fc-button.fc-button-active:hover:not(:disabled),
-.app-calendar-container .fc-toolbar-chunk:last-child .fc-button-group .fc-button.fc-button-active:hover:not(:disabled) {
+.app-calendar-container
+  .fc-toolbar-chunk:last-child
+  .fc-button.fc-button-active:hover:not(:disabled),
+.app-calendar-container
+  .fc-toolbar-chunk:last-child
+  .fc-button-group
+  .fc-button.fc-button-active:hover:not(:disabled) {
   background: var(--color-accent-hover) !important;
 }
 
@@ -318,8 +336,12 @@
 }
 
 /* All-day row: axis + day columns – transparent, no bar appearance */
-.app-calendar-container .fc-scrollgrid-section.fc-scrollgrid-section-liquid > .fc-timegrid-axis,
-.app-calendar-container .fc-scrollgrid-section.fc-scrollgrid-section-liquid > .fc-scrollgrid-shrink {
+.app-calendar-container
+  .fc-scrollgrid-section.fc-scrollgrid-section-liquid
+  > .fc-timegrid-axis,
+.app-calendar-container
+  .fc-scrollgrid-section.fc-scrollgrid-section-liquid
+  > .fc-scrollgrid-shrink {
   background: transparent !important;
   border: none !important;
 }

@@ -108,7 +108,10 @@ function AppRoutes() {
             <Route path="courses/:courseId" element={<Course />} />
             <Route path="schedule" element={<Schedule />} />
             <Route path="settings" element={<Preferences />} />
-            <Route path="preferences" element={<Navigate to="/app/settings" replace />} />
+            <Route
+              path="preferences"
+              element={<Navigate to="/app/settings" replace />}
+            />
             <Route path="profile" element={<Profile />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/app" replace />} />
@@ -127,16 +130,6 @@ export default function App() {
         <AccentProvider>
           <AuthProvider>
             <AppRoutes />
-            <span
-              className="fixed bottom-2 right-2 text-[10px] text-ink-muted/60 font-mono select-none pointer-events-none z-[5]"
-              title={
-                typeof __BUILD_DATE__ !== 'undefined'
-                  ? `Built ${__BUILD_DATE__}`
-                  : undefined
-              }
-            >
-              v{typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '?'}
-            </span>
             <Toaster
               position="top-right"
               toastOptions={{

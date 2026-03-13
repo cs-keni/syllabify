@@ -14,6 +14,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle';
 import ShortcutsOverlay from './ShortcutsOverlay';
+import { getAvatarOption, getAvatarUrl } from '../lib/avatarOptions';
 
 const navItems = [
   { to: '/app', label: 'Dashboard', end: true },
@@ -128,6 +129,8 @@ export default function Layout() {
         .toUpperCase()
         .replace(/[^A-Z0-9]/g, '') || '?'
     : '?';
+  const avatarUrl = getAvatarUrl(user?.avatar_url);
+  const avatarOption = getAvatarOption(user?.avatar);
   const navItemsFiltered = navItems.filter(
     item => !item.adminOnly || user?.is_admin
   );
@@ -281,10 +284,25 @@ export default function Layout() {
                   aria-haspopup="menu"
                 >
                   <span
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-muted text-accent text-xs font-medium shrink-0"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-muted text-accent text-xs font-medium shrink-0 overflow-hidden border border-border"
                     aria-hidden
                   >
-                    {initials}
+                    {avatarUrl ? (
+                      <img
+                        src={avatarUrl}
+                        alt=""
+                        crossOrigin="anonymous"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : avatarOption ? (
+                      <img
+                        src={avatarOption.src}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      initials
+                    )}
                   </span>
                   <span className="hidden sm:inline">{user.username}</span>
                   <svg

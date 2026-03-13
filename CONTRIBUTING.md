@@ -58,6 +58,7 @@ git commit -m "Description of your changes"
 ```
 
 **Commit Message Tips:**
+
 - Be clear and descriptive
 - Use present tense ("Add feature" not "Added feature")
 - Keep messages concise but informative
@@ -103,7 +104,7 @@ git push origin dev
 4. Set the base branch to **`main`** and compare branch to **`dev`**
 5. Fill in the pull request title and description:
    - **Title**: Brief summary of changes
-   - **Description**: 
+   - **Description**:
      - What changes were made?
      - Why were these changes needed?
      - Any additional notes for reviewers
@@ -112,6 +113,7 @@ git push origin dev
 ### 4. Wait for CI Checks to Pass
 
 GitHub Actions will automatically run:
+
 - Backend tests and linting
 - Frontend linting
 
@@ -127,8 +129,9 @@ GitHub Actions will automatically run:
    - Ask someone to review it
 
 2. Example message:
+
    ```
-   Hey team! I've created PR #123 to merge dev into main. 
+   Hey team! I've created PR #123 to merge dev into main.
    Could someone please review it? Link: [PR URL]
    ```
 
@@ -158,6 +161,7 @@ git pull origin dev
 ```
 
 If there are conflicts, resolve them, then:
+
 ```bash
 git add .
 git commit -m "Merge latest dev changes"
@@ -235,6 +239,7 @@ git push origin dev
 ## Questions?
 
 If you run into issues or have questions:
+
 - Ask in the team Discord channel
 - Ask ChatGPT or your favorite AI/LLM
 - Check the project README.md for more context
