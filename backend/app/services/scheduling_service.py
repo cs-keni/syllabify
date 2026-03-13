@@ -523,7 +523,7 @@ def generate_study_times(
 
         needed_slots = total_minutes // MINUTES_PER_SLOT
         used = 0
-        new_busy: list[tuple[datetime, datetime]] = []
+        used_slots: list[tuple[datetime, datetime]] = []
         max_minutes_per_day = max_hours * 60
         for start, end in slots:
             if used >= needed_slots:
@@ -531,7 +531,15 @@ def generate_study_times(
             d = start.date()
             if daily_minutes.get(d, 0) + MINUTES_PER_SLOT > max_minutes_per_day:
                 continue  # skip this slot to respect max_hours_per_day
-            aid = assignment.id if assignment.id >= 0 else None  # ongoing work has negative id
+            used_slots.append((start, end))
+            daily_minutes[d] = daily_minutes.get(d, 0) + MINUTES_PER_SLOT
+            weekly_minutes[_week_key(d)] = weekly_minutes.get(_week_key(d), 0) + MINUTES_PER_SLOT
+            used += 1
+
+        # Merge adjacent 15-min slots into contiguous blocks (e.g. 5:00-5:15, 5:15-5:30 -> 5:00-5:30).
+        merged = _merge_intervals(used_slots)
+        aid = assignment.id if assignment.id >= 0 else None  # ongoing work has negative id
+        for start, end in merged:
             st = StudyTime(
                 start_time=start,
                 end_time=end,
@@ -543,12 +551,7 @@ def generate_study_times(
             if not dry_run:
                 session.add(st)
             created.append(st)
-            new_busy.append((start, end))
-            daily_minutes[d] = daily_minutes.get(d, 0) + MINUTES_PER_SLOT
-            weekly_minutes[_week_key(d)] = weekly_minutes.get(_week_key(d), 0) + MINUTES_PER_SLOT
-            used += 1
-
-        busy.extend(new_busy)
+        busy.extend(used_slots)
         busy = _merge_intervals(busy)
 
         if used < needed_slots:
@@ -855,15 +858,17 @@ def _generate_study_times_global(
                     slot_idx = edge.to - slot_offset
                     used_slots_by_assignment.setdefault(a.id, []).append(slot_idx)
 
+    # Merge adjacent 15-min slots into contiguous blocks per assignment.
     created: list[StudyTime] = []
     for a, _ws, _we in normalized_assignments:
         slot_indices = used_slots_by_assignment.get(a.id, [])
-        for idx in slot_indices:
-            s, e, _di = all_slots[idx]
-            aid = a.id if a.id >= 0 else None  # ongoing work has negative id
+        intervals = [all_slots[idx][:2] for idx in slot_indices]  # (start, end) per slot
+        merged = _merge_intervals(intervals)  # e.g. 5:00-5:15, 5:15-5:30 -> 5:00-5:30
+        aid = a.id if a.id >= 0 else None  # ongoing work has negative id
+        for start, end in merged:
             st = StudyTime(
-                start_time=s,
-                end_time=e,
+                start_time=start,
+                end_time=end,
                 term_id=term_id,
                 notes=None,
                 assignment_id=aid,
