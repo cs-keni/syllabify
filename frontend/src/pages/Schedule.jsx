@@ -2,7 +2,7 @@
  * Schedule page. Displays calendar via AppCalendar (FullCalendar).
  * Supports Google Calendar and ICS feed import, sources sidebar.
  */
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../contexts/AuthContext';
@@ -401,7 +401,15 @@ export default function Schedule() {
     }
   };
 
-  // Pie chart data: study time per course (minutes)
+  // Shared palette for courses without explicit color (must match backend/AppCalendar)
+  const COURSE_COLORS = [
+    '#3B82F6', '#10B981', '#F59E0B', '#EF4444',
+    '#8B5CF6', '#EC4899', '#06B6D4', '#64748B',
+  ];
+  const courseColor = (courseId, dbColor) =>
+    dbColor || COURSE_COLORS[(courseId ?? 0) % COURSE_COLORS.length];
+
+  // Pie chart data: study time per course (minutes), with color synced to calendar
   const studyTimeByCourse = (() => {
     const byCourse = {};
     for (const st of studyTimes) {
@@ -409,24 +417,39 @@ export default function Schedule() {
       const start = new Date(st.start_time).getTime();
       const end = new Date(st.end_time).getTime();
       const mins = Math.round((end - start) / 60000);
-      byCourse[name] = (byCourse[name] || 0) + mins;
+      const color = courseColor(st.course_id, st.course_color);
+      if (!byCourse[name]) {
+        byCourse[name] = { mins: 0, course_id: st.course_id, color };
+      }
+      byCourse[name].mins += mins;
     }
     return Object.entries(byCourse)
-      .map(([name, mins]) => ({ name, mins }))
+      .map(([name, data]) => ({ name, mins: data.mins, color: data.color }))
       .sort((a, b) => b.mins - a.mins);
   })();
 
   const totalStudyMins = studyTimeByCourse.reduce((s, x) => s + x.mins, 0);
-  const PIE_COLORS = [
-    '#3B82F6',
-    '#10B981',
-    '#F59E0B',
-    '#EF4444',
-    '#8B5CF6',
-    '#EC4899',
-    '#06B6D4',
-    '#64748B',
-  ];
+
+  // Merge consecutive same-course blocks for display (e.g. 7:00–7:15 + 7:15–8:15 → 7:00–8:15)
+  const mergedStudyTimes = useMemo(() => {
+    if (!studyTimes?.length) return [];
+    const sorted = [...studyTimes].sort(
+      (a, b) => new Date(a.start_time) - new Date(b.start_time)
+    );
+    const merged = [];
+    for (const st of sorted) {
+      const last = merged[merged.length - 1];
+      const sameCourse = last && last.course_id === st.course_id;
+      const adjacent = last && new Date(last.end_time).getTime() === stStart;
+      if (sameCourse && adjacent) {
+        last.end_time = st.end_time;
+        last.id = last.id; // keep first block's id for edit/delete
+      } else {
+        merged.push({ ...st });
+      }
+    }
+    return merged;
+  }, [studyTimes]);
 
   const handleCopyExportUrl = async () => {
     if (!exportFeedUrl) return;
@@ -649,7 +672,7 @@ export default function Schedule() {
         <div className="flex-1 min-w-0 order-1">
           <AppCalendar
             calendarEvents={calendarEvents}
-            studyTimes={studyTimes}
+            studyTimes={mergedStudyTimes}
             onEventDrop={handleStudyTimeMove}
             onEventResize={handleStudyTimeMove}
             onEventClick={handleEventClickAll}
@@ -874,7 +897,7 @@ export default function Schedule() {
                             0
                           );
                         const end = start + (c.mins / totalStudyMins) * 100;
-                        return `${PIE_COLORS[i % PIE_COLORS.length]} ${start}% ${end}%`;
+                        return `${c.color || COURSE_COLORS[i % COURSE_COLORS.length]} ${start}% ${end}%`;
                       })
                       .join(', ')})`,
                   }}
@@ -894,7 +917,7 @@ export default function Schedule() {
                       <span
                         className="w-2.5 h-2.5 rounded-full shrink-0"
                         style={{
-                          backgroundColor: PIE_COLORS[i % PIE_COLORS.length],
+                          backgroundColor: c.color || COURSE_COLORS[i % COURSE_COLORS.length],
                         }}
                       />
                       <span className="truncate text-ink">{c.name}</span>

@@ -30,14 +30,36 @@ function formatHour(hour) {
   return `${h12}:${m.toString().padStart(2, '0')} ${period}`;
 }
 
+/** Merge consecutive same-course blocks (7:00–7:15 + 7:15–8:15 → 7:00–8:15). */
+function mergeConsecutiveStudyTimes(studyTimes) {
+  if (!studyTimes?.length) return [];
+  const sorted = [...studyTimes].sort(
+    (a, b) => new Date(a.start_time) - new Date(b.start_time)
+  );
+  const merged = [];
+  for (const st of sorted) {
+    const last = merged[merged.length - 1];
+    const stStart = new Date(st.start_time).getTime();
+    const sameCourse = last && last.course_id === st.course_id;
+    const adjacent = last && new Date(last.end_time).getTime() === stStart;
+    if (sameCourse && adjacent) {
+      last.end_time = st.end_time;
+    } else {
+      merged.push({ ...st });
+    }
+  }
+  return merged;
+}
+
 /** Convert study_times from API to blocks for the grid. weekStart = Monday. */
 function studyTimesToBlocks(studyTimes, weekStart) {
   if (!studyTimes?.length || !weekStart) return [];
+  const merged = mergeConsecutiveStudyTimes(studyTimes);
   const blocks = [];
   const weekStartTime = new Date(weekStart);
   weekStartTime.setHours(0, 0, 0, 0);
 
-  for (const st of studyTimes) {
+  for (const st of merged) {
     const startDt = new Date(st.start_time);
     const endDt = new Date(st.end_time);
     const startDate = new Date(
