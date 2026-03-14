@@ -166,6 +166,19 @@ def get_or_clear_study_times_for_term(term_id):
                 (term_id, user_id),
             )
         rows = cur.fetchall()
+        # Default palette when course has no color (ensures each course gets distinct color)
+        _DEFAULT_COURSE_COLORS = [
+            "#3B82F6", "#10B981", "#F59E0B", "#EF4444",
+            "#8B5CF6", "#EC4899", "#06B6D4", "#64748B",
+        ]
+
+        def _course_color(course_id, db_color):
+            if db_color:
+                return db_color
+            if course_id is not None:
+                return _DEFAULT_COURSE_COLORS[course_id % len(_DEFAULT_COURSE_COLORS)]
+            return "#10B981"
+
         study_times = []
         for r in rows:
             study_times.append({
@@ -177,7 +190,7 @@ def get_or_clear_study_times_for_term(term_id):
                 "assignment_id": r.get("assignment_id"),
                 "course_id": r.get("course_id"),
                 "course_name": r.get("course_name"),
-                "course_color": r.get("course_color"),
+                "course_color": _course_color(r.get("course_id"), r.get("course_color")),
             })
         return jsonify({"study_times": study_times}), 200
     finally:

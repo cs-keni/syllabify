@@ -66,8 +66,9 @@ function studyTimesToBlocks(studyTimes, weekStart) {
       endTimeStr: formatHour(endHour),
       startTime: st.start_time,
       endTime: st.end_time,
-      title: 'Study',
+      title: st.course_name || 'Study',
       notes: st.notes,
+      courseColor: st.course_color,
     });
   }
   return blocks;
@@ -279,13 +280,14 @@ export default function SchedulePreview({
                     editNotes: b.notes || '',
                   });
                 }}
-                className="absolute rounded flex flex-col justify-center overflow-hidden text-[10px] origin-top-left animate-scale-in bg-accent/90 text-white px-1 py-0.5 text-left hover:bg-accent hover:ring-2 hover:ring-accent/50 transition-colors cursor-pointer"
+                className="absolute rounded flex flex-col justify-center overflow-hidden text-[10px] origin-top-left animate-scale-in text-white px-1 py-0.5 text-left hover:ring-2 hover:ring-white/50 transition-colors cursor-pointer"
                 style={{
                   left: `${dayWidth * b.day + 2}%`,
                   width: `${dayWidth - 4}%`,
                   top,
                   height,
                   animationDelay: `${i * 30}ms`,
+                  backgroundColor: b.courseColor || 'var(--color-accent)',
                 }}
                 title={`${b.startTimeStr} – ${b.endTimeStr} · Click to edit`}
               >

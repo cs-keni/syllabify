@@ -498,11 +498,13 @@ def _generate_study_times_min_cost(
 
     num_assignments = len(normalized_assignments)
     num_slots = len(all_slots)
-    # Nodes: 0=source, 1..num_assignments=assign, assign_offset+1..+num_slots=slots,
-    #        tier_offset..tier_offset+total_tiers-1=tiers, sink
+    # Nodes: 0=source, 1..num_assignments=assign, assign_offset..+num_slots=slots,
+    #        slot_cap_offset..+num_slots=slot_cap (cap 1 each: ensures one course per slot),
+    #        tier_offset..+total_tiers=tiers, sink
     assign_offset = 1
     slot_offset = assign_offset + num_assignments
-    tier_offset = slot_offset + num_slots
+    slot_cap_offset = slot_offset + num_slots
+    tier_offset = slot_cap_offset + num_slots
     sink = tier_offset + total_tiers
     n_nodes = sink + 1
 
@@ -521,14 +523,18 @@ def _generate_study_times_min_cost(
             rank_cost = cost_by_slot[slot_idx]
             mcmf.add_edge(assign_offset + i, slot_offset + slot_idx, 1, rank_cost)
 
-    # Slot -> day-tier (each slot in day d connects to tiers of day d; cost k^2 * cost_scale)
+    # Slot -> slot_cap (cap 1): ensures each slot is used by at most one assignment
+    for slot_idx in range(num_slots):
+        mcmf.add_edge(slot_offset + slot_idx, slot_cap_offset + slot_idx, 1, 0)
+
+    # Slot_cap -> day-tier (each slot in day d connects to tiers of day d; cost k^2 * cost_scale)
     for slot_idx in range(num_slots):
         _, _, day_idx = all_slots[slot_idx]
         tier_start = cumulative_tiers[day_idx]
         tier_count = num_tiers_per_day[day_idx]
         for k in range(tier_count):
             tier_node = tier_offset + tier_start + k
-            mcmf.add_edge(slot_offset + slot_idx, tier_node, 1, (k * k) * cost_scale)
+            mcmf.add_edge(slot_cap_offset + slot_idx, tier_node, 1, (k * k) * cost_scale)
 
     # Day-tier -> sink (cap 1 each)
     for tier_node in range(tier_offset, tier_offset + total_tiers):

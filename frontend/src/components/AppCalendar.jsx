@@ -92,12 +92,13 @@ export default function AppCalendar({
       }
     }
 
-    // Transform study times (use course color when available)
-    const STUDY_GREEN = '#10B981';
+    // Transform study times (use course color when available; fallback palette by course_id)
+    const STUDY_COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899', '#06B6D4', '#64748B'];
     const STUDY_LOCKED = '#059669';
     for (const st of studyTimes) {
       const baseColor =
-        st.course_color || (st.is_locked ? STUDY_LOCKED : STUDY_GREEN);
+        st.course_color ||
+        (st.is_locked ? STUDY_LOCKED : STUDY_COLORS[(st.course_id || 0) % STUDY_COLORS.length]);
       events.push({
         id: `study-${st.id}`,
         title: st.course_name
