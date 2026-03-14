@@ -1,11 +1,12 @@
 # Heuristics + engine.
 # Input: term_id, DB session. Loads term with courses, assignments, and meetings,
 # allocates study time blocks (15-min multiples, 8am–10pm, no conflicts).
-# Goal: minimize max study minutes in a single day.
+# Uses a single min-cost max-flow pass to produce a balanced schedule.
 # Meetings are recurring (day_of_week + start_time_str/end_time_str) or legacy one-off (start_time/end_time).
 #
 # DISCLAIMER: Project structure may change. Functions may be added or modified.
 
+import heapq
 import re as _re
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
@@ -30,9 +31,6 @@ DEFAULT_STUDY_START = time(8, 0)   # 8:00 AM
 DEFAULT_STUDY_END = time(22, 0)    # 10:00 PM
 MINUTES_PER_SLOT = 15
 MINUTES_PER_WORKLOAD_UNIT = 15
-
-# Synthetic id base for ongoing (non-assignment) study work; avoids collision with real assignment ids.
-_ONGOING_ID_BASE = -1000000
 
 # Recurring meeting: 2-char day codes (MO, TU, ...) -> Python weekday (Mon=0, ..., Sun=6).
 _DAY_CODE_TO_WEEKDAY = {
@@ -162,6 +160,116 @@ def _merge_intervals(intervals: list[tuple[datetime, datetime]]) -> list[tuple[d
     return merged
 
 
+class _MinCostMaxFlow:
+    """
+    Min-cost max-flow via successive shortest path with node potentials.
+    Edges stored as [to, rev_index, residual_cap, cost] (mutable) for capacity updates.
+    """
+
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self.g: list[list[list]] = [[] for _ in range(n)]
+        # g[u] = [[v, rev, cap, cost], ...]; cap is residual capacity
+
+    def add_edge(self, u: int, v: int, cap: int, cost: int) -> None:
+        """Add directed edge u -> v with capacity and cost (cost can be zero)."""
+        rev_u = len(self.g[u])
+        rev_v = len(self.g[v])
+        self.g[u].append([v, rev_v, cap, cost])
+        self.g[v].append([u, rev_u, 0, -cost])
+
+    def run(
+        self, source: int, sink: int, flow_limit: int | None = None
+    ) -> tuple[int, int]:
+        """
+        Push up to flow_limit units from source to sink at minimum cost.
+        If flow_limit is None, push maximum flow.
+        Returns (total_flow, total_cost).
+        """
+        flow_limit = flow_limit if flow_limit is not None else 10**18
+        total_flow = 0
+        total_cost = 0
+        # Initial feasible potentials via Bellman-Ford (handles negative cost edges).
+        pi = [10**18] * self.n
+        pi[source] = 0
+        for _ in range(self.n - 1):
+            updated = False
+            for u in range(self.n):
+                if pi[u] == 10**18:
+                    continue
+                for e in self.g[u]:
+                    v, _rev, cap, cost = e[0], e[1], e[2], e[3]
+                    if cap > 0 and pi[v] > pi[u] + cost:
+                        pi[v] = pi[u] + cost
+                        updated = True
+            if not updated:
+                break
+        for v in range(self.n):
+            if pi[v] == 10**18:
+                pi[v] = 0  # unreachable: keep 0 to avoid huge values
+
+        while flow_limit > 0:
+            # Shortest path in residual with reduced cost c + pi[u] - pi[v] (>= 0).
+            dist = [10**18] * self.n
+            dist[source] = 0
+            prev: list[tuple[int, int] | None] = [None] * self.n
+            heap: list[tuple[int, int]] = [(0, source)]
+            while heap:
+                d, u = heapq.heappop(heap)
+                if d != dist[u]:
+                    continue
+                if u == sink:
+                    break
+                for idx, e in enumerate(self.g[u]):
+                    v, rev, cap, cost = e[0], e[1], e[2], e[3]
+                    if cap <= 0:
+                        continue
+                    c = cost + pi[u] - pi[v]
+                    if c < 0:
+                        c = 0
+                    if dist[v] > d + c:
+                        dist[v] = d + c
+                        prev[v] = (u, idx)
+                        heapq.heappush(heap, (dist[v], v))
+
+            if dist[sink] == 10**18:
+                break
+            path_flow = flow_limit
+            cur = sink
+            while prev[cur] is not None:
+                u, idx = prev[cur]
+                path_flow = min(path_flow, self.g[u][idx][2])
+                cur = u
+            if path_flow <= 0:
+                break
+            cur = sink
+            while prev[cur] is not None:
+                u, idx = prev[cur]
+                e = self.g[u][idx]
+                v, rev, cap, cost = e[0], e[1], e[2], e[3]
+                e[2] -= path_flow
+                rev_e = self.g[v][rev]
+                rev_e[2] += path_flow
+                total_cost += path_flow * cost
+                cur = u
+            total_flow += path_flow
+            flow_limit -= path_flow
+            # Update potentials so reduced costs stay non-negative next iteration.
+            for v in range(self.n):
+                if dist[v] < 10**18:
+                    pi[v] += dist[v]
+
+        return (total_flow, total_cost)
+
+    def get_flow(self, u: int, v: int) -> int:
+        """Return flow sent on edge u -> v. Flow equals residual cap of backward edge v->u."""
+        for e in self.g[u]:
+            if e[0] == v:
+                rev = e[1]
+                return self.g[v][rev][2]  # backward edge's residual = flow on u->v
+        return 0
+
+
 def _free_slots_for_day(
     day_start: datetime,
     day_end: datetime,
@@ -270,6 +378,195 @@ def _reconcile_deadlines(session: Session, user_id: int, assignments: list) -> d
     return effective
 
 
+def _generate_study_times_min_cost(
+    session: Session,
+    term: Term,
+    assignments: list,
+    meeting_busy: list[tuple[datetime, datetime]],
+    tz: ZoneInfo,
+    start_time: time,
+    end_time: time,
+    term_id: int,
+    effective_due_dates: dict[int, datetime] | None,
+    max_hours_per_day: int,
+    allowed_weekdays: set[int] | None,
+    dry_run: bool = False,
+) -> list[StudyTime]:
+    """
+    Single-pass scheduling via min-cost max-flow. Builds a flow network where
+    assignment->slot->day_tier->sink; day-tier edges have cost k^2 (k = tier index)
+    so the solver spreads load across days (balanced schedule). Respects
+    max_hours_per_day by capping tier count per day.
+    Per-course study_hours_per_week is not enforced in this flow; callers may
+    filter slots or post-process if needed.
+    """
+    # Normalize assignments and total demand
+    normalized_assignments = []
+    total_required_slots = 0
+    for a in assignments:
+        if a.work_load <= 0:
+            continue
+        ws = a.start_date
+        we = (
+            effective_due_dates.get(a.id, a.due_date)
+            if effective_due_dates is not None
+            else a.due_date
+        )
+        if ws.tzinfo is None:
+            ws = ws.replace(tzinfo=tz)
+        if we.tzinfo is None:
+            we = we.replace(tzinfo=tz)
+        normalized_assignments.append((a, ws, we))
+        total_required_slots += a.work_load
+
+    if not normalized_assignments or total_required_slots == 0:
+        return []
+
+    # Build all 15-min slots across the term
+    current_day = term.start_date if isinstance(term.start_date, date) else term.start_date.date()
+    end_day = term.end_date if isinstance(term.end_date, date) else term.end_date.date()
+    all_slots: list[tuple[datetime, datetime, int]] = []
+    days: list[date] = []
+    while current_day <= end_day:
+        if allowed_weekdays is not None and current_day.weekday() not in allowed_weekdays:
+            current_day = current_day + timedelta(days=1)
+            continue
+        day_idx = len(days)
+        days.append(current_day)
+        day_start_dt = datetime.combine(current_day, start_time, tzinfo=tz)
+        day_end_dt = datetime.combine(current_day, end_time, tzinfo=tz)
+        day_slots = _free_slots_for_day(
+            day_start_dt,
+            day_end_dt,
+            meeting_busy,
+            MINUTES_PER_SLOT,
+            tz,
+            start_time,
+            end_time,
+        )
+        for s, e in day_slots:
+            all_slots.append((s, e, day_idx))
+        current_day = current_day + timedelta(days=1)
+
+    if not all_slots:
+        return []
+
+    slots_per_day: list[int] = [0] * len(days)
+    for _, _, di in all_slots:
+        slots_per_day[di] += 1
+
+    max_slots_per_day_cap = max_hours_per_day * 4
+    if sum(slots_per_day) < total_required_slots:
+        return []
+
+    # Assignment -> slot indices (slots in assignment window)
+    assignment_slot_indices: list[list[int]] = []
+    for a, ws, we in normalized_assignments:
+        indices = [
+            idx
+            for idx, (s, e, _) in enumerate(all_slots)
+            if s >= ws and e <= we
+        ]
+        assignment_slot_indices.append(indices)
+
+    for idx, (a, _, _) in enumerate(normalized_assignments):
+        if a.work_load > 0 and not assignment_slot_indices[idx]:
+            return []
+
+    # Tie-breaker: prefer slots closest to due date (latest first). For each assignment,
+    # rank its slots by (due - slot_start) ascending; rank 0 = closest to due.
+    # We scale tier costs so this rank only breaks ties when tier cost would be equal.
+    assignment_slot_cost: list[dict[int, int]] = []  # assignment index -> slot_idx -> cost (rank)
+    cost_scale = len(all_slots) + 1  # tier costs multiplied by this so rank < scale
+    for i, (a, _ws, we) in enumerate(normalized_assignments):
+        # Sort slot indices by distance to due: (we - start) ascending => closest to due first
+        sorted_slot_indices = sorted(
+            assignment_slot_indices[i],
+            key=lambda idx: (we - all_slots[idx][0]).total_seconds(),
+        )
+        assignment_slot_cost.append({idx: rank for rank, idx in enumerate(sorted_slot_indices)})
+
+    # Day-tier nodes: for each day d, tiers 0..min(slots_per_day[d], cap)-1
+    # Cost k^2 * cost_scale on slot->tier encourages spreading; assignment_slot cost breaks ties.
+    num_tiers_per_day = [
+        min(slots_per_day[d], max_slots_per_day_cap) for d in range(len(days))
+    ]
+    cumulative_tiers = [0] * (len(days) + 1)
+    for d in range(len(days)):
+        cumulative_tiers[d + 1] = cumulative_tiers[d] + num_tiers_per_day[d]
+    total_tiers = cumulative_tiers[len(days)]
+
+    num_assignments = len(normalized_assignments)
+    num_slots = len(all_slots)
+    # Nodes: 0=source, 1..num_assignments=assign, assign_offset+1..+num_slots=slots,
+    #        tier_offset..tier_offset+total_tiers-1=tiers, sink
+    assign_offset = 1
+    slot_offset = assign_offset + num_assignments
+    tier_offset = slot_offset + num_slots
+    sink = tier_offset + total_tiers
+    n_nodes = sink + 1
+
+    mcmf = _MinCostMaxFlow(n_nodes)
+
+    # Source -> assignments
+    for i, (a, _, _) in enumerate(normalized_assignments):
+        if a.work_load <= 0:
+            continue
+        mcmf.add_edge(0, assign_offset + i, a.work_load, 0)
+
+    # Assignment -> slots (cap 1 each); cost = rank so "closest to due" is cheaper (tie-breaker)
+    for i in range(num_assignments):
+        cost_by_slot = assignment_slot_cost[i]
+        for slot_idx in assignment_slot_indices[i]:
+            rank_cost = cost_by_slot[slot_idx]
+            mcmf.add_edge(assign_offset + i, slot_offset + slot_idx, 1, rank_cost)
+
+    # Slot -> day-tier (each slot in day d connects to tiers of day d; cost k^2 * cost_scale)
+    for slot_idx in range(num_slots):
+        _, _, day_idx = all_slots[slot_idx]
+        tier_start = cumulative_tiers[day_idx]
+        tier_count = num_tiers_per_day[day_idx]
+        for k in range(tier_count):
+            tier_node = tier_offset + tier_start + k
+            mcmf.add_edge(slot_offset + slot_idx, tier_node, 1, (k * k) * cost_scale)
+
+    # Day-tier -> sink (cap 1 each)
+    for tier_node in range(tier_offset, tier_offset + total_tiers):
+        mcmf.add_edge(tier_node, sink, 1, 0)
+
+    flow, _cost = mcmf.run(0, sink, flow_limit=total_required_slots)
+    if flow < total_required_slots:
+        return []
+
+    # Extract assignment -> slot usage from flow
+    used_slots_by_assignment: dict[int, list[int]] = {}
+    for i, (a, _, _) in enumerate(normalized_assignments):
+        used_slots_by_assignment[a.id] = []
+        for slot_idx in assignment_slot_indices[i]:
+            if mcmf.get_flow(assign_offset + i, slot_offset + slot_idx) == 1:
+                used_slots_by_assignment[a.id].append(slot_idx)
+
+    created: list[StudyTime] = []
+    for a, _ws, _we in normalized_assignments:
+        slot_indices = used_slots_by_assignment.get(a.id, [])
+        intervals = [all_slots[idx][:2] for idx in slot_indices]
+        merged = _merge_intervals(intervals)
+        for start, end in merged:
+            st = StudyTime(
+                start_time=start,
+                end_time=end,
+                term_id=term_id,
+                notes=None,
+                assignment_id=a.id,
+                course_id=a.course_id,
+            )
+            if not dry_run:
+                session.add(st)
+            created.append(st)
+
+    return created
+
+
 def generate_study_times(
     session: Session,
     term_id: int,
@@ -282,12 +579,15 @@ def generate_study_times(
 ) -> list[StudyTime]:
     """
     Load the term by id, clear existing study times for it, then create new
-    study_time entries so that:
+    study_time entries using a single min-cost max-flow pass:
     - Each assignment gets work_load * 15 minutes between its start_date and due_date.
     - Slots are 15 minutes, between study_start and study_end (default 8:00 - 22:00).
     - No conflict with course meetings or other study times.
     - Respects max_hours_per_day (from UserPreferences or param).
-    - Tries to minimize the maximum study minutes on any single day.
+    - Balanced schedule: flow costs encourage spreading load across days (min-cost
+      favors using "cheap" tier slots first, so no single day is overloaded).
+    - Per-course study_hours_per_week is not enforced in this flow; see
+      _generate_study_times_min_cost for details.
 
     Returns the list of created StudyTime instances (already added to session;
     caller should commit).
@@ -313,31 +613,21 @@ def generate_study_times(
     if not term:
         raise ValueError(f"Term with id {term_id} not found.")
 
-    # Collect assignments and add ongoing study (study_hours_per_week spread across term).
-    # Ongoing ensures study blocks throughout the term, not just before assignment due dates.
+    # Schedule only assignments. study_hours_per_week is a per-course weekly cap (max hours
+    # the student is willing to study for that course in a week), enforced when allocating.
     assignments = [a for course in term.courses for a in course.assignments]
     term_start = term.start_date if isinstance(term.start_date, date) else term.start_date.date()
     term_end = term.end_date if isinstance(term.end_date, date) else term.end_date.date()
-    num_weeks = max(1, (term_end - term_start).days / 7.0)
 
-    class _OngoingWork:
-        """Synthetic work item for ongoing course study (assignment_id=None in StudyTime)."""
-
-        def __init__(self, course_id: int, work_load: int, start_d: date, due_d: date):
-            self.id = _ONGOING_ID_BASE - course_id
-            self.course_id = course_id
-            self.work_load = work_load
-            self.start_date = datetime.combine(start_d, time(0, 0), tzinfo=ZoneInfo("UTC"))
-            self.due_date = datetime.combine(due_d, time(23, 59), tzinfo=ZoneInfo("UTC"))
-
-    ongoing: list = []
+    # Per-course weekly cap in minutes (None = no cap).
+    max_minutes_per_week_by_course: dict[int, int] = {}
     for course in term.courses:
-        hrs_per_week = course.study_hours_per_week if course.study_hours_per_week is not None else 5
-        hrs_per_week = max(1, min(168, int(hrs_per_week)))  # clamp 1-168
-        work_load = max(1, int(hrs_per_week * num_weeks * 4))  # 4 slots per hour
-        ongoing.append(_OngoingWork(course.id, work_load, term_start, term_end))
+        hrs = course.study_hours_per_week
+        if hrs is not None and hrs > 0:
+            max_minutes_per_week_by_course[course.id] = min(168, int(hrs)) * 60
+        # else: no cap for this course
 
-    work_items = assignments + ongoing
+    work_items = assignments
     if not work_items:
         return []
 
@@ -423,156 +713,8 @@ def generate_study_times(
 
     meeting_busy = _merge_intervals(meeting_busy + locked_busy)
 
-    # We'll add study times as we allocate, so they become busy for later work items
-    created: list[StudyTime] = []
-    daily_minutes: dict[date, int] = {}  # date -> total study minutes so far
-    weekly_minutes: dict[tuple[int, int], int] = {}  # (year, week) -> total minutes (for spreading)
-
-    def _week_key(d: date) -> tuple[int, int]:
-        return (d.isocalendar()[0], d.isocalendar()[1])
-
-    # ----- Phase 1: Slack-based greedy scheduling -----
-
-    # Precompute slack (available_minutes - required_minutes) for each work item,
-    # using only meetings as busy intervals.
-    slack_by_assignment_id: dict[int, int] = {}
-    for assignment in work_items:
-        total_minutes = assignment.work_load * MINUTES_PER_WORKLOAD_UNIT
-        if total_minutes <= 0:
-            slack_by_assignment_id[assignment.id] = 0
-            continue
-
-        window_start = assignment.start_date
-        window_end = effective_due_dates.get(assignment.id, assignment.due_date)
-        if window_start.tzinfo is None:
-            window_start = window_start.replace(tzinfo=tz)
-        if window_end.tzinfo is None:
-            window_end = window_end.replace(tzinfo=tz)
-
-        slots: list[tuple[datetime, datetime]] = []
-        current = window_start
-        one_day = timedelta(days=1)
-        while current < window_end:
-            day_end_dt = min(current + one_day, window_end)
-            if allowed_weekdays is None or current.date().weekday() in allowed_weekdays:
-                day_slots = _free_slots_for_day(
-                    current,
-                    day_end_dt,
-                    meeting_busy,
-                    MINUTES_PER_SLOT,
-                    tz,
-                    start_time,
-                    end_time,
-                )
-                slots.extend(day_slots)
-            current = day_end_dt
-
-        available_minutes = len(slots) * MINUTES_PER_SLOT
-        slack_by_assignment_id[assignment.id] = available_minutes - total_minutes
-
-    # Use slack-based ordering (least slack first, then by due date).
-    ordered_work_items = sorted(
-        work_items,
-        key=lambda a: (slack_by_assignment_id.get(a.id, 0), a.due_date),
-    )
-
-    # Start with meetings as busy; new study times will be added on top.
-    busy: list[tuple[datetime, datetime]] = list(meeting_busy)
-
-    all_fully_allocated = True
-
-    for assignment in ordered_work_items:
-        total_minutes = assignment.work_load * MINUTES_PER_WORKLOAD_UNIT
-        if total_minutes <= 0:
-            continue
-
-        window_start = assignment.start_date
-        window_end = effective_due_dates.get(assignment.id, assignment.due_date)
-        if window_start.tzinfo is None:
-            window_start = window_start.replace(tzinfo=tz)
-        if window_end.tzinfo is None:
-            window_end = window_end.replace(tzinfo=tz)
-
-        # Collect all free 15-min slots in [window_start, window_end],
-        # taking into account meetings + already allocated study times.
-        slots: list[tuple[datetime, datetime]] = []
-        current = window_start
-        one_day = timedelta(days=1)
-        while current < window_end:
-            day_end_dt = min(current + one_day, window_end)
-            if allowed_weekdays is None or current.date().weekday() in allowed_weekdays:
-                day_slots = _free_slots_for_day(
-                    current,
-                    day_end_dt,
-                    busy,
-                    MINUTES_PER_SLOT,
-                    tz,
-                    start_time,
-                    end_time,
-                )
-                slots.extend(day_slots)
-            current = day_end_dt
-
-        # Sort by (weekly total, daily total, start time) to spread across weeks and days.
-        def slot_key(s: tuple[datetime, datetime]) -> tuple[int, int, datetime]:
-            d = s[0].date()
-            wk = _week_key(d)
-            return (weekly_minutes.get(wk, 0), daily_minutes.get(d, 0), s[0])
-
-        slots.sort(key=slot_key)
-
-        needed_slots = total_minutes // MINUTES_PER_SLOT
-        used = 0
-        used_slots: list[tuple[datetime, datetime]] = []
-        max_minutes_per_day = max_hours * 60
-        for start, end in slots:
-            if used >= needed_slots:
-                break
-            d = start.date()
-            if daily_minutes.get(d, 0) + MINUTES_PER_SLOT > max_minutes_per_day:
-                continue  # skip this slot to respect max_hours_per_day
-            used_slots.append((start, end))
-            daily_minutes[d] = daily_minutes.get(d, 0) + MINUTES_PER_SLOT
-            weekly_minutes[_week_key(d)] = weekly_minutes.get(_week_key(d), 0) + MINUTES_PER_SLOT
-            used += 1
-
-        # Merge adjacent 15-min slots into contiguous blocks (e.g. 5:00-5:15, 5:15-5:30 -> 5:00-5:30).
-        merged = _merge_intervals(used_slots)
-        aid = assignment.id if assignment.id >= 0 else None  # ongoing work has negative id
-        for start, end in merged:
-            st = StudyTime(
-                start_time=start,
-                end_time=end,
-                term_id=term_id,
-                notes=None,
-                assignment_id=aid,
-                course_id=assignment.course_id,
-            )
-            if not dry_run:
-                session.add(st)
-            created.append(st)
-        busy.extend(used_slots)
-        busy = _merge_intervals(busy)
-
-        if used < needed_slots:
-            all_fully_allocated = False
-
-    if all_fully_allocated:
-        return created
-
-    # ----- Phase 2: Global solver fallback (minimize max daily study time) -----
-
-    # Remove any partially-created study times from the greedy phase.
-    if not dry_run:
-        session.query(StudyTime).filter(
-            StudyTime.term_id == term_id, StudyTime.is_locked.is_(False)
-        ).delete(synchronize_session="fetch")
-
-    # Use a global optimization approach as a fallback. This will:
-    # - Use all 15-minute slots across the term (respecting meetings and study window),
-    # - Minimize the maximum study minutes on any day,
-    # - Fully allocate all assignments if it is mathematically possible.
-    global_created = _generate_study_times_global(
+    # Single pass: min-cost max-flow for a balanced schedule (replaces slack-based + flow fallback).
+    return _generate_study_times_min_cost(
         session=session,
         term=term,
         assignments=work_items,
@@ -586,296 +728,5 @@ def generate_study_times(
         allowed_weekdays=allowed_weekdays,
         dry_run=dry_run,
     )
-    return global_created
 
 
-class _FlowEdge:
-    def __init__(self, to: int, rev: int, cap: int) -> None:
-        self.to = to
-        self.rev = rev
-        self.cap = cap
-
-
-class _Dinic:
-    def __init__(self, n: int) -> None:
-        self.n = n
-        self.g: list[list[_FlowEdge]] = [[] for _ in range(n)]
-        self.level: list[int] = [0] * n
-        self.it: list[int] = [0] * n
-
-    def add_edge(self, fr: int, to: int, cap: int) -> None:
-        fwd = _FlowEdge(to, len(self.g[to]), cap)
-        rev = _FlowEdge(fr, len(self.g[fr]), 0)
-        self.g[fr].append(fwd)
-        self.g[to].append(rev)
-
-    def _bfs(self, s: int, t: int) -> bool:
-        from collections import deque
-
-        self.level = [-1] * self.n
-        q = deque()
-        self.level[s] = 0
-        q.append(s)
-        while q:
-            v = q.popleft()
-            for e in self.g[v]:
-                if e.cap > 0 and self.level[e.to] < 0:
-                    self.level[e.to] = self.level[v] + 1
-                    q.append(e.to)
-        return self.level[t] >= 0
-
-    def _dfs(self, v: int, t: int, f: int) -> int:
-        if v == t:
-            return f
-        for i in range(self.it[v], len(self.g[v])):
-            self.it[v] = i
-            e = self.g[v][i]
-            if e.cap > 0 and self.level[v] < self.level[e.to]:
-                d = self._dfs(e.to, t, min(f, e.cap))
-                if d > 0:
-                    e.cap -= d
-                    self.g[e.to][e.rev].cap += d
-                    return d
-        return 0
-
-    def max_flow(self, s: int, t: int) -> int:
-        flow = 0
-        inf_cap = 10**18
-        while self._bfs(s, t):
-            self.it = [0] * self.n
-            f = self._dfs(s, t, inf_cap)
-            while f > 0:
-                flow += f
-                f = self._dfs(s, t, inf_cap)
-        return flow
-
-
-def _generate_study_times_global(
-    session: Session,
-    term: Term,
-    assignments: list,
-    meeting_busy: list[tuple[datetime, datetime]],
-    tz: ZoneInfo,
-    start_time: time,
-    end_time: time,
-    term_id: int,
-    effective_due_dates: dict[int, datetime] | None = None,
-    max_hours_per_day: int | None = None,
-    allowed_weekdays: set[int] | None = None,
-    dry_run: bool = False,
-) -> list[StudyTime]:
-    """
-    Global optimal scheduling using max-flow + binary search on the maximum
-    allowed minutes per day. Guarantees:
-    - If a conflict-free, fully allocated schedule exists within the term's
-      study window and meetings, this will find one.
-    - Among all such schedules, it minimizes the maximum study minutes on any day.
-    """
-    # Normalize assignment windows to the same timezone and compute total demand.
-    normalized_assignments = []
-    total_required_slots = 0
-    for a in assignments:
-        if a.work_load <= 0:
-            continue
-        ws = a.start_date
-        we = (
-            effective_due_dates.get(a.id, a.due_date)
-            if effective_due_dates is not None
-            else a.due_date
-        )
-        if ws.tzinfo is None:
-            ws = ws.replace(tzinfo=tz)
-        if we.tzinfo is None:
-            we = we.replace(tzinfo=tz)
-        normalized_assignments.append((a, ws, we))
-        total_required_slots += a.work_load  # each workload unit == one 15-min slot
-
-    if not normalized_assignments or total_required_slots == 0:
-        return []
-
-    # Build all possible 15-min slots across the full term (not just assignment windows).
-    # This ensures work is spread across the course span even when assignments have gaps.
-    # Slots are constrained to the study window [start_time, end_time].
-    current_day = term.start_date if isinstance(term.start_date, date) else term.start_date.date()
-    end_day = term.end_date if isinstance(term.end_date, date) else term.end_date.date()
-
-    all_slots: list[tuple[datetime, datetime, int]] = []
-    days: list[date] = []
-    day_index_by_date: dict[date, int] = {}
-    while current_day <= end_day:
-        if allowed_weekdays is not None and current_day.weekday() not in allowed_weekdays:
-            current_day = current_day + timedelta(days=1)
-            continue
-        day_idx = len(days)
-        days.append(current_day)
-        day_index_by_date[current_day] = day_idx
-
-        # Build free slots for this day using only meetings as busy.
-        day_start_dt = datetime.combine(current_day, start_time, tzinfo=tz)
-        day_end_dt = datetime.combine(current_day, end_time, tzinfo=tz)
-        day_slots = _free_slots_for_day(
-            day_start_dt,
-            day_end_dt,
-            meeting_busy,
-            MINUTES_PER_SLOT,
-            tz,
-            start_time,
-            end_time,
-        )
-        for s, e in day_slots:
-            all_slots.append((s, e, day_idx))
-
-        current_day = current_day + timedelta(days=1)
-
-    if not all_slots:
-        # No free slots at all.
-        return []
-
-    slots_per_day: list[int] = [0] * len(days)
-    for _, _, di in all_slots:
-        slots_per_day[di] += 1
-
-    # Quick infeasibility check: total capacity < total demand.
-    if sum(slots_per_day) < total_required_slots:
-        return []
-
-    # For each assignment, compute which slot indices it can use.
-    assignment_slot_indices: list[list[int]] = []
-    for a, ws, we in normalized_assignments:
-        indices: list[int] = []
-        for idx, (s, e, _di) in enumerate(all_slots):
-            if s >= ws and e <= we:
-                indices.append(idx)
-        assignment_slot_indices.append(indices)
-
-    # If any assignment has no usable slots, global solution is impossible.
-    for idx, (a, _, _) in enumerate(normalized_assignments):
-        if a.work_load > 0 and not assignment_slot_indices[idx]:
-            return []
-
-    # Binary search on the maximum number of slots allowed per day.
-    # Cap by user's max_hours_per_day so we never exceed their preferred daily limit.
-    max_slots_in_any_day = max(slots_per_day) if slots_per_day else 0
-    max_hrs = max_hours_per_day if max_hours_per_day is not None else 8
-    max_slots_per_day_cap = max_hrs * 4  # 4 slots per hour (15-min slots)
-    high = min(max_slots_in_any_day, max_slots_per_day_cap)
-    low = 0
-    best_limit = None
-    best_flow_graph: _Dinic | None = None
-    best_node_indices: dict[str, int] | None = None
-
-    def build_and_run_flow(limit_per_day: int, keep_graph: bool = False):
-        nonlocal best_flow_graph, best_node_indices
-
-        num_assignments = len(normalized_assignments)
-        num_slots = len(all_slots)
-        num_days = len(days)
-
-        # Node layout:
-        # 0: source
-        # [1 .. num_assignments]: assignment nodes
-        # [1 + num_assignments .. num_assignments + num_slots]: slot nodes
-        # [1 + num_assignments + num_slots .. num_assignments + num_slots + num_days]: day nodes
-        # last index: sink
-        source = 0
-        assign_offset = 1
-        slot_offset = assign_offset + num_assignments
-        day_offset = slot_offset + num_slots
-        sink = day_offset + num_days
-        node_count = sink + 1
-
-        dinic = _Dinic(node_count)
-
-        # Source -> assignments (capacity = workload in slots).
-        for i, (a, _ws, _we) in enumerate(normalized_assignments):
-            if a.work_load <= 0:
-                continue
-            dinic.add_edge(source, assign_offset + i, a.work_load)
-
-        # Assignment -> slots (each edge capacity 1).
-        for i in range(len(normalized_assignments)):
-            from_node = assign_offset + i
-            for slot_idx in assignment_slot_indices[i]:
-                dinic.add_edge(from_node, slot_offset + slot_idx, 1)
-
-        # Slot -> day (each slot belongs to exactly one day, capacity 1).
-        for slot_idx, (_s, _e, di) in enumerate(all_slots):
-            dinic.add_edge(slot_offset + slot_idx, day_offset + di, 1)
-
-        # Day -> sink (capacity = min(limit_per_day, available slots)).
-        for di, count in enumerate(slots_per_day):
-            cap = min(limit_per_day, count)
-            if cap > 0:
-                dinic.add_edge(day_offset + di, sink, cap)
-
-        flow = dinic.max_flow(source, sink)
-
-        if keep_graph and flow == total_required_slots:
-            best_flow_graph = dinic
-            best_node_indices = {
-                "source": source,
-                "assign_offset": assign_offset,
-                "slot_offset": slot_offset,
-                "day_offset": day_offset,
-                "sink": sink,
-            }
-
-        return flow
-
-    # If we cannot satisfy demand within the user's max_hours_per_day cap, return empty.
-    if build_and_run_flow(high) < total_required_slots:
-        return []
-
-    while low <= high:
-        mid = (low + high) // 2
-        flow = build_and_run_flow(mid)
-        if flow == total_required_slots:
-            best_limit = mid
-            high = mid - 1
-        else:
-            low = mid + 1
-
-    if best_limit is None:
-        return []
-
-    # Re-run with the best limit and keep the graph to extract the assignment.
-    build_and_run_flow(best_limit, keep_graph=True)
-    assert best_flow_graph is not None and best_node_indices is not None
-
-    dinic = best_flow_graph
-    assign_offset = best_node_indices["assign_offset"]
-    slot_offset = best_node_indices["slot_offset"]
-
-    # Extract which slots were used by looking for saturated assignment->slot edges.
-    used_slots_by_assignment: dict[int, list[int]] = {}
-    for i, (a, _ws, _we) in enumerate(normalized_assignments):
-        node = assign_offset + i
-        for edge in dinic.g[node]:
-            # Edge to a slot node?
-            if slot_offset <= edge.to < slot_offset + len(all_slots):
-                # Original capacity was 1; if cap == 0 now, this edge carried flow.
-                if edge.cap == 0:
-                    slot_idx = edge.to - slot_offset
-                    used_slots_by_assignment.setdefault(a.id, []).append(slot_idx)
-
-    # Merge adjacent 15-min slots into contiguous blocks per assignment.
-    created: list[StudyTime] = []
-    for a, _ws, _we in normalized_assignments:
-        slot_indices = used_slots_by_assignment.get(a.id, [])
-        intervals = [all_slots[idx][:2] for idx in slot_indices]  # (start, end) per slot
-        merged = _merge_intervals(intervals)  # e.g. 5:00-5:15, 5:15-5:30 -> 5:00-5:30
-        aid = a.id if a.id >= 0 else None  # ongoing work has negative id
-        for start, end in merged:
-            st = StudyTime(
-                start_time=start,
-                end_time=end,
-                term_id=term_id,
-                notes=None,
-                assignment_id=aid,
-                course_id=a.course_id,
-            )
-            if not dry_run:
-                session.add(st)
-            created.append(st)
-
-    return created
