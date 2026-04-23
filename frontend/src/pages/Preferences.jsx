@@ -39,12 +39,31 @@ const _ALL_TIMEZONES = (() => {
     return Intl.supportedValuesOf('timeZone');
   } catch {
     return [
-      'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles',
-      'America/Anchorage', 'Pacific/Honolulu', 'America/Sao_Paulo', 'America/Toronto',
-      'Europe/London', 'Europe/Paris', 'Europe/Berlin', 'Europe/Moscow',
-      'Africa/Cairo', 'Africa/Johannesburg', 'Asia/Dubai', 'Asia/Kolkata',
-      'Asia/Dhaka', 'Asia/Bangkok', 'Asia/Shanghai', 'Asia/Tokyo',
-      'Asia/Seoul', 'Asia/Singapore', 'Australia/Sydney', 'Pacific/Auckland', 'UTC',
+      'America/New_York',
+      'America/Chicago',
+      'America/Denver',
+      'America/Los_Angeles',
+      'America/Anchorage',
+      'Pacific/Honolulu',
+      'America/Sao_Paulo',
+      'America/Toronto',
+      'Europe/London',
+      'Europe/Paris',
+      'Europe/Berlin',
+      'Europe/Moscow',
+      'Africa/Cairo',
+      'Africa/Johannesburg',
+      'Asia/Dubai',
+      'Asia/Kolkata',
+      'Asia/Dhaka',
+      'Asia/Bangkok',
+      'Asia/Shanghai',
+      'Asia/Tokyo',
+      'Asia/Seoul',
+      'Asia/Singapore',
+      'Australia/Sydney',
+      'Pacific/Auckland',
+      'UTC',
     ];
   }
 })();
@@ -466,7 +485,9 @@ export default function Preferences() {
                   .map(([region, zones]) => (
                     <optgroup key={region} label={region}>
                       {zones.map(tz => (
-                        <option key={tz} value={tz}>{tz}</option>
+                        <option key={tz} value={tz}>
+                          {tz}
+                        </option>
                       ))}
                     </optgroup>
                   ))}

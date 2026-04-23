@@ -105,7 +105,9 @@ export default function Upload() {
           <div key={s.id} className="flex items-center">
             <button
               type="button"
-              onClick={() => { if (i < step && step < 2) setStep(i); }}
+              onClick={() => {
+                if (i < step && step < 2) setStep(i);
+              }}
               disabled={i > step || step === 2}
               className={`rounded-button px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                 i === step

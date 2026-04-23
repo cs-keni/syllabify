@@ -403,8 +403,14 @@ export default function Schedule() {
 
   // Shared palette for courses without explicit color (must match backend/AppCalendar)
   const COURSE_COLORS = [
-    '#3B82F6', '#10B981', '#F59E0B', '#EF4444',
-    '#8B5CF6', '#EC4899', '#06B6D4', '#64748B',
+    '#3B82F6',
+    '#10B981',
+    '#F59E0B',
+    '#EF4444',
+    '#8B5CF6',
+    '#EC4899',
+    '#06B6D4',
+    '#64748B',
   ];
   const courseColor = (courseId, dbColor) =>
     dbColor || COURSE_COLORS[(courseId ?? 0) % COURSE_COLORS.length];
@@ -580,16 +586,22 @@ export default function Schedule() {
                     </p>
                     <ul className="space-y-1.5 text-sm">
                       {merged.slice(0, 50).map((s, i) => (
-                        <li key={i} className="flex items-center gap-2 text-ink">
+                        <li
+                          key={i}
+                          className="flex items-center gap-2 text-ink"
+                        >
                           <span className="font-medium truncate flex-1">
                             {s.course_name || 'Study'}
                           </span>
                           <span className="text-ink-muted shrink-0 font-mono text-xs">
-                            {new Date(s.start_time).toLocaleDateString(undefined, {
-                              weekday: 'short',
-                              month: 'short',
-                              day: 'numeric',
-                            })}{' '}
+                            {new Date(s.start_time).toLocaleDateString(
+                              undefined,
+                              {
+                                weekday: 'short',
+                                month: 'short',
+                                day: 'numeric',
+                              }
+                            )}{' '}
                             {new Date(s.start_time).toLocaleTimeString([], {
                               hour: 'numeric',
                               minute: '2-digit',
@@ -941,7 +953,8 @@ export default function Schedule() {
                       <span
                         className="w-2.5 h-2.5 rounded-full shrink-0"
                         style={{
-                          backgroundColor: c.color || COURSE_COLORS[i % COURSE_COLORS.length],
+                          backgroundColor:
+                            c.color || COURSE_COLORS[i % COURSE_COLORS.length],
                         }}
                       />
                       <span className="truncate text-ink">{c.name}</span>
@@ -952,7 +965,8 @@ export default function Schedule() {
                   ))}
                   {studyTimeByCourse.length > 5 && (
                     <div className="text-xs text-ink-subtle px-1">
-                      + {studyTimeByCourse.length - 5} more course{studyTimeByCourse.length - 5 !== 1 ? 's' : ''}
+                      + {studyTimeByCourse.length - 5} more course
+                      {studyTimeByCourse.length - 5 !== 1 ? 's' : ''}
                     </div>
                   )}
                 </div>

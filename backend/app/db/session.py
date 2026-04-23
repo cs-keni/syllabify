@@ -9,6 +9,13 @@ from sqlalchemy.orm import sessionmaker
 
 _raw_url = os.getenv("DATABASE_URL", "")
 
+if _raw_url.startswith(("http://", "https://")):
+    raise RuntimeError(
+        "DATABASE_URL looks like an HTTP URL, not a database connection string. "
+        "In Supabase: Project Settings → Database → Connection string → URI tab. "
+        f"It should start with postgresql://... Got: {_raw_url[:60]}"
+    )
+
 if _raw_url.startswith("postgres://"):
     # Supabase (and some other providers) emit postgres:// which SQLAlchemy rejects
     _raw_url = _raw_url.replace("postgres://", "postgresql+psycopg2://", 1)

@@ -18,8 +18,9 @@ def get_db():
 
 
 def _get_pg(url: str):
-    from app.db.pg_compat import PgCompatConnection
     import psycopg2
+
+    from app.db.pg_compat import PgCompatConnection
 
     if url.startswith("postgres://"):
         url = url.replace("postgres://", "postgresql://", 1)

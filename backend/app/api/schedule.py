@@ -2,7 +2,6 @@
 Schedule API: engine input for scheduling teammate.
 Returns normalized JSON (courses, meeting_times, work_items, term) per parser-schedule-integration.md.
 """
-import os
 from datetime import datetime, time, timedelta
 
 from flask import Blueprint, jsonify, request
@@ -13,7 +12,6 @@ from app.db.session import SessionLocal
 from app.models.term import Term
 from app.services.schedule_input_builder import build_engine_input
 from app.services.scheduling_service import generate_study_times
-
 
 
 def _get_user(req):
@@ -151,7 +149,7 @@ def get_or_clear_study_times_for_term(term_id):
             )
         rows = cur.fetchall()
         # Default palette when course has no color (ensures each course gets distinct color)
-        _DEFAULT_COURSE_COLORS = [
+        _default_course_colors = [
             "#3B82F6", "#10B981", "#F59E0B", "#EF4444",
             "#8B5CF6", "#EC4899", "#06B6D4", "#64748B",
         ]
@@ -160,7 +158,7 @@ def get_or_clear_study_times_for_term(term_id):
             if db_color:
                 return db_color
             if course_id is not None:
-                return _DEFAULT_COURSE_COLORS[course_id % len(_DEFAULT_COURSE_COLORS)]
+                return _default_course_colors[course_id % len(_default_course_colors)]
             return "#10B981"
 
         study_times = []

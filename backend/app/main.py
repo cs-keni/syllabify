@@ -10,7 +10,6 @@ import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-from app.extensions import limiter
 from app.api.admin import bp as admin_bp
 from app.api.assignments import bp as assignments_bp
 from app.api.auth import bp as auth_bp
@@ -21,6 +20,7 @@ from app.api.syllabus import bp as syllabus_bp
 from app.api.terms import bp as terms_bp
 from app.api.uploads import bp as uploads_bp
 from app.api.users import bp as users_bp
+from app.extensions import limiter
 
 app = Flask(__name__)
 limiter.init_app(app)

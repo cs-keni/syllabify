@@ -4,7 +4,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { getCourses, createCourse, deleteCourse, getUpcomingAssignments } from '../api/client';
+import {
+  getCourses,
+  createCourse,
+  deleteCourse,
+  getUpcomingAssignments,
+} from '../api/client';
 import CourseCard from '../components/CourseCard';
 import TermSelector from '../components/TermSelector';
 
@@ -39,7 +44,9 @@ export default function Dashboard() {
       );
       const courseIds = new Set(courses.map(c => c.id));
       const valid = stored
-        .filter(c => c.id && c.course_name && (!currentTermId || courseIds.has(c.id)))
+        .filter(
+          c => c.id && c.course_name && (!currentTermId || courseIds.has(c.id))
+        )
         .slice(0, 5);
       setRecentCourses(valid);
     } catch (_) {
@@ -83,7 +90,11 @@ export default function Dashboard() {
     try {
       const [coursesData, upcomingData] = await Promise.all([
         getCourses(termId),
-        token ? getUpcomingAssignments(token, termId, 5).catch(() => ({ assignments: [] })) : Promise.resolve({ assignments: [] }),
+        token
+          ? getUpcomingAssignments(token, termId, 5).catch(() => ({
+              assignments: [],
+            }))
+          : Promise.resolve({ assignments: [] }),
       ]);
       setCourses(coursesData.courses || []);
       setUpcomingAssignments(upcomingData.assignments || []);
@@ -146,16 +157,22 @@ export default function Dashboard() {
             </Link>
           </div>
           {!currentTermId ? (
-            <p className="text-sm text-ink-muted py-2">Select a term to see upcoming deadlines.</p>
+            <p className="text-sm text-ink-muted py-2">
+              Select a term to see upcoming deadlines.
+            </p>
           ) : upcomingAssignments.length === 0 ? (
-            <p className="text-sm text-ink-muted py-2">No upcoming deadlines — all clear!</p>
+            <p className="text-sm text-ink-muted py-2">
+              No upcoming deadlines — all clear!
+            </p>
           ) : (
             <ul className="space-y-2">
               {upcomingAssignments.map(a => {
                 const due = a.due_date ? new Date(a.due_date) : null;
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
-                const daysLeft = due ? Math.ceil((due - today) / 86400000) : null;
+                const daysLeft = due
+                  ? Math.ceil((due - today) / 86400000)
+                  : null;
                 return (
                   <li key={a.id} className="flex items-center gap-3 text-sm">
                     <span
@@ -167,11 +184,19 @@ export default function Dashboard() {
                       className="truncate text-ink no-underline hover:text-accent transition-colors flex-1"
                     >
                       {a.assignment_name}
-                      <span className="ml-1 text-xs text-ink-muted">· {a.course_name}</span>
+                      <span className="ml-1 text-xs text-ink-muted">
+                        · {a.course_name}
+                      </span>
                     </Link>
                     {daysLeft !== null && (
-                      <span className={`shrink-0 text-xs tabular-nums ${daysLeft <= 2 ? 'text-red-500 font-medium' : daysLeft <= 7 ? 'text-amber-500' : 'text-ink-muted'}`}>
-                        {daysLeft === 0 ? 'today' : daysLeft === 1 ? '1 day' : `${daysLeft} days`}
+                      <span
+                        className={`shrink-0 text-xs tabular-nums ${daysLeft <= 2 ? 'text-red-500 font-medium' : daysLeft <= 7 ? 'text-amber-500' : 'text-ink-muted'}`}
+                      >
+                        {daysLeft === 0
+                          ? 'today'
+                          : daysLeft === 1
+                            ? '1 day'
+                            : `${daysLeft} days`}
                       </span>
                     )}
                   </li>
@@ -346,9 +371,16 @@ export default function Dashboard() {
           <div className="relative z-10 w-full max-w-sm rounded-xl border border-border bg-surface-elevated p-5 shadow-xl animate-fade-in-up">
             <h3 className="text-base font-semibold text-ink">Delete course?</h3>
             <p className="mt-2 text-sm text-ink-muted">
-              Delete <span className="font-medium text-ink">{pendingDelete.name}</span> and its{' '}
-              <span className="font-medium text-ink">{pendingDelete.assignmentCount}</span>{' '}
-              {pendingDelete.assignmentCount === 1 ? 'assignment' : 'assignments'}? This can&apos;t be undone.
+              Delete{' '}
+              <span className="font-medium text-ink">{pendingDelete.name}</span>{' '}
+              and its{' '}
+              <span className="font-medium text-ink">
+                {pendingDelete.assignmentCount}
+              </span>{' '}
+              {pendingDelete.assignmentCount === 1
+                ? 'assignment'
+                : 'assignments'}
+              ? This can&apos;t be undone.
             </p>
             <div className="mt-4 flex gap-2 justify-end">
               <button

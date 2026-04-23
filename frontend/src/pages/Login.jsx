@@ -202,12 +202,18 @@ export default function Login() {
             />
             <p className="text-center text-sm text-ink-muted">
               Don&apos;t have an account?{' '}
-              <Link to="/register" className="text-accent hover:underline font-medium">
+              <Link
+                to="/register"
+                className="text-accent hover:underline font-medium"
+              >
                 Sign up
               </Link>
             </p>
             <p className="text-center text-sm text-ink-muted">
-              <Link to="/forgot-password" className="text-accent hover:underline">
+              <Link
+                to="/forgot-password"
+                className="text-accent hover:underline"
+              >
                 Forgot password?
               </Link>
             </p>

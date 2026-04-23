@@ -95,7 +95,8 @@ export async function getSecurityQuestions(username) {
     { credentials: 'include' }
   );
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to fetch security questions');
+  if (!res.ok)
+    throw new Error(data.error || 'Failed to fetch security questions');
   return data;
 }
 
@@ -117,7 +118,10 @@ export async function resetPassword(resetToken, newPassword) {
   const res = await apiFetch(`${BASE}/api/auth/reset-password`, {
     method: 'POST',
     headers: headers(true),
-    body: JSON.stringify({ reset_token: resetToken, new_password: newPassword }),
+    body: JSON.stringify({
+      reset_token: resetToken,
+      new_password: newPassword,
+    }),
     credentials: 'include',
   });
   const data = await res.json().catch(() => ({}));
@@ -755,7 +759,8 @@ export async function getUpcomingAssignments(token, termId, limit = 5) {
     { headers: headers(true, token), credentials: 'include' }
   );
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || 'Failed to fetch upcoming assignments');
+  if (!res.ok)
+    throw new Error(data.error || 'Failed to fetch upcoming assignments');
   return data;
 }
 

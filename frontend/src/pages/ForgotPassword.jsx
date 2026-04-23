@@ -39,7 +39,11 @@ export default function ForgotPassword() {
     setError('');
     setSubmitting(true);
     try {
-      const data = await verifySecurityAnswer(username.trim(), selectedQuestion.id, answer.trim());
+      const data = await verifySecurityAnswer(
+        username.trim(),
+        selectedQuestion.id,
+        answer.trim()
+      );
       navigate(`/reset-password?token=${encodeURIComponent(data.reset_token)}`);
     } catch (err) {
       setError('Incorrect answer. Please try again.');
@@ -52,7 +56,10 @@ export default function ForgotPassword() {
     <div className="min-h-screen flex flex-col bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-          <Link to="/" className="text-base font-semibold tracking-tight text-ink no-underline hover:text-accent">
+          <Link
+            to="/"
+            className="text-base font-semibold tracking-tight text-ink no-underline hover:text-accent"
+          >
             Syllabify
           </Link>
           <ThemeToggle />
@@ -62,7 +69,9 @@ export default function ForgotPassword() {
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 pt-10 w-full">
         <div className="mx-auto max-w-md">
           <div className="text-center animate-fade-in">
-            <h1 className="text-3xl font-serif font-semibold text-ink">Forgot password?</h1>
+            <h1 className="text-3xl font-serif font-semibold text-ink">
+              Forgot password?
+            </h1>
             <p className="mt-2 text-sm text-ink-muted">
               {step === 'username'
                 ? 'Enter your username to retrieve your security question.'
@@ -80,7 +89,12 @@ export default function ForgotPassword() {
             {step === 'username' ? (
               <form onSubmit={handleFetchQuestions} className="space-y-4">
                 <div>
-                  <label htmlFor="username" className="block text-sm font-medium text-ink mb-1">Username</label>
+                  <label
+                    htmlFor="username"
+                    className="block text-sm font-medium text-ink mb-1"
+                  >
+                    Username
+                  </label>
                   <input
                     id="username"
                     type="text"
@@ -104,14 +118,22 @@ export default function ForgotPassword() {
               <form onSubmit={handleVerify} className="space-y-4">
                 {questions.length > 1 && (
                   <div>
-                    <label className="block text-sm font-medium text-ink mb-1">Security question</label>
+                    <label className="block text-sm font-medium text-ink mb-1">
+                      Security question
+                    </label>
                     <select
                       value={selectedQuestion?.id}
-                      onChange={e => setSelectedQuestion(questions.find(q => q.id === Number(e.target.value)))}
+                      onChange={e =>
+                        setSelectedQuestion(
+                          questions.find(q => q.id === Number(e.target.value))
+                        )
+                      }
                       className="w-full rounded-input border border-border bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
                     >
                       {questions.map(q => (
-                        <option key={q.id} value={q.id}>{q.text}</option>
+                        <option key={q.id} value={q.id}>
+                          {q.text}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -122,7 +144,12 @@ export default function ForgotPassword() {
                   </p>
                 )}
                 <div>
-                  <label htmlFor="answer" className="block text-sm font-medium text-ink mb-1">Your answer</label>
+                  <label
+                    htmlFor="answer"
+                    className="block text-sm font-medium text-ink mb-1"
+                  >
+                    Your answer
+                  </label>
                   <input
                     id="answer"
                     type="text"
@@ -143,7 +170,11 @@ export default function ForgotPassword() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => { setStep('username'); setError(''); setAnswer(''); }}
+                  onClick={() => {
+                    setStep('username');
+                    setError('');
+                    setAnswer('');
+                  }}
                   className="w-full text-sm text-ink-muted hover:text-ink transition-colors"
                 >
                   ← Back
@@ -153,7 +184,12 @@ export default function ForgotPassword() {
 
             <p className="text-center text-sm text-ink-muted pt-2">
               Remember your password?{' '}
-              <Link to="/login" className="text-accent hover:underline font-medium">Log in</Link>
+              <Link
+                to="/login"
+                className="text-accent hover:underline font-medium"
+              >
+                Log in
+              </Link>
             </p>
           </div>
         </div>
