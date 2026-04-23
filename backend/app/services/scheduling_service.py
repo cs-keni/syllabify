@@ -8,6 +8,7 @@
 
 import heapq
 import re as _re
+from collections import defaultdict
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
@@ -390,15 +391,15 @@ def _generate_study_times_min_cost(
     effective_due_dates: dict[int, datetime] | None,
     max_hours_per_day: int,
     allowed_weekdays: set[int] | None,
+    max_minutes_per_week_by_course: dict[int, int] | None = None,
     dry_run: bool = False,
 ) -> list[StudyTime]:
     """
     Single-pass scheduling via min-cost max-flow. Builds a flow network where
     assignment->slot->day_tier->sink; day-tier edges have cost k^2 (k = tier index)
     so the solver spreads load across days (balanced schedule). Respects
-    max_hours_per_day by capping tier count per day.
-    Per-course study_hours_per_week is not enforced in this flow; callers may
-    filter slots or post-process if needed.
+    max_hours_per_day by capping tier count per day and max_minutes_per_week_by_course
+    via post-flow trimming (earlier-due assignments take priority within each week).
     """
     # Normalize assignments and total demand
     normalized_assignments = []
@@ -552,6 +553,46 @@ def _generate_study_times_min_cost(
             if mcmf.get_flow(assign_offset + i, slot_offset + slot_idx) == 1:
                 used_slots_by_assignment[a.id].append(slot_idx)
 
+    # Enforce per-course weekly study cap (post-flow trimming).
+    # For each course with a cap, collect all allocated slots across its assignments,
+    # sort by ISO week then by assignment due date (earlier due = higher priority),
+    # and drop slots that push the weekly total over the cap.
+    if max_minutes_per_week_by_course:
+        # Build lookup: assignment_id -> (course_id, effective_due)
+        assign_meta: dict[int, tuple[int, datetime]] = {}
+        for a, _ws, we in normalized_assignments:
+            assign_meta[a.id] = (a.course_id, we)
+
+        for course_id, cap_minutes in max_minutes_per_week_by_course.items():
+            cap_slots = max(1, cap_minutes // MINUTES_PER_SLOT)
+            # Gather all (slot_idx, assignment_id, due) for this course
+            course_slots: list[tuple[int, int, datetime]] = []
+            for a, _ws, we in normalized_assignments:
+                if a.course_id != course_id:
+                    continue
+                for slot_idx in used_slots_by_assignment.get(a.id, []):
+                    course_slots.append((slot_idx, a.id, we))
+
+            if not course_slots:
+                continue
+
+            # Group by ISO calendar week
+            week_buckets: dict[tuple[int, int], list[tuple[int, int, datetime]]] = defaultdict(list)
+            for slot_idx, aid, due in course_slots:
+                slot_dt = all_slots[slot_idx][0]
+                iso = slot_dt.isocalendar()
+                week_buckets[(iso.year, iso.week)].append((slot_idx, aid, due))
+
+            for week_key, bucket in week_buckets.items():
+                if len(bucket) <= cap_slots:
+                    continue
+                # Sort: earlier due date first (keep most urgent), then by slot time
+                bucket.sort(key=lambda x: (x[2], all_slots[x[0]][0]))
+                # Drop the excess (least urgent / latest in week)
+                for slot_idx, aid, _due in bucket[cap_slots:]:
+                    if slot_idx in used_slots_by_assignment.get(aid, []):
+                        used_slots_by_assignment[aid].remove(slot_idx)
+
     created: list[StudyTime] = []
     for a, _ws, _we in normalized_assignments:
         slot_indices = used_slots_by_assignment.get(a.id, [])
@@ -592,8 +633,8 @@ def generate_study_times(
     - Respects max_hours_per_day (from UserPreferences or param).
     - Balanced schedule: flow costs encourage spreading load across days (min-cost
       favors using "cheap" tier slots first, so no single day is overloaded).
-    - Per-course study_hours_per_week is not enforced in this flow; see
-      _generate_study_times_min_cost for details.
+    - Per-course study_hours_per_week weekly cap is enforced via post-flow trimming;
+      earlier-due assignments take priority when slots are dropped.
 
     Returns the list of created StudyTime instances (already added to session;
     caller should commit).
@@ -619,8 +660,8 @@ def generate_study_times(
     if not term:
         raise ValueError(f"Term with id {term_id} not found.")
 
-    # Schedule only assignments. study_hours_per_week is a per-course weekly cap (max hours
-    # the student is willing to study for that course in a week), enforced when allocating.
+    # Schedule only assignments. study_hours_per_week is a per-course weekly cap enforced
+    # after flow extraction (see max_minutes_per_week_by_course below).
     assignments = [a for course in term.courses for a in course.assignments]
     term_start = term.start_date if isinstance(term.start_date, date) else term.start_date.date()
     term_end = term.end_date if isinstance(term.end_date, date) else term.end_date.date()
@@ -732,6 +773,7 @@ def generate_study_times(
         effective_due_dates=effective_due_dates,
         max_hours_per_day=max_hours,
         allowed_weekdays=allowed_weekdays,
+        max_minutes_per_week_by_course=max_minutes_per_week_by_course,
         dry_run=dry_run,
     )
 

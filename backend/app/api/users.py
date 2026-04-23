@@ -325,9 +325,9 @@ def put_preferences():
             """
             INSERT INTO UserPreferences (user_id, work_start, work_end, preferred_days, max_hours_per_day, timezone)
             VALUES (%s, %s, %s, %s, %s, %s)
-            ON DUPLICATE KEY UPDATE work_start = VALUES(work_start), work_end = VALUES(work_end),
-                preferred_days = VALUES(preferred_days), max_hours_per_day = VALUES(max_hours_per_day),
-                timezone = VALUES(timezone)
+            ON CONFLICT (user_id) DO UPDATE SET work_start = EXCLUDED.work_start, work_end = EXCLUDED.work_end,
+                preferred_days = EXCLUDED.preferred_days, max_hours_per_day = EXCLUDED.max_hours_per_day,
+                timezone = EXCLUDED.timezone
             """,
             (user_id, work_start, work_end, preferred_days, max_hours, timezone),
         )

@@ -23,7 +23,7 @@ def set_admin_setting(key: str, value: str) -> bool:
         cur = conn.cursor()
         cur.execute(
             "INSERT INTO AdminSettings (key, value) VALUES (%s, %s) "
-            "ON DUPLICATE KEY UPDATE value = VALUES(value)",
+            "ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value",
             (key, value or ""),
         )
         conn.commit()

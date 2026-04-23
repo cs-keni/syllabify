@@ -7,10 +7,10 @@
 
 import os
 
-import mysql.connector
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+from app.extensions import limiter
 from app.api.admin import bp as admin_bp
 from app.api.assignments import bp as assignments_bp
 from app.api.auth import bp as auth_bp
@@ -23,6 +23,8 @@ from app.api.uploads import bp as uploads_bp
 from app.api.users import bp as users_bp
 
 app = Flask(__name__)
+limiter.init_app(app)
+
 # CORS: set FRONTEND_URL on Render to your Vercel URL (e.g. https://syllabify-iota.vercel.app)
 _frontend_origins = os.getenv("FRONTEND_URL", "http://localhost:3000").strip()
 _frontend_origins = [o.strip() for o in _frontend_origins.split(",") if o.strip()]
@@ -35,22 +37,6 @@ CORS(
     expose_headers=["Content-Disposition"],
 )
 
-
-def get_db_connection():
-    """Creates and returns a MySQL connection using DB_* environment variables."""
-    port = os.getenv("DB_PORT", "3306")
-    try:
-        port = int(port)
-    except (TypeError, ValueError):
-        port = 3306
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "mysql"),
-        port=port,
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME"),
-        connection_timeout=15,
-    )
 
 
 def _maintenance_check():
@@ -70,17 +56,17 @@ def _maintenance_check():
         return None
     if path.startswith("/api/calendar/callback"):
         return None
-    enabled, _ = get_maintenance_status()
+    enabled, message = get_maintenance_status()
     if not enabled:
         return None
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
     if not payload:
-        return jsonify({"error": "maintenance", "message": get_maintenance_status()[1]}), 503
+        return jsonify({"error": "maintenance", "message": message}), 503
     username = (payload.get("username") or "").strip()
     if _is_admin(username):
         return None
-    return jsonify({"error": "maintenance", "message": get_maintenance_status()[1]}), 503
+    return jsonify({"error": "maintenance", "message": message}), 503
 
 
 app.before_request(_maintenance_check)

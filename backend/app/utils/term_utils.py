@@ -5,7 +5,7 @@ Provides mapping between term names and term IDs for syllabus JSON ingestion.
 
 from typing import Optional
 
-from app.main import get_db_connection
+from app.db.connection import get_db as get_db_connection
 
 
 def get_term_id_by_name(user_id: int, term_name: str) -> Optional[int]:

@@ -240,8 +240,8 @@ def put_user_notes(user_id):
             cur.execute(
                 """INSERT INTO UserAdminNotes (user_id, note_text, updated_by_admin_id)
                    VALUES (%s, %s, %s)
-                   ON DUPLICATE KEY UPDATE note_text = VALUES(note_text),
-                   updated_by_admin_id = VALUES(updated_by_admin_id)""",
+                   ON CONFLICT (user_id) DO UPDATE SET note_text = EXCLUDED.note_text,
+                   updated_by_admin_id = EXCLUDED.updated_by_admin_id""",
                 (user_id, note_text or None, admin_id),
             )
         except Exception:

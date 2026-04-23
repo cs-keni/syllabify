@@ -3,10 +3,12 @@
 flask>=3.0.0
 python-dotenv>=1.0.0
 
-# Database (MySQL, 3NF). Code uses mysql.connector (this package); pymysql is optional.
+# Database. mysql.connector for MySQL/Railway; psycopg2 for PostgreSQL/Supabase.
+# connection.py auto-detects based on DATABASE_URL env var.
 sqlalchemy>=2.0.0
 mysql-connector-python>=8.0.0
 pymysql>=1.1.0
+psycopg2-binary>=2.9.0
 
 # Auth (JWT, password hashing)
 pyjwt>=2.8.0
@@ -28,6 +30,9 @@ python-docx>=1.0.0
 
 # CORS
 flask-cors>=4.0.0
+
+# Rate limiting (brute-force protection on auth endpoints)
+flask-limiter>=3.5.0
 
 # Production WSGI (Render, etc.)
 gunicorn>=21.0.0

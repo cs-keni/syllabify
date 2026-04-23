@@ -39,6 +39,8 @@ export default function Upload() {
   const [parsedCourseName, setParsedCourseName] = useState('');
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState(null);
+  const [scheduleGenerated, setScheduleGenerated] = useState(false);
+  const [scheduleGenError, setScheduleGenError] = useState(false);
 
   const currentStepId = STEPS[step].id;
 
@@ -103,14 +105,15 @@ export default function Upload() {
           <div key={s.id} className="flex items-center">
             <button
               type="button"
-              onClick={() => setStep(i)}
+              onClick={() => { if (i < step && step < 2) setStep(i); }}
+              disabled={i > step || step === 2}
               className={`rounded-button px-3 py-1.5 text-sm font-medium transition-colors duration-200 ${
                 i === step
                   ? 'bg-[#0F8A4C] text-[#F5C30F] hover:bg-[#094728]'
                   : i < step
                     ? 'bg-[#0F8A4C]/20 text-[#F5C30F] hover:bg-[#0F8A4C]/30'
                     : 'bg-surface-muted text-ink-muted hover:text-ink'
-              }`}
+              } disabled:cursor-not-allowed disabled:opacity-60`}
             >
               {s.label}
             </button>
@@ -199,9 +202,12 @@ export default function Upload() {
                         terms?.find(t => t.is_active) || terms?.[0];
                       if (activeTerm?.id) {
                         await generateStudyTimes(token, activeTerm.id);
+                        setScheduleGenerated(true);
+                      } else {
+                        setScheduleGenError(true);
                       }
                     } catch (_) {
-                      // Ignore; user can generate manually from Schedule tab
+                      setScheduleGenError(true);
                     }
                   }
                 } catch (err) {
@@ -218,13 +224,34 @@ export default function Upload() {
             <div className="space-y-4">
               <h2 className="text-lg font-medium text-ink">All set</h2>
               <p className="text-sm text-ink-muted">
-                You've confirmed {assignments.length} assignment
+                You&apos;ve confirmed {assignments.length} assignment
                 {assignments.length !== 1 ? 's' : ''}
                 {meetingTimes.length > 0
                   ? ` and ${meetingTimes.length} meeting time${meetingTimes.length !== 1 ? 's' : ''}`
                   : ''}
-                . Study times have been generated.
+                .
               </p>
+              {scheduleGenerated && (
+                <p className="text-sm text-green-600 dark:text-green-400">
+                  Study schedule generated — head to the Schedule page to view
+                  it.
+                </p>
+              )}
+              {scheduleGenError && (
+                <p className="text-sm text-ink-muted">
+                  Couldn&apos;t auto-generate study times yet (no active term
+                  dates, or no assignments with workload). You can generate them
+                  manually from the{' '}
+                  <button
+                    type="button"
+                    onClick={() => navigate('/app/schedule')}
+                    className="underline underline-offset-2 text-accent hover:text-accent-hover"
+                  >
+                    Schedule page
+                  </button>
+                  .
+                </p>
+              )}
               <div className="flex flex-wrap gap-3">
                 {courseId && (
                   <>

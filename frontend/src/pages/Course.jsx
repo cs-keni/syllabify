@@ -78,6 +78,19 @@ function AssignmentRow({
   const [hours, setHours] = useState(
     ((assignment.work_load || 0) / 4).toFixed(1)
   );
+  const [completed, setCompleted] = useState(!!assignment.is_completed);
+
+  const handleToggleComplete = async () => {
+    const next = !completed;
+    setCompleted(next);
+    try {
+      await updateAssignment(token, assignment.id, { is_completed: next });
+      onUpdated?.();
+    } catch {
+      setCompleted(!next);
+      toast.error('Failed to update');
+    }
+  };
   const [type, setType] = useState(assignment.assignment_type || 'assignment');
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -256,12 +269,21 @@ function AssignmentRow({
   }
 
   const isOverdue =
+    !completed &&
     assignment.due_date &&
     new Date(assignment.due_date) < new Date(new Date().toDateString());
   return (
     <li
-      className={`flex items-center justify-between px-3 py-2 rounded-button border text-sm group ${isOverdue ? 'border-red-300 bg-red-50/50 dark:border-red-800 dark:bg-red-950/30' : 'border-border-subtle bg-surface'} ${selected ? 'ring-2 ring-accent bg-accent-muted/20' : ''}`}
+      className={`flex items-center justify-between px-3 py-2 rounded-button border text-sm group ${completed ? 'border-border-subtle bg-surface opacity-60' : isOverdue ? 'border-red-300 bg-red-50/50 dark:border-red-800 dark:bg-red-950/30' : 'border-border-subtle bg-surface'} ${selected ? 'ring-2 ring-accent bg-accent-muted/20' : ''}`}
     >
+      <input
+        type="checkbox"
+        checked={completed}
+        onChange={handleToggleComplete}
+        className="rounded border-border accent-accent mr-2 shrink-0 cursor-pointer"
+        aria-label={`Mark ${assignment.assignment_name} as ${completed ? 'incomplete' : 'complete'}`}
+        title={completed ? 'Mark incomplete' : 'Mark complete'}
+      />
       {selectMode && (
         <input
           type="checkbox"
@@ -272,10 +294,10 @@ function AssignmentRow({
         />
       )}
       <span
-        className={`font-medium ${isOverdue ? 'text-red-600 dark:text-red-400' : 'text-ink'}`}
+        className={`font-medium flex-1 ${completed ? 'line-through text-ink-muted' : isOverdue ? 'text-red-600 dark:text-red-400' : 'text-ink'}`}
       >
         {assignment.assignment_name}
-        {isOverdue && (
+        {isOverdue && !completed && (
           <span className="ml-2 text-xs font-normal text-red-500">Overdue</span>
         )}
       </span>

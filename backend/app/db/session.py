@@ -1,25 +1,32 @@
-# DB connection.
-# TODO: Create SQLAlchemy engine from config (MySQL). Session factory,
-#       scoped_session. Use in dependencies, init_db.
-#
-# DISCLAIMER: Project structure may change. Config or functions may be added,
-# removed, or modified. This describes the general idea as of the current state.
+# SQLAlchemy engine + session factory.
+# Prefers DATABASE_URL env var (Supabase/PostgreSQL).
+# Falls back to building a mysql+pymysql:// URL from DB_* vars (Railway/MySQL).
 
 import os
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-MYSQL_HOST = os.getenv("DB_HOST", "localhost")
-MYSQL_PORT = os.getenv("DB_PORT", "3306")
-MYSQL_DATABASE = os.getenv("DB_NAME")
-MYSQL_USER = os.getenv("DB_USER")
-MYSQL_PASSWORD = os.getenv("DB_PASSWORD")
+_raw_url = os.getenv("DATABASE_URL", "")
 
-DATABASE_URL = (
-    f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
-    f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
-)
+if _raw_url.startswith("postgres://"):
+    # Supabase (and some other providers) emit postgres:// which SQLAlchemy rejects
+    _raw_url = _raw_url.replace("postgres://", "postgresql+psycopg2://", 1)
+elif _raw_url.startswith("postgresql://"):
+    _raw_url = _raw_url.replace("postgresql://", "postgresql+psycopg2://", 1)
+
+if _raw_url:
+    DATABASE_URL = _raw_url
+else:
+    MYSQL_HOST = os.getenv("DB_HOST", "localhost")
+    MYSQL_PORT = os.getenv("DB_PORT", "3306")
+    MYSQL_DATABASE = os.getenv("DB_NAME")
+    MYSQL_USER = os.getenv("DB_USER")
+    MYSQL_PASSWORD = os.getenv("DB_PASSWORD")
+    DATABASE_URL = (
+        f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
+        f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
+    )
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True, echo=False, future=True)
 

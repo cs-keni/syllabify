@@ -1,8 +1,10 @@
 # Render Blueprint (optional). Use "New > Blueprint" in Render and point at this file,
 # or create the Web Service manually — see docs/DEPLOYMENT.md.
 #
-# Required: Create MySQL on Railway first, run docker/init.sql, then in Render Dashboard
-# set: DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, SECRET_KEY, FRONTEND_URL.
+# Required env vars to set in Render Dashboard:
+#   DATABASE_URL  — Supabase PostgreSQL connection string (see supabase-schema.sql)
+#   SECRET_KEY    — random 32+ char string
+#   FRONTEND_URL  — your Vercel deployment URL
 # PORT is set automatically by Render.
 
 services:

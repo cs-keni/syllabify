@@ -1,5 +1,5 @@
-# Auth routes: login, security setup (one-time), me.
-# Client login: syllabify-client / ineedtocutmytoenails422. Token is JWT.
+# Auth routes: login, register, security setup, me, change-password, Google OAuth.
+# Tokens are short-lived JWTs (HS256). Expiry controlled by JWT_EXPIRY_DAYS env var.
 # Security answers stored in UserSecurityAnswers; security_setup_done on Users.
 #
 # DISCLAIMER: Project structure may change. Functions may be added, removed, or
@@ -7,10 +7,14 @@
 
 import os
 import re
+from datetime import datetime, timedelta, timezone
 
 import bcrypt
 import jwt
 from flask import Blueprint, jsonify, request
+
+from app.db.connection import get_db
+from app.extensions import limiter
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
@@ -18,27 +22,7 @@ bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
 
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
-DEV_USERNAME = "syllabify-client"
-DEV_PASSWORD = "ineedtocutmytoenails422"
-
-
-def get_db():
-    """Returns a MySQL connection using DB_* environment variables."""
-    import mysql.connector
-
-    port = os.getenv("DB_PORT", "3306")
-    try:
-        port = int(port)
-    except (TypeError, ValueError):
-        port = 3306
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        port=port,
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME"),
-        connection_timeout=15,
-    )
+_JWT_EXPIRY_DAYS = int(os.getenv("JWT_EXPIRY_DAYS", "7"))
 
 
 def hash_password(password):
@@ -53,31 +37,13 @@ def check_password(password, password_hash):
     return bcrypt.checkpw(password.encode("utf-8"), password_hash.encode("utf-8"))
 
 
-def ensure_dev_user(cursor):
-    """Ensures the dev user exists in the DB. Creates it if missing. Returns
-    (user_id, password_hash, security_setup_done)."""
-    cursor.execute(
-        "SELECT id, password_hash, security_setup_done FROM Users WHERE username = %s",
-        (DEV_USERNAME,),
-    )
-    row = cursor.fetchone()
-    if row:
-        return row[0], row[1], bool(row[2])
-    hashed = hash_password(DEV_PASSWORD)
-    cursor.execute(
-        "INSERT INTO Users (username, password_hash, security_setup_done) VALUES "
-        "(%s, %s, FALSE)",
-        (DEV_USERNAME, hashed),
-    )
-    uid = cursor.lastrowid
-    return uid, hashed, False
-
 
 def token_for_user(user_id, username):
-    """Creates a JWT token containing user_id and username. Used for auth headers."""
+    """Creates a signed JWT. Expires after JWT_EXPIRY_DAYS (default 7)."""
     # JWT spec expects "sub" to be a string; PyJWT raises InvalidSubjectError for int
+    exp = datetime.now(tz=timezone.utc) + timedelta(days=_JWT_EXPIRY_DAYS)
     return jwt.encode(
-        {"sub": str(user_id), "username": username},
+        {"sub": str(user_id), "username": username, "exp": exp},
         SECRET_KEY,
         algorithm="HS256",
     )
@@ -135,6 +101,7 @@ def _ensure_unique_username(cursor, base_username):
 
 
 @bp.route("/google", methods=["POST"])
+@limiter.limit("5 per minute")
 def google_signin():
     """Accept Google ID token, validate, create/link user, return Syllabify JWT."""
     from app.admin_settings import get_registration_enabled
@@ -258,6 +225,7 @@ def google_signin():
 
 
 @bp.route("/register", methods=["POST"])
+@limiter.limit("5 per minute")
 def register():
     """Create new user. No auto-login."""
     from app.admin_settings import get_registration_enabled
@@ -311,6 +279,7 @@ def register():
 
 
 @bp.route("/login", methods=["POST"])
+@limiter.limit("10 per minute")
 def login():
     """Accepts username/password, validates against DB, returns JWT and
     security_setup_done."""
@@ -485,6 +454,124 @@ def change_password():
 
         hashed = hash_password(new_password)
         cur.execute("UPDATE Users SET password_hash = %s WHERE id = %s", (hashed, user_id))
+        conn.commit()
+        return jsonify({"ok": True})
+    finally:
+        conn.close()
+
+
+@bp.route("/security-questions", methods=["GET"])
+def get_security_questions():
+    """GET /api/auth/security-questions?username=X
+    Returns a user's security question texts (not answers). Used for forgot-password flow."""
+    username = (request.args.get("username") or "").strip()
+    if not username:
+        return jsonify({"error": "username is required"}), 400
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute("SELECT id FROM Users WHERE username = %s", (username,))
+        user = cur.fetchone()
+        if not user:
+            # Return empty to avoid username enumeration
+            return jsonify({"questions": []})
+        cur.execute(
+            "SELECT id, question_text FROM UserSecurityAnswers WHERE user_id = %s LIMIT 5",
+            (user["id"],),
+        )
+        qs = cur.fetchall()
+        return jsonify({"questions": [{"id": q["id"], "text": q["question_text"]} for q in qs]})
+    finally:
+        conn.close()
+
+
+@bp.route("/verify-security", methods=["POST"])
+def verify_security():
+    """POST /api/auth/verify-security {username, question_id, answer}
+    Verifies security answer. On success returns a 15-min reset token."""
+    data = request.get_json() or {}
+    username = (data.get("username") or "").strip()
+    question_id = data.get("question_id")
+    answer = (data.get("answer") or "").strip()
+    if not username or not question_id or not answer:
+        return jsonify({"error": "username, question_id, and answer are required"}), 400
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT id, password_hash FROM Users WHERE username = %s AND (is_disabled = FALSE OR is_disabled IS NULL)",
+            (username,),
+        )
+        user = cur.fetchone()
+        if not user:
+            return jsonify({"error": "invalid credentials"}), 401
+        cur.execute(
+            "SELECT answer_hash FROM UserSecurityAnswers WHERE id = %s AND user_id = %s",
+            (question_id, user["id"]),
+        )
+        row = cur.fetchone()
+        if not row or not check_password(answer, row["answer_hash"]):
+            return jsonify({"error": "invalid credentials"}), 401
+
+        # Reset token valid for 15 minutes, invalidated when password changes
+        exp = datetime.now(tz=timezone.utc) + timedelta(minutes=15)
+        # Use last 12 chars of current hash as part of secret so token auto-invalidates on password change
+        extra = (user.get("password_hash") or "")[-12:]
+        reset_token = jwt.encode(
+            {"sub": str(user["id"]), "type": "pwd_reset", "exp": exp},
+            SECRET_KEY + extra,
+            algorithm="HS256",
+        )
+        token_str = reset_token if isinstance(reset_token, str) else reset_token.decode("utf-8")
+        return jsonify({"reset_token": token_str})
+    finally:
+        conn.close()
+
+
+@bp.route("/reset-password", methods=["POST"])
+def reset_password():
+    """POST /api/auth/reset-password {reset_token, new_password}
+    Validates the reset token and updates the user's password."""
+    data = request.get_json() or {}
+    reset_token = (data.get("reset_token") or "").strip()
+    new_password = data.get("new_password") or ""
+    if not reset_token or not new_password:
+        return jsonify({"error": "reset_token and new_password are required"}), 400
+
+    ok, err = _validate_password_strength(new_password)
+    if not ok:
+        return jsonify({"error": err}), 400
+
+    # Decode without verifying signature first to get the user id
+    try:
+        unverified = jwt.decode(reset_token, options={"verify_signature": False})
+    except jwt.InvalidTokenError:
+        return jsonify({"error": "invalid or expired reset token"}), 401
+
+    if unverified.get("type") != "pwd_reset":
+        return jsonify({"error": "invalid or expired reset token"}), 401
+
+    user_id_str = unverified.get("sub")
+    if not user_id_str:
+        return jsonify({"error": "invalid or expired reset token"}), 401
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute("SELECT id, password_hash FROM Users WHERE id = %s", (int(user_id_str),))
+        user = cur.fetchone()
+        if not user:
+            return jsonify({"error": "invalid or expired reset token"}), 401
+
+        extra = (user.get("password_hash") or "")[-12:]
+        try:
+            jwt.decode(reset_token, SECRET_KEY + extra, algorithms=["HS256"])
+        except jwt.InvalidTokenError:
+            return jsonify({"error": "invalid or expired reset token"}), 401
+
+        hashed = hash_password(new_password)
+        cur.execute("UPDATE Users SET password_hash = %s WHERE id = %s", (hashed, user["id"]))
         conn.commit()
         return jsonify({"ok": True})
     finally:

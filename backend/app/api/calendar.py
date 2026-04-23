@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 
 from flask import Blueprint, Response, jsonify, redirect, request
 
+from app.db.connection import get_db
 from app.services.calendar_export_service import (
     build_ical_feed_for_user,
     get_or_create_feed_token,
@@ -32,23 +33,6 @@ GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
 GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET", "").strip()
 GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "").strip()
 CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar.readonly"
-
-
-def get_db():
-    import mysql.connector
-    port = os.getenv("DB_PORT", "3306")
-    try:
-        port = int(port)
-    except (TypeError, ValueError):
-        port = 3306
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        port=port,
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME"),
-        connection_timeout=15,
-    )
 
 
 def _get_user_from_token():
@@ -115,8 +99,9 @@ def _store_tokens(user_id, access_token, refresh_token, expires_at=None):
         cur.execute(
             """INSERT INTO UserOAuthTokens (user_id, provider, access_token, refresh_token, expires_at)
                VALUES (%s, 'google', %s, %s, %s)
-               ON DUPLICATE KEY UPDATE access_token = VALUES(access_token), refresh_token = VALUES(refresh_token),
-               expires_at = VALUES(expires_at), updated_at = NOW()""",
+               ON CONFLICT (user_id, provider) DO UPDATE SET
+               access_token = EXCLUDED.access_token, refresh_token = EXCLUDED.refresh_token,
+               expires_at = EXCLUDED.expires_at, updated_at = NOW()""",
             (user_id, access_token, refresh_token, expires_at),
         )
         conn.commit()
@@ -500,8 +485,9 @@ def import_calendar():
                            (user_id, source_id, external_uid, instance_key, title, description, location,
                             start_date, end_date, event_kind, event_category, sync_status, original_data)
                            VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, 'active', %s)
-                           ON DUPLICATE KEY UPDATE title = VALUES(title), start_date = VALUES(start_date),
-                           end_date = VALUES(end_date), sync_status = 'active', description = VALUES(description)""",
+                           ON CONFLICT (source_id, external_uid, instance_key) DO UPDATE SET
+                           title = EXCLUDED.title, start_date = EXCLUDED.start_date,
+                           end_date = EXCLUDED.end_date, sync_status = 'active', description = EXCLUDED.description""",
                         (user_id, source_id, ev_id, title, description, location,
                          start_str, end_str, event_kind, event_category,
                          '{"source": "google"}'),
@@ -520,8 +506,9 @@ def import_calendar():
                            (user_id, source_id, external_uid, instance_key, title, description, location,
                             start_time, end_time, original_timezone, event_kind, event_category, sync_status, original_data)
                            VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, %s, 'active', %s)
-                           ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time),
-                           end_time = VALUES(end_time), sync_status = 'active', description = VALUES(description)""",
+                           ON CONFLICT (source_id, external_uid, instance_key) DO UPDATE SET
+                           title = EXCLUDED.title, start_time = EXCLUDED.start_time,
+                           end_time = EXCLUDED.end_time, sync_status = 'active', description = EXCLUDED.description""",
                         (user_id, source_id, ev_id, title, description, location,
                          ev_start, ev_end, tz or None, event_kind, event_category,
                          '{"source": "google"}'),
@@ -767,8 +754,9 @@ def _sync_google_source(conn, cur, user_id, source):
                    (user_id, source_id, external_uid, instance_key, title, description, location,
                     start_date, end_date, event_kind, event_category, sync_status)
                    VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, 'active')
-                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_date = VALUES(start_date),
-                   end_date = VALUES(end_date), sync_status = 'active'""",
+                   ON CONFLICT (source_id, external_uid, instance_key) DO UPDATE SET
+                   title = EXCLUDED.title, start_date = EXCLUDED.start_date,
+                   end_date = EXCLUDED.end_date, sync_status = 'active'""",
                 (user_id, source["id"], ev_id, title, description, location,
                  start_str, end_str, event_kind, event_category),
             )
@@ -784,8 +772,9 @@ def _sync_google_source(conn, cur, user_id, source):
                    (user_id, source_id, external_uid, instance_key, title, description, location,
                     start_time, end_time, original_timezone, event_kind, event_category, sync_status)
                    VALUES (%s, %s, %s, 'base', %s, %s, %s, %s, %s, %s, %s, %s, 'active')
-                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time),
-                   end_time = VALUES(end_time), sync_status = 'active'""",
+                   ON CONFLICT (source_id, external_uid, instance_key) DO UPDATE SET
+                   title = EXCLUDED.title, start_time = EXCLUDED.start_time,
+                   end_time = EXCLUDED.end_time, sync_status = 'active'""",
                 (user_id, source["id"], ev_id, title, description, location,
                  ev_start, ev_end, tz or None, event_kind, event_category),
             )
@@ -1022,8 +1011,9 @@ def _insert_events(cur, user_id, source_id, events):
                     event_kind, event_category, sync_status, recurrence_rule,
                     is_recurring_instance, original_data)
                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', %s, %s, %s)
-                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_date = VALUES(start_date),
-                   end_date = VALUES(end_date), sync_status = 'active', description = VALUES(description)""",
+                   ON CONFLICT (source_id, external_uid, instance_key) DO UPDATE SET
+                   title = EXCLUDED.title, start_date = EXCLUDED.start_date,
+                   end_date = EXCLUDED.end_date, sync_status = 'active', description = EXCLUDED.description""",
                 (user_id, source_id, ev["external_uid"], ev.get("instance_key", "base"),
                  ev.get("recurrence_id"), ev["title"], ev.get("description"),
                  ev.get("location"), ev.get("start_date"), ev.get("end_date"),
@@ -1038,8 +1028,9 @@ def _insert_events(cur, user_id, source_id, events):
                     event_kind, event_category, sync_status, recurrence_rule,
                     is_recurring_instance, original_data)
                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', %s, %s, %s)
-                   ON DUPLICATE KEY UPDATE title = VALUES(title), start_time = VALUES(start_time),
-                   end_time = VALUES(end_time), sync_status = 'active', description = VALUES(description)""",
+                   ON CONFLICT (source_id, external_uid, instance_key) DO UPDATE SET
+                   title = EXCLUDED.title, start_time = EXCLUDED.start_time,
+                   end_time = EXCLUDED.end_time, sync_status = 'active', description = EXCLUDED.description""",
                 (user_id, source_id, ev["external_uid"], ev.get("instance_key", "base"),
                  ev.get("recurrence_id"), ev["title"], ev.get("description"),
                  ev.get("location"), ev.get("start_time"), ev.get("end_time"),

@@ -440,7 +440,9 @@ export default function Schedule() {
     for (const st of sorted) {
       const last = merged[merged.length - 1];
       const sameCourse = last && last.course_id === st.course_id;
-      const adjacent = last && new Date(last.end_time).getTime() === stStart;
+      const adjacent =
+        last &&
+        new Date(last.end_time).getTime() === new Date(st.start_time).getTime();
       if (sameCourse && adjacent) {
         last.end_time = st.end_time;
         last.id = last.id; // keep first block's id for edit/delete
@@ -553,40 +555,62 @@ export default function Schedule() {
               replaced when you apply.
             </p>
             <div className="mt-4 overflow-y-auto flex-1 min-h-0 rounded-lg border border-border bg-surface-muted/50 p-3">
-              <p className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
-                {proposedSlots.length} block(s) · spread across your study
-                window
-              </p>
-              <ul className="space-y-1.5 text-sm">
-                {proposedSlots.slice(0, 50).map((s, i) => (
-                  <li key={i} className="flex items-center gap-2 text-ink">
-                    <span className="font-medium truncate flex-1">
-                      {s.course_name || 'Study'}
-                    </span>
-                    <span className="text-ink-muted shrink-0 font-mono text-xs">
-                      {new Date(s.start_time).toLocaleDateString(undefined, {
-                        weekday: 'short',
-                        month: 'short',
-                        day: 'numeric',
-                      })}{' '}
-                      {new Date(s.start_time).toLocaleTimeString([], {
-                        hour: 'numeric',
-                        minute: '2-digit',
-                      })}
-                      –
-                      {new Date(s.end_time).toLocaleTimeString([], {
-                        hour: 'numeric',
-                        minute: '2-digit',
-                      })}
-                    </span>
-                  </li>
-                ))}
-                {proposedSlots.length > 50 && (
-                  <li className="text-ink-muted text-xs">
-                    … and {proposedSlots.length - 50} more
-                  </li>
-                )}
-              </ul>
+              {(() => {
+                const sorted = [...proposedSlots].sort(
+                  (a, b) => new Date(a.start_time) - new Date(b.start_time)
+                );
+                const merged = [];
+                for (const s of sorted) {
+                  const last = merged[merged.length - 1];
+                  const sameCourse = last && last.course_name === s.course_name;
+                  const adjacent =
+                    last &&
+                    new Date(last.end_time).getTime() ===
+                      new Date(s.start_time).getTime();
+                  if (sameCourse && adjacent) {
+                    last.end_time = s.end_time;
+                  } else {
+                    merged.push({ ...s });
+                  }
+                }
+                return (
+                  <>
+                    <p className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
+                      {merged.length} block(s) · spread across your study window
+                    </p>
+                    <ul className="space-y-1.5 text-sm">
+                      {merged.slice(0, 50).map((s, i) => (
+                        <li key={i} className="flex items-center gap-2 text-ink">
+                          <span className="font-medium truncate flex-1">
+                            {s.course_name || 'Study'}
+                          </span>
+                          <span className="text-ink-muted shrink-0 font-mono text-xs">
+                            {new Date(s.start_time).toLocaleDateString(undefined, {
+                              weekday: 'short',
+                              month: 'short',
+                              day: 'numeric',
+                            })}{' '}
+                            {new Date(s.start_time).toLocaleTimeString([], {
+                              hour: 'numeric',
+                              minute: '2-digit',
+                            })}
+                            –
+                            {new Date(s.end_time).toLocaleTimeString([], {
+                              hour: 'numeric',
+                              minute: '2-digit',
+                            })}
+                          </span>
+                        </li>
+                      ))}
+                      {merged.length > 50 && (
+                        <li className="text-ink-muted text-xs">
+                          … and {merged.length - 50} more
+                        </li>
+                      )}
+                    </ul>
+                  </>
+                );
+              })()}
             </div>
             <div className="mt-4 flex gap-2 justify-end">
               <button
@@ -926,6 +950,11 @@ export default function Schedule() {
                       </span>
                     </div>
                   ))}
+                  {studyTimeByCourse.length > 5 && (
+                    <div className="text-xs text-ink-subtle px-1">
+                      + {studyTimeByCourse.length - 5} more course{studyTimeByCourse.length - 5 !== 1 ? 's' : ''}
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (

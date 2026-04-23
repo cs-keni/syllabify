@@ -15,22 +15,6 @@ from app.services.schedule_input_builder import build_engine_input
 from app.services.scheduling_service import generate_study_times
 
 
-def _get_db():
-    import mysql.connector
-    port = os.getenv("DB_PORT", "3306")
-    try:
-        port = int(port)
-    except (TypeError, ValueError):
-        port = 3306
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        port=port,
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME"),
-        connection_timeout=15,
-    )
-
 
 def _get_user(req):
     """Extract user_id from JWT. Returns (user_id, None) or (None, error_response)."""
@@ -363,7 +347,7 @@ def update_study_time(study_time_id):
         return err
 
     body = request.get_json(silent=True) or {}
-    conn = _get_db()
+    conn = get_db()
     cur = None
     try:
         cur = conn.cursor(dictionary=True)
@@ -450,10 +434,9 @@ def update_study_time(study_time_id):
             return jsonify({"error": "no fields to update"}), 400
 
         params.append(study_time_id)
-        cur.execute(
-            f"UPDATE StudyTimes SET {', '.join(updates)} WHERE id = %s",
-            tuple(params),
-        )
+        # Column names come only from the hardcoded allowlist above — no user-supplied names
+        sql = "UPDATE StudyTimes SET " + ", ".join(updates) + " WHERE id = %s"
+        cur.execute(sql, tuple(params))
         conn.commit()
         return jsonify({"ok": True}), 200
     finally:

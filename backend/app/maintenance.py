@@ -29,12 +29,12 @@ def set_maintenance(enabled, message):
         cur = conn.cursor()
         cur.execute(
             "INSERT INTO AdminSettings (key, value) VALUES ('maintenance_enabled', %s) "
-            "ON DUPLICATE KEY UPDATE value = VALUES(value)",
+            "ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value",
             ("1" if enabled else "0",),
         )
         cur.execute(
             "INSERT INTO AdminSettings (key, value) VALUES ('maintenance_message', %s) "
-            "ON DUPLICATE KEY UPDATE value = VALUES(value)",
+            "ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value",
             (message or "Syllabify is undergoing maintenance. Please try again later.",),
         )
         conn.commit()
