@@ -1,5 +1,9 @@
 """AdminSettings helpers: registration toggle, announcement banner."""
+import logging
+
 from app.api.auth import get_db
+
+logger = logging.getLogger(__name__)
 
 
 def get_admin_setting(key: str, default: str = "") -> str:
@@ -10,7 +14,8 @@ def get_admin_setting(key: str, default: str = "") -> str:
         cur.execute("SELECT value FROM AdminSettings WHERE key = %s", (key,))
         row = cur.fetchone()
         return (row["value"] or default).strip() if row else default
-    except Exception:
+    except Exception as e:
+        logger.warning("Failed to read AdminSettings key=%s: %s", key, e)
         return default
     finally:
         conn.close()
@@ -28,7 +33,8 @@ def set_admin_setting(key: str, value: str) -> bool:
         )
         conn.commit()
         return True
-    except Exception:
+    except Exception as e:
+        logger.warning("Failed to write AdminSettings key=%s: %s", key, e)
         return False
     finally:
         conn.close()

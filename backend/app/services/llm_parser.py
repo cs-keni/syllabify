@@ -6,8 +6,7 @@ import json
 import os
 import re
 
-# Model: GPT-5 nano — cheapest/fastest GPT-5, better instruction following than 4o-mini
-LLM_MODEL = "gpt-5-nano"
+LLM_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-nano")
 
 _openai_client = None
 
