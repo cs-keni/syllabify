@@ -147,7 +147,7 @@ export async function securitySetup(token, questions) {
  * Returns { course_name, assignments: [{ name, due_date, hours }], confidence?, raw_text? }.
  * Throws on error.
  */
-export async function parseSyllabus(token, { file, text, mode = 'rule' }) {
+export async function parseSyllabus(token, { file, text, mode = 'llm' }) {
   const t =
     token ||
     (typeof localStorage !== 'undefined'

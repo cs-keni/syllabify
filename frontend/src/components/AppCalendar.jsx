@@ -18,6 +18,9 @@ const DEFAULT_CATEGORY_COLORS = {
   other: '#64748B',
 };
 
+const isMobile =
+  typeof window !== 'undefined' && window.innerWidth < 768;
+
 export default function AppCalendar({
   calendarEvents = [],
   studyTimes = [],
@@ -29,7 +32,9 @@ export default function AppCalendar({
   onEventResize,
 }) {
   const calendarRef = useRef(null);
-  const [currentView, setCurrentView] = useState('timeGridWeek');
+  const [currentView, setCurrentView] = useState(
+    isMobile ? 'listWeek' : 'timeGridWeek'
+  );
 
   const transformEvents = useCallback(() => {
     const events = [];
@@ -104,12 +109,17 @@ export default function AppCalendar({
       '#64748B',
     ];
     const STUDY_LOCKED = '#059669';
+    const now = new Date();
     for (const st of studyTimes) {
+      const isPast = st.end_time && new Date(st.end_time) < now;
       const baseColor =
         st.course_color ||
         (st.is_locked
           ? STUDY_LOCKED
           : STUDY_COLORS[(st.course_id || 0) % STUDY_COLORS.length]);
+      const classNames = [];
+      if (st.is_locked) classNames.push('locked-study');
+      if (isPast) classNames.push('past-block');
       events.push({
         id: `study-${st.id}`,
         title: st.course_name
@@ -120,8 +130,8 @@ export default function AppCalendar({
         backgroundColor: baseColor,
         borderColor: baseColor,
         extendedProps: { type: 'study_time', data: st },
-        classNames: st.is_locked ? ['locked-study'] : [],
-        editable: !st.is_locked,
+        classNames,
+        editable: !st.is_locked && !isMobile,
       });
     }
 
@@ -177,7 +187,7 @@ export default function AppCalendar({
       <FullCalendar
         ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
-        initialView={currentView}
+        initialView={isMobile ? 'listWeek' : currentView}
         locale="en-US"
         firstDay={0}
         dayHeaderContent={arg => (
@@ -205,8 +215,8 @@ export default function AppCalendar({
           listWeek: 'List',
         }}
         events={transformEvents()}
-        editable={true}
-        selectable={true}
+        editable={!isMobile}
+        selectable={!isMobile}
         selectMirror={true}
         dayMaxEvents={true}
         slotEventOverlap={false}

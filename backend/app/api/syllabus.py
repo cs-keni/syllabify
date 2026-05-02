@@ -6,12 +6,14 @@ Parse does NOT persist; use POST /api/courses after review.
 from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token
+from app.extensions import limiter
 from app.services.parsing_service import parse_file, parse_text
 
 bp = Blueprint("syllabus", __name__, url_prefix="/api/syllabus")
 
 
 @bp.route("/parse", methods=["POST"])
+@limiter.limit("3/minute")
 def parse():
     """
     Accept multipart/form-data (file) or application/json ({"text": "..."}).

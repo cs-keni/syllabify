@@ -123,10 +123,12 @@ def get_or_clear_study_times_for_term(term_id):
                 """
                 SELECT st.id, st.start_time, st.end_time, st.notes,
                        st.is_locked, st.assignment_id, st.course_id,
-                       c.course_name, c.color AS course_color
+                       c.course_name, c.color AS course_color,
+                       a.assignment_name
                 FROM StudyTimes st
                 JOIN Terms t ON t.id = st.term_id
                 LEFT JOIN Courses c ON st.course_id = c.id
+                LEFT JOIN Assignments a ON st.assignment_id = a.id
                 WHERE st.term_id = %s AND t.user_id = %s
                   AND st.start_time < %s AND st.end_time > %s
                 ORDER BY st.start_time
@@ -138,10 +140,12 @@ def get_or_clear_study_times_for_term(term_id):
                 """
                 SELECT st.id, st.start_time, st.end_time, st.notes,
                        st.is_locked, st.assignment_id, st.course_id,
-                       c.course_name, c.color AS course_color
+                       c.course_name, c.color AS course_color,
+                       a.assignment_name
                 FROM StudyTimes st
                 JOIN Terms t ON st.term_id = t.id
                 LEFT JOIN Courses c ON st.course_id = c.id
+                LEFT JOIN Assignments a ON st.assignment_id = a.id
                 WHERE st.term_id = %s AND t.user_id = %s
                 ORDER BY st.start_time
                 """,
@@ -170,6 +174,7 @@ def get_or_clear_study_times_for_term(term_id):
                 "notes": r.get("notes"),
                 "is_locked": bool(r["is_locked"]) if r.get("is_locked") is not None else False,
                 "assignment_id": r.get("assignment_id"),
+                "assignment_name": r.get("assignment_name"),
                 "course_id": r.get("course_id"),
                 "course_name": r.get("course_name"),
                 "course_color": _course_color(r.get("course_id"), r.get("course_color")),

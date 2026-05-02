@@ -394,3 +394,12 @@
 .dark .app-calendar-container .fc-scrollgrid-section-header td {
   background: var(--color-surface-elevated) !important;
 }
+
+/* Past study blocks — dimmed to distinguish from upcoming */
+.app-calendar-container .fc-event.past-block {
+  opacity: 0.45;
+  filter: saturate(0.6);
+}
+.app-calendar-container .fc-list-event.past-block td {
+  opacity: 0.45;
+}

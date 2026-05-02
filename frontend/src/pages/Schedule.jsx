@@ -703,6 +703,21 @@ export default function Schedule() {
         </div>
       )}
 
+      {studyTimes.length === 0 && calendarEvents.length === 0 && (
+        <div className="rounded-xl border border-dashed border-border bg-surface-elevated/50 p-6 text-center animate-fade-in">
+          <p className="text-sm font-medium text-ink mb-1">No study blocks yet</p>
+          <p className="text-xs text-ink-muted mb-3">
+            Upload a syllabus to generate a balanced study schedule automatically.
+          </p>
+          <Link
+            to="/app"
+            className="inline-block rounded-button bg-primary px-4 py-2 text-sm font-medium text-primary-inv hover:opacity-90 transition-opacity no-underline"
+          >
+            Go to Dashboard
+          </Link>
+        </div>
+      )}
+
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Main calendar */}
         <div className="flex-1 min-w-0 order-1">
@@ -728,6 +743,11 @@ export default function Schedule() {
                   <p className="font-medium text-ink truncate">
                     {hoverPreview.data.course_name || 'Study Block'}
                   </p>
+                  {hoverPreview.data.assignment_name && (
+                    <p className="text-xs text-ink-muted mt-0.5 truncate">
+                      {hoverPreview.data.assignment_name}
+                    </p>
+                  )}
                   <p className="text-xs text-ink-muted mt-0.5">
                     {hoverPreview.data.is_locked
                       ? 'Locked (kept when regenerating)'
@@ -785,9 +805,14 @@ export default function Schedule() {
                 className="fixed z-50 min-w-[180px] rounded-lg border border-border bg-surface p-3 text-sm shadow-lg"
                 style={{ top: popover.y + 8, left: popover.x + 8 }}
               >
-                <p className="mb-1 truncate font-medium text-ink">
+                <p className="mb-0.5 truncate font-medium text-ink">
                   {popover.studyTime.course_name || 'Study Block'}
                 </p>
+                {popover.studyTime.assignment_name && (
+                  <p className="mb-1 truncate text-xs text-ink-muted">
+                    {popover.studyTime.assignment_name}
+                  </p>
+                )}
                 <p className="mb-2 text-xs text-ink-muted">
                   {popover.studyTime.is_locked
                     ? 'Locked — this block stays when you regenerate.'

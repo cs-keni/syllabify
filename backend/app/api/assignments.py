@@ -1,9 +1,12 @@
 """Assignment CRUD: PATCH /api/assignments/:id, DELETE /api/assignments/:id."""
+import logging
 from datetime import datetime
 
 from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token, get_db
+
+logger = logging.getLogger(__name__)
 
 bp = Blueprint("assignments", __name__, url_prefix="/api/assignments")
 
@@ -216,8 +219,8 @@ def patch_assignment(assignment_id):
                     updates.append("completed_at = NOW()")
                 else:
                     updates.append("completed_at = NULL")
-            except Exception:
-                pass
+            except Exception as e:
+                logger.warning("Failed to set is_completed fields: %s", e)
 
         if not updates:
             cur.execute(
