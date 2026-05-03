@@ -57,6 +57,7 @@ export default function Layout() {
   const [mounted, setMounted] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [offline, setOffline] = useState(
     typeof navigator !== 'undefined' && !navigator.onLine
   );
@@ -76,6 +77,11 @@ export default function Layout() {
     };
   }, []);
 
+  // Close mobile menu on navigation
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   const gPendingRef = useRef(false);
   useEffect(() => {
     const onKey = e => {
@@ -84,6 +90,10 @@ export default function Layout() {
       );
       if (inInput || e.ctrlKey || e.metaKey || e.altKey) {
         gPendingRef.current = false;
+        return;
+      }
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
         return;
       }
       if (e.key === '?') {
@@ -104,7 +114,7 @@ export default function Layout() {
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [navigate]);
+  }, [navigate, mobileMenuOpen]);
 
   useEffect(() => {
     if (!profileOpen) return;
@@ -215,6 +225,74 @@ export default function Layout() {
         open={shortcutsOpen}
         onClose={() => setShortcutsOpen(false)}
       />
+
+      {/* Mobile slide-over drawer */}
+      {mobileMenuOpen && (
+        <>
+          <div
+            className="fixed inset-0 z-20 bg-ink/30 md:hidden animate-fade-in"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden
+          />
+          <nav
+            className="fixed top-0 left-0 bottom-0 z-30 w-64 bg-surface-elevated border-r border-border shadow-dropdown flex flex-col md:hidden animate-slide-right"
+            style={{ animationDuration: '250ms' }}
+            aria-label="Mobile navigation"
+          >
+            <div className="flex items-center justify-between px-4 py-4 border-b border-border">
+              <span className="text-base font-semibold text-ink">Syllabify</span>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-button p-1 text-ink-muted hover:bg-surface-muted"
+                aria-label="Close menu"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto py-3 px-3 space-y-1">
+              {navItemsFiltered.map(({ to, label, end }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  end={end}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 rounded-button px-3 py-2.5 text-sm font-medium no-underline transition-colors ${
+                      isActive ? 'bg-accent-muted text-accent' : 'text-ink hover:bg-surface-muted'
+                    }`
+                  }
+                >
+                  {label}
+                </NavLink>
+              ))}
+            </div>
+            <div className="border-t border-border px-3 py-3 space-y-1">
+              <NavLink
+                to="/app/profile"
+                className="flex items-center gap-3 rounded-button px-3 py-2.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted"
+              >
+                Profile
+              </NavLink>
+              <NavLink
+                to="/app/settings"
+                className="flex items-center gap-3 rounded-button px-3 py-2.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted"
+              >
+                Settings
+              </NavLink>
+              <button
+                type="button"
+                onClick={() => { setMobileMenuOpen(false); logout(); }}
+                className="flex w-full items-center gap-3 rounded-button px-3 py-2.5 text-sm font-medium text-ink hover:bg-surface-muted text-left"
+              >
+                Log out
+              </button>
+            </div>
+          </nav>
+        </>
+      )}
+
       <header className="sticky top-0 z-10 bg-surface-elevated border-b border-border shadow-card">
         <nav className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 xl:px-10">
           <div className="flex min-h-14 flex-wrap items-center gap-2 py-2 md:flex-nowrap md:justify-between md:py-0">
@@ -224,9 +302,25 @@ export default function Layout() {
             >
               Syllabify
             </NavLink>
+            {/* Hamburger — mobile only */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(o => !o)}
+              className="order-2 md:hidden flex items-center justify-center w-9 h-9 rounded-button text-ink-muted hover:bg-surface-muted transition-colors"
+              aria-label="Open navigation menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {mobileMenuOpen
+                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                }
+              </svg>
+            </button>
+            {/* Desktop nav pills */}
             <div
               ref={navContainerRef}
-              className="relative order-3 flex basis-full items-center gap-1 overflow-x-auto scrollbar-hide pb-1 md:order-2 md:basis-auto md:pb-0"
+              className="relative order-3 hidden md:flex basis-full items-center gap-1 overflow-x-auto scrollbar-hide pb-1 md:order-2 md:basis-auto md:pb-0"
             >
               {mounted && (
                 <div

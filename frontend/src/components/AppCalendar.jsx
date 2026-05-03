@@ -30,6 +30,7 @@ export default function AppCalendar({
   onDateSelect,
   onEventDrop,
   onEventResize,
+  onDatesSet,
 }) {
   const calendarRef = useRef(null);
   const [currentView, setCurrentView] = useState(
@@ -236,6 +237,10 @@ export default function AppCalendar({
         eventDrop={handleEventDrop}
         eventResize={handleEventResize}
         viewDidMount={info => setCurrentView(info.view.type)}
+        datesSet={info => {
+          setCurrentView(info.view.type);
+          if (onDatesSet) onDatesSet({ start: info.start, end: info.end });
+        }}
         height={currentView === 'dayGridMonth' ? 'auto' : '70vh'}
         expandRows={currentView !== 'dayGridMonth'}
         stickyHeaderDates={true}

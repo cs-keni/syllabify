@@ -578,6 +578,114 @@ def reset_password():
         conn.close()
 
 
+@bp.route("/demo-login", methods=["POST"])
+@limiter.limit("30 per minute")
+def demo_login():
+    """Log into the shared demo account. Creates it with sample data if it doesn't exist."""
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT id FROM Users WHERE username = 'demo'",
+        )
+        row = cur.fetchone()
+        if row:
+            user_id = row["id"]
+            # Re-seed if data was cleared
+            cur.execute("SELECT COUNT(*) AS cnt FROM Terms WHERE user_id = %s", (user_id,))
+            if (cur.fetchone() or {}).get("cnt", 0) == 0:
+                _seed_demo_data(cur, conn, user_id)
+        else:
+            cur.execute(
+                "INSERT INTO Users (username, password_hash, security_setup_done) VALUES ('demo', NULL, TRUE)"
+            )
+            user_id = cur.lastrowid
+            conn.commit()
+            _seed_demo_data(cur, conn, user_id)
+
+        token = token_for_user(user_id, "demo")
+        token_str = token if isinstance(token, str) else token.decode("utf-8")
+        return jsonify({
+            "token": token_str,
+            "username": "demo",
+            "security_setup_done": True,
+            "is_admin": False,
+        })
+    finally:
+        conn.close()
+
+
+def _seed_demo_data(cur, conn, user_id: int) -> None:
+    """Populate a demo user with a realistic sample term, courses, and assignments."""
+    # Term: Spring 2025
+    cur.execute(
+        "INSERT INTO Terms (user_id, name, start_date, end_date, is_active) VALUES (%s, %s, %s, %s, TRUE)",
+        (user_id, "Spring 2025", "2025-01-06", "2025-05-16"),
+    )
+    term_id = cur.lastrowid
+
+    courses = [
+        ("CS 422 – Software Engineering",  "#3B82F6", 8),
+        ("MATH 341 – Applied Probability", "#10B981", 6),
+        ("ENGL 202 – Academic Writing",    "#F59E0B", 4),
+    ]
+    course_ids = []
+    for name, color, hrs in courses:
+        cur.execute(
+            "INSERT INTO Courses (term_id, course_name, color, study_hours_per_week) VALUES (%s, %s, %s, %s)",
+            (term_id, name, color, hrs),
+        )
+        course_ids.append(cur.lastrowid)
+
+    cs_id, math_id, engl_id = course_ids
+
+    # Meeting times
+    meetings = [
+        (cs_id,   "MO", "10:00", "11:50", "lecture"),
+        (cs_id,   "WE", "10:00", "11:50", "lecture"),
+        (math_id, "TU", "13:00", "14:15", "lecture"),
+        (math_id, "TH", "13:00", "14:15", "lecture"),
+        (engl_id, "FR", "11:00", "12:15", "lecture"),
+    ]
+    for cid, dow, st, et, mtype in meetings:
+        cur.execute(
+            "INSERT INTO Meetings (course_id, day_of_week, start_time_str, end_time_str, meeting_type) "
+            "VALUES (%s, %s, %s, %s, %s)",
+            (cid, dow, st, et, mtype),
+        )
+
+    # Assignments
+    assignments = [
+        # CS 422
+        (cs_id, "Homework 1",      "2025-02-14", 3,  "assignment"),
+        (cs_id, "Homework 2",      "2025-03-07", 4,  "assignment"),
+        (cs_id, "Midterm Exam",    "2025-03-21", 6,  "midterm"),
+        (cs_id, "Project Proposal","2025-03-28", 5,  "project"),
+        (cs_id, "Homework 3",      "2025-04-11", 4,  "assignment"),
+        (cs_id, "Final Project",   "2025-05-09", 20, "project"),
+        # MATH 341
+        (math_id, "Problem Set 1", "2025-02-07", 3, "assignment"),
+        (math_id, "Problem Set 2", "2025-02-21", 3, "assignment"),
+        (math_id, "Midterm",       "2025-03-14", 6, "midterm"),
+        (math_id, "Problem Set 3", "2025-04-04", 4, "assignment"),
+        (math_id, "Final Exam",    "2025-05-16", 6, "final"),
+        # ENGL 202
+        (engl_id, "Essay 1 Draft", "2025-02-28", 5, "assignment"),
+        (engl_id, "Peer Review",   "2025-03-07", 1, "assignment"),
+        (engl_id, "Essay 1 Final", "2025-03-21", 3, "assignment"),
+        (engl_id, "Essay 2 Draft", "2025-04-11", 5, "assignment"),
+        (engl_id, "Essay 2 Final", "2025-04-25", 3, "assignment"),
+    ]
+    for cid, name, due, hrs, atype in assignments:
+        cur.execute(
+            "INSERT INTO Assignments (course_id, assignment_name, due_date, hours, type) "
+            "VALUES (%s, %s, %s, %s, %s)",
+            (cid, name, due, hrs, atype),
+        )
+
+    conn.commit()
+
+
 @bp.route("/me", methods=["GET"])
 def me():
     """Returns current user info (username, security_setup_done) from JWT. Requires

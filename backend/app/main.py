@@ -15,6 +15,7 @@ from app.api.assignments import bp as assignments_bp
 from app.api.auth import bp as auth_bp
 from app.api.calendar import bp as calendar_bp
 from app.api.courses import bp as courses_bp
+from app.api.reminders import bp as reminders_bp
 from app.api.schedule import bp as schedule_bp
 from app.api.syllabus import bp as syllabus_bp
 from app.api.terms import bp as terms_bp
@@ -52,7 +53,7 @@ def _maintenance_check():
     path = request.path or ""
     if path in ("/api/maintenance", "/api/settings") and request.method == "GET":
         return None
-    if path in ("/api/auth/login", "/api/auth/register", "/api/auth/google"):
+    if path in ("/api/auth/login", "/api/auth/register", "/api/auth/google", "/api/auth/demo-login"):
         return None
     if path.startswith("/api/calendar/callback"):
         return None
@@ -102,6 +103,7 @@ app.register_blueprint(courses_bp)
 app.register_blueprint(assignments_bp)
 app.register_blueprint(schedule_bp)
 app.register_blueprint(syllabus_bp)
+app.register_blueprint(reminders_bp)
 
 
 @app.route("/")

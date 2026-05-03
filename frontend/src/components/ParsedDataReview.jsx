@@ -593,6 +593,11 @@ function SortableAssessmentRow({ item, onUpdate, onDelete, sectionId }) {
           value={item.name}
           onChange={v => onUpdate(item.id, 'name', v)}
         />
+        {lowConfidence && (
+          <span className="inline-flex items-center gap-0.5 mt-0.5 rounded-full bg-amber-100 dark:bg-amber-900/50 px-1.5 py-px text-[10px] font-medium text-amber-700 dark:text-amber-300">
+            ⚠ Verify
+          </span>
+        )}
       </td>
       <td className="px-3 py-2">
         <select

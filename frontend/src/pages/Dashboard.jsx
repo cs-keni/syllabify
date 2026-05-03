@@ -12,6 +12,7 @@ import {
 } from '../api/client';
 import CourseCard from '../components/CourseCard';
 import TermSelector from '../components/TermSelector';
+import OnboardingTooltip from '../components/OnboardingTooltip';
 
 function getGreeting() {
   const h = new Date().getHours();
@@ -132,6 +133,7 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6 sm:space-y-10">
+      <OnboardingTooltip />
       <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">
           {user?.username ? `${getGreeting()}, ${user.username}` : 'Dashboard'}

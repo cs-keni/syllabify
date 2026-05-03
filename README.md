@@ -4,65 +4,37 @@
 
 **Live demo:** <!-- TODO: add deployed URL here, e.g. https://syllabify.onrender.com -->
 
+## Demo
+
+[Watch the demo](docs/demo.mp4) — full walkthrough: upload a syllabus, review extracted assignments, and view the generated study schedule on the calendar.
+
 Syllabify is a web app for university students. Upload a course syllabus (PDF or text), review the extracted assignments and deadlines, and get a conflict-aware study schedule generated on a FullCalendar view. Export to Google Calendar or download an ICS file.
 
 ---
 
 ## Screenshots
 
-> Drop your screenshots into `docs/screenshots/` and they'll appear here automatically once added.
-
 ### Homepage
 
-<!-- TODO: replace with actual screenshot -->
-<!-- ![Homepage](docs/screenshots/homepage.png) -->
-
-```
-docs/screenshots/homepage.png
-  → The landing page with the hero section and "How it works" steps.
-```
+![Homepage](docs/screenshots/homepage.jpg)
 
 ### Dashboard
 
-<!-- TODO: replace with actual screenshot -->
-<!-- ![Dashboard](docs/screenshots/dashboard.png) -->
-
-```
-docs/screenshots/dashboard.png
-  → Dashboard showing course cards and upcoming deadlines countdown.
-```
+![Dashboard](docs/screenshots/dashboard.jpg)
 
 ### Syllabus Upload & Review
 
-<!-- TODO: replace with actual screenshot -->
-<!-- ![Upload — Step 1](docs/screenshots/upload-step1.png) -->
-<!-- ![Upload — Step 2](docs/screenshots/upload-step2.png) -->
+![Upload — Step 1](docs/screenshots/upload-step1.jpg)
 
-```
-docs/screenshots/upload-step1.png  → File drop zone / paste text input.
-docs/screenshots/upload-step2.png  → Parsed assignment table with editable rows.
-```
+![Review — Parsed Assignments](docs/screenshots/review.jpg)
 
 ### Schedule Calendar
 
-<!-- TODO: replace with actual screenshot -->
-<!-- ![Schedule](docs/screenshots/schedule-calendar.png) -->
-
-```
-docs/screenshots/schedule-calendar.png
-  → Full week view with color-coded study blocks per course.
-  → Show a term with 3–4 courses so the pie chart in the sidebar is visible.
-```
+![Schedule](docs/screenshots/schedule-calendar.png)
 
 ### Course Page
 
-<!-- TODO: replace with actual screenshot -->
-<!-- ![Course](docs/screenshots/course-page.png) -->
-
-```
-docs/screenshots/course-page.png
-  → Assignment list with completion checkboxes, due dates, and hours.
-```
+![Course](docs/screenshots/course-page.jpg)
 
 ---
 

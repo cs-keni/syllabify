@@ -9,6 +9,11 @@ import { useAuth } from '../contexts/AuthContext';
 import * as api from '../api/client';
 import AppCalendar from '../components/AppCalendar';
 import UnifiedImportModal from '../components/UnifiedImportModal';
+import ScheduleToolbar from '../components/schedule/ScheduleToolbar';
+import ScheduleSidebar from '../components/schedule/ScheduleSidebar';
+import GenerateModal from '../components/schedule/GenerateModal';
+import ExportModal from '../components/schedule/ExportModal';
+import StudyBlockPopover from '../components/schedule/StudyBlockPopover';
 
 const SOURCE_COLOR_OPTIONS = [
   { hex: '#EF4444', label: 'Red' },
@@ -54,6 +59,20 @@ export default function Schedule() {
   const [hoverPreview, setHoverPreview] = useState(null); // { type, data, x, y }
   const hoverTimeoutRef = useRef(null);
   const autoSyncDone = useRef(false);
+  const shortcutHandlersRef = useRef({});
+  const [viewWindow, setViewWindow] = useState(null); // { start: Date, end: Date }
+
+  // Keyboard shortcuts: G = generate, E = export (schedule-page-specific)
+  useEffect(() => {
+    const onKey = e => {
+      const inInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+      if (inInput || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === 'G') shortcutHandlersRef.current.generate?.();
+      if (e.key === 'E') shortcutHandlersRef.current.export?.();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
 
   // Handle OAuth callback params
   useEffect(() => {
@@ -93,13 +112,15 @@ export default function Schedule() {
 
     if (activeTerm?.id) {
       try {
-        const stData = await api.getStudyTimes(token, activeTerm.id);
+        const startDate = viewWindow ? viewWindow.start.toISOString().slice(0, 10) : null;
+        const endDate = viewWindow ? viewWindow.end.toISOString().slice(0, 10) : null;
+        const stData = await api.getStudyTimes(token, activeTerm.id, startDate, endDate);
         setStudyTimes(stData.study_times || []);
       } catch (err) {
         console.warn('Failed to fetch study times:', err?.message);
       }
     }
-  }, [token, activeTerm]);
+  }, [token, activeTerm, viewWindow]);
 
   useEffect(() => {
     fetchData();
@@ -117,9 +138,12 @@ export default function Schedule() {
     });
     if (staleSources.length > 0) {
       autoSyncDone.current = true;
-      Promise.all(staleSources.map(src => api.syncSource(token, src.id)))
-        .then(() => fetchData())
-        .catch(() => {});
+      (async () => {
+        for (const src of staleSources) {
+          try { await api.syncSource(token, src.id); } catch { /* ignore stale sync errors */ }
+        }
+        fetchData();
+      })();
     }
   }, [token, sources, fetchData]);
 
@@ -192,6 +216,12 @@ export default function Schedule() {
     }
   };
 
+  // Keep shortcut handlers up to date every render (avoids stale closure in keydown listener)
+  shortcutHandlersRef.current = {
+    generate: () => !generating && handleGenerateStudyTimes(),
+    export: () => !showExportModal && handleOpenExportModal(),
+  };
+
   const handleStudyTimeMove = async ({ props, start, end }) => {
     if (props?.type !== 'study_time' || !props?.data?.id) return;
     const studyTimeId = props.data.id;
@@ -215,7 +245,23 @@ export default function Schedule() {
         end_time: end.toISOString(),
         is_locked: true,
       });
-      toast.success('Study block pinned.');
+      toast(
+        t => (
+          <span className="flex items-center gap-2 text-sm">
+            Block pinned.
+            <button
+              className="font-semibold text-accent underline"
+              onClick={() => {
+                toast.dismiss(t.id);
+                shortcutHandlersRef.current.generate?.();
+              }}
+            >
+              Re-optimize remaining?
+            </button>
+          </span>
+        ),
+        { duration: 6000 }
+      );
     } catch (err) {
       toast.error(err.message || 'Could not move study block');
       fetchData();
@@ -436,6 +482,27 @@ export default function Schedule() {
 
   const totalStudyMins = studyTimeByCourse.reduce((s, x) => s + x.mins, 0);
 
+  // Weekly study hours — grouped by ISO Monday of each week
+  const weeklyHours = useMemo(() => {
+    const byWeek = {};
+    for (const st of studyTimes) {
+      const d = new Date(st.start_time);
+      const monday = new Date(d);
+      monday.setHours(0, 0, 0, 0);
+      monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
+      const key = monday.toISOString().slice(0, 10);
+      const mins = (new Date(st.end_time) - new Date(st.start_time)) / 60000;
+      byWeek[key] = (byWeek[key] || 0) + mins;
+    }
+    return Object.entries(byWeek)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([week, mins]) => ({
+        week,
+        hours: Math.round((mins / 60) * 10) / 10,
+        isPast: new Date(week) < new Date(new Date().setHours(0, 0, 0, 0)),
+      }));
+  }, [studyTimes]);
+
   // Merge consecutive same-course blocks for display (e.g. 7:00–7:15 + 7:15–8:15 → 7:00–8:15)
   const mergedStudyTimes = useMemo(() => {
     if (!studyTimes?.length) return [];
@@ -480,56 +547,17 @@ export default function Schedule() {
 
   return (
     <div className="space-y-6">
-      <div className="animate-fade-in">
-        <Link
-          to="/app"
-          className="text-sm text-ink-muted hover:text-ink transition-colors no-underline"
-        >
-          &larr; Dashboard
-        </Link>
-        <h1 className="mt-2 text-2xl font-semibold text-ink">Schedule</h1>
-        <p className="mt-1 text-sm text-ink-muted">
-          Your calendar events and study blocks at a glance. Study blocks appear
-          in the date range of your assignments—use the calendar arrows to
-          navigate.
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={handleGenerateStudyTimes}
-            disabled={generating || !token}
-            className="px-4 py-2 rounded-lg bg-primary text-primary-inv font-medium text-sm hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-          >
-            {generating ? 'Generating\u2026' : 'Generate Study Times'}
-          </button>
-          <button
-            type="button"
-            onClick={handleClearStudyTimes}
-            disabled={clearingSchedule || !token || studyTimes.length === 0}
-            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-          >
-            {clearingSchedule ? 'Clearing…' : 'Clear study times'}
-          </button>
-          <button
-            type="button"
-            onClick={handleConnectOrImport}
-            disabled={!token}
-            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-          >
-            {calendarConnected
-              ? 'Import from Google Calendar'
-              : 'Connect Google Calendar'}
-          </button>
-          <button
-            type="button"
-            onClick={handleOpenExportModal}
-            disabled={!token}
-            className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-          >
-            iCal Export
-          </button>
-        </div>
-      </div>
+      <ScheduleToolbar
+        generating={generating}
+        clearingSchedule={clearingSchedule}
+        calendarConnected={calendarConnected}
+        studyTimesCount={studyTimes.length}
+        token={token}
+        onGenerate={handleGenerateStudyTimes}
+        onClear={handleClearStudyTimes}
+        onConnectOrImport={handleConnectOrImport}
+        onExport={handleOpenExportModal}
+      />
 
       {showImportModal && (
         <UnifiedImportModal
@@ -544,163 +572,23 @@ export default function Schedule() {
       )}
 
       {showProposedScheduleModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-black/45"
-            onClick={() =>
-              !applyingSchedule && setShowProposedScheduleModal(false)
-            }
-          />
-          <div className="relative z-10 w-full max-w-xl rounded-xl border border-border bg-surface p-5 shadow-xl max-h-[85vh] flex flex-col">
-            <h3 className="text-lg font-semibold text-ink">
-              Proposed study schedule
-            </h3>
-            <p className="mt-1 text-sm text-ink-muted">
-              Here&apos;s a proposed study schedule based on your availability,
-              course workload, and calendar events. Unlocked blocks will be
-              replaced when you apply.
-            </p>
-            <div className="mt-4 overflow-y-auto flex-1 min-h-0 rounded-lg border border-border bg-surface-muted/50 p-3">
-              {(() => {
-                const sorted = [...proposedSlots].sort(
-                  (a, b) => new Date(a.start_time) - new Date(b.start_time)
-                );
-                const merged = [];
-                for (const s of sorted) {
-                  const last = merged[merged.length - 1];
-                  const sameCourse = last && last.course_name === s.course_name;
-                  const adjacent =
-                    last &&
-                    new Date(last.end_time).getTime() ===
-                      new Date(s.start_time).getTime();
-                  if (sameCourse && adjacent) {
-                    last.end_time = s.end_time;
-                  } else {
-                    merged.push({ ...s });
-                  }
-                }
-                return (
-                  <>
-                    <p className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
-                      {merged.length} block(s) · spread across your study window
-                    </p>
-                    <ul className="space-y-1.5 text-sm">
-                      {merged.slice(0, 50).map((s, i) => (
-                        <li
-                          key={i}
-                          className="flex items-center gap-2 text-ink"
-                        >
-                          <span className="font-medium truncate flex-1">
-                            {s.course_name || 'Study'}
-                          </span>
-                          <span className="text-ink-muted shrink-0 font-mono text-xs">
-                            {new Date(s.start_time).toLocaleDateString(
-                              undefined,
-                              {
-                                weekday: 'short',
-                                month: 'short',
-                                day: 'numeric',
-                              }
-                            )}{' '}
-                            {new Date(s.start_time).toLocaleTimeString([], {
-                              hour: 'numeric',
-                              minute: '2-digit',
-                            })}
-                            –
-                            {new Date(s.end_time).toLocaleTimeString([], {
-                              hour: 'numeric',
-                              minute: '2-digit',
-                            })}
-                          </span>
-                        </li>
-                      ))}
-                      {merged.length > 50 && (
-                        <li className="text-ink-muted text-xs">
-                          … and {merged.length - 50} more
-                        </li>
-                      )}
-                    </ul>
-                  </>
-                );
-              })()}
-            </div>
-            <div className="mt-4 flex gap-2 justify-end">
-              <button
-                type="button"
-                onClick={() => setShowProposedScheduleModal(false)}
-                disabled={applyingSchedule}
-                className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-ink hover:bg-surface-muted disabled:opacity-50"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={handleApplyProposedSchedule}
-                disabled={applyingSchedule}
-                className="rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-inv hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {applyingSchedule ? 'Applying…' : 'Apply schedule'}
-              </button>
-            </div>
-          </div>
-        </div>
+        <GenerateModal
+          proposedSlots={proposedSlots}
+          applyingSchedule={applyingSchedule}
+          onApply={handleApplyProposedSchedule}
+          onClose={() => setShowProposedScheduleModal(false)}
+        />
       )}
 
       {showExportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-black/45"
-            onClick={() => setShowExportModal(false)}
-          />
-          <div className="relative z-10 w-full max-w-xl rounded-xl border border-border bg-surface p-5 shadow-xl">
-            <h3 className="text-lg font-semibold text-ink">iCal Export</h3>
-            <p className="mt-1 text-sm text-ink-muted">
-              Subscribe this private feed URL in Apple Calendar / Google
-              Calendar.
-            </p>
-
-            {exportLoading ? (
-              <p className="mt-4 text-sm text-ink-muted">Loading feed URL...</p>
-            ) : exportError ? (
-              <p className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
-                {exportError}
-              </p>
-            ) : (
-              <>
-                <div className="mt-4 rounded-lg border border-border bg-surface-muted p-3">
-                  <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
-                    Your Feed URL
-                  </p>
-                  <p className="break-all text-xs text-ink">
-                    {exportFeedUrl || 'No feed URL available'}
-                  </p>
-                </div>
-                <div className="mt-3 flex gap-2">
-                  <button
-                    type="button"
-                    onClick={handleCopyExportUrl}
-                    disabled={!exportFeedUrl}
-                    className="rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-inv hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    Copy URL
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setShowExportModal(false)}
-                    className="rounded-lg border border-border px-3 py-2 text-xs font-medium text-ink hover:bg-surface-muted"
-                  >
-                    Close
-                  </button>
-                </div>
-                <p className="mt-3 text-xs text-ink-muted">
-                  {exportEnabled
-                    ? 'Feed is enabled. Changes may take some time to appear in subscribed calendar apps.'
-                    : 'Feed is currently disabled.'}
-                </p>
-              </>
-            )}
-          </div>
-        </div>
+        <ExportModal
+          loading={exportLoading}
+          feedUrl={exportFeedUrl}
+          enabled={exportEnabled}
+          error={exportError}
+          onCopy={handleCopyExportUrl}
+          onClose={() => setShowExportModal(false)}
+        />
       )}
 
       {studyTimes.length === 0 && calendarEvents.length === 0 && (
@@ -729,6 +617,7 @@ export default function Schedule() {
             onEventClick={handleEventClickAll}
             onEventHover={handleEventHover}
             onEventHoverEnd={handleEventHoverEnd}
+            onDatesSet={({ start, end }) => setViewWindow({ start, end })}
           />
           {hoverPreview && !popover && !eventDetail && (
             <div
@@ -795,63 +684,12 @@ export default function Schedule() {
               )}
             </div>
           )}
-          {popover && (
-            <>
-              <div
-                className="fixed inset-0 z-40"
-                onClick={() => setPopover(null)}
-              />
-              <div
-                className="fixed z-50 min-w-[180px] rounded-lg border border-border bg-surface p-3 text-sm shadow-lg"
-                style={{ top: popover.y + 8, left: popover.x + 8 }}
-              >
-                <p className="mb-0.5 truncate font-medium text-ink">
-                  {popover.studyTime.course_name || 'Study Block'}
-                </p>
-                {popover.studyTime.assignment_name && (
-                  <p className="mb-1 truncate text-xs text-ink-muted">
-                    {popover.studyTime.assignment_name}
-                  </p>
-                )}
-                <p className="mb-2 text-xs text-ink-muted">
-                  {popover.studyTime.is_locked
-                    ? 'Locked — this block stays when you regenerate.'
-                    : 'Unlocked — will be replaced when you regenerate. Lock to keep it.'}
-                </p>
-                <div className="flex flex-col gap-1.5">
-                  <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={handleToggleLock}
-                      className="flex-1 rounded bg-primary px-2 py-1 text-xs font-medium text-primary-inv hover:opacity-90"
-                      title={
-                        popover.studyTime.is_locked
-                          ? 'Unlock so it can be replaced'
-                          : 'Lock to keep this block'
-                      }
-                    >
-                      {popover.studyTime.is_locked ? 'Unlock' : 'Lock block'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPopover(null)}
-                      className="rounded border border-border px-2 py-1 text-xs text-ink-muted hover:text-ink"
-                    >
-                      Close
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleLockEntireDay}
-                    className="w-full rounded border border-border px-2 py-1 text-xs text-ink-muted hover:bg-surface-muted hover:text-ink"
-                    title="Lock all study blocks on this day at once"
-                  >
-                    Lock entire day
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
+          <StudyBlockPopover
+            popover={popover}
+            onToggleLock={handleToggleLock}
+            onLockDay={handleLockEntireDay}
+            onClose={() => setPopover(null)}
+          />
           {eventDetail && (
             <>
               <div
@@ -937,167 +775,19 @@ export default function Schedule() {
           )}
         </div>
 
-        {/* Sidebar: sources + pie chart */}
-        <div className="w-full lg:w-64 shrink-0 order-2 space-y-4">
-          {/* Study time pie chart – always visible */}
-          <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
-            <h3 className="text-sm font-semibold text-ink mb-2">
-              Time per course
-            </h3>
-            {studyTimeByCourse.length > 0 ? (
-              <div className="flex items-center gap-4 group/pie">
-                <div
-                  className="w-20 h-20 rounded-full shrink-0 transition-transform duration-300 ease-out group-hover/pie:scale-110"
-                  style={{
-                    background: `conic-gradient(${studyTimeByCourse
-                      .map((c, i) => {
-                        const start = studyTimeByCourse
-                          .slice(0, i)
-                          .reduce(
-                            (s, x) => s + (x.mins / totalStudyMins) * 100,
-                            0
-                          );
-                        const end = start + (c.mins / totalStudyMins) * 100;
-                        return `${c.color || COURSE_COLORS[i % COURSE_COLORS.length]} ${start}% ${end}%`;
-                      })
-                      .join(', ')})`,
-                  }}
-                  title={studyTimeByCourse
-                    .map(
-                      c => `${c.name}: ${Math.round((c.mins / 60) * 10) / 10}h`
-                    )
-                    .join(', ')}
-                />
-                <div className="min-w-0 flex-1 space-y-1">
-                  {studyTimeByCourse.slice(0, 5).map((c, i) => (
-                    <div
-                      key={c.name}
-                      className="flex items-center gap-2 text-xs group/legend transition-colors duration-200 rounded px-1 -mx-1 hover:bg-surface-muted"
-                      title={`${c.name}: ${Math.round((c.mins / 60) * 10) / 10} hours`}
-                    >
-                      <span
-                        className="w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{
-                          backgroundColor:
-                            c.color || COURSE_COLORS[i % COURSE_COLORS.length],
-                        }}
-                      />
-                      <span className="truncate text-ink">{c.name}</span>
-                      <span className="text-ink-muted tabular-nums shrink-0">
-                        {Math.round((c.mins / totalStudyMins) * 100)}%
-                      </span>
-                    </div>
-                  ))}
-                  {studyTimeByCourse.length > 5 && (
-                    <div className="text-xs text-ink-subtle px-1">
-                      + {studyTimeByCourse.length - 5} more course
-                      {studyTimeByCourse.length - 5 !== 1 ? 's' : ''}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <p className="text-xs text-ink-muted">
-                Add courses from your syllabus, then click{' '}
-                <strong>Generate Study Times</strong> above to see a breakdown
-                of study time per course.
-              </p>
-            )}
-          </div>
-
-          <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
-            <h3 className="text-sm font-semibold text-ink mb-3">Sources</h3>
-            {sources.length === 0 ? (
-              <p className="text-xs text-ink-muted">
-                No sources yet. Import a calendar to get started.
-              </p>
-            ) : (
-              <ul className="space-y-2">
-                {sources.map(src => (
-                  <li
-                    key={src.id}
-                    className="flex items-center justify-between gap-2"
-                  >
-                    <div className="flex items-center gap-2 min-w-0">
-                      <div className="relative shrink-0">
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setColorEditId(c => (c === src.id ? null : src.id))
-                          }
-                          className="w-5 h-5 rounded-full border-2 border-white dark:border-gray-800 shadow-sm hover:ring-2 hover:ring-accent/50 transition-all cursor-pointer"
-                          style={{
-                            backgroundColor: src.color || '#64748B',
-                          }}
-                          title="Change color"
-                        />
-                        {colorEditId === src.id && (
-                          <>
-                            <div
-                              className="fixed inset-0 z-40"
-                              onClick={() => setColorEditId(null)}
-                            />
-                            <div className="absolute left-0 top-6 z-50 p-2 rounded-lg border border-border bg-surface shadow-lg min-w-[140px]">
-                              <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">
-                                Color
-                              </p>
-                              <div className="grid grid-cols-4 gap-1.5">
-                                {SOURCE_COLOR_OPTIONS.map(({ hex, label }) => (
-                                  <button
-                                    key={hex}
-                                    type="button"
-                                    onClick={() =>
-                                      handleColorChange(src.id, hex)
-                                    }
-                                    className="w-7 h-7 rounded border border-border hover:scale-110 transition-transform"
-                                    style={{ backgroundColor: hex }}
-                                    title={label}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs font-medium text-ink truncate">
-                          {src.source_label}
-                        </p>
-                        <p className="text-[10px] text-ink-muted font-mono tabular-nums">
-                          {src.event_count} events ·{' '}
-                          {src.source_type === 'google' ? 'Google' : 'ICS'}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-1 shrink-0">
-                      <button
-                        onClick={() => handleSyncSource(src.id)}
-                        disabled={syncingId === src.id}
-                        title="Sync"
-                        className="text-ink-muted hover:text-accent text-xs disabled:opacity-50 transition-colors"
-                      >
-                        ↻
-                      </button>
-                      <button
-                        onClick={() => handleDeleteSource(src.id)}
-                        title="Remove"
-                        className="text-ink-muted hover:text-red-600 text-xs transition-colors"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <button
-              onClick={handleConnectOrImport}
-              className="mt-3 w-full text-xs font-medium text-accent hover:text-accent-hover transition-colors"
-            >
-              + Add Source
-            </button>
-          </div>
-        </div>
+        <ScheduleSidebar
+          studyTimeByCourse={studyTimeByCourse}
+          totalStudyMins={totalStudyMins}
+          weeklyHours={weeklyHours}
+          sources={sources}
+          syncingId={syncingId}
+          colorEditId={colorEditId}
+          onColorEditToggle={id => setColorEditId(c => (c === id ? null : id))}
+          onColorChange={handleColorChange}
+          onSyncSource={handleSyncSource}
+          onDeleteSource={handleDeleteSource}
+          onAddSource={handleConnectOrImport}
+        />
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/syllabify-logo-green.png';
 import ThemeToggle from '../components/ThemeToggle';
 import Footer from '../components/Footer';
+import * as api from '../api/client';
+import { useAuth } from '../contexts/AuthContext';
 
 const DEMO_BLOCKS = [
   { top: '8%', left: '2%', width: '18%', height: '10%', color: '#3B82F6', label: 'CS 422' },
@@ -111,6 +114,23 @@ const FEATURES = [
 ];
 
 export default function Home() {
+  const navigate = useNavigate();
+  const { loginWithToken } = useAuth();
+  const [demoLoading, setDemoLoading] = useState(false);
+
+  const handleDemoLogin = async () => {
+    setDemoLoading(true);
+    try {
+      const data = await api.demoLogin();
+      await loginWithToken(data.token);
+      navigate('/app/schedule');
+    } catch {
+      alert('Demo login failed. Please try again.');
+    } finally {
+      setDemoLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-surface text-ink">
       <header className="border-b border-border bg-surface-elevated shadow-card">
@@ -200,19 +220,21 @@ export default function Home() {
                 </span>
               ))}
             </div>
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/register"
                 className="rounded-button bg-[#0F8A4C] px-5 py-2.5 text-sm font-semibold text-white no-underline hover:bg-[#094728] transition-colors duration-200 shadow-sm"
               >
                 Get started free
               </Link>
-              <Link
-                to="/login"
-                className="rounded-button border border-border px-5 py-2.5 text-sm font-medium text-ink no-underline hover:bg-surface-muted transition-colors duration-200"
+              <button
+                type="button"
+                onClick={handleDemoLogin}
+                disabled={demoLoading}
+                className="rounded-button border border-border px-5 py-2.5 text-sm font-medium text-ink hover:bg-surface-muted transition-colors duration-200 disabled:opacity-60"
               >
-                Log in
-              </Link>
+                {demoLoading ? 'Loading…' : 'Try the demo →'}
+              </button>
             </div>
           </div>
           <div className="animate-fade-in-up [animation-delay:200ms]">
@@ -274,12 +296,22 @@ export default function Home() {
             Create an account and upload your first syllabus in under two minutes.
             No credit card required.
           </p>
-          <Link
-            to="/register"
-            className="inline-block rounded-button bg-[#0F8A4C] px-8 py-3 text-sm font-semibold text-white no-underline hover:bg-[#094728] transition-colors duration-200 shadow-sm"
-          >
-            Get started — it&apos;s free
-          </Link>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              to="/register"
+              className="rounded-button bg-[#0F8A4C] px-8 py-3 text-sm font-semibold text-white no-underline hover:bg-[#094728] transition-colors duration-200 shadow-sm"
+            >
+              Get started — it&apos;s free
+            </Link>
+            <button
+              type="button"
+              onClick={handleDemoLogin}
+              disabled={demoLoading}
+              className="rounded-button border border-border px-8 py-3 text-sm font-medium text-ink hover:bg-surface-muted transition-colors duration-200 disabled:opacity-60"
+            >
+              {demoLoading ? 'Loading…' : 'Try the demo →'}
+            </button>
+          </div>
         </section>
       </main>
 

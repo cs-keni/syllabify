@@ -75,6 +75,18 @@ export async function loginWithGoogle(idToken) {
   return data;
 }
 
+/** POST /api/auth/demo-login. Returns { token, username }. No credentials required. */
+export async function demoLogin() {
+  const res = await apiFetch(`${BASE}/api/auth/demo-login`, {
+    method: 'POST',
+    headers: headers(false),
+    body: JSON.stringify({}),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Demo login failed');
+  return data;
+}
+
 /** POST to /api/auth/login. Returns { token, username, security_setup_done }. Throws on error. */
 export async function login(username, password) {
   const res = await apiFetch(`${BASE}/api/auth/login`, {
