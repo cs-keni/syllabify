@@ -7,7 +7,7 @@ from ..db.base import Base
 
 
 class StudyTime(Base):
-    __tablename__ = "StudyTimes"
+    __tablename__ = "studytimes"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
@@ -21,7 +21,7 @@ class StudyTime(Base):
         DateTime(timezone=True), nullable=False
     )
 
-    term_id: Mapped[int] = mapped_column(ForeignKey("Terms.id"), nullable=False)
+    term_id: Mapped[int] = mapped_column(ForeignKey("terms.id"), nullable=False)
 
     is_locked: Mapped[bool] = mapped_column(Boolean, default=False)
     assignment_id: Mapped[int | None] = mapped_column(Integer, nullable=True)

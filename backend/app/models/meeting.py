@@ -12,11 +12,11 @@ class Meeting(Base):
     Uses day_of_week + start_time_str + end_time_str (e.g. "WE", "16:00", "17:20").
     start_time/end_time kept for one-off meetings (legacy).
     """
-    __tablename__ = "Meetings"
+    __tablename__ = "meetings"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
-    course_id: Mapped[int] = mapped_column(ForeignKey("Courses.id"), nullable=False)
+    course_id: Mapped[int] = mapped_column(ForeignKey("courses.id"), nullable=False)
 
     # Recurring format (parser output): MO, TU, WE, etc.
     day_of_week: Mapped[str | None] = mapped_column(String(2), nullable=True)

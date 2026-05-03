@@ -7,10 +7,10 @@ from app.db.base import Base
 
 
 class CalendarSource(Base):
-    __tablename__ = "CalendarSources"
+    __tablename__ = "calendarsources"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    user_id: Mapped[int] = mapped_column(Integer, ForeignKey("Users.id"), nullable=False)
+    user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False)
     source_type: Mapped[str] = mapped_column(String(20), nullable=False, default="google")
     source_label: Mapped[str] = mapped_column(String(100), nullable=False)
     feed_url: Mapped[str | None] = mapped_column(Text, nullable=True)

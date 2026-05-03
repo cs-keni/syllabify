@@ -16,10 +16,10 @@ class Term(Base):
     and an is_active flag to mark the current term.
     """
 
-    __tablename__ = "Terms"
+    __tablename__ = "terms"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey("Users.id"), nullable=False)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
     term_name: Mapped[str] = mapped_column(String(100), nullable=False)
     start_date: Mapped[Date] = mapped_column(Date, nullable=False)
     end_date: Mapped[Date] = mapped_column(Date, nullable=False)

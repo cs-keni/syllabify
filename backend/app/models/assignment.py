@@ -7,7 +7,7 @@ from ..db.base import Base
 
 
 class Assignment(Base):
-    __tablename__ = "Assignments"
+    __tablename__ = "assignments"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
@@ -27,6 +27,6 @@ class Assignment(Base):
 
     assignment_type: Mapped[str | None] = mapped_column(String(50), nullable=True)
 
-    course_id: Mapped[int] = mapped_column(ForeignKey("Courses.id"), nullable=False)
+    course_id: Mapped[int] = mapped_column(ForeignKey("courses.id"), nullable=False)
 
     course = relationship("Course", back_populates="assignments")
