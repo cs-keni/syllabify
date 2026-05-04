@@ -5,13 +5,13 @@ from ..db.base import Base
 
 
 class Course(Base):
-    __tablename__ = "Courses"
+    __tablename__ = "courses"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
     course_name: Mapped[str] = mapped_column(String(255), nullable=False)
 
-    term_id: Mapped[int] = mapped_column(ForeignKey("Terms.id"), nullable=False)
+    term_id: Mapped[int] = mapped_column(ForeignKey("terms.id"), nullable=False)
 
     study_hours_per_week: Mapped[int | None] = mapped_column(Integer, nullable=True)
 

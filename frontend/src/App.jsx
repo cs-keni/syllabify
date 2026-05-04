@@ -20,6 +20,8 @@ import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import SecuritySetup from './pages/SecuritySetup';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import Home from './pages/Homepage';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -89,6 +91,8 @@ function AppRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/security-setup" element={<SecuritySetup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           {/* Redirect legacy paths (old nav used /upload, /schedule, /preferences) */}
           <Route
             path="/upload"

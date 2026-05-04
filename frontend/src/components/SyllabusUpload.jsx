@@ -14,6 +14,7 @@ export default function SyllabusUpload({ onComplete, token }) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
   const [dragOver, setDragOver] = useState(false);
+  const [fastMode, setFastMode] = useState(false);
 
   const acceptFile = f => {
     if (!f) return false;
@@ -50,7 +51,11 @@ export default function SyllabusUpload({ onComplete, token }) {
     setError(null);
     setUploading(true);
     try {
-      const payload = mode === 'file' ? { file } : { text: paste.trim() };
+      const parseMode = fastMode ? 'rule' : 'llm';
+      const payload =
+        mode === 'file'
+          ? { file, mode: parseMode }
+          : { text: paste.trim(), mode: parseMode };
       const data = await parseSyllabus(token, payload);
       const courseName = data.course_name || 'Course';
       // Prefer assessments from full parser (includes type, due_datetime, exams)
@@ -180,7 +185,18 @@ export default function SyllabusUpload({ onComplete, token }) {
 
       {error && <p className="text-sm text-red-500">{error}</p>}
 
-      <div className="flex justify-end">
+      <div className="flex items-center justify-between gap-4">
+        <label className="flex items-center gap-2 cursor-pointer select-none group">
+          <input
+            type="checkbox"
+            checked={fastMode}
+            onChange={e => setFastMode(e.target.checked)}
+            className="w-3.5 h-3.5 rounded accent-accent"
+          />
+          <span className="text-xs text-ink-muted group-hover:text-ink transition-colors">
+            Quick parse (rule-based, faster)
+          </span>
+        </label>
         <button
           type="submit"
           disabled={!canSubmit || uploading}

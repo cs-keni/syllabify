@@ -95,16 +95,30 @@ def build_engine_input(user_id: int, term_id: int | None = None, course_ids: lis
                 for m in meetings
             ]
 
-            # Assignments as work items
-            cur.execute(
-                """
-                SELECT id, assignment_name, work_load, due_date, assignment_type
-                FROM Assignments
-                WHERE course_id = %s
-                ORDER BY due_date
-                """,
-                (cid,),
-            )
+            # Assignments as work items — exclude completed ones
+            try:
+                cur.execute(
+                    """
+                    SELECT id, assignment_name, work_load, due_date, assignment_type
+                    FROM Assignments
+                    WHERE course_id = %s AND (is_completed IS NULL OR is_completed = FALSE)
+                    ORDER BY due_date
+                    """,
+                    (cid,),
+                )
+            except Exception as e:
+                if "is_completed" in str(e):
+                    cur.execute(
+                        """
+                        SELECT id, assignment_name, work_load, due_date, assignment_type
+                        FROM Assignments
+                        WHERE course_id = %s
+                        ORDER BY due_date
+                        """,
+                        (cid,),
+                    )
+                else:
+                    raise
             assignments = cur.fetchall()
             work_items = [
                 {

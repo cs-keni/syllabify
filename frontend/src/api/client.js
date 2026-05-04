@@ -75,6 +75,18 @@ export async function loginWithGoogle(idToken) {
   return data;
 }
 
+/** POST /api/auth/demo-login. Returns { token, username }. No credentials required. */
+export async function demoLogin() {
+  const res = await apiFetch(`${BASE}/api/auth/demo-login`, {
+    method: 'POST',
+    headers: headers(false),
+    body: JSON.stringify({}),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Demo login failed');
+  return data;
+}
+
 /** POST to /api/auth/login. Returns { token, username, security_setup_done }. Throws on error. */
 export async function login(username, password) {
   const res = await apiFetch(`${BASE}/api/auth/login`, {
@@ -88,6 +100,47 @@ export async function login(username, password) {
 }
 
 /** POST to /api/auth/security-setup with JWT. Saves security Q&A. Throws on error. */
+/** GET /api/auth/security-questions?username=X. Returns { questions: [{id, text}] }. */
+export async function getSecurityQuestions(username) {
+  const res = await apiFetch(
+    `${BASE}/api/auth/security-questions?username=${encodeURIComponent(username)}`,
+    { credentials: 'include' }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.error || 'Failed to fetch security questions');
+  return data;
+}
+
+/** POST /api/auth/verify-security. Returns { reset_token } on success. */
+export async function verifySecurityAnswer(username, questionId, answer) {
+  const res = await apiFetch(`${BASE}/api/auth/verify-security`, {
+    method: 'POST',
+    headers: headers(true),
+    body: JSON.stringify({ username, question_id: questionId, answer }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Verification failed');
+  return data;
+}
+
+/** POST /api/auth/reset-password. Returns { ok: true } on success. */
+export async function resetPassword(resetToken, newPassword) {
+  const res = await apiFetch(`${BASE}/api/auth/reset-password`, {
+    method: 'POST',
+    headers: headers(true),
+    body: JSON.stringify({
+      reset_token: resetToken,
+      new_password: newPassword,
+    }),
+    credentials: 'include',
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Password reset failed');
+  return data;
+}
+
 export async function securitySetup(token, questions) {
   const res = await apiFetch(`${BASE}/api/auth/security-setup`, {
     method: 'POST',
@@ -106,7 +159,7 @@ export async function securitySetup(token, questions) {
  * Returns { course_name, assignments: [{ name, due_date, hours }], confidence?, raw_text? }.
  * Throws on error.
  */
-export async function parseSyllabus(token, { file, text, mode = 'rule' }) {
+export async function parseSyllabus(token, { file, text, mode = 'llm' }) {
   const t =
     token ||
     (typeof localStorage !== 'undefined'
@@ -711,6 +764,18 @@ export async function deleteCourse(courseId) {
   return data;
 }
 
+/** GET /api/assignments/upcoming?term_id=X&limit=5. Returns { assignments: [...] }. */
+export async function getUpcomingAssignments(token, termId, limit = 5) {
+  const res = await apiFetch(
+    `${BASE}/api/assignments/upcoming?term_id=${termId}&limit=${limit}`,
+    { headers: headers(true, token), credentials: 'include' }
+  );
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok)
+    throw new Error(data.error || 'Failed to fetch upcoming assignments');
+  return data;
+}
+
 /** PATCH /api/assignments/:id. Body: { assignment_name?, due_date?, hours?, type? }. */
 export async function updateAssignment(token, assignmentId, body) {
   const res = await apiFetch(`${BASE}/api/assignments/${assignmentId}`, {
@@ -971,7 +1036,7 @@ export async function syncSource(token, sourceId) {
   return data;
 }
 
-/** DELETE /api/calendar/sources/:sourceId. Returns { ok }. */
+/** PATCH /api/calendar/sources/:sourceId. Updates color. Returns { ok }. */
 export async function updateCalendarSource(token, sourceId, { color }) {
   const res = await apiFetch(`${BASE}/api/calendar/sources/${sourceId}`, {
     method: 'PATCH',

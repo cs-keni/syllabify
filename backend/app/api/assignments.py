@@ -1,13 +1,98 @@
 """Assignment CRUD: PATCH /api/assignments/:id, DELETE /api/assignments/:id."""
+import logging
 from datetime import datetime
 
 from flask import Blueprint, jsonify, request
 
 from app.api.auth import decode_token, get_db
 
+logger = logging.getLogger(__name__)
+
 bp = Blueprint("assignments", __name__, url_prefix="/api/assignments")
 
 VALID_TYPES = ("assignment", "midterm", "final", "quiz", "project", "participation")
+
+
+@bp.route("/upcoming", methods=["GET"])
+def upcoming_assignments():
+    """GET /api/assignments/upcoming?term_id=X&limit=5
+    Returns the next N assignments by due_date across all courses in the term."""
+    auth = request.headers.get("Authorization")
+    payload = decode_token(auth)
+    if not payload:
+        return jsonify({"error": "unauthorized"}), 401
+    user_id = int(payload.get("sub"))
+
+    term_id = request.args.get("term_id", type=int)
+    limit = min(request.args.get("limit", 5, type=int), 20)
+    if not term_id:
+        return jsonify({"error": "term_id is required"}), 400
+
+    conn = get_db()
+    try:
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            """
+            SELECT a.id, a.assignment_name, a.due_date, a.assignment_type,
+                   a.is_completed, c.id AS course_id, c.course_name, c.color
+            FROM Assignments a
+            JOIN Courses c ON c.id = a.course_id
+            JOIN Terms t ON t.id = c.term_id
+            WHERE t.id = %s AND t.user_id = %s
+              AND a.due_date >= CURRENT_DATE
+              AND (a.is_completed IS NULL OR a.is_completed = FALSE)
+            ORDER BY a.due_date ASC
+            LIMIT %s
+            """,
+            (term_id, user_id, limit),
+        )
+        rows = cur.fetchall()
+        result = []
+        for r in rows:
+            result.append({
+                "id": r["id"],
+                "assignment_name": r["assignment_name"],
+                "due_date": r["due_date"].isoformat() if r.get("due_date") else None,
+                "assignment_type": r["assignment_type"],
+                "course_id": r["course_id"],
+                "course_name": r["course_name"],
+                "color": r.get("color"),
+            })
+        return jsonify({"assignments": result})
+    except Exception as e:
+        # Graceful fallback if is_completed column doesn't exist yet
+        if "is_completed" in str(e):
+            cur.execute(
+                """
+                SELECT a.id, a.assignment_name, a.due_date, a.assignment_type,
+                       c.id AS course_id, c.course_name, c.color
+                FROM Assignments a
+                JOIN Courses c ON c.id = a.course_id
+                JOIN Terms t ON t.id = c.term_id
+                WHERE t.id = %s AND t.user_id = %s
+                  AND a.due_date >= CURRENT_DATE
+                ORDER BY a.due_date ASC
+                LIMIT %s
+                """,
+                (term_id, user_id, limit),
+            )
+            rows = cur.fetchall()
+            result = [
+                {
+                    "id": r["id"],
+                    "assignment_name": r["assignment_name"],
+                    "due_date": r["due_date"].isoformat() if r.get("due_date") else None,
+                    "assignment_type": r["assignment_type"],
+                    "course_id": r["course_id"],
+                    "course_name": r["course_name"],
+                    "color": r.get("color"),
+                }
+                for r in rows
+            ]
+            return jsonify({"assignments": result})
+        raise
+    finally:
+        conn.close()
 
 
 @bp.route("/estimate-hours", methods=["POST"])
@@ -78,6 +163,8 @@ def patch_assignment(assignment_id):
         if "assignment_name" in data:
             name = (data.get("assignment_name") or "").strip()
             if name:
+                if len(name) > 500:
+                    return jsonify({"error": "assignment_name too long (max 500 characters)"}), 400
                 updates.append("assignment_name = %s")
                 params.append(name)
 
@@ -123,10 +210,22 @@ def patch_assignment(assignment_id):
                 updates.append("assignment_type = %s")
                 params.append(atype)
 
+        if "is_completed" in data:
+            completed = bool(data.get("is_completed"))
+            try:
+                updates.append("is_completed = %s")
+                params.append(completed)
+                if completed:
+                    updates.append("completed_at = NOW()")
+                else:
+                    updates.append("completed_at = NULL")
+            except Exception as e:
+                logger.warning("Failed to set is_completed fields: %s", e)
+
         if not updates:
             cur.execute(
                 """
-                SELECT id, assignment_name, work_load, notes, start_date, due_date, assignment_type
+                SELECT id, assignment_name, work_load, notes, start_date, due_date, assignment_type, is_completed
                 FROM Assignments WHERE id = %s
                 """,
                 (assignment_id,),
@@ -140,10 +239,8 @@ def patch_assignment(assignment_id):
             return jsonify(out)
 
         params.append(assignment_id)
-        cur.execute(
-            f"UPDATE Assignments SET {', '.join(updates)} WHERE id = %s",
-            tuple(params),
-        )
+        sql = "UPDATE Assignments SET " + ", ".join(updates) + " WHERE id = %s"
+        cur.execute(sql, tuple(params))
         conn.commit()
 
         cur.execute(

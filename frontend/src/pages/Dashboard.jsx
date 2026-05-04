@@ -4,9 +4,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { getCourses, createCourse, deleteCourse } from '../api/client';
+import {
+  getCourses,
+  createCourse,
+  deleteCourse,
+  getUpcomingAssignments,
+} from '../api/client';
 import CourseCard from '../components/CourseCard';
 import TermSelector from '../components/TermSelector';
+import OnboardingTooltip from '../components/OnboardingTooltip';
 
 function getGreeting() {
   const h = new Date().getHours();
@@ -29,17 +35,25 @@ export default function Dashboard() {
   const [sortBy, setSortBy] = useState('name');
   const inputRef = useRef(null);
   const [recentCourses, setRecentCourses] = useState([]);
+  const [pendingDelete, setPendingDelete] = useState(null); // { id, name, assignmentCount }
+  const [upcomingAssignments, setUpcomingAssignments] = useState([]);
 
   useEffect(() => {
     try {
       const stored = JSON.parse(
         localStorage.getItem('syllabify_recent_courses') || '[]'
       );
-      setRecentCourses(stored.filter(c => c.id && c.course_name));
+      const courseIds = new Set(courses.map(c => c.id));
+      const valid = stored
+        .filter(
+          c => c.id && c.course_name && (!currentTermId || courseIds.has(c.id))
+        )
+        .slice(0, 5);
+      setRecentCourses(valid);
     } catch (_) {
       setRecentCourses([]);
     }
-  }, [courses]);
+  }, [courses, currentTermId]);
 
   const sortedCourses = [...courses].sort((a, b) => {
     if (sortBy === 'name')
@@ -51,8 +65,10 @@ export default function Dashboard() {
 
   // Courses load when term changes (via handleTermChange from TermSelector)
 
-  const handleDeleteCourse = async id => {
-    if (!token) return;
+  const handleDeleteCourse = async () => {
+    if (!token || !pendingDelete) return;
+    const { id } = pendingDelete;
+    setPendingDelete(null);
     try {
       await deleteCourse(id);
       setCourses(prev => prev.filter(c => c.id !== id));
@@ -69,11 +85,20 @@ export default function Dashboard() {
     setCurrentTermId(termId);
     setCourses([]);
     setCourseError('');
+    setUpcomingAssignments([]);
     if (!termId) return;
     setLoadingCourses(true);
     try {
-      const data = await getCourses(termId);
-      setCourses(data.courses || []);
+      const [coursesData, upcomingData] = await Promise.all([
+        getCourses(termId),
+        token
+          ? getUpcomingAssignments(token, termId, 5).catch(() => ({
+              assignments: [],
+            }))
+          : Promise.resolve({ assignments: [] }),
+      ]);
+      setCourses(coursesData.courses || []);
+      setUpcomingAssignments(upcomingData.assignments || []);
     } catch (e) {
       setCourseError(e.message);
     } finally {
@@ -108,6 +133,7 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6 sm:space-y-10">
+      <OnboardingTooltip />
       <div className="animate-fade-in">
         <h1 className="text-2xl font-semibold text-ink">
           {user?.username ? `${getGreeting()}, ${user.username}` : 'Dashboard'}
@@ -124,7 +150,7 @@ export default function Dashboard() {
       <div className="grid gap-8 lg:grid-cols-2">
         <section className="rounded-card bg-surface-elevated border border-border p-4 sm:p-6 shadow-card animate-fade-in-up [animation-delay:200ms]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-            <h2 className="text-sm font-medium text-ink">Schedule</h2>
+            <h2 className="text-sm font-medium text-ink">Upcoming deadlines</h2>
             <Link
               to="/app/schedule"
               className="text-sm font-medium text-accent no-underline hover:text-accent-hover transition-colors duration-200"
@@ -132,10 +158,54 @@ export default function Dashboard() {
               View schedule →
             </Link>
           </div>
-          <p className="text-sm text-ink-muted py-2">
-            Generate study times from your courses, then view your weekly
-            schedule.
-          </p>
+          {!currentTermId ? (
+            <p className="text-sm text-ink-muted py-2">
+              Select a term to see upcoming deadlines.
+            </p>
+          ) : upcomingAssignments.length === 0 ? (
+            <p className="text-sm text-ink-muted py-2">
+              No upcoming deadlines — all clear!
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {upcomingAssignments.map(a => {
+                const due = a.due_date ? new Date(a.due_date) : null;
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const daysLeft = due
+                  ? Math.ceil((due - today) / 86400000)
+                  : null;
+                return (
+                  <li key={a.id} className="flex items-center gap-3 text-sm">
+                    <span
+                      className="w-2 h-2 rounded-full shrink-0"
+                      style={{ backgroundColor: a.color || '#6b7280' }}
+                    />
+                    <Link
+                      to={`/app/courses/${a.course_id}`}
+                      className="truncate text-ink no-underline hover:text-accent transition-colors flex-1"
+                    >
+                      {a.assignment_name}
+                      <span className="ml-1 text-xs text-ink-muted">
+                        · {a.course_name}
+                      </span>
+                    </Link>
+                    {daysLeft !== null && (
+                      <span
+                        className={`shrink-0 text-xs tabular-nums ${daysLeft <= 2 ? 'text-red-500 font-medium' : daysLeft <= 7 ? 'text-amber-500' : 'text-ink-muted'}`}
+                      >
+                        {daysLeft === 0
+                          ? 'today'
+                          : daysLeft === 1
+                            ? '1 day'
+                            : `${daysLeft} days`}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </section>
 
         {/* Courses section */}
@@ -278,7 +348,13 @@ export default function Dashboard() {
                         term: '',
                         assignment_count: c.assignment_count ?? 0,
                       }}
-                      onDelete={() => handleDeleteCourse(c.id)}
+                      onDelete={() =>
+                        setPendingDelete({
+                          id: c.id,
+                          name: c.course_name || c.name || 'Course',
+                          assignmentCount: c.assignment_count ?? 0,
+                        })
+                      }
                     />
                   </div>
                 ))}
@@ -287,6 +363,46 @@ export default function Dashboard() {
           </div>
         </section>
       </div>
+
+      {pendingDelete && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setPendingDelete(null)}
+          />
+          <div className="relative z-10 w-full max-w-sm rounded-xl border border-border bg-surface-elevated p-5 shadow-xl animate-fade-in-up">
+            <h3 className="text-base font-semibold text-ink">Delete course?</h3>
+            <p className="mt-2 text-sm text-ink-muted">
+              Delete{' '}
+              <span className="font-medium text-ink">{pendingDelete.name}</span>{' '}
+              and its{' '}
+              <span className="font-medium text-ink">
+                {pendingDelete.assignmentCount}
+              </span>{' '}
+              {pendingDelete.assignmentCount === 1
+                ? 'assignment'
+                : 'assignments'}
+              ? This can&apos;t be undone.
+            </p>
+            <div className="mt-4 flex gap-2 justify-end">
+              <button
+                type="button"
+                onClick={() => setPendingDelete(null)}
+                className="rounded-button border border-border px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteCourse}
+                className="rounded-button bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

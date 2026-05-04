@@ -43,7 +43,7 @@ def _mock_conn_with_cursor():
     return conn, cur
 
 
-@patch("app.api.schedule._get_db")
+@patch("app.api.schedule.get_db")
 @patch("app.api.schedule._get_user")
 def test_patch_study_time_lock(get_user, get_db, client, auth_token, sample_study_time):
     get_user.return_value = (1, None)
@@ -69,7 +69,7 @@ def test_patch_study_time_lock(get_user, get_db, client, auth_token, sample_stud
     assert resp.get_json()["ok"] is True
 
 
-@patch("app.api.schedule._get_db")
+@patch("app.api.schedule.get_db")
 @patch("app.api.schedule._get_user")
 def test_patch_study_time_invalid_times(get_user, get_db, client, auth_token, sample_study_time):
     get_user.return_value = (1, None)
@@ -90,7 +90,7 @@ def test_patch_study_time_invalid_times(get_user, get_db, client, auth_token, sa
     assert resp.status_code == 422
 
 
-@patch("app.api.schedule._get_db")
+@patch("app.api.schedule.get_db")
 @patch("app.api.schedule._get_user")
 def test_patch_study_time_overlaps_calendar_event(
     get_user, get_db, client, auth_token, sample_study_time, sample_calendar_event
@@ -119,7 +119,7 @@ def test_patch_study_time_overlaps_calendar_event(
     assert resp.status_code == 409
 
 
-@patch("app.api.schedule._get_db")
+@patch("app.api.schedule.get_db")
 @patch("app.api.schedule._get_user")
 def test_patch_study_time_wrong_user(
     get_user, get_db, client, other_auth_token, sample_study_time

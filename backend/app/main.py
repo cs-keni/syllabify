@@ -7,7 +7,6 @@
 
 import os
 
-import mysql.connector
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -16,13 +15,17 @@ from app.api.assignments import bp as assignments_bp
 from app.api.auth import bp as auth_bp
 from app.api.calendar import bp as calendar_bp
 from app.api.courses import bp as courses_bp
+from app.api.reminders import bp as reminders_bp
 from app.api.schedule import bp as schedule_bp
 from app.api.syllabus import bp as syllabus_bp
 from app.api.terms import bp as terms_bp
 from app.api.uploads import bp as uploads_bp
 from app.api.users import bp as users_bp
+from app.extensions import limiter
 
 app = Flask(__name__)
+limiter.init_app(app)
+
 # CORS: set FRONTEND_URL on Render to your Vercel URL (e.g. https://syllabify-iota.vercel.app)
 _frontend_origins = os.getenv("FRONTEND_URL", "http://localhost:3000").strip()
 _frontend_origins = [o.strip() for o in _frontend_origins.split(",") if o.strip()]
@@ -35,22 +38,6 @@ CORS(
     expose_headers=["Content-Disposition"],
 )
 
-
-def get_db_connection():
-    """Creates and returns a MySQL connection using DB_* environment variables."""
-    port = os.getenv("DB_PORT", "3306")
-    try:
-        port = int(port)
-    except (TypeError, ValueError):
-        port = 3306
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "mysql"),
-        port=port,
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME"),
-        connection_timeout=15,
-    )
 
 
 def _maintenance_check():
@@ -66,21 +53,21 @@ def _maintenance_check():
     path = request.path or ""
     if path in ("/api/maintenance", "/api/settings") and request.method == "GET":
         return None
-    if path in ("/api/auth/login", "/api/auth/register", "/api/auth/google"):
+    if path in ("/api/auth/login", "/api/auth/register", "/api/auth/google", "/api/auth/demo-login"):
         return None
     if path.startswith("/api/calendar/callback"):
         return None
-    enabled, _ = get_maintenance_status()
+    enabled, message = get_maintenance_status()
     if not enabled:
         return None
     auth = request.headers.get("Authorization")
     payload = decode_token(auth)
     if not payload:
-        return jsonify({"error": "maintenance", "message": get_maintenance_status()[1]}), 503
+        return jsonify({"error": "maintenance", "message": message}), 503
     username = (payload.get("username") or "").strip()
     if _is_admin(username):
         return None
-    return jsonify({"error": "maintenance", "message": get_maintenance_status()[1]}), 503
+    return jsonify({"error": "maintenance", "message": message}), 503
 
 
 app.before_request(_maintenance_check)
@@ -116,6 +103,7 @@ app.register_blueprint(courses_bp)
 app.register_blueprint(assignments_bp)
 app.register_blueprint(schedule_bp)
 app.register_blueprint(syllabus_bp)
+app.register_blueprint(reminders_bp)
 
 
 @app.route("/")

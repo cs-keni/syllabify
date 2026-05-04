@@ -1,113 +1,114 @@
 # Syllabify
 
-## Project Overview
+> Turn syllabi into a balanced study plan — automatically.
 
-Syllabify is a web-based academic planning tool designed to help university students transform course syllabi into structured, personalized study schedules. While platforms like Canvas provide assignment due dates, they do not help students plan when to work on assignments, how much time to allocate to each task, or how to balance workloads across multiple courses. Syllabify addresses this gap by extracting key academic information from syllabi and using heuristics to generate balanced study plans that integrate directly with students' calendars.
+**Live demo:** <!-- TODO: add deployed URL here, e.g. https://syllabify.onrender.com -->
 
----
+## Demo
 
-## Problem Statement
+[Watch the demo](docs/demo.mp4) — full walkthrough: upload a syllabus, review extracted assignments, and view the generated study schedule on the calendar.
 
-Course syllabi are the primary source of academic expectations for students, but they vary widely in format and structure (PDFs, Canvas pages, plain text). Students are often left to manually interpret deadlines, estimate workload, and plan their time across multiple courses. This frequently leads to poor time management, workload imbalance, and last-minute stress.
-
----
-
-## Solution Overview
-
-The system supports multiple syllabus formats, including uploaded PDFs and pasted text (e.g., Canvas syllabus pages). After parsing and extracting important information such as assignments, exams, and course schedules, Syllabify allows students to review and manually edit the extracted data to ensure accuracy. Once confirmed, the system generates a proposed study schedule that allocates time blocks based on assignment complexity, deadlines, and user preferences. The student remains in full control and must approve any generated schedule before it is finalized or exported.
-
-Syllabify is designed as a client-server web application. The frontend provides interfaces for uploading syllabi, reviewing parsed data, previewing schedules, and managing multiple courses. The backend handles syllabus parsing, scheduling heuristics, validation, persistence, and integrations such as calendar exports. The system emphasizes transparency, user confirmation, and incremental refinement rather than fully automated decision-making.
+Syllabify is a web app for university students. Upload a course syllabus (PDF or text), review the extracted assignments and deadlines, and get a conflict-aware study schedule generated on a FullCalendar view. Export to Google Calendar or download an ICS file.
 
 ---
 
-## Key Features (Planned)
+## Screenshots
 
-- Syllabus upload (PDF and text-based)
-- Heuristic-based syllabus parsing
-- Manual editing and validation of extracted data
-- Support for multiple courses per user
-- Study schedule generation with conflict detection
-- Calendar export (Google Calendar / ICS)
-- User preferences for work hours and days
-- Responsive web interface
+### Homepage
+
+![Homepage](docs/screenshots/homepage.jpg)
+
+### Dashboard
+
+![Dashboard](docs/screenshots/dashboard.jpg)
+
+### Syllabus Upload & Review
+
+![Upload — Step 1](docs/screenshots/upload-step1.jpg)
+
+![Review — Parsed Assignments](docs/screenshots/review.jpg)
+
+### Schedule Calendar
+
+![Schedule](docs/screenshots/schedule-calendar.png)
+
+### Course Page
+
+![Course](docs/screenshots/course-page.jpg)
 
 ---
 
-## Architecture Overview
+## What It Does
 
-Syllabify follows a client-server architecture:
+1. **Upload** — Drop a PDF or paste syllabus text. An LLM (GPT-5 nano) extracts every assignment, exam, and deadline. Rule-based parsing is available as a fast fallback.
+2. **Review** — Edit anything the parser missed: names, due dates, hours, assignment types. Confirm when ready.
+3. **Schedule** — A min-cost max-flow algorithm allocates study blocks across your available time, respecting class meetings and imported calendar conflicts.
+4. **Export** — Sync to Google Calendar via OAuth or subscribe to a private iCal feed. Drag to reschedule individual blocks; lock blocks you want to keep on regeneration.
 
-- **Frontend**: Provides interfaces for uploading syllabi, reviewing parsed data, previewing schedules, and managing multiple courses
-- **Backend**: Handles syllabus parsing, scheduling heuristics, validation, persistence, and integrations such as calendar exports
-- **Database**: Relational database (3NF) storing users, courses, assignments, and schedules
-- **Integrations**: Calendar export services (e.g., Google Calendar, ICS files)
+---
 
-This project is developed incrementally using Scrum, with early delivery of a minimum viable product (MVP) and continuous improvement through CI/CD. The final system demonstrates software engineering best practices, including modular architecture, RESTful APIs, database normalization, version control discipline, and user-centered design.
+## Features
+
+- **AI syllabus parsing** — PDF, DOCX, and plain text via GPT-5 nano with rule-based fallback
+- **Conflict-aware scheduling** — min-cost max-flow engine respects class times and per-course weekly hour caps
+- **Google Calendar OAuth** — import calendars as blocking events and sync your schedule back
+- **iCal export** — subscribe with any calendar app (Apple Calendar, Outlook, etc.)
+- **Assignment completion tracking** — checkbox per assignment; completed work is excluded from future scheduling
+- **Upcoming deadlines** — dashboard card with color-coded days-to-due countdown
+- **Dark / light theme** — persistent per-user preference
+- **Forgot password flow** — security question setup and token-based reset
 
 ---
 
 ## Tech Stack
 
-### Frontend
-
-- React
-- Tailwind CSS
-
-### Backend
-
-- Python
-- Flask
-- RESTful APIs
-- SQLAlchemy (ORM)
-
-### Database
-
-- MySQL (3NF schema)
-
-### Tooling
-
-- Git & GitHub
-- GitHub Actions (CI/CD)
-- Jira (Scrum-based project management)
+| Layer | Technology |
+|-------|------------|
+| Frontend | React 18, React Router 6, Tailwind CSS, FullCalendar 6, Vite |
+| Backend | Python 3.11, Flask, SQLAlchemy |
+| Database | PostgreSQL (Supabase) / MySQL (local dev) |
+| AI | OpenAI GPT-5 nano |
+| Auth | JWT (7-day expiry), Google OAuth, bcrypt |
+| Testing | Vitest + React Testing Library (frontend), pytest (backend) |
+| CI/CD | GitHub Actions |
+| Deploy | Render (backend), Vercel (frontend) |
 
 ---
 
-## Installation
+## Local Development
 
-<!-- Installation instructions will be added as the project is developed -->
+Requires Docker. No venv or local Python/Node setup needed.
 
-We standardize on **Docker** (no venv). Docker isolates OS, Python, Node, MySQL, and system libs.
+```bash
+# 1. Clone and copy env file
+git clone https://github.com/your-org/syllabify.git
+cd syllabify
+cp .env.example .env   # fill in DB creds and OpenAI key
 
-**Backend + MySQL:** From project root: `docker compose up -d`. See `docker/README.md` and `backend/README.md`.
+# 2. Start backend + database
+docker compose up -d
 
-<!-- - Prerequisites (Docker, Node for frontend) -->
-<!-- - Frontend setup / Docker -->
-<!-- - Database configuration -->
-<!-- - Environment variable setup -->
+# 3. Start frontend (separate terminal)
+cd frontend
+npm install
+npm run dev            # http://localhost:3000
+```
 
----
+The backend runs at `http://localhost:5000`. The frontend proxies `/api/*` there automatically.
 
-## Development Workflow
-
-- `dev` branch: Active development and integration
-- `main` branch: Stable, production-ready code
-- Direct pushes to `main` are blocked
-- All releases are merged into `main` via pull requests
-
----
-
-## Project Context
-
-This project is developed as part of **CS 422 / CS 522 – Software Methodologies I** at the University of Oregon. The goal is to apply software engineering principles including requirements analysis, system design, iterative development, and team collaboration.
+See `CI-CD-AND-TESTING.md` for running tests and linting inside Docker.
 
 ---
 
-## Team
+## Running Tests
 
-- Andrew Martin
-- Leon Wong
-- Saint George Aufranc
-- Kenny Nguyen
+```bash
+# Frontend (Vitest)
+cd frontend && npm test
+
+# Backend (pytest, inside Docker)
+docker compose exec backend pytest
+```
 
 ---
 
@@ -115,116 +116,48 @@ This project is developed as part of **CS 422 / CS 522 – Software Methodologie
 
 ```text
 syllabify/
-├── .github/
-│   └── workflows/
-│       └── ci.yml                 # GitHub Actions CI pipeline
-│
 ├── backend/
 │   ├── app/
-│   │   ├── main.py                # Flask entry point
-│   │   ├── api/                   # Route definitions
-│   │   │   ├── __init__.py
-│   │   │   ├── auth.py             # Auth routes (login, signup)
-│   │   │   ├── syllabus.py         # Upload + parse syllabus
-│   │   │   ├── schedule.py         # Generate schedules
-│   │   │   └── export.py           # Calendar export endpoints
-│   │   │
-│   │   ├── core/                  # Core app logic
-│   │   │   ├── config.py           # App config, env vars
-│   │   │   ├── security.py         # JWT, OAuth helpers
-│   │   │   └── dependencies.py     # Flask dependencies
-│   │   │
-│   │   ├── services/              # Business logic
-│   │   │   ├── parsing_service.py  # Syllabus parsing logic
-│   │   │   ├── scheduling_service.py # Heuristics + engine
-│   │   │   └── calendar_service.py # Google Calendar / ICS
-│   │   │
-│   │   ├── models/                # ORM models (3NF)
-│   │   │   ├── user.py
-│   │   │   ├── course.py
-│   │   │   ├── assignment.py
-│   │   │   └── schedule.py
-│   │   │
-│   │   ├── schemas/               # Request/response schemas
-│   │   │   ├── user.py
-│   │   │   ├── course.py
-│   │   │   ├── assignment.py
-│   │   │   └── schedule.py
-│   │   │
-│   │   ├── db/
-│   │   │   ├── session.py          # DB connection
-│   │   │   ├── base.py             # SQLAlchemy base
-│   │   │   └── init_db.py          # DB initialization
-│   │   │
-│   │   └── utils/
-│   │       ├── pdf_utils.py        # PDF/text extraction helpers
-│   │       └── date_utils.py       # Date parsing helpers
-│   │
-│   ├── tests/
-│   │   ├── test_parsing.py
-│   │   ├── test_scheduling.py
-│   │   └── test_api.py
-│   │
-│   ├── requirements.txt            # Backend deps (Flask, MySQL, etc.); Docker install
-│   ├── requirements-dev.txt        # Dev deps (ruff, pytest); Docker install
-│   ├── Dockerfile                  # Backend image for Docker Compose
-│   ├── pyproject.toml              # Ruff / pytest config
-│   └── README.md
-│
-├── docker/
-│   └── README.md                   # Docker usage (compose, run tests/lint in container)
+│   │   ├── api/            # Flask blueprints (auth, courses, schedule, calendar, admin)
+│   │   ├── db/             # Connection pooling, SQLAlchemy session, pg_compat layer
+│   │   ├── services/       # Business logic (parsing, scheduling, LLM, calendar sync)
+│   │   └── main.py         # App factory + blueprint registration
+│   └── tests/              # pytest suite (parsing, scheduling, calendar, auth)
 │
 ├── frontend/
-│   ├── public/
-│   │   └── index.html
-│   │
-│   ├── src/
-│   │   ├── api/                    # API client calls
-│   │   │   └── client.js
-│   │   │
-│   │   ├── components/             # Reusable UI components
-│   │   │   ├── SyllabusUpload.jsx
-│   │   │   ├── SchedulePreview.jsx
-│   │   │   └── CourseCard.jsx
-│   │   │
-│   │   ├── pages/                  # Page-level components
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── Upload.jsx
-│   │   │   └── Login.jsx
-│   │   │
-│   │   ├── hooks/                  # Custom React hooks
-│   │   │   └── useAuth.js
-│   │   │
-│   │   ├── styles/
-│   │   │   └── index.css
-│   │   │
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── package.json
-│   ├── .eslintrc.cjs
-│   ├── .prettierrc
-│   └── README.md
+│   └── src/
+│       ├── api/            # Typed API client (client.js)
+│       ├── components/     # Reusable UI (AppCalendar, SyllabusUpload, TermSelector, …)
+│       ├── contexts/       # AuthContext, ThemeContext
+│       ├── pages/          # Route-level components (Dashboard, Upload, Schedule, Course, …)
+│       └── test/           # Vitest component tests
 │
 ├── docs/
-│   ├── SRS.md
-│   ├── SDS.md
-│   ├── architecture/
-│   │   └── system_architecture.png
-│   └── presentations/
-│       └── proposal_slides.pdf
+│   ├── screenshots/        # App screenshots for README and portfolio
+│   ├── bugs/               # Bug postmortems (e.g. Supabase IPv6 on Render)
+│   └── architecture/
 │
-├── docker-compose.yml              # Backend + MySQL services
-├── .dockerignore                   # Excluded from Docker build context
-├── .env.example                    # Environment variable template
-├── .gitignore
-├── LICENSE
-└── README.md                       # Main project README
+├── docker/
+│   └── supabase-schema.sql # Full PostgreSQL schema
+│
+├── FIXES.md                # Phase-by-phase bug and upgrade log
+├── PHASES.md               # Portfolio polish roadmap
+├── CI-CD-AND-TESTING.md    # CI setup, local test instructions
+├── docker-compose.yml
+└── .env.example
 ```
 
 ---
 
-## Status
+## Development Workflow
 
-Under active development  
-Initial MVP will be delivered early and expanded incrementally through CI/CD.
+- `dev` — active development; all feature branches merge here
+- `main` — stable, production-ready; direct pushes blocked; releases via pull request
+
+---
+
+## Project Context
+
+Developed as part of **CS 422 – Software Methodologies I** at the University of Oregon.
+
+**Team:** Andrew Martin · Leon Wong · Saint George Aufranc · Kenny Nguyen

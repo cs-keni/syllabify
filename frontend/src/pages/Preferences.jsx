@@ -34,6 +34,46 @@ function parsePreferredDays(csv) {
     .filter(Boolean);
 }
 
+const _ALL_TIMEZONES = (() => {
+  try {
+    return Intl.supportedValuesOf('timeZone');
+  } catch {
+    return [
+      'America/New_York',
+      'America/Chicago',
+      'America/Denver',
+      'America/Los_Angeles',
+      'America/Anchorage',
+      'Pacific/Honolulu',
+      'America/Sao_Paulo',
+      'America/Toronto',
+      'Europe/London',
+      'Europe/Paris',
+      'Europe/Berlin',
+      'Europe/Moscow',
+      'Africa/Cairo',
+      'Africa/Johannesburg',
+      'Asia/Dubai',
+      'Asia/Kolkata',
+      'Asia/Dhaka',
+      'Asia/Bangkok',
+      'Asia/Shanghai',
+      'Asia/Tokyo',
+      'Asia/Seoul',
+      'Asia/Singapore',
+      'Australia/Sydney',
+      'Pacific/Auckland',
+      'UTC',
+    ];
+  }
+})();
+
+const TIMEZONE_GROUPS = _ALL_TIMEZONES.reduce((acc, tz) => {
+  const region = tz.includes('/') ? tz.split('/')[0] : 'Other';
+  (acc[region] = acc[region] || []).push(tz);
+  return acc;
+}, {});
+
 const PASSWORD_REQUIREMENTS = [
   { key: 'length', test: p => p.length >= 8, label: 'At least 8 characters' },
   { key: 'upper', test: p => /[A-Z]/.test(p), label: 'One uppercase letter' },
@@ -64,7 +104,8 @@ export default function Preferences() {
   ]);
   const [maxHours, setMaxHours] = useState(8);
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
+  const [savingAccount, setSavingAccount] = useState(false);
+  const [savingPrefs, setSavingPrefs] = useState(false);
   const [timezone, setTimezone] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -104,7 +145,7 @@ export default function Preferences() {
   const handleSaveAccount = async e => {
     e.preventDefault();
     if (!token) return;
-    setSaving(true);
+    setSavingAccount(true);
     try {
       await updateProfile(token, {
         email: email.trim() || null,
@@ -115,7 +156,7 @@ export default function Preferences() {
     } catch (err) {
       toast.error(err.message || 'Failed to save');
     } finally {
-      setSaving(false);
+      setSavingAccount(false);
     }
   };
 
@@ -151,7 +192,7 @@ export default function Preferences() {
   const handleSavePreferences = async e => {
     e.preventDefault();
     if (!token) return;
-    setSaving(true);
+    setSavingPrefs(true);
     try {
       const codes = DAY_LABELS.filter((_, i) => selectedDays[i]).map(
         d => DAY_TO_CODE[d]
@@ -167,7 +208,7 @@ export default function Preferences() {
     } catch (err) {
       toast.error(err.message || 'Failed to save preferences');
     } finally {
-      setSaving(false);
+      setSavingPrefs(false);
     }
   };
 
@@ -362,10 +403,10 @@ export default function Preferences() {
               </div>
               <button
                 type="submit"
-                disabled={saving || loading}
+                disabled={savingAccount || loading}
                 className="rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] disabled:opacity-60 w-fit"
               >
-                {saving ? 'Saving…' : 'Save'}
+                {savingAccount ? 'Saving…' : 'Save'}
               </button>
             </form>
           </section>
@@ -439,19 +480,17 @@ export default function Preferences() {
                     ? `Browser default (${Intl.DateTimeFormat().resolvedOptions().timeZone})`
                     : 'Browser default'}
                 </option>
-                <option value="America/New_York">
-                  Eastern (America/New_York)
-                </option>
-                <option value="America/Chicago">
-                  Central (America/Chicago)
-                </option>
-                <option value="America/Denver">
-                  Mountain (America/Denver)
-                </option>
-                <option value="America/Los_Angeles">
-                  Pacific (America/Los_Angeles)
-                </option>
-                <option value="UTC">UTC</option>
+                {Object.entries(TIMEZONE_GROUPS)
+                  .sort(([a], [b]) => a.localeCompare(b))
+                  .map(([region, zones]) => (
+                    <optgroup key={region} label={region}>
+                      {zones.map(tz => (
+                        <option key={tz} value={tz}>
+                          {tz}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
               </select>
               <p className="mt-1 text-xs text-ink-subtle">
                 Used for due dates and scheduling. Defaults to your browser
@@ -482,10 +521,10 @@ export default function Preferences() {
 
             <button
               type="submit"
-              disabled={saving || loading}
+              disabled={savingPrefs || loading}
               className="mt-4 rounded-button bg-[#0F8A4C] px-4 py-2 text-sm font-medium text-[#F5C30F] hover:bg-[#094728] disabled:opacity-60 w-fit"
             >
-              {saving ? 'Saving…' : 'Save preferences'}
+              {savingPrefs ? 'Saving…' : 'Save preferences'}
             </button>
           </form>
         </div>

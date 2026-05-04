@@ -1,13 +1,23 @@
 """
 Hybrid parser: LLM-structured parsing of syllabus content.
-Uses OpenAI GPT-4o-mini with JSON schema for reliable structured output.
+Uses OpenAI GPT-5 nano with JSON schema for reliable structured output.
 """
 import json
 import os
 import re
 
-# Model: GPT-4o-mini for cost-effective structured extraction
-LLM_MODEL = "gpt-4o-mini"
+LLM_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-nano")
+
+_openai_client = None
+
+
+def _get_openai_client():
+    """Lazy singleton for the OpenAI client — created once, reused across calls."""
+    global _openai_client
+    if _openai_client is None:
+        from openai import OpenAI
+        _openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    return _openai_client
 
 SYSTEM_PROMPT = """You are a syllabus parser. Extract course info, meeting times, and assessments from the provided syllabus sections.
 
@@ -155,11 +165,10 @@ def parse_with_llm(intermediate: dict) -> dict | None:
     intermediate: from document_utils.extract_structured_from_file()
     Returns full parse dict (course, assessments, assessment_categories) or None on failure.
     """
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
+    if not os.getenv("OPENAI_API_KEY"):
         return None
     try:
-        from openai import OpenAI
+        client = _get_openai_client()
     except ImportError:
         return None
 
@@ -168,7 +177,6 @@ def parse_with_llm(intermediate: dict) -> dict | None:
         user_content = user_content[:28000] + "\n[...truncated]"
 
     try:
-        client = OpenAI(api_key=api_key)
         response = client.chat.completions.create(
             model=LLM_MODEL,
             messages=[
@@ -203,11 +211,10 @@ def estimate_assignment_hours(name: str, atype: str) -> int | None:
     atype: assignment, midterm, final, quiz, project, or participation
     Returns estimated hours (1-20) or None on failure.
     """
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
+    if not os.getenv("OPENAI_API_KEY"):
         return None
     try:
-        from openai import OpenAI
+        client = _get_openai_client()
     except ImportError:
         return None
 
@@ -218,7 +225,6 @@ Type: {atype}
 Reply with ONLY a single integer between 1 and 50 (hours). No explanation."""
 
     try:
-        client = OpenAI(api_key=api_key)
         response = client.chat.completions.create(
             model=LLM_MODEL,
             messages=[{"role": "user", "content": prompt}],
@@ -267,7 +273,7 @@ def _validate_and_normalize(data: dict) -> dict:
             "course_code": course.get("course_code"),
             "course_title": course.get("course_title"),
             "term": course.get("term"),
-            "timezone": course.get("timezone") or "America/Los_Angeles",
+            "timezone": course.get("timezone") or "UTC",
             "study_hours_per_week": course.get("study_hours_per_week"),
             "instructors": course.get("instructors") or [],
             "meeting_times": course.get("meeting_times") or [],

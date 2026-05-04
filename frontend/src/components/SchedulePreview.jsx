@@ -30,14 +30,36 @@ function formatHour(hour) {
   return `${h12}:${m.toString().padStart(2, '0')} ${period}`;
 }
 
+/** Merge consecutive same-course blocks (7:00–7:15 + 7:15–8:15 → 7:00–8:15). */
+function mergeConsecutiveStudyTimes(studyTimes) {
+  if (!studyTimes?.length) return [];
+  const sorted = [...studyTimes].sort(
+    (a, b) => new Date(a.start_time) - new Date(b.start_time)
+  );
+  const merged = [];
+  for (const st of sorted) {
+    const last = merged[merged.length - 1];
+    const stStart = new Date(st.start_time).getTime();
+    const sameCourse = last && last.course_id === st.course_id;
+    const adjacent = last && new Date(last.end_time).getTime() === stStart;
+    if (sameCourse && adjacent) {
+      last.end_time = st.end_time;
+    } else {
+      merged.push({ ...st });
+    }
+  }
+  return merged;
+}
+
 /** Convert study_times from API to blocks for the grid. weekStart = Monday. */
 function studyTimesToBlocks(studyTimes, weekStart) {
   if (!studyTimes?.length || !weekStart) return [];
+  const merged = mergeConsecutiveStudyTimes(studyTimes);
   const blocks = [];
   const weekStartTime = new Date(weekStart);
   weekStartTime.setHours(0, 0, 0, 0);
 
-  for (const st of studyTimes) {
+  for (const st of merged) {
     const startDt = new Date(st.start_time);
     const endDt = new Date(st.end_time);
     const startDate = new Date(
@@ -66,8 +88,9 @@ function studyTimesToBlocks(studyTimes, weekStart) {
       endTimeStr: formatHour(endHour),
       startTime: st.start_time,
       endTime: st.end_time,
-      title: 'Study',
+      title: st.course_name || 'Study',
       notes: st.notes,
+      courseColor: st.course_color,
     });
   }
   return blocks;
@@ -279,13 +302,14 @@ export default function SchedulePreview({
                     editNotes: b.notes || '',
                   });
                 }}
-                className="absolute rounded flex flex-col justify-center overflow-hidden text-[10px] origin-top-left animate-scale-in bg-accent/90 text-white px-1 py-0.5 text-left hover:bg-accent hover:ring-2 hover:ring-accent/50 transition-colors cursor-pointer"
+                className="absolute rounded flex flex-col justify-center overflow-hidden text-[10px] origin-top-left animate-scale-in text-white px-1 py-0.5 text-left hover:ring-2 hover:ring-white/50 transition-colors cursor-pointer"
                 style={{
                   left: `${dayWidth * b.day + 2}%`,
                   width: `${dayWidth - 4}%`,
                   top,
                   height,
                   animationDelay: `${i * 30}ms`,
+                  backgroundColor: b.courseColor || 'var(--color-accent)',
                 }}
                 title={`${b.startTimeStr} – ${b.endTimeStr} · Click to edit`}
               >

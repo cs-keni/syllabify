@@ -1,4 +1,5 @@
 """User profile and settings. GET/PUT /api/users/me."""
+import os
 import re
 
 from flask import Blueprint, jsonify, request
@@ -20,6 +21,16 @@ ALLOWED_AVATARS = {
 
 def _users_columns(cur):
     """Return the current set of column names on Users."""
+    db_url = os.getenv("DATABASE_URL", "")
+    if db_url.startswith(("postgres://", "postgresql://")):
+        cur.execute(
+            """
+            SELECT column_name
+            FROM information_schema.columns
+            WHERE table_schema = 'public' AND table_name = 'users'
+            """
+        )
+        return {row["column_name"] for row in cur.fetchall()}
     cur.execute(
         """
         SELECT COLUMN_NAME
@@ -325,9 +336,9 @@ def put_preferences():
             """
             INSERT INTO UserPreferences (user_id, work_start, work_end, preferred_days, max_hours_per_day, timezone)
             VALUES (%s, %s, %s, %s, %s, %s)
-            ON DUPLICATE KEY UPDATE work_start = VALUES(work_start), work_end = VALUES(work_end),
-                preferred_days = VALUES(preferred_days), max_hours_per_day = VALUES(max_hours_per_day),
-                timezone = VALUES(timezone)
+            ON CONFLICT (user_id) DO UPDATE SET work_start = EXCLUDED.work_start, work_end = EXCLUDED.work_end,
+                preferred_days = EXCLUDED.preferred_days, max_hours_per_day = EXCLUDED.max_hours_per_day,
+                timezone = EXCLUDED.timezone
             """,
             (user_id, work_start, work_end, preferred_days, max_hours, timezone),
         )

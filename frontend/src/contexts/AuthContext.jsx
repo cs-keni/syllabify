@@ -114,6 +114,16 @@ export function AuthProvider({ children }) {
     [loadUser]
   );
 
+  /** Stores a pre-obtained token, loads user, and updates state. Used for demo login. */
+  const loginWithToken = useCallback(
+    async t => {
+      localStorage.setItem(TOKEN_KEY, t);
+      setToken(t);
+      await loadUser(t);
+    },
+    [loadUser]
+  );
+
   /** Clears token and user from storage and state. */
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY);
@@ -140,6 +150,7 @@ export function AuthProvider({ children }) {
     isLoading,
     login,
     loginWithGoogle,
+    loginWithToken,
     logout,
     completeSecuritySetup,
     refreshUser,

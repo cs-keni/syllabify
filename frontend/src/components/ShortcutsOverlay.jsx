@@ -12,6 +12,11 @@ const SHORTCUTS = [
   { keys: ['g', 'p'], desc: 'Go to Settings' },
 ];
 
+const SCHEDULE_SHORTCUTS = [
+  { keys: ['G'], desc: 'Generate study times' },
+  { keys: ['E'], desc: 'Open iCal export' },
+];
+
 export default function ShortcutsOverlay({ open, onClose }) {
   useEffect(() => {
     if (!open) return;
@@ -45,6 +50,26 @@ export default function ShortcutsOverlay({ open, onClose }) {
         </h2>
         <dl className="space-y-3">
           {SHORTCUTS.map(({ keys, desc }, i) => (
+            <div key={i} className="flex items-center justify-between gap-4">
+              <dt className="text-sm text-ink-muted">{desc}</dt>
+              <dd className="flex gap-1">
+                {keys.map(k => (
+                  <kbd
+                    key={k}
+                    className="rounded px-2 py-0.5 text-xs font-mono bg-surface-muted border border-border text-ink"
+                  >
+                    {k}
+                  </kbd>
+                ))}
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-5 mb-2 text-xs font-semibold text-ink-muted uppercase tracking-wide">
+          Schedule page
+        </p>
+        <dl className="space-y-3">
+          {SCHEDULE_SHORTCUTS.map(({ keys, desc }, i) => (
             <div key={i} className="flex items-center justify-between gap-4">
               <dt className="text-sm text-ink-muted">{desc}</dt>
               <dd className="flex gap-1">

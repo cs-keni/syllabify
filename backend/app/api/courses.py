@@ -130,15 +130,29 @@ def get_course(course_id):
         if not course:
             return jsonify({"error": "Course not found"}), 404
 
-        cur.execute(
-            """
-            SELECT id, assignment_name, work_load, notes, start_date, due_date, assignment_type
-            FROM Assignments
-            WHERE course_id = %s
-            ORDER BY due_date
-            """,
-            (course_id,),
-        )
+        try:
+            cur.execute(
+                """
+                SELECT id, assignment_name, work_load, notes, start_date, due_date, assignment_type, is_completed
+                FROM Assignments
+                WHERE course_id = %s
+                ORDER BY due_date
+                """,
+                (course_id,),
+            )
+        except Exception as e:
+            if "is_completed" in str(e):
+                cur.execute(
+                    """
+                    SELECT id, assignment_name, work_load, notes, start_date, due_date, assignment_type
+                    FROM Assignments
+                    WHERE course_id = %s
+                    ORDER BY due_date
+                    """,
+                    (course_id,),
+                )
+            else:
+                raise
         assignments = cur.fetchall()
         for a in assignments:
             if a.get("start_date"):

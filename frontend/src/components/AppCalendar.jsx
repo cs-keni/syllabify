@@ -18,6 +18,8 @@ const DEFAULT_CATEGORY_COLORS = {
   other: '#64748B',
 };
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
 export default function AppCalendar({
   calendarEvents = [],
   studyTimes = [],
@@ -27,9 +29,12 @@ export default function AppCalendar({
   onDateSelect,
   onEventDrop,
   onEventResize,
+  onDatesSet,
 }) {
   const calendarRef = useRef(null);
-  const [currentView, setCurrentView] = useState('timeGridWeek');
+  const [currentView, setCurrentView] = useState(
+    isMobile ? 'listWeek' : 'timeGridWeek'
+  );
 
   const transformEvents = useCallback(() => {
     const events = [];
@@ -92,12 +97,29 @@ export default function AppCalendar({
       }
     }
 
-    // Transform study times (use course color when available)
-    const STUDY_GREEN = '#10B981';
+    // Transform study times (use course color when available; fallback palette by course_id)
+    const STUDY_COLORS = [
+      '#3B82F6',
+      '#10B981',
+      '#F59E0B',
+      '#EF4444',
+      '#8B5CF6',
+      '#EC4899',
+      '#06B6D4',
+      '#64748B',
+    ];
     const STUDY_LOCKED = '#059669';
+    const now = new Date();
     for (const st of studyTimes) {
+      const isPast = st.end_time && new Date(st.end_time) < now;
       const baseColor =
-        st.course_color || (st.is_locked ? STUDY_LOCKED : STUDY_GREEN);
+        st.course_color ||
+        (st.is_locked
+          ? STUDY_LOCKED
+          : STUDY_COLORS[(st.course_id || 0) % STUDY_COLORS.length]);
+      const classNames = [];
+      if (st.is_locked) classNames.push('locked-study');
+      if (isPast) classNames.push('past-block');
       events.push({
         id: `study-${st.id}`,
         title: st.course_name
@@ -108,8 +130,8 @@ export default function AppCalendar({
         backgroundColor: baseColor,
         borderColor: baseColor,
         extendedProps: { type: 'study_time', data: st },
-        classNames: st.is_locked ? ['locked-study'] : [],
-        editable: !st.is_locked,
+        classNames,
+        editable: !st.is_locked && !isMobile,
       });
     }
 
@@ -165,7 +187,7 @@ export default function AppCalendar({
       <FullCalendar
         ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
-        initialView={currentView}
+        initialView={isMobile ? 'listWeek' : currentView}
         locale="en-US"
         firstDay={0}
         dayHeaderContent={arg => (
@@ -193,8 +215,8 @@ export default function AppCalendar({
           listWeek: 'List',
         }}
         events={transformEvents()}
-        editable={true}
-        selectable={true}
+        editable={!isMobile}
+        selectable={!isMobile}
         selectMirror={true}
         dayMaxEvents={true}
         slotEventOverlap={false}
@@ -214,6 +236,10 @@ export default function AppCalendar({
         eventDrop={handleEventDrop}
         eventResize={handleEventResize}
         viewDidMount={info => setCurrentView(info.view.type)}
+        datesSet={info => {
+          setCurrentView(info.view.type);
+          if (onDatesSet) onDatesSet({ start: info.start, end: info.end });
+        }}
         height={currentView === 'dayGridMonth' ? 'auto' : '70vh'}
         expandRows={currentView !== 'dayGridMonth'}
         stickyHeaderDates={true}

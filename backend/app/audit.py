@@ -1,5 +1,9 @@
 """Admin audit log. Records who did what, when."""
+import logging
+
 from app.api.auth import get_db
+
+logger = logging.getLogger(__name__)
 
 
 def log_admin_action(
@@ -31,5 +35,5 @@ def log_admin_action(
             conn.commit()
         finally:
             conn.close()
-    except Exception:
-        pass  # Never let audit logging block admin operations
+    except Exception as e:
+        logger.warning("Audit log write failed (action=%s): %s", action, e)

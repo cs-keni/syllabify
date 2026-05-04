@@ -17,11 +17,11 @@ from app.db.base import Base
 
 
 class CalendarEvent(Base):
-    __tablename__ = "CalendarEvents"
+    __tablename__ = "calendarevents"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    user_id: Mapped[int] = mapped_column(Integer, ForeignKey("Users.id"), nullable=False)
-    source_id: Mapped[int] = mapped_column(Integer, ForeignKey("CalendarSources.id"), nullable=False)
+    user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False)
+    source_id: Mapped[int] = mapped_column(Integer, ForeignKey("calendarsources.id"), nullable=False)
     external_uid: Mapped[str] = mapped_column(String(500), nullable=False)
     recurrence_id: Mapped[str | None] = mapped_column(String(100), nullable=True)
     instance_key: Mapped[str] = mapped_column(String(255), nullable=False, default="base")

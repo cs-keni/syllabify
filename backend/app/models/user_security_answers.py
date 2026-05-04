@@ -5,7 +5,7 @@ from ..db.base import Base
 
 
 class UserSecurityAnswer(Base):
-    __tablename__ = "UserSecurityAnswers"
+    __tablename__ = "usersecurityanswers"
 
     id: Mapped[int] = mapped_column(
         primary_key = True

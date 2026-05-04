@@ -209,6 +209,14 @@ export default function Login() {
                 Sign up
               </Link>
             </p>
+            <p className="text-center text-sm text-ink-muted">
+              <Link
+                to="/forgot-password"
+                className="text-accent hover:underline"
+              >
+                Forgot password?
+              </Link>
+            </p>
           </form>
         </div>
       </main>

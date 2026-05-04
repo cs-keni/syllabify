@@ -2,7 +2,6 @@
 Schedule API: engine input for scheduling teammate.
 Returns normalized JSON (courses, meeting_times, work_items, term) per parser-schedule-integration.md.
 """
-import os
 from datetime import datetime, time, timedelta
 
 from flask import Blueprint, jsonify, request
@@ -13,23 +12,6 @@ from app.db.session import SessionLocal
 from app.models.term import Term
 from app.services.schedule_input_builder import build_engine_input
 from app.services.scheduling_service import generate_study_times
-
-
-def _get_db():
-    import mysql.connector
-    port = os.getenv("DB_PORT", "3306")
-    try:
-        port = int(port)
-    except (TypeError, ValueError):
-        port = 3306
-    return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        port=port,
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME"),
-        connection_timeout=15,
-    )
 
 
 def _get_user(req):
@@ -141,10 +123,12 @@ def get_or_clear_study_times_for_term(term_id):
                 """
                 SELECT st.id, st.start_time, st.end_time, st.notes,
                        st.is_locked, st.assignment_id, st.course_id,
-                       c.course_name, c.color AS course_color
+                       c.course_name, c.color AS course_color,
+                       a.assignment_name
                 FROM StudyTimes st
                 JOIN Terms t ON t.id = st.term_id
                 LEFT JOIN Courses c ON st.course_id = c.id
+                LEFT JOIN Assignments a ON st.assignment_id = a.id
                 WHERE st.term_id = %s AND t.user_id = %s
                   AND st.start_time < %s AND st.end_time > %s
                 ORDER BY st.start_time
@@ -156,16 +140,31 @@ def get_or_clear_study_times_for_term(term_id):
                 """
                 SELECT st.id, st.start_time, st.end_time, st.notes,
                        st.is_locked, st.assignment_id, st.course_id,
-                       c.course_name, c.color AS course_color
+                       c.course_name, c.color AS course_color,
+                       a.assignment_name
                 FROM StudyTimes st
                 JOIN Terms t ON st.term_id = t.id
                 LEFT JOIN Courses c ON st.course_id = c.id
+                LEFT JOIN Assignments a ON st.assignment_id = a.id
                 WHERE st.term_id = %s AND t.user_id = %s
                 ORDER BY st.start_time
                 """,
                 (term_id, user_id),
             )
         rows = cur.fetchall()
+        # Default palette when course has no color (ensures each course gets distinct color)
+        _default_course_colors = [
+            "#3B82F6", "#10B981", "#F59E0B", "#EF4444",
+            "#8B5CF6", "#EC4899", "#06B6D4", "#64748B",
+        ]
+
+        def _course_color(course_id, db_color):
+            if db_color:
+                return db_color
+            if course_id is not None:
+                return _default_course_colors[course_id % len(_default_course_colors)]
+            return "#10B981"
+
         study_times = []
         for r in rows:
             study_times.append({
@@ -175,9 +174,10 @@ def get_or_clear_study_times_for_term(term_id):
                 "notes": r.get("notes"),
                 "is_locked": bool(r["is_locked"]) if r.get("is_locked") is not None else False,
                 "assignment_id": r.get("assignment_id"),
+                "assignment_name": r.get("assignment_name"),
                 "course_id": r.get("course_id"),
                 "course_name": r.get("course_name"),
-                "course_color": r.get("course_color"),
+                "course_color": _course_color(r.get("course_id"), r.get("course_color")),
             })
         return jsonify({"study_times": study_times}), 200
     finally:
@@ -350,7 +350,7 @@ def update_study_time(study_time_id):
         return err
 
     body = request.get_json(silent=True) or {}
-    conn = _get_db()
+    conn = get_db()
     cur = None
     try:
         cur = conn.cursor(dictionary=True)
@@ -437,10 +437,9 @@ def update_study_time(study_time_id):
             return jsonify({"error": "no fields to update"}), 400
 
         params.append(study_time_id)
-        cur.execute(
-            f"UPDATE StudyTimes SET {', '.join(updates)} WHERE id = %s",
-            tuple(params),
-        )
+        # Column names come only from the hardcoded allowlist above — no user-supplied names
+        sql = "UPDATE StudyTimes SET " + ", ".join(updates) + " WHERE id = %s"
+        cur.execute(sql, tuple(params))
         conn.commit()
         return jsonify({"ok": True}), 200
     finally:

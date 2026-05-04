@@ -64,20 +64,31 @@ def require_admin():
 
 @bp.route("/users", methods=["GET"])
 def list_users():
-    """List all users. Admin only."""
+    """List users with pagination. Admin only. Query params: limit (default 50), offset (default 0)."""
     if not require_admin():
         return jsonify({"error": "forbidden"}), 403
+    try:
+        limit = max(1, min(int(request.args.get("limit", 50)), 500))
+        offset = max(0, int(request.args.get("offset", 0)))
+    except (TypeError, ValueError):
+        limit, offset = 50, 0
     conn = get_db()
     try:
         cur = conn.cursor(dictionary=True)
+        # Get total count
+        cur.execute("SELECT COUNT(*) AS total FROM Users")
+        total = (cur.fetchone() or {}).get("total", 0)
         try:
             cur.execute(
                 """SELECT id, username, email, avatar, avatar_url, banner_url, description,
-                   security_setup_done, is_admin, is_disabled FROM Users ORDER BY id"""
+                   security_setup_done, is_admin, is_disabled FROM Users ORDER BY id
+                   LIMIT %s OFFSET %s""",
+                (limit, offset),
             )
         except Exception:
             cur.execute(
-                "SELECT id, username, email, security_setup_done, is_admin, is_disabled FROM Users ORDER BY id"
+                "SELECT id, username, email, security_setup_done, is_admin, is_disabled FROM Users ORDER BY id LIMIT %s OFFSET %s",
+                (limit, offset),
             )
         rows = cur.fetchall()
         users = []
@@ -99,7 +110,7 @@ def list_users():
             if "description" in r:
                 u["description"] = (r.get("description") or "").strip() or None
             users.append(u)
-        return jsonify({"users": users})
+        return jsonify({"users": users, "total": total, "limit": limit, "offset": offset})
     finally:
         conn.close()
 
@@ -240,8 +251,8 @@ def put_user_notes(user_id):
             cur.execute(
                 """INSERT INTO UserAdminNotes (user_id, note_text, updated_by_admin_id)
                    VALUES (%s, %s, %s)
-                   ON DUPLICATE KEY UPDATE note_text = VALUES(note_text),
-                   updated_by_admin_id = VALUES(updated_by_admin_id)""",
+                   ON CONFLICT (user_id) DO UPDATE SET note_text = EXCLUDED.note_text,
+                   updated_by_admin_id = EXCLUDED.updated_by_admin_id""",
                 (user_id, note_text or None, admin_id),
             )
         except Exception:
