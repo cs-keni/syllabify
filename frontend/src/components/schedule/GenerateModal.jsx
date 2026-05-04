@@ -29,10 +29,13 @@ export default function GenerateModal({
         onClick={() => !applyingSchedule && onClose()}
       />
       <div className="relative z-10 w-full max-w-xl rounded-xl border border-border bg-surface p-5 shadow-xl max-h-[85vh] flex flex-col">
-        <h3 className="text-lg font-semibold text-ink">Proposed study schedule</h3>
+        <h3 className="text-lg font-semibold text-ink">
+          Proposed study schedule
+        </h3>
         <p className="mt-1 text-sm text-ink-muted">
-          Here&apos;s a proposed study schedule based on your availability, course workload,
-          and calendar events. Unlocked blocks will be replaced when you apply.
+          Here&apos;s a proposed study schedule based on your availability,
+          course workload, and calendar events. Unlocked blocks will be replaced
+          when you apply.
         </p>
         <div className="mt-4 overflow-y-auto flex-1 min-h-0 rounded-lg border border-border bg-surface-muted/50 p-3">
           <p className="text-xs font-medium uppercase tracking-wide text-ink-muted mb-2">
@@ -63,7 +66,9 @@ export default function GenerateModal({
               </li>
             ))}
             {merged.length > 50 && (
-              <li className="text-ink-muted text-xs">… and {merged.length - 50} more</li>
+              <li className="text-ink-muted text-xs">
+                … and {merged.length - 50} more
+              </li>
             )}
           </ul>
         </div>

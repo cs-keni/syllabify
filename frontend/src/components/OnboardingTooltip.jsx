@@ -76,9 +76,15 @@ export default function OnboardingTooltip() {
           ))}
         </div>
 
-        <span className="text-3xl" aria-hidden>{current.icon}</span>
-        <h3 className="mt-3 text-base font-semibold text-ink">{current.title}</h3>
-        <p className="mt-2 text-sm text-ink-muted leading-relaxed">{current.body}</p>
+        <span className="text-3xl" aria-hidden>
+          {current.icon}
+        </span>
+        <h3 className="mt-3 text-base font-semibold text-ink">
+          {current.title}
+        </h3>
+        <p className="mt-2 text-sm text-ink-muted leading-relaxed">
+          {current.body}
+        </p>
 
         <div className="mt-5 flex items-center justify-between gap-3">
           <button

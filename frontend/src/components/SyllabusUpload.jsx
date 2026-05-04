@@ -52,7 +52,10 @@ export default function SyllabusUpload({ onComplete, token }) {
     setUploading(true);
     try {
       const parseMode = fastMode ? 'rule' : 'llm';
-      const payload = mode === 'file' ? { file, mode: parseMode } : { text: paste.trim(), mode: parseMode };
+      const payload =
+        mode === 'file'
+          ? { file, mode: parseMode }
+          : { text: paste.trim(), mode: parseMode };
       const data = await parseSyllabus(token, payload);
       const courseName = data.course_name || 'Course';
       // Prefer assessments from full parser (includes type, due_datetime, exams)

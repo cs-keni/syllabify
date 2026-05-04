@@ -18,8 +18,7 @@ const DEFAULT_CATEGORY_COLORS = {
   other: '#64748B',
 };
 
-const isMobile =
-  typeof window !== 'undefined' && window.innerWidth < 768;
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
 export default function AppCalendar({
   calendarEvents = [],

@@ -22,8 +22,9 @@ export default function ScheduleToolbar({
       </Link>
       <h1 className="mt-2 text-2xl font-semibold text-ink">Schedule</h1>
       <p className="mt-1 text-sm text-ink-muted">
-        Your calendar events and study blocks at a glance. Study blocks appear in the date
-        range of your assignments—use the calendar arrows to navigate.
+        Your calendar events and study blocks at a glance. Study blocks appear
+        in the date range of your assignments—use the calendar arrows to
+        navigate.
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button
@@ -49,7 +50,9 @@ export default function ScheduleToolbar({
           disabled={!token}
           className="px-4 py-2 rounded-lg border border-border bg-surface text-ink font-medium text-sm hover:bg-surface-muted disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
         >
-          {calendarConnected ? 'Import from Google Calendar' : 'Connect Google Calendar'}
+          {calendarConnected
+            ? 'Import from Google Calendar'
+            : 'Connect Google Calendar'}
         </button>
         <button
           type="button"

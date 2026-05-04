@@ -7,14 +7,70 @@ import * as api from '../api/client';
 import { useAuth } from '../contexts/AuthContext';
 
 const DEMO_BLOCKS = [
-  { top: '8%', left: '2%', width: '18%', height: '10%', color: '#3B82F6', label: 'CS 422' },
-  { top: '22%', left: '22%', width: '18%', height: '14%', color: '#10B981', label: 'MATH 341' },
-  { top: '8%', left: '42%', width: '18%', height: '10%', color: '#F59E0B', label: 'CS 422' },
-  { top: '38%', left: '2%', width: '18%', height: '18%', color: '#8B5CF6', label: 'ENGL 202' },
-  { top: '52%', left: '62%', width: '18%', height: '14%', color: '#3B82F6', label: 'CS 422' },
-  { top: '22%', left: '62%', width: '18%', height: '10%', color: '#10B981', label: 'MATH 341' },
-  { top: '68%', left: '22%', width: '18%', height: '10%', color: '#F59E0B', label: 'CS 422' },
-  { top: '38%', left: '82%', width: '16%', height: '18%', color: '#EC4899', label: 'BIO 110' },
+  {
+    top: '8%',
+    left: '2%',
+    width: '18%',
+    height: '10%',
+    color: '#3B82F6',
+    label: 'CS 422',
+  },
+  {
+    top: '22%',
+    left: '22%',
+    width: '18%',
+    height: '14%',
+    color: '#10B981',
+    label: 'MATH 341',
+  },
+  {
+    top: '8%',
+    left: '42%',
+    width: '18%',
+    height: '10%',
+    color: '#F59E0B',
+    label: 'CS 422',
+  },
+  {
+    top: '38%',
+    left: '2%',
+    width: '18%',
+    height: '18%',
+    color: '#8B5CF6',
+    label: 'ENGL 202',
+  },
+  {
+    top: '52%',
+    left: '62%',
+    width: '18%',
+    height: '14%',
+    color: '#3B82F6',
+    label: 'CS 422',
+  },
+  {
+    top: '22%',
+    left: '62%',
+    width: '18%',
+    height: '10%',
+    color: '#10B981',
+    label: 'MATH 341',
+  },
+  {
+    top: '68%',
+    left: '22%',
+    width: '18%',
+    height: '10%',
+    color: '#F59E0B',
+    label: 'CS 422',
+  },
+  {
+    top: '38%',
+    left: '82%',
+    width: '16%',
+    height: '18%',
+    color: '#EC4899',
+    label: 'BIO 110',
+  },
 ];
 
 const DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
@@ -42,7 +98,10 @@ function CalendarMockup() {
       {/* Day headers */}
       <div className="grid grid-cols-5 border-b border-border bg-surface-elevated">
         {DAYS.map(d => (
-          <div key={d} className="py-1.5 text-center text-[10px] font-semibold text-ink-muted tracking-wider">
+          <div
+            key={d}
+            className="py-1.5 text-center text-[10px] font-semibold text-ink-muted tracking-wider"
+          >
             {d}
           </div>
         ))}
@@ -51,11 +110,19 @@ function CalendarMockup() {
       <div className="relative bg-surface" style={{ height: '200px' }}>
         {/* Column lines */}
         {[20, 40, 60, 80].map(p => (
-          <div key={p} className="absolute top-0 bottom-0 border-l border-border/40" style={{ left: `${p}%` }} />
+          <div
+            key={p}
+            className="absolute top-0 bottom-0 border-l border-border/40"
+            style={{ left: `${p}%` }}
+          />
         ))}
         {/* Hour lines */}
         {[25, 50, 75].map(p => (
-          <div key={p} className="absolute left-0 right-0 border-t border-border/30" style={{ top: `${p}%` }} />
+          <div
+            key={p}
+            className="absolute left-0 right-0 border-t border-border/30"
+            style={{ top: `${p}%` }}
+          />
         ))}
         {/* Study blocks */}
         {DEMO_BLOCKS.map((b, i) => (
@@ -77,7 +144,10 @@ function CalendarMockup() {
           </div>
         ))}
         {/* Now indicator */}
-        <div className="absolute left-0 right-0 border-t-2 border-red-500 z-10" style={{ top: '35%' }}>
+        <div
+          className="absolute left-0 right-0 border-t-2 border-red-500 z-10"
+          style={{ top: '35%' }}
+        >
           <div className="absolute -left-1 -top-1.5 w-2.5 h-2.5 rounded-full bg-red-500" />
         </div>
       </div>
@@ -107,10 +177,22 @@ const STEPS = [
 ];
 
 const FEATURES = [
-  { label: 'AI syllabus parsing', desc: 'GPT-5 nano extracts assignments, exams, and deadlines from any syllabus format.' },
-  { label: 'Min-cost scheduling', desc: 'A graph-flow algorithm balances workload across your week, respecting your class times.' },
-  { label: 'Google Calendar sync', desc: 'Import your existing events as conflicts and export your study plan as an iCal feed.' },
-  { label: 'Live calendar view', desc: 'Drag to reschedule any block. Lock the ones you want to keep when regenerating.' },
+  {
+    label: 'AI syllabus parsing',
+    desc: 'GPT-5 nano extracts assignments, exams, and deadlines from any syllabus format.',
+  },
+  {
+    label: 'Min-cost scheduling',
+    desc: 'A graph-flow algorithm balances workload across your week, respecting your class times.',
+  },
+  {
+    label: 'Google Calendar sync',
+    desc: 'Import your existing events as conflicts and export your study plan as an iCal feed.',
+  },
+  {
+    label: 'Live calendar view',
+    desc: 'Drag to reschedule any block. Lock the ones you want to keep when regenerating.',
+  },
 ];
 
 export default function Home() {
@@ -195,7 +277,6 @@ export default function Home() {
       </header>
 
       <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 pt-8 sm:pt-12 space-y-16">
-
         {/* Hero */}
         <section className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="animate-fade-in-up">
@@ -206,12 +287,17 @@ export default function Home() {
               Turn syllabi into a balanced study plan.
             </h1>
             <p className="mt-4 text-base sm:text-lg text-ink-muted max-w-lg">
-              Upload a course syllabus. Syllabify extracts every deadline, estimates
-              workload, and schedules study blocks around your existing calendar —
-              automatically.
+              Upload a course syllabus. Syllabify extracts every deadline,
+              estimates workload, and schedules study blocks around your
+              existing calendar — automatically.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {['PDF & text syllabi', 'AI extraction', 'Conflict-aware scheduling', 'Google Calendar sync'].map(tag => (
+              {[
+                'PDF & text syllabi',
+                'AI extraction',
+                'Conflict-aware scheduling',
+                'Google Calendar sync',
+              ].map(tag => (
                 <span
                   key={tag}
                   className="rounded-full bg-accent-muted px-3 py-1.5 text-xs font-medium text-accent"
@@ -259,8 +345,12 @@ export default function Home() {
                     Step {s.num}
                   </span>
                 </div>
-                <h3 className="text-base font-semibold text-ink mb-2">{s.title}</h3>
-                <p className="text-sm text-ink-muted leading-relaxed">{s.desc}</p>
+                <h3 className="text-base font-semibold text-ink mb-2">
+                  {s.title}
+                </h3>
+                <p className="text-sm text-ink-muted leading-relaxed">
+                  {s.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -279,8 +369,12 @@ export default function Home() {
               >
                 <div className="mt-0.5 w-2 h-2 rounded-full bg-accent shrink-0" />
                 <div>
-                  <p className="text-sm font-semibold text-ink mb-1">{f.label}</p>
-                  <p className="text-xs text-ink-muted leading-relaxed">{f.desc}</p>
+                  <p className="text-sm font-semibold text-ink mb-1">
+                    {f.label}
+                  </p>
+                  <p className="text-xs text-ink-muted leading-relaxed">
+                    {f.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -293,8 +387,8 @@ export default function Home() {
             Ready to stop guessing?
           </h2>
           <p className="text-sm sm:text-base text-ink-muted mb-6 max-w-md mx-auto">
-            Create an account and upload your first syllabus in under two minutes.
-            No credit card required.
+            Create an account and upload your first syllabus in under two
+            minutes. No credit card required.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link

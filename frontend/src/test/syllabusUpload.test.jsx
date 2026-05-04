@@ -37,7 +37,9 @@ describe('SyllabusUpload', () => {
     render(<SyllabusUpload onComplete={noop} token="tok" />);
     fireEvent.click(screen.getByText('Paste text'));
     const textarea = screen.getByPlaceholderText(/Paste syllabus text here/i);
-    fireEvent.change(textarea, { target: { value: 'Course: CS 422\nAssignment 1 due Jan 10' } });
+    fireEvent.change(textarea, {
+      target: { value: 'Course: CS 422\nAssignment 1 due Jan 10' },
+    });
     const btn = screen.getByRole('button', { name: /parse syllabus/i });
     expect(btn).not.toBeDisabled();
   });

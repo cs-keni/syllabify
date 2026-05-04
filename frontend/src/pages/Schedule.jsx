@@ -65,7 +65,9 @@ export default function Schedule() {
   // Keyboard shortcuts: G = generate, E = export (schedule-page-specific)
   useEffect(() => {
     const onKey = e => {
-      const inInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+      const inInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(
+        document.activeElement?.tagName
+      );
       if (inInput || e.ctrlKey || e.metaKey || e.altKey) return;
       if (e.key === 'G') shortcutHandlersRef.current.generate?.();
       if (e.key === 'E') shortcutHandlersRef.current.export?.();
@@ -112,9 +114,18 @@ export default function Schedule() {
 
     if (activeTerm?.id) {
       try {
-        const startDate = viewWindow ? viewWindow.start.toISOString().slice(0, 10) : null;
-        const endDate = viewWindow ? viewWindow.end.toISOString().slice(0, 10) : null;
-        const stData = await api.getStudyTimes(token, activeTerm.id, startDate, endDate);
+        const startDate = viewWindow
+          ? viewWindow.start.toISOString().slice(0, 10)
+          : null;
+        const endDate = viewWindow
+          ? viewWindow.end.toISOString().slice(0, 10)
+          : null;
+        const stData = await api.getStudyTimes(
+          token,
+          activeTerm.id,
+          startDate,
+          endDate
+        );
         setStudyTimes(stData.study_times || []);
       } catch (err) {
         console.warn('Failed to fetch study times:', err?.message);
@@ -140,7 +151,11 @@ export default function Schedule() {
       autoSyncDone.current = true;
       (async () => {
         for (const src of staleSources) {
-          try { await api.syncSource(token, src.id); } catch { /* ignore stale sync errors */ }
+          try {
+            await api.syncSource(token, src.id);
+          } catch {
+            /* ignore stale sync errors */
+          }
         }
         fetchData();
       })();
@@ -593,9 +608,12 @@ export default function Schedule() {
 
       {studyTimes.length === 0 && calendarEvents.length === 0 && (
         <div className="rounded-xl border border-dashed border-border bg-surface-elevated/50 p-6 text-center animate-fade-in">
-          <p className="text-sm font-medium text-ink mb-1">No study blocks yet</p>
+          <p className="text-sm font-medium text-ink mb-1">
+            No study blocks yet
+          </p>
           <p className="text-xs text-ink-muted mb-3">
-            Upload a syllabus to generate a balanced study schedule automatically.
+            Upload a syllabus to generate a balanced study schedule
+            automatically.
           </p>
           <Link
             to="/app"

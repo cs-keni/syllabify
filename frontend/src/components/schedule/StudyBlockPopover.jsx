@@ -1,5 +1,10 @@
 /** Click popover for study blocks — lock/unlock/lock-day actions. */
-export default function StudyBlockPopover({ popover, onToggleLock, onLockDay, onClose }) {
+export default function StudyBlockPopover({
+  popover,
+  onToggleLock,
+  onLockDay,
+  onClose,
+}) {
   if (!popover) return null;
   const { studyTime, x, y } = popover;
 
@@ -14,7 +19,9 @@ export default function StudyBlockPopover({ popover, onToggleLock, onLockDay, on
           {studyTime.course_name || 'Study Block'}
         </p>
         {studyTime.assignment_name && (
-          <p className="mb-1 truncate text-xs text-ink-muted">{studyTime.assignment_name}</p>
+          <p className="mb-1 truncate text-xs text-ink-muted">
+            {studyTime.assignment_name}
+          </p>
         )}
         <p className="mb-2 text-xs text-ink-muted">
           {studyTime.is_locked

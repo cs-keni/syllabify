@@ -28,7 +28,9 @@ export default function ExportModal({
               <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
                 Your Feed URL
               </p>
-              <p className="break-all text-xs text-ink">{feedUrl || 'No feed URL available'}</p>
+              <p className="break-all text-xs text-ink">
+                {feedUrl || 'No feed URL available'}
+              </p>
             </div>
             <div className="mt-3 flex gap-2">
               <button

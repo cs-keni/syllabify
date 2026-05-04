@@ -240,15 +240,27 @@ export default function Layout() {
             aria-label="Mobile navigation"
           >
             <div className="flex items-center justify-between px-4 py-4 border-b border-border">
-              <span className="text-base font-semibold text-ink">Syllabify</span>
+              <span className="text-base font-semibold text-ink">
+                Syllabify
+              </span>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
                 className="rounded-button p-1 text-ink-muted hover:bg-surface-muted"
                 aria-label="Close menu"
               >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
@@ -260,7 +272,9 @@ export default function Layout() {
                   end={end}
                   className={({ isActive }) =>
                     `flex items-center gap-3 rounded-button px-3 py-2.5 text-sm font-medium no-underline transition-colors ${
-                      isActive ? 'bg-accent-muted text-accent' : 'text-ink hover:bg-surface-muted'
+                      isActive
+                        ? 'bg-accent-muted text-accent'
+                        : 'text-ink hover:bg-surface-muted'
                     }`
                   }
                 >
@@ -283,7 +297,10 @@ export default function Layout() {
               </NavLink>
               <button
                 type="button"
-                onClick={() => { setMobileMenuOpen(false); logout(); }}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  logout();
+                }}
                 className="flex w-full items-center gap-3 rounded-button px-3 py-2.5 text-sm font-medium text-ink hover:bg-surface-muted text-left"
               >
                 Log out
@@ -310,11 +327,27 @@ export default function Layout() {
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {mobileMenuOpen
-                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                }
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {mobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
               </svg>
             </button>
             {/* Desktop nav pills */}

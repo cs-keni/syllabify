@@ -15,8 +15,14 @@ const SOURCE_COLOR_OPTIONS = [
 ];
 
 const COURSE_COLORS = [
-  '#3B82F6','#10B981','#F59E0B','#EF4444',
-  '#8B5CF6','#EC4899','#06B6D4','#64748B',
+  '#3B82F6',
+  '#10B981',
+  '#F59E0B',
+  '#EF4444',
+  '#8B5CF6',
+  '#EC4899',
+  '#06B6D4',
+  '#64748B',
 ];
 
 export default function ScheduleSidebar({
@@ -52,7 +58,9 @@ export default function ScheduleSidebar({
                   })
                   .join(', ')})`,
               }}
-              title={studyTimeByCourse.map(c => `${c.name}: ${Math.round((c.mins / 60) * 10) / 10}h`).join(', ')}
+              title={studyTimeByCourse
+                .map(c => `${c.name}: ${Math.round((c.mins / 60) * 10) / 10}h`)
+                .join(', ')}
             />
             <div className="min-w-0 flex-1 space-y-1">
               {studyTimeByCourse.slice(0, 5).map((c, i) => (
@@ -63,7 +71,10 @@ export default function ScheduleSidebar({
                 >
                   <span
                     className="w-2.5 h-2.5 rounded-full shrink-0"
-                    style={{ backgroundColor: c.color || COURSE_COLORS[i % COURSE_COLORS.length] }}
+                    style={{
+                      backgroundColor:
+                        c.color || COURSE_COLORS[i % COURSE_COLORS.length],
+                    }}
                   />
                   <span className="truncate text-ink">{c.name}</span>
                   <span className="text-ink-muted tabular-nums shrink-0">
@@ -73,15 +84,17 @@ export default function ScheduleSidebar({
               ))}
               {studyTimeByCourse.length > 5 && (
                 <div className="text-xs text-ink-subtle px-1">
-                  + {studyTimeByCourse.length - 5} more course{studyTimeByCourse.length - 5 !== 1 ? 's' : ''}
+                  + {studyTimeByCourse.length - 5} more course
+                  {studyTimeByCourse.length - 5 !== 1 ? 's' : ''}
                 </div>
               )}
             </div>
           </div>
         ) : (
           <p className="text-xs text-ink-muted">
-            Add courses from your syllabus, then click <strong>Generate Study Times</strong> above
-            to see a breakdown of study time per course.
+            Add courses from your syllabus, then click{' '}
+            <strong>Generate Study Times</strong> above to see a breakdown of
+            study time per course.
           </p>
         )}
       </div>
@@ -89,7 +102,9 @@ export default function ScheduleSidebar({
       {/* Weekly burndown bar chart */}
       {weeklyHours.length > 0 && (
         <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
-          <h3 className="text-sm font-semibold text-ink mb-3">Weekly study hours</h3>
+          <h3 className="text-sm font-semibold text-ink mb-3">
+            Weekly study hours
+          </h3>
           {(() => {
             const maxH = Math.max(...weeklyHours.map(w => w.hours), 1);
             return (
@@ -122,11 +137,16 @@ export default function ScheduleSidebar({
       <div className="rounded-xl border border-border bg-surface-elevated p-4 shadow-card">
         <h3 className="text-sm font-semibold text-ink mb-3">Sources</h3>
         {sources.length === 0 ? (
-          <p className="text-xs text-ink-muted">No sources yet. Import a calendar to get started.</p>
+          <p className="text-xs text-ink-muted">
+            No sources yet. Import a calendar to get started.
+          </p>
         ) : (
           <ul className="space-y-2">
             {sources.map(src => (
-              <li key={src.id} className="flex items-center justify-between gap-2">
+              <li
+                key={src.id}
+                className="flex items-center justify-between gap-2"
+              >
                 <div className="flex items-center gap-2 min-w-0">
                   <div className="relative shrink-0">
                     <button
@@ -138,9 +158,14 @@ export default function ScheduleSidebar({
                     />
                     {colorEditId === src.id && (
                       <>
-                        <div className="fixed inset-0 z-40" onClick={() => onColorEditToggle(null)} />
+                        <div
+                          className="fixed inset-0 z-40"
+                          onClick={() => onColorEditToggle(null)}
+                        />
                         <div className="absolute left-0 top-6 z-50 p-2 rounded-lg border border-border bg-surface shadow-lg min-w-[140px]">
-                          <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">Color</p>
+                          <p className="text-[10px] font-medium text-ink-muted mb-1.5 uppercase tracking-wide">
+                            Color
+                          </p>
                           <div className="grid grid-cols-4 gap-1.5">
                             {SOURCE_COLOR_OPTIONS.map(({ hex, label }) => (
                               <button
@@ -158,9 +183,12 @@ export default function ScheduleSidebar({
                     )}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-medium text-ink truncate">{src.source_label}</p>
+                    <p className="text-xs font-medium text-ink truncate">
+                      {src.source_label}
+                    </p>
                     <p className="text-[10px] text-ink-muted font-mono tabular-nums">
-                      {src.event_count} events · {src.source_type === 'google' ? 'Google' : 'ICS'}
+                      {src.event_count} events ·{' '}
+                      {src.source_type === 'google' ? 'Google' : 'ICS'}
                     </p>
                   </div>
                 </div>
